@@ -5,3 +5,4 @@
 *.log
 .idea
 */migrations
+docs/_build/
