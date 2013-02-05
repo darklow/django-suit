@@ -1,0 +1,7 @@
+*.py[co]
+*.egg*
+*.swp
+*~
+*.log
+.idea
+*/migrations
