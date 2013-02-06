@@ -1,0 +1,217 @@
+.table-overview {
+    border-spacing: 0;
+    margin-bottom: 18px;
+    border-radius: @border-radius;
+    background: #fff;
+    width: auto;
+    .grey-box-shadow;
+    td, th {
+        padding: 8px 20px 8px 15px;
+        font-weight: normal;
+        font-size: 12px;
+    }
+    th:first-child {
+        min-width: 140px;
+    }
+    th {
+        text-align: right;
+        border-right: 1px solid #EDEDED;
+        border-bottom: 1px solid #EDEDED;
+        vertical-align: top;
+    }
+    td {
+        background-color: #F6F7F8;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    tr:last-child {
+        td, th {
+            border-bottom: 0;
+        }
+    }
+    tr:first-child td {
+        border-top-right-radius: @border-radius;
+    }
+    tr:last-child td {
+        border-bottom-right-radius: @border-radius;
+    }
+    tr:first-child th, tr:first-child td {
+        padding-top: 10px;
+    }
+    tr:last-child th, tr:last-child td {
+        padding-bottom: 10px;
+    }
+    caption {
+        text-align: left;
+        margin-bottom: 3px;
+        a {
+            .italic-title;
+            text-decoration: none;
+        }
+    }
+}
+
+.table {
+    th, td {
+        background-color: white;
+        .white-inset;
+        .white-shadow;
+        input {
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
+    tr:not(:first-child) {
+        th, td {
+            border-top: 1px solid #eee;
+        }
+    }
+    thead {
+        line-height: 18px;
+        th, td {
+            padding: 0;
+            padding: 6px 10px;
+            font-weight: bold;
+            .vertical-gradient(#f3f3f3, #e5e5e5);
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .3);
+            div {
+                margin: 0;
+            }
+            .text {
+                &>a, &>span {
+                    padding: 8px 10px;
+                    margin: -6px -10px;
+                    display: block;
+                }
+            }
+        }
+        th {
+            .sortoptions {
+                a, span {
+                    float: right;
+//                    padding: 8px 0;
+                    margin-right: 5px;
+                }
+                float: right;
+                .sortpriority {
+                    color: #666;
+                }
+                .sortremove, .toggle {
+                    padding: 0;
+//                    margin: 10px 10px 0 0;
+                    display: block;
+                    width: 12px;
+                    height: 12px;
+                    opacity: .4;
+                    background-image: url("/static/bootstrap/img/glyphicons-halflings.png");
+                    background-position: -312px 0;
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+                .toggle {
+                    margin-right: 10px;
+                    &.ascending {
+                        background-position: -313px -119px;
+                    }
+                    &.descending {
+                        background-position: -288px -120px;
+                    }
+
+                }
+
+            }
+            &.sorted {
+                .vertical-gradient(#e7e7e7, #ddd);
+            }
+        }
+        th.action-checkbox-column {
+            width: 33px;
+            span {
+                padding-top: 0;
+            }
+        }
+    }
+    &.table-bordered {
+        th:not(:first-child), td:not(:first-child) {
+            border-left: 0;
+        }
+        th:not(:first-child), td:not(:first-child) {
+            border-left: 0;
+        }
+    }
+    &.table-condensed tbody {
+        th, td {
+            font-weight: normal;
+            padding: 5px 10px 4px 10px;
+        }
+    }
+    &.table-striped tbody {
+        tr:nth-child(odd) {
+            &>td, &>th {
+                background-color: #f9f9f9;
+            }
+        }
+        tr:hover:nth-child(odd) {
+            &>td, &>th {
+                background-color: darken(#f9f9f9, 1.5%);
+            }
+        }
+        // Striped and selected and hover
+        tr.selected:hover {
+            &>td, &>th {
+                background-color: darken(#FCF8E3, 6%);
+            }
+        }
+        tr.selected:hover:nth-child(odd) {
+            &>td, &>th {
+                background-color: darken(#FCF8E3, 6%);
+            }
+        }
+    }
+    &.table-hover {
+        tr {
+            &.selected {
+                th, td {
+                    background-color: #FCF8E3;
+                    border-top: 1px solid #f7e4c1; //                    box-shadow: none;
+                }
+            }
+        }
+        tbody > tr.selected:nth-child(odd) {
+            &>td, &>th {
+                background-color: darken(#FCF8E3, 3%);
+            }
+        }
+    }
+}
+
+.inline-group .tabular {
+    table.table {
+        tr.add-row td {
+//            background-color: #eee;
+            .vertical-gradient(#efefef, #e2e2e2);
+            .white-shadow;
+            padding-left: 10px;
+        }
+        td.delete {
+            text-align: center;
+            width: 40px;
+        }
+    }
+}
+
+.table .add-row a, .add-row a {
+    font-size: 11px;
+    text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+    }
+}

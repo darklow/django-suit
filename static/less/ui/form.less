@@ -1,0 +1,395 @@
+h2.legend, .form-horizontal fieldset .legend {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 36px;
+    .white-shadow;
+    padding-left: 10px;
+}
+.form-horizontal {
+    fieldset {
+        .grey-box-shadow;
+        .border-radius(@border-radius); //        margin-bottom: 35px;
+        &:not(:first-child) {
+            margin-top: 35px;
+        }
+        .popup & {
+            margin-top: 0;
+        }
+        .legend {
+            border: 0;
+            margin: -30px 0 0 0;
+            position: absolute;
+            width: auto;
+            .description {
+                font-weight: normal;
+                font-style: italic;
+                font-size: 15px;
+                display: inline-block;
+                margin-left: 20px;
+            }
+        }
+
+    /* BS collapse override */
+        &.collapse {
+            overflow: visible;
+            height: auto;
+        }
+    /* Position attr change for collapsed */
+        &.collapsed {
+            background-color: @bgcolor-light;
+            .legend {
+                position: static;
+                font-size: 13px;
+                font-weight: normal;
+            }
+        }
+    }
+    .control-group {
+        margin: 0;
+    }
+    .submit-row-bottom {
+        margin: 20px 0 0 200px;
+    }
+}
+
+.popup {
+    .form-horizontal {
+    }
+    .one-column {
+        padding-top: 10px;
+    }
+}
+
+.control-group {
+    background-color: white;
+    margin: 0;
+    border-bottom: 1px solid @border-color-light;
+    &:first-child, &:first-of-type {
+        .border-radius(@border-radius, @border-radius, null, null);
+        .controls {
+            padding-top: 10px;
+            .border-radius(null, @border-radius, null, null);
+        }
+        .control-label {
+            padding-top: 10px;
+        }
+    }
+    &:last-child, &:last-of-type {
+        .border-radius(null, null, @border-radius, @border-radius);
+        border: 0;
+        .controls {
+            .border-radius(null, null, @border-radius, null);
+            margin-bottom: 0;
+            padding-bottom: 10px;
+        }
+    }
+    .controls {
+        background-color: @bgcolor-light;
+        border-left: 1px solid #ecedee;
+        margin-bottom: -1px;
+        padding: 5px 15px;
+        vertical-align: top;
+        line-height: 26px;
+        p {
+            margin-bottom: 0;
+        }
+    }
+    .control-label label {
+        padding-top: 5px;
+    }
+
+/* Some BS form global overrides */
+    .help-block, .help-inline {
+        font-size: 11px;
+        color: #999;
+        line-height: normal;
+    }
+
+    .help-inline ul, .radiolist {
+        margin: 0;
+        li {
+            list-style: none;
+        }
+    }
+    .help-icon {
+        margin: 1px 0 0 5px;
+    }
+
+/* Inline forms fields */
+     .field-box .controls {
+        label {
+            display: inline-block;
+            margin: 0 5px 0 10px;
+            &.required {
+                margin-right: 10px;
+            }
+        }
+        .error {
+            .control-label, .help-block, .help-inline, .help-inline ul li {
+                color: @red;
+            }
+            input, select, textarea {
+                border-color: @red;
+            }
+        }
+        &:not(:first-child) {
+            .control-label {
+                width: auto;
+                margin-left: 10px;
+            }
+            .controls {
+                float: left;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.control-group, .inline-group {
+    .add-another {
+        text-decoration: none;
+        display: inline-block;
+        padding: 0 0 0 8px;
+    }
+}
+
+/* COLLAPSE LOGIC */
+fieldset.collapsed * {
+    display: none;
+}
+
+fieldset.collapsed .legend, fieldset.collapsed .legend *, fieldset.collapsed {
+    display: block !important;
+}
+
+fieldset.collapsed .collapse-toggle {
+    background: transparent;
+    display: inline !important;
+}
+
+.alert {
+    ul {
+        margin-top: 10px;
+    }
+}
+
+/* Stacked & Tabular */
+.empty-form, tr.empty-form {
+    display: none;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 36px;
+    .white-shadow;
+    padding-left: 10px;
+    margin: 0;
+}
+
+/* STACKED */
+.form-horizontal {
+    .inline-group {
+        &>h2 {
+            margin-top: 15px;
+        }
+        fieldset:first-of-type {
+            margin: 0px;
+        }
+        .inline-related {
+            z-index: 2;
+            position: relative;
+            border-bottom: 1px solid #eee;
+            .control-group {
+//                .border-radius(0px);
+                &:last-child {
+//                    .border-radius(null, null, @border-radius, @border-radius);
+                }
+            }
+        }
+        .add-row {
+            z-index: 1;
+            position: relative;
+            padding: 6px 0 4px 15px;
+            margin: -1px -1px 0 -1px;
+            .white-inset;
+            .vertical-gradient(#efefef, #e2e2e2);
+            .border-radius(0, 0, @border-radius, @border-radius);
+            border: 1px solid #ddd;
+            a {
+                .white-shadow;
+            }
+        }
+    }
+    .inline-related {
+        fieldset {
+            margin: 40px 0 0 0;
+            // Remove rounded corners for first fieldset
+            // First inline fieldset will always have grey header row
+            &:first-of-type {
+                .control-group {
+                    &:first-child, &:first-of-type {
+                        .border-radius(0);
+                        .controls {
+                            .border-radius(0);
+                        }
+                    }
+                }
+            }
+        }
+        h3 {
+            font-size: 12px;
+            overflow: auto;
+            .grey-box-shadow;
+            margin-bottom: -3px;
+            padding-bottom: 2px;
+            line-height: 34px;
+            .vertical-gradient(#f3f3f3, #e5e5e5);
+            .border-radius(@border-radius, @border-radius, 0, 0);
+            b {
+                display: inline-block;
+                min-width: 180px;
+                margin-right: 10px;
+            }
+            span {
+
+                &.delete, &:last-child {
+                    float: right;
+                    margin-right: 10px;
+                    font-weight: normal;
+                }
+            }
+        }
+        &:not(:first-of-type) {
+            h3 {
+                margin-top: 5px;
+            }
+        }
+        span {
+            display: inline-block;
+//            margin-left: 20px;
+            &.delete {
+                input {
+                    margin: 0;
+                }
+                label {
+                    padding: 7px 0 0 5px;
+                    vertical-align: middle;
+                    margin: 0;
+                }
+            }
+        }
+        &.tabular {
+            margin-top: 15px;
+            fieldset {
+                .box-shadow(none);
+            }
+            table {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.controls .selector {
+    overflow: auto;
+    .selector-available, .selector-chooser, .selector-chosen {
+        float: left;
+        select {
+            display: block;
+        }
+        h2 {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+    }
+    .selector-chooser {
+        list-style: none;
+        margin: 70px 10px 0 10px;
+        li {
+            &:before {
+                line-height: 18px;
+                content: "\00bb";
+                display: inline-block;
+                margin-right: 5px;
+                font-size: 16px;
+                .color-grey;
+            }
+            &:last-child:before {
+                content: "\00ab";
+            }
+        }
+    }
+    .selector-available, .selector-chosen {
+        a:not(.active) {
+            .color-grey;
+            text-decoration: none;
+        }
+    }
+    .selector-filter {
+        position: relative;
+        margin-bottom: 1px;
+        label {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            opacity: .2;
+        }
+    }
+}
+
+/* SELECT2 OVERRIDE */
+.select2-container-multi .select2-choices {
+    .border-radius(4px);
+}
+
+
+/* Set close on right size */
+.select2-container-multi .select2-choices .select2-search-choice {
+    padding: 3px 20px 3px 5px !important;
+    line-height: normal;
+}
+.select2-container-multi .select2-search-choice-close {
+    top:  3px;
+    left: auto !important;
+}
+
+.select2-search-choice .s2-size {
+    float: right;
+}
+
+.select2-search-choice .s2-size em {
+    font-style: normal;
+    color: grey;
+    font-size: 9px;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.datetimeshortcuts {
+    font-size: 11px;
+    margin-left: 5px;
+    a:first-child{
+        margin-right: 4px;
+    }
+    a:last-child {
+        margin-left: -6px;
+        margin-right: 10px;
+    }
+}
+
+.controls {
+    .datetime {
+        input {
+            &.vDateField {
+                width: 80px;
+            }
+            &.vTimeField {
+                width: 60px;
+            }
+        }
+        br {
+            display: none;
+        }
+    }
+}
+

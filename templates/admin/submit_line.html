@@ -1,0 +1,23 @@
+{% load i18n %}
+<div class="submit-row clearfix">
+
+  {% if show_save_and_continue %}
+    <button type="submit" name="_continue" {{ onclick_attrib }} class="btn btn-high btn-info">{% trans 'Save and continue editing' %}</button>
+  {% endif %}
+
+    {% if show_save %}
+        <input type="submit" value="{% trans 'Save and close' %}" class="save btn btn-high" name="_save" {{ onclick_attrib }}/>
+    {% endif %}
+
+    {% if show_save_as_new %}
+        <input type="submit" value="{% trans 'Save as new' %}" name="_saveasnew" {{ onclick_attrib }}
+               class="btn"/>{% endif %}
+
+{#    {% if show_save_and_add_another %}#}
+{#        <button type="submit" name="_addanother" {{ onclick_attrib }}#}
+{#                class="btn">{% trans 'Save and add another' %}</button>#}
+{#    {% endif %}#}
+
+    {% if show_delete_link %}<a href="delete/" class="text-error deletelink">{% trans "Delete" %}</a>
+    {% endif %}
+</div>

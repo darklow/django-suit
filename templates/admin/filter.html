@@ -1,0 +1,17 @@
+{% load i18n layout_utils %}
+{#<h4 class="italic-title">{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h4>#}
+{#<ul class="box menu-box menu-box-compact">#}
+{# 'query_string': '?', #}
+{#'query_string': '?has_agreement__exact=1',#}
+<select data-name="{{ field_name }}" class="auto-width search-filter" style="max-width: 200px">
+  {% for choice in choices %}
+    {% if forloop.first %}
+      <option value="">{% trans title|capfirst %}</option>
+      <option value="">---</option>
+    {% else %}
+      <option value="{{ choice.val }}" {{ choice.selected|yesno:' selected="selected",' }}>{{ choice.display }}</option>
+    {% endif %}
+    {#    <a href="{{ choice.query_string|iriencode }}">#}
+  {% endfor %}
+</select>
+{#</ul>#}

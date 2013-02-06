@@ -1,0 +1,134 @@
+.left-nav {
+    margin-top: 10px;
+    &>ul {
+        list-style: none;
+        margin: 0;
+        padding: 5px 0;
+        &>li {
+            &>a {
+                border-bottom: 1px solid #ededed;
+                display: block;
+                padding: 5px 10px 5px 13px;
+                color: #666;
+                text-decoration: none;
+                position: relative;
+                i {
+                    margin-right: 10px;
+                    opacity: .8;
+                }
+                em {
+                    float: right;
+                    font-style: normal;
+                    font-size: 11px;
+                    margin: 0;
+                    position: absolute;
+                    right: 10px;
+                }
+            }
+            &:last-child > a {
+                border: 0;
+            }
+            &.active {
+                &>a {
+                    color: #fff;
+                    text-shadow: 0 1px #4f7f92;
+                    .vertical-gradient(#83b3c3, #5295b0);
+                    border-bottom-color: #ccc;
+                    i {
+                        background-image: url(/static/img/glyphicons-halflings-white-shadow.png);
+                        opacity: 1;
+                    }
+                    &:after {
+                        content: url('/static/img/cc_active_nav.png');
+                        display: inline-block;
+                        margin-right: -21px;
+                        float: right;
+                        margin-top: -5px;
+                    }
+                }
+                ul {
+                    display: block;
+                }
+            }
+            ul {
+                display: none;
+                border-bottom: 1px solid #ededed;
+                background-color: #f6f7f8;
+                margin: -1px 0 0 0;
+                padding: 7px 0 7px 0;
+                .box-shadow(inset 0px 3px 3px -2px rgba(0, 0, 0, 0.2));
+                list-style: none;
+                li {
+                    a {
+                        display: block;
+                        padding: 3px 0 4px 27px;
+                        text-decoration: none;
+                        &:hover {
+                            background-color: #f1f1f1;
+                            .white-shadow-max;
+                        }
+                        &.add { //                            margin-bottom: 5px;
+                            padding: 4px 0 4px 13px;
+                            i {
+                                margin-right: 5px;
+                                opacity: .7;
+                            }
+                        }
+                        i {
+                            margin-left: -20px;
+                            margin-right: 5px;
+                            opacity: .7;
+                        }
+                    }
+
+                    &.active a { //                        background-color: white;
+                        color: #333;
+                        font-weight: bold;
+                    }
+                }
+            }
+            &:not(.active):hover {
+                background: #f5f5f5;
+                >ul {
+                    display: block;
+                    position: absolute;
+                    left: 180px;
+                    padding: 0;
+                    margin-top: -30px;
+                    .border-radius(@border-radius);
+                    .box-shadow(none);
+                    .greyer-box-shadow;
+                    z-index: 10;
+                    > li {
+                        border-bottom: 1px solid #e5e5e5;
+                        border-top: 1px solid white;
+                        background-color: transparent;
+                        a {
+                            padding: 3px 25px 3px 15px;
+                            &:hover { //                                background-color: transparent;
+                            }
+                        }
+                        &:hover {
+                            border-bottom: 1px solid #f1f1f1;
+                            border-top: 1px solid #f1f1f1;
+                        }
+                        &:first-child {
+                            border-top: 0;
+                            a {
+                                .border-radius(@border-radius, @border-radius, null, null);
+                                padding-top: 4px;
+                            }
+                        }
+                        &:last-child {
+                            border-bottom: 0;
+                            a {
+                                .border-radius(null, null, @border-radius, @border-radius);
+                                padding-bottom: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

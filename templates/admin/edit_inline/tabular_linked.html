@@ -1,0 +1,25 @@
+{% extends 'admin/edit_inline/tabular.html' %}
+{% load i18n layout_utils %}
+{% block original_cell %}
+  {#    {% if inline_admin_form.original.pk %}#}
+  {#      <a href="/admin/{{ app_label }}/{{ inline_admin_formset.opts.admin_model_path }}/{{ inline_admin_form.original.pk }}/">{{ inline_admin_form.original }}</a>#}
+  {#    {% endif %}#}
+{% endblock %}
+
+{% block field_content %}
+  {{ field.field.errors.as_ul }}
+  {% if field.is_readonly %}
+    <p>{{ field.contents }}</p>
+  {% elif inline_admin_form.original.pk and field.field.name not in inline_admin_form.model_admin.editable_fields %}
+    {#    {{ field.field.field.hiddent_widget }}#}
+    {{ field.field.as_hidden }}
+    <p>{% if forloop.parentloop.first %}
+      <a href="/admin/{{ app_label }}/{{ inline_admin_formset.opts.admin_model_path }}/{{ inline_admin_form.original.pk }}/">{% endif %}
+    {% field_widget_value field %}
+    {% if forloop.parentloop.first %}</a>{% endif %}
+    </p>
+  {% else %}
+    {{ field.field.errors.as_ul }}
+    {{ field.field }}
+  {% endif %}
+{% endblock %}
