@@ -14,7 +14,7 @@ _DEFAULT_CONFIG = {
                  'href="http://djangoSuit.com" target="_blank">DjangoSuit'
                  '.com</a>',
     'SHOW_REQUIRED_ASTERISK': True,
-    'HEADER_DATE_FORMAT': 'l, j. F Y',
+    'HEADER_DATE_FORMAT': 'l, jS F Y',
     'HEADER_TIME_FORMAT': 'H:i',
 }
 
