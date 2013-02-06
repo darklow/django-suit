@@ -1,8 +1,8 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_static admin_list proxy_trans %}
+{% load i18n admin_static admin_list %}
 {% load url from future %}
 {% load admin_urls %}
-{% load custom_admin_list %}
+{% load suit_list %}
 
 {% block extrastyle %}
   {{ block.super }}
@@ -65,9 +65,8 @@
               <a href="
                       {% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-success">
                 <i class="icon-plus-sign icon-white"></i>&nbsp;
-                {% trans 'Add' %} {% trans cl.opts.verbose_name context 'aku' %}
+                {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
               </a>
-              {#                {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>#}
             {% endblock %}
           </div>
         {% endif %}
@@ -112,8 +111,7 @@
                   {% blocktrans with cl.opts.verbose_name_plural|capfirst as name_plural %}
                     {{ name_plural }} are not created yet{% endblocktrans %}.
 
-                  <a href="
-                          {% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}">{% trans 'Add' %} {% trans cl.opts.verbose_name context 'aku' %}</a>
+                  <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}">{% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>
 
 
                 {% endif %}

@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_static admin_modify proxy_trans %}
+{% load i18n admin_static admin_modify %}
 {% load url from future %}
 {% load admin_urls %}
 
@@ -33,7 +33,7 @@
 {% endblock %}
 
 {% block content_title_value %}
-  {% trans 'Add' %} {% trans opts.verbose_name context 'aku' %}
+  {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
 {% endblock %}
 
 {% block coltype %}{% if ordered_objects %}colMS{% else %}colM
@@ -61,8 +61,7 @@
         <span class="divider">&raquo;</span>
       </li>
       <li class="active">
-        {% if add %}{% trans 'Add' %}
-          {% trans opts.verbose_name context 'aku' %}{% else %}
+        {% if add %}{% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}{% else %}
           {{ original|truncatewords:"18" }}{% endif %}
       </li>
     </ul>
@@ -100,7 +99,7 @@
 
                 {% if has_add_permission %}
                   <li>
-                    <a href="../add/"><i class="icon-plus-sign icon-alpha75"></i>&nbsp;{% trans 'Add' %} {% trans opts.verbose_name context 'aku' %}
+                    <a href="../add/"><i class="icon-plus-sign icon-alpha75"></i>&nbsp;{% blocktrans with opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
                     </a></li>
                   {# {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>#}
                 {% endif %}
