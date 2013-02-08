@@ -1,6 +1,30 @@
 {#{% load sitetree %}#}
+{% load i18n suit_apps %}
+{% load url from future %}
 
 <div class="left-nav" id="left-nav">
-  tree here
-{#  {% sitetree_menu from "admin" include "trunk" %}#}
+  <ul>
+    {% url 'admin:index' as index_url %}
+    <li{% if index_url == request.path %} class="active"{% endif %}>
+      <a href="{{ index_url }}"><i class="icon-home"></i>{% trans 'Home' %}
+      </a></li>
+    {% get_app_list request as app_list %}
+    {% if app_list %}
+      {% for app in app_list %}
+        <li{{ app.is_active|yesno:' class=active,' }}>
+          <a href="{{ app.app_url }}">
+            {% with name=app.name %}
+              <i class="icon-chevron-right"></i>{{ name }}</a>
+            {% endwith %}
+          <ul>
+            {% for model in app.models %}
+              <li{{ model.is_active|yesno:' class=active,' }}><a href="{{ model.admin_url }}">{{ model.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    {% else %}
+      could not detect apps list
+    {% endif %}
+  </ul>
 </div>
