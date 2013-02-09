@@ -30,7 +30,7 @@
 {% endblock %}
 
 {% block content_title_value %}
-  {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+  {% trans 'Add' %} {{ opts.verbose_name }}
 {% endblock %}
 
 {% block coltype %}{% if ordered_objects %}colMS{% else %}colM
@@ -58,8 +58,7 @@
         <span class="divider">&raquo;</span>
       </li>
       <li class="active">
-        {% if add %}{% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}{% else %}
-          {{ original|truncatewords:"18" }}{% endif %}
+        {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
       </li>
     </ul>
   {% endblock %}
