@@ -5,13 +5,17 @@
     text-shadow: 0 -1px #121414;
 
     .header-content {
-        border-left: 1px solid #45494c;
         float: left;
         height: @header-height;
         overflow: hidden;
         padding: 7px 0 0 30px;
         line-height: normal;
         overflow: hidden;
+
+        &.header-content-first {
+            border-left: 1px solid #45494c;
+            margin-right: 20px;
+        }
 
         .time {
             font-weight: bold;
@@ -36,7 +40,7 @@
         h1 {
             color: white;
             font-size: 18px;
-            margin: 4px 0 0 10px;
+            margin: 4px 0 0 13px;
             padding: 0;
             text-shadow: none;
         }
@@ -52,11 +56,28 @@
         }
     }
 
+    a {
+        color: #92D1EE;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+        &.grey {
+            color: #d4d4d4;
+        }
+    }
+
     #user-tools {
         padding: 12px 20px 0 0;
         float: right;
-        a {
-            color: #8ce;
+        .user-links {
+            display: inline-block;
+            margin-left: 20px;
+        }
+        .separator {
+            color: #999;
+            display: inline-block;
+            margin: 0 5px;
         }
     }
 

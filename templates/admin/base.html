@@ -31,16 +31,28 @@
                 {% block branding %}{% endblock %}</a>
             </div>
 
-            <div class="header-content">
+            {% block header_time %}
+            <div class="header-content header-content-first">
               <div class="header-column icon">
                 <i class="icon-time"></i>
               </div>
-
               <div class="header-column">
                 <span class="date"> {% suit_date %}</span><br>
                 <span class="time" id="clock">{% suit_time %}</span>
               </div>
             </div>
+            {% endblock %}
+
+            {% block header_content %}
+              <!--<div class="header-content">
+                <div class="header-column icon">
+                  <i class="icon-comment"></i>
+                </div>
+                <div class="header-column">
+                  <a href="" class="grey"><b>2</b> new messages</a>
+                </div>
+              </div>-->
+            {% endblock %}
 
             {% if user.is_active and user.is_staff %}
               <div id="user-tools">
@@ -48,14 +60,17 @@
                 <strong>
                   {% filter force_escape %}
                     {% firstof user.first_name user.username %}{% endfilter %}</strong>.
+                <span class="user-links">
                 {% block userlinks %}
                   {% url 'django-admindocs-docroot' as docsroot %}
                   {% if docsroot %}
-                    <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                    <a href="{{ docsroot }}">{% trans 'Documentation' %}</a>
+                   <span class="separator">|</span>
                   {% endif %}
                   <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a>
-                  /
+                  <span class="separator">|</span>
                   <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+                  </span>
                 {% endblock %}
               </div>
             {% endif %}
