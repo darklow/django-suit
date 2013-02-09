@@ -9,7 +9,7 @@
  * Taken from here: http://stackoverflow.com/a/155812/641263
  */
 
-var confirmExitIfModified = (function() {
+var confirmExitIfModified = (function () {
 
     function formIsDirty(form) {
         for (var i = 0; i < form.elements.length; i++) {
@@ -38,10 +38,16 @@ var confirmExitIfModified = (function() {
         return false;
     }
 
-    return function(form, message) {
-        window.onbeforeunload = function(e) {
+    var submit = false;
+    return function (form_id, message) {
+        var form = document.forms[form_id]
+        form.onsubmit = function (e) {
             e = e || window.event;
-            if (formIsDirty(document.forms[form])) {
+            submit = true
+        };
+        window.onbeforeunload = function (e) {
+            e = e || window.event;
+            if (!submit && formIsDirty(form)) {
                 // For IE and Firefox
                 if (e) {
                     e.returnValue = message;
