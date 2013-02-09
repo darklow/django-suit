@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_static admin_modify %}
+{% load i18n admin_static admin_modify suit_tags %}
 {% load url from future %}
 {% load admin_urls %}
 
@@ -14,17 +14,14 @@
 
 {% block js_foot %}
   {{ block.super }}
-  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}js/datepicker/datepicker.css" media="all">
-  <script src="{{ STATIC_URL }}js/datepicker/bootstrap-datepicker.js"></script>
-  {% if LANGUAGE_CODE != 'en' %}
-    <script src="{{ STATIC_URL }}js/datepicker/locales/bootstrap-datepicker.{{ LANGUAGE_CODE }}.js"></script>
-  {% endif %}
-  <script>
 
-    $(function () {
-      DatePicker.update();
-    });
-  </script>
+  {% if 'CONFIRM_UNSAVED_CHANGES'|suit_conf %}
+    <!-- Warn on leaving unsaved form -->
+    <script src="{{ STATIC_URL }}js/suit-form-confirm.js"></script>
+    <script type="text/javascript">
+      confirmExitIfModified('{{ opts.module_name }}_form', '{% trans 'You have unsaved changes' %}.');
+    </script>
+  {% endif %}
 
 {% endblock %}
 

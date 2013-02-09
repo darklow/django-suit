@@ -1,24 +1,3 @@
-var DatePicker = (function () {
-
-    var lang = document.documentElement.getAttribute('lang');
-
-    function update() {
-        var selector = arguments[0];
-        $(selector ? selector : '.datepicker').datepicker({
-            format: 'dd.mm.yyyy',
-            weekStart: 1,
-            autoclose: true,
-            todayBtn: 'linked',
-            todayHighlight: true,
-            language: lang
-        });
-    }
-
-    return {
-        update: update
-    }
-})();
-
 /**
  * Fixed submit buttons.
  */
@@ -59,26 +38,52 @@ $.fn.search_filters = function () {
     $(this).trigger('change');
 };
 
+/**
+ * Linked select - shows link to related item after Select
+ */
+$.fn.linked_select = function () {
+
+    var get_link_name = function ($select) {
+        var text = $select.find('option:selected').text();
+        return text && $select.val() ? text + '' : '';
+    };
+
+    var get_url = function ($add_link, $select) {
+        var value = $select.val();
+        return $add_link.attr('href') + '../' + value + '/';
+    };
+
+    var add_link = function ($select) {
+        var $add_link = $select.next();
+        if ($add_link.hasClass('add-another')) {
+            var $link = $add_link.next();
+            if (!$link.length) {
+                $link = $('<a/>').addClass('f11');
+                $add_link.after($link).after(' &nbsp; ');
+            }
+            $link.text(get_link_name($select));
+            $link.attr('href', get_url($add_link, $select));
+        }
+    };
+
+    $(this).each(function () {
+        add_link($(this));
+    });
+
+    $(document).on('change', this.selector, function () {
+        add_link($(this));
+    });
+};
+
 $(function () {
 
-//    LeftNavigation && LeftNavigation.init();
-
+    // Fixed submit buttons
     $('.inner-right-column').fixed();
 
-    if ((jQuery().select2)) {
-        $('.select2').select2({
-            // width: 'element'
-            width: function () {
-                var $element = $(this.element);
-                var width = $element.outerWidth();
-                width += parseInt($element.css("padding-left").replace('px', ''));
-                width += parseInt($element.css("padding-right").replace('px', ''));
-                return width + 2 + 'px';
-            }
-        });
-    }
+    // Show link to related item after Select
+    $('.linked-select').linked_select();
 
-    // Handle filter absolute null values
+    // Handle change list filter null values
     $('.search-filter').search_filters();
 
 });

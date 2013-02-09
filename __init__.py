@@ -17,9 +17,12 @@ def default_config():
         'COPYRIGHT': 'Copyright &copy; 2013 DjangoSuit.com<br>Developed by <a '
                      'href="http://djangoSuit.com" target="_blank">DjangoSuit'
                      '.com</a>',
-        'SHOW_REQUIRED_ASTERISK': True,
         'HEADER_DATE_FORMAT': 'l, jS F Y',
         'HEADER_TIME_FORMAT': 'H:i',
+
+        # form
+        'CONFIRM_UNSAVED_CHANGES': True,
+        'ALERT_UNSAVED_CHANGES': True,
     }
 
 
