@@ -14,7 +14,7 @@
         <li{{ app.is_active|yesno:' class=active,' }}>
           <a href="{{ app.app_url }}">
             {% with name=app.name %}
-              <i class="icon-chevron-right"></i>{{ name }}</a>
+              <i class="{% firstof app.icon 'icon-chevron-right' %}"></i>{{ name }}</a>
             {% endwith %}
           <ul>
             {% for model in app.models %}

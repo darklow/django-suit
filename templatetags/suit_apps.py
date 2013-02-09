@@ -24,7 +24,8 @@ def get_app_list(context, request):
         curr_model_name_pl = None
 
     exclude = suit.get_config('MENU_EXCLUDE')
-    menu_parent_link = suit.get_config('MENU_PARENT_LINK')
+    parent_link = suit.get_config('MENU_PARENT_LINK')
+    icons = suit.get_config('MENU_ICONS')
     for app in app_list:
         app_name = app['name'].lower()
 
@@ -33,11 +34,14 @@ def get_app_list(context, request):
             app_list.remove(app)
             continue
 
+        if icons and app_name in icons:
+            app['icon'] = icons[app_name]
+
         if request.path == app['app_url'] or \
                         current_app == app_name:
             app['is_active'] = True
 
-        if not menu_parent_link:
+        if not parent_link:
             app['app_url'] = app['models'][0]['admin_url']
 
         # Iterate models
