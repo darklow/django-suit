@@ -21,8 +21,8 @@ def default_config():
         'HEADER_TIME_FORMAT': 'H:i',
 
         # form
+        'SHOW_REQUIRED_ASTERISK': True,
         'CONFIRM_UNSAVED_CHANGES': True,
-        'ALERT_UNSAVED_CHANGES': True,
     }
 
 
