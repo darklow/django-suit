@@ -22,10 +22,10 @@ h2.legend, .form-horizontal fieldset .legend {
             width: auto;
             .description {
                 font-weight: normal;
-                font-style: italic;
-                font-size: 15px;
+                font-size: 12px;
                 display: inline-block;
                 margin-left: 20px;
+                .color-grey;
             }
         }
 
@@ -109,6 +109,7 @@ h2.legend, .form-horizontal fieldset .legend {
         margin: 0;
         li {
             list-style: none;
+            padding: 0 10px 0 0;
         }
     }
     .help-icon {
@@ -116,7 +117,7 @@ h2.legend, .form-horizontal fieldset .legend {
     }
 
 /* Inline forms fields */
-     .field-box .controls {
+    .field-box .controls {
         label {
             display: inline-block;
             margin: 0 5px 0 10px;
@@ -200,10 +201,8 @@ h3 {
             z-index: 2;
             position: relative;
             border-bottom: 1px solid #eee;
-            .control-group {
-//                .border-radius(0px);
-                &:last-child {
-//                    .border-radius(null, null, @border-radius, @border-radius);
+            .control-group { //                .border-radius(0px);
+                &:last-child { //                    .border-radius(null, null, @border-radius, @border-radius);
                 }
             }
         }
@@ -223,9 +222,8 @@ h3 {
     }
     .inline-related {
         fieldset {
-            margin: 40px 0 0 0;
-            // Remove rounded corners for first fieldset
-            // First inline fieldset will always have grey header row
+            margin: 40px 0 0 0; // Remove rounded corners for first fieldset
+        // First inline fieldset will always have grey header row
             &:first-of-type {
                 .control-group {
                     &:first-child, &:first-of-type {
@@ -266,8 +264,7 @@ h3 {
             }
         }
         span {
-            display: inline-block;
-//            margin-left: 20px;
+            display: inline-block; //            margin-left: 20px;
             &.delete {
                 input {
                     margin: 0;
@@ -343,14 +340,13 @@ h3 {
     .border-radius(4px);
 }
 
-
 /* Set close on right size */
 .select2-container-multi .select2-choices .select2-search-choice {
     padding: 3px 20px 3px 5px !important;
     line-height: normal;
 }
 .select2-container-multi .select2-search-choice-close {
-    top:  3px;
+    top: 3px;
     left: auto !important;
 }
 
@@ -368,7 +364,7 @@ h3 {
 .datetimeshortcuts {
     font-size: 11px;
     margin-left: 5px;
-    a:first-child{
+    a:first-child {
         margin-right: 4px;
     }
     a:last-child {
@@ -377,19 +373,55 @@ h3 {
     }
 }
 
-.controls {
-    .datetime {
-        input {
-            &.vDateField {
-                width: 80px;
-            }
-            &.vTimeField {
-                width: 60px;
+/* Fix original date/time fields */
+.vDateField, .vTimeField {
+    width: auto;
+    vertical-align: top;
+}
+
+/* DATETIME IMPROVEMENTS */
+@date-input-width: 80px;
+@time-input-width: 60px;
+@date-icon-offset: 20px;
+@date-input-offset: 14px;
+.suit-date {
+    position: relative;
+    .datetimeshortcuts {
+        margin-left: 32px;
+        color: #f6f7f8;
+        a:last-child {
+            padding: 0 5px;
+            position: absolute;
+            left: @date-input-width + @date-icon-offset;
+            z-index: 2;
+            img {
+                visibility: hidden;
             }
         }
-        br {
-            display: none;
+    }
+    input {
+        vertical-align: top;
+        &.vDateField {
+            width: @date-input-width;
+        }
+        &.vTimeField {
+            width: @time-input-width;
+        }
+    }
+    .add-on {
+        position: absolute;
+        left: @date-input-width + @date-input-offset;
+    }
+
+    &.suit-time {
+        .add-on {
+            left: @time-input-width + @date-input-offset;
+        }
+        .datetimeshortcuts {
+            a:last-child {
+                position: absolute;
+                left: @time-input-width + @date-icon-offset;
+            }
         }
     }
 }
-

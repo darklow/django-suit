@@ -8,6 +8,20 @@
     background: white;
     position: relative;
     z-index: 100;
+    .grey-box-shadow;
+    .border-radius(@border-radius);
+    h2, caption {
+        .border-radius(@border-radius, @border-radius, null, null);
+        .vertical-gradient(#f3f3f3, #e5e5e5);
+        .white-inset;
+        .white-shadow;
+        border-bottom: 1px solid #ddd;
+        margin: 0;
+        padding: 3px 15px;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
 }
 
 .clockbox {
@@ -27,20 +41,14 @@
     width: 100%;
 }
 
-.calendar caption, .calendarbox h2 {
-    margin: 0;
-    font-size: 11px;
-    text-align: center;
-    border-top: none;
-}
-
 .calendar th {
     font-size: 10px;
     color: #666;
     padding: 2px 3px;
     text-align: center;
-    background: #e1e1e1 url(../img/nav-bg.gif) 0 50% repeat-x;
+    .vertical-gradient(#f3f3f3, #e5e5e5);
     border-bottom: 1px solid #ddd;
+    .white-shadow;
 }
 
 .calendar td {
@@ -60,24 +68,25 @@
 }
 
 .calendar td.today a {
-    background: #ffc;
+    background: #ffffaa;
+    font-weight: bold;
 }
 
 .calendar td a, .timelist a {
     display: block;
-    font-weight: bold;
-    padding: 4px;
+    padding: 2px 4px;
     text-decoration: none;
     color: #444;
 }
 
 .calendar td a:hover, .timelist a:hover {
-    background: #5b80b2;
+    .vertical-gradient(#83b3c3, #5295b0);
+    text-shadow: 0 1px #4f7f92;
     color: white;
 }
 
 .calendar td a:active, .timelist a:active {
-    background: #036;
+    background: #5295b0;
     color: white;
 }
 
@@ -95,47 +104,56 @@
 
 .calendar-shortcuts {
     background: white;
-    font-size: 10px;
+    font-size: 11px;
     line-height: 11px;
     border-top: 1px solid #eee;
     padding: 3px 0 4px;
     color: #ccc;
+    a {
+        display: inline-block;
+        padding: 2px 0;
+    }
 }
 
 .calendarbox .calendarnav-previous, .calendarbox .calendarnav-next {
     display: block;
     position: absolute;
     font-weight: bold;
-    font-size: 12px;
-    background: #C9DBED url(../img/default-bg.gif) bottom left repeat-x;
-    padding: 1px 4px 2px 4px;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 3px 8px 4px;
+    .vertical-gradient(#83b3c3, #5295b0);
+    text-shadow: 0 1px #4f7f92;
     color: white;
 }
 
 .calendarnav-previous:hover, .calendarnav-next:hover {
-    background: #036;
+    background: #5295b0;
 }
 
 .calendarnav-previous {
     top: 0;
     left: 0;
+    .border-radius(@border-radius, 0, 0, 0);
 }
 
 .calendarnav-next {
     top: 0;
     right: 0;
+    .border-radius(0, @border-radius, 0, 0);
 }
 
 .calendar-cancel {
     margin: 0 !important;
-    padding: 0 !important;
-    font-size: 10px;
-    background: #e1e1e1 url(../img/nav-bg.gif) 0 50% repeat-x;
+    padding: 2px 0 !important;
+    font-size: 11px;
+    .vertical-gradient(#efefef, #e2e2e2);
+    .white-shadow;
     border-top: 1px solid #ddd;
 }
 
 .calendar-cancel:hover {
-    background: #e1e1e1 url(../img/nav-bg-reverse.gif) 0 50% repeat-x;
+//    background: #e1e1e1 url(../img/nav-bg-reverse.gif) 0 50% repeat-x;
 }
 
 .calendar-cancel a {
