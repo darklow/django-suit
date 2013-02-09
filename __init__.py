@@ -1,9 +1,18 @@
 from django.conf import settings
+from django.contrib.admin import ModelAdmin
 
+VERSION = '0.9.1'
+
+# Reverse default actions position
+ModelAdmin.actions_on_top = False
+ModelAdmin.actions_on_bottom = True
+
+# Who uses 100 items per page at all?
+ModelAdmin.list_per_page = 20
 
 def default_config():
     return {
-        'ADMIN_NAME': 'Django Suit',
+        'ADMIN_NAME': 'Django Suit v%s' % VERSION,
         'ADMIN_SHORT_NAME': 'Django Suit',
         'COPYRIGHT': 'Copyright &copy; 2013 DjangoSuit.com<br>Developed by <a '
                      'href="http://djangoSuit.com" target="_blank">DjangoSuit'
