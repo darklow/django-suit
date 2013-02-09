@@ -1,0 +1,28 @@
+{#{% load sitetree %}#}
+{% load i18n suit_apps %}
+{% load url from future %}
+
+<div class="left-nav" id="left-nav">
+  <ul>
+    {% block menu_home %}
+      {% url 'admin:index' as index_url %}
+      <li{% if index_url == request.path %} class="active"{% endif %}>
+        <a href="{{ index_url }}"><i class="icon-home"></i>{% trans 'Home' %}</a>
+      </li>
+    {% endblock %}
+
+    {% get_app_list request as app_list %}
+    {% if app_list %}
+      {% for app in app_list %}
+        <li{{ app.is_active|yesno:' class=active,' }}>
+          <a href="{{ app.app_url }}"><i class="{% firstof app.icon 'icon-chevron-right' %}"></i>{% blocktrans with name=app.name %}{{ name }}{% endblocktrans %}</a>
+          <ul>
+            {% for model in app.models %}
+              <li{{ model.is_active|yesno:' class=active,' }}><a href="{{ model.admin_url }}">{{ model.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    {% endif %}
+  </ul>
+</div>
