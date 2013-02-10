@@ -44,6 +44,9 @@
 
       {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
       {% suit_hidden_hierarchy cl %}
+      {% if cl.is_popup %}
+        <input type="hidden" name="pop" value="1">
+      {% endif %}
 
     </form>
   </div>
