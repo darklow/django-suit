@@ -1,17 +1,11 @@
-{% load i18n suit_list %}
-{#<h4 class="italic-title">{% blocktrans with filter_title=title %} By {{ filter_title }} {% endblocktrans %}</h4>#}
-{#<ul class="box menu-box menu-box-compact">#}
-{# 'query_string': '?', #}
-{#'query_string': '?has_agreement__exact=1',#}
+{% load i18n %}
 <select data-name="{{ field_name }}" class="auto-width search-filter" style="max-width: 200px">
   {% for choice in choices %}
     {% if forloop.first %}
       <option value="">{% trans title|capfirst %}</option>
       <option value="">---</option>
     {% else %}
-      <option value="{{ choice.val }}" {{ choice.selected|yesno:' selected="selected",' }}>{{ choice.display }}</option>
+      <option{% if choice.additional %} data-additional="{{ choice.additional }}"{% endif %} data-name="{{ choice.name }}" value="{{ choice.val }}" {{ choice.selected|yesno:' selected="selected",' }}>{{ choice.display }}</option>
     {% endif %}
-{#    <option value="">{{ choice.query_string|iriencode }}</option>#}
   {% endfor %}
 </select>
-{#</ul>#}

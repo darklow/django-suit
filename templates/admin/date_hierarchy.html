@@ -7,7 +7,7 @@
           <span class="divider">|</span>
         </li>{% endif %}
       {% for choice in choices %}{% spaceless %}
-        <li>{% if choice.link %}<a href="{{ choice.link }}">{% endif %}{{ choice.title }}{% if choice.link %}</a>&nbsp;{% endif %}{% endspaceless %}</li>
+        <li>{% if choice.link %}<a href="{{ choice.link }}">{% endif %}{{ choice.title }}{% if choice.link %}</a>&nbsp;{% if back %}&nbsp;{% endif %}{% endif %}{% endspaceless %}</li>
       {% endfor %}
     </ul>
   </div>

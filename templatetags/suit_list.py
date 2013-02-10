@@ -98,48 +98,39 @@ def pagination(cl):
 
 
 @register.simple_tag
-def suit_hidden_hierarchy(cl):
-    output = u''
-
-    specs = cl.filter_specs
-    if not specs:
-        return output
-
-    for filter in specs:
-        date_params = getattr(filter, 'date_params', None)
-        if date_params:
-            hidden_fields = []
-            for k, v in date_params.items():
-                hidden_fields.append(
-                    '<input type="hidden" name="%s" value="%s">' % (k, v))
-            output = mark_safe(''.join(hidden_fields))
-
-    return output
-
-
-@register.simple_tag
 def suit_list_filter_select(cl, spec):
     tpl = get_template(spec.template)
-
     choices = list(spec.choices(cl))
-
     field_key = spec.field.name if hasattr(spec,
                                            'field') else spec.parameter_name
-
+    matched_key = field_key
     for choice in choices:
         query_string = choice['query_string'][1:]
         query_parts = parse_qs(query_string)
 
         value = ''
+        matches = {}
         for key in query_parts.keys():
             if key == field_key:
                 value = query_parts[key][0]
+                matched_key = key
             elif key.startswith(
                             field_key + '__') or '__' + field_key + '__' in key:
                 value = query_parts[key][0]
-                field_key = key
+                matched_key = key
 
-            choice['val'] = value
+            if value:
+                matches[matched_key] = value
+
+        # Iterate matches, use first as actual values, additional for hidden
+        i = 0
+        for key, value in matches.items():
+            if i == 0:
+                choice['name'] = key
+                choice['val'] = value
+            else:
+                choice['additional'] = '%s=%s' % (key, value)
+            i += 1
 
     return tpl.render(Context({
         'field_name': field_key,
