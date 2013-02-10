@@ -11,7 +11,7 @@
     {% else %}
       <option value="{{ choice.val }}" {{ choice.selected|yesno:' selected="selected",' }}>{{ choice.display }}</option>
     {% endif %}
-    {#    <a href="{{ choice.query_string|iriencode }}">#}
+{#    <option value="">{{ choice.query_string|iriencode }}</option>#}
   {% endfor %}
 </select>
 {#</ul>#}

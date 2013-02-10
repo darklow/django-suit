@@ -1,5 +1,5 @@
-{% load i18n admin_static suit_list %}
-{% if cl.search_fields or cl.has_filters %}
+{% load i18n admin_static suit_list admin_list %}
+{% if cl.search_fields or cl.has_filters or cl.date_hierarchy %}
   <div id="toolbar">
     <form id="changelist-search" action="" method="get" class="form-inline">
       <div><!-- DIV needed for valid HTML -->
@@ -41,6 +41,9 @@
         {#          {% endifnotequal %}#}
         {#        {% endfor %}#}
       </div>
+
+      {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
+      {% suit_hidden_hierarchy cl %}
 
     </form>
   </div>
