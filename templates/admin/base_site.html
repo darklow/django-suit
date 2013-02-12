@@ -3,8 +3,7 @@
 {% load suit_tags %}
 
 {# Remove default css #}
-{% block stylesheet %}
-{% endblock %}
+{% block stylesheet %}{% endblock %}
 
 {% block extrahead %}
   {#    {{ block.super }}#}
@@ -25,7 +24,6 @@
 
 {% block js_foot %}
   {{ block.super }}
-  <script src="{{ STATIC_URL }}js/less-1.3.3.min.js"></script>
   <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.min.js"></script>
   <script src="{{ STATIC_URL }}js/suit.js"></script>
 {% endblock %}
