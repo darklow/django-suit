@@ -1,6 +1,6 @@
 {% load suit_list %}
 {% load i18n %}
-<div class="pagination-block clearfix">
+<div class="pagination-block">
 
   {% if pagination_required %}
     <div class="pagination">
@@ -12,7 +12,7 @@
     </div>
   {% endif %}
 
-  <div class="pagination-info muted clearfix">
+  <div class="pagination-info muted">
     {% paginator_info cl %}
     &nbsp; / &nbsp;
     {{ cl.result_count }}
