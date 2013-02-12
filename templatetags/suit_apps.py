@@ -45,10 +45,6 @@ def get_app_list(context, request):
                         current_app == app_name:
             app['is_active'] = True
 
-        # Set first child url unless MENU_PARENT_LINK = True
-        if not parent_link:
-            app['app_url'] = app['models'][0]['admin_url']
-
         # Iterate models
         for model in app['models']:
 
@@ -66,6 +62,11 @@ def get_app_list(context, request):
     # Reorder menu
     if menu_order:
         app_list = reorder_apps(app_list, menu_order)
+
+    # Set first child url unless MENU_PARENT_LINK = True
+    if not parent_link:
+        for app in app_list:
+            app['app_url'] = app['models'][0]['admin_url']
 
     return app_list
 
