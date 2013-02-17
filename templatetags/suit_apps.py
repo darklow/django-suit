@@ -1,5 +1,6 @@
 from django import template
 from django.contrib import admin
+from django.core.handlers.wsgi import WSGIRequest
 import suit
 
 register = template.Library()
@@ -7,6 +8,12 @@ register = template.Library()
 
 @register.assignment_tag(takes_context=True)
 def get_app_list(context, request):
+    """
+    :type request: WSGIRequest
+    """
+    if not isinstance(request, WSGIRequest):
+        return None
+
     template_response = admin.site.index(request)
     try:
         app_list = template_response.context_data['app_list']
