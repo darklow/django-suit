@@ -30,14 +30,16 @@ def get_config(param=None):
     config_key = 'SUIT_CONFIG'
     if hasattr(settings, config_key):
         config = getattr(settings, config_key, {})
-        if param:
-            value = None
-            if param in config:
-                value = config.get(param)
+    else:
+        config = default_config()
+    if param:
+        value = None
+        if param in config:
+            value = config.get(param)
 
-            if value is None:
-                value = default_config().get(param)
+        if value is None:
+            value = default_config().get(param)
 
-            return value
+        return value
 
-        return config
+    return config
