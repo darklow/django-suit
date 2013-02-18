@@ -1,14 +1,29 @@
 {% load admin_static %}{% load suit_tags %}{% load url from future %}<!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
-  <title>{% block title %}{% endblock %}</title>
+  <title>{% block title %}{{ title }} | {{ 'ADMIN_NAME'|suit_conf }}{% endblock %}</title>
   <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% endblock %}"/>
   {% block extrastyle %}{% endblock %}
   {% if LANGUAGE_BIDI %}
     <link rel="stylesheet" type="text/css"
           href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
   <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
-  {% block extrahead %}{% endblock %}
+  {% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/suit.css' %}" media="all">
+    <script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+    {% if 'SHOW_REQUIRED_ASTERISK'|suit_conf %}
+      <style type="text/css">
+        .required:after {
+          content: '*';
+          margin: 0 0 0 5px;
+          position: absolute;
+          color: #ccc;
+        }
+      </style>
+    {% endif %}
+  {% endblock %}
   {% block blockbots %}
     <meta name="robots" content="NONE,NOARCHIVE"/>{% endblock %}
 </head>
@@ -28,8 +43,7 @@
           <!-- Header -->
           <div id="header" class="header">
             <div id="branding">
-              <a href="{% url 'admin:index' %}">
-                {% block branding %}{% endblock %}</a>
+              <a href="{% url 'admin:index' %}">{% block branding %}<h1 id="site-name">{{ 'ADMIN_SHORT_NAME'|suit_conf }}</h1>{% endblock %}</a>
             </div>
 
             {% block header_time %}
@@ -186,6 +200,8 @@
   </div>{% endblock %}
 
 {% block js_foot %}
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/suit.js' %}"></script>
 {% endblock %}
 </body>
 </html>

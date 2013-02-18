@@ -1,37 +1,11 @@
 {% extends "admin/base.html" %}
 {% load i18n admin_static %}
-{% load suit_tags %}
-
-{# Remove default css #}
-{% block stylesheet %}{% endblock %}
 
 {% block extrahead %}
-  {#    {{ block.super }}#}
-  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" media="all"/>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/suit.css' %}" media="all">
-  <script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
-  {% if 'SHOW_REQUIRED_ASTERISK'|suit_conf %}
-    <style type="text/css">
-      .required:after {
-        content: '*';
-        margin: 0 0 0 5px;
-        position: absolute;
-        color: #ccc;
-      }
-    </style>
-  {% endif %}
+  {{ block.super }}
 {% endblock %}
 
 {% block js_foot %}
   {{ block.super }}
-  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'js/suit.js' %}"></script>
+
 {% endblock %}
-
-{% block title %}{{ title }} | {{ 'ADMIN_NAME'|suit_conf }}{% endblock %}
-
-{% block branding %}
-  <h1 id="site-name">{{ 'ADMIN_SHORT_NAME'|suit_conf }}</h1>
-{% endblock %}
-
-{% block nav-global %}{% endblock %}
