@@ -43,7 +43,7 @@
           <!-- Header -->
           <div id="header" class="header">
             <div id="branding">
-              <a href="{% url 'admin:index' %}">{% block branding %}<h1 id="site-name">{{ 'ADMIN_SHORT_NAME'|suit_conf }}</h1>{% endblock %}</a>
+              <a href="{% url 'admin:index' %}"><h1 id="site-name">{% block branding %}{{ 'ADMIN_NAME'|suit_conf }}{% endblock %}</h1></a>
             </div>
 
             {% block header_time %}
@@ -192,11 +192,13 @@
       </div>
 
       <div class="copyright">
-        {% block footer_copyright %}{{ 'COPYRIGHT'|suit_conf }}{% endblock %}
+        {% block copyright %}
+          Copyright &copy; 2013 DjangoSuit.com<br>Developed by <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>
+        {% endblock %}
       </div>
 
       <div class="branding">{% block footer_branding %}
-        {{ 'ADMIN_NAME'|suit_conf }}
+        {{ 'ADMIN_NAME'|suit_conf }} v{{ 'VERSION'|suit_conf }}
       {% endblock %}</div>
     </div>
   </div>{% endblock %}

@@ -12,17 +12,28 @@ ModelAdmin.list_per_page = 20
 
 def default_config():
     return {
-        'ADMIN_NAME': 'Django Suit v%s' % VERSION,
-        'ADMIN_SHORT_NAME': 'Django Suit',
-        'COPYRIGHT': 'Copyright &copy; 2013 DjangoSuit.com<br>Developed by <a '
-                     'href="http://djangoSuit.com" target="_blank">DjangoSuit'
-                     '.com</a>',
+        'VERSION': VERSION,
+
+        # configurable
+        'ADMIN_NAME': 'Django Suit',
         'HEADER_DATE_FORMAT': 'l, jS F Y',
         'HEADER_TIME_FORMAT': 'H:i',
 
         # form
         'SHOW_REQUIRED_ASTERISK': True,
         'CONFIRM_UNSAVED_CHANGES': True,
+
+        # menu
+        'MENU_PARENT_LINK': False, # Default False
+        'MENU_EXCLUDE': (),
+        'MENU_ICONS': {
+            'auth': 'icon-lock',
+            'sites': 'icon-leaf',
+            },
+        'MENU_ORDER': (
+            ('sites',),
+            ('auth', ('user','group')),
+        )
     }
 
 
