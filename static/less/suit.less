@@ -101,6 +101,9 @@ a.btn {
     }
     .inner-center-column {
         margin-right: @right-column-width + 20px;
+        .tab-content {
+            overflow: inherit;
+        }
     }
 }
 
@@ -165,4 +168,13 @@ h2 {
 
 a.append-icon i {
     margin-left: 5px;
+}
+
+// Hide content-title from regular lists and forms
+.content-title {
+    display: none;
+}
+.popup .content-title {
+    display: block;
+    margin: 10px 0 10px 10px;
 }

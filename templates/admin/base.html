@@ -140,12 +140,9 @@
               {% block pretitle %}{% endblock %}
               {% block content_title %}
                 {% if title %}
-                  {% if is_popup %}
-                    <div class="content-title">
-                      <h2 class="legend">{% block content_title_value %}
-                        {{ title }}{% endblock %}</h2>
-                    </div>
-                  {% endif %}
+{#                  {% if is_popup %}#}
+                    <h2 class="content-title">{% block content_title_value %}{{ title }}{% endblock %}</h2>
+{#                  {% endif %}#}
                 {% endif %}{% endblock %}
               {% block content %}
                 {% block object-tools %}{% endblock %}

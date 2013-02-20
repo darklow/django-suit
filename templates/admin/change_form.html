@@ -33,11 +33,9 @@
   {% trans 'Add' %} {{ opts.verbose_name }}
 {% endblock %}
 
-{% block coltype %}{% if ordered_objects %}colMS{% else %}colM
-{% endif %}{% endblock %}
+{% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
 
-{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }}
-  change-form{% endblock %}
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
 
 {% if not is_popup %}
   {% block breadcrumbs %}
@@ -108,7 +106,7 @@
       </div>
       <div class="inner-center-column">
         {% csrf_token %}{% block form_top %}{% endblock %}
-        <div class="form-tab form-tab-main">
+        <div class="tab-content tab-content-main">
           {% if is_popup %}
             <input type="hidden" name="_popup" value="1"/>{% endif %}
           {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}
