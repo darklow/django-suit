@@ -48,6 +48,24 @@
             text-decoration: none;
         }
     }
+    tr.header-row {
+        &:first-child th {
+            border-top-left-radius: @border-radius;
+            border-top-right-radius: @border-radius;
+            border-top: 0;
+        }
+        th {
+            text-align: center;
+            font-weight: bold;
+            .grey-gradient;
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .3);
+            border-bottom: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+            .white-shadow;
+            padding: 5px 10px;
+            color: @text-color;
+        }
+    }
 }
 
 .table {
@@ -95,8 +113,7 @@
         th {
             .sortoptions {
                 a, span {
-                    float: right;
-//                    padding: 8px 0;
+                    float: right; //                    padding: 8px 0;
                     margin-right: 5px;
                 }
                 float: right;
@@ -104,8 +121,7 @@
                     color: #666;
                 }
                 .sortremove, .toggle {
-                    padding: 0;
-//                    margin: 10px 10px 0 0;
+                    padding: 0; //                    margin: 10px 10px 0 0;
                     display: block;
                     width: 12px;
                     height: 12px;
@@ -164,7 +180,7 @@
                 background-color: darken(#f9f9f9, 1.5%);
             }
         }
-        // Striped and selected and hover
+    // Striped and selected and hover
         tr.selected:hover {
             &>td, &>th {
                 background-color: darken(#FCF8E3, 6%);
@@ -195,8 +211,7 @@
 
 .inline-group .tabular {
     table.table {
-        tr.add-row td {
-//            background-color: #eee;
+        tr.add-row td { //            background-color: #eee;
             .vertical-gradient(#efefef, #e2e2e2);
             .white-shadow;
             padding-left: 10px;
