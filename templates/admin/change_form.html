@@ -108,7 +108,7 @@
       </div>
       <div class="inner-center-column">
         {% csrf_token %}{% block form_top %}{% endblock %}
-        <div>
+        <div class="form-tab form-tab-main">
           {% if is_popup %}
             <input type="hidden" name="_popup" value="1"/>{% endif %}
           {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}
@@ -135,16 +135,17 @@
             {% endfor %}
           {% endblock %}
 
-          {% block after_related_objects %}{% endblock %}
-
-          {% if adminform and add %}
-            <script type="text/javascript">document.getElementById("{{ adminform.first_field.id_for_label }}").focus();</script>
-          {% endif %}
-
-          {# JavaScript for prepopulated fields #}
-          {% prepopulated_fields_js %}
-
         </div>
+
+        {% block after_related_objects %}{% endblock %}
+
+        {% if adminform and add %}
+          <script type="text/javascript">document.getElementById("{{ adminform.first_field.id_for_label }}").focus();</script>
+        {% endif %}
+
+        {# JavaScript for prepopulated fields #}
+        {% prepopulated_fields_js %}
+
       </div>
     </form>
   </div>
