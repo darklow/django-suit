@@ -198,7 +198,12 @@
       </div>
 
       <div class="branding">{% block footer_branding %}
-        {{ 'ADMIN_NAME'|suit_conf }} v{{ 'VERSION'|suit_conf }}
+        {% with 'ADMIN_NAME'|suit_conf as admin_name %}
+          {{ admin_name }}
+          {% if admin_name == 'Django Suit' %}
+            v{{ 'VERSION'|suit_conf }}
+          {% endif %}
+        {% endwith %}
       {% endblock %}</div>
     </div>
   </div>{% endblock %}
