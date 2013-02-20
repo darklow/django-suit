@@ -6,24 +6,13 @@
   <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" media="all"/>
   <link rel="stylesheet" type="text/css" href="{% static 'css/suit.css' %}" media="all">
   {% block extrastyle %}{% endblock %}
-  {% if LANGUAGE_BIDI %}
-    <link rel="stylesheet" type="text/css"
-          href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
+  {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
   <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
-  {% block extrahead %}
-    {{ block.super }}
-    <script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
-    {% if 'SHOW_REQUIRED_ASTERISK'|suit_conf %}
-      <style type="text/css">
-        .required:after {
-          content: '*';
-          margin: 0 0 0 5px;
-          position: absolute;
-          color: #ccc;
-        }
-      </style>
-    {% endif %}
-  {% endblock %}
+  <script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
+  {% if 'SHOW_REQUIRED_ASTERISK'|suit_conf %}
+  <style type="text/css">.required:after { content: '*'; margin: 0 0 0 5px; position: absolute; color: #ccc;}</style>
+  {% endif %}
+  {% block extrahead %}{% endblock %}
   {% block blockbots %}
     <meta name="robots" content="NONE,NOARCHIVE"/>{% endblock %}
 </head>
@@ -185,8 +174,8 @@
 
       <div class="tools">
         {% block footer_links %}
-          <a href="/docs/" target="_blank" class="icon"><i class="icon-question-sign"></i>Documentation</a>
-          <a href="/pricing/" target="_blank" class="icon"><i class="icon-bookmark"></i>Licence</a>
+          <a href="http://djangosuit.com/docs/" target="_blank" class="icon"><i class="icon-question-sign"></i>Documentation</a>
+          <a href="http://djangosuit.com/pricing/" target="_blank" class="icon"><i class="icon-bookmark"></i>Licence</a>
           <a href="http://github.com/darklow/django-suit/issues" target="_blank" class="icon"><i class="icon-comment"></i>Report a bug</a>
         {% endblock %}
       </div>
@@ -208,9 +197,9 @@
     </div>
   </div>{% endblock %}
 
-{% block js_foot %}
   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/suit.js' %}"></script>
-{% endblock %}
+  {% block extrajs %}{% endblock %}
+
 </body>
 </html>
