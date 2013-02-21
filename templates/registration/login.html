@@ -24,8 +24,7 @@
 
         {% if form.errors and not form.non_field_errors and not form.this_is_the_login_form.errors %}
             <p class="errornote alert alert-error">
-                {% blocktrans count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please
-                    correct the errors below.{% endblocktrans %}
+                {% blocktrans count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
             </p>
         {% endif %}
 
@@ -40,13 +39,13 @@
         <div id="content-main">
             <h1><i class="icon-lock icon-white"></i> {{ 'ADMIN_NAME'|suit_conf }}</h1>
 
-            <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+            <form action="{{ app_path }}" method="post" id="login-form"><div class="hide">{% csrf_token %}</div>
                 <div class="form-row control-group{% if not form.this_is_the_login_form.errors and form.username.errors %} error{% endif %}">
-                    <label for="id_username" class="control-label required">{% trans 'Username:' %}</label> {{ form.username }}
+                    <label for="id_username" class="control-label required">{% trans 'Username' %}:</label> {{ form.username }}
                   {% if not form.this_is_the_login_form.errors and form.username.errors %}<p class="help-block">{{ form.username.errors }}</p>{% endif %}
                 </div>
                 <div class="form-row control-group{% if not form.this_is_the_login_form.errors and form.password.errors %} error{% endif %}">
-                    <label for="id_password" class="control-label required">{% trans 'Password:' %}</label> {{ form.password }}
+                    <label for="id_password" class="control-label required">{% trans 'Password' %}:</label> {{ form.password }}
                   {% if not form.this_is_the_login_form.errors and form.password.errors %}<div class="help-block">{{ form.password.errors }}</div>{% endif %}
                     <input type="hidden" name="this_is_the_login_form" value="1"/>
                     <input type="hidden" name="next" value="{{ next }}"/>
