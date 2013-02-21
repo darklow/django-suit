@@ -30,10 +30,10 @@ def default_config():
             'auth': 'icon-lock',
             'sites': 'icon-leaf',
             },
-        'MENU_ORDER': (
-            ('sites',),
-            ('auth', ('user','group')),
-        )
+        # 'MENU_ORDER': (
+        #     ('sites',),
+        #     ('auth', ('user','group')),
+        # )
     }
 
 
