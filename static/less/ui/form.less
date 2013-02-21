@@ -9,11 +9,11 @@ h2.legend, .form-horizontal fieldset .legend {
     fieldset {
         .grey-box-shadow;
         .border-radius(@border-radius); //        margin-bottom: 35px;
-        &:not(:first-child) {
-            margin-top: 35px;
-        }
         .popup & {
             margin-top: 0;
+        }
+        &:not(:first-of-type) {
+            margin-top: 35px;
         }
         .legend {
             border: 0;
