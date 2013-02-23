@@ -72,10 +72,7 @@
       {% endblock %}
       {% if cl.formset.errors %}
         <p class="errornote">
-          {% blocktrans count cl.formset.errors|length as counter %}
-            Please correct the error
-            below.{% plural %}
-            Please correct the errors below.{% endblocktrans %}
+          {% blocktrans count cl.formset.errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
         </p>
         {{ cl.formset.non_form_errors }}
       {% endif %}
@@ -100,14 +97,11 @@
               <br>
               <div class="alert alert-block alert-info">
                 {% if cl.full_result_count %}
-                  <h4>Nothing found!</h4>
-                  Nothing found using search or filters.
-                  <br><br>
-                  <a href="?{% if cl.is_popup %}pop=1{% endif %}">Reset
-                    search and filters</a>
+                  <h4>{% trans 'Nothing found' %}!</h4>
+                  <br>
+                  <a href="?{% if cl.is_popup %}pop=1{% endif %}">{% trans 'Reset search and filters' %}</a>
                 {% else %}
-                  {% blocktrans with cl.opts.verbose_name_plural|capfirst as name_plural %}
-                    {{ name_plural }} are not created yet{% endblocktrans %}.
+                  {% blocktrans with cl.opts.verbose_name_plural|capfirst as name_plural %}{{ name_plural }} are not created yet{% endblocktrans %}.
 
                   <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}">{% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>
 
