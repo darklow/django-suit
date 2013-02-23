@@ -1,13 +1,7 @@
 from django import template
-from django.contrib.admin.helpers import AdminField, AdminReadonlyField
 from django.template import Context
 from django.template.loader import get_template
 from django.utils.safestring import mark_safe
-from django.contrib.admin.util import lookup_field
-from django.db.models.fields.related import ForeignKey
-from django.db.models import ObjectDoesNotExist
-from django.core.urlresolvers import reverse, NoReverseMatch
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.admin.views.main import ALL_VAR, PAGE_VAR
 from django.utils.html import escape
 from urlparse import parse_qs
@@ -138,82 +132,4 @@ def suit_list_filter_select(cl, spec):
         'choices': choices,
         'spec': spec,
     }))
-
-
-@register.simple_tag
-def field_widget_value(field):
-    """
-    @type field: AdminField
-    """
-    if isinstance(field, AdminField):
-        read_only_field = AdminReadonlyField(field.field.form, field.field.name,
-                                             field.is_first)
-        return read_only_field.contents()
-
-
-@register.filter
-def field_contents_foreign_linked(admin_field):
-    """Return the .contents attribute of the admin_field, and if it
-    is a foreign key, wrap it in a link to the admin page for that
-    object.
-
-    Use by replacing '{{ field.contents }}' in an admin template (e.g.
-    fieldset.html) with '{{ field|field_contents_foreign_linked }}'.
-    """
-    fieldname = admin_field.field['field']
-    displayed = admin_field.contents()
-    obj = admin_field.form.instance
-
-    if not hasattr(admin_field.model_admin,
-                   'linked_fields') or fieldname not in admin_field \
-        .model_admin \
-        .linked_fields:
-        return displayed
-
-    try:
-        fieldtype, attr, value = lookup_field(fieldname, obj,
-                                              admin_field.model_admin)
-    except ObjectDoesNotExist:
-        fieldtype = None
-    if isinstance(fieldtype,
-                  ForeignKey): #XXX - probably over-simplistic wrt escaping
-        try:
-            admin_url = get_admin_url(value)
-        except NoReverseMatch:
-            admin_url = None
-        if admin_url:
-            displayed = u"<a href='%s' class=\"append-icon\">%s<i " \
-                        u"class=\"icon-arrow-right icon-alpha75\"></i></a>" % (
-                            admin_url, displayed)
-    return mark_safe(displayed)
-
-
-@register.filter
-def inline_form_contents_foreign_linked(inline_admin_form):
-    """Return the .original attribute of the inline_admin_form,
-    wrapped it in a link to the admin page for that
-    object.
-
-    Use by replacing '{{ inline_admin_form.original }}' in an admin template
-    (e.g.
-    tabular.html) with '{{
-    inline_admin_form|inline_form_contents_foreign_linked }}'.
-    """
-    obj = inline_admin_form.form.instance
-    displayed = inline_admin_form.original
-    try:
-        admin_url = get_admin_url(obj)
-    except NoReverseMatch:
-        admin_url = None
-    if admin_url:
-        displayed = u"<a href='%s'>%s</a>" % (admin_url, displayed)
-    return mark_safe(displayed)
-
-
-#adapted from http://djangosnippets.org/snippets/1916/
-def get_admin_url(obj):
-    content_type = ContentType.objects.get_for_model(obj.__class__)
-    return reverse(
-        "admin:%s_%s_change" % (content_type.app_label, content_type.model),
-        args=[obj.pk])
 

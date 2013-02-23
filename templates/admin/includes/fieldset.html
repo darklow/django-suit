@@ -1,4 +1,4 @@
-{% load suit_list %}
+{% load suit_tags %}
 <fieldset class="module aligned {{ fieldset.classes }}">
     {% if fieldset.name %}
         <h2 class="legend">{{ fieldset.name }}
@@ -26,7 +26,6 @@
             {% if not field.is_readonly and field.errors %}<div class="inline error errors">{% endif %}
 
             {% if field.is_readonly %}
-{#              {% py_debug field %}#}
                 <p>{{ field|field_contents_foreign_linked }}</p>
             {% else %}
                 {{ field.field }}
