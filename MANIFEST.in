@@ -1,0 +1,5 @@
+include README.rst
+include LICENSE
+recursive-include docs *
+recursive-include suit/static *
+recursive-include suit/templates *
