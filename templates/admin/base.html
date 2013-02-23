@@ -90,10 +90,17 @@
         {% block content-left %}
           {% if not is_popup %}
             <div class="left-column">
-              <form class="form-search nav-quick-search" autocomplete="off">
-                <input type="text" class="input-medium search-query" id="quick-search">
-                <i class="input-icon icon-search"></i>
-              </form>
+              {% block quick-search %}
+                {% with 'SEARCH_URL'|suit_conf as search_url %}
+                {% if search_url %}
+                <form class="form-search nav-quick-search" autocomplete="off" action="{% url search_url %}" method="GET">
+                  <input type="text" name="q" class="input-medium search-query" id="quick-search">
+                  <i class="input-icon icon-search"></i>
+                  <input type="submit" class="submit" value="">
+                </form>
+                {% endif %}
+                {% endwith %}
+              {% endblock %}
 
               {% include 'suit/menu.html' %}
 

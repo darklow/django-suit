@@ -24,6 +24,7 @@ def default_config():
         'CONFIRM_UNSAVED_CHANGES': True,
 
         # menu
+        'SEARCH_URL': 'admin:auth_user_changelist',
         'MENU_PARENT_LINK': False, # Default False
         'MENU_EXCLUDE': (),
         'MENU_ICONS': {
