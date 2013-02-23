@@ -398,7 +398,7 @@ h3 {
         a:last-child {
             padding: 0 5px;
             position: absolute;
-            left: @date-input-width + @date-icon-offset;
+            left: (@date-input-width + @date-icon-offset);
             z-index: 2;
             img {
                 visibility: hidden;
@@ -416,17 +416,17 @@ h3 {
     }
     .add-on {
         position: absolute;
-        left: @date-input-width + @date-input-offset;
+        left: (@date-input-width + @date-input-offset);
     }
 
     &.suit-time {
         .add-on {
-            left: @time-input-width + @date-input-offset;
+            left: (@time-input-width + @date-input-offset);
         }
         .datetimeshortcuts {
             a:last-child {
                 position: absolute;
-                left: @time-input-width + @date-icon-offset;
+                left: (@time-input-width + @date-icon-offset);
             }
         }
     }
