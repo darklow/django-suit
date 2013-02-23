@@ -4,6 +4,4 @@
 *~
 *.log
 .idea
-*/migrations
 docs/_build/
-static/js/datepicker/
