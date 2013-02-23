@@ -1,14 +1,11 @@
 from django.conf import settings
 from django.contrib.admin import ModelAdmin
 
-VERSION = '0.9.1'
+VERSION = '0.1.0'
 
 # Reverse default actions position
 ModelAdmin.actions_on_top = False
 ModelAdmin.actions_on_bottom = True
-
-# Who uses 100 items per page at all?
-ModelAdmin.list_per_page = 20
 
 def default_config():
     return {
@@ -25,7 +22,7 @@ def default_config():
 
         # menu
         'SEARCH_URL': 'admin:auth_user_changelist',
-        'MENU_PARENT_LINK': False, # Default False
+        'MENU_OPEN_FIRST_CHILD': True,
         'MENU_EXCLUDE': (),
         'MENU_ICONS': {
             'auth': 'icon-lock',
@@ -35,6 +32,9 @@ def default_config():
         #     ('sites',),
         #     ('auth', ('user','group')),
         # )
+
+        # misc
+        'LIST_PER_PAGE': 20
     }
 
 
@@ -48,10 +48,10 @@ def get_config(param=None):
         value = None
         if param in config:
             value = config.get(param)
-
         if value is None:
             value = default_config().get(param)
-
         return value
-
     return config
+
+# Set global list_per_page
+ModelAdmin.list_per_page = get_config('LIST_PER_PAGE')

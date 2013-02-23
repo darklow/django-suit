@@ -31,7 +31,7 @@ def get_app_list(context, request):
         curr_model_name_pl = None
 
     exclude = suit.get_config('MENU_EXCLUDE')
-    parent_link = suit.get_config('MENU_PARENT_LINK')
+    open_first_child = suit.get_config('MENU_OPEN_FIRST_CHILD')
     icons = suit.get_config('MENU_ICONS')
     menu_order = suit.get_config('MENU_ORDER')
 
@@ -71,7 +71,7 @@ def get_app_list(context, request):
         app_list = reorder_apps(app_list, menu_order)
 
     # Set first child url unless MENU_PARENT_LINK = True
-    if not parent_link:
+    if open_first_child:
         for app in app_list:
             app['app_url'] = app['models'][0]['admin_url']
 
