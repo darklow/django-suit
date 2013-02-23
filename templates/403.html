@@ -1,14 +1,10 @@
-{% extends "admin/base_site.html" %}
+{% extends "suit/error_base.html" %}
 {% load i18n %}
 
-{% block title %}{% trans 'Page not found' %}{% endblock %}
+{% block title %}{% trans 'forbidden'|capfirst %}{% endblock %}
+
+{% block error %}{% trans 'error'|capfirst %} 403{% endblock %}
 
 {% block content %}
-
-
-  <div class="alert alert-block alert-error">
-    <h4>{% trans 'Forbidden' %} (403)</h4>
-    {% trans "We're sorry, but the requested action is forbidden" %}
-  </div>
-
+  {% trans "We're sorry, but the requested action is forbidden" %}
 {% endblock %}

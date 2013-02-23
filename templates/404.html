@@ -1,14 +1,10 @@
-{% extends "admin/base_site.html" %}
+{% extends "suit/error_base.html" %}
 {% load i18n %}
 
 {% block title %}{% trans 'Page not found' %}{% endblock %}
 
+{% block error %}{% trans 'error'|capfirst %} 404{% endblock %}
+
 {% block content %}
-
-
-  <div class="alert alert-block alert-error">
-    <h4>{% trans 'Page not found' %}</h4>
-    {% trans "We're sorry, but the requested page could not be found." %}
-  </div>
-
+  {% trans "We're sorry, but the requested page could not be found." %}
 {% endblock %}
