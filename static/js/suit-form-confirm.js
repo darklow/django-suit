@@ -22,7 +22,9 @@ var confirmExitIfModified = (function () {
             }
             else if (type == "hidden" || type == "password" ||
                 type == "text" || type == "textarea") {
-                if (element.value != element.defaultValue) {
+                if (element.value != element.defaultValue &&
+                    // Fix for select2 multiple
+                    element.getAttribute('class').indexOf('select2') == -1) {
                     return true;
                 }
             }
