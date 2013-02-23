@@ -5,4 +5,5 @@
 *.log
 .idea
 docs/_build/
+/build
 /dist/
