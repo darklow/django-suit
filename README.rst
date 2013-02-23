@@ -1,5 +1,5 @@
 Django Suit
-================
+===========
 
 **Professional and modern skin for Django admin interface**.
 
@@ -27,4 +27,4 @@ http://readthedocs.org/docs/django-suit/
 Releases
 --------
 
-* Suit 0.0.1 (Development Version): Compatible with Django 1.4/1.5
+* Suit 0.1.0 (Development Version): Compatible with Django 1.4/1.5
