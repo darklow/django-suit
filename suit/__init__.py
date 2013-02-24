@@ -15,7 +15,7 @@ def default_config():
         'CONFIRM_UNSAVED_CHANGES': True,
 
         # menu
-        'SEARCH_URL': 'admin:auth_user_changelist',
+        'SEARCH_URL': '/admin/auth/user/',
         'MENU_OPEN_FIRST_CHILD': True,
         'MENU_ICONS': {
             'auth': 'icon-lock',

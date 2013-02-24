@@ -93,7 +93,7 @@
               {% block quick-search %}
                 {% with 'SEARCH_URL'|suit_conf as search_url %}
                 {% if search_url %}
-                <form class="form-search nav-quick-search" autocomplete="off" action="{% url search_url %}" method="GET">
+                <form class="form-search nav-quick-search" autocomplete="off" action="{% if '/' in search_url %}{{ search_url }}{% else %}{% url search_url %}{% endif %}" method="GET">
                   <input type="text" name="q" class="input-medium search-query" id="quick-search">
                   <i class="input-icon icon-search"></i>
                   <input type="submit" class="submit" value="">
