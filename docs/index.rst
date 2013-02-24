@@ -22,8 +22,7 @@ or::
 Installation
 ============
 
-You will need to add the **suit** application to the INSTALLED_APPS
-setting of your Django project *settings.py* file.::
+You will need to add the **suit** application to the INSTALLED_APPS setting of your Django project *settings.py* file.::
 
   INSTALLED_APPS = (
       ...
@@ -37,8 +36,7 @@ setting of your Django project *settings.py* file.::
 Configuration
 =============
 
-You can customize Django Suit behaviour by adding following configuration
-variable to your Django project *settings.py* file.::
+You can customize Django Suit behaviour by adding following configuration variable to your Django project *settings.py* file.::
 
   # Django Suit configuration example
   # Uncomment and change any of following keys
@@ -70,7 +68,16 @@ variable to your Django project *settings.py* file.::
   }
 
 
-Customize template
-==================
+More documentation about each configuration key is on its way...
 
-More documentation is on its way...
+Customize templates
+===================
+
+To customize footer links, copyright text and to add extra JS/CSS files - you must extend *base_site.html* template. To do this, copy this `base_site.html <https://github.com/darklow/django-suit/blob/master/suit/templates/admin/base_site.html>`_ template example file to your project's main application *template/admin/* directory and uncomment and edit the blocks you would like to extend.
+
+Alternatively you can copy *base_site.html*
+to any of template directories, which are defined in TEMPLATE_DIRS setting (if any). By default Django looks in every registered application *templates/* dir.
+
+In same way you can override any of Django Suit and admin templates. More about customizing project's templates, you can read in `Django Admin Tutorial <https://docs.djangoproject.com/en/dev/intro/tutorial02/#customizing-your-project-s-templates>`_
+
+**More documentation is on its way...**
