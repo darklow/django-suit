@@ -6,10 +6,11 @@
 Django Suit documentation
 =======================================
 
-**Professional and modern skin for Django admin interface**.
+**Modern theme for Django admin interface**.
 
 Django Suit is theme/skin/extension for `Django <http://www.djangoproject.com>`_ administration interface.
-Suit uses Twitter Bootstrap as a base, however overall layout and style are redesigned to fit needs of modern web admin application.
+
+Home page: http://djangosuit.com
 
 Contents:
 
