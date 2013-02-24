@@ -17,11 +17,11 @@ def default_config():
         # menu
         'SEARCH_URL': 'admin:auth_user_changelist',
         'MENU_OPEN_FIRST_CHILD': True,
-        'MENU_EXCLUDE': (),
         'MENU_ICONS': {
             'auth': 'icon-lock',
             'sites': 'icon-leaf',
         },
+        # 'MENU_EXCLUDE': ('auth.group',),
         # 'MENU_ORDER': (
         #     ('sites',),
         #     ('auth', ('user','group')),
