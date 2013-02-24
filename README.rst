@@ -22,7 +22,7 @@ Support
 Support and documentation: http://djangosuit.com/support/
 
 
-Releases
---------
+Changelog
+---------
 
-* Suit 0.1.0 (Development Version): Compatible with Django 1.4/1.5
+`See CHANGELOG.rst <CHANGELOG.rst>`_
