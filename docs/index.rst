@@ -34,7 +34,7 @@ You will need to add the **suit** application to the INSTALLED_APPS setting of y
 
 **Important**: must be added before admin 'django.contrib.admin'
 
-Second you need to add *'django.core.context_processors.request'* to TEMPLATE_CONTEXT_PROCESSORS setting in your Django project *settings.py* file.::.
+You also need to add *'django.core.context_processors.request'* to TEMPLATE_CONTEXT_PROCESSORS setting in your Django project *settings.py* file.::
 
   from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
