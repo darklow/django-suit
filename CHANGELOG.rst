@@ -1,7 +1,7 @@
 Changelog
 =========
 
-v0.1.1 (2013-02-24)
+v0.1.1 (2013-02-25)
 -------------------------------------------------------------
 
 * [Feature] Added link to admin home in error templates
