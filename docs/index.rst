@@ -1,10 +1,5 @@
-.. Django Suit documentation master file, created by
-   sphinx-quickstart on Tue Feb  5 23:35:55 2013.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Django Suit documentation
-=======================================
+=========================
 
 **Modern theme for Django admin interface**.
 
@@ -12,17 +7,34 @@ Django Suit is theme/skin/extension for `Django <http://www.djangoproject.com>`_
 
 Home page: http://djangosuit.com
 
-Contents:
+Getting started
+===============
 
-.. toctree::
-   :maxdepth: 2
+You can get Django Suit by using pip or easy_install::
+
+ pip install django-suit
+
+or::
+
+ easy_install django-suit
 
 
+Installation
+============
 
-Indices and tables
-==================
+You will need to add the **suit** application to the INSTALLED_APPS
+setting of your Django project *settings.py* file.::
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+  INSTALLED_APPS = (
+      ...
+      'suit',
+      'django.contrib.admin',
+  )
 
+**Important**: must be added before admin 'django.contrib.admin'
+
+
+Configuration
+=============
+
+More documentation is on its way...
