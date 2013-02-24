@@ -7,6 +7,8 @@ Django Suit is theme/skin/extension for `Django <http://www.djangoproject.com>`_
 
 Home page: http://djangosuit.com
 
+Supports: Django 1.4/1.5c2
+
 Getting started
 ===============
 
