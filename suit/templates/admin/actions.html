@@ -2,11 +2,19 @@
 
 
 {% if cl.formset and cl.result_count %}
-  <input type="submit" name="_save" class="default btn btn-info pull-right" value="{% trans 'Save' %}"/>{% endif %}
+  <input type="submit" name="_save" class="default btn btn-info pull-right" value="{% trans 'Save' %}"/>
+{% endif %}
 
 <div class="actions">
-    {% for field in action_form %}{% if field.label %}<label><span class="action-label">{{ field.label }}</span>{% endif %}{{ field }}
-    {% if field.label %}</label>{% endif %}{% endfor %}
+    {% for field in action_form %}
+        {% if field.label %}
+            <label><span class="action-label">{{ field.label }}</span>
+        {% endif %}
+        {{ field }}
+        {% if field.label %}
+            </label>
+        {% endif %}
+    {% endfor %}
 &nbsp;
     <button type="submit" class="btn" title="{% trans "Run the selected action" %}" name="index" value="{{ action_index|default:0 }}">{% trans "Go" %}</button>
     &nbsp;
