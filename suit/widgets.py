@@ -1,17 +1,20 @@
 from django.contrib.admin.widgets import AdminTimeWidget, AdminDateWidget
-from django.forms import DateInput, TextInput
+from django.forms import TextInput
 from django.utils.safestring import mark_safe
 from django import forms
 from django.utils.translation import ugettext as _
 
 
 class NumberInput(TextInput):
+
     input_type = 'number'
+
 
 #
 # Original date widgets with addition html
 #
 class SuitDateWidget(AdminDateWidget):
+
     def __init__(self, attrs=None, format=None):
         final_attrs = {'class': 'vDateField input-small',
                        'placeholder': _('Date:')[:-1]}
@@ -28,6 +31,7 @@ class SuitDateWidget(AdminDateWidget):
 
 
 class SuitTimeWidget(AdminTimeWidget):
+
     def __init__(self, attrs=None, format=None):
         final_attrs = {'class': 'vTimeField input-small',
                        'placeholder': _('Time:')[:-1]}
@@ -53,5 +57,5 @@ class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
         forms.MultiWidget.__init__(self, widgets, attrs)
 
     def format_output(self, rendered_widgets):
-        return mark_safe(u'<div class="datetime">%s %s</div>' % \
-                         (rendered_widgets[0], rendered_widgets[1]))
+        out_tpl = u'<div class="datetime">%s %s</div>'
+        return mark_safe(out_tpl % (rendered_widgets[0], rendered_widgets[1]))
