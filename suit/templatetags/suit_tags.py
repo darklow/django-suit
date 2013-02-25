@@ -67,4 +67,3 @@ def get_admin_url(obj):
     return reverse(
         "admin:%s_%s_change" % (content_type.app_label, content_type.model),
         args=[obj.pk])
-

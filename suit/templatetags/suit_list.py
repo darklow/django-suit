@@ -6,6 +6,7 @@ from django.contrib.admin.views.main import ALL_VAR, PAGE_VAR
 from django.utils.html import escape
 from urlparse import parse_qs
 
+
 register = template.Library()
 
 DOT = '.'
@@ -35,7 +36,8 @@ def paginator_info(cl):
     entries_from = (
         (paginator.per_page * cl.page_num) + 1) if paginator.count > 0 else 0
     entries_to = entries_from - 1 + paginator.per_page
-    entries_to = paginator.count if paginator.count < entries_to else entries_to
+    if paginator.count < entries_to:
+        entries_to = paginator.count
     return '%s - %s' % (entries_from, entries_to)
 
 
@@ -46,9 +48,8 @@ def pagination(cl):
     """
     paginator, page_num = cl.paginator, cl.page_num
 
-    pagination_required = (
-                              not cl.show_all or not cl.can_show_all) and cl \
-                              .multi_page
+    pagination_required = (not cl.show_all or not cl.can_show_all) \
+                           and cl.multi_page
     if not pagination_required:
         page_range = []
     else:
@@ -109,7 +110,7 @@ def suit_list_filter_select(cl, spec):
                 value = query_parts[key][0]
                 matched_key = key
             elif key.startswith(
-                            field_key + '__') or '__' + field_key + '__' in key:
+                    field_key + '__') or '__' + field_key + '__' in key:
                 value = query_parts[key][0]
                 matched_key = key
 
@@ -132,4 +133,3 @@ def suit_list_filter_select(cl, spec):
         'choices': choices,
         'spec': spec,
     }))
-

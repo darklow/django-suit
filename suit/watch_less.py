@@ -1,9 +1,13 @@
-import sys, os, time
+import sys
+import os
+import time
+
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler, FileModifiedEvent
 
 
 class LessCompiler(FileSystemEventHandler):
+
     def __init__(self, source):
         self.source = source
         FileSystemEventHandler.__init__(self)

@@ -48,9 +48,8 @@ def get_app_list(context, request):
             app['icon'] = icons[app_name]
 
         # Mark as active by url or app name match
-        if request.path == app['app_url'] or \
-                        current_app == app_name:
-            app['is_active'] = True
+        app['is_active'] = request.path == app['app_url']
+        app['is_active'] |= current_app == app_name
 
         # Iterate models
         for model in app['models']:
@@ -62,9 +61,8 @@ def get_app_list(context, request):
                 continue
 
             # Mark as active by url or model plural name match
-            if request.path == model['admin_url'] or \
-                            curr_model_name_pl == model['name'].lower():
-                model['is_active'] = True
+            model['is_active'] = request.path == model['admin_url']
+            model['is_active'] |= curr_model_name_pl == model['name'].lower()
 
     # Reorder menu
     if menu_order:
