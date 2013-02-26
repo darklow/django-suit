@@ -9,48 +9,56 @@ Home page: http://djangosuit.com
 
 Supports: Django 1.4/1.5c2
 
-Getting started
-===============
-
-You can get Django Suit by using pip or easy_install::
-
- pip install django-suit
-
-or::
-
- easy_install django-suit
-
-
 Installation
 ============
 
-You will need to add the **suit** application to the INSTALLED_APPS setting of your Django project *settings.py* file.::
+1. You can get Django Suit by using pip or easy_install::
 
-  INSTALLED_APPS = (
-      ...
-      'suit',
-      'django.contrib.admin',
-  )
+    pip install django-suit
+    # or
+    easy_install django-suit
 
-**Important**: must be added before admin 'django.contrib.admin'
+2. You will need to add the **suit** application to the INSTALLED_APPS setting of your Django project *settings.py* file.::
 
-You also need to add *'django.core.context_processors.request'* to TEMPLATE_CONTEXT_PROCESSORS setting in your Django project *settings.py* file.::
+    INSTALLED_APPS = (
+        ...
+        'suit',
+        'django.contrib.admin',
+    )
 
-  from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+  **Important**: must be added before admin 'django.contrib.admin'
 
-  TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-      'django.core.context_processors.request',
-  )
+3. You also need to add *'django.core.context_processors.request'* to TEMPLATE_CONTEXT_PROCESSORS setting in your Django project *settings.py* file.::
 
-Note: This is required to handle left side menu. If by some reason you removed original Django Suit *menu.html*, you can skip this.
+      from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+      TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+          'django.core.context_processors.request',
+      )
+
+  Note: This is required to handle left side menu. If by some reason you removed original Django Suit *menu.html*, you can skip this.
 
 Configuration
 =============
 
-You can customize Django Suit behaviour by adding following configuration variable to your Django project *settings.py* file.::
+You can customize Django Suit behaviour by adding **SUIT_CONFIG** configuration variable to your Django project *settings.py* file.::
+
+  SUIT_CONFIG = {
+      'PARAM': VALUE
+      'PARAM2': VALUE2
+      ...
+  }
+
+Here are all the possible configuration parameters.
+
+.. toctree::
+   :maxdepth: 3
+
+   configuration
+
+Configuration sample you can use as a start::
 
   # Django Suit configuration example
-  # Uncomment and change any of following keys
   SUIT_CONFIG = {
       # header
       # 'ADMIN_NAME': 'Django Suit',
@@ -62,24 +70,24 @@ You can customize Django Suit behaviour by adding following configuration variab
       # 'CONFIRM_UNSAVED_CHANGES': True, # Default True
 
       # menu
-      'SEARCH_URL': 'admin:auth_user_changelist',
+      # 'SEARCH_URL': '/admin/auth/user/',
       'MENU_ICONS': {
           'sites': 'icon-leaf',
           'auth': 'icon-lock',
       },
       # 'MENU_OPEN_FIRST_CHILD': True, # Default True
       # 'MENU_EXCLUDE': ('auth.group',),
-      # 'MENU_ORDER': ( # Unlisted apps/models, will also be excluded
+      # 'MENU_ORDER': (
       #     ('sites',),
       #     ('auth', ('user','group')),
       # ),
 
       # misc
-      'LIST_PER_PAGE': 15
+      # 'LIST_PER_PAGE': 15
   }
 
 
-More documentation about each configuration key is on its way...
+
 
 Customize templates
 ===================
