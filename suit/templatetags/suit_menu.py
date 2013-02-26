@@ -1,6 +1,7 @@
 from django import template
 from django.contrib import admin
 from django.core.handlers.wsgi import WSGIRequest
+from django.core.urlresolvers import reverse
 from suit import get_config
 
 register = template.Library()
@@ -168,7 +169,8 @@ class Menu(object):
                 'parameters: ('
                 '"name", "url", "icon"=None)')
 
-        custom_app = {'name': app[0], 'app_url': app[1], 'models': []}
+        url = self.reverse_url(app[1])
+        custom_app = {'name': app[0], 'app_url': url, 'models': []}
 
         if app_len >= 3:
             custom_app['icon'] = app[2]
@@ -192,6 +194,7 @@ class Menu(object):
             if not self.user_has_permission(link[2]):
                 return
 
+        url = self.reverse_url(link[1])
         return {'name': link[0], 'admin_url': link[1]}
 
     def user_has_permission(self, perms):
@@ -206,3 +209,11 @@ class Menu(object):
         if is_full_name:
             return '.'.join(url_parts[-2:])
         return url_parts[-1]
+
+    def reverse_url(self, url):
+        if not url or '/' in url:
+            return url
+        try:
+            return reverse(url)
+        except:
+            return url
