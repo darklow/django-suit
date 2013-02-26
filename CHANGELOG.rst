@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v0.1.2 (2013-02-27)
+-------------------------------------------------------------
+
+* [Feature] Customizable menu, cross apps, custom links and menus
+* [Refactoring] Moved all static files to separate directory
+* [Fix] PEP8 and templates style improvements [Thanks to @peterfschaadt]
+* [Fix] Fixed inconsistent styling on login form errors [Thanks to @saippuakauppias]
+
+
 v0.1.1 (2013-02-25)
 -------------------------------------------------------------
 
