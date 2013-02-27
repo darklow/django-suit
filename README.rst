@@ -1,3 +1,4 @@
+===========
 Django Suit
 ===========
 
@@ -9,7 +10,7 @@ Project home: http://djangosuit.com/
 
 
 License
--------
+=======
 
 Django Suit is licensed under `Creative Commons Attribution-NonCommercial 3.0 <http://creativecommons.org/licenses/by-nc/3.0/>`_ license.
 
@@ -17,12 +18,12 @@ Licence and pricing: http://djangosuit.com/pricing/
 
 
 Support
--------
+=======
 
 Support and documentation: http://djangosuit.com/support/
 
 
 Changelog
----------
+=========
 
-`See CHANGELOG.rst <CHANGELOG.rst>`_
+See `CHANGELOG.rst <https://github.com/darklow/django-suit/blob/master/CHANGELOG.rst>`_.
