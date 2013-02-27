@@ -88,11 +88,11 @@ class Menu(object):
             # Activate and exclude app models
             self.activate_models(app)
 
-            # Set first child url on app unless MENU_OPEN_FIRST_CHILD = False
-            if self.conf_open_first_child:
-                for app in self.app_list:
-                    if 'models' in app and len(app['models']) > 0:
-                        app['app_url'] = app['models'][0]['admin_url']
+        # Set first child url on app unless MENU_OPEN_FIRST_CHILD = False
+        if self.conf_open_first_child:
+            for app in self.app_list:
+                if 'models' in app and len(app['models']) > 0:
+                    app['app_url'] = app['models'][0]['admin_url']
 
     def activate_models(self, app):
         # Iterate models
