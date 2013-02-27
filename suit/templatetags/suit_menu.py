@@ -111,7 +111,7 @@ class Menu(object):
 
             # Mark parent as active too
             if model['is_active'] and not self.app_activated:
-                app['is_active'] = True
+                app['is_active'] = self.app_activated = True
 
     def exclude_apps(self):
         for app in self.app_list:
