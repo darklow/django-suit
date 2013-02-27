@@ -195,7 +195,7 @@ class Menu(object):
                 return
 
         url = self.reverse_url(link[1])
-        return {'name': link[0], 'admin_url': link[1]}
+        return {'name': link[0], 'admin_url':url}
 
     def user_has_permission(self, perms):
         perms = perms if isinstance(perms, (list, tuple)) else (perms,)
