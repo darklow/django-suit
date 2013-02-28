@@ -6,15 +6,49 @@ from django.utils.translation import ugettext as _
 
 
 class NumberInput(TextInput):
-
     input_type = 'number'
 
+
+class EnclosedInput(TextInput):
+    """
+    Widget for bootstrap appended/prepended inputs
+    """
+
+    def __init__(self, attrs=None, prepend=None, append=None):
+        """
+        For prepend, append parameters use string like %, $ or html
+        """
+        self.prepend = prepend
+        self.append = append
+        super(EnclosedInput, self).__init__(attrs=attrs)
+
+    def enclose_value(self, value):
+        """
+        If value doesn't starts with html open sign "<", enclose in add-on tag
+        """
+        if value.find('<') != 0:
+            return u'<span class="add-on">%s</span>' % value
+        return value
+
+    def render(self, name, value, attrs=None):
+        output = super(EnclosedInput, self).render(name, value, attrs)
+        div_classes = []
+        if self.prepend:
+            div_classes.append('input-prepend')
+            self.prepend = self.enclose_value(self.prepend)
+            output = u''.join((self.prepend, output))
+        if self.append:
+            div_classes.append('input-append')
+            self.append = self.enclose_value(self.append)
+            output = u''.join((output, self.append))
+
+        return mark_safe(
+            u'<div class="%s">%s</div>' % (' '.join(div_classes), output))
 
 #
 # Original date widgets with addition html
 #
 class SuitDateWidget(AdminDateWidget):
-
     def __init__(self, attrs=None, format=None):
         final_attrs = {'class': 'vDateField input-small',
                        'placeholder': _('Date:')[:-1]}
@@ -31,7 +65,6 @@ class SuitDateWidget(AdminDateWidget):
 
 
 class SuitTimeWidget(AdminTimeWidget):
-
     def __init__(self, attrs=None, format=None):
         final_attrs = {'class': 'vTimeField input-small',
                        'placeholder': _('Time:')[:-1]}
