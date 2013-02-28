@@ -1,7 +1,7 @@
 Configuration
 =============
 
-You can customize Django Suit behaviour by adding **SUIT_CONFIG** configuration variable to your Django project *settings.py* file.::
+You can customize Django Suit behaviour by adding ``SUIT_CONFIG`` configuration variable to your Django project ``settings.py`` file.::
 
   SUIT_CONFIG = {
       'PARAM': VALUE,
@@ -44,7 +44,7 @@ Forms
 SHOW_REQUIRED_ASTERISK
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Automatically adds asterisk symbol * to the end of every required field label::
+Automatically adds asterisk symbol ``*`` to the end of every required field label::
 
   SUIT_CONFIG = {
       'SHOW_REQUIRED_ASTERISK': True
@@ -113,7 +113,7 @@ Exclude any of apps or models. You can exclude whole app or just one model from 
 MENU_ORDER
 ^^^^^^^^^^
 
-Most powerful of menu parameters. You can reorder, cross link, exclude, and even define custom menu items and child links. Here is full example of *MENU_ORDER* from simple existing app reorder to defining custom menu items::
+Most powerful of menu parameters. You can reorder, cross link, exclude, and even define custom menu items and child links. Here is full example of ``MENU_ORDER`` from simple existing app reorder to defining custom menu items::
 
   SUIT_CONFIG = {
       'MENU_ORDER': (
@@ -152,7 +152,7 @@ List
 LIST_PER_PAGE
 ^^^^^^^^^^^^^
 
-Set change_list view *list_per_page* parameter globally for whole admin. You can still override this parameter in any ModelAdmin class::
+Set change_list view ``list_per_page`` parameter globally for whole admin. You can still override this parameter in any ModelAdmin class::
 
   SUIT_CONFIG = {
       'LIST_PER_PAGE': 20

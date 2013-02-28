@@ -25,7 +25,7 @@ Installation
     # or
     easy_install django-suit
 
-2. You will need to add the **suit** application to the INSTALLED_APPS setting of your Django project *settings.py* file.::
+2. You will need to add the ``'suit'`` application to the ``INSTALLED_APPS`` setting of your Django project ``settings.py`` file.::
 
     INSTALLED_APPS = (
         ...
@@ -33,9 +33,9 @@ Installation
         'django.contrib.admin',
     )
 
-  .. warning:: 'suit' must be added before 'django.contrib.admin'
+  .. warning:: ``'suit'`` must be added before ``'django.contrib.admin'``
 
-3. You also need to add *'django.core.context_processors.request'* to TEMPLATE_CONTEXT_PROCESSORS setting in your Django project *settings.py* file.::
+3. You also need to add ``'django.core.context_processors.request'`` to ``TEMPLATE_CONTEXT_PROCESSORS`` setting in your Django project ``settings.py`` file.::
 
       from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
@@ -43,12 +43,12 @@ Installation
           'django.core.context_processors.request',
       )
 
-  Note: This is required to handle left side menu. If by some reason you removed original Django Suit *menu.html*, you can skip this.
+  Note: This is required to handle left side menu. If by some reason you removed original Django Suit ``menu.html``, you can skip this.
 
 Configuration
 =============
 
-You can customize Django Suit behaviour by adding **SUIT_CONFIG** configuration variable to your Django project *settings.py* file.::
+You can customize Django Suit behaviour by adding ``SUIT_CONFIG`` configuration variable to your Django project ``settings.py`` file.::
 
   SUIT_CONFIG = {
       'PARAM': VALUE
