@@ -9,9 +9,6 @@ setup(
     author_email='info@djangosuit.com',
     url='http://djangosuit.com',
     packages=['suit', 'suit.templatetags'],
-    install_requires=[
-        'Django>=1.4',
-    ],
     include_package_data=True,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
