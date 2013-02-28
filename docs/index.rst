@@ -45,6 +45,14 @@ Installation
 
   Note: This is required to handle left side menu. If by some reason you removed original Django Suit ``menu.html``, you can skip this.
 
+
+Deployment
+----------
+
+Deployment with Django Suit should not be different than any other Django project. If you have problems with deployment on production, read `Django docs on wsgi <https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/modwsgi/>`_ first.
+
+.. note:: If you deploy your project with Apache or ``Debug=False`` don't forget to run ``./manage.py collectstatic``
+
 Configuration
 =============
 
