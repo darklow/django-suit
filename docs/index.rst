@@ -3,11 +3,17 @@ Django Suit documentation
 
 **Modern theme for Django admin interface**.
 
-Django Suit is theme/skin/extension for `Django <http://www.djangoproject.com>`_ administration interface.
+Django Suit is alternative theme/skin/extension for `Django <http://www.djangoproject.com>`_ administration interface.
 
-Home page: http://djangosuit.com
+About
+=====
 
-Supports: Django 1.4/1.5c2
+* Home page: http://djangosuit.com
+* Demo: http://djangosuit.com/admin/
+* Licence and Pricing: http://djangosuit.com/pricing/
+* Github: https://github.com/darklow/django-suit
+* Changelog: `Changelog.rst <https://github.com/darklow/django-suit/blob/master/CHANGELOG.rst>`_
+* Supports: Django 1.4/1.5c2
 
 Installation
 ============
@@ -26,7 +32,7 @@ Installation
         'django.contrib.admin',
     )
 
-  **Important**: must be added before admin 'django.contrib.admin'
+  .. warning:: 'suit' must be added before 'django.contrib.admin'
 
 3. You also need to add *'django.core.context_processors.request'* to TEMPLATE_CONTEXT_PROCESSORS setting in your Django project *settings.py* file.::
 
