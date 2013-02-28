@@ -51,19 +51,17 @@ def field_contents_foreign_linked(admin_field):
                                               admin_field.model_admin)
     except ObjectDoesNotExist:
         fieldtype = None
+
     if isinstance(fieldtype, ForeignKey):
         try:
-            admin_url = get_admin_url(value)
+            url = admin_url(value)
         except NoReverseMatch:
-            admin_url = None
-        if admin_url:
-            displayed = u"<a href='%s'>%s</a>" % (admin_url, displayed)
+            url = None
+        if url:
+            displayed = u"<a href='%s'>%s</a>" % (url, displayed)
     return mark_safe(displayed)
 
 
-#adapted from http://djangosnippets.org/snippets/1916/
-def get_admin_url(obj):
-    content_type = ContentType.objects.get_for_model(obj.__class__)
-    return reverse(
-        "admin:%s_%s_change" % (content_type.app_label, content_type.model),
-        args=[obj.pk])
+def admin_url(obj):
+    info = (obj._meta.app_label, obj._meta.module_name)
+    return reverse("admin:%s_%s_change" % info, args=[obj.pk])
