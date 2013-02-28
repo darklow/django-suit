@@ -1,21 +1,20 @@
 {% extends "admin/base.html" %}
 {% load admin_static %}
 
-{# {#Additional <head> content here #}
+{# Additional <head> content here, some extra meta tags or favicon #}
 {#{% block extrahead %}#}
-{#  {{ block.super }}#}
-{#  <!-- . Example: --> #}
-{#  <script type="text/javascript" src="{% static 'js/my_project.js' %}"></script>#}
 {#{% endblock %}#}
 
 
 {# Additional CSS includes #}
 {#{% block extrastyle %}#}
+{#  <link rel="stylesheet" type="text/css" href="{% static 'css/my_project.css' %}" media="all">#}
 {#{% endblock %}#}
 
 
 {# Additional JS files in footer, right before </body> #}
 {#{% block extrajs %}#}
+{#  <script type="text/javascript" src="{% static 'js/my_project.js' %}"></script>#}
 {#{% endblock %}#}
 
 
@@ -32,5 +31,5 @@
 
 {# Footer copyright (right side) #}
 {#{% block copyright %}#}
-{# Copyright &copy; 2013 Client<br>Developed by <a href="http://yoursite.com" target="_blank">YourName</a> #}
+{#  Copyright &copy; 2013 Client<br>Developed by <a href="http://yoursite.com" target="_blank">YourName</a> #}
 {#{% endblock %}#}
