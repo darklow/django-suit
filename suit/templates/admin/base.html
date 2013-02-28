@@ -163,16 +163,17 @@
     </div>
   {% endblock %}
 
+  {% if not is_popup %}
   <!-- Sticky footer push -->
   <div id="push"></div>
+  {% endif %}
 
 </div>
 
 {% block footer %}
+  {% if not is_popup %}
   <div id="footer" class="footer">
-
     <div class="content">
-
       <div class="tools">
         {% block footer_links %}
           <a href="http://djangosuit.com/support/" target="_blank" class="icon"><i class="icon-question-sign"></i>Support</a>
@@ -196,7 +197,9 @@
         {% endwith %}
       {% endblock %}</div>
     </div>
-  </div>{% endblock %}
+  </div>
+  {% endif %}
+{% endblock %}
 
   <script src="{% static 'suit/bootstrap/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'suit/js/suit.js' %}"></script>
