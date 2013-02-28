@@ -22,6 +22,8 @@ Support
 
 Support and documentation: http://djangosuit.com/support/
 
+`Demo app <http://djangosuit.com/admin/>`_ repository is here: `django-suit-examples <https://github.com/darklow/django-suit-examples>`_
+
 
 Changelog
 =========
