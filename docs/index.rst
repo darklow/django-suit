@@ -99,11 +99,14 @@ Configuration sample you can use as a start::
 Customize templates
 ===================
 
-To customize footer links, copyright text and to add extra JS/CSS files - you must extend *base_site.html* template. To do this, copy this `base_site.html <https://github.com/darklow/django-suit/blob/master/suit/templates/admin/base_site.html>`_ template example file to your project's main application *template/admin/* directory and uncomment and edit the blocks you would like to extend.
+You must extend ``base_site.html`` template to customize footer links, copyright text or to add extra JS/CSS files. Example file is available on on `github <https://github.com/darklow/django-suit/blob/master/suit/templates/admin/base_site.html>`_.
 
-Alternatively you can copy *base_site.html*
-to any of template directories, which are defined in TEMPLATE_DIRS setting (if any). By default Django looks in every registered application *templates/* dir.
+Copy customized ``base_site.html`` template file to your project's main application ``template/admin/`` directory and un-comment and edit the blocks you would like to extend.
 
-In same way you can override any of Django Suit and admin templates. More about customizing project's templates, you can read in `Django Admin Tutorial <https://docs.djangoproject.com/en/dev/intro/tutorial02/#customizing-your-project-s-templates>`_
+Alternatively you can copy ``base_site.html`` to any of template directories, which are defined in ``TEMPLATE_DIRS`` setting (if any). By default Django looks in every registered application ``templates/`` dir.
+
+In the same way you can override any of Django Suit admin templates.
+
+More about customizing project's templates, you can read in `Django Admin Tutorial <https://docs.djangoproject.com/en/dev/intro/tutorial02/#customizing-your-project-s-templates>`_
 
 **More documentation is on its way...**
