@@ -156,6 +156,12 @@ class Menu(object):
 
             # Append real model link
             for model in self.all_models:
+                # Exclude models with no admin_url. This can happen, if user
+                # has no permissions, in such case Django sometimes provide
+                # model without an url
+                if 'admin_url' not in model:
+                    continue
+
                 if model_name == self.get_model_name(model, '.' in model_name):
                     new_models.append(model)
 
@@ -195,7 +201,7 @@ class Menu(object):
                 return
 
         url = self.reverse_url(link[1])
-        return {'name': link[0], 'admin_url':url}
+        return {'name': link[0], 'admin_url': url}
 
     def user_has_permission(self, perms):
         perms = perms if isinstance(perms, (list, tuple)) else (perms,)
