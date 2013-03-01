@@ -27,6 +27,8 @@ class EnclosedInput(TextInput):
         If value doesn't starts with html open sign "<", enclose in add-on tag
         """
         if value.find('<') != 0:
+            if value.find('icon-') == 0:
+                value = '<i class="%s"></i>' % value
             return u'<span class="add-on">%s</span>' % value
         return value
 
