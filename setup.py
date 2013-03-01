@@ -9,6 +9,7 @@ setup(
     author_email='info@djangosuit.com',
     url='http://djangosuit.com',
     packages=['suit', 'suit.templatetags'],
+    zip_safe=False,
     include_package_data=True,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
