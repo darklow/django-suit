@@ -220,6 +220,9 @@
             text-align: center;
             width: 40px;
         }
+        td .help-block {
+            margin: 0;
+        }
     }
 }
 
@@ -228,5 +231,38 @@
     text-decoration: underline;
     &:hover {
         text-decoration: none;
+    }
+}
+
+
+/* TabularInlines Sortables */
+.inline-sortable {
+    white-space: nowrap;
+    a {
+        display: inline-block;
+        padding: 2px 6px 2px 2px;
+        &:last-child {
+            padding: 0;
+        }
+        &:hover {
+            .icon-alpha5 {
+                opacity: .5;
+            }
+        }
+    }
+}
+.selected td {
+    .inline-sortable a i, .inline-sortable a:hover i {
+        opacity: 1;
+    }
+}
+tr:first-child td .inline-sortable .sortable-up {
+    opacity: .15;
+    cursor: default;
+}
+tr.form-row:nth-last-child(3), #result_list tr:last-child {
+    td .inline-sortable .sortable-down {
+        opacity: .15;
+        cursor: default;
     }
 }
