@@ -1,3 +1,22 @@
+// Register callbacks to perform after inline has been added
+SuitAfterInline = function () {
+    var functions = {};
+    var register = function (fn_name, fn_callback) {
+        functions[fn_name] = fn_callback;
+    };
+
+    var run = function (inline_prefix, row) {
+        for (var fn_name in functions) {
+            functions[fn_name](inline_prefix, row);
+        }
+    };
+
+    return {
+        register: register,
+        run: run
+    };
+}();
+
 /**
  * Fixed submit buttons.
  */
