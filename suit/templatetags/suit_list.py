@@ -4,7 +4,10 @@ from django.template.loader import get_template
 from django.utils.safestring import mark_safe
 from django.contrib.admin.views.main import ALL_VAR, PAGE_VAR
 from django.utils.html import escape
-from urlparse import parse_qs
+try:
+    from urlparse import parse_qs
+except ImportError:
+    from urllib.parse import parse_qs
 
 
 register = template.Library()

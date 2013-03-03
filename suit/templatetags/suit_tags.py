@@ -6,6 +6,7 @@ from django.core.urlresolvers import NoReverseMatch, reverse
 from django.db.models import ForeignKey
 from django.template.defaulttags import NowNode
 from django.utils.safestring import mark_safe
+from django.utils import six
 from suit import get_config
 
 register = template.Library()
@@ -14,7 +15,7 @@ register = template.Library()
 @register.filter(name='suit_conf')
 def suit_conf(name):
     value = get_config(name)
-    return mark_safe(value) if isinstance(value, basestring) else value
+    return mark_safe(value) if isinstance(value, six.string_types) else value
 
 
 @register.tag
