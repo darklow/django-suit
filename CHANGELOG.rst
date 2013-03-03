@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v0.1.3 (2013-03-03)
+-------------------------------------------------------------
+
+* [Feature] `Sortables <http://django-suit.readthedocs.org/en/latest/sortables.html>`_ for change list, mptt-tree list and tabular inlines
+* [Feature] `EnclosedInput widget <http://django-suit.readthedocs.org/en/latest/widgets.html#enclosedinput>`_ for Twitter Bootstrap appended/prepended inputs
+* [Feature] `HTML5Input <http://django-suit.readthedocs.org/en/latest/widgets.html#html5input>`_ widget
+* [Documentation] Added detailed docs and examples on sortables and widgets
+* [Fix] Minor bugs and tweaks. See commit log for full changes
+
+
 v0.1.2 (2013-02-27)
 -------------------------------------------------------------
 
