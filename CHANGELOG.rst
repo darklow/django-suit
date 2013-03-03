@@ -4,8 +4,8 @@ Changelog
 v0.1.3 (2013-03-03)
 -------------------------------------------------------------
 
-* [Feature] `Sortables <http://django-suit.readthedocs.org/en/latest/sortables.html>`_ for change list, mptt-tree list and tabular inlines
-* [Feature] `EnclosedInput widget <http://django-suit.readthedocs.org/en/latest/widgets.html#enclosedinput>`_ for Twitter Bootstrap appended/prepended inputs
+* [Feature] `Sortables <http://django-suit.readthedocs.org/en/latest/sortables.html>`_ for `change list <http://djangosuit.com/admin/examples/continent/>`_, `mptt-tree <http://djangosuit.com/admin/examples/category/>`_ list and `tabular inlines <http://djangosuit.com/admin/examples/continent/9/>`_.
+* [Feature] `EnclosedInput widget <http://django-suit.readthedocs.org/en/latest/widgets.html#enclosedinput>`_ for Twitter Bootstrap appended/prepended inputs. `Example <http://djangosuit.com/admin/examples/city/5/>`_
 * [Feature] `HTML5Input <http://django-suit.readthedocs.org/en/latest/widgets.html#html5input>`_ widget
 * [Documentation] Added detailed docs and examples on sortables and widgets
 * [Fix] Minor bugs and tweaks. See commit log for full changes
