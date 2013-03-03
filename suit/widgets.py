@@ -6,7 +6,22 @@ from django.utils.translation import ugettext as _
 
 
 class NumberInput(TextInput):
+    """
+    HTML5 Number input
+    Left for backwards compatibility
+    """
     input_type = 'number'
+
+
+class HTML5Input(TextInput):
+    """
+    Supports any HTML5 input
+    http://www.w3schools.com/html/html5_form_input_types.asp
+    """
+
+    def __init__(self, attrs=None, input_type=None):
+        self.input_type = input_type
+        super(HTML5Input, self).__init__(attrs)
 
 
 class EnclosedInput(TextInput):
