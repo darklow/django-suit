@@ -2,38 +2,74 @@
  * List sortables
  */
 $.fn.suit_list_sortable = function () {
-
     var $inputs = $(this);
     if (!$inputs.length)
         return;
 
-    var perform_move = function ($arrow, $row) {
-        if ($arrow.data('dir') == 'down') {
-            var $next = $row.next();
-            if ($next.is(':visible') && $next.length) {
-                $('.selected').removeClass('selected');
-                $row.insertAfter($next).addClass('selected')
+    // Detect if this is normal or mptt table
+    var mptt_table = $inputs.first().closest('table').hasClass('table-mptt');
+
+    function perform_move($arrow, $row) {
+        var $next, $prev;
+        if (mptt_table) {
+            function get_padding($tr) {
+                return parseInt($tr.find('th:first').css('padding-left'));
+            }
+
+            function find_with_children($tr) {
+                var padding = get_padding($tr);
+                return $tr.nextUntil(function () {
+                    return get_padding($(this)) <= padding
+                }).andSelf();
+            }
+
+            $('.selected').removeClass('selected');
+            var padding = get_padding($row);
+            var $rows_to_move = find_with_children($row);
+            if ($arrow.data('dir') === 'down') {
+                $next = $rows_to_move.last().next();
+                if ($next.length && get_padding($next) === padding) {
+                    var $after = find_with_children($next).last();
+                    if ($after.length) {
+                        $rows_to_move.insertAfter($after).addClass('selected');
+                    }
+                }
+            } else {
+                $prev = $row.prevUntil(function () {
+                    return get_padding($(this)) <= padding
+                }).andSelf().first().prev();
+                if ($prev.length && get_padding($prev) === padding) {
+                    $rows_to_move.insertBefore($prev).addClass('selected')
+                }
             }
         } else {
-            var $prev = $row.prev();
-            if ($prev.is(':visible') && $prev.length) {
-                $('.selected').removeClass('selected');
-                $row.insertBefore($prev).addClass('selected')
+            $('.selected').removeClass('selected');
+            if ($arrow.data('dir') === 'down') {
+                $next = $row.next();
+                if ($next.is(':visible') && $next.length) {
+                    $row.insertAfter($next).addClass('selected')
+                }
+            } else {
+                $prev = $row.prev();
+                if ($prev.is(':visible') && $prev.length) {
+                    $row.insertBefore($prev).addClass('selected')
+                }
             }
         }
-    };
+    }
 
-    var on_arrow_click = function (e) {
+    function on_arrow_click(e) {
         perform_move($(this), $(this).closest('tr'));
         e.preventDefault();
-    };
+    }
 
-    var create_link = function (text, direction) {
+    function create_link(text, direction) {
         return $('<a/>').attr('href', '#')
             .addClass('sortable sortable-' + direction)
             .attr('data-dir', direction).html(text)
             .click(on_arrow_click);
-    };
+    }
+
     $inputs.each(function () {
         var $inline_sortable = $('<div class="inline-sortable"/>');
         var icon = '<i class="icon-arrow-up icon-alpha5"></i>';
@@ -61,16 +97,12 @@ $.fn.suit_list_sortable = function () {
         });
     }
 
-    var afterInlineAdd = function (prefix, row) {
+    SuitAfterInline.register('bind_sortable_arrows', function (prefix, row) {
         $(row).find('.sortable').click(on_arrow_click);
-    };
-    SuitAfterInline.register('bind_sortable_arrows', afterInlineAdd)
+    })
 };
 
 
 $(function () {
-
-    // List sortables
     $('.suit-sortable').suit_list_sortable();
-
 });

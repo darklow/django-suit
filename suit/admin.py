@@ -1,10 +1,9 @@
 from django.contrib.admin import ModelAdmin
-from django.contrib.admin.views.main import ChangeList, ORDER_VAR
-from django.forms import ModelForm, TextInput, HiddenInput
-from inspect import stack
-from pprint import pprint
-from suit.widgets import NumberInput
+from django.contrib.admin.views.main import ChangeList
+from django.forms import ModelForm
 from django.contrib import admin
+from django.db import models
+from suit.widgets import NumberInput
 
 
 class SortableModelAdminBase(object):
@@ -12,6 +11,7 @@ class SortableModelAdminBase(object):
     Base class for SortableTabularInline and SortableModelAdmin
     """
     sortable = 'order'
+
     class Media:
         js = ('suit/js/sortables.js',)
 
@@ -20,6 +20,7 @@ class SortableListForm(ModelForm):
     """
     Just Meta holder class
     """
+
     class Meta:
         widgets = {
             'order': NumberInput(
@@ -93,11 +94,20 @@ class SortableModelAdmin(SortableModelAdminBase, ModelAdmin):
         kwargs.setdefault('form', self._form)
         return super(SortableModelAdmin, self).get_changelist_form(request,
                                                                    **kwargs)
-    def get_changelist_formset(self, request, **kwargs):
-        formset = super(SortableModelAdmin, self).get_changelist_formset(
-            request, **kwargs)
-        return formset
 
     def get_changelist(self, request, **kwargs):
         return SortableChangeList
+
+    def save_model(self, request, obj, form, change):
+        if not obj.pk:
+            max_order = obj.__class__.objects.aggregate(
+                models.Max(self.sortable))
+            try:
+                next_order = max_order['%s__max' % self.sortable] + 1
+            except TypeError:
+                next_order = 1
+            setattr(obj, self.sortable, next_order)
+        super(SortableModelAdmin, self).save_model(request, obj, form, change)
+
+
 
