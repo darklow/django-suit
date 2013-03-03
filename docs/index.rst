@@ -91,7 +91,7 @@ There are handy widgets included in Django Suit.
 Sortables
 =========
 
-Sortables ar handy tools for ordering different lists
+Sortables are handy admin tools for ordering different lists.
 
 .. toctree::
    :maxdepth: 3

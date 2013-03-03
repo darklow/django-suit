@@ -10,15 +10,15 @@ Currently Django Suit supports three types of sortables:
 Limitations
 ===========
 
-Since sortables are pure JavaScript solution, there are known limitations:
+Since sortables are based on JavaScript solution, there are known limitations:
 
-1. They doesn't work with pagination
-2. You won't be able to use different order other than by sortable parameter
+1. They doesn't work with pagination.
+2. You won't be able to use different list order other, than by sortable parameter.
 
 Under the hood
 ==============
 
-Widgets add sortable parameter to list_editable fields as simple number inputs. Afterwards JavaScript utils replaces these editable inputs with arrows. Order is not saved instantly, but only when user saves form, which is very handy - user can do sorting first and afterwards save it or cancel if changed mind.
+Widgets add sortable parameter to list_editable fields as simple number inputs. Afterwards JavaScript utils replaces these editable inputs with arrows. Order is not saved instantly, but only when user saves form, which is very handy - user can do sorting first and afterwards save it or cancel if changed his mind.
 
 
 Change list sortable

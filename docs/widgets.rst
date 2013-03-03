@@ -48,7 +48,7 @@ HTML5 number input ``type="number"``::
 HTML5Input
 ==========
 
-Specify `input_type` and use any of `HTML5 input types <http://www.w3schools.com/html/html5_form_input_types.asp>`_. You can see some HTML5 input examples in Django Suit Demo app in `KitchenSink forms <http://djangosuit.com/admin/examples/kitchensink/2/>`_::
+Specify ``input_type`` and use any of `HTML5 input types <http://www.w3schools.com/html/html5_form_input_types.asp>`_. You can see some HTML5 input examples in Django Suit Demo app in `KitchenSink forms <http://djangosuit.com/admin/examples/kitchensink/2/>`_::
 
 
   from django.forms import ModelForm
