@@ -18,13 +18,13 @@ def paginator_number(cl, i):
     Generates an individual page index link in a paginated list.
     """
     if i == DOT:
-        return u'<li class="disabled"><a href="#" onclick="return false;">..' \
-               u'.</a></li>'
+        return '<li class="disabled"><a href="#" onclick="return false;">..' \
+               '.</a></li>'
     elif i == cl.page_num:
         return mark_safe(
-            u'<li class="active"><a href="">%d</a></li> ' % (i + 1))
+            '<li class="active"><a href="">%d</a></li> ' % (i + 1))
     else:
-        return mark_safe(u'<li><a href="%s"%s>%d</a></li> ' % (
+        return mark_safe('<li><a href="%s"%s>%d</a></li> ' % (
             escape(cl.get_query_string({PAGE_VAR: i})),
             (i == cl.paginator.num_pages - 1 and ' class="end"' or ''),
             i + 1))
@@ -49,7 +49,7 @@ def pagination(cl):
     paginator, page_num = cl.paginator, cl.page_num
 
     pagination_required = (not cl.show_all or not cl.can_show_all) \
-                           and cl.multi_page
+        and cl.multi_page
     if not pagination_required:
         page_range = []
     else:
@@ -110,7 +110,7 @@ def suit_list_filter_select(cl, spec):
                 value = query_parts[key][0]
                 matched_key = key
             elif key.startswith(
-                    field_key + '__') or '__' + field_key + '__' in key:
+                            field_key + '__') or '__' + field_key + '__' in key:
                 value = query_parts[key][0]
                 matched_key = key
 
