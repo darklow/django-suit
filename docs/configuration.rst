@@ -11,13 +11,47 @@ You can customize Django Suit behaviour by adding ``SUIT_CONFIG`` configuration 
 
 Default values are the ones specified in examples.
 
+Full example
+------------
+
+Configuration sample you can use as a start::
+
+  # Django Suit configuration example
+  SUIT_CONFIG = {
+      # header
+      # 'ADMIN_NAME': 'Django Suit',
+      # 'HEADER_DATE_FORMAT': 'l, j. F Y',
+      # 'HEADER_TIME_FORMAT': 'H:i',
+
+      # forms
+      # 'SHOW_REQUIRED_ASTERISK': True,  # Default True
+      # 'CONFIRM_UNSAVED_CHANGES': True, # Default True
+
+      # menu
+      # 'SEARCH_URL': '/admin/auth/user/',
+      'MENU_ICONS': {
+          'sites': 'icon-leaf',
+          'auth': 'icon-lock',
+      },
+      # 'MENU_OPEN_FIRST_CHILD': True, # Default True
+      # 'MENU_EXCLUDE': ('auth.group',),
+      # 'MENU_ORDER': (
+      #     ('sites',),
+      #     ('auth', ('user','group')),
+      # ),
+
+      # misc
+      # 'LIST_PER_PAGE': 15
+  }
+
+
 Header
-------
+======
 
 Header related parameters
 
 ADMIN_NAME
-^^^^^^^^^^
+----------
 
 Admin name that will appear in header <title> tags and in footer::
 
@@ -27,9 +61,9 @@ Admin name that will appear in header <title> tags and in footer::
 
 
 HEADER_DATE_FORMAT
-^^^^^^^^^^^^^^^^^^
+------------------
 HEADER_TIME_FORMAT
-^^^^^^^^^^^^^^^^^^
+------------------
 
 Header date and time formats. Formatting according to `Django date templatefilter format <https://docs.djangoproject.com/en/dev/ref/templates/builtins/#std:templatefilter-date>`_. Default: as specified in example::
 
@@ -39,10 +73,10 @@ Header date and time formats. Formatting according to `Django date templatefilte
   }
 
 Forms
------
+=====
 
 SHOW_REQUIRED_ASTERISK
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 Automatically adds asterisk symbol ``*`` to the end of every required field label::
 
@@ -51,7 +85,7 @@ Automatically adds asterisk symbol ``*`` to the end of every required field labe
   }
 
 CONFIRM_UNSAVED_CHANGES
-^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 Alert will be shown, when you'll try to leave page, without saving changed form first::
 
@@ -61,10 +95,10 @@ Alert will be shown, when you'll try to leave page, without saving changed form 
 
 
 Menu
------
+====
 
 SEARCH_URL
-^^^^^^^^^^
+----------
 
 We have big plans for this field in the future, by making it global search field. However right now this field works only as a search redirect to any other urls of your admin::
 
@@ -79,7 +113,7 @@ We have big plans for this field in the future, by making it global search field
   }
 
 MENU_OPEN_FIRST_CHILD
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 Automatically replaces app's (parent link) url with url of first model's url (child)::
 
@@ -89,7 +123,7 @@ Automatically replaces app's (parent link) url with url of first model's url (ch
 
 
 MENU_ICONS
-^^^^^^^^^^
+----------
 
 Set app icons. Use any of Twitter Bootstrap `icon classes <http://twitter.github.com/bootstrap/base-css.html#icons>`_ or add your own. Twitter Bootstrap icons are provided by `Glyphicons <http://glyphicons.com/>`_::
 
@@ -101,7 +135,7 @@ Set app icons. Use any of Twitter Bootstrap `icon classes <http://twitter.github
   }
 
 MENU_EXCLUDE
-^^^^^^^^^^^^
+------------
 
 Exclude any of apps or models. You can exclude whole app or just one model from app::
 
@@ -111,7 +145,7 @@ Exclude any of apps or models. You can exclude whole app or just one model from 
 
 
 MENU_ORDER
-^^^^^^^^^^
+----------
 
 Most powerful of menu parameters. You can reorder, cross link, exclude, and even define custom menu items and child links. Here is full example of ``MENU_ORDER`` from simple existing app reorder to defining custom menu items::
 
@@ -147,10 +181,10 @@ Permissions are verified using `user.has_perms() <https://docs.djangoproject.com
 
 
 List
------
+====
 
 LIST_PER_PAGE
-^^^^^^^^^^^^^
+-------------
 
 Set change_list view ``list_per_page`` parameter globally for whole admin. You can still override this parameter in any ModelAdmin class::
 

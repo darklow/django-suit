@@ -49,72 +49,62 @@ Installation
 Deployment
 ----------
 
-Deployment with Django Suit should not be different than any other Django project. If you have problems with deployment on production, read `Django docs on wsgi <https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/modwsgi/>`_ first.
+Deployment with Django Suit should not be different than any other Django application. If you have problems with deployment on production, read `Django docs on wsgi <https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/modwsgi/>`_ first.
 
 .. note:: If you deploy your project with Apache or ``Debug=False`` don't forget to run ``./manage.py collectstatic``
 
 Configuration
 =============
 
-You can customize Django Suit behaviour by adding ``SUIT_CONFIG`` configuration variable to your Django project ``settings.py`` file.::
-
-  SUIT_CONFIG = {
-      'PARAM': VALUE
-      'PARAM2': VALUE2
-      ...
-  }
-
-Here are all the possible configuration parameters.
+You can customize Django Suit behaviour by adding ``SUIT_CONFIG`` configuration variable to your Django project ``settings.py`` file.
 
 .. toctree::
    :maxdepth: 3
 
    configuration
 
-Configuration sample you can use as a start::
 
-  # Django Suit configuration example
-  SUIT_CONFIG = {
-      # header
-      # 'ADMIN_NAME': 'Django Suit',
-      # 'HEADER_DATE_FORMAT': 'l, j. F Y',
-      # 'HEADER_TIME_FORMAT': 'H:i',
+Template customization
+======================
 
-      # forms
-      # 'SHOW_REQUIRED_ASTERISK': True,  # Default True
-      # 'CONFIRM_UNSAVED_CHANGES': True, # Default True
-
-      # menu
-      # 'SEARCH_URL': '/admin/auth/user/',
-      'MENU_ICONS': {
-          'sites': 'icon-leaf',
-          'auth': 'icon-lock',
-      },
-      # 'MENU_OPEN_FIRST_CHILD': True, # Default True
-      # 'MENU_EXCLUDE': ('auth.group',),
-      # 'MENU_ORDER': (
-      #     ('sites',),
-      #     ('auth', ('user','group')),
-      # ),
-
-      # misc
-      # 'LIST_PER_PAGE': 15
-  }
-
-
-
-
-Customize templates
-===================
-
-You must extend ``base_site.html`` template to customize footer links, copyright text or to add extra JS/CSS files. Example file is available on on `github <https://github.com/darklow/django-suit/blob/master/suit/templates/admin/base_site.html>`_.
+You must extend ``base_site.html`` template to customize footer links, copyright text or to add extra JS/CSS files. Example file is available on `github <https://github.com/darklow/django-suit/blob/master/suit/templates/admin/base_site.html>`_.
 
 Copy customized ``base_site.html`` template file to your project's main application ``template/admin/`` directory and un-comment and edit the blocks you would like to extend.
 
 Alternatively you can copy ``base_site.html`` to any of template directories, which are defined in ``TEMPLATE_DIRS`` setting (if any). By default Django looks in every registered application ``templates/`` dir.
 
-In the same way you can override any of Django Suit admin templates.
+In the same way you can override any of Django Suit admin templates. More about customizing project's templates, you can read in `Django Admin Tutorial <https://docs.djangoproject.com/en/dev/intro/tutorial02/#customizing-your-project-s-templates>`_
 
-More about customizing project's templates, you can read in `Django Admin Tutorial <https://docs.djangoproject.com/en/dev/intro/tutorial02/#customizing-your-project-s-templates>`_
 
-**More documentation is on its way...**
+Widgets
+=======
+
+There are handy widgets included in Django Suit.
+
+.. toctree::
+   :maxdepth: 3
+
+   widgets
+
+
+
+Sortables
+=========
+
+Sortables ar handy tools for ordering different lists
+
+.. toctree::
+   :maxdepth: 3
+
+   sortables
+
+
+Examples
+========
+
+Besides documentation examples, Django Suit `demo application <http://djangosuit.com/admin/>`_ source code is also available on separate github repository: `django-suit-examples <https://github.com/darklow/django-suit-examples>`_. If you see anything in demo application, you can always go to this repository and see implementation and code in one of ``models.py`` or ``admin.py`` files
+
+Contribution
+============
+
+There will be separate "django-suit-contrib" package available soon with full Django project setup and tests. However if you already are willing to fork, report a bug or suggest a feature, you can do it in our `main github repository <https://github.com/darklow/django-suit>`_.
