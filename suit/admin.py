@@ -50,6 +50,8 @@ class SortableTabularInline(SortableModelAdminBase, admin.TabularInline):
         if self.fields and self.sortable not in self.fields:
             self.fields = list(self.fields) + [self.sortable]
 
+        if not getattr(self.form, 'Meta', None):
+            self.form.Meta = SortableListForm.Meta
         self.form.Meta.widgets[self.sortable] = SortableListForm.Meta.widgets[
             'order']
 
