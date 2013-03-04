@@ -78,6 +78,18 @@ $.fn.suit_list_sortable = function () {
         $inline_sortable.append(create_link(icon.replace('-up', '-down'), 'down'));
     });
 
+    // Filters out unchanged selects
+    function filter_unchanged(i, input) {
+        if (input.type == 'select-one' || input.type == 'select-multiple') {
+            for (var j = 0; j < input.options.length; j++) {
+                if (input.options[j].selected == input.options[j].defaultSelected) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     // Update input count right before submit
     if ($inputs && $inputs.length) {
         var $last_input = $inputs.last();
@@ -89,7 +101,7 @@ $.fn.suit_list_sortable = function () {
                 var fieldset_id = $input.attr('name').split('-')[0];
                 // Check if any of new dynamic block values has been added
                 var $set_block = $input.closest('.dynamic-' + fieldset_id);
-                if (!$set_block.length || $set_block.find(":input[value!=''][type!='hidden']").serialize()) {
+                if (!$set_block.length || $set_block.find(":input[value!=''][type!='hidden']").filter(filter_unchanged).serialize()) {
                     value = i++;
                     $input.val(value);
                 }
