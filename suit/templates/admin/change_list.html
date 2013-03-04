@@ -56,26 +56,31 @@
   <div id="content-main">
 
     <div class="inner-center-column">
-      {% block object-tools %}
-        {% if has_add_permission %}
-          <div class="object-tools">
-            {% block object-tools-items %}
-              <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-success">
-                <i class="icon-plus-sign icon-white"></i>&nbsp;
-                {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
-              </a>
-            {% endblock %}
-          </div>
-        {% endif %}
-      {% endblock %}
-      {% if cl.formset.errors %}
-        <p class="errornote">
-          {% blocktrans count cl.formset.errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
-        </p>
-        {{ cl.formset.non_form_errors }}
-      {% endif %}
       <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
-        {% block search %}{% search_form cl %}{% endblock %}
+
+        <div class="toolbar-content">
+          {% block object-tools %}
+            {% if has_add_permission %}
+              <div class="object-tools">
+                {% block object-tools-items %}
+                  <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-success">
+                    <i class="icon-plus-sign icon-white"></i>&nbsp;
+                    {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+                  </a>
+                {% endblock %}
+              </div>
+            {% endif %}
+          {% endblock %}
+
+          {% block search %}{% search_form cl %}{% endblock %}
+        </div>
+
+        {% if cl.formset.errors %}
+          <div class="alert alert-error errornote">
+            {% blocktrans count cl.formset.errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+          </div>
+          {{ cl.formset.non_form_errors }}
+        {% endif %}
 
         <form id="changelist-form" action="" method="post"
                 {% if cl.formset.is_multipart %}
