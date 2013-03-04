@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.1.4 (2013-03-04)
+-------------------------------------------------------------
+
+* [Fix] Sortables improvements and fixes #12, #13, #14
+* [Fix] Python3 related fixes #11 [Thanks to @coagulant]
+* [Fix] Firefox floating problem for list "New" button #15
+
+
 v0.1.3 (2013-03-03)
 -------------------------------------------------------------
 
