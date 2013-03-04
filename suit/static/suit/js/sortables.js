@@ -84,9 +84,9 @@ $.fn.suit_list_sortable = function () {
         var selector = $(this).selector;
         $($last_input[0].form).submit(function (e) {
             var i = 0;
-            var fieldset_id = $last_input.attr('name').split('-')[0];
             $(selector).each(function () {
                 var $input = $(this);
+                var fieldset_id = $input.attr('name').split('-')[0];
                 // Check if any of new dynamic block values has been added
                 var $set_block = $input.closest('.dynamic-' + fieldset_id);
                 if (!$set_block.length || $set_block.find(":input[value!=''][type!='hidden']").serialize()) {
