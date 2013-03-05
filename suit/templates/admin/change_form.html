@@ -108,8 +108,6 @@
         <div class="tab-content tab-content-main">
           {% if is_popup %}
             <input type="hidden" name="_popup" value="1"/>{% endif %}
-          {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}
-          {% endblock %}{% endif %}
           {% if errors %}
             <div class="alert alert-error">
               <strong>{% trans 'error'|capfirst %}!</strong>
