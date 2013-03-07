@@ -104,7 +104,8 @@ Examples
 
 Besides documentation examples, Django Suit `demo application <http://djangosuit.com/admin/>`_ source code is also available on separate github repository: `django-suit-examples <https://github.com/darklow/django-suit-examples>`_. If you see anything in demo application, you can always go to this repository and see implementation and code in one of ``models.py`` or ``admin.py`` files
 
-Contribution
+
+Contributing
 ============
 
-There will be separate "django-suit-contrib" package available soon with full Django project setup and tests. However if you already are willing to fork, report a bug or suggest a feature, you can do it in our `main github repository <https://github.com/darklow/django-suit>`_.
+Separate `django-suit-contrib <https://github.com/darklow/django-suit-contrib>`_ package is available with full Django Suit development project setup, tests and instructions.
