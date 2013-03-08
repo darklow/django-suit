@@ -7,7 +7,7 @@ from django.db.models import ForeignKey
 from django.template.defaulttags import NowNode
 from django.utils.safestring import mark_safe
 from django.utils import six
-from suit import get_config
+from suit.config import get_config
 
 register = template.Library()
 

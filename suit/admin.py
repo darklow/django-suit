@@ -1,3 +1,4 @@
+import suit.config
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin.views.main import ChangeList
 from django.forms import ModelForm

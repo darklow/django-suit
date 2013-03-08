@@ -1,9 +1,8 @@
 from setuptools import setup
-from suit import VERSION
 
 setup(
     name='django-suit',
-    version=VERSION,
+    version=__import__('suit').VERSION,
     description='Modern theme for Django admin interface.',
     author='Kaspars Sprogis (darklow)',
     author_email='info@djangosuit.com',
