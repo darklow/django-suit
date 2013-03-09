@@ -57,7 +57,7 @@ class EnclosedInput(TextInput):
         if value.find('<') != 0:
             if value.find('icon-') == 0:
                 value = '<i class="%s"></i>' % value
-            return u'<span class="add-on">%s</span>' % value
+            return '<span class="add-on">%s</span>' % value
         return value
 
     def render(self, name, value, attrs=None):
@@ -66,47 +66,50 @@ class EnclosedInput(TextInput):
         if self.prepend:
             div_classes.append('input-prepend')
             self.prepend = self.enclose_value(self.prepend)
-            output = u''.join((self.prepend, output))
+            output = ''.join((self.prepend, output))
         if self.append:
             div_classes.append('input-append')
             self.append = self.enclose_value(self.append)
-            output = u''.join((output, self.append))
+            output = ''.join((output, self.append))
 
         return mark_safe(
-            u'<div class="%s">%s</div>' % (' '.join(div_classes), output))
+            '<div class="%s">%s</div>' % (' '.join(div_classes), output))
 
 #
 # Original date widgets with addition html
 #
 class SuitDateWidget(AdminDateWidget):
     def __init__(self, attrs=None, format=None):
-        final_attrs = {'class': 'vDateField input-small',
-                       'placeholder': _('Date:')[:-1]}
-        if attrs is not None:
-            final_attrs.update(attrs)
-        super(SuitDateWidget, self).__init__(attrs=final_attrs, format=format)
+        attrs = attrs or {}
+        new_attrs = {'placeholder': _('Date:')[:-1]}
+        new_attrs.update(attrs)
+        new_attrs['class'] = 'vDateField input-small %s' % (
+            attrs['class'] if 'class' in attrs else '')
+
+        super(SuitDateWidget, self).__init__(attrs=new_attrs, format=format)
 
     def render(self, name, value, attrs=None):
         output = super(SuitDateWidget, self).render(name, value, attrs)
         return mark_safe(
-            u'<div class="input-append suit-date">%s<span '
-            u'class="add-on"><i class="icon-calendar"></i></span></div>' %
+            '<div class="input-append suit-date">%s<span '
+            'class="add-on"><i class="icon-calendar"></i></span></div>' %
             output)
 
 
 class SuitTimeWidget(AdminTimeWidget):
     def __init__(self, attrs=None, format=None):
-        final_attrs = {'class': 'vTimeField input-small',
-                       'placeholder': _('Time:')[:-1]}
-        if attrs is not None:
-            final_attrs.update(attrs)
-        super(SuitTimeWidget, self).__init__(attrs=final_attrs, format=format)
+        attrs = attrs or {}
+        new_attrs = {'placeholder': _('Time:')[:-1]}
+        new_attrs.update(attrs)
+        new_attrs['class'] = 'vTimeField input-small %s' % (
+            attrs['class'] if 'class' in attrs else '')
+        super(SuitTimeWidget, self).__init__(attrs=new_attrs, format=format)
 
     def render(self, name, value, attrs=None):
         output = super(SuitTimeWidget, self).render(name, value, attrs)
         return mark_safe(
-            u'<div class="input-append suit-date suit-time">%s<span '
-            u'class="add-on"><i class="icon-time"></i></span></div>' %
+            '<div class="input-append suit-date suit-time">%s<span '
+            'class="add-on"><i class="icon-time"></i></span></div>' %
             output)
 
 
@@ -120,5 +123,5 @@ class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
         forms.MultiWidget.__init__(self, widgets, attrs)
 
     def format_output(self, rendered_widgets):
-        out_tpl = u'<div class="datetime">%s %s</div>'
+        out_tpl = '<div class="datetime">%s %s</div>'
         return mark_safe(out_tpl % (rendered_widgets[0], rendered_widgets[1]))
