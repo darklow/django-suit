@@ -87,7 +87,7 @@ class AutosizedTextarea(Textarea):
         new_attrs = {'rows': 2}
         new_attrs.update(attrs)
         new_attrs['class'] = 'autosize %s' % (
-            attrs['class'] if 'class' in attrs else 'span4')
+            attrs['class'] if 'class' in attrs else '')
         super(AutosizedTextarea, self).__init__(new_attrs)
 
     @property

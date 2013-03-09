@@ -131,7 +131,7 @@ class WidgetsTestCase(TestCase):
     def test_AutosizedTextarea_output(self):
         txt = AutosizedTextarea()
         self.assertEqual(txt.render('txt', ''), (
-            '<textarea class="autosize span4" cols="40" name="txt" '
+            '<textarea class="autosize " cols="40" name="txt" '
             'rows="2">\r\n</textarea><script type="text/javascript">$('
             '\'#id_txt\').autosize();</script>'))
 
