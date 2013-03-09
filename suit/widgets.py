@@ -1,5 +1,5 @@
 from django.contrib.admin.widgets import AdminTimeWidget, AdminDateWidget
-from django.forms import TextInput
+from django.forms import TextInput, Select
 from django.utils.safestring import mark_safe
 from django import forms
 from django.utils.translation import ugettext as _
@@ -22,6 +22,19 @@ class HTML5Input(TextInput):
     def __init__(self, attrs=None, input_type=None):
         self.input_type = input_type
         super(HTML5Input, self).__init__(attrs)
+
+
+#
+class LinkedSelect(Select):
+    """
+    Linked select - Adds link to foreign item, when used with foreign key field
+    """
+
+    def __init__(self, attrs=None, choices=()):
+        attrs = attrs or {}
+        attrs.update({'class': 'linked-select %s' %
+                               (attrs['class'] if 'class' in attrs else '')})
+        super(LinkedSelect, self).__init__(attrs, choices)
 
 
 class EnclosedInput(TextInput):
