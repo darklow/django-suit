@@ -69,23 +69,25 @@ class ConfigWithModelsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         book = self.create_book()
 
         response = self.client.get(admin_url(book))
-        self.assertContains(response, 'confirmExitIfModified')
+        content_if_true = 'confirmExitIfModified'
+        self.assertContains(response, content_if_true)
 
         # Test without unsaved changes
         settings.SUIT_CONFIG['CONFIRM_UNSAVED_CHANGES'] = False
         response = self.client.get(admin_url(book))
-        self.assertNotContains(response, 'confirmExitIfModified')
+        self.assertNotContains(response, content_if_true)
 
 
-    def test_confirm_unsaved_changes(self):
+    def test_show_required_asterisk(self):
         self.login()
-        settings.SUIT_CONFIG['CONFIRM_UNSAVED_CHANGES'] = True
+        settings.SUIT_CONFIG['SHOW_REQUIRED_ASTERISK'] = True
         book = self.create_book()
 
         response = self.client.get(admin_url(book))
-        self.assertContains(response, 'confirmExitIfModified')
+        content_if_true = ".required:after { content: '*';"
+        self.assertContains(response, content_if_true)
 
         # Test without confirm
-        settings.SUIT_CONFIG['CONFIRM_UNSAVED_CHANGES'] = False
+        settings.SUIT_CONFIG['SHOW_REQUIRED_ASTERISK'] = True
         response = self.client.get(admin_url(book))
-        self.assertNotContains(response, 'confirmExitIfModified')
+        self.assertNotContains(response, content_if_true)
