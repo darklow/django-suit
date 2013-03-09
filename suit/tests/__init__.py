@@ -1,5 +1,6 @@
-from suit.tests.templatetags import GetMenuTestCase
 from django.test.simple import DjangoTestSuiteRunner
+from suit.tests.templatetags.suit_tags import SuitTagsTestCase
+from suit.tests.config import ConfigTestCase, ConfigWithModelsTestCase
 
 
 class NoDbTestRunner(DjangoTestSuiteRunner):
