@@ -1,7 +1,9 @@
 from django.utils.unittest.case import TestCase
 from suit.widgets import LinkedSelect, HTML5Input, EnclosedInput, \
-    NumberInput, SuitDateWidget, SuitTimeWidget, SuitSplitDateTimeWidget
+    NumberInput, SuitDateWidget, SuitTimeWidget, SuitSplitDateTimeWidget, \
+    AutosizedTextarea
 from django.utils.translation import ugettext as _
+from django.contrib.admin.templatetags.admin_static import static
 
 
 class WidgetsTestCase(TestCase):
@@ -114,3 +116,28 @@ class WidgetsTestCase(TestCase):
         two = self.get_SuitTimeWidget_output().replace('sdw', 'sdw_1')
         self.assertEquals(output, '<div class="datetime">%s %s</div>' %
                                   (dwo, two))
+
+    def test_AutosizedTextarea(self):
+        txt = AutosizedTextarea()
+        self.assertTrue('autosize' in txt.attrs['class'])
+        self.assertEquals(2, txt.attrs['rows'])
+
+    def test_AutosizedTextarea_with_existing_attrs(self):
+        txt = AutosizedTextarea(attrs={'class': 'custom-class', 'rows': 3})
+        self.assertTrue('autosize ' in txt.attrs['class'])
+        self.assertTrue(' custom-class' in txt.attrs['class'])
+        self.assertEqual(txt.attrs['rows'], 3)
+
+    def test_AutosizedTextarea_output(self):
+        txt = AutosizedTextarea()
+        self.assertEqual(txt.render('txt', ''), (
+            '<textarea class="autosize span4" cols="40" name="txt" '
+            'rows="2">\r\n</textarea><script type="text/javascript">$('
+            '\'#id_txt\').autosize();</script>'))
+
+    def test_AutosizedTextarea_media(self):
+        txt = AutosizedTextarea()
+        js_url = static('suit/js/jquery.autosize-min.js')
+        self.assertEqual(str(txt.media),
+                         '<script type="text/javascript" src="%s"></script>'
+                         % js_url)

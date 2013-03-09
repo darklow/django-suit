@@ -1,8 +1,9 @@
 from django.contrib.admin.widgets import AdminTimeWidget, AdminDateWidget
-from django.forms import TextInput, Select
+from django.forms import TextInput, Select, Textarea
 from django.utils.safestring import mark_safe
 from django import forms
 from django.utils.translation import ugettext as _
+from django.contrib.admin.templatetags.admin_static import static
 
 
 class NumberInput(TextInput):
@@ -74,6 +75,32 @@ class EnclosedInput(TextInput):
 
         return mark_safe(
             '<div class="%s">%s</div>' % (' '.join(div_classes), output))
+
+
+class AutosizedTextarea(Textarea):
+    """
+    Autosized Textarea - textarea height dynamically grows based on user input
+    """
+
+    def __init__(self, attrs=None):
+        attrs = attrs or {}
+        new_attrs = {'rows': 2}
+        new_attrs.update(attrs)
+        new_attrs['class'] = 'autosize %s' % (
+            attrs['class'] if 'class' in attrs else 'span4')
+        super(AutosizedTextarea, self).__init__(new_attrs)
+
+    @property
+    def media(self):
+        return forms.Media(js=[static("suit/js/jquery.autosize-min.js")])
+
+    def render(self, name, value, attrs=None):
+        output = super(AutosizedTextarea, self).render(name, value, attrs)
+        output += mark_safe(
+            "<script type=\"text/javascript\">$('#id_%s').autosize();</script>"
+            % name)
+        return output
+
 
 #
 # Original date widgets with addition html
