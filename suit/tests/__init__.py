@@ -1,11 +1,11 @@
 from django.test.simple import DjangoTestSuiteRunner
+from suit.tests.templatetags.suit_menu import SuitMenuTestCase
 from suit.tests.templatetags.suit_tags import SuitTagsTestCase
 from suit.tests.config import ConfigTestCase, ConfigWithModelsTestCase
 
 
 class NoDbTestRunner(DjangoTestSuiteRunner):
     """A test suite runner that does not set up and tear down a database."""
-
     def setup_databases(self):
         """Overrides DjangoTestSuiteRunner"""
         pass
