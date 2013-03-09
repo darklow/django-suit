@@ -10,14 +10,14 @@ For example if you want to add some additional CSS class to input you can do fol
   from .models import Country
 
   class CountryForm(ModelForm):
-    class Meta:
-        widgets = {
-            'name': TextInput(attrs={'class': 'input-mini'})
-        }
+      class Meta:
+          widgets = {
+              'name': TextInput(attrs={'class': 'input-mini'})
+          }
 
   class CountryAdmin(ModelAdmin):
-    form = CountryForm
-    ...
+      form = CountryForm
+      ...
 
   admin.site.register(Country, CountryAdmin)
 
@@ -34,14 +34,14 @@ HTML5 number input ``type="number"``::
   from suit.widgets import NumberInput
 
   class OrderForm(ModelForm):
-    class Meta:
-        widgets = {
-            'count': NumberInput,
+      class Meta:
+          widgets = {
+              'count': NumberInput,
 
-            # Optionally you specify attrs too
-            'count': NumberInput(attrs={'class': 'input-mini'})
+              # Optionally you specify attrs too
+              'count': NumberInput(attrs={'class': 'input-mini'})
 
-        }
+          }
 
 .. note:: The same result you can achieve with ``HTML5Input(input_type='number')`` widget, this is just a shortcut.
 
@@ -55,10 +55,10 @@ Specify ``input_type`` and use any of `HTML5 input types <http://www.w3schools.c
   from suit.widgets import HTML5Input
 
   class ProductForm(ModelForm):
-    class Meta:
-        widgets = {
-            'color': HTML5Input(input_type='color'),
-        }
+      class Meta:
+          widgets = {
+              'color': HTML5Input(input_type='color'),
+          }
 
 
 .. note:: Not all major browsers support all the new input types. However, you can already start using them; If they are not supported, they will behave as regular text fields. Also not all types are supported by Twitter Bootstrap.
@@ -73,30 +73,52 @@ Supports `Twitter Bootstrap prepended/appended form inputs <http://twitter.githu
   from suit.widgets import EnclosedInput
 
   class ProductForm(ModelForm):
-    class Meta:
-        widgets = {
+      class Meta:
+          widgets = {
 
-            # Appended by text
-            'discount': EnclosedInput(append='%'),
-            'size': EnclosedInput(append='m<sup>2</sup>'),
+              # Appended by text
+              'discount': EnclosedInput(append='%'),
+              'size': EnclosedInput(append='m<sup>2</sup>'),
 
-            # By icons
-            'email': EnclosedInput(append='icon-envelope'),
-            'user': EnclosedInput(prepend='icon-user'),
+              # By icons
+              'email': EnclosedInput(append='icon-envelope'),
+              'user': EnclosedInput(prepend='icon-user'),
 
-            # You can also use prepended and appended together
-            'price': EnclosedInput(prepend='$', append='.00'),
+              # You can also use prepended and appended together
+              'price': EnclosedInput(prepend='$', append='.00'),
 
-            # Use HTML for append/prepend (See Twitter Bootstrap docs of supported tags)
-            'url': EnclosedInput(prepend='icon-home', append='<input type="button" class="btn"  value="Open link">'),
+              # Use HTML for append/prepend (See Twitter Bootstrap docs of supported tags)
+              'url': EnclosedInput(prepend='icon-home', append='<input type="button" class="btn"  value="Open link">'),
 
-        }
+          }
 
 
 Preview:
 
   .. image:: _static/img/enclosed_input.png
 
+
+AutosizedTextarea
+=================
+
+``AutosizedTextarea`` enables automatic height based on user input for textarea elements. Uses `jQuery Autosize <http://www.jacklmoore.com/autosize>`_ plugin. All the required javascript will be automatically attached. Usage::
+
+  from django.forms import ModelForm
+  from suit.widgets import AutosizedTextarea
+
+  class ProductForm(ModelForm):
+      class Meta:
+          widgets = {
+              'description': AutosizedTextarea,
+
+              # You can also specify html attributes
+              'description': AutosizedTextarea(attrs={'rows': 3, 'class': 'input-xlarge'}),
+          }
+
+
+For demo - see countries `description field <http://djangosuit.com/admin/examples/country/add/>`_ or kitchensink `tabluar inlines <http://djangosuit.com/admin/examples/kitchensink/add/>`_
+
+.. note:: If you want to change height, when vertical scrollbar appears, use CSS ``max-height`` attribute. By default: ``max-height: 150px``
 
 
 Date/Time widgets
@@ -108,12 +130,12 @@ Date/Time widgets
   from suit.widgets import SuitDateWidget, SuitTimeWidget, SuitSplitDateTimeWidget
 
   class UserChangeForm(UserChangeForm):
-        class Meta:
-            model = User
-            widgets = {
-                'last_login': SuitSplitDateTimeWidget,
-                'date_joined': SuitSplitDateTimeWidget,
-            }
+      class Meta:
+          model = User
+          widgets = {
+              'last_login': SuitSplitDateTimeWidget,
+              'date_joined': SuitSplitDateTimeWidget,
+          }
 
 
 
@@ -121,3 +143,44 @@ Preview:
 
   .. image:: _static/img/dates.png
      :target: http://djangosuit.com/admin/auth/user/6/
+
+
+LinkedSelect
+============
+
+Adds link to related item right after select for foreign key fields::
+
+  from django.forms import ModelForm
+  from suit.widgets import LinkedSelect
+
+  class CountryForm(UserChangeForm):
+      class Meta:
+          widgets = {
+              'continent': LinkedSelect
+          }
+
+
+
+Preview:
+
+  .. image:: _static/img/linked_select.png
+     :target: http://djangosuit.com/admin/examples/kitchensink/2/
+
+
+JavaScript goodies
+==================
+
+When working with Django inlines and JavaScript, very often we want to hook/attach to event - when new inline row is added. Django Suit gives us such chance.
+
+Use JavaScript ``SuitAfterInline.register`` to register/attach your function to new inline addition event.
+
+.. code-block:: javascript
+
+  $(function () {
+      SuitAfterInline.register('my_unique_func_name', function(inline_prefix, row){
+          // Your code here
+          console.info(inline_prefix)
+          console.info(row)
+      });
+  });
+
