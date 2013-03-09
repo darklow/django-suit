@@ -7,16 +7,29 @@ from random import randint
 
 
 class UserTestCaseMixin(TestCase):
+    superuser = None
     user = None
 
-    def login(self, user=None):
-        if not user or not self.user:
-            self.user = self.create_superuser()
-        self.client.login(username=self.user.username, password='password')
+    def login_superuser(self):
+        if not self.superuser:
+            self.superuser = self.create_superuser()
+        self.client.login(username=self.superuser.username, password='password')
 
     def create_superuser(self):
-        return User.objects.create_superuser('user-%s' % str(randint(1, 9999)),
+        return User.objects.create_superuser('admin-%s' % str(randint(1, 9999)),
                                              'test@test.com', 'password')
+
+    def create_user(self):
+        user = User.objects.create_user('user-%s' % str(randint(1, 9999)),
+                                        'test2@test2.com', 'password')
+        user.is_staff = True
+        user.save()
+        return user
+
+    def login_user(self):
+        if not self.user:
+            self.user = self.create_user()
+        self.client.login(username=self.user.username, password='password')
 
 
 class ModelsTestCaseMixin(TestCase):

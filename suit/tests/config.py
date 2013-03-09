@@ -64,7 +64,7 @@ class ConfigWithModelsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         return book
 
     def test_confirm_unsaved_changes(self):
-        self.login()
+        self.login_superuser()
         settings.SUIT_CONFIG['CONFIRM_UNSAVED_CHANGES'] = True
         book = self.create_book()
 
@@ -79,7 +79,7 @@ class ConfigWithModelsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
 
 
     def test_show_required_asterisk(self):
-        self.login()
+        self.login_superuser()
         settings.SUIT_CONFIG['SHOW_REQUIRED_ASTERISK'] = True
         book = self.create_book()
 
@@ -88,6 +88,6 @@ class ConfigWithModelsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.assertContains(response, content_if_true)
 
         # Test without confirm
-        settings.SUIT_CONFIG['SHOW_REQUIRED_ASTERISK'] = True
+        settings.SUIT_CONFIG['SHOW_REQUIRED_ASTERISK'] = False
         response = self.client.get(admin_url(book))
         self.assertNotContains(response, content_if_true)
