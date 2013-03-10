@@ -5,6 +5,11 @@ Django Suit documentation
 
 Django Suit is alternative theme/skin/extension for `Django <http://www.djangoproject.com>`_ administration interface.
 
+.. |master| image:: https://travis-ci.org/darklow/django-suit.png?branch=master
+   :alt: Build Status - master branch
+   :target: http://travis-ci.org/darklow/django-suit
+
+
 About
 =====
 
@@ -14,7 +19,8 @@ About
 * Github: https://github.com/darklow/django-suit
 * Demo app on Github: https://github.com/darklow/django-suit-examples
 * Changelog: `Changelog.rst <https://github.com/darklow/django-suit/blob/master/CHANGELOG.rst>`_
-* Supports: Django 1.4/1.5c2
+* Supports: Django 1.4/1.5. Python: 2.5-3.3 |master|
+
 
 Installation
 ============

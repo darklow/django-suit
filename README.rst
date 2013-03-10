@@ -35,3 +35,17 @@ Contributing
 ============
 
 Separate `django-suit-contrib <https://github.com/darklow/django-suit-contrib>`_ package is available with full Django Suit development project setup, tests and instructions.
+
+
+Build Status
+============
+
+Django Suit uses Travis CI to perform tests on different Django and Python versions.
+
+Tested using Python: 2.5, 2.6, 2.7, 3.2, 3.3. Django: 1.4, 1.5.
+
+.. |master| image:: https://travis-ci.org/darklow/django-suit.png?branch=master
+   :alt: Build Status - master branch
+   :target: http://travis-ci.org/darklow/django-suit
+
+|master|
