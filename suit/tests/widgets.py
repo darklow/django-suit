@@ -115,7 +115,7 @@ class WidgetsTestCase(TestCase):
         dwo = self.get_SuitDateWidget_output().replace('sdw', 'sdw_0')
         two = self.get_SuitTimeWidget_output().replace('sdw', 'sdw_1')
         self.assertHTMLEqual(output, '<div class="datetime">%s %s</div>' %
-                                  (dwo, two))
+                                     (dwo, two))
 
     def test_AutosizedTextarea(self):
         txt = AutosizedTextarea()
@@ -131,7 +131,7 @@ class WidgetsTestCase(TestCase):
     def test_AutosizedTextarea_output(self):
         txt = AutosizedTextarea()
         self.assertHTMLEqual(txt.render('txt', ''), (
-            u'<textarea class="autosize " cols="40" name="txt" '
+            '<textarea class="autosize " cols="40" name="txt" '
             'rows="2">\r\n</textarea><script type="text/javascript">$('
             '\'#id_txt\').autosize();</script>'))
 
@@ -139,5 +139,5 @@ class WidgetsTestCase(TestCase):
         txt = AutosizedTextarea()
         js_url = static('suit/js/jquery.autosize-min.js')
         self.assertHTMLEqual(str(txt.media),
-                         u'<script type="text/javascript" src="%s"></script>'
-                         % js_url)
+                             '<script type="text/javascript" src="%s"></script>'
+                             % js_url)
