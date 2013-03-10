@@ -8,7 +8,6 @@ python:
   - pypy
 env:
   - DJANGO=1.4.0 DJANGO_SETTINGS_MODULE="suit.tests.settings"
-  - DJANGO=1.4.2 DJANGO_SETTINGS_MODULE="suit.tests.settings"
   - DJANGO=1.4.5 DJANGO_SETTINGS_MODULE="suit.tests.settings"
   - DJANGO=1.5 DJANGO_SETTINGS_MODULE="suit.tests.settings"
 install:
