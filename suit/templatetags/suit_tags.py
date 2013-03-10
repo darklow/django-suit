@@ -1,12 +1,10 @@
 from django import template
 from django.contrib.admin.util import lookup_field
-from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import NoReverseMatch, reverse
 from django.db.models import ForeignKey
 from django.template.defaulttags import NowNode
 from django.utils.safestring import mark_safe
-from django.utils import six
 from suit.config import get_config
 
 register = template.Library()
@@ -15,7 +13,7 @@ register = template.Library()
 @register.filter(name='suit_conf')
 def suit_conf(name):
     value = get_config(name)
-    return mark_safe(value) if isinstance(value, six.string_types) else value
+    return mark_safe(value) if isinstance(value, str) else value
 
 
 @register.tag
