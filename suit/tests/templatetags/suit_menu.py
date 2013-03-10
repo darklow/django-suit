@@ -1,9 +1,14 @@
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.test.html import parse_html
-from django.utils.encoding import force_unicode
 from suit.templatetags.suit_menu import get_menu
 from suit.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
+
+# conditional import, force_unicode was renamed in Django 1.5
+try:
+    from django.utils.encoding import force_unicode
+except ImportError:
+    from django.utils.encoding import force_text as force_unicode
 
 
 class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
