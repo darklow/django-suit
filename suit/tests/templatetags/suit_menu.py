@@ -135,13 +135,13 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         # individually to MENU_ORDER
         menu_expected = [
             {'app_url': '/admin/tests/',
-             'name': unicode('Tests'),
+             'name': 'Tests',
              'models': [
                  {'perms': {'add': True, 'change': True, 'delete': True},
                   'add_url': '/admin/tests/book/add/',
                   'admin_url': '/admin/tests/book/',
                   'is_active': False,
-                  'name': unicode('Books')
+                  'name': 'Books'
                  }
              ],
              'is_active': True,
@@ -152,16 +152,16 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
              'models': [
                  {'admin_url': '/admin/custom/',
                   'is_active': False,
-                  'name': unicode('Custom link')},
+                  'name': 'Custom link'},
                  {'admin_url': '/admin/non-existant/',
                   'is_active': False,
-                  'name': unicode('Check out error 404')},
+                  'name': 'Check out error 404'},
                  {'perms':
                       {'add': True, 'change': True, 'delete': True},
                   'add_url': '/admin/tests/album/add/',
                   'admin_url': '/admin/tests/album/',
                   'is_active': False,
-                  'name': unicode('Albums')}],
+                  'name': 'Albums'}],
              'name': 'Custom app name', 'icon': 'icon-custom-app'},
             {'app_url': '/custom-app-no-models', 'models': [],
              'name': 'Custom app no models', 'icon': ''},
