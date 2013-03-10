@@ -1,6 +1,18 @@
 Changelog
 =========
 
+v0.1.5 (2013-03-10)
+-------------------------------------------------------------
+
+* [Feature] New widget: `AutosizedTextarea <http://django-suit.readthedocs.org/en/latest/widgets.html#autosizedtextarea>`_
+* [Feature] New widget: `LinkedSelect <http://django-suit.readthedocs.org/en/latest/widgets.html#linkedselect>`_
+* [Feature] JavaScript inlines hook: `SuitAfterInline JS hook <http://django-suit.readthedocs.org/en/latest/widgets.html#javascript-goodies>`_
+* [Tests] Tests means more stability - bunch of tests added, more to come.
+* [Fix/Refactoring] Install breaks under certain conditions #17
+* [Fix] Admin save_on_top=True breaks change form #16
+* [Fix] Minor bugs and tweaks. See commit log for full changes
+
+
 v0.1.4 (2013-03-04)
 -------------------------------------------------------------
 
