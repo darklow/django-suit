@@ -1,4 +1,4 @@
-from django.utils.unittest.case import TestCase
+from django.test import TestCase
 from suit.widgets import LinkedSelect, HTML5Input, EnclosedInput, \
     NumberInput, SuitDateWidget, SuitTimeWidget, SuitSplitDateTimeWidget, \
     AutosizedTextarea
@@ -37,20 +37,20 @@ class WidgetsTestCase(TestCase):
         output = self.render_enclosed_widget(inp)
         result = ('<span class="add-on">p</span>',
                   '<span class="add-on">a</span>')
-        self.assertEqual(output, self.get_enclosed_widget_html(result))
+        self.assertHTMLEqual(output, self.get_enclosed_widget_html(result))
 
     def test_EnclosedInput_as_icon(self):
         inp = EnclosedInput(prepend='icon-fire', append='icon-leaf')
         output = self.render_enclosed_widget(inp)
         result = ('<span class="add-on"><i class="icon-fire"></i></span>',
                   '<span class="add-on"><i class="icon-leaf"></i></span>')
-        self.assertEqual(output, self.get_enclosed_widget_html(result))
+        self.assertHTMLEqual(output, self.get_enclosed_widget_html(result))
 
     def test_EnclosedInput_as_html(self):
         inp = EnclosedInput(prepend='<em>p</em>', append='<em>a</em>')
         output = self.render_enclosed_widget(inp)
         result = ('<em>p</em>', '<em>a</em>')
-        self.assertEqual(output, self.get_enclosed_widget_html(result))
+        self.assertHTMLEqual(output, self.get_enclosed_widget_html(result))
 
     def test_SuitDateWidget(self):
         sdw = SuitDateWidget()
@@ -77,7 +77,7 @@ class WidgetsTestCase(TestCase):
     def test_SuitDateWidget_output(self):
         sdw = SuitDateWidget(attrs={'placeholder': 'Date'})
         output = sdw.render('sdw', '')
-        self.assertEquals(
+        self.assertHTMLEqual(
             self.get_SuitDateWidget_output(), output)
 
     def test_SuitTimeWidget(self):
@@ -105,7 +105,7 @@ class WidgetsTestCase(TestCase):
     def test_SuitTimeWidget_output(self):
         sdw = SuitTimeWidget(attrs={'placeholder': 'Time'})
         output = sdw.render('sdw', '')
-        self.assertEquals(
+        self.assertHTMLEqual(
             self.get_SuitTimeWidget_output(),
             output)
 
@@ -114,7 +114,7 @@ class WidgetsTestCase(TestCase):
         output = ssdtw.render('sdw', '')
         dwo = self.get_SuitDateWidget_output().replace('sdw', 'sdw_0')
         two = self.get_SuitTimeWidget_output().replace('sdw', 'sdw_1')
-        self.assertEquals(output, '<div class="datetime">%s %s</div>' %
+        self.assertHTMLEqual(output, '<div class="datetime">%s %s</div>' %
                                   (dwo, two))
 
     def test_AutosizedTextarea(self):
@@ -130,14 +130,14 @@ class WidgetsTestCase(TestCase):
 
     def test_AutosizedTextarea_output(self):
         txt = AutosizedTextarea()
-        self.assertEqual(txt.render('txt', ''), (
-            '<textarea class="autosize " cols="40" name="txt" '
+        self.assertHTMLEqual(txt.render('txt', ''), (
+            u'<textarea class="autosize " cols="40" name="txt" '
             'rows="2">\r\n</textarea><script type="text/javascript">$('
             '\'#id_txt\').autosize();</script>'))
 
     def test_AutosizedTextarea_media(self):
         txt = AutosizedTextarea()
         js_url = static('suit/js/jquery.autosize-min.js')
-        self.assertEqual(str(txt.media),
-                         '<script type="text/javascript" src="%s"></script>'
+        self.assertHTMLEqual(str(txt.media),
+                         u'<script type="text/javascript" src="%s"></script>'
                          % js_url)
