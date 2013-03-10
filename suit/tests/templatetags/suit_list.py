@@ -51,7 +51,7 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         pg = pagination(self.changelist)
         ModelAdmin.list_per_page = per_page_original
         self.assertEqual(pg['cl'], self.changelist)
-        self.assertEqual(pg['page_range'], [0, 1])
+        self.assertEqual(len(pg['page_range']), 2)
         self.assertEqual(pg['pagination_required'], True)
 
     def test_suit_list_filter_select(self):
