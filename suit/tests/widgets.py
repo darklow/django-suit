@@ -22,8 +22,8 @@ class WidgetsTestCase(TestCase):
 
     def test_LinkedSelect_with_existing_attr(self):
         ls = LinkedSelect(attrs={'class': 'custom-class', 'custom': 123})
-        self.assertEquals('linked-select custom-class', ls.attrs['class'])
-        self.assertEquals(ls.attrs['custom'], 123)
+        self.assertEqual('linked-select custom-class', ls.attrs['class'])
+        self.assertEqual(ls.attrs['custom'], 123)
 
     def render_enclosed_widget(self, enclosed_widget):
         return enclosed_widget.render('enc', 123)
@@ -120,7 +120,7 @@ class WidgetsTestCase(TestCase):
     def test_AutosizedTextarea(self):
         txt = AutosizedTextarea()
         self.assertTrue('autosize' in txt.attrs['class'])
-        self.assertEquals(2, txt.attrs['rows'])
+        self.assertEqual(2, txt.attrs['rows'])
 
     def test_AutosizedTextarea_with_existing_attrs(self):
         txt = AutosizedTextarea(attrs={'class': 'custom-class', 'rows': 3})
