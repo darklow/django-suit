@@ -1,6 +1,7 @@
 from django.test.simple import DjangoTestSuiteRunner
 from suit.tests.templatetags.suit_menu import SuitMenuTestCase
 from suit.tests.templatetags.suit_tags import SuitTagsTestCase
+from suit.tests.templatetags.suit_list import SuitListTestCase
 from suit.tests.config import ConfigTestCase, ConfigWithModelsTestCase
 from suit.tests.widgets import WidgetsTestCase
 

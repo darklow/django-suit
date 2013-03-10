@@ -16,5 +16,9 @@ class Album(models.Model):
         return self.name
 
 
-admin.site.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    list_filter = ('id', 'name',)
+
+
+admin.site.register(Book, BookAdmin)
 admin.site.register(Album)
