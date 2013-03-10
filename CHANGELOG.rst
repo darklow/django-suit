@@ -1,9 +1,12 @@
 Changelog
 =========
 
-v0.1.6 (2013-03-10)
+v0.1.6, v.0.1.7 (2013-03-10)
 -------------------------------------------------------------
 
+* [Tests] Travis CI hooked up - testing against Django 1.4-1.5, Python 2.5-3.3
+* [Tests] Tests now cover every class and method in Django Suit
+* [Fix] Full support for Python 3.x added
 * [Critical] Django 1.4 compatibility restored. Removed django.utils.six (Django 1.4.2)
 
 
