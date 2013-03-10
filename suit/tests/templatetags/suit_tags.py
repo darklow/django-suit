@@ -1,6 +1,6 @@
 import datetime
 from django.conf import settings
-from django.utils.unittest.case import TestCase
+from django.test import TestCase
 from suit.templatetags.suit_tags import suit_conf, suit_date, suit_time, \
     admin_url, field_contents_foreign_linked
 from django.db import models
