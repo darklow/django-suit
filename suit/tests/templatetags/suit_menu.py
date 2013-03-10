@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.core.urlresolvers import reverse
-from django.test.html import parse_html
 from suit.templatetags.suit_menu import get_menu
 from suit.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
 
@@ -12,10 +11,6 @@ except ImportError:
 
 
 class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
-    def perform_response(self, url=None):
-        url = url or reverse('admin:index')
-        self.response = self.client.get(url)
-
     def setUp(self):
         # Menu settings
         settings.SUIT_CONFIG.update({
@@ -41,7 +36,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
 
     def test_menu_init(self):
         # Template usage
-        self.perform_response()
+        self.get_response()
         self.assertTemplateUsed(self.response, 'suit/menu.html')
         self.assertContains(self.response, 'left-nav')
         self.assertContains(self.response, 'icon-test-against-keyword')
@@ -52,18 +47,18 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
     def test_menu_search_url_formats(self):
         # Test named url as defined in setUp config
         settings.SUIT_CONFIG['SEARCH_URL'] = 'admin:tests_book_changelist'
-        self.perform_response()
+        self.get_response()
         self.assertContains(self.response, 'action="/admin/tests/book/"')
 
         # Test absolute url
         absolute_search_url = '/absolute/search/url'
         settings.SUIT_CONFIG['SEARCH_URL'] = absolute_search_url
-        self.perform_response()
+        self.get_response()
         self.assertContains(self.response, absolute_search_url)
 
     def test_menu_custom_app_and_models(self):
         # Test custom app name, url and icon
-        self.perform_response()
+        self.get_response()
         menu_order = settings.SUIT_CONFIG['MENU_ORDER']
         self.assertContains(self.response, menu_order[1][0][0])
         self.assertContains(self.response, menu_order[1][0][1])
@@ -80,14 +75,14 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
     def test_menu_when_open_first_child_is_true(self):
         # Test custom app name, url and icon
         settings.SUIT_CONFIG['MENU_OPEN_FIRST_CHILD'] = True
-        self.perform_response()
+        self.get_response()
         menu_order = settings.SUIT_CONFIG['MENU_ORDER']
         self.assertNotContains(self.response, menu_order[1][0][1])
 
     def test_custom_menu_permissions(self):
         self.client.logout()
         self.login_user()
-        self.perform_response()
+        self.get_response()
         # Test for menu at all for simple user
         self.assertTemplateUsed(self.response, 'suit/menu.html')
         self.assertContains(self.response, 'left-nav')
@@ -102,25 +97,25 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.assertNotContains(self.response, menu_order[3][0][0])
 
     def test_menu_marked_as_active(self):
-        self.perform_response(reverse('admin:app_list', args=['tests']))
+        self.get_response(reverse('admin:app_list', args=['tests']))
         self.assertContains(self.response, '<li class="active">')
 
     def make_menu_from_response(self):
         return get_menu(self.response.context[-1], self.response._request)
 
     def test_menu_app_marked_as_active(self):
-        self.perform_response(reverse('admin:app_list', args=['tests']))
+        self.get_response(reverse('admin:app_list', args=['tests']))
         menu = self.make_menu_from_response()
         self.assertTrue(menu[0]['is_active'])
 
     def test_menu_model_marked_as_active(self):
-        self.perform_response(reverse('admin:tests_book_changelist'))
+        self.get_response(reverse('admin:tests_book_changelist'))
         menu = self.make_menu_from_response()
         self.assertTrue(menu[0]['is_active'])
         self.assertTrue(menu[0]['models'][0]['is_active'])
 
     def test_menu_as_object_from_template_tag(self):
-        self.perform_response(reverse('admin:app_list', args=['tests']))
+        self.get_response(reverse('admin:app_list', args=['tests']))
         menu = self.make_menu_from_response()
 
         # Convert translation proxies for models to unicode
