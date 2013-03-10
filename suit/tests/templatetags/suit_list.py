@@ -43,7 +43,7 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
     def test_pagination_many_pages(self):
         per_page_original = ModelAdmin.list_per_page
         ModelAdmin.list_per_page = 20
-        for x in xrange(25):
+        for x in range(25):
             book = Book(name='Test %d' % x)
             book.save()
 
