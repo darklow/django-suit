@@ -57,7 +57,7 @@ def field_contents_foreign_linked(admin_field):
         except NoReverseMatch:
             url = None
         if url:
-            displayed = "<a href='%s'>%s</a>" % (url, unicode(displayed))
+            displayed = "<a href='%s'>%s</a>" % (url, displayed)
     return mark_safe(displayed)
 
 
