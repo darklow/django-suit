@@ -1,6 +1,6 @@
 {% load i18n admin_static suit_list admin_list %}
-{% if cl.search_fields or cl.has_filters or cl.date_hierarchy %}
-  <div id="toolbar">
+{% if cl.search_fields or cl.has_filters %}
+  <div id="toolbar" class="clearfix">
     <form id="changelist-search" action="" method="get" class="form-inline">
       <div><!-- DIV needed for valid HTML -->
 
@@ -31,11 +31,6 @@
         {% endif %}
       </div>
 
-      {% block date_hierarchy %}
-        {% if cl.date_hierarchy %}
-          {% date_hierarchy cl %}
-        {% endif %}
-      {% endblock %}
       {% if cl.is_popup %}
         <input type="hidden" name="pop" value="1">
       {% endif %}
