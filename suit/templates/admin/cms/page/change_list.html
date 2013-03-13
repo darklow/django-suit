@@ -131,7 +131,7 @@
 	<input type="hidden" id="site-select" value="{{ cl.sites.0.pk }}">
 {% endif %}
 
-  <div class="toolbar-content">
+  <div class="toolbar-content clearfix">
     {% block object-tools %}
       {% if has_add_permission %}
         <div class="object-tools">
@@ -148,7 +148,11 @@
     {% block search %}{% search_form cl %}{% endblock %}
   </div>
 
-{% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
+  {% block date_hierarchy %}
+    {% if cl.date_hierarchy %}
+      {% date_hierarchy cl %}
+    {% endif %}
+  {% endblock %}
 
 {% include "admin/cms/page/change_list_tree.html" %}
 

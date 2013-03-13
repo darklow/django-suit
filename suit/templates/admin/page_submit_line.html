@@ -1,0 +1,26 @@
+{% load i18n %}
+<div class="submit-row clearfix">
+  {% if show_save %}<button type="submit" class="btn btn-high btn-info" name="_save" {{ onclick_attrib }}>{% trans 'Save' %}</button>{% endif %}
+  {% if show_save_and_continue %}<button type="submit" name="_continue" class=" btn btn-high" {{ onclick_attrib }}>{% trans 'Save and continue editing' %}</button>{% endif %}
+  {% if show_save_as_new %}<button type="submit" name="_saveasnew" class="btn" {{ onclick_attrib }}>{% trans 'Save as new' %}</button>{%endif%}
+  {% if show_save_and_add_another %}<button type="submit" name="_addanother" class="btn" {{ onclick_attrib }} >{% trans 'Save and add another' %}</button>{% endif %}
+
+  {% if show_delete_link %}<a href="delete/" class="text-error deletelink">{% trans "Delete" %}</a>
+  {% endif %}
+  {% if show_delete_translation %}
+    {% if show_delete_link %}
+    <br>
+    {% endif %}
+    <a href="delete-translation/?language={{ language }}" class="text-error deletelink delete-translation">{% blocktrans with language_name|lower as language %}Delete {{ language }} translation{% endblocktrans %}</a>
+  {% endif %}
+
+</div>
+
+<script type="text/javascript">
+(function ($) {
+	var i = 0;
+	$('form').submit(function () {
+		i++; if(i > 1) { return false; }
+	});
+})(jQuery);
+</script>

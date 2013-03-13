@@ -1,1 +1,3 @@
 .change-list .filtered{background:inherit !important}
+.delete-translation{margin-top:7px;display:inline-block}
+.confirm-delete{padding-right:15px}.confirm-delete .btn-info{margin-left:20px}
