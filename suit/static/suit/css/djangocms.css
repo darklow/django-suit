@@ -9,4 +9,4 @@
 .plugin-editor{margin-left:180px}
 .plugin-list-holder{width:180px}
 ul.plugin-list .text{width:130px}
-body.popup{height:auto}
+body.popup{height:auto}body.popup .suit-column{float:none;position:inherit}
