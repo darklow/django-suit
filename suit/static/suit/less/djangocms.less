@@ -1,4 +1,3 @@
-
 @import 'djangocms/cms-reset';
 
 .delete-translation {
@@ -10,4 +9,38 @@
     .btn-info {
         margin-left: 20px;
     }
+}
+.datetime {
+    display: inline-block;
+}
+.plugin-holder {
+    .control-label {
+        display: none;
+    }
+    .controls {
+        margin-left: 0;
+        border: 0;
+        padding: 0;
+        overflow: auto;
+    }
+    .plugin-select-holder {
+        select {
+            width: 160px;
+        }
+    }
+    .control-group:first-child .controls, .control-group:first-of-type .controls {
+        padding: 0;
+    }
+}
+.plugin-editor {
+    margin-left: 180px;
+}
+.plugin-list-holder {
+    width: 180px;
+}
+ul.plugin-list .text {
+    width: 130px;
+}
+body.popup {
+    height: auto;
 }

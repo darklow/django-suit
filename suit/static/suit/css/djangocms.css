@@ -1,3 +1,12 @@
 .change-list .filtered{background:inherit !important}
 .delete-translation{margin-top:7px;display:inline-block}
 .confirm-delete{padding-right:15px}.confirm-delete .btn-info{margin-left:20px}
+.datetime{display:inline-block}
+.plugin-holder .control-label{display:none}
+.plugin-holder .controls{margin-left:0;border:0;padding:0;overflow:auto}
+.plugin-holder .plugin-select-holder select{width:160px}
+.plugin-holder .control-group:first-child .controls,.plugin-holder .control-group:first-of-type .controls{padding:0}
+.plugin-editor{margin-left:180px}
+.plugin-list-holder{width:180px}
+ul.plugin-list .text{width:130px}
+body.popup{height:auto}

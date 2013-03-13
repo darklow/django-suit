@@ -33,7 +33,7 @@
 
         {% if field.field.help_text %}
           {% if not line.fields|length_is:'1' %}
-            <a title="{{ field.field.help_text|safe }}"><i
+            <a title="{{ field.field.help_text }}"><i
                     class="help-icon icon-question-sign icon-alpha75"></i></a>
           {% endif %}
         {% endif %}
