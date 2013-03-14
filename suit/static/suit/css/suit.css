@@ -153,11 +153,11 @@ h3{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255,2
 .select2-container-multi .select2-search-choice-close{top:3px;left:auto !important}
 .select2-search-choice .s2-size{float:right}
 .select2-search-choice .s2-size em{font-style:normal;color:#808080;font-size:9px;text-shadow:0 1px 0 #fff}
-.datetimeshortcuts{font-size:11px;margin-left:5px}.datetimeshortcuts a:first-child{margin-right:4px}
+.datetimeshortcuts{font-size:11px;margin-left:5px;vertical-align:middle}.datetimeshortcuts a:first-child{margin-right:4px}
 .datetimeshortcuts a:last-child{margin-left:-6px;margin-right:10px}
 .vDateField,.vTimeField{width:auto;vertical-align:top}
 .suit-date{position:relative}.suit-date .datetimeshortcuts{margin-left:32px;color:#f6f7f8}.suit-date .datetimeshortcuts a:last-child{padding:0 5px;position:absolute;left:100px;z-index:2}.suit-date .datetimeshortcuts a:last-child img{visibility:hidden}
-.suit-date input{vertical-align:top}.suit-date input.vDateField{width:80px}
+.suit-date input{vertical-align:middle}.suit-date input.vDateField{width:80px}
 .suit-date input.vTimeField{width:60px}
 .suit-date .add-on{position:absolute;left:94px}
 .suit-date.suit-time .add-on{left:74px}
