@@ -101,7 +101,7 @@ tr.form-row:nth-last-child(3) td .inline-sortable .sortable-down,#result_list tr
 .pagination-info{display:block;float:left;margin:5px 0 0 0}
 h2.legend,.form-horizontal fieldset .legend{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255,255,255,0.5);padding-left:10px}
 .form-horizontal fieldset{box-shadow:0 0 1px rgba(0,0,0,0.4);-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px;}.popup .form-horizontal fieldset{margin-top:0}
-.form-horizontal fieldset:not(:first-of-type){margin-top:35px}
+.form-horizontal fieldset:not(:first-of-type),.form-horizontal fieldset.with-legend:first-child{margin-top:35px}
 .form-horizontal fieldset .legend{border:0;margin:-30px 0 0 0;position:absolute;width:auto}.form-horizontal fieldset .legend .description{font-weight:normal;font-size:12px;display:inline-block;margin-left:20px;color:#999}
 .form-horizontal fieldset.collapse{overflow:visible;height:auto}
 .form-horizontal fieldset.collapsed{background-color:#f6f7f8}.form-horizontal fieldset.collapsed .legend{position:static;font-size:13px;font-weight:normal}
