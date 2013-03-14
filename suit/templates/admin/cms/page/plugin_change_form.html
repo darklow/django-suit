@@ -47,15 +47,20 @@
 		window.onload = runOnLoad.run;
 	}
 	runOnLoad(function(){
-    console.info($('body'));
 		parent.setiframeheight($('body').height()+20, {{ plugin.pk }});
+
+    // By DjangoSuit - show iframe only when it loads and hide loading icon
+    var iframe = parent.document.getElementById('iframe_{{ plugin.pk }}');
+    var icon = parent.document.getElementById('suit-loading-icon');
+    iframe.style.visibility = 'visible';
+    icon && icon.parentNode.removeChild(icon);
 	});
 	$(document).ready(function(){
 		$("a.add-another,a.related-lookup").each(function(i, sign){
 			var href = $(sign).attr("href");
 			if (href.substr(0,2) == ".."){
 				href = "../../"+href;
-				$(sign).attr("href", href); 
+				$(sign).attr("href", href);
 			}
 		});
 	});

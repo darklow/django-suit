@@ -1,7 +1,7 @@
 {% load i18n %}
 <div class="submit-row clearfix">
-  {% if show_save %}<button type="submit" class="btn btn-high btn-info" name="_save" {{ onclick_attrib }}>{% trans 'Save' %}</button>{% endif %}
   {% if show_save_and_continue %}<button type="submit" name="_continue" class=" btn btn-high" {{ onclick_attrib }}>{% trans 'Save and continue editing' %}</button>{% endif %}
+  {% if show_save %}<button type="submit" class="btn btn-high btn-info" name="_save" {{ onclick_attrib }}>{% trans 'Save' %}</button>{% endif %}
   {% if show_save_as_new %}<button type="submit" name="_saveasnew" class="btn" {{ onclick_attrib }}>{% trans 'Save as new' %}</button>{%endif%}
   {% if show_save_and_add_another %}<button type="submit" name="_addanother" class="btn" {{ onclick_attrib }} >{% trans 'Save and add another' %}</button>{% endif %}
 

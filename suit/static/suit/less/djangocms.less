@@ -30,71 +30,82 @@
     display: inline-block;
 }
 
+
 /* Fieldset */
-.form-horizontal {
-    fieldset.plugin-holder {
-        background: transparent;
-        box-shadow: none;
-        border-radius: 0;
-        padding-right: 0;
-        margin-left: (-@left-column-width - @padding);
-        margin-top: 45px;
-
-        &:before {
-            content: '';
-            display: block;
-            height: 10px;
-            background: @border-color;
-        }
-
-        .legend {
-            margin-left: 10px;
-            margin-top: -35px;
-        }
-        .control-group {
-            background: transparent;
-            &.form-row {
-                padding: 0;
-            }
-        }
+body.cms-page {
+    .form-horizontal {
         .control-label {
-            display: none;
+            width: 140px;
         }
         .controls {
-            margin-left: 0;
-            border: 0;
-            padding: 0;
-            overflow: auto;
-            background: transparent;
-            overflow: visible;
+            margin-left: 160px;
         }
-        .plugin-select-holder {
-            background: white;
+        fieldset.plugin-holder {
+            background: @bgcolor;
+            box-shadow: none;
+            border-radius: 0;
             padding-right: 0;
-            select {
-                height: 26px;
-                padding: 2px 4px;
-                width: 152px;
-                vertical-align: text-bottom;
+            padding-bottom: 10px;
+            margin: 30px 0 -35px (-@left-column-width - @padding);
+            &:before, &:after:last-of-type {
+                content: '';
+                display: block;
+                height: 10px;
+                margin-bottom: 5px;
+                background: #d0d2d5;
             }
-            .add-plugin, .copy-plugins {
-                padding: 2px;
-                .hide-text;
-                .bs-icon;
+
+            >.legend {
+                margin-left: 10px;
+                margin-top: 0;
+                position: static;
             }
-            .copy-plugins {
-                background-position: -72px -96px;
+            .control-group {
+                background: transparent;
+                &.form-row {
+                    padding: 0;
+                }
             }
-        }
-        .control-group:first-child .controls, .control-group:first-of-type .controls {
-            padding: 0;
+            .control-label {
+                display: none;
+            }
+            .controls {
+                margin-left: 0;
+                border: 0;
+                padding: 0;
+                overflow: auto;
+                background: transparent;
+                overflow: visible;
+            }
+            .plugin-select-holder {
+                padding-right: 0;
+                select {
+                    height: 26px;
+                    padding: 2px 4px;
+                    width: 152px;
+                    vertical-align: text-bottom;
+                }
+                .add-plugin, .copy-plugins {
+                    padding: 2px;
+                    .hide-text;
+                    .bs-icon;
+                }
+                .copy-plugins {
+                    background-position: -72px -96px;
+                }
+            }
+            .control-group:first-child .controls, .control-group:first-of-type .controls {
+                padding: 0;
+            }
         }
     }
 }
 .plugin-editor {
+    position: relative;
     margin-left: (@left-column-width + 1px);
     iframe {
-        margin-top: -30px;
+        margin: -30px 0 -10px;
+        visibility: hidden;
     }
     &> p {
         margin: 0 0 0 @padding;
@@ -106,52 +117,94 @@
 .plugin-list-holder {
     width: @left-column-width;
 }
-//ul.plugin-list li:hover span.delete
 ul.plugin-list {
     border-top: 1px solid @border-color-light;
-    li, li.active {
+/* Reset */
+    li, li.active, li:hover {
+        background: transparent; //        border: 0;
         margin-right: -1px;
     }
     li {
-        border-right: 1px solid @border-color;
-        background: white;
-        &.active {
-            background: @bgcolor;
-            border: 0;
+        margin-left: 2px;
+        position: relative;
+        z-index: 1;
+        .vertical-gradient(#fff, #f9f9f9);
+        .border-radius(@border-radius);
+        border: 1px solid @border-color;
+        margin-bottom: -1px;
+        .white-shadow;
+        .white-inset;
+
+        &:hover {
+            background: white;
+            border-color: #ccc;
+            color: @text-color;
+            z-index: 2;
+        }
+        &.active, &.active:hover {
+            box-shadow: none;
+            z-index: 3;
+            text-shadow: none;
+            .blue-gradient;
+            border-color: #6BA4BA;
             .text {
-                color: @text-color;
+                color: #ffffff;
+            }
+            .descr {
+                color: #c3dee8;
             }
         }
-        &:hover {
-            background: #f5f5f5;
+        .text {
+            white-space: nowrap;
+        }
+        .text strong {
+            display: block;
+            float: left;
+            min-width: 50px;
         }
         .text, &:hover span.text {
             color: #666;
-            width: (@left-column-width - 45px);
+            width: (@left-column-width - 54px);
         }
         .descr {
-            color: #999;
+            color: #aaa;
         }
         .delete {
             .bs-icon;
             opacity: .2;
             padding: 2px;
-            margin-top: 8px;
+            margin: 7px 0 0 6px;
         }
         .delete, .delete:hover, &:hover span.delete {
             background-position: -312px 0;
         }
-        /*.drag {
-            .bs-icon;
-            padding: 2px;
-            margin-top: 8px;
+        .drag {
+            background: transparent;
+            cursor: hand;
+            cursor: grab;
+            cursor: -moz-grab;
+            cursor: -webkit-grab;
+            &:hover {
+            }
+            &:active {
+                cursor: grabbing;
+                cursor: -moz-grabbing;
+                cursor: -webkit-grabbing;
+            }
         }
-        .drag, .drag:hover, &:hover span.drag {
-            background-position: 0 -48px;
-        }*/
+        &:hover span.drag, &.active:hover span.drag {
+            background: url('../img/drag-handle.png') center center no-repeat;
+        }
+    /*.drag {
+        .bs-icon;
+        padding: 2px;
+        margin-top: 8px;
+    }
+    .drag, .drag:hover, &:hover span.drag {
+        background-position: 0 -48px;
+    }*/
     }
 }
-
 
 /* Popup related */
 body.popup {
@@ -171,9 +224,13 @@ body.plugin-change-form {
     .plugin-submit-row {
         display: block;
         margin: 10px 0 0 200px;
+        .btn {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
         .btn-info {
-            padding-left: 20;
-            padding-right: 20;
+            padding-left: 30px;
+            padding-right: 30px;
         }
     }
 }
@@ -199,4 +256,10 @@ div.field-body {
         border: 0;
         padding: 0;
     }
+}
+#suit-loading-icon {
+    display: none;
+    width: 16px;
+    height: 16px;
+    background-image: url("../img/ajax-loader.gif");
 }
