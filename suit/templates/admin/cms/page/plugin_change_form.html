@@ -70,7 +70,7 @@
  
 {% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
  
-{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
+{% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form plugin-change-form{% endblock %}
  
 {% block breadcrumbs %}{% if not is_popup %}
 <div class="breadcrumbs">
@@ -85,7 +85,7 @@
  
 {% block content %}<div id="content-main">
 {% block top %}{% if preview %}{% render_plugin plugin %}{% endif %}{% endblock %}
-<form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form">{% csrf_token %}{% block form_top %}{% endblock %}
+<form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form" class="form-horizontal">{% csrf_token %}{% block form_top %}{% endblock %}
 <div>
 {% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
 {% if save_on_top %}{% submit_row %}{% endif %}
@@ -120,8 +120,8 @@
  
 </div>
 <span class="plugin-submit-row"{% if is_popup %} style="overflow: auto;"{% endif %}>
-	<input type="submit" style="float:none;" name="_save" class="default" value="{% trans "Save" %}" {{ onclick_attrib }}/>
-	<input type="submit" style="margin-left: 8px;" value="{% trans "Cancel" %}" name="_cancel" class="cancel-btn">
+	<input type="submit" style="float:none;" name="_save" class="btn btn-info" value="{% trans "Save" %}" {{ onclick_attrib }}/>
+	<input type="submit" style="margin-left: 8px;" value="{% trans "Cancel" %}" name="_cancel" class="btn cancel-btn">
 </span>
 </form>
 

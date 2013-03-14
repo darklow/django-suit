@@ -1,12 +1,48 @@
+.white-shadow{text-shadow:0 1px rgba(255,255,255,0.5)}
+.white-shadow-max{text-shadow:0 1px #fff}
+.grey-box-shadow{box-shadow:0 0 1px rgba(0,0,0,0.4)}
+.greyer-box-shadow{box-shadow:0 0 3px rgba(0,0,0,0.4)}
+.white-inset{box-shadow:inset 1px 1px 0 #fff}
+.color-grey{color:#999}
+.inline-block{display:inline-block}
+.inline{display:inline}
+.f11{font-size:11px}
+.f12{font-size:12px}
+.f14{font-size:14px}
+.blue-gradient{background-color:#5295b0;background-repeat:no-repeat;background-image:-webkit-gradient(linear, left top, left bottom, from(#83b3c3), to(#5295b0));background-image:-webkit-linear-gradient(#83b3c3, #5295b0);background-image:-moz-linear-gradient(#83b3c3, #5295b0);background-image:-o-linear-gradient(top, #83b3c3, #5295b0);background-image:-khtml-gradient(linear, left top, left bottom, from(#83b3c3), to(#5295b0));filter:progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#83b3c3', EndColorStr='#5295b0', GradientType=0);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#83b3c3', EndColorStr='#5295b0', GradientType=0))"}
+.grey-gradient{background-color:#e5e5e5;background-repeat:no-repeat;background-image:-webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#e5e5e5));background-image:-webkit-linear-gradient(#f3f3f3, #e5e5e5);background-image:-moz-linear-gradient(#f3f3f3, #e5e5e5);background-image:-o-linear-gradient(top, #f3f3f3, #e5e5e5);background-image:-khtml-gradient(linear, left top, left bottom, from(#f3f3f3), to(#e5e5e5));filter:progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#f3f3f3', EndColorStr='#e5e5e5', GradientType=0);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#e5e5e5', GradientType=0))"}
+.bold{font-weight:bold}
+.auto-width{width:auto}
+.clear{clear:both}
 .change-list .filtered{background:inherit !important}
+.hide-text{text-indent:100%;white-space:nowrap;overflow:hidden}
+.bs-icon{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:-9999px;opacity:.6}.bs-icon:hover{opacity:1}
 .delete-translation{margin-top:7px;display:inline-block}
 .confirm-delete{padding-right:15px}.confirm-delete .btn-info{margin-left:20px}
 .datetime{display:inline-block}
-.plugin-holder .control-label{display:none}
-.plugin-holder .controls{margin-left:0;border:0;padding:0;overflow:auto}
-.plugin-holder .plugin-select-holder select{width:160px}
-.plugin-holder .control-group:first-child .controls,.plugin-holder .control-group:first-of-type .controls{padding:0}
-.plugin-editor{margin-left:180px}
-.plugin-list-holder{width:180px}
-ul.plugin-list .text{width:130px}
+.form-horizontal fieldset.plugin-holder{background:transparent;box-shadow:none;border-radius:0;padding-right:0;margin-left:-220px;margin-top:45px}.form-horizontal fieldset.plugin-holder:before{content:'';display:block;height:10px;background:#e7e7e7}
+.form-horizontal fieldset.plugin-holder .legend{margin-left:10px;margin-top:-35px}
+.form-horizontal fieldset.plugin-holder .control-group{background:transparent}.form-horizontal fieldset.plugin-holder .control-group.form-row{padding:0}
+.form-horizontal fieldset.plugin-holder .control-label{display:none}
+.form-horizontal fieldset.plugin-holder .controls{margin-left:0;border:0;padding:0;overflow:auto;background:transparent;overflow:visible}
+.form-horizontal fieldset.plugin-holder .plugin-select-holder{background:#fff;padding-right:0}.form-horizontal fieldset.plugin-holder .plugin-select-holder select{height:26px;padding:2px 4px;width:152px;vertical-align:text-bottom}
+.form-horizontal fieldset.plugin-holder .plugin-select-holder .add-plugin,.form-horizontal fieldset.plugin-holder .plugin-select-holder .copy-plugins{padding:2px;text-indent:100%;white-space:nowrap;overflow:hidden;display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:-9999px;opacity:.6}.form-horizontal fieldset.plugin-holder .plugin-select-holder .add-plugin:hover,.form-horizontal fieldset.plugin-holder .plugin-select-holder .copy-plugins:hover{opacity:1}
+.form-horizontal fieldset.plugin-holder .plugin-select-holder .copy-plugins{background-position:-72px -96px}
+.form-horizontal fieldset.plugin-holder .control-group:first-child .controls,.form-horizontal fieldset.plugin-holder .control-group:first-of-type .controls{padding:0}
+.plugin-editor{margin-left:201px}.plugin-editor iframe{margin-top:-30px}
+.plugin-editor>p{margin:0 0 0 20px;color:#999;text-shadow:0 1px rgba(255,255,255,0.5);font-style:italic}
+.plugin-list-holder{width:200px}
+ul.plugin-list{border-top:1px solid #ededed}ul.plugin-list li,ul.plugin-list li.active{margin-right:-1px}
+ul.plugin-list li{border-right:1px solid #e7e7e7;background:#fff;}ul.plugin-list li.active{background:#edeff1;border:0}ul.plugin-list li.active .text{color:#333}
+ul.plugin-list li:hover{background:#f5f5f5}
+ul.plugin-list li .text,ul.plugin-list li:hover span.text{color:#666;width:155px}
+ul.plugin-list li .descr{color:#999}
+ul.plugin-list li .delete{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:-9999px;opacity:.6;opacity:.2;padding:2px;margin-top:8px}ul.plugin-list li .delete:hover{opacity:1}
+ul.plugin-list li .delete,ul.plugin-list li .delete:hover,ul.plugin-list li:hover span.delete{background-position:-312px 0}
 body.popup{height:auto}body.popup .suit-column{float:none;position:inherit}
+body.plugin-change-form #suit-center{padding-top:1px;padding-right:1px}
+body.plugin-change-form .plugin-submit-row{display:block;margin:10px 0 0 200px}body.plugin-change-form .plugin-submit-row .btn-info{padding-left:20;padding-right:20}
+.control-group.form-row{padding:0}
+.control-group .control-label label{width:auto;float:none;text-align:right;padding-right:0}
+div.field-body .control-label{display:none}
+div.field-body .controls{margin-left:0;border:0;padding:0}
