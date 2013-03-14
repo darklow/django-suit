@@ -1,10 +1,11 @@
+from django.conf import settings
 import suit.config
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin.views.main import ChangeList
 from django.forms import ModelForm
 from django.contrib import admin
 from django.db import models
-from suit.widgets import NumberInput
+from suit.widgets import NumberInput, SuitSplitDateTimeWidget, AutosizedTextarea
 
 
 class SortableModelAdminBase(object):
@@ -114,4 +115,16 @@ class SortableModelAdmin(SortableModelAdminBase, ModelAdmin):
         super(SortableModelAdmin, self).save_model(request, obj, form, change)
 
 
+# Quite aggressive detection and intrusion into Django CMS
+# Didn't found any other solutions though
+if 'cms' in settings.INSTALLED_APPS:
+    try:
+        from cms.admin.forms import PageForm
+
+        PageForm.Meta.widgets = {
+            'publication_date': SuitSplitDateTimeWidget,
+            'publication_end_date': SuitSplitDateTimeWidget,
+        }
+    except ImportError:
+        pass
 
