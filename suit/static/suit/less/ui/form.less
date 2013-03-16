@@ -43,6 +43,9 @@ h2.legend, .form-horizontal fieldset .legend {
                 font-weight: normal;
             }
         }
+        &.no-border {
+            box-shadow: none;
+        }
     }
     .control-group {
         margin: 0;
@@ -142,6 +145,17 @@ h2.legend, .form-horizontal fieldset .legend {
                 float: left;
                 margin-left: 10px;
             }
+        }
+    }
+    &.full-width {
+        .control-label {
+            display: none;
+        }
+        .controls {
+            margin-left: 0;
+            border: 0;
+            padding: 0;
+            .border-radius(@border-radius);
         }
     }
 }

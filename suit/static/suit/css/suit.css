@@ -105,6 +105,7 @@ h2.legend,.form-horizontal fieldset .legend{font-weight:bold;font-size:16px;line
 .form-horizontal fieldset .legend{border:0;margin:-30px 0 0 0;position:absolute;width:auto}.form-horizontal fieldset .legend .description{font-weight:normal;font-size:12px;display:inline-block;margin-left:20px;color:#999}
 .form-horizontal fieldset.collapse{overflow:visible;height:auto}
 .form-horizontal fieldset.collapsed{background-color:#f6f7f8}.form-horizontal fieldset.collapsed .legend{position:static;font-size:13px;font-weight:normal}
+.form-horizontal fieldset.no-border{box-shadow:none}
 .form-horizontal .control-group{margin:0}
 .form-horizontal .submit-row-bottom{margin:20px 0 0 200px}
 .popup .one-column{padding-top:10px}
@@ -121,6 +122,8 @@ h2.legend,.form-horizontal fieldset .legend{font-weight:bold;font-size:16px;line
 .control-group .field-box .controls .error input,.control-group .field-box .controls .error select,.control-group .field-box .controls .error textarea{border-color:#b94a48}
 .control-group .field-box .controls:not(:first-child) .control-label{width:auto;margin-left:10px}
 .control-group .field-box .controls:not(:first-child) .controls{float:left;margin-left:10px}
+.control-group.full-width .control-label{display:none}
+.control-group.full-width .controls{margin-left:0;border:0;padding:0;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px}
 .control-group .add-another,.inline-group .add-another,.control-group .related-lookup,.inline-group .related-lookup{text-decoration:none;display:inline-block;padding:0 0 0 8px}
 .control-group .related-lookup,.inline-group .related-lookup{padding-left:6px}
 .control-group .vForeignKeyRawIdAdminField,.inline-group .vForeignKeyRawIdAdminField{width:90px}
