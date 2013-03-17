@@ -29,12 +29,12 @@ h2.legend, .form-horizontal fieldset .legend {
             }
         }
 
-    /* BS collapse override */
+        /* BS collapse override */
         &.collapse {
             overflow: visible;
             height: auto;
         }
-    /* Position attr change for collapsed */
+        /* Position attr change for collapsed */
         &.collapsed {
             background-color: @bgcolor-light;
             .legend {
@@ -63,36 +63,66 @@ h2.legend, .form-horizontal fieldset .legend {
     }
 }
 
-.control-group {
-    background-color: white;
-    margin: 0;
-    border-bottom: 1px solid @border-color-light;
+/* Wrap to mask .controls background and support multi-line labels */
+.control-group-wrap {
+    overflow: hidden;
+    padding: 0;
+    line-height: normal;
     &:first-child, &:first-of-type {
         .border-radius(@border-radius, @border-radius, null, null);
-        .controls {
-            padding-top: 10px;
-            .border-radius(null, @border-radius, null, null);
-        }
-        .control-label {
-            padding-top: 10px;
+        .control-group {
+            border: 0;
+            .border-radius(@border-radius, @border-radius, null, null);
+            .controls {
+                padding-top: 11px;
+                .border-radius(null, @border-radius, null, null);
+            }
+            .control-label {
+                padding-top: 11px;
+            }
         }
     }
     &:last-child, &:last-of-type {
         .border-radius(null, null, @border-radius, @border-radius);
-        border: 0;
-        .controls {
-            .border-radius(null, null, @border-radius, null);
-            margin-bottom: 0;
-            padding-bottom: 10px;
+        .control-group {
+            .controls {
+                margin-bottom: -490px;
+            }
         }
     }
+
+    &.full-width {
+        .border-radius(0);
+        .control-label {
+            display: none;
+        }
+        .controls {
+            margin: 0 0 -500px 0 !important;
+            padding-top: 0 !important;
+            border: 0;
+            padding-left: 0;
+            padding-right: 0;
+            .border-radius(@border-radius);
+            .html-widget {
+                display: inline-block;
+                margin: 10px;
+            }
+        }
+    }
+}
+.control-group {
+    background-color: white;
+    margin: 0;
+    border-top: 1px solid @border-color-light;
     .controls {
         background-color: @bgcolor-light;
         border-left: 1px solid #ecedee;
-        margin-bottom: -1px;
-        padding: 5px 15px;
+        padding: 6px 15px;
         vertical-align: top;
         line-height: 26px;
+        margin-top: -1px;
+        margin-bottom: -496px;
+        padding-bottom: 500px;
         p {
             margin-bottom: 0;
         }
@@ -102,11 +132,15 @@ h2.legend, .form-horizontal fieldset .legend {
             margin-right: 5px;
         }
     }
-    .control-label label {
-        padding-top: 5px;
+    .control-label {
+        padding-top: 6px;
+        label {
+            padding-top: 5px;
+            padding-left: 10px;
+        }
     }
 
-/* Some BS form global overrides */
+    /* Some BS form global overrides */
     .help-block, .help-inline {
         font-size: 11px;
         color: #999;
@@ -124,7 +158,7 @@ h2.legend, .form-horizontal fieldset .legend {
         margin: 1px 0 0 5px;
     }
 
-/* Inline forms fields */
+    /* Inline forms fields */
     .field-box .controls {
         label {
             display: inline-block;
@@ -150,17 +184,6 @@ h2.legend, .form-horizontal fieldset .legend {
                 float: left;
                 margin-left: 10px;
             }
-        }
-    }
-    &.full-width {
-        .control-label {
-            display: none;
-        }
-        .controls {
-            margin-left: 0;
-            border: 0;
-            padding: 0;
-            .border-radius(@border-radius);
         }
     }
 }
@@ -226,10 +249,6 @@ h3 {
             z-index: 2;
             position: relative;
             border-bottom: 1px solid #eee;
-            .control-group { //                .border-radius(0px);
-                &:last-child { //                    .border-radius(null, null, @border-radius, @border-radius);
-                }
-            }
         }
         .add-row {
             z-index: 1;
@@ -247,14 +266,18 @@ h3 {
     }
     .inline-related {
         fieldset {
+            .border-radius(0, 0, null, null);
             margin: 40px 0 0 0; // Remove rounded corners for first fieldset
-        // First inline fieldset will always have grey header row
+            // First inline fieldset will always have grey header row
             &:first-of-type {
-                .control-group {
+                .control-group-wrap {
+                    .border-radius(0, 0, null, null);
                     &:first-child, &:first-of-type {
-                        .border-radius(0);
-                        .controls {
+                        .control-group {
                             .border-radius(0);
+                            .controls {
+                                .border-radius(0);
+                            }
                         }
                     }
                 }
