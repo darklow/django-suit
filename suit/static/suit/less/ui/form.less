@@ -1,3 +1,4 @@
+@vertical-offset: 500px;
 h2.legend, .form-horizontal fieldset .legend {
     font-weight: bold;
     font-size: 16px;
@@ -86,7 +87,7 @@ h2.legend, .form-horizontal fieldset .legend {
         .border-radius(null, null, @border-radius, @border-radius);
         .control-group {
             .controls {
-                margin-bottom: -490px;
+                margin-bottom: (-@vertical-offset + 10px);  // -490
             }
         }
     }
@@ -97,7 +98,7 @@ h2.legend, .form-horizontal fieldset .legend {
             display: none;
         }
         .controls {
-            margin: 0 0 -500px 0 !important;
+            margin: 0 0 -@vertical-offset 0 !important;
             padding-top: 0 !important;
             border: 0;
             padding-left: 0;
@@ -121,8 +122,8 @@ h2.legend, .form-horizontal fieldset .legend {
         vertical-align: top;
         line-height: 26px;
         margin-top: -1px;
-        margin-bottom: -496px;
-        padding-bottom: 500px;
+        margin-bottom: (-@vertical-offset + 4px); // -496
+        padding-bottom: @vertical-offset;
         p {
             margin-bottom: 0;
         }
