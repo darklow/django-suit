@@ -105,6 +105,7 @@ h2.legend,.form-horizontal fieldset .legend{font-weight:bold;font-size:16px;line
 .form-horizontal fieldset.collapse{overflow:visible;height:auto}
 .form-horizontal fieldset.collapsed{background-color:#f6f7f8}.form-horizontal fieldset.collapsed .legend{position:static;font-size:13px;font-weight:normal}
 .form-horizontal fieldset.no-border{box-shadow:none}
+.form-horizontal fieldset.wide .control-label{min-width:200px}
 .form-horizontal .control-group{margin:0}
 .form-horizontal .submit-row-bottom{margin:20px 0 0 200px}
 .popup .one-column{padding-top:10px}
