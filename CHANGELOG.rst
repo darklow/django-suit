@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v0.1.8 (upcoming release)
+-------------------------------------------------------------
+
+* [Feature] WYSIWYG editors support and docs
+* [Feature] `Full-width fieldsets <http://django-suit.readthedocs.org/en/develop/widgets.html#css-goodies>`_
+* [Feature] Introduced two related wysiwyg apps `suit-redactor <https://github.com/darklow/django-suit-redactor>`_ and `suit-ckeditor <https://github.com/darklow/django-suit-ckeditor>`_
+* [Refactor] Major fieldset refactoring to support multi-line labels
+* [Fix] CSS/Templating fixes and tweaks. See commit log for full changes
+
+
 v0.1.6, v.0.1.7 (2013-03-10)
 -------------------------------------------------------------
 
