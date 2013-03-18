@@ -59,6 +59,16 @@ Deployment with Django Suit should not be different than any other Django applic
 
 .. note:: If you deploy your project with Apache or ``Debug=False`` don't forget to run ``./manage.py collectstatic``
 
+
+Develop branch
+--------------
+
+`Develop branch <https://github.com/darklow/django-suit/commits/develop>`_ is considered as release candidate version. Check `commits <https://github.com/darklow/django-suit/commits/develop>`_ and `changelog <https://github.com/darklow/django-suit/blob/develop/CHANGELOG.rst>`_ of develop branch first, before installing develop version. It is quite stable and always tested, but can contain some flaws or behaviour changes too. To install latest develop version use::
+
+  pip uninstall django-suit
+  pip install https://github.com/darklow/django-suit/tarball/develop
+
+
 Configuration
 =============
 
@@ -93,7 +103,6 @@ There are handy widgets included in Django Suit.
    widgets
 
 
-
 Sortables
 =========
 
@@ -103,6 +112,17 @@ Sortables are handy admin tools for ordering different lists.
    :maxdepth: 3
 
    sortables
+
+
+Wysiwyg editors
+===============
+
+How to use wysiwyg editors in Django Suit.
+
+.. toctree::
+   :maxdepth: 3
+
+   wysiwyg
 
 
 Examples
