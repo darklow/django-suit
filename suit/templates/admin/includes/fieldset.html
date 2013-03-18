@@ -1,5 +1,5 @@
 {% load suit_tags %}
-<fieldset class="module aligned{{ fieldset.name|yesno:' with-legend,' }} {{ fieldset.classes }}">
+<fieldset class="module aligned{{ fieldset.name|yesno:' with-legend, first' }} {{ fieldset.classes }}">
     {% if fieldset.name %}
         <h2 class="legend">{{ fieldset.name }}
             {% if fieldset.description %}
@@ -7,8 +7,7 @@
             {% endif %}
         </h2>{% endif %}
     {% for line in fieldset %}
-        <div class="control-group-wrap form-row{% if line.fields|length_is:'1' and line.errors %} error errors{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %} {{ field.field.field.widget.attrs.rowclass }}{% endfor %}">
-        <div class="control-group">
+        <div class="control-group form-row{% if line.fields|length_is:'1' and line.errors %} error errors{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %} {{ field.field.field.widget.attrs.rowclass }}{% endfor %}">
             {% for field in line %}
 
                 {# write special control tags only for first multi field #}
@@ -65,7 +64,6 @@
 
             {% endfor %}
 
-        </div>
         </div>
     {% endfor %}
 </fieldset>
