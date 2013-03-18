@@ -45,8 +45,33 @@ h2.legend, .form-horizontal fieldset .legend {
                 font-weight: normal;
             }
         }
-        &.no-border {
+        &.full-width {
             box-shadow: none;
+            .control-group {
+                .border-radius(0);
+                width: 100%;
+                display: block;
+                > div {
+                    display: block;
+                }
+                .control-label {
+                    display: none;
+                    width: 0;
+                }
+                .controls {
+                    display: block;
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+                    width: 100%;
+                    .border-radius(@border-radius);
+                    .html-widget {
+                        display: inline-block;
+                        margin: 10px;
+                    }
+
+                }
+            }
         }
         &.wide .control-label {
             min-width: 200px;
@@ -124,31 +149,6 @@ h2.legend, .form-horizontal fieldset .legend {
             .controls {
                 padding-bottom: 10px;
                 .border-radius(null, null, @border-radius, null);
-            }
-        }
-
-        &.full-width {
-            .border-radius(0);
-            width: 100%;
-            display: block;
-            > div {
-                display: block;
-            }
-            .control-label {
-                display: none;
-                width: 0;
-            }
-            .controls {
-                display: block;
-                margin: 0;
-                padding: 0;
-                border: 0;
-                width: 100%;
-                .border-radius(@border-radius);
-                .html-widget {
-                    display: inline-block;
-                    margin: 10px;
-                }
             }
         }
 
