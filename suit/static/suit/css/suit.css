@@ -106,34 +106,33 @@ h2.legend,.form-horizontal fieldset .legend{font-weight:bold;font-size:16px;line
 .form-horizontal fieldset.collapsed{background-color:#f6f7f8}.form-horizontal fieldset.collapsed .legend{position:static;font-size:13px;font-weight:normal}
 .form-horizontal fieldset.no-border{box-shadow:none}
 .form-horizontal fieldset.wide .control-label{min-width:200px}
-.form-horizontal .control-group{margin:0}
+.form-horizontal fieldset.collapsed *{display:none}
+.form-horizontal fieldset.collapsed .legend,.form-horizontal fieldset.collapsed .legend *,.form-horizontal fieldset.collapsed{display:block !important}
+.form-horizontal fieldset.collapsed .collapse-toggle{background:transparent;display:inline !important}
 .form-horizontal .submit-row-bottom{margin:20px 0 0 200px}
+.form-horizontal .control-group{display:table-header-group;margin:0;}.form-horizontal .control-group>div{display:table-row;width:100%}
+.form-horizontal .control-group .control-label{background:#fff;display:table-cell;min-width:150px;float:none;padding:10px 20px 5px 10px;border-bottom:1px solid #ededed}.form-horizontal .control-group .control-label label{padding:0;margin:0}
+.form-horizontal .control-group .controls{display:table-cell;vertical-align:top;float:none;background-color:#f6f7f8;border-left:1px solid #ecedee;padding:5px 15px;width:100%;line-height:26px}.form-horizontal .control-group .controls p{margin-bottom:0}
+.form-horizontal .control-group .controls .readonly{display:inline-block;vertical-align:middle;margin-right:5px}
+.form-horizontal .control-group:first-child .control-label,.form-horizontal .control-group:first-of-type .control-label{padding-top:15px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px}
+.form-horizontal .control-group:first-child .controls,.form-horizontal .control-group:first-of-type .controls{padding-top:10px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px}
+.form-horizontal .control-group:last-child .control-label,.form-horizontal .control-group:last-of-type .control-label{padding-bottom:10px;border:0;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px}
+.form-horizontal .control-group:last-child .controls,.form-horizontal .control-group:last-of-type .controls{padding-bottom:10px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px}
+.form-horizontal .control-group.full-width{-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:0;-moz-border-radius-topleft:0;border-top-left-radius:0;-webkit-border-top-right-radius:0;-moz-border-radius-topright:0;border-top-right-radius:0;-webkit-border-bottom-left-radius:0;-moz-border-radius-bottomleft:0;border-bottom-left-radius:0;-webkit-border-bottom-right-radius:0;-moz-border-radius-bottomright:0;border-bottom-right-radius:0;width:100%;display:block}.form-horizontal .control-group.full-width>div{display:block}
+.form-horizontal .control-group.full-width .control-label{display:none;width:0}
+.form-horizontal .control-group.full-width .controls{display:block;margin:0;padding:0;border:0;width:100%;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px}.form-horizontal .control-group.full-width .controls .html-widget{display:inline-block;margin:10px}
+.form-horizontal .control-group .help-block,.form-horizontal .control-group .help-inline{font-size:11px;color:#999;line-height:normal}
+.form-horizontal .control-group .help-inline ul,.form-horizontal .control-group .radiolist{margin:0}.form-horizontal .control-group .help-inline ul li,.form-horizontal .control-group .radiolist li{list-style:none;padding:0 10px 0 0}
+.form-horizontal .control-group .help-icon{margin:1px 0 0 5px}
+.form-horizontal .control-group .field-box .controls label{display:inline-block;margin:0 5px 0 10px}.form-horizontal .control-group .field-box .controls label.required{margin-right:10px}
+.form-horizontal .control-group .field-box .controls .error .control-label,.form-horizontal .control-group .field-box .controls .error .help-block,.form-horizontal .control-group .field-box .controls .error .help-inline,.form-horizontal .control-group .field-box .controls .error .help-inline ul li{color:#b94a48}
+.form-horizontal .control-group .field-box .controls .error input,.form-horizontal .control-group .field-box .controls .error select,.form-horizontal .control-group .field-box .controls .error textarea{border-color:#b94a48}
+.form-horizontal .control-group .field-box .controls:not(:first-child) .control-label{width:auto;margin-left:10px}
+.form-horizontal .control-group .field-box .controls:not(:first-child) .controls{float:left;margin-left:10px}
 .popup .one-column{padding-top:10px}
-.control-group{display:table-header-group;margin:0;}.control-group>div{display:table-row;width:100%}
-.control-group .control-label{background:#fff;display:table-cell;min-width:150px;float:none;padding:10px 20px 5px 10px;border-bottom:1px solid #ededed}.control-group .control-label label{padding:0;margin:0}
-.control-group .controls{display:table-cell;vertical-align:top;float:none;background-color:#f6f7f8;border-left:1px solid #ecedee;padding:5px 15px;width:100%;line-height:26px}.control-group .controls p{margin-bottom:0}
-.control-group .controls .readonly{display:inline-block;vertical-align:middle;margin-right:5px}
-.control-group:first-child .control-label,.control-group:first-of-type .control-label{padding-top:15px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px}
-.control-group:first-child .controls,.control-group:first-of-type .controls{padding-top:10px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px}
-.control-group:last-child .control-label,.control-group:last-of-type .control-label{padding-bottom:10px;border:0;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px}
-.control-group:last-child .controls,.control-group:last-of-type .controls{padding-bottom:10px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px}
-.control-group.full-width{-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:0;-moz-border-radius-topleft:0;border-top-left-radius:0;-webkit-border-top-right-radius:0;-moz-border-radius-topright:0;border-top-right-radius:0;-webkit-border-bottom-left-radius:0;-moz-border-radius-bottomleft:0;border-bottom-left-radius:0;-webkit-border-bottom-right-radius:0;-moz-border-radius-bottomright:0;border-bottom-right-radius:0;width:100%;display:block}.control-group.full-width>div{display:block}
-.control-group.full-width .control-label{display:none;width:0}
-.control-group.full-width .controls{display:block;margin:0;padding:0;border:0;width:100%;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px}.control-group.full-width .controls .html-widget{display:inline-block;margin:10px}
-.control-group .help-block,.control-group .help-inline{font-size:11px;color:#999;line-height:normal}
-.control-group .help-inline ul,.control-group .radiolist{margin:0}.control-group .help-inline ul li,.control-group .radiolist li{list-style:none;padding:0 10px 0 0}
-.control-group .help-icon{margin:1px 0 0 5px}
-.control-group .field-box .controls label{display:inline-block;margin:0 5px 0 10px}.control-group .field-box .controls label.required{margin-right:10px}
-.control-group .field-box .controls .error .control-label,.control-group .field-box .controls .error .help-block,.control-group .field-box .controls .error .help-inline,.control-group .field-box .controls .error .help-inline ul li{color:#b94a48}
-.control-group .field-box .controls .error input,.control-group .field-box .controls .error select,.control-group .field-box .controls .error textarea{border-color:#b94a48}
-.control-group .field-box .controls:not(:first-child) .control-label{width:auto;margin-left:10px}
-.control-group .field-box .controls:not(:first-child) .controls{float:left;margin-left:10px}
 .control-group .add-another,.inline-group .add-another,.control-group .related-lookup,.inline-group .related-lookup{text-decoration:none;display:inline-block;padding:0 0 0 8px}
 .control-group .related-lookup,.inline-group .related-lookup{padding-left:6px}
 .control-group .vForeignKeyRawIdAdminField,.inline-group .vForeignKeyRawIdAdminField{width:90px}
-fieldset.collapsed *{display:none}
-fieldset.collapsed .legend,fieldset.collapsed .legend *,fieldset.collapsed{display:block !important}
-fieldset.collapsed .collapse-toggle{background:transparent;display:inline !important}
 .alert ul{margin-top:10px}
 .empty-form,tr.empty-form{display:none}
 h3{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255,255,255,0.5);padding-left:10px;margin:0}

@@ -51,12 +51,153 @@ h2.legend, .form-horizontal fieldset .legend {
         &.wide .control-label {
             min-width: 200px;
         }
-    }
-    .control-group {
-        margin: 0;
+
+        /* COLLAPSE LOGIC */
+        &.collapsed * {
+            display: none;
+        }
+        &.collapsed .legend, &.collapsed .legend *, &.collapsed {
+            display: block !important;
+        }
+        &.collapsed .collapse-toggle {
+            background: transparent;
+            display: inline !important;
+        }
     }
     .submit-row-bottom {
         margin: 20px 0 0 200px;
+    }
+    .control-group {
+        display: table-header-group;
+        margin: 0;
+        > div {
+            display: table-row;
+            width: 100%;
+        }
+        .control-label {
+            background: white;
+            display: table-cell;
+            min-width: 150px;
+            float: none;
+            padding: 10px 20px 5px 10px;
+            border-bottom: 1px solid @border-color-light;
+            label {
+                padding: 0;
+                margin: 0;
+            }
+        }
+        .controls {
+            display: table-cell;
+            vertical-align: top;
+            float: none;
+            background-color: @bgcolor-light;
+            border-left: 1px solid #ecedee;
+            padding: 5px 15px;
+            width: 100%;
+            line-height: 26px;
+            p {
+                margin-bottom: 0;
+            }
+            .readonly {
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
+
+        &:first-child, &:first-of-type {
+            .control-label {
+                padding-top: 15px;
+                .border-radius(@border-radius, null, null, null);
+            }
+            .controls {
+                padding-top: 10px;
+                .border-radius(null, @border-radius, null, null);
+            }
+        }
+        &:last-child, &:last-of-type {
+            .control-label {
+                padding-bottom: 10px;
+                border: 0;
+                .border-radius(null, null, null, @border-radius);
+            }
+            .controls {
+                padding-bottom: 10px;
+                .border-radius(null, null, @border-radius, null);
+            }
+        }
+
+        &.full-width {
+            .border-radius(0);
+            width: 100%;
+            display: block;
+            > div {
+                display: block;
+            }
+            .control-label {
+                display: none;
+                width: 0;
+            }
+            .controls {
+                display: block;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                width: 100%;
+                .border-radius(@border-radius);
+                .html-widget {
+                    display: inline-block;
+                    margin: 10px;
+                }
+            }
+        }
+
+        /* Some BS form global overrides */
+        .help-block, .help-inline {
+            font-size: 11px;
+            color: #999;
+            line-height: normal;
+        }
+
+        .help-inline ul, .radiolist {
+            margin: 0;
+            li {
+                list-style: none;
+                padding: 0 10px 0 0;
+            }
+        }
+        .help-icon {
+            margin: 1px 0 0 5px;
+        }
+
+        /* Inline forms fields */
+        .field-box .controls {
+            label {
+                display: inline-block;
+                margin: 0 5px 0 10px;
+                &.required {
+                    margin-right: 10px;
+                }
+            }
+            .error {
+                .control-label, .help-block, .help-inline, .help-inline ul li {
+                    color: @red;
+                }
+                input, select, textarea {
+                    border-color: @red;
+                }
+            }
+            &:not(:first-child) {
+                .control-label {
+                    width: auto;
+                    margin-left: 10px;
+                }
+                .controls {
+                    float: left;
+                    margin-left: 10px;
+                }
+            }
+        }
     }
 }
 
@@ -65,139 +206,6 @@ h2.legend, .form-horizontal fieldset .legend {
     }
     .one-column {
         padding-top: 10px;
-    }
-}
-
-.control-group {
-    display: table-header-group;
-    margin: 0;
-    > div {
-        display: table-row;
-        width: 100%;
-    }
-    .control-label {
-        background: white;
-        display: table-cell;
-        min-width: 150px;
-        float: none;
-        padding: 10px 20px 5px 10px;
-        border-bottom: 1px solid @border-color-light;
-        label {
-            padding: 0;
-            margin: 0;
-        }
-    }
-    .controls {
-        display: table-cell;
-        vertical-align: top;
-        float: none;
-        background-color: @bgcolor-light;
-        border-left: 1px solid #ecedee;
-        padding: 5px 15px;
-        width: 100%;
-        line-height: 26px;
-        p {
-            margin-bottom: 0;
-        }
-        .readonly {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 5px;
-        }
-    }
-
-    &:first-child, &:first-of-type {
-        .control-label {
-            padding-top: 15px;
-            .border-radius(@border-radius, null, null, null);
-        }
-        .controls {
-            padding-top: 10px;
-            .border-radius(null, @border-radius, null, null);
-        }
-    }
-    &:last-child, &:last-of-type {
-        .control-label {
-            padding-bottom: 10px;
-            border: 0;
-            .border-radius(null, null, null, @border-radius);
-        }
-        .controls {
-            padding-bottom: 10px;
-            .border-radius(null, null, @border-radius, null);
-        }
-    }
-
-    &.full-width {
-        .border-radius(0);
-        width: 100%;
-        display: block;
-        > div {
-            display: block;
-        }
-        .control-label {
-            display: none;
-            width: 0;
-        }
-        .controls {
-            display: block;
-            margin: 0;
-            padding: 0;
-            border: 0;
-            width: 100%;
-            .border-radius(@border-radius);
-            .html-widget {
-                display: inline-block;
-                margin: 10px;
-            }
-        }
-    }
-
-    /* Some BS form global overrides */
-    .help-block, .help-inline {
-        font-size: 11px;
-        color: #999;
-        line-height: normal;
-    }
-
-    .help-inline ul, .radiolist {
-        margin: 0;
-        li {
-            list-style: none;
-            padding: 0 10px 0 0;
-        }
-    }
-    .help-icon {
-        margin: 1px 0 0 5px;
-    }
-
-    /* Inline forms fields */
-    .field-box .controls {
-        label {
-            display: inline-block;
-            margin: 0 5px 0 10px;
-            &.required {
-                margin-right: 10px;
-            }
-        }
-        .error {
-            .control-label, .help-block, .help-inline, .help-inline ul li {
-                color: @red;
-            }
-            input, select, textarea {
-                border-color: @red;
-            }
-        }
-        &:not(:first-child) {
-            .control-label {
-                width: auto;
-                margin-left: 10px;
-            }
-            .controls {
-                float: left;
-                margin-left: 10px;
-            }
-        }
     }
 }
 
@@ -213,20 +221,6 @@ h2.legend, .form-horizontal fieldset .legend {
     .vForeignKeyRawIdAdminField {
         width: 90px;
     }
-}
-
-/* COLLAPSE LOGIC */
-fieldset.collapsed * {
-    display: none;
-}
-
-fieldset.collapsed .legend, fieldset.collapsed .legend *, fieldset.collapsed {
-    display: block !important;
-}
-
-fieldset.collapsed .collapse-toggle {
-    background: transparent;
-    display: inline !important;
 }
 
 .alert {
