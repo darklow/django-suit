@@ -239,7 +239,7 @@ a.btn{text-decoration:none}
 #content h1,#content h2,#content h3,#content h4,#content alert{text-shadow:0 1px rgba(255,255,255,0.5)}
 .italic-title{font-size:17px;font-weight:normal;margin:0 0 5px 5px}
 .inner-two-columns .inner-right-column{float:right;width:180px}.inner-two-columns .inner-right-column.fixed{position:fixed;right:20px;top:10px}
-.inner-two-columns .inner-center-column{margin-right:200px}.inner-two-columns .inner-center-column .tab-content{overflow:inherit}
+.inner-two-columns .inner-center-column{margin-right:200px}.inner-two-columns .inner-center-column .tab-content{overflow:inherit;margin-bottom:15px}
 .icon-alpha5{opacity:.5}
 .icon-alpha75{opacity:.75}
 a:hover .icon-alpha5,a:hover .icon-alpha75{opacity:1}
