@@ -173,18 +173,31 @@ h2.legend, .form-horizontal fieldset .legend {
         /* Inline forms fields */
         .field-box .controls {
             label {
+                float: left;
                 display: inline-block;
-                margin: 0 5px 0 10px;
+                margin: 5px 10px 0 0;
                 &.required {
-                    margin-right: 10px;
+                    margin-right: 15px;
+                }
+            }
+            .multi-field-box {
+                float: left;
+                margin-right: 15px;
+                .multi-field-controls {
+                    float: left;
+                }
+                .help-block {
+                    display: block;
+                    margin: 5px 0 0 5px;
                 }
             }
             .error {
-                .control-label, .help-block, .help-inline, .help-inline ul li {
+                .control-label, .help-block, .help-inline, .help-inline ul li, &.multi-field-box label {
                     color: @red;
                 }
                 input, select, textarea {
                     border-color: @red;
+                    color: @red;
                 }
             }
             &:not(:first-child) {
@@ -197,6 +210,9 @@ h2.legend, .form-horizontal fieldset .legend {
                     margin-left: 10px;
                 }
             }
+        }
+        &.first-error .control-label {
+            color: @red;
         }
     }
 }
@@ -281,10 +297,10 @@ h3 {
                     &:first-child, &:first-of-type {
                         .border-radius(0);
                         .control-label {
-                            .border-radius(0);
+                            .border-radius(0, null, null, null);
                         }
                         .controls {
-                            .border-radius(0);
+                            .border-radius(null, 0, null, null);
                         }
                     }
                 }
