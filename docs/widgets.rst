@@ -185,6 +185,8 @@ Use JavaScript ``SuitAfterInline.register`` to register/attach your function to 
   });
 
 
+.. _css-goodies:
+
 CSS goodies
 ===========
 
