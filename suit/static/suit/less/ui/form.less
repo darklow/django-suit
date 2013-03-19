@@ -181,6 +181,7 @@ h2.legend, .form-horizontal fieldset .legend {
                 }
             }
             .multi-field-box {
+                margin-top: 5px;
                 float: left;
                 margin-right: 15px;
                 .multi-field-controls {
@@ -188,7 +189,7 @@ h2.legend, .form-horizontal fieldset .legend {
                 }
                 .help-block {
                     display: block;
-                    margin: 5px 0 0 5px;
+                    margin: 3px 0 0 5px;
                 }
             }
             .error {
@@ -213,6 +214,9 @@ h2.legend, .form-horizontal fieldset .legend {
         }
         &.first-error .control-label {
             color: @red;
+        }
+        &.multi-field-row .controls {
+            padding-top: 0px;
         }
     }
 }

@@ -124,13 +124,14 @@ h2.legend,.form-horizontal fieldset .legend{font-weight:bold;font-size:16px;line
 .form-horizontal .control-group .help-inline ul,.form-horizontal .control-group .radiolist{margin:0}.form-horizontal .control-group .help-inline ul li,.form-horizontal .control-group .radiolist li{list-style:none;padding:0 10px 0 0}
 .form-horizontal .control-group .help-icon{margin:1px 0 0 5px}
 .form-horizontal .control-group .field-box .controls label{float:left;display:inline-block;margin:5px 10px 0 0}.form-horizontal .control-group .field-box .controls label.required{margin-right:15px}
-.form-horizontal .control-group .field-box .controls .multi-field-box{float:left;margin-right:15px}.form-horizontal .control-group .field-box .controls .multi-field-box .multi-field-controls{float:left}
-.form-horizontal .control-group .field-box .controls .multi-field-box .help-block{display:block;margin:5px 0 0 5px}
+.form-horizontal .control-group .field-box .controls .multi-field-box{margin-top:5px;float:left;margin-right:15px}.form-horizontal .control-group .field-box .controls .multi-field-box .multi-field-controls{float:left}
+.form-horizontal .control-group .field-box .controls .multi-field-box .help-block{display:block;margin:3px 0 0 5px}
 .form-horizontal .control-group .field-box .controls .error .control-label,.form-horizontal .control-group .field-box .controls .error .help-block,.form-horizontal .control-group .field-box .controls .error .help-inline,.form-horizontal .control-group .field-box .controls .error .help-inline ul li,.form-horizontal .control-group .field-box .controls .error.multi-field-box label{color:#b94a48}
 .form-horizontal .control-group .field-box .controls .error input,.form-horizontal .control-group .field-box .controls .error select,.form-horizontal .control-group .field-box .controls .error textarea{border-color:#b94a48;color:#b94a48}
 .form-horizontal .control-group .field-box .controls:not(:first-child) .control-label{width:auto;margin-left:10px}
 .form-horizontal .control-group .field-box .controls:not(:first-child) .controls{float:left;margin-left:10px}
 .form-horizontal .control-group.first-error .control-label{color:#b94a48}
+.form-horizontal .control-group.multi-field-row .controls{padding-top:0}
 .popup .one-column{padding-top:10px}
 .control-group .add-another,.inline-group .add-another,.control-group .related-lookup,.inline-group .related-lookup{text-decoration:none;display:inline-block;padding:0 0 0 8px}
 .control-group .related-lookup,.inline-group .related-lookup{padding-left:6px}
