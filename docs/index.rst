@@ -66,7 +66,7 @@ Develop branch
 `Develop branch <https://github.com/darklow/django-suit/commits/develop>`_ is considered as release candidate version. Check `commits <https://github.com/darklow/django-suit/commits/develop>`_ and `changelog <https://github.com/darklow/django-suit/blob/develop/CHANGELOG.rst>`_ of develop branch first, before installing develop version. It is quite stable and always tested, but can contain some flaws or behaviour changes too. To install latest develop version use::
 
   pip uninstall django-suit
-  pip install https://github.com/darklow/django-suit/tarball/develop
+  pip install -e git+https://github.com/darklow/django-suit@develop#egg=django-suit
 
 
 Configuration
