@@ -87,7 +87,7 @@ tr.form-row:nth-last-child(3) td .inline-sortable .sortable-down,#result_list tr
 .actionlist li i{float:left;margin-right:10px}
 .actionlist li.deletelink{color:#999}
 .actionlist li .deleted-entry{color:#333}
-.object-tools{float:right;margin-bottom:10px}
+.object-tools{float:right;margin-bottom:10px}.object-tools .btn{margin-left:5px}
 .actions{margin-bottom:5px}.actions label{display:inline}
 .change-list .hiddenfields{display:none}
 #changelist .actions span.all,#changelist .actions span.action-counter,#changelist .actions span.clear,#changelist .actions span.question{display:none}
