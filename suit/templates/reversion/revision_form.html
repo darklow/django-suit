@@ -4,7 +4,7 @@
 
 
 {% block breadcrumbs %}
-<div class="breadcrumb">
+<ul class="breadcrumb">
     <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
         <span class="divider">&raquo;</span></li>
     <li><a href="{% url 'admin:app_list' app_label %}">{{ app_label|capfirst|escape }}</a>
@@ -16,7 +16,7 @@
     <li><a href="../">{% trans "History" %}</a>
         <span class="divider">&raquo;</span></li>
     <li class="active">{% blocktrans with opts.verbose_name as verbose_name %}Revert {{verbose_name}}{% endblocktrans %}</li>
-</div>
+</ul>
 {% endblock %}
 
 
@@ -28,5 +28,5 @@
 
 
 {% block form_top %}
-<p>{% blocktrans %}Press the save button below to revert to this version of the object.{% endblocktrans %}</p>
+<div class="alert alert-info">{% blocktrans %}Press the save button below to revert to this version of the object.{% endblocktrans %}</div>
 {% endblock %}

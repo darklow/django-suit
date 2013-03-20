@@ -4,7 +4,7 @@
 
 
 {% block breadcrumbs %}
-<div class="breadcrumb">
+<ul class="breadcrumb">
     <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
         <span class="divider">&raquo;</span></li>
     <li><a href="{% url 'admin:app_list' app_label %}">{{ app_label|capfirst|escape }}</a>
@@ -12,13 +12,13 @@
     <li><a href="{{changelist_url}}">{{opts.verbose_name_plural|capfirst}}</a>
         <span class="divider">&raquo;</span></li>
     <li class="active">{% blocktrans with opts.verbose_name_plural|escape as name %}Recover deleted {{name}}{% endblocktrans %}</li>
-</div>
+</ul>
 {% endblock %}
 
 
 {% block content %}
 <div id="content-main">
-    <p>{% blocktrans %}Choose a date from the list below to recover a deleted version of an object.{% endblocktrans %}</p>
+    <div class="alert alert-info">{% blocktrans %}Choose a date from the list below to recover a deleted version of an object.{% endblocktrans %}</div>
     <div class="module">
         {% if deleted %}
         <table id="change-history" class="table table-bordered table-condensed table-striped">
@@ -38,7 +38,7 @@
             </tbody>
         </table>
         {% else %}
-        <p>{% trans "There are no deleted objects to recover." %}</p>
+        <div class="alert alert-warn">{% trans "There are no deleted objects to recover." %}</div>
         {% endif %}
     </div>
 </div>

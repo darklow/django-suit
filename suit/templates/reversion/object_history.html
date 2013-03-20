@@ -5,7 +5,7 @@
 {% block content %}
 <div id="content-main">
 
-    <p>{% blocktrans %}Choose a date from the list below to revert to a previous version of this object.{% endblocktrans %}</p>
+    <div class="alert alert-info">{% blocktrans %}Choose a date from the list below to revert to a previous version of this object.{% endblocktrans %}</div>
 
     <div class="module">
         {% if action_list %}
@@ -33,7 +33,7 @@
             </tbody>
         </table>
         {% else %}
-        <p>{% trans "This object doesn't have a change history. It probably wasn't added via this admin site." %}</p>
+        <div class="alert alert-warn">{% trans "This object doesn't have a change history. It probably wasn't added via this admin site." %}</div>
         {% endif %}
     </div>
 </div>
