@@ -184,3 +184,37 @@ Use JavaScript ``SuitAfterInline.register`` to register/attach your function to 
       });
   });
 
+
+.. _css-goodies:
+
+CSS goodies
+===========
+
+`Original <https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin.fieldsets>`_ ``collapse`` and ``wide`` fieldset classes are also supported by Django Suit. Usage::
+
+  from django.contrib.admin import ModelAdmin
+
+  class CountryAdmin(admin.ModelAdmin):
+      ...
+      fieldsets = [
+          (None, {'fields': ['name', 'description']}),
+
+          ('Advanced settings', {
+              'classes': ('collapse',),  # Specify fieldset classes here
+              'fields': ['hidden_checkbox', 'hidden_choice']}),
+      ]
+
+.. |collapse| image:: _static/img/collapse.png
+
+* ``collapse`` CSS class makes fieldset collapsable:
+
+  |collapse|
+
+* ``wide`` CSS class makes fieldset labels wider
+
+* ``full-width`` CSS class hides field label and makes field controls in full width (useful for wysiwyg editors). Because label will be hidden, this class is intended to use one field per fieldset and fieldset title will be used as field title.
+
+  .. image:: _static/img/full-width.png
+     :target: http://djangosuit.com/admin/examples/wysiwygeditor/add/
+
+

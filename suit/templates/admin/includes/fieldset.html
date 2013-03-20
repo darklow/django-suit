@@ -1,69 +1,81 @@
 {% load suit_tags %}
-<fieldset class="module aligned {{ fieldset.classes }}">
+<fieldset class="module aligned{{ fieldset.name|yesno:' with-legend, first' }} {{ fieldset.classes }}">
     {% if fieldset.name %}
         <h2 class="legend">{{ fieldset.name }}
             {% if fieldset.description %}
                 <span class="description">{{ fieldset.description|safe }}</span>
             {% endif %}
         </h2>{% endif %}
-    {% for line in fieldset %}
-        <div class="control-group form-row{% if line.fields|length_is:'1' and line.errors %} error errors{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
-            {% for field in line %}
+  {% for line in fieldset %}
+    {% with singlefield=line.fields|length_is:'1' %}
+      <div class="control-group form-row{% if line.errors %} {{ singlefield|yesno:'error,first-error' }} errors{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %} {{ field.field.field.widget.attrs.rowclass }}{% endfor %}{{ singlefield|yesno:',multi-field-row' }}">
+        {% for field in line %}
+          {% spaceless %}
 
-                {# write special control tags only for first multi field #}
-                {% if forloop.counter == 1 %}
-                    <div{% if not line.fields|length_is:'1' %}
-                        class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}"{% endif %}>
+        {# write special control tags only for first multi field #}
+        {% if forloop.first %}
+            <div{% if not singlefield %}
+                class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}"{% endif %}>
 
-                    <div class="control-label">
-                        {{ field.label_tag }}
-                    </div>
-                    <div class="controls">
-                {% else %}
-                    {{ field.label_tag }}
-                {% endif %}
-
-            {% if not field.is_readonly and field.errors %}<div class="inline error errors">{% endif %}
-
-            {% if field.is_readonly %}
-                <p>{{ field|field_contents_foreign_linked }}</p>
-            {% else %}
-                {{ field.field }}
+            <div class="control-label">
+                {{ field.label_tag }}
+            </div>
+            <div class="controls">
+            {# if multi-fields and first field #}
+            {% if not singlefield %}
+              <div class="multi-field-box">
             {% endif %}
+        {% else %}
+          {# If multi-fields and not first wrap also label #}
+          {% if not singlefield and not forloop.first %}
+            <div class="multi-field-box{{ field.errors|yesno:' error,' }}">
+          {% endif %}
+            {{ field.label_tag }}
+        {% endif %}
 
-            {% if field.field.help_text %}
-                {% if not line.fields|length_is:'1' %}
-                    <a title="{{ field.field.help_text|safe }}"><i
-                            class="help-icon icon-question-sign icon-alpha75"></i></a>
-                {% endif %}
-            {% endif %}
+        {% if not field.is_readonly and field.errors %}<div class="inline error errors">{% endif %}
 
-            {# For single field errors#}
-            {% if line.fields|length_is:'1' and line.errors %}
-                <span class="help-inline">{{ line.errors }}</span>
-            {% endif %}
+        {# If multi-fields and wrap controls too #}
+         {% if not singlefield %}
+            <div class="multi-field-controls">
+          {% endif %}
 
-            {# For multi field errors #}
-            {% if field.errors and not line.fields|length_is:'1' and not field.is_readonly %}
-                <a title="{{ field.errors|striptags }}"><i
-                        class=" icon-exclamation-sign icon-alpha75"></i></a>
-            {% endif %}
+        {% if field.is_readonly %}
+            <span class="readonly">{{ field|field_contents_foreign_linked }}</span>
+        {% else %}
+            {{ field.field }}
+        {% endif %}
 
-            {% if field.field.help_text %}
-                {% if line.fields|length_is:'1' %}
-                    <span class="{% if line.errors or field.errors %}help-block{% else %}help-inline{% endif %}">{{ field.field.help_text|safe }}</span>
-                {% endif %}
-            {% endif %}
+        {# For single field errors#}
+        {% if singlefield and line.errors %}
+            <span class="help-inline">{{ line.errors }}</span>
+        {% endif %}
 
-            {% if not field.is_readonly and field.errors %}</div>{% endif %}
+        {# For multi field errors #}
+        {% if field.errors and not singlefield and not field.is_readonly %}
+          <span class="help-block">{{ field.errors|striptags }}</span>
+        {% endif %}
 
-            {% if forloop.last %}
-                </div>
-                </div>
-            {% endif %}
+        {% if field.field.help_text %}
+          <span class="{% if line.errors or field.errors or not singlefield %}help-block{% else %}help-inline{% endif %}">{{ field.field.help_text|safe }}</span>
+        {% endif %}
 
-            {% endfor %}
+        {% if not field.is_readonly and field.errors %}</div>{% endif %}
 
-        </div>
-    {% endfor %}
+        {% if not singlefield %}
+         </div> {# close multi-controls #}
+         </div> {# close multi-field-box #}
+        {% endif %}
+
+        {% if forloop.last %}
+            </div>
+            </div>
+        {% endif %}
+
+          {% endspaceless %}
+        {% endfor %}
+
+      </div>
+    {% endwith %}
+  {% endfor %}
 </fieldset>

@@ -62,7 +62,7 @@ Resources:
 django-mptt tree sortable
 =========================
 
-To use sortable on `djang-mptto <https://github.com/django-mptt/django-mptt/>`_ tree, you must follow the same instructions as for change list sortable. Combining with documentation on django-mptt, final code should look like this:
+To use sortable on `djang-mptt <https://github.com/django-mptt/django-mptt/>`_ tree, you must follow the same instructions as for change list sortable. Combining with documentation on django-mptt, final code should look like this:
 
 1. Prepare your model in ``models.py`` ::
 

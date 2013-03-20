@@ -12,16 +12,18 @@ class LessCompiler(FileSystemEventHandler):
         self.source = source
         FileSystemEventHandler.__init__(self)
 
+    def compile_css(self):
+        if len(sys.argv) < 3:
+            destination = self.source.replace('less', 'css')
+        else:
+            destination = sys.argv[2]
+        cmd = 'lessc %s > %s -x' % (source, os.path.abspath(destination))
+        print(cmd)
+        os.system(cmd)
+
     def on_any_event(self, event):
         if '__' not in event.src_path and isinstance(event, FileModifiedEvent):
-            if len(sys.argv) < 3:
-                destination = self.source.replace('less', 'css')
-            else:
-                destination = sys.argv[2]
-
-            cmd = 'lessc %s > %s -x' % (source, os.path.abspath(destination))
-            print(cmd)
-            os.system(cmd)
+            self.compile_css()
 
 
 if __name__ == "__main__":
@@ -33,6 +35,8 @@ if __name__ == "__main__":
 
     source = os.path.abspath(sys.argv[1])
     event_handler = LessCompiler(source)
+    # Run once at startup
+    event_handler.compile_css()
     observer = Observer()
     observer.schedule(event_handler, os.path.dirname(source), recursive=True)
     observer.start()

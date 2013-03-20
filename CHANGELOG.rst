@@ -1,6 +1,19 @@
 Changelog
 =========
 
+v0.1.8 (2013-03-20)
+-------------------------------------------------------------
+
+* [Feature] `django-reversion <https://github.com/etianen/django-reversion>`_ app support. `Example <http://djangosuit.com/admin/examples/reversioneditem/>`_ [Thanks to @phihos]
+* [Feature] `WYSIWYG editors <http://django-suit.readthedocs.org/en/develop/wysiwyg.html>`_ support, examples and docs
+* [Feature] `Full-width fieldsets <http://django-suit.readthedocs.org/en/develop/widgets.html#css-goodies>`_
+* [Feature] Introduced two related wysiwyg apps `suit-redactor <https://github.com/darklow/django-suit-redactor>`_ and `suit-ckeditor <https://github.com/darklow/django-suit-ckeditor>`_
+* [CSS] New "multi-fields in row" look and behaviour.
+* [CSS] Support for fieldset "wide" class 
+* [Refactor] Major fieldset refactoring to support multi-line labels
+* [Fix] Many CSS/Templating fixes and tweaks. See commit log for full changes
+
+
 v0.1.6, v.0.1.7 (2013-03-10)
 -------------------------------------------------------------
 
@@ -13,9 +26,9 @@ v0.1.6, v.0.1.7 (2013-03-10)
 v0.1.5 (2013-03-10)
 -------------------------------------------------------------
 
-* [Feature] New widget: `AutosizedTextarea <http://django-suit.readthedocs.org/en/latest/widgets.html#autosizedtextarea>`_
-* [Feature] New widget: `LinkedSelect <http://django-suit.readthedocs.org/en/latest/widgets.html#linkedselect>`_
-* [Feature] JavaScript inlines hook: `SuitAfterInline JS hook <http://django-suit.readthedocs.org/en/latest/widgets.html#javascript-goodies>`_
+* [Feature] New widget: `AutosizedTextarea <http://django-suit.readthedocs.org/en/develop/widgets.html#autosizedtextarea>`_
+* [Feature] New widget: `LinkedSelect <http://django-suit.readthedocs.org/en/develop/widgets.html#linkedselect>`_
+* [Feature] JavaScript inlines hook: `SuitAfterInline JS hook <http://django-suit.readthedocs.org/en/develop/widgets.html#javascript-goodies>`_
 * [Tests] Tests means more stability - bunch of tests added, more to come.
 * [Fix/Refactoring] Install breaks under certain conditions #17
 * [Fix] Admin save_on_top=True breaks change form #16
@@ -33,9 +46,9 @@ v0.1.4 (2013-03-04)
 v0.1.3 (2013-03-03)
 -------------------------------------------------------------
 
-* [Feature] `Sortables <http://django-suit.readthedocs.org/en/latest/sortables.html>`_ for `change list <http://djangosuit.com/admin/examples/continent/>`_, `mptt-tree <http://djangosuit.com/admin/examples/category/>`_ list and `tabular inlines <http://djangosuit.com/admin/examples/continent/9/>`_.
-* [Feature] `EnclosedInput widget <http://django-suit.readthedocs.org/en/latest/widgets.html#enclosedinput>`_ for Twitter Bootstrap appended/prepended inputs. `Example <http://djangosuit.com/admin/examples/city/5/>`_
-* [Feature] `HTML5Input <http://django-suit.readthedocs.org/en/latest/widgets.html#html5input>`_ widget
+* [Feature] `Sortables <http://django-suit.readthedocs.org/en/develop/sortables.html>`_ for `change list <http://djangosuit.com/admin/examples/continent/>`_, `mptt-tree <http://djangosuit.com/admin/examples/category/>`_ list and `tabular inlines <http://djangosuit.com/admin/examples/continent/9/>`_.
+* [Feature] `EnclosedInput widget <http://django-suit.readthedocs.org/en/develop/widgets.html#enclosedinput>`_ for Twitter Bootstrap appended/prepended inputs. `Example <http://djangosuit.com/admin/examples/city/5/>`_
+* [Feature] `HTML5Input <http://django-suit.readthedocs.org/en/develop/widgets.html#html5input>`_ widget
 * [Documentation] Added detailed docs and examples on sortables and widgets
 * [Fix] Minor bugs and tweaks. See commit log for full changes
 

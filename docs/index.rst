@@ -18,8 +18,9 @@ About
 * Licence and Pricing: http://djangosuit.com/pricing/
 * Github: https://github.com/darklow/django-suit
 * Demo app on Github: https://github.com/darklow/django-suit-examples
-* Changelog: `Changelog.rst <https://github.com/darklow/django-suit/blob/master/CHANGELOG.rst>`_
+* Changelog: `Changelog.rst <https://github.com/darklow/django-suit/blob/develop/CHANGELOG.rst>`_
 * Supports: Django 1.4/1.5. Python: 2.5-3.3 |master|
+* `Supported apps`_
 
 
 Installation
@@ -59,6 +60,16 @@ Deployment with Django Suit should not be different than any other Django applic
 
 .. note:: If you deploy your project with Apache or ``Debug=False`` don't forget to run ``./manage.py collectstatic``
 
+
+Develop branch
+--------------
+
+`Develop branch <https://github.com/darklow/django-suit/commits/develop>`_ is considered as release candidate version. Check `commits <https://github.com/darklow/django-suit/commits/develop>`_ and `changelog <https://github.com/darklow/django-suit/blob/develop/CHANGELOG.rst>`_ of develop branch first, before installing develop version. It is quite stable and always tested, but can contain some flaws or behaviour changes too. To install latest develop version use::
+
+  pip uninstall django-suit
+  pip install -e git+https://github.com/darklow/django-suit@develop#egg=django-suit
+
+
 Configuration
 =============
 
@@ -93,7 +104,6 @@ There are handy widgets included in Django Suit.
    widgets
 
 
-
 Sortables
 =========
 
@@ -105,10 +115,36 @@ Sortables are handy admin tools for ordering different lists.
    sortables
 
 
+Wysiwyg editors
+===============
+
+How to use wysiwyg editors in Django Suit.
+
+.. toctree::
+   :maxdepth: 3
+
+   wysiwyg
+
+
 Examples
 ========
 
 Besides documentation examples, Django Suit `demo application <http://djangosuit.com/admin/>`_ source code is also available on separate github repository: `django-suit-examples <https://github.com/darklow/django-suit-examples>`_. If you see anything in demo application, you can always go to this repository and see implementation and code in one of ``models.py`` or ``admin.py`` files
+
+
+Supported apps
+===============
+
+Besides Django admin, Django Suit supports following third-party apps:
+
+* `djang-mptt <https://github.com/django-mptt/django-mptt/>`_ - `Example <http://djangosuit.com/admin/examples/category/>`_
+* `django-reversion <https://github.com/etianen/django-reversion>`_ - `Example <http://djangosuit.com/admin/examples/reversioneditem/>`_
+
+In development:
+
+* `django-cms <https://github.com/divio/django-cms>`_
+
+Suggest popular apps you would like to be supported `here <https://github.com/darklow/django-suit/issues/3>`_
 
 
 Contributing

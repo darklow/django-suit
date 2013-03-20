@@ -95,7 +95,7 @@
         line-height: 18px;
         th, td {
             padding: 0;
-            padding: 6px 10px;
+            padding: 7px 10px 8px;
             font-weight: bold;
             .vertical-gradient(#f3f3f3, #e5e5e5);
             box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .3);
@@ -111,6 +111,8 @@
             }
         }
         th {
+            vertical-align: middle;
+            line-height: normal;
             .sortoptions {
                 a, span {
                     float: right; //                    padding: 8px 0;
@@ -150,9 +152,6 @@
         }
         th.action-checkbox-column {
             width: 33px;
-            span {
-                padding-top: 0;
-            }
         }
     }
     &.table-bordered {

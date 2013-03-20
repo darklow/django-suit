@@ -1,26 +1,24 @@
 {% load i18n admin_static suit_list admin_list %}
-{% if cl.search_fields or cl.has_filters or cl.date_hierarchy %}
-  <div id="toolbar">
+{% if cl.search_fields or cl.has_filters %}
+  <div id="toolbar" class="clearfix">
     <form id="changelist-search" action="" method="get" class="form-inline">
-      <div><!-- DIV needed for valid HTML -->
-
+      <div class="search-container">
         {% if cl.search_fields %}
-          <input type="text" size="40" name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" placeholder="{% trans 'keyword'|capfirst %}"/>
-          &nbsp;
-        {% endif %}
-
-        {% if cl.has_filters %}
-          {% block filters %}
-            {% if cl.has_filters %}
-              <span class="search-filters">
-              {% for spec in cl.filter_specs %}
-                {% suit_list_filter_select cl spec %}
-                &nbsp;
-              {% endfor %}
-              </span>
-            {% endif %}
-          {% endblock %}
-        {% endif %}
+          <input type="text" size="40" name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" placeholder="{% trans 'keyword'|capfirst %}"/>&nbsp;{% endif %}
+        {% spaceless %}
+          {% if cl.has_filters %}
+            {% block filters %}
+              {% if cl.has_filters %}
+                <span class="search-filters">
+                {% for spec in cl.filter_specs %}
+                  {% suit_list_filter_select cl spec %}
+                  &nbsp;
+                {% endfor %}
+                </span>
+              {% endif %}
+            {% endblock %}
+          {% endif %}
+        {% endspaceless %}
 
         <input type="submit" value="{% trans 'Search' %}" class="btn btn-info"/>
         &nbsp;
@@ -31,11 +29,6 @@
         {% endif %}
       </div>
 
-      {% block date_hierarchy %}
-        {% if cl.date_hierarchy %}
-          {% date_hierarchy cl %}
-        {% endif %}
-      {% endblock %}
       {% if cl.is_popup %}
         <input type="hidden" name="pop" value="1">
       {% endif %}

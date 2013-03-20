@@ -85,37 +85,15 @@
       {% endblock %}
 
 
-      <div class="{{ is_popup|yesno:'one-column,two-columns' }}">
-
-        {% block content-left %}
-          {% if not is_popup %}
-            <div class="left-column">
-              {% block quick-search %}
-                {% with 'SEARCH_URL'|suit_conf as search_url %}
-                {% if search_url %}
-                <form class="form-search nav-quick-search" autocomplete="off" action="{% if '/' in search_url %}{{ search_url }}{% else %}{% url search_url %}{% endif %}" method="GET">
-                  <input type="text" name="q" class="input-medium search-query" id="quick-search">
-                  <i class="input-icon icon-search"></i>
-                  <input type="submit" class="submit" value="">
-                </form>
-                {% endif %}
-                {% endwith %}
-              {% endblock %}
-
-              {% include 'suit/menu.html' %}
-
-            </div>
-          {% endif %}
-        {% endblock %}
+      <div class="suit-columns {{ is_popup|yesno:'one-column,two-columns' }}">
 
         {% block content-center %}
-          <div class="center-column clearfix">
+          <div id="suit-center" class="suit-column">
 
             {% if not is_popup %}
               {% block breadcrumbs %}
                 <ul class="breadcrumb">
                   <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-
                     {% if title %}
                       <span class="divider">&raquo;</span>
                       </li>
@@ -143,7 +121,7 @@
             {% endblock messages %}
 
             <!-- Content -->
-            <div id="content" class="{% block coltype %}colM{% endblock %}">
+            <div id="content" class="{% block coltype %}colM{% endblock %} clearfix">
               {% block pretitle %}{% endblock %}
               {% block content_title %}{% if title %}
                 <h2 class="content-title">{{ title }}</h2>
@@ -153,10 +131,31 @@
                 {{ content }}
               {% endblock %}
               {% block sidebar %}{% endblock %}
-              <br class="clearfix"/>
             </div>
             <!-- END Content -->
           </div>
+        {% endblock %}
+
+
+        {% block content-left %}
+          {% if not is_popup %}
+            <div id="suit-left" class="suit-column">
+              {% block quick-search %}
+                {% with 'SEARCH_URL'|suit_conf as search_url %}
+                  {% if search_url %}
+                    <form class="form-search nav-quick-search" autocomplete="off" action="{% if '/' in search_url %}{{ search_url }}{% else %}{% url search_url %}{% endif %}" method="GET">
+                      <input type="text" name="q" class="input-medium search-query" id="quick-search">
+                      <i class="input-icon icon-search"></i>
+                      <input type="submit" class="submit" value="">
+                    </form>
+                  {% endif %}
+                {% endwith %}
+              {% endblock %}
+
+              {% include 'suit/menu.html' %}
+
+            </div>
+          {% endif %}
         {% endblock %}
 
       </div>

@@ -1,0 +1,32 @@
+{% extends "admin/change_form.html" %}
+{% load url from future %}
+{% load i18n %}
+
+
+{% block breadcrumbs %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        <span class="divider">&raquo;</span></li>
+    <li><a href="{% url 'admin:app_list' app_label %}">{{ app_label|capfirst|escape }}</a>
+        <span class="divider">&raquo;</span></li>
+    <li><a href="{{changelist_url}}">{{opts.verbose_name_plural|capfirst}}</a>
+        <span class="divider">&raquo;</span></li>
+    <li><a href="{{change_url}}">{{original|truncatewords:"18"}}</a>
+        <span class="divider">&raquo;</span></li>
+    <li><a href="../">{% trans "History" %}</a>
+        <span class="divider">&raquo;</span></li>
+    <li class="active">{% blocktrans with opts.verbose_name as verbose_name %}Revert {{verbose_name}}{% endblocktrans %}</li>
+</ul>
+{% endblock %}
+
+
+{% block content %}
+{% with 1 as is_popup %}
+{{block.super}}
+{% endwith %}
+{% endblock %}
+
+
+{% block form_top %}
+<div class="alert alert-info">{% blocktrans %}Press the save button below to revert to this version of the object.{% endblocktrans %}</div>
+{% endblock %}

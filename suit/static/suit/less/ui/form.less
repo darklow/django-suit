@@ -7,18 +7,20 @@ h2.legend, .form-horizontal fieldset .legend {
 }
 .form-horizontal {
     fieldset {
+        display: table;
+        width: 100%;
+        margin-top: 35px;
+        position: relative;
         .grey-box-shadow;
         .border-radius(@border-radius); //        margin-bottom: 35px;
-        .popup & {
+        &.first, .popup & {
             margin-top: 0;
-        }
-        &:not(:first-of-type) {
-            margin-top: 35px;
         }
         .legend {
             border: 0;
             margin: -30px 0 0 0;
             position: absolute;
+            top: 0;
             width: auto;
             .description {
                 font-weight: normal;
@@ -29,12 +31,12 @@ h2.legend, .form-horizontal fieldset .legend {
             }
         }
 
-    /* BS collapse override */
+        /* BS collapse override */
         &.collapse {
             overflow: visible;
             height: auto;
         }
-    /* Position attr change for collapsed */
+        /* Position attr change for collapsed */
         &.collapsed {
             background-color: @bgcolor-light;
             .legend {
@@ -43,12 +45,179 @@ h2.legend, .form-horizontal fieldset .legend {
                 font-weight: normal;
             }
         }
-    }
-    .control-group {
-        margin: 0;
+        &.full-width {
+            box-shadow: none;
+            .control-group {
+                .border-radius(0);
+                width: 100%;
+                display: block;
+                > div {
+                    display: block;
+                }
+                .control-label {
+                    display: none;
+                    width: 0;
+                }
+                .controls {
+                    display: block;
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+                    width: 100%;
+                    .border-radius(@border-radius);
+                    .html-widget {
+                        display: inline-block;
+                        margin: 10px;
+                    }
+
+                }
+            }
+        }
+        &.wide .control-label {
+            min-width: 200px;
+        }
+
+        /* COLLAPSE LOGIC */
+        &.collapsed * {
+            display: none;
+        }
+        &.collapsed .legend, &.collapsed .legend *, &.collapsed {
+            display: block !important;
+        }
+        &.collapsed .collapse-toggle {
+            background: transparent;
+            display: inline !important;
+        }
     }
     .submit-row-bottom {
         margin: 20px 0 0 200px;
+    }
+    .control-group {
+        display: table-header-group;
+        margin: 0;
+        > div {
+            display: table-row;
+            width: 100%;
+        }
+        .control-label {
+            background: white;
+            display: table-cell;
+            min-width: 150px;
+            float: none;
+            padding: 10px 20px 5px 10px;
+            border-bottom: 1px solid @border-color-light;
+            label {
+                padding: 0;
+                margin: 0;
+            }
+        }
+        .controls {
+            display: table-cell;
+            vertical-align: top;
+            float: none;
+            background-color: @bgcolor-light;
+            border-left: 1px solid #ecedee;
+            padding: 5px 15px;
+            width: 100%;
+            line-height: 26px;
+            p {
+                margin-bottom: 0;
+            }
+            .readonly {
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
+
+        &:first-child, &:first-of-type {
+            .control-label {
+                padding-top: 15px;
+                .border-radius(@border-radius, null, null, null);
+            }
+            .controls {
+                padding-top: 10px;
+                .border-radius(null, @border-radius, null, null);
+            }
+        }
+        &:last-child, &:last-of-type {
+            .control-label {
+                padding-bottom: 10px;
+                border: 0;
+                .border-radius(null, null, null, @border-radius);
+            }
+            .controls {
+                padding-bottom: 10px;
+                .border-radius(null, null, @border-radius, null);
+            }
+        }
+
+        /* Some BS form global overrides */
+        .help-block, .help-inline {
+            font-size: 11px;
+            color: #999;
+            line-height: normal;
+        }
+
+        .help-inline ul, .radiolist {
+            margin: 0;
+            li {
+                list-style: none;
+                padding: 0 10px 0 0;
+            }
+        }
+        .help-icon {
+            margin: 1px 0 0 5px;
+        }
+
+        /* Inline forms fields */
+        .field-box .controls {
+            label {
+                float: left;
+                display: inline-block;
+                margin: 5px 10px 0 0;
+                &.required {
+                    margin-right: 15px;
+                }
+            }
+            .multi-field-box {
+                margin-top: 5px;
+                float: left;
+                margin-right: 15px;
+                .multi-field-controls {
+                    float: left;
+                }
+                .help-block {
+                    display: block;
+                    margin: 3px 0 0 5px;
+                }
+            }
+            .error {
+                .control-label, .help-block, .help-inline, .help-inline ul li, &.multi-field-box label {
+                    color: @red;
+                }
+                input, select, textarea {
+                    border-color: @red;
+                    color: @red;
+                }
+            }
+            &:not(:first-child) {
+                .control-label {
+                    width: auto;
+                    margin-left: 10px;
+                }
+                .controls {
+                    float: left;
+                    margin-left: 10px;
+                }
+            }
+        }
+        &.first-error .control-label {
+            color: @red;
+        }
+        &.multi-field-row .controls {
+            padding-top: 0px;
+        }
     }
 }
 
@@ -57,92 +226,6 @@ h2.legend, .form-horizontal fieldset .legend {
     }
     .one-column {
         padding-top: 10px;
-    }
-}
-
-.control-group {
-    background-color: white;
-    margin: 0;
-    border-bottom: 1px solid @border-color-light;
-    &:first-child, &:first-of-type {
-        .border-radius(@border-radius, @border-radius, null, null);
-        .controls {
-            padding-top: 10px;
-            .border-radius(null, @border-radius, null, null);
-        }
-        .control-label {
-            padding-top: 10px;
-        }
-    }
-    &:last-child, &:last-of-type {
-        .border-radius(null, null, @border-radius, @border-radius);
-        border: 0;
-        .controls {
-            .border-radius(null, null, @border-radius, null);
-            margin-bottom: 0;
-            padding-bottom: 10px;
-        }
-    }
-    .controls {
-        background-color: @bgcolor-light;
-        border-left: 1px solid #ecedee;
-        margin-bottom: -1px;
-        padding: 5px 15px;
-        vertical-align: top;
-        line-height: 26px;
-        p {
-            margin-bottom: 0;
-        }
-    }
-    .control-label label {
-        padding-top: 5px;
-    }
-
-/* Some BS form global overrides */
-    .help-block, .help-inline {
-        font-size: 11px;
-        color: #999;
-        line-height: normal;
-    }
-
-    .help-inline ul, .radiolist {
-        margin: 0;
-        li {
-            list-style: none;
-            padding: 0 10px 0 0;
-        }
-    }
-    .help-icon {
-        margin: 1px 0 0 5px;
-    }
-
-/* Inline forms fields */
-    .field-box .controls {
-        label {
-            display: inline-block;
-            margin: 0 5px 0 10px;
-            &.required {
-                margin-right: 10px;
-            }
-        }
-        .error {
-            .control-label, .help-block, .help-inline, .help-inline ul li {
-                color: @red;
-            }
-            input, select, textarea {
-                border-color: @red;
-            }
-        }
-        &:not(:first-child) {
-            .control-label {
-                width: auto;
-                margin-left: 10px;
-            }
-            .controls {
-                float: left;
-                margin-left: 10px;
-            }
-        }
     }
 }
 
@@ -158,20 +241,6 @@ h2.legend, .form-horizontal fieldset .legend {
     .vForeignKeyRawIdAdminField {
         width: 90px;
     }
-}
-
-/* COLLAPSE LOGIC */
-fieldset.collapsed * {
-    display: none;
-}
-
-fieldset.collapsed .legend, fieldset.collapsed .legend *, fieldset.collapsed {
-    display: block !important;
-}
-
-fieldset.collapsed .collapse-toggle {
-    background: transparent;
-    display: inline !important;
 }
 
 .alert {
@@ -207,10 +276,6 @@ h3 {
             z-index: 2;
             position: relative;
             border-bottom: 1px solid #eee;
-            .control-group { //                .border-radius(0px);
-                &:last-child { //                    .border-radius(null, null, @border-radius, @border-radius);
-                }
-            }
         }
         .add-row {
             z-index: 1;
@@ -228,25 +293,30 @@ h3 {
     }
     .inline-related {
         fieldset {
+            .border-radius(0, 0, null, null);
             margin: 40px 0 0 0; // Remove rounded corners for first fieldset
-        // First inline fieldset will always have grey header row
+            // First inline fieldset will always have grey header row
             &:first-of-type {
                 .control-group {
                     &:first-child, &:first-of-type {
                         .border-radius(0);
+                        .control-label {
+                            .border-radius(0, null, null, null);
+                        }
                         .controls {
-                            .border-radius(0);
+                            .border-radius(null, 0, null, null);
                         }
                     }
                 }
+            }
+            &.first {
+                margin-top: 0;
             }
         }
         h3 {
             font-size: 12px;
             overflow: auto;
             .grey-box-shadow;
-            margin-bottom: -3px;
-            padding-bottom: 2px;
             line-height: 34px;
             .vertical-gradient(#f3f3f3, #e5e5e5);
             .border-radius(@border-radius, @border-radius, 0, 0);
@@ -370,6 +440,7 @@ h3 {
 .datetimeshortcuts {
     font-size: 11px;
     margin-left: 5px;
+    vertical-align: middle;
     a:first-child {
         margin-right: 4px;
     }
@@ -406,7 +477,7 @@ h3 {
         }
     }
     input {
-        vertical-align: top;
+        vertical-align: middle;
         &.vDateField {
             width: @date-input-width;
         }
