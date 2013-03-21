@@ -32,9 +32,7 @@ class LinkedSelect(Select):
     """
 
     def __init__(self, attrs=None, choices=()):
-        attrs = attrs or {}
-        attrs.update({'class': 'linked-select %s' %
-                               (attrs['class'] if 'class' in attrs else '')})
+        attrs = _make_attrs(attrs, classes="linked-select")
         super(LinkedSelect, self).__init__(attrs, choices)
 
 
@@ -83,11 +81,7 @@ class AutosizedTextarea(Textarea):
     """
 
     def __init__(self, attrs=None):
-        attrs = attrs or {}
-        new_attrs = {'rows': 2}
-        new_attrs.update(attrs)
-        new_attrs['class'] = 'autosize %s' % (
-            attrs['class'] if 'class' in attrs else '')
+        new_attrs = _make_attrs(attrs, {"rows": 2}, "autosize")
         super(AutosizedTextarea, self).__init__(new_attrs)
 
     @property
@@ -107,12 +101,8 @@ class AutosizedTextarea(Textarea):
 #
 class SuitDateWidget(AdminDateWidget):
     def __init__(self, attrs=None, format=None):
-        attrs = attrs or {}
-        new_attrs = {'placeholder': _('Date:')[:-1]}
-        new_attrs.update(attrs)
-        new_attrs['class'] = 'vDateField input-small %s' % (
-            attrs['class'] if 'class' in attrs else '')
-
+        defaults = {'placeholder': _('Date:')[:-1]}
+        new_attrs = _make_attrs(attrs, defaults, "vDateField input-small")
         super(SuitDateWidget, self).__init__(attrs=new_attrs, format=format)
 
     def render(self, name, value, attrs=None):
@@ -125,11 +115,8 @@ class SuitDateWidget(AdminDateWidget):
 
 class SuitTimeWidget(AdminTimeWidget):
     def __init__(self, attrs=None, format=None):
-        attrs = attrs or {}
-        new_attrs = {'placeholder': _('Time:')[:-1]}
-        new_attrs.update(attrs)
-        new_attrs['class'] = 'vTimeField input-small %s' % (
-            attrs['class'] if 'class' in attrs else '')
+        defaults = {'placeholder': _('Time:')[:-1]}
+        new_attrs = _make_attrs(attrs, defaults, "vTimeField input-small")
         super(SuitTimeWidget, self).__init__(attrs=new_attrs, format=format)
 
     def render(self, name, value, attrs=None):
@@ -152,3 +139,12 @@ class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
     def format_output(self, rendered_widgets):
         out_tpl = '<div class="datetime">%s %s</div>'
         return mark_safe(out_tpl % (rendered_widgets[0], rendered_widgets[1]))
+
+
+def _make_attrs(attrs, defaults=None, classes=None):
+    result = defaults.copy() if defaults else {}
+    if attrs:
+        result.update(attrs)
+    if classes:
+        result["class"] = " ".join((classes, result.get("class", "")))
+    return result
