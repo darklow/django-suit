@@ -1,6 +1,6 @@
 {% load i18n admin_static %}
 <div class="inline-group" id="{{ inline_admin_formset.formset.prefix }}-group">
-  <h2>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>
+  {% if not tabbed %}<h2>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>{% endif %}
 {{ inline_admin_formset.formset.management_form }}
 {{ inline_admin_formset.formset.non_form_errors }}
 
@@ -11,7 +11,7 @@
   </h3>
   {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
   {% for fieldset in inline_admin_form %}
-    {% include "admin/includes/fieldset.html" %}
+    {% include "admin/includes/fieldset.html" with tabbed=False %}
   {% endfor %}
   {% if inline_admin_form.has_auto_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
   {{ inline_admin_form.fk_field.field }}

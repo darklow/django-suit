@@ -105,7 +105,6 @@
       </div>
       <div class="inner-center-column">
         {% csrf_token %}{% block form_top %}{% endblock %}
-        <div class="tab-content tab-content-main">
           {% if is_popup %}
             <input type="hidden" name="_popup" value="1"/>{% endif %}
           {% if errors %}
@@ -129,8 +128,6 @@
               {% include inline_admin_formset.opts.template %}
             {% endfor %}
           {% endblock %}
-
-        </div>
 
         {% block after_related_objects %}{% endblock %}
 
