@@ -55,11 +55,11 @@ class EnclosedInput(TextInput):
         """
         If value doesn't starts with html open sign "<", enclose in add-on tag
         """
-        if value.find('<') != 0:
-            if value.find('icon-') == 0:
-                value = '<i class="%s"></i>' % value
-            return '<span class="add-on">%s</span>' % value
-        return value
+        if value.startswith("<"):
+            return value
+        if value.startswith("icon-"):
+            value = '<i class="%s"></i>' % value
+        return '<span class="add-on">%s</span>' % value
 
     def render(self, name, value, attrs=None):
         output = super(EnclosedInput, self).render(name, value, attrs)
