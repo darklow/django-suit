@@ -151,3 +151,5 @@ Contributing
 ============
 
 Separate `django-suit-contrib <https://github.com/darklow/django-suit-contrib>`_ package is available with full Django Suit development project setup, tests and instructions.
+
+IRC Channel: Feel free to join us at ``#django-suit`` on ``irc.freenode.net`` for a chat.
