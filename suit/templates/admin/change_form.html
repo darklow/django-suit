@@ -3,33 +3,41 @@
 {% load url from future %}
 
 {% block extrahead %}{{ block.super }}
-  {% url 'admin:jsi18n' as jsi18nurl %}
-  <script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
+    {% url 'admin:jsi18n' as jsi18nurl %}
+    <script type="text/javascript" src="{{ jsi18nurl|default:"../../../jsi18n/" }}"></script>
 
-  {{ media }}
+    {{ media }}
 
 {% endblock %}
 
 
 {% block extrajs %}
-  {{ block.super }}
+    {{ block.super }}
 
-  {% if 'CONFIRM_UNSAVED_CHANGES'|suit_conf %}
-    <!-- Warn on leaving unsaved form -->
-    <script src="{% static 'suit/js/suit-form-confirm.js' %}"></script>
-    <script type="text/javascript">
-      confirmExitIfModified('{{ opts.module_name }}_form', '{% trans 'You have unsaved changes' %}.');
-    </script>
-  {% endif %}
+    {% if 'CONFIRM_UNSAVED_CHANGES'|suit_conf %}
+        <!-- Warn on leaving unsaved form -->
+        <script src="{% static 'suit/js/suit-form-confirm.js' %}"></script>
+        <script type="text/javascript">
+            confirmExitIfModified('{{ opts.module_name }}_form', '{% trans 'You have unsaved changes' %}.');
+        </script>
+    {% endif %}
+
+    {% if adminform.model_admin.tabs %}
+        <script type="text/javascript">
+            $(function () {
+                $('.nav-tabs').suit_tabs();
+            });
+        </script>
+    {% endif %}
 
 {% endblock %}
 
 {% block extrastyle %}
-  {{ block.super }}
+    {{ block.super }}
 {% endblock %}
 
 {% block content_title_value %}
-  {% trans 'Add' %} {{ opts.verbose_name }}
+    {% trans 'Add' %} {{ opts.verbose_name }}
 {% endblock %}
 
 {% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
@@ -37,109 +45,123 @@
 {% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
 
 {% if not is_popup %}
-  {% block breadcrumbs %}
-    <ul class="breadcrumb">
-      <li>
-        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-        <span class="divider">&raquo;</span>
-      </li>
-      <li>
-        <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ app_label|capfirst|escape }}</a>
-        <span class="divider">&raquo;</span>
-      </li>
-      <li>
-        {% if has_change_permission %}
-          <a href="{% url opts|admin_urlname:'changelist' %}">
-            {{ opts.verbose_name_plural|capfirst }}</a>{% else %}
-          {{ opts.verbose_name_plural|capfirst }}{% endif %}
-        <span class="divider">&raquo;</span>
-      </li>
-      <li class="active">
-        {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
-      </li>
-    </ul>
-  {% endblock %}
+    {% block breadcrumbs %}
+        <ul class="breadcrumb">
+            <li>
+                <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+                <span class="divider">&raquo;</span>
+            </li>
+            <li>
+                <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ app_label|capfirst|escape }}</a>
+                <span class="divider">&raquo;</span>
+            </li>
+            <li>
+                {% if has_change_permission %}
+                    <a href="{% url opts|admin_urlname:'changelist' %}">
+                        {{ opts.verbose_name_plural|capfirst }}</a>{% else %}
+                    {{ opts.verbose_name_plural|capfirst }}{% endif %}
+                <span class="divider">&raquo;</span>
+            </li>
+            <li class="active">
+                {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}
+                    {{ original|truncatewords:"18" }}{% endif %}
+            </li>
+        </ul>
+    {% endblock %}
 {% endif %}
 
 {% block content %}
-  <div id="content-main" class="inner-two-columns">
+    <div id="content-main" class="inner-two-columns">
 
-    <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post"
-          id="{{ opts.module_name }}_form" class="form-horizontal">
+        <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post"
+              id="{{ opts.module_name }}_form" class="form-horizontal">
 
-      <div class="inner-right-column">
+            <div class="inner-right-column">
 
-        <div class="box save-box">
+                <div class="box save-box">
 
-          {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+                    {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
 
-        </div>
+                </div>
 
-        {% block object-tools %}
-          {% if change %}{% if not is_popup %}
-            <h4 class="italic-title">{% trans 'tools'|capfirst %}</h4>
-            <ul class="box menu-box">
-              {% block object-tools-items %}
-                <li><a href="history/" class="historylink"><i
-                    class="icon-time icon-alpha75"></i>{% trans "History" %}</a>
-                </li>
-                {% if has_absolute_url %}
-                  <li>
-                    <a href="../../../r/{{ content_type_id }}/{{ object_id }}/"
-                       class="viewsitelink"><i class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}
-                    </a></li>
-                {% endif %}
+                {% block object-tools %}
+                    {% if change %}{% if not is_popup %}
+                        <h4 class="italic-title">{% trans 'tools'|capfirst %}</h4>
+                        <ul class="box menu-box">
+                            {% block object-tools-items %}
+                                <li><a href="history/" class="historylink"><i
+                                        class="icon-time icon-alpha75"></i>{% trans "History" %}</a>
+                                </li>
+                                {% if has_absolute_url %}
+                                    <li>
+                                        <a href="../../../r/{{ content_type_id }}/{{ object_id }}/"
+                                           class="viewsitelink"><i
+                                                class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}
+                                        </a></li>
+                                {% endif %}
 
-                {% if has_add_permission %}
-                  <li>
-                    <a href="../add/"><i class="icon-plus-sign icon-alpha75"></i>{% blocktrans with opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
-                    </a></li>
-                  {# {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>#}
-                {% endif %}
+                                {% if has_add_permission %}
+                                    <li>
+                                        <a href="../add/"><i class="icon-plus-sign icon-alpha75"></i>
+                                            {% blocktrans with opts.verbose_name as name %}Add
+                                                {{ name }}{% endblocktrans %}
+                                        </a></li>
+                                    {# {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>#}
+                                {% endif %}
 
-              {% endblock %}
-            </ul>
-          {% endif %}{% endif %}
-        {% endblock %}
+                            {% endblock %}
+                        </ul>
+                    {% endif %}{% endif %}
+                {% endblock %}
 
-      </div>
-      <div class="inner-center-column">
-        {% csrf_token %}{% block form_top %}{% endblock %}
-          {% if is_popup %}
-            <input type="hidden" name="_popup" value="1"/>{% endif %}
-          {% if errors %}
-            <div class="alert alert-error">
-              <strong>{% trans 'error'|capfirst %}!</strong>
-              {% blocktrans count counter=errors|length %}Please correct the error below.{% plural %} Please correct the errors below.{% endblocktrans %}
-              {{ adminform.form.non_field_errors }}
             </div>
-          {% endif %}
+            <div class="inner-center-column">
+                {% csrf_token %}{% block form_top %}{% endblock %}
+                {% if adminform.model_admin.tabs %}
+                    <ul class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
+                        {% for tab in adminform.model_admin.tabs %}
+                            <li {% if forloop.first %}class="active"{% endif %}><a
+                                    href="#{{ tab|lower|cut:" " }}">{{ tab }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                    {% if is_popup %}
+                        <input type="hidden" name="_popup" value="1"/>{% endif %}
+                    {% if errors %}
+                        <div class="alert alert-error">
+                            <strong>{% trans 'error'|capfirst %}!</strong>
+                            {% blocktrans count counter=errors|length %}Please correct the error below.{% plural %}
+                                Please correct the errors below.{% endblocktrans %}
+                            {{ adminform.form.non_field_errors }}
+                        </div>
+                    {% endif %}
 
-          {% block field_sets %}
-            {% for fieldset in adminform %}
-              {% include "admin/includes/fieldset.html" %}
-            {% endfor %}
-          {% endblock %}
+                    {% block field_sets %}
+                        {% for fieldset in adminform %}
+                            {% include "admin/includes/fieldset.html" %}
+                        {% endfor %}
+                    {% endblock %}
 
-          {% block after_field_sets %}{% endblock %}
+                    {% block after_field_sets %}{% endblock %}
 
-          {% block inline_field_sets %}
-            {% for inline_admin_formset in inline_admin_formsets %}
-              {% include inline_admin_formset.opts.template %}
-            {% endfor %}
-          {% endblock %}
+                    {% block inline_field_sets %}
+                        {% for inline_admin_formset in inline_admin_formsets %}
+                            {% include inline_admin_formset.opts.template %}
+                        {% endfor %}
+                    {% endblock %}
 
-        {% block after_related_objects %}{% endblock %}
 
-        {% if adminform and add %}
-          <script type="text/javascript">document.getElementById("{{ adminform.first_field.id_for_label }}").focus();</script>
-        {% endif %}
+                {% block after_related_objects %}{% endblock %}
 
-        {# JavaScript for prepopulated fields #}
-        {% prepopulated_fields_js %}
+                {% if adminform and add %}
+                    <script type="text/javascript">document.getElementById("{{ adminform.first_field.id_for_label }}").focus();</script>
+                {% endif %}
 
-      </div>
-    </form>
-  </div>
+                {# JavaScript for prepopulated fields #}
+                {% prepopulated_fields_js %}
+
+            </div>
+        </form>
+    </div>
 {% endblock %}
 

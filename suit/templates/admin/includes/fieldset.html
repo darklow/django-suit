@@ -1,6 +1,6 @@
 {% load suit_tags %}
 <fieldset class="module aligned{{ fieldset.name|yesno:' with-legend, first' }} {{ fieldset.classes }}">
-    {% if fieldset.name and not tabbed %}
+    {% if fieldset.name %}
         <h2 class="legend">{{ fieldset.name }}
             {% if fieldset.description %}
                 <span class="description">{{ fieldset.description|safe }}</span>
