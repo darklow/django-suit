@@ -23,10 +23,12 @@ def default_config():
             'sites': 'icon-leaf',
         },
         # 'MENU_EXCLUDE': ('auth.group',),
-        # 'MENU_ORDER': (
-        #     ('sites',),
-        #     ('auth', ('user','group')),
-        # )
+        # 'MENU': (
+        #     'sites',
+        #     {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+        #     {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+        #     {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
+        # ),
 
         # misc
         'LIST_PER_PAGE': 20
