@@ -16,13 +16,13 @@
     {% if app_list %}
       {% for app in app_list %}
         <li{{ app.is_active|yesno:' class=active,' }}>
-          <a href="{{ app.app_url }}"><i class="{% firstof app.icon 'icon-chevron-right' %}"></i>{% trans app.name|capfirst %}
+          <a href="{{ app.url }}"><i class="{% firstof app.icon 'icon-chevron-right' %}"></i>{% trans app.label|capfirst %}
           </a>
           {% if app.models %}
             <ul>
               {% for model in app.models %}
                 <li{{ model.is_active|yesno:' class=active,' }}>
-                  <a href="{{ model.admin_url }}">{{ model.name }}</a></li>
+                  <a href="{{ model.url }}">{{ model.label }}</a></li>
               {% endfor %}
             </ul>
           {% endif %}

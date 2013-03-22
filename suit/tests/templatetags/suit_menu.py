@@ -12,7 +12,49 @@ except ImportError:
 
 class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
     def setUp(self):
-        # Menu settings
+        self.setUpConfig()
+        self.login_superuser()
+
+    def setUpConfig(self):
+        settings.SUIT_CONFIG.update({
+            'MENU_OPEN_FIRST_CHILD': True,
+            'MENU_ICONS': {
+                'auth': 'icon-auth-assert',
+            },
+            'MENU_EXCLUDE': [],
+            'MENU': [
+                'tests',
+                {'app': 'tests'},
+                {'app': 'tests', 'label': 'Custom'},
+                {'app': 'tests', 'icon': 'icon-test-assert'},
+                {'app': 'tests', 'icon': ''},
+                {'app': 'tests', 'icon': None},
+                {'app': 'auth'},
+                {'label': 'Custom', 'url': '/custom/'},
+                {'label': 'Custom2', 'url': '/custom2/', 'permissions': 'x'},
+                {'label': 'Custom3', 'url': '/custom3/', 'permissions': ('y',)},
+                {'label': 'C4', 'url': '/c/4', 'models': ('book',)},
+                {'label': 'C5', 'url': '/c/5', 'models': ('tests.book',)},
+                {'label': 'C6', 'url': 'admin:index', 'models':
+                    ({'label': 'mx', 'url': 'admin:index'},)},
+                {'app': 'tests', 'models': []},
+                {'app': 'tests', 'models': ['book', 'album']},
+                {'app': 'tests', 'models': ['tests.book', 'tests.album']},
+                {'app': 'tests', 'models': [
+                    'book', 'tests.book',
+                    {
+                        'model': 'tests.album',
+                        'label': 'Albumzzz',
+                        'url': '/albumzzz/',
+                    }, {
+                        'label': 'CustModel',
+                        'url': '/cust-mod/',
+                        'permissions': 'z'
+                    }]},
+            ]
+        })
+
+    def setUpOldConfig(self):
         settings.SUIT_CONFIG.update({
             'MENU_OPEN_FIRST_CHILD': False,
             'MENU_ICONS': {
@@ -31,18 +73,12 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                 (('Custom app no models tuple perms', '/custom-app-tuple-perms',
                   '', ('mega-rights',)),),
             ),
+            'MENU_EXCLUDE': []
         })
-        self.login_superuser()
+        del settings.SUIT_CONFIG['MENU']
 
-    def test_menu_init(self):
-        # Template usage
-        self.get_response()
-        self.assertTemplateUsed(self.response, 'suit/menu.html')
-        self.assertContains(self.response, 'left-nav')
-        self.assertContains(self.response, 'icon-test-against-keyword')
-        app_list = self.response.context_data['app_list']
-        pass
-        # print self.response.content
+    def make_menu_from_response(self):
+        return get_menu(self.response.context[-1], self.response._request)
 
     def test_menu_search_url_formats(self):
         # Test named url as defined in setUp config
@@ -56,8 +92,170 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.get_response()
         self.assertContains(self.response, absolute_search_url)
 
-    def test_menu_custom_app_and_models(self):
+    def test_menu(self):
+        mc = settings.SUIT_CONFIG['MENU']
+        self.get_response()
+        menu = self.make_menu_from_response()
+        self.assertEqual(len(menu), len(mc))
+
+        # as string
+        i = 0
+        first_model_url = reverse('admin:tests_album_changelist')
+        self.assertEqual(menu[i]['url'], first_model_url)
+        self.assertEqual(len(menu[i]['models']), 2)
+        self.assertEqual(menu[i]['name'], mc[i])
+        self.assertEqual(menu[i]['label'], 'Tests')
+        self.assertEqual(menu[i]['icon'], None)
+        self.assertEqual(menu[i]['models'][0]['url'], first_model_url)
+        self.assertEqual(force_unicode(menu[0]['models'][0]['label']), 'Albums')
+
+        i += 1 # as dict
+        self.assertEqual(menu[i]['url'], first_model_url)
+        self.assertEqual(len(menu[i]['models']), 2)
+
+        i += 1 # with label
+        self.assertEqual(menu[i]['label'], mc[i]['label'])
+
+        i += 1 # with icon
+        self.assertEqual(menu[i]['icon'], mc[i]['icon'])
+
+        i += 1 # with icon=''
+        self.assertEqual(menu[i]['icon'], 'icon-')
+
+        i += 1 # with is is None
+        self.assertEqual(menu[i]['icon'], 'icon-')
+
+        i += 1 # icon from SUIT_ICONS
+        self.assertEqual(menu[i]['icon'], 'icon-auth-assert')
+
+        i += 1 # custom app
+        self.assertEqual(menu[i]['label'], mc[i]['label'])
+        self.assertEqual(menu[i]['url'], mc[i]['url'])
+
+        i += 1 # custom app, with perms as string
+        self.assertEqual(menu[i]['label'], mc[i]['label'])
+
+        i += 1 # custom app, with perms as tuple
+        self.assertEqual(menu[i]['label'], mc[i]['label'])
+
+        i += 1 # custom app with wrong model
+        self.assertEqual(menu[i]['label'], mc[i]['label'])
+        self.assertEqual(menu[i]['models'], [])
+        self.assertEqual(menu[i]['url'], mc[i]['url'])
+
+        i += 1 # custom app with correct model
+        first_model_url = reverse('admin:tests_book_changelist')
+        self.assertEqual(menu[i]['label'], mc[i]['label'])
+        self.assertEqual(len(menu[i]['models']), 1)
+        self.assertEqual(menu[i]['url'], first_model_url)
+
+        i += 1 # custom app and model with named urls
+        expected_url = reverse('admin:index')
+        self.assertEqual(menu[i]['url'], expected_url)
+        self.assertEqual(menu[i]['models'][0]['url'], expected_url)
+
+        i += 1 # with empty models
+        self.assertEqual(menu[i]['models'], [])
+        self.assertEqual(menu[i]['url'],
+                         reverse('admin:app_list', args=[mc[i]['app']]))
+
+        i += 1 # with ordered models
+        first_model_url = reverse('admin:tests_book_changelist')
+        self.assertEqual(menu[i]['models'][0]['url'], first_model_url)
+        self.assertEqual(len(menu[i]['models']), 2)
+
+        i += 1 # with prefixed  models
+        first_model_url = reverse('admin:tests_book_changelist')
+        self.assertEqual(menu[i]['models'][0]['url'], first_model_url)
+        self.assertEqual(len(menu[i]['models']), 2)
+
+        i += 1 # with dict models
+        first_model_url = reverse('admin:tests_book_changelist')
+        self.assertEqual(menu[i]['models'][0]['url'], first_model_url)
+        self.assertEqual(len(menu[i]['models']), 4)
+        self.assertEqual(force_unicode(menu[i]['models'][2]['label']),
+                         mc[i]['models'][2]['label'])
+        self.assertEqual(force_unicode(menu[i]['models'][2]['url']),
+                         mc[i]['models'][2]['url'])
+        self.assertEqual(force_unicode(menu[i]['models'][3]['label']),
+                         mc[i]['models'][3]['label'])
+        self.assertEqual(force_unicode(menu[i]['models'][3]['url']),
+                         mc[i]['models'][3]['url'])
+
+
+    def test_menu_app_exclude(self):
+        settings.SUIT_CONFIG['MENU'] = ({'app': 'tests', 'models': ['book']},
+                                        {'app': 'auth'}, 'auth')
+        settings.SUIT_CONFIG['MENU_EXCLUDE'] = ('auth', 'tests.book')
+        self.get_response()
+        menu = self.make_menu_from_response()
+        self.assertEqual(len(menu), 1)
+        self.assertEqual(menu[0]['models'], [])
+
+    def test_menu_custom_app(self):
+        label = 'custom'
+        icon = 'icon-custom'
+        settings.SUIT_CONFIG['MENU'] = ({'label': label, 'icon': icon},)
+        self.get_response()
+        menu = self.make_menu_from_response()
+        self.assertEqual(len(menu), 1)
+        self.assertEqual(menu[0]['label'], label)
+        self.assertEqual(menu[0]['icon'], icon)
+
+    def test_menu_custom_app_permissions(self):
+        settings.SUIT_CONFIG['MENU'] = ({'label': 'a',
+                                         'permissions': 'secure-perms'},
+                                        {'label': 'b',
+                                         'permissions': ('secure-perms',)},
+                                        {'label': 'c', 'models': [
+                                            {'label': 'model1',
+                                             'permissions': 'x'}]},)
+        self.client.logout()
+        self.login_user()
+        self.get_response()
+        menu = self.make_menu_from_response()
+        self.assertEqual(len(menu), 1)
+        self.assertEqual(len(menu[0]['models']), 0)
+
+        # Now do the same with super user
+        self.client.logout()
+        self.login_superuser()
+        self.get_response()
+        menu = self.make_menu_from_response()
+        self.assertEqual(len(menu), 3)
+        self.assertEqual(len(menu[2]['models']), 1)
+
+    def test_menu_app_marked_as_active(self):
+        self.get_response(reverse('admin:app_list', args=['tests']))
+        self.assertContains(self.response, '<li class="active">')
+        menu = self.make_menu_from_response()
+        self.assertTrue(menu[0]['is_active'])
+
+    def test_menu_model_marked_as_active(self):
+        self.get_response(reverse('admin:tests_album_changelist'))
+        menu = self.make_menu_from_response()
+        self.assertTrue(menu[0]['is_active'])
+        self.assertTrue(menu[0]['models'][0]['is_active'])
+
+    #
+    # Tests for old menu config format
+    #
+    def test_old_menu_init(self):
+        # Template usage
+        self.client.logout()
+        self.login_superuser()
+        self.setUpOldConfig()
+        self.get_response()
+        self.assertTemplateUsed(self.response, 'suit/menu.html')
+        self.assertContains(self.response, 'left-nav')
+        self.assertContains(self.response, 'icon-test-against-keyword')
+        app_list = self.response.context_data['app_list']
+        pass
+        # print self.response.content
+
+    def test_old_menu_custom_app_and_models(self):
         # Test custom app name, url and icon
+        self.setUpOldConfig()
         self.get_response()
         menu_order = settings.SUIT_CONFIG['MENU_ORDER']
         self.assertContains(self.response, menu_order[1][0][0])
@@ -72,16 +270,18 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         # Test cross-linked app
         self.assertContains(self.response, 'tests/album')
 
-    def test_menu_when_open_first_child_is_true(self):
+    def test_old_menu_when_open_first_child_is_true(self):
         # Test custom app name, url and icon
+        self.setUpOldConfig()
         settings.SUIT_CONFIG['MENU_OPEN_FIRST_CHILD'] = True
         self.get_response()
         menu_order = settings.SUIT_CONFIG['MENU_ORDER']
         self.assertNotContains(self.response, menu_order[1][0][1])
 
-    def test_custom_menu_permissions(self):
+    def test_old_custom_menu_permissions(self):
         self.client.logout()
         self.login_user()
+        self.setUpOldConfig()
         self.get_response()
         # Test for menu at all for simple user
         self.assertTemplateUsed(self.response, 'suit/menu.html')
@@ -96,74 +296,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         # Test custom app when perms defined as tuple
         self.assertNotContains(self.response, menu_order[3][0][0])
 
-    def test_menu_marked_as_active(self):
+    def test_old_menu_marked_as_active(self):
+        self.setUpOldConfig()
         self.get_response(reverse('admin:app_list', args=['tests']))
         self.assertContains(self.response, '<li class="active">')
-
-    def make_menu_from_response(self):
-        return get_menu(self.response.context[-1], self.response._request)
-
-    def test_menu_app_marked_as_active(self):
-        self.get_response(reverse('admin:app_list', args=['tests']))
-        menu = self.make_menu_from_response()
-        self.assertTrue(menu[0]['is_active'])
-
-    def test_menu_model_marked_as_active(self):
-        self.get_response(reverse('admin:tests_book_changelist'))
-        menu = self.make_menu_from_response()
-        self.assertTrue(menu[0]['is_active'])
-        self.assertTrue(menu[0]['models'][0]['is_active'])
-
-    def test_menu_as_object_from_template_tag(self):
-        self.get_response(reverse('admin:app_list', args=['tests']))
-        menu = self.make_menu_from_response()
-
-        # Convert translation proxies for models to unicode
-        for app in menu:
-            models = app.get('models', None)
-            if models:
-                for model in models:
-                    model['name'] = force_unicode(model['name'])
-
-        # Todo
-        # Split menu_expected into multiple-parts and compare each part
-        # individually to MENU_ORDER
-        menu_expected = [
-            {'app_url': '/admin/tests/',
-             'name': 'Tests',
-             'models': [
-                 {'perms': {'add': True, 'change': True, 'delete': True},
-                  'add_url': '/admin/tests/book/add/',
-                  'admin_url': '/admin/tests/book/',
-                  'is_active': False,
-                  'name': 'Books'
-                 }
-             ],
-             'is_active': True,
-             'has_module_perms': True,
-             'icon': 'icon-fire icon-test-against-keyword'
-            },
-            {'app_url': '/custom-url-test/',
-             'models': [
-                 {'admin_url': '/admin/custom/',
-                  'is_active': False,
-                  'name': 'Custom link'},
-                 {'admin_url': '/admin/non-existant/',
-                  'is_active': False,
-                  'name': 'Check out error 404'},
-                 {'perms':
-                      {'add': True, 'change': True, 'delete': True},
-                  'add_url': '/admin/tests/album/add/',
-                  'admin_url': '/admin/tests/album/',
-                  'is_active': False,
-                  'name': 'Albums'}],
-             'name': 'Custom app name', 'icon': 'icon-custom-app'},
-            {'app_url': '/custom-app-no-models', 'models': [],
-             'name': 'Custom app no models', 'icon': ''},
-            {'app_url': '/custom-app-tuple-perms',
-             'models': [],
-             'name': 'Custom app no models tuple perms',
-             'icon': ''}
-        ]
-
-        self.assertEqual(menu, menu_expected)
