@@ -40,9 +40,7 @@ def get_config(param=None):
     else:
         config = default_config()
     if param:
-        value = None
-        if param in config:
-            value = config.get(param)
+        value = config.get(param)
         if value is None:
             value = default_config().get(param)
         return value
