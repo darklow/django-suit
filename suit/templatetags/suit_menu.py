@@ -125,7 +125,10 @@ class Menu(object):
         models = app.get('models', [])
         if self.conf_open_first_child and models:
             app['orig_url'] = app['url']
-            app['url'] = self.process_url(models[0]['url'])
+            app['url'] = models[0]['url']
+
+        # Process absolute/named/model type urls
+        app['url'] = self.process_url(app['url'])
 
         return app
 
@@ -323,8 +326,20 @@ class Menu(object):
         """
         Try to guess if it is absolute url or named
         """
+        if url is None:
+            return ''
+
         if not url or '/' in url:
             return url
+
+        # Model link, ex: 'auth.user'
+        if '.' in url:
+            url_parts = url.split('.')
+            model = self.make_model_from_native(url_parts[1], url_parts[0])
+            if model:
+                return model['url']
+
+        # Try to resolve as named url, ex: 'admin:index'
         try:
             return reverse(url)
         except:

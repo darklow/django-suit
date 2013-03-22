@@ -162,7 +162,14 @@ Following keys are available for each app and model level links:
 * Model: ``model``, ``label``, ``url``, ``permissions``
 * Use ``/`` as separator between apps
 
-If ``MENU_OPEN_FIRST_CHILD=True`` and models for app exists, you can skip ``url`` key.
+``url`` parameter can be:
+
+* Absolute url like ``/custom/``
+* Named url like ``admin:index``
+* Model name like ``auth.user`` to make link to model changelist
+* If ``MENU_OPEN_FIRST_CHILD=True`` and models for app exists, you can skip ``url`` key.
+
+``permissions`` are verified using `user.has_perms() <https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User.has_perm>`_ method.
 
 Here is full example of ``MENU`` from simple existing app reorder to defining custom menu items::
 
@@ -187,6 +194,9 @@ Here is full example of ``MENU`` from simple existing app reorder to defining cu
               {'model': 'auth.user', 'label': 'Staff'}
           )},
 
+          # Custom app, no models (child links)
+          {'label': 'Users', 'url': 'auth.user', 'icon':'icon-user'},
+
           # Separator
           '/',
 
@@ -197,7 +207,6 @@ Here is full example of ``MENU`` from simple existing app reorder to defining cu
       )
   }
 
-Permissions are verified using `user.has_perms() <https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User.has_perm>`_ method.
 
 
 List
