@@ -29,15 +29,17 @@ Configuration sample you can use as a start::
 
       # menu
       # 'SEARCH_URL': '/admin/auth/user/',
-      'MENU_ICONS': {
-          'sites': 'icon-leaf',
-          'auth': 'icon-lock',
-      },
+      # 'MENU_ICONS': {
+      #    'sites': 'icon-leaf',
+      #    'auth': 'icon-lock',
+      # },
       # 'MENU_OPEN_FIRST_CHILD': True, # Default True
       # 'MENU_EXCLUDE': ('auth.group',),
-      # 'MENU_ORDER': (
-      #     ('sites',),
-      #     ('auth', ('user','group')),
+      # 'MENU': (
+      #     'sites',
+      #     {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+      #     {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+      #     {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
       # ),
 
       # misc
@@ -125,7 +127,7 @@ Automatically replaces app's (parent link) url with url of first model's url (ch
 MENU_ICONS
 ----------
 
-Set app icons. Use any of Twitter Bootstrap `icon classes <http://twitter.github.com/bootstrap/base-css.html#icons>`_ or add your own. Twitter Bootstrap icons are provided by `Glyphicons <http://glyphicons.com/>`_::
+Set app icons. Use any of Twitter Bootstrap `icon classes <http://twitter.github.com/bootstrap/base-css.html#icons>`_ or add your own. Twitter Bootstrap icons are provided by `Glyphicons <http://glyphicons.com/>`_. This parameter is useful, if you don't use ``MENU`` parameter (see below) and just want to set icons for default apps::
 
   SUIT_CONFIG = {
       'MENU_ICONS': {
@@ -147,33 +149,47 @@ Exclude any of apps or models. You can exclude whole app or just one model from 
 MENU_ORDER
 ----------
 
-Most powerful of menu parameters. You can reorder, cross link, exclude, and even define custom menu items and child links. Here is full example of ``MENU_ORDER`` from simple existing app reorder to defining custom menu items::
+`MENU_ORDER parameter <http://django-suit.readthedocs.org/en/0.1.7/configuration.html#menu-order>`_ is deprecated - use ``MENU`` instead.
+
+MENU
+----
+
+Most powerful of menu parameters - one parameter to rule them all :) You can rename, reorder, cross link, exclude apps and models, and even define custom menu items and child links.
+
+Following keys are available for each app and model level links:
+
+* App: ``app``, ``label``, ``url``, ``icon``, ``permissions``
+* Model: ``model``, ``label``, ``url``, ``permissions``
+
+If ``MENU_OPEN_FIRST_CHILD=True`` and models for app exists, you can skip ``url`` key.
+
+Here is full example of ``MENU`` from simple existing app reorder to defining custom menu items::
 
   SUIT_CONFIG = {
-      'MENU_ORDER': (
+      'MENU': (
 
-        # To reorder existing apps use following definition
-        ('sites',),
-        ('auth', ('user', 'group')),
+          # Keep original label and models
+          'sites',
 
-        # If you want to link app models from different app use full name:
-        ('sites', ('auth.user', 'auth.group')),
+          # rename app and set icon
+          {'app': 'auth', 'label': 'Authorization', 'icon':'icon-lock'},
 
-        # To add custom item, define it as tuple or list:
-        # For parent: (Name, Link, Icon, Permission) - Last two are optional
-        # For child: (Name, Link, Permission) - Last one is optional
-        # You can also mix custom and native apps and models
-        # Link can be absolute url or url name
-        # Permission can be string or tuple/list for multiple
-        # If MENU_OPEN_FIRST_CHILD=True and children exists, you can leave parent link blank
+          # reorder app models
+          {'app': 'auth', 'models': ('user', 'group')},
 
-        # Example:
-        (('Custom link', '/admin/custom/', 'icon-cog', ('auth.add_group',)),
-         (
-             ('Child 1', '/admin/child/', 'auth.add_user'),
-             ('Child 2', '/admin/child2/')
-         )
-        )
+          # Custom app, with models
+          {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+
+          # Cross-linked models with custom name, with no default icon
+          {'label': 'Custom', 'icon':None, 'models': (
+              'auth.group',
+              {'model': 'auth.user', 'label': 'Staff'}
+          )},
+
+          # Custom app and model with permissions
+          {'label': 'Secure', 'permissions': 'auth.add_user', 'models': [
+              {'label': 'custom-child', 'permissions': ('auth.add_user', 'auth.add_group')}
+          ]},
       )
   }
 
