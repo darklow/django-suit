@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v0.1.9 (Upcoming version)
+-------------------------------------------------------------
+
+* [Feature] `New menu syntax <http://django-suit.readthedocs.org/en/develop/configuration.html#id1>`_ supports app and model labels, separators and more clear definition syntax.
+
+
 v0.1.8 (2013-03-20)
 -------------------------------------------------------------
 
