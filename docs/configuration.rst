@@ -160,6 +160,7 @@ Following keys are available for each app and model level links:
 
 * App: ``app``, ``label``, ``url``, ``icon``, ``permissions``
 * Model: ``model``, ``label``, ``url``, ``permissions``
+* Use ``/`` as separator between apps
 
 If ``MENU_OPEN_FIRST_CHILD=True`` and models for app exists, you can skip ``url`` key.
 
@@ -171,20 +172,23 @@ Here is full example of ``MENU`` from simple existing app reorder to defining cu
           # Keep original label and models
           'sites',
 
-          # rename app and set icon
+          # Rename app and set icon
           {'app': 'auth', 'label': 'Authorization', 'icon':'icon-lock'},
 
-          # reorder app models
+          # Reorder app models
           {'app': 'auth', 'models': ('user', 'group')},
 
           # Custom app, with models
           {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
 
-          # Cross-linked models with custom name, with no default icon
+          # Cross-linked models with custom name; Hide default icon
           {'label': 'Custom', 'icon':None, 'models': (
               'auth.group',
               {'model': 'auth.user', 'label': 'Staff'}
           )},
+
+          # Separator
+          '/',
 
           # Custom app and model with permissions
           {'label': 'Secure', 'permissions': 'auth.add_user', 'models': [

@@ -86,7 +86,10 @@ class Menu(object):
         if isinstance(app_def, dict):
             app = app_def.copy()
         elif isinstance(app_def, str):
-            app = self.make_app_from_native(app_def)
+            if app_def == '/':
+                app = self.make_separator()
+            else:
+                app = self.make_app_from_native(app_def)
         else:
             raise TypeError('MENU list item must be string or dict. Got %s'
                             % repr(app_def))
@@ -181,6 +184,11 @@ class Menu(object):
             'url': native_app['app_url'],
             'models': models,
             'name': app_name
+        }
+
+    def make_separator(self):
+        return {
+            'separator': True
         }
 
     def process_models(self, app):

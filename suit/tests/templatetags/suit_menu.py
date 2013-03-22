@@ -30,6 +30,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                 {'app': 'tests', 'icon': ''},
                 {'app': 'tests', 'icon': None},
                 {'app': 'auth'},
+                '/',
                 {'label': 'Custom', 'url': '/custom/'},
                 {'label': 'Custom2', 'url': '/custom2/', 'permissions': 'x'},
                 {'label': 'Custom3', 'url': '/custom3/', 'permissions': ('y',)},
@@ -127,6 +128,9 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
 
         i += 1 # icon from SUIT_ICONS
         self.assertEqual(menu[i]['icon'], 'icon-auth-assert')
+
+        i += 1 # separator
+        self.assertEqual(menu[i]['separator'], True)
 
         i += 1 # custom app
         self.assertEqual(menu[i]['label'], mc[i]['label'])
