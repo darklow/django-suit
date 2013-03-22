@@ -2,6 +2,7 @@ from django import template
 from django.contrib import admin
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.urlresolvers import reverse
+import warnings
 from suit.config import get_config
 
 register = template.Library()
@@ -57,169 +58,305 @@ class Menu(object):
         self.conf_open_first_child = get_config('MENU_OPEN_FIRST_CHILD')
         self.conf_icons = get_config('MENU_ICONS')
         self.conf_menu_order = get_config('MENU_ORDER')
+        self.conf_menu = get_config('MENU')
 
     def get_app_list(self):
-
-        # Reorder menu first, so new hierarchy is present for marking active
-        if self.conf_menu_order:
-            self.reorder_apps()
-
-        # Exclude apps
-        if self.conf_exclude:
-            self.exclude_apps()
+        menu = None
+        if self.conf_menu:
+            menu = self.make_menu(self.conf_menu)
+        elif self.conf_menu_order:
+            menu = self.make_menu_from_old_format(self.conf_menu_order)
 
         # Add icons and match active
-        self.activate_apps()
+        if menu:
+            self.activate_menu(menu)
 
-        return self.app_list
+        return menu
 
-    def activate_apps(self):
+    def make_menu(self, config):
+        menu = []
+        for app in config:
+            app = self.make_app(app)
+            if app:
+                menu.append(app)
+
+        return menu
+
+    def make_app(self, app_def):
+        if isinstance(app_def, dict):
+            app = app_def.copy()
+        elif isinstance(app_def, str):
+            app = self.make_app_from_native(app_def)
+        else:
+            raise TypeError('MENU list item must be string or dict. Got %s'
+                            % repr(app_def))
+        if app:
+            return self.process_app(app)
+
+    def process_app(self, app):
+
+        if 'app' in app:
+            app = self.process_semi_native_app(app)
+
+        if not app:
+            return
+
+        # Process icons
+        self.process_icons(app)
+
+        # Ensure required keys for template are set
+        self.ensure_app_keys(app)
+
+        # Exclude apps
+        if self.app_is_excluded(app):
+            return
+
+        # Handle app permissions
+        if self.app_is_forbidden(app):
+            return
+
+        # Process app models
+        self.process_models(app)
+
+        # Set link from child
+        models = app.get('models', [])
+        if self.conf_open_first_child and models:
+            app['orig_url'] = app['url']
+            app['url'] = self.process_url(models[0]['url'])
+
+        return app
+
+
+    def app_is_forbidden(self, app):
+        return app['permissions'] and \
+               not self.user_has_permission(app['permissions'])
+
+    def app_is_excluded(self, app):
+        return self.conf_exclude and app['name'] in self.conf_exclude
+
+    def process_icons(self, app):
+        """
+        If icon key is present but value is '' or None, set empty 'icon-'
+        If key not found, try to set icon from SUIT_ICONS
+        """
+        if 'icon' in app:
+            app['icon'] = app['icon'] or 'icon-'
+        elif self.conf_icons and 'name' in app and \
+                        app['name'] in self.conf_icons:
+            app['icon'] = self.conf_icons[app['name']]
+
+    def process_semi_native_app(self, app):
+        """
+        Process app defined as { app: 'app' }
+        """
+        app_from_native = self.make_app_from_native(app['app'])
+        if app_from_native:
+            del app['app']
+            app_from_native.update(app)
+            return app_from_native
+
+    def make_app_from_native(self, app_name):
+        app = self.find_native_app(app_name)
+        if app:
+            return self.convert_native_app(app, app_name)
+
+    def find_native_app(self, app_name):
         for app in self.app_list:
-            app_name = app['name'].lower()
+            if app['name'].lower() == app_name:
+                return app
 
-            # Set icon if configured
-            if self.conf_icons and app_name in self.conf_icons:
-                app['icon'] = self.conf_icons[app_name]
+    def convert_native_app(self, native_app, app_name):
+        models = []
+        native_models = native_app.get('models', {})
+        if native_models:
+            for model in native_models:
+                models.append(self.convert_native_model(model))
 
-            # Mark as active by url match
-            if self.request.path == app['app_url'] and not self.app_activated:
-                app['is_active'] = self.app_activated = True
+        # Skip native apps with no models
+        if not models:
+            return
 
-            # Activate and exclude app models
-            self.activate_models(app)
+        return {
+            'label': native_app['name'],
+            'url': native_app['app_url'],
+            'models': models,
+            'name': app_name
+        }
 
-        # Set first child url on app unless MENU_OPEN_FIRST_CHILD = False
-        if self.conf_open_first_child:
-            for app in self.app_list:
-                if 'models' in app and len(app['models']) > 0:
-                    app['app_url'] = app['models'][0]['admin_url']
+    def process_models(self, app):
+        models = []
+        models_def = app.get('models', [])
+        for model_def in models_def:
+            model = self.make_model(model_def, app['name'])
+            if model:
+                models.append(model)
 
-    def activate_models(self, app):
-        # Iterate models
-        for model in app['models']:
-            app_name = app['name'].lower()
+        app['models'] = models
 
-            # Exclude if in exclude list
-            model_full_name = '%s.%s' % (app_name, self.get_model_name(model))
-            if self.conf_exclude and model_full_name in self.conf_exclude:
-                app['models'].remove(model)
-                continue
+    def make_model(self, model_def, app_name):
+        if isinstance(model_def, dict):
+            model = model_def.copy()
+        elif isinstance(model_def, str):
+            model = self.make_model_from_native(model_def, app_name)
+        else:
+            raise TypeError('MENU list item must be string or dict. Got %s'
+                            % repr(model_def))
+        if model:
+            return self.process_model(model, app_name)
 
-            # Mark as active by url or model plural name match
-            model['is_active'] = self.request.path == model['admin_url']
-            model['is_active'] |= self.ctx_model_plural == model['name'].lower()
+    def make_model_from_native(self, model_name, app_name):
+        model = self.find_native_model(model_name, app_name)
+        if model:
+            return self.convert_native_model(model)
 
-            # Mark parent as active too
-            if model['is_active'] and not self.app_activated:
-                app['is_active'] = self.app_activated = True
+    def find_native_model(self, model_name, app_name):
+        model_name = self.get_model_name(app_name, model_name)
 
-    def exclude_apps(self):
-        for app in self.app_list:
-            if self.conf_exclude and app['name'].lower() in self.conf_exclude:
-                self.app_list.remove(app)
-            continue
+        if self.model_is_excluded(model_name):
+            return
 
-    def reorder_apps(self):
-        new_apps = []
-        for order in self.conf_menu_order:
-            final_app = None
-            app_name = order[0]
-            models_order = order[1] if len(order) > 1 else None
+        for native_model in self.all_models:
+            if model_name == self.get_native_model_name(native_model):
+                return native_model
 
-            # If custom app
-            if isinstance(app_name, (list, tuple)):
-                final_app = self.make_custom_app(app_name)
-            else:
-                # iterate and match django apps
-                for app in self.app_list:
-                    if app['name'].lower() == app_name:
-                        final_app = app
-                        break
+    def model_is_excluded(self, model_name):
+        return self.conf_exclude and model_name in self.conf_exclude
 
-            if final_app:
-                new_apps.append(final_app)
+    def get_model_name(self, app_name, model_name):
+        if '.' not in model_name:
+            model_name = '%s.%s' % (app_name, model_name)
+        return model_name
 
-                if models_order:
-                    self.reorder_models(final_app, models_order)
+    def get_native_model_name(self, model):
+        """
+        Get model name by its last part of url
+        """
+        url_parts = model['admin_url'].rstrip('/').split('/')
+        return '.'.join(url_parts[-2:])
 
-        self.app_list = new_apps
+    def convert_native_model(self, model):
+        return {
+            'label': model['name'],
+            'url': model['admin_url'],
+        }
 
-    def reorder_models(self, app, models_order):
-        new_models = []
-        for model_name in models_order:
-            # Custom link
-            if isinstance(model_name, (list, tuple)):
-                custom_link = self.make_custom_link(model_name)
-                if custom_link:
-                    new_models.append(custom_link)
-                continue
+    def process_model(self, model, app_name):
+        if 'model' in model:
+            model = self.process_semi_native_model(model, app_name)
 
-            # Append real model link
-            for model in self.all_models:
-                # Exclude models with no admin_url. This can happen, if user
-                # has no permissions, in such case Django sometimes provide
-                # model without an url
-                if 'admin_url' not in model:
-                    continue
+        if model:
+            self.ensure_model_keys(model)
 
-                if model_name == self.get_model_name(model, '.' in model_name):
-                    new_models.append(model)
+            # Detect if named url and convert it to absolute
+            model['url'] = self.process_url(model['url'])
 
-        app['models'] = new_models
-
-    def make_custom_app(self, app):
-        app_len = len(app)
-        if app_len < 2:
-            raise IndexError(
-                'Menu custom app must be list or tuple with at least two '
-                'parameters: ('
-                '"name", "url", "icon"=None)')
-
-        url = self.reverse_url(app[1])
-        custom_app = {'name': app[0], 'app_url': url, 'models': []}
-
-        if app_len >= 3:
-            custom_app['icon'] = app[2]
-
-        # Check permissions if provided
-        if app_len >= 4:
-            if not self.user_has_permission(app[3]):
+            # Handle model permissions
+            if self.model_is_forbidden(model):
                 return
 
-        return custom_app
+            return model
 
-    def make_custom_link(self, link):
-        app_len = len(link)
-        if app_len < 2:
-            raise IndexError(
-                'Menu custom app must be list or tuple with at least two '
-                'parameters: ("name", "url")')
+    def model_is_forbidden(self, model):
+        return model['permissions'] and \
+               not self.user_has_permission(model['permissions'])
 
-        # Check permissions if provided
-        if app_len >= 3:
-            if not self.user_has_permission(link[2]):
-                return
+    def process_semi_native_model(self, model, app_name):
+        """
+        Process app defined as { model: 'model' }
+        """
+        model_from_native = self.make_model_from_native(model['model'],
+                                                        app_name)
+        if model_from_native:
+            del model['model']
+            model_from_native.update(model)
+            return model_from_native
 
-        url = self.reverse_url(link[1])
-        return {'name': link[0], 'admin_url': url}
+    def ensure_app_keys(self, app):
+        keys = ['label', 'url', 'icon', 'permissions', 'name', 'is_active']
+        self.fill_keys(app, keys)
+
+    def ensure_model_keys(self, model):
+        keys = ['label', 'url', 'permissions', 'is_active']
+        self.fill_keys(model, keys)
+
+    def fill_keys(self, dict, keys):
+        for key in keys:
+            if key not in dict:
+                dict[key] = None
 
     def user_has_permission(self, perms):
         perms = perms if isinstance(perms, (list, tuple)) else (perms,)
         return self.request.user.has_perms(perms)
 
-    def get_model_name(self, model, is_full_name=False):
-        """
-        Get model name by its last part of url
-        """
-        url_parts = model['admin_url'].rstrip('/').split('/')
-        if is_full_name:
-            return '.'.join(url_parts[-2:])
-        return url_parts[-1]
+    def activate_menu(self, menu):
+        for app in menu:
+            # Activate models
+            if app['models']:
+                self.activate_models(app)
 
-    def reverse_url(self, url):
+            # Mark as active by url match
+            if (self.request.path == app['url']
+                or self.request.path == app.get('orig_url')) \
+                and not self.app_activated:
+                app['is_active'] = self.app_activated = True
+
+    def activate_models(self, app):
+        for model in app['models']:
+            # Mark as active by url or model plural name match
+            model['is_active'] = self.request.path == model['url']
+            model['is_active'] |= self.ctx_model_plural == model[
+                'label'].lower()
+
+            # Mark parent as active too
+            if model['is_active'] and not self.app_activated:
+                app['is_active'] = self.app_activated = True
+
+    def process_url(self, url):
+        """
+        Try to guess if it is absolute url or named
+        """
         if not url or '/' in url:
             return url
         try:
             return reverse(url)
         except:
             return url
+
+    def make_menu_from_old_format(self, conf_order):
+        import sys
+
+        if 'test' not in sys.argv:
+            warnings.warn(
+                'Django Suit "MENU_ORDER" setting is deprecated. Use new "MENU"'
+                ' key instead, see Documentation for new syntax.',
+                DeprecationWarning)
+
+        new_conf = []
+        for order in conf_order:
+            new_app = {}
+            if isinstance(order, (tuple, list)):
+                app_name = order[0]
+                models_order = order[1] if len(order) > 1 else None
+                if isinstance(app_name, str):
+                    new_app['app'] = app_name
+                elif isinstance(app_name, (tuple, list)):
+                    mapping = ('label', 'url', 'icon', 'permissions')
+                    for i, val in enumerate(app_name):
+                        new_app[mapping[i]] = val
+                if models_order and isinstance(models_order, (tuple, list)):
+                    models = []
+                    for model in models_order:
+                        if isinstance(model, str):
+                            models.append({'model': model})
+                        elif isinstance(model, (list, tuple)):
+                            mapping = ('label', 'url', 'permissions')
+                            new_model = {}
+                            for i, val in enumerate(model):
+                                new_model[mapping[i]] = val
+                            models.append(new_model)
+
+                    new_app['models'] = models
+            if new_app:
+                new_conf.append(new_app)
+
+        return self.make_menu(new_conf)
