@@ -30,6 +30,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                 {'app': 'tests', 'icon': ''},
                 {'app': 'tests', 'icon': None},
                 {'app': 'auth'},
+                '/',
                 {'label': 'Custom', 'url': '/custom/'},
                 {'label': 'Custom2', 'url': '/custom2/', 'permissions': 'x'},
                 {'label': 'Custom3', 'url': '/custom3/', 'permissions': ('y',)},
@@ -37,6 +38,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                 {'label': 'C5', 'url': '/c/5', 'models': ('tests.book',)},
                 {'label': 'C6', 'url': 'admin:index', 'models':
                     ({'label': 'mx', 'url': 'admin:index'},)},
+                {'label': 'C7', 'url': 'tests.book'},
                 {'app': 'tests', 'models': []},
                 {'app': 'tests', 'models': ['book', 'album']},
                 {'app': 'tests', 'models': ['tests.book', 'tests.album']},
@@ -128,6 +130,9 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         i += 1 # icon from SUIT_ICONS
         self.assertEqual(menu[i]['icon'], 'icon-auth-assert')
 
+        i += 1 # separator
+        self.assertEqual(menu[i]['separator'], True)
+
         i += 1 # custom app
         self.assertEqual(menu[i]['label'], mc[i]['label'])
         self.assertEqual(menu[i]['url'], mc[i]['url'])
@@ -153,6 +158,10 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         expected_url = reverse('admin:index')
         self.assertEqual(menu[i]['url'], expected_url)
         self.assertEqual(menu[i]['models'][0]['url'], expected_url)
+
+        i += 1 # with url by model
+        books_url = reverse('admin:tests_book_changelist')
+        self.assertEqual(menu[i]['url'], books_url)
 
         i += 1 # with empty models
         self.assertEqual(menu[i]['models'], [])
