@@ -86,7 +86,7 @@ class Menu(object):
         if isinstance(app_def, dict):
             app = app_def.copy()
         elif isinstance(app_def, str):
-            if app_def == '/':
+            if app_def == '-':
                 app = self.make_separator()
             else:
                 app = self.make_app_from_native(app_def)

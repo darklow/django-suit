@@ -30,7 +30,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                 {'app': 'tests', 'icon': ''},
                 {'app': 'tests', 'icon': None},
                 {'app': 'auth'},
-                '/',
+                '-',
                 {'label': 'Custom', 'url': '/custom/'},
                 {'label': 'Custom2', 'url': '/custom2/', 'permissions': 'x'},
                 {'label': 'Custom3', 'url': '/custom3/', 'permissions': ('y',)},
@@ -38,7 +38,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                 {'label': 'C5', 'url': '/c/5', 'models': ('tests.book',)},
                 {'label': 'C6', 'url': 'admin:index', 'models':
                     ({'label': 'mx', 'url': 'admin:index'},)},
-                {'label': 'C7', 'url': 'tests.book'},
+                {'label': 'C7', 'url': 'auth.user'},
                 {'app': 'tests', 'models': []},
                 {'app': 'tests', 'models': ['book', 'album']},
                 {'app': 'tests', 'models': ['tests.book', 'tests.album']},
@@ -241,11 +241,11 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.assertTrue(menu[0]['is_active'])
 
     def test_menu_app_marked_as_active_model_link(self):
-        self.get_response(reverse('admin:tests_book_add'))
+        settings.SUIT_CONFIG['MENU'] = ({'label': 'C7', 'url': 'auth.user'},)
+        self.get_response(reverse('admin:auth_user_add'))
         self.assertContains(self.response, '<li class="active">')
         menu = self.make_menu_from_response()
-        print menu[14]['url']
-        self.assertTrue(menu[14]['is_active'])
+        self.assertTrue(menu[0]['is_active'])
 
     def test_menu_model_marked_as_active(self):
         self.get_response(reverse('admin:tests_album_changelist'))

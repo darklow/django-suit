@@ -160,7 +160,7 @@ Following keys are available for each app and model level links:
 
 * App: ``app``, ``label``, ``url``, ``icon``, ``permissions``
 * Model: ``model``, ``label``, ``url``, ``permissions``
-* Use ``/`` as separator between apps
+* Use ``-`` as separator between apps
 
 ``url`` parameter can be:
 
@@ -198,7 +198,7 @@ Here is full example of ``MENU`` from simple existing app reorder to defining cu
           {'label': 'Users', 'url': 'auth.user', 'icon':'icon-user'},
 
           # Separator
-          '/',
+          '-',
 
           # Custom app and model with permissions
           {'label': 'Secure', 'permissions': 'auth.add_user', 'models': [
