@@ -154,6 +154,8 @@ h3{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255,2
 .form-horizontal .inline-related span.delete label{padding:7px 0 0 5px;vertical-align:middle;margin:0}
 .form-horizontal .inline-related.tabular{margin-top:15px}.form-horizontal .inline-related.tabular fieldset{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
 .form-horizontal .inline-related.tabular table{margin-bottom:0}
+.form-horizontal .inline-related.tabular table td .errorlist{margin-bottom:5px;font-size:11px}
+.form-horizontal .inline-related.tabular table td.control-group{display:table-cell}
 .controls .selector{overflow:auto}.controls .selector .selector-available,.controls .selector .selector-chooser,.controls .selector .selector-chosen{float:left}.controls .selector .selector-available select,.controls .selector .selector-chooser select,.controls .selector .selector-chosen select{display:block}
 .controls .selector .selector-available h2,.controls .selector .selector-chooser h2,.controls .selector .selector-chosen h2{margin-left:5px;font-size:12px}
 .controls .selector .selector-chooser{list-style:none;margin:70px 10px 0 10px}.controls .selector .selector-chooser li:before{line-height:18px;content:"\00bb";display:inline-block;margin-right:5px;font-size:16px;color:#999}
