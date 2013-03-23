@@ -30,10 +30,11 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                 {'app': 'tests', 'icon': ''},
                 {'app': 'tests', 'icon': None},
                 {'app': 'auth'},
-                '/',
+                '-',
                 {'label': 'Custom', 'url': '/custom/'},
                 {'label': 'Custom2', 'url': '/custom2/', 'permissions': 'x'},
                 {'label': 'Custom3', 'url': '/custom3/', 'permissions': ('y',)},
+                {'label': 'Custom4', 'url': '/custom4/', 'blank': True},
                 {'label': 'C4', 'url': '/c/4', 'models': ('book',)},
                 {'label': 'C5', 'url': '/c/5', 'models': ('tests.book',)},
                 {'label': 'C6', 'url': 'admin:index', 'models':
@@ -143,6 +144,9 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         i += 1 # custom app, with perms as tuple
         self.assertEqual(menu[i]['label'], mc[i]['label'])
 
+        i += 1 # custom app, with perms as tuple
+        self.assertEqual(menu[i]['blank'], True)
+
         i += 1 # custom app with wrong model
         self.assertEqual(menu[i]['label'], mc[i]['label'])
         self.assertEqual(menu[i]['models'], [])
@@ -236,6 +240,13 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
 
     def test_menu_app_marked_as_active(self):
         self.get_response(reverse('admin:app_list', args=['tests']))
+        self.assertContains(self.response, '<li class="active">')
+        menu = self.make_menu_from_response()
+        self.assertTrue(menu[0]['is_active'])
+
+    def test_menu_app_marked_as_active_model_link(self):
+        settings.SUIT_CONFIG['MENU'] = ({'label': 'C7', 'url': 'auth.user'},)
+        self.get_response(reverse('admin:auth_user_add'))
         self.assertContains(self.response, '<li class="active">')
         menu = self.make_menu_from_response()
         self.assertTrue(menu[0]['is_active'])
