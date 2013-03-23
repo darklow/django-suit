@@ -283,11 +283,12 @@ class Menu(object):
             return model_from_native
 
     def ensure_app_keys(self, app):
-        keys = ['label', 'url', 'icon', 'permissions', 'name', 'is_active']
+        keys = ['label', 'url', 'icon', 'permissions', 'name', 'is_active',
+                'blank']
         self.fill_keys(app, keys)
 
     def ensure_model_keys(self, model):
-        keys = ['label', 'url', 'permissions', 'is_active']
+        keys = ['label', 'url', 'permissions', 'is_active', 'blank']
         self.fill_keys(model, keys)
 
     def fill_keys(self, dict, keys):

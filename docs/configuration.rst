@@ -158,8 +158,8 @@ Most powerful of menu parameters - one parameter to rule them all :) You can ren
 
 Following keys are available for each app and model level links:
 
-* App: ``app``, ``label``, ``url``, ``icon``, ``permissions``
-* Model: ``model``, ``label``, ``url``, ``permissions``
+* App: ``app``, ``label``, ``url``, ``icon``, ``permissions``, ``blank``
+* Model: ``model``, ``label``, ``url``, ``permissions``, ``blank``
 * Use ``-`` as separator between apps
 
 ``url`` parameter can be:
@@ -167,7 +167,8 @@ Following keys are available for each app and model level links:
 * Absolute url like ``/custom/``
 * Named url like ``admin:index``
 * Model name like ``auth.user`` to make link to model changelist
-* If ``MENU_OPEN_FIRST_CHILD=True`` and models for app exists, you can skip ``url`` key.
+* If ``MENU_OPEN_FIRST_CHILD=True`` and models for app exists, you can skip ``url`` key
+* If you add key ``'blank': True`` links will open in new window
 
 ``permissions`` are verified using `user.has_perms() <https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User.has_perm>`_ method.
 

@@ -34,11 +34,12 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                 {'label': 'Custom', 'url': '/custom/'},
                 {'label': 'Custom2', 'url': '/custom2/', 'permissions': 'x'},
                 {'label': 'Custom3', 'url': '/custom3/', 'permissions': ('y',)},
+                {'label': 'Custom4', 'url': '/custom4/', 'blank': True},
                 {'label': 'C4', 'url': '/c/4', 'models': ('book',)},
                 {'label': 'C5', 'url': '/c/5', 'models': ('tests.book',)},
                 {'label': 'C6', 'url': 'admin:index', 'models':
                     ({'label': 'mx', 'url': 'admin:index'},)},
-                {'label': 'C7', 'url': 'auth.user'},
+                {'label': 'C7', 'url': 'tests.book'},
                 {'app': 'tests', 'models': []},
                 {'app': 'tests', 'models': ['book', 'album']},
                 {'app': 'tests', 'models': ['tests.book', 'tests.album']},
@@ -142,6 +143,9 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
 
         i += 1 # custom app, with perms as tuple
         self.assertEqual(menu[i]['label'], mc[i]['label'])
+
+        i += 1 # custom app, with perms as tuple
+        self.assertEqual(menu[i]['blank'], True)
 
         i += 1 # custom app with wrong model
         self.assertEqual(menu[i]['label'], mc[i]['label'])
