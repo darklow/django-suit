@@ -128,7 +128,7 @@ class Menu(object):
             app['url'] = models[0]['url']
 
         # Process absolute/named/model type urls
-        app['url'] = self.process_url(app['url'])
+        app['url'] = self.process_url(app['url'], app)
 
         return app
 
@@ -306,9 +306,14 @@ class Menu(object):
                 self.activate_models(app)
 
             # Mark as active by url match
-            if (self.request.path == app['url']
-                or self.request.path == app.get('orig_url')) \
-                and not self.app_activated:
+            if not self.app_activated \
+                and (self.request.path == app['url']
+                     or self.request.path == app.get('orig_url')):
+                app['is_active'] = self.app_activated = True
+
+            # Activate by model links
+            if not self.app_activated and 'model' in app \
+                and self.ctx_model_plural == app['model']['label'].lower():
                 app['is_active'] = self.app_activated = True
 
     def activate_models(self, app):
@@ -322,7 +327,7 @@ class Menu(object):
             if model['is_active'] and not self.app_activated:
                 app['is_active'] = self.app_activated = True
 
-    def process_url(self, url):
+    def process_url(self, url, app=None):
         """
         Try to guess if it is absolute url or named
         """
@@ -337,6 +342,8 @@ class Menu(object):
             url_parts = url.split('.')
             model = self.make_model_from_native(url_parts[1], url_parts[0])
             if model:
+                if app:
+                    app['model'] = model
                 return model['url']
 
         # Try to resolve as named url, ex: 'admin:index'

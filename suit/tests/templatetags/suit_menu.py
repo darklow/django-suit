@@ -240,6 +240,13 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         menu = self.make_menu_from_response()
         self.assertTrue(menu[0]['is_active'])
 
+    def test_menu_app_marked_as_active_model_link(self):
+        self.get_response(reverse('admin:tests_book_add'))
+        self.assertContains(self.response, '<li class="active">')
+        menu = self.make_menu_from_response()
+        print menu[14]['url']
+        self.assertTrue(menu[14]['is_active'])
+
     def test_menu_model_marked_as_active(self):
         self.get_response(reverse('admin:tests_album_changelist'))
         menu = self.make_menu_from_response()
