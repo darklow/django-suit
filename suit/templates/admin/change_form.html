@@ -22,6 +22,14 @@
     </script>
   {% endif %}
 
+  {% if adminform.model_admin.suit_tabs %}
+    <script type="text/javascript">
+      $(function () {
+        $('.nav-tabs').suit_tabs();
+      });
+    </script>
+  {% endif %}
+
 {% endblock %}
 
 {% block extrastyle %}
@@ -105,6 +113,14 @@
       </div>
       <div class="inner-center-column">
         {% csrf_token %}{% block form_top %}{% endblock %}
+        {% block suit_tabs %}
+          {% if adminform.model_admin.suit_tabs %}
+            <ul class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
+              {% for tab in adminform.model_admin.suit_tabs %}
+                <li><a href="#{{ tab.0 }}">{{ tab.1 }}</a></li>{% endfor %}
+            </ul>
+          {% endif %}
+        {% endblock %}
         <div class="tab-content tab-content-main">
           {% if is_popup %}
             <input type="hidden" name="_popup" value="1"/>{% endif %}
@@ -116,6 +132,9 @@
             </div>
           {% endif %}
 
+          {# render suit_templates at top position #}
+          {% include 'suit/change_form_includes.html' with position='top' %}
+
           {% block field_sets %}
             {% for fieldset in adminform %}
               {% include "admin/includes/fieldset.html" %}
@@ -123,6 +142,9 @@
           {% endblock %}
 
           {% block after_field_sets %}{% endblock %}
+
+          {# render suit_templates at middle position #}
+          {% include 'suit/change_form_includes.html' with position='middle' %}
 
           {% block inline_field_sets %}
             {% for inline_admin_formset in inline_admin_formsets %}
@@ -133,6 +155,9 @@
         </div>
 
         {% block after_related_objects %}{% endblock %}
+
+        {# render suit_templates at last position #}
+        {% include 'suit/change_form_includes.html' with position='bottom' %}
 
         {% if adminform and add %}
           <script type="text/javascript">document.getElementById("{{ adminform.first_field.id_for_label }}").focus();</script>
@@ -145,4 +170,3 @@
     </form>
   </div>
 {% endblock %}
-
