@@ -24,7 +24,7 @@ Support
 * Support and documentation: http://djangosuit.com/support/
 * `Demo app <http://djangosuit.com/admin/>`_ repository is here: `django-suit-examples <https://github.com/darklow/django-suit-examples>`_
 * IRC Channel: Feel free to join us at ``#django-suit`` on ``irc.freenode.net`` for a chat
-
+* Follow `on Twitter <http://twitter.com/DjangoSuit>`_ to get latest news
 
 Changelog
 =========
