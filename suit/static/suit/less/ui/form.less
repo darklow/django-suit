@@ -360,6 +360,13 @@ h3 {
             table {
                 margin-bottom: 0;
             }
+            table td .errorlist {
+                margin-bottom: 5px;
+                font-size: 11px;
+            }
+            table td.control-group {
+                display: table-cell;
+            }
         }
     }
 }
@@ -504,4 +511,31 @@ h3 {
 }
 .autosize {
     max-height: 150px;
+}
+
+.legend, h2 {
+    .description {
+        font-weight: normal;
+        font-size: 12px;
+        display: inline-block;
+        margin-left: 20px;
+        line-height: normal;
+        .color-grey;
+    }
+}
+
+/* Legend/H2 for suit_templates includes */
+.form-horizontal .suit-tab {
+    visibility: hidden;
+    &.show {
+        visibility: inherit;
+    }
+}
+.suit-tab, .form-horizontal .suit-include {
+    >h2 {
+        margin-top: -10px;
+        margin-bottom: -6px;
+        line-height: 36px;
+        padding: 0;
+    }
 }
