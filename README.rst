@@ -13,9 +13,8 @@ Django Suit is alternative theme/skin/extension for `Django <http://www.djangopr
 License
 =======
 
-Django Suit is licensed under `Creative Commons Attribution-NonCommercial 3.0 <http://creativecommons.org/licenses/by-nc/3.0/>`_ license.
-
-Licence and pricing: http://djangosuit.com/pricing/
+* Django Suit is licensed under `Creative Commons Attribution-NonCommercial 3.0 <http://creativecommons.org/licenses/by-nc/3.0/>`_ license.
+* Licence and pricing: http://djangosuit.com/pricing/
 
 
 Support
@@ -35,7 +34,7 @@ See `CHANGELOG.rst <https://github.com/darklow/django-suit/blob/master/CHANGELOG
 Contributing
 ============
 
-`Contributing docs<http://django-suit.readthedocs.org/en/latest/contributing.html>`_
+See `Contributing documentation <http://django-suit.readthedocs.org/en/latest/contributing.html>`_
 
 
 Build Status
