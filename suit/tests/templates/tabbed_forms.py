@@ -28,8 +28,8 @@ class TabbedFormsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         for x in range(0, 2):
             vars = (TabbedBookAdmin.suit_tabs[x][0],
                     TabbedBookAdmin.suit_tabs[x][1])
-            self.assertInHTML('<li><a href="#%s">%s</a></li>' % vars,
-                              self.response.content)
+            self.assertContains(self.response, '<li><a href="#%s">%s</a></li>' %
+                                               vars)
 
     def test_template_includes(self):
         suit_template_include = 'admin/date_hierarchy.html'
