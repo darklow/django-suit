@@ -133,7 +133,7 @@
           {% endif %}
 
           {# render suit_templates at top position #}
-          {% include 'suit/change_form_includes.html' with position='top' %}
+          {% include 'suit/includes/change_form_includes.html' with position='top' %}
 
           {% block field_sets %}
             {% for fieldset in adminform %}
@@ -144,7 +144,7 @@
           {% block after_field_sets %}{% endblock %}
 
           {# render suit_templates at middle position #}
-          {% include 'suit/change_form_includes.html' with position='middle' %}
+          {% include 'suit/includes/change_form_includes.html' with position='middle' %}
 
           {% block inline_field_sets %}
             {% for inline_admin_formset in inline_admin_formsets %}
@@ -157,7 +157,7 @@
         {% block after_related_objects %}{% endblock %}
 
         {# render suit_templates at last position #}
-        {% include 'suit/change_form_includes.html' with position='bottom' %}
+        {% include 'suit/includes/change_form_includes.html' with position='bottom' %}
 
         {% if adminform and add %}
           <script type="text/javascript">document.getElementById("{{ adminform.first_field.id_for_label }}").focus();</script>
