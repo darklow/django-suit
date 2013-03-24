@@ -120,7 +120,7 @@ $.fn.suit_tabs = function () {
         return $('.' + tab_prefix + '-' + $link.attr('href').replace('#', ''));
     }
 
-    function init_tabs() {
+    function activate_tabs() {
         // Init tab by error, by url hash or init first tab
         if (window.location.hash) {
             var found_error;
@@ -132,9 +132,9 @@ $.fn.suit_tabs = function () {
                     found_error = true;
                 }
             });
-            !found_error && $($tabs.selector + ' a[href=' + window.location.hash + ']').click();
+            !found_error && $($tabs).find('a[href=' + window.location.hash + ']').click();
         } else {
-            $tabs.find('a').first().trigger('click');
+            $tab_links.first().trigger('click');
         }
     }
 
@@ -146,8 +146,7 @@ $.fn.suit_tabs = function () {
         tab_contents($link).removeClass('hide').addClass('show')
     });
 
-    init_tabs();
-
+    activate_tabs();
 };
 
 
