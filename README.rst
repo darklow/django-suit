@@ -34,7 +34,7 @@ See `CHANGELOG.rst <https://github.com/darklow/django-suit/blob/master/CHANGELOG
 Contributing
 ============
 
-See `Contributing documentation <http://django-suit.readthedocs.org/en/latest/contributing.html>`_
+See `Contributing documentation <http://django-suit.readthedocs.org/en/develop/contributing.html>`_
 
 
 Build Status
