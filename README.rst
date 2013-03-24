@@ -35,7 +35,7 @@ See `CHANGELOG.rst <https://github.com/darklow/django-suit/blob/master/CHANGELOG
 Contributing
 ============
 
-Separate `django-suit-contrib <https://github.com/darklow/django-suit-contrib>`_ package is available with full Django Suit development project setup, tests and instructions.
+`Contributing docs<http://django-suit.readthedocs.org/en/latest/contributing.html>`_
 
 
 Build Status
