@@ -66,6 +66,8 @@ class Menu(object):
             menu = self.make_menu(self.conf_menu)
         elif self.conf_menu_order:
             menu = self.make_menu_from_old_format(self.conf_menu_order)
+        else:
+            menu = self.make_menu_from_native_only()
 
         # Add icons and match active
         if menu:
@@ -160,6 +162,23 @@ class Menu(object):
             del app['app']
             app_from_native.update(app)
             return app_from_native
+
+    def make_menu_from_native_only(self):
+        menu = []
+        for app in self.app_list:
+            app_name = ''
+            app_url = app.get('app_url')
+            if app_url:
+                app_url_parts = app['app_url'].split('/')
+                if len(app_url_parts) > 1:
+                    app_name = app_url_parts[-2]
+            app = self.convert_native_app(app, app_name)
+            if app:
+                app = self.process_app(app)
+            if app:
+                menu.append(app)
+
+        return menu
 
     def make_app_from_native(self, app_name):
         app = self.find_native_app(app_name)

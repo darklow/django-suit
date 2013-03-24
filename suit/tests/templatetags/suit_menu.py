@@ -257,6 +257,17 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.assertTrue(menu[0]['is_active'])
         self.assertTrue(menu[0]['models'][0]['is_active'])
 
+    def test_only_native_apps(self):
+        del settings.SUIT_CONFIG['MENU']
+        if 'MENU_ORDER' in settings.SUIT_CONFIG:
+            del settings.SUIT_CONFIG['MENU_ORDER']
+        icon = 'icon-auth-assert'
+        settings.SUIT_CONFIG['MENU_ICONS'] = {'auth': icon}
+        self.get_response()
+        menu = self.make_menu_from_response()
+        self.assertEqual(len(menu), 4)
+        self.assertEqual(menu[0]['icon'], icon)
+
     #
     # Tests for old menu config format
     #
