@@ -2,16 +2,16 @@
     list-style: none;
     margin: 0px 4px 15px 4px;
     li {
-        display: inline;
+        display: inline-block;
         float: none;
+        vertical-align: bottom;
         &:first-child {
             margin-left: 10px;
         }
         a {
             display: inline-block;
-            padding: 8px 25px 7px;
+            padding: 8px 20px 7px;
             .border-radius(@border-radius+1, @border-radius+1, null, null);
-            margin-bottom: -1px;
             .white-inset;
             text-decoration: none;
             color: #08c;

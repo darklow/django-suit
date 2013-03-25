@@ -238,8 +238,8 @@ div .datepicker{margin:0;padding:0}
 .datepicker th,.datepicker td{height:16px !important}
 .datepicker input.input-small{width:70px}
 .input-append.date .add-on i,.input-prepend.date .add-on i{width:14px !important;height:14px !important;display:inline-block !important}
-.nav-tabs-suit{list-style:none;margin:0 4px 15px 4px}.nav-tabs-suit li{display:inline;float:none}.nav-tabs-suit li:first-child{margin-left:10px}
-.nav-tabs-suit li a{display:inline-block;padding:8px 25px 7px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px+1;-moz-border-radius-topleft:4px+1;border-top-left-radius:4px+1;-webkit-border-top-right-radius:4px+1;-moz-border-radius-topright:4px+1;border-top-right-radius:4px+1;margin-bottom:-1px;box-shadow:inset 1px 1px 0 #fff;text-decoration:none;color:#08c;font-size:13px}.nav-tabs-suit li a:hover{text-decoration:underline}
+.nav-tabs-suit{list-style:none;margin:0 4px 15px 4px}.nav-tabs-suit li{display:inline-block;float:none;vertical-align:bottom}.nav-tabs-suit li:first-child{margin-left:10px}
+.nav-tabs-suit li a{display:inline-block;padding:8px 20px 7px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px+1;-moz-border-radius-topleft:4px+1;border-top-left-radius:4px+1;-webkit-border-top-right-radius:4px+1;-moz-border-radius-topright:4px+1;border-top-right-radius:4px+1;box-shadow:inset 1px 1px 0 #fff;text-decoration:none;color:#08c;font-size:13px}.nav-tabs-suit li a:hover{text-decoration:underline}
 .nav-tabs-suit li a.error{color:#b94a48 !important}
 .nav-tabs-suit li a,.nav-tabs-suit li a:hover{background-color:#f6f7f8;border:1px solid #ddd}
 .nav-tabs-suit li.active a{font-weight:bold;color:#333;text-shadow:0 1px rgba(255,255,255,0.5);-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
