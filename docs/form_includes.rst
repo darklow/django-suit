@@ -8,7 +8,7 @@ Django Suit provides handy shortcut to include templates into forms for several 
 Each ``suit_form_includes`` item can contain 3 parameters:
 
 1. Path to template (Required)
-2. Position (Optional)
+2. Position: (Optional)
   * ``top`` - above fieldsets:
   * ``middle`` - between fieldsets and inlines
   * ``bottom`` - after inlines (Default)

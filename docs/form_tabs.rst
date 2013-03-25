@@ -12,7 +12,7 @@ To organize form into tabs you must:
     # (TAB_NAME, TAB_TITLE)
     suit_form_tabs = (('general', 'General'), ('advanced', 'Advanced Settings'))
 
-2. Add ``'suit-tab suit-tab-TAB_NAME'`` to ``fieldset classes``. Where ``TAB_NAME`` matches tab name you want to show fieldset in.
+2. Add ``'suit-tab suit-tab-TAB_NAME'`` to ``fieldset classes``, where ``TAB_NAME`` matches tab name you want to show fieldset in.
 3. To use with inlines, specify same css classes in ``suit_classes`` parameter for ``inline`` classes
 
 
@@ -55,9 +55,11 @@ Full example::
 
     admin.site.register(Country, CountryAdmin)
 
-Same way you can organize any HTML into tabs, just wrap it in previously mentioned CSS classes::
+Same way you can organize any HTML into tabs, just wrap it in previously mentioned CSS classes:
 
-    <div class="suit-tab suit-tab-TAB_NAME">...</div>
+.. code-block:: javascript
+
+  <div class="suit-tab suit-tab-TAB_NAME">...</div>
 
 Preview:
 
