@@ -154,6 +154,8 @@ h3{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255,2
 .form-horizontal .inline-related span.delete label{padding:7px 0 0 5px;vertical-align:middle;margin:0}
 .form-horizontal .inline-related.tabular{margin-top:15px}.form-horizontal .inline-related.tabular fieldset{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
 .form-horizontal .inline-related.tabular table{margin-bottom:0}
+.form-horizontal .inline-related.tabular table td .errorlist{margin-bottom:5px;font-size:11px}
+.form-horizontal .inline-related.tabular table td.control-group{display:table-cell}
 .controls .selector{overflow:auto}.controls .selector .selector-available,.controls .selector .selector-chooser,.controls .selector .selector-chosen{float:left}.controls .selector .selector-available select,.controls .selector .selector-chooser select,.controls .selector .selector-chosen select{display:block}
 .controls .selector .selector-available h2,.controls .selector .selector-chooser h2,.controls .selector .selector-chosen h2{margin-left:5px;font-size:12px}
 .controls .selector .selector-chooser{list-style:none;margin:70px 10px 0 10px}.controls .selector .selector-chooser li:before{line-height:18px;content:"\00bb";display:inline-block;margin-right:5px;font-size:16px;color:#999}
@@ -175,7 +177,11 @@ h3{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255,2
 .suit-date.suit-time .add-on{left:74px}
 .suit-date.suit-time .datetimeshortcuts a:last-child{position:absolute;left:80px}
 .autosize{max-height:150px}
-.box{box-shadow:0 0 1px rgba(0,0,0,0.4);-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px;background:#f6f7f8}
+.legend .description,h2 .description{font-weight:normal;font-size:12px;display:inline-block;margin-left:20px;line-height:normal;color:#999}
+.form-horizontal .suit-tab{visibility:hidden}.form-horizontal .suit-tab.show{visibility:inherit}
+.form-horizontal .suit-tab.collapsed.hide{display:none !important}
+.suit-tab>h2,.form-horizontal .suit-include>h2{margin-top:-10px;margin-bottom:-6px;line-height:36px;padding:0}
+.box,.well{box-shadow:0 0 1px rgba(0,0,0,0.4);-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px;background:#f6f7f8;padding:10px 12px;border:0}
 .menu-box{margin:0 0 10px 0;padding:5px 0;background-color:#fff}.menu-box li{list-style:none;line-height:18px}.menu-box li a{text-decoration:none;line-height:18px;display:block;padding:5px 10px 5px 13px;color:#666;border-bottom:1px solid #ededed}.menu-box li a:hover{background-color:#f6f7f8}.menu-box li a:hover:first-child{-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px}
 .menu-box li a:hover:last-child{-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px}
 .menu-box li a i{margin-right:7px}
@@ -196,6 +202,7 @@ h3{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255,2
 .left-nav>ul>li.active>a{color:#fff;text-shadow:0 1px #4f7f92;background-color:#5295b0;background-repeat:no-repeat;background-image:-webkit-gradient(linear, left top, left bottom, from(#83b3c3), to(#5295b0));background-image:-webkit-linear-gradient(#83b3c3, #5295b0);background-image:-moz-linear-gradient(#83b3c3, #5295b0);background-image:-o-linear-gradient(top, #83b3c3, #5295b0);background-image:-khtml-gradient(linear, left top, left bottom, from(#83b3c3), to(#5295b0));filter:progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#83b3c3', EndColorStr='#5295b0', GradientType=0);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#83b3c3', EndColorStr='#5295b0', GradientType=0))";border-bottom-color:#ccc}.left-nav>ul>li.active>a i{background-image:url(../img/glyphicons-halflings-white-shadow.png);opacity:1}
 .left-nav>ul>li.active>a:after{content:url('../img/cc_active_nav.png');display:inline-block;margin-right:-21px;float:right;margin-top:-5px}
 .left-nav>ul>li.active ul{display:block}
+.left-nav>ul>li.separator,.left-nav>ul>li.separator:hover{background:#f0f0f0 !important;height:7px;display:block}
 .left-nav>ul>li ul{display:none;border-bottom:1px solid #ededed;background-color:#f6f7f8;margin:-1px 0 0 0;padding:7px 0 7px 0;-webkit-box-shadow:inset 0 3px 3px -2px rgba(0,0,0,0.2);-moz-box-shadow:inset 0 3px 3px -2px rgba(0,0,0,0.2);box-shadow:inset 0 3px 3px -2px rgba(0,0,0,0.2);list-style:none}.left-nav>ul>li ul li a{display:block;padding:3px 0 4px 27px;text-decoration:none}.left-nav>ul>li ul li a:hover{background-color:#f1f1f1;text-shadow:0 1px #fff}
 .left-nav>ul>li ul li a.add{padding:4px 0 4px 13px}.left-nav>ul>li ul li a.add i{margin-right:5px;opacity:.7}
 .left-nav>ul>li ul li a i{margin-left:-20px;margin-right:5px;opacity:.7}
@@ -231,8 +238,9 @@ div .datepicker{margin:0;padding:0}
 .datepicker th,.datepicker td{height:16px !important}
 .datepicker input.input-small{width:70px}
 .input-append.date .add-on i,.input-prepend.date .add-on i{width:14px !important;height:14px !important;display:inline-block !important}
-.nav-tabs-suit{list-style:none;margin:0 4px 15px 4px}.nav-tabs-suit li{display:inline;float:none}.nav-tabs-suit li:first-child{margin-left:10px}
-.nav-tabs-suit li a{display:inline-block;padding:8px 25px 7px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px+1;-moz-border-radius-topleft:4px+1;border-top-left-radius:4px+1;-webkit-border-top-right-radius:4px+1;-moz-border-radius-topright:4px+1;border-top-right-radius:4px+1;margin-bottom:-1px;box-shadow:inset 1px 1px 0 #fff;text-decoration:none;color:#08c;font-size:13px}.nav-tabs-suit li a:hover{text-decoration:underline}
+.nav-tabs-suit{list-style:none;margin:0 4px 15px 4px}.nav-tabs-suit li{display:inline-block;float:none;vertical-align:bottom}.nav-tabs-suit li:first-child{margin-left:10px}
+.nav-tabs-suit li a{display:inline-block;padding:8px 20px 7px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px+1;-moz-border-radius-topleft:4px+1;border-top-left-radius:4px+1;-webkit-border-top-right-radius:4px+1;-moz-border-radius-topright:4px+1;border-top-right-radius:4px+1;box-shadow:inset 1px 1px 0 #fff;text-decoration:none;color:#08c;font-size:13px}.nav-tabs-suit li a:hover{text-decoration:underline}
+.nav-tabs-suit li a.error{color:#b94a48 !important}
 .nav-tabs-suit li a,.nav-tabs-suit li a:hover{background-color:#f6f7f8;border:1px solid #ddd}
 .nav-tabs-suit li.active a{font-weight:bold;color:#333;text-shadow:0 1px rgba(255,255,255,0.5);-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
 .nav-tabs-suit li.active a,.nav-tabs-suit li.active a:hover{text-decoration:none;background-color:#edeff1;border-bottom-color:#edeff1}

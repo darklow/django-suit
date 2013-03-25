@@ -107,28 +107,46 @@ $.fn.suit_linked_select = function () {
 /**
  * Content tabs
  */
-$.fn.suit_tabs = function () {
+$.fn.suit_form_tabs = function () {
 
     var $tabs = $(this);
     var tab_prefix = $tabs.data('tab-prefix');
     if (!tab_prefix)
         return;
 
-    var detectLocationHash = function () {
-        if (window.location.hash) {
-            $($tabs.selector + ' a[href=' + window.location.hash + ']').click();
-        }
-    };
+    var $tab_links = $tabs.find('a');
 
-    $tabs.find('a').click(function () {
+    function tab_contents($link) {
+        return $('.' + tab_prefix + '-' + $link.attr('href').replace('#', ''));
+    }
+
+    function activate_tabs() {
+        // Init tab by error, by url hash or init first tab
+        if (window.location.hash) {
+            var found_error;
+            $tab_links.each(function () {
+                var $link = $(this);
+                if (tab_contents($link).find('.error').length != 0) {
+                    $link.addClass('error');
+                    $link.trigger('click');
+                    found_error = true;
+                }
+            });
+            !found_error && $($tabs).find('a[href=' + window.location.hash + ']').click();
+        } else {
+            $tab_links.first().trigger('click');
+        }
+    }
+
+    $tab_links.click(function () {
         var $link = $(this);
         $link.parent().parent().find('.active').removeClass('active');
         $link.parent().addClass('active');
-        $('.' + tab_prefix).hide();
-        $('.' + tab_prefix + '-' + $link.attr('href').replace('#', '')).show();
+        $('.' + tab_prefix).removeClass('show').addClass('hide');
+        tab_contents($link).removeClass('hide').addClass('show')
     });
 
-    detectLocationHash();
+    activate_tabs();
 };
 
 

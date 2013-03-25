@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.1.9 (2013-03-25)
+-------------------------------------------------------------
+
+* [Feature] `Form tabs <http://django-suit.readthedocs.org/en/develop/form_tabs.html>`_ - help you organize form fieldsets and inlines into tabs. See `example <http://djangosuit.com/admin/examples/country/234/>`_
+* [Feature] `Form includes <http://django-suit.readthedocs.org/en/develop/form_includes.html>`_ - shortcut to include templates into forms
+* [Feature] `New menu syntax <http://django-suit.readthedocs.org/en/develop/configuration.html#id1>`_ supports app and model labels, separators and more clear definition syntax.
+
+
 v0.1.8 (2013-03-20)
 -------------------------------------------------------------
 
