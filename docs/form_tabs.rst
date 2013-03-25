@@ -57,7 +57,7 @@ Full example::
 
 Same way you can organize any HTML into tabs, just wrap it in previously mentioned CSS classes:
 
-.. code-block:: javascript
+.. code-block:: html
 
   <div class="suit-tab suit-tab-TAB_NAME">...</div>
 
