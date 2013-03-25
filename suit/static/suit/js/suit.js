@@ -107,7 +107,7 @@ $.fn.suit_linked_select = function () {
 /**
  * Content tabs
  */
-$.fn.suit_tabs = function () {
+$.fn.suit_form_tabs = function () {
 
     var $tabs = $(this);
     var tab_prefix = $tabs.data('tab-prefix');

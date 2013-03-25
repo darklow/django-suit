@@ -22,10 +22,10 @@
     </script>
   {% endif %}
 
-  {% if adminform.model_admin.suit_tabs %}
+  {% if adminform.model_admin.suit_form_tabs %}
     <script type="text/javascript">
       $(function () {
-        $('.nav-tabs').suit_tabs();
+        $('#suit_form_tabs').suit_form_tabs();
       });
     </script>
   {% endif %}
@@ -113,10 +113,10 @@
       </div>
       <div class="inner-center-column">
         {% csrf_token %}{% block form_top %}{% endblock %}
-        {% block suit_tabs %}
-          {% if adminform.model_admin.suit_tabs %}
-            <ul class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
-              {% for tab in adminform.model_admin.suit_tabs %}
+        {% block suit_form_tabs %}
+          {% if adminform.model_admin.suit_form_tabs %}
+            <ul id="suit_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
+              {% for tab in adminform.model_admin.suit_form_tabs %}
                 <li><a href="#{{ tab.0 }}">{{ tab.1 }}</a></li>{% endfor %}
             </ul>
           {% endif %}
@@ -132,7 +132,7 @@
             </div>
           {% endif %}
 
-          {# render suit_templates at top position #}
+          {# render suit_form_includes at top position #}
           {% include 'suit/includes/change_form_includes.html' with position='top' %}
 
           {% block field_sets %}
@@ -143,7 +143,7 @@
 
           {% block after_field_sets %}{% endblock %}
 
-          {# render suit_templates at middle position #}
+          {# render suit_form_includes at middle position #}
           {% include 'suit/includes/change_form_includes.html' with position='middle' %}
 
           {% block inline_field_sets %}
@@ -156,7 +156,7 @@
 
         {% block after_related_objects %}{% endblock %}
 
-        {# render suit_templates at last position #}
+        {# render suit_form_includes at last position #}
         {% include 'suit/includes/change_form_includes.html' with position='bottom' %}
 
         {% if adminform and add %}
