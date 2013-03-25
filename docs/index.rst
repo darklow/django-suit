@@ -15,9 +15,8 @@ Django Suit is alternative theme/skin/extension for `Django <http://www.djangopr
 Licence
 --------
 
-Django Suit is licensed under `Creative Commons Attribution-NonCommercial 3.0 <http://creativecommons.org/licenses/by-nc/3.0/>`_ license.
-
-See licence and pricing: http://djangosuit.com/pricing/
+* Django Suit is licensed under `Creative Commons Attribution-NonCommercial 3.0 <http://creativecommons.org/licenses/by-nc/3.0/>`_ license.
+* See licence and pricing: http://djangosuit.com/pricing/
 
 
 Resources
@@ -128,6 +127,28 @@ Sortables are handy admin tools for ordering different lists.
    :maxdepth: 3
 
    sortables
+
+
+Form tabs
+---------
+
+Form tabs help you organize form fieldsets and inlines into tabs.
+
+.. toctree::
+   :maxdepth: 1
+
+   form_tabs
+
+
+Form includes
+-------------
+
+Django Suit provides handy shortcut to include templates into forms.
+
+.. toctree::
+   :maxdepth: 3
+
+   form_includes
 
 
 Wysiwyg editors
