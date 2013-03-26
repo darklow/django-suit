@@ -139,7 +139,7 @@ Currently inline sortable supports only TabularInline. Feel free to make a featu
 2. In ``admin.py`` inline class must extend ``SortableModelAdmin`` class and specify ``sortable`` name::
 
     from django.contrib.admin import ModelAdmin
-    from suit.admin import SortableModelAdmin
+    from suit.admin import SortableTabularInline
 
     class CountryInline(SortableTabularInline):
         model = Country
