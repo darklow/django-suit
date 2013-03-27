@@ -205,6 +205,14 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.assertEqual(len(menu), 1)
         self.assertEqual(menu[0]['models'], [])
 
+    def test_menu_model_exclude_with_string_app(self):
+        settings.SUIT_CONFIG['MENU'] = ('tests',)
+        settings.SUIT_CONFIG['MENU_EXCLUDE'] = ('tests.book',)
+        self.get_response()
+        menu = self.make_menu_from_response()
+        self.assertEqual(len(menu), 1)
+        self.assertEqual(len(menu[0]['models']), 1)
+
     def test_menu_custom_app(self):
         label = 'custom'
         icon = 'icon-custom'

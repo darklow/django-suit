@@ -195,7 +195,7 @@ class Menu(object):
         native_models = native_app.get('models', {})
         if native_models:
             for model in native_models:
-                models.append(self.convert_native_model(model))
+                models.append(self.convert_native_model(model, app_name))
 
         # Skip native apps with no models
         if not models:
@@ -237,14 +237,10 @@ class Menu(object):
     def make_model_from_native(self, model_name, app_name):
         model = self.find_native_model(model_name, app_name)
         if model:
-            return self.convert_native_model(model)
+            return self.convert_native_model(model, app_name)
 
     def find_native_model(self, model_name, app_name):
         model_name = self.get_model_name(app_name, model_name)
-
-        if self.model_is_excluded(model_name):
-            return
-
         for native_model in self.all_models:
             if model_name == self.get_native_model_name(native_model):
                 return native_model
@@ -264,10 +260,12 @@ class Menu(object):
         url_parts = model['admin_url'].rstrip('/').split('/')
         return '.'.join(url_parts[-2:])
 
-    def convert_native_model(self, model):
+    def convert_native_model(self, model, app_name):
         return {
             'label': model['name'],
             'url': model['admin_url'],
+            'name': self.get_native_model_name(model),
+            'app': app_name
         }
 
     def process_model(self, model, app_name):
@@ -277,12 +275,18 @@ class Menu(object):
         if model:
             self.ensure_model_keys(model)
 
-            # Detect if named url and convert it to absolute
-            model['url'] = self.process_url(model['url'])
+            if 'app' in model and 'name' in model:
+                model_name = self.get_model_name(model['app'], model['name'])
+
+                if self.model_is_excluded(model_name):
+                    return
 
             # Handle model permissions
             if self.model_is_forbidden(model):
                 return
+
+            # Detect if named url and convert it to absolute
+            model['url'] = self.process_url(model['url'])
 
             return model
 
