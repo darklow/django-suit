@@ -77,6 +77,9 @@ class Menu(object):
 
     def make_menu(self, config):
         menu = []
+        if not isinstance(config, (tuple, list)):
+            raise TypeError('Django Suit MENU config parameter must be '
+                            'tuple or list. Got %s' % repr(config))
         for app in config:
             app = self.make_app(app)
             if app:
