@@ -1,9 +1,9 @@
 {% load i18n admin_static admin_modify %}
-<div class="inline-group {{ inline_admin_formset.opts.suit_classes }}" id="{{ inline_admin_formset.formset.prefix }}-group">
+<fieldset class="inline-group {{ inline_admin_formset.opts.suit_classes }}" id="{{ inline_admin_formset.formset.prefix }}-group">
+    <h2 class="legend">{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>
   <div class="tabular inline-related {% if forloop.last %}last-related{% endif %}">
 {{ inline_admin_formset.formset.management_form }}
 <fieldset class="module">
-   <h2>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>
    {{ inline_admin_formset.formset.non_form_errors }}
    <table class="table table-bordered table-condensed table-striped">
      <thead><tr>
@@ -69,7 +69,7 @@
    </table>
 </fieldset>
   </div>
-</div>
+</fieldset>
 
 <script type="text/javascript">
 (function($) {
