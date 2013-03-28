@@ -106,8 +106,8 @@ def pagination(cl):
 def suit_list_filter_select(cl, spec):
     tpl = get_template(spec.template)
     choices = list(spec.choices(cl))
-    field_key = spec.field.name if hasattr(spec,
-                                           'field') else spec.parameter_name
+    field_key = spec.field_path if hasattr(spec,'field_path') else \
+        spec.parameter_name
     matched_key = field_key
     for choice in choices:
         query_string = choice['query_string'][1:]
