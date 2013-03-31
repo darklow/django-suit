@@ -4,7 +4,9 @@
     <form id="changelist-search" action="" method="get" class="form-inline">
       <div class="search-container">
         {% if cl.search_fields %}
-          <input type="text" size="40" name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" placeholder="{% trans 'keyword'|capfirst %}"/>&nbsp;{% endif %}
+          <input type="text" size="40" name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" placeholder="{% trans 'keyword'|capfirst %}"/>&nbsp;
+          <script type="text/javascript">document.getElementById("searchbar").focus();</script>
+        {% endif %}
         {% spaceless %}
           {% if cl.has_filters %}
             {% block filters %}
@@ -35,5 +37,4 @@
 
     </form>
   </div>
-  <script type="text/javascript">document.getElementById("searchbar").focus();</script>
 {% endif %}
