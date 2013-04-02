@@ -49,15 +49,8 @@ body.cms-page {
             padding-bottom: 10px;
             margin: 30px 0 -35px (-@left-column-width - @padding);
             width: auto;
-            &:before, &:after:last-of-type {
-                content: '';
-                display: block;
-                height: 10px;
-                margin-bottom: 5px;
-                background: #d0d2d5;
-            }
-
             >.legend {
+                margin-bottom: -5px;
                 margin-left: 10px;
                 margin-top: 0;
                 position: static;
@@ -89,8 +82,8 @@ body.cms-page {
                 padding-right: 0;
                 select {
                     height: 26px;
-                    padding: 2px 4px;
-                    width: 152px;
+                    padding: 2px;
+                    width: 157px;
                     vertical-align: text-bottom;
                 }
                 .add-plugin, .copy-plugins {
@@ -105,6 +98,25 @@ body.cms-page {
             .control-group:first-child .controls, .control-group:first-of-type .controls {
                 padding: 0;
             }
+            &:before {
+                content: '';
+                display: block;
+                height: 10px;
+                margin-bottom: 5px;
+                background: #dfe1e4;
+                border-left: 200px solid #dfe1e4;
+            }
+        }
+    }
+    .plugin-holder-separator {
+        display: none;
+        &:last-of-type {
+            display: block;
+            height: 10px;
+            border: 0;
+            background: #dfe1e4;
+            border-left: 200px solid #dfe1e4;
+            margin: 35px 0 40px (-@left-column-width - @padding);
         }
     }
 }
@@ -112,14 +124,14 @@ body.cms-page {
     position: relative;
     margin-left: (@left-column-width + 1px);
     iframe {
-        margin: -30px 0 -10px;
+        margin: -25px 0 -10px;
         visibility: hidden;
     }
     &> p {
         margin: 0 0 0 @padding;
         .color-grey;
         .white-shadow;
-        font-style: italic;
+//        font-style: italic;
     }
 }
 .plugin-list-holder {
@@ -148,6 +160,13 @@ ul.plugin-list {
             border-color: #ccc;
             color: @text-color;
             z-index: 2;
+            .delete {
+                display: block;
+            }
+            span.text {
+                color: #666;
+            width: (@left-column-width - 53px);
+            }
         }
         &.active, &.active:hover {
             box-shadow: none;
@@ -163,16 +182,14 @@ ul.plugin-list {
             }
         }
         .text {
-            white-space: nowrap;
-        }
-        .text strong {
-            display: block;
-            float: left;
-            min-width: 50px;
-        }
-        .text, &:hover span.text {
             color: #666;
-            width: (@left-column-width - 54px);
+            width: (@left-column-width - 30px);
+            white-space: nowrap;
+            strong {
+                display: block;
+                float: left;
+                min-width: 50px;
+            }
         }
         .descr {
             color: #aaa;
@@ -182,6 +199,7 @@ ul.plugin-list {
             opacity: .2;
             padding: 2px;
             margin: 7px 0 0 6px;
+            display: none;
         }
         .delete, .delete:hover, &:hover span.delete {
             background-position: -312px 0;
