@@ -111,99 +111,99 @@
   </div>
   <div class="inner-center-column">
 
-<div style="display: none;"><input type="hidden" name="language" value="{{language}}" id="id_language"/></div>
+    <div style="display: none;"><input type="hidden" name="language" value="{{language}}" id="id_language"/></div>
 
-{% if show_language_tabs %}
-  <ul class="nav nav-tabs nav-tabs-suit" data-tab-prefix="tab-content">
-    {% for lang_code, lang_name in language_tabs %}
-    <li class="{% ifequal lang_code language %}active{% else %}{% if not lang_code in filled_languages %} notfilled{% endif %}{% endifequal %}"><a href="javascript:;" onclick="trigger_lang_button(this,'./?language={{lang_code}}');">{{lang_name}}</a></li>
+    {% if show_language_tabs %}
+      <ul class="nav nav-tabs nav-tabs-suit" data-tab-prefix="tab-content">
+        {% for lang_code, lang_name in language_tabs %}
+        <li class="{% ifequal lang_code language %}active{% else %}{% if not lang_code in filled_languages %} notfilled{% endif %}{% endifequal %}"><a href="javascript:;" onclick="trigger_lang_button(this,'./?language={{lang_code}}');">{{lang_name}}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+
+    <div id="lang_tab_content">
+    {#{% if show_language_tabs %}#}
+    {#<h2 class="header"></h2>#}
+    {#{% endif %}#}
+    {% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
+    {% if errors %}
+        <p class="errornote">
+        {% blocktrans count errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+        </p>
+        <ul class="errorlist">{% for error in adminform.form.non_field_errors %}<li>{{ error }}</li>{% endfor %}</ul>
+    {% endif %}
+
+    {% for fieldset in adminform %}
+      {% include "admin/cms/page/includes/fieldset.html" %}
     {% endfor %}
-  </ul>
-{% endif %}
 
 
-<div id="lang_tab_content">
-{#{% if show_language_tabs %}#}
-{#<h2 class="header"></h2>#}
-{#{% endif %}#}
-{% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
-{% if errors %}
-    <p class="errornote">
-    {% blocktrans count errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
-    </p>
-    <ul class="errorlist">{% for error in adminform.form.non_field_errors %}<li>{{ error }}</li>{% endfor %}</ul>
-{% endif %}
-
-{% for fieldset in adminform %}
-  {% include "admin/cms/page/includes/fieldset.html" %}
-{% endfor %}
+    {% for inline_admin_formset in inline_admin_formsets %}
+        {% include inline_admin_formset.opts.template %}
+    {% endfor %}
 
 
-{% for inline_admin_formset in inline_admin_formsets %}
-    {% include inline_admin_formset.opts.template %}
-{% endfor %}
-
-
-{% if not add %}
-	{% if CMS_PERMISSION and can_change_permissions %}
-		<div class="inline-group">
-			<div class="tabular inline-related">
-				<fieldset id="inherited_permissions" class="module aligned collapse">
-				  <h2>{% trans 'All permissions' %}</h2>
-				  <div class="loading">{% trans 'Loading...' %}</div>
-				  <div class="load">./permissions/</div>
-				</fieldset>
-			</div>
-		</div>
-	{% endif %}
-
-    <div class="inline-group">
-        <div class="tabular inline-related">
-            <fieldset id="page_states" class="module aligned collapse">
-              <h2 class="load_remote">{% trans 'Page states' %}</h2>
+    {% if not add %}
+      {% if CMS_PERMISSION and can_change_permissions %}
+        <div class="inline-group">
+          <div class="tabular inline-related">
+            <fieldset id="inherited_permissions" class="module aligned collapse">
+              <h2>{% trans 'All permissions' %}</h2>
               <div class="loading">{% trans 'Loading...' %}</div>
-              <div class="load">./moderation-states/</div>
+              <div class="load">./permissions/</div>
             </fieldset>
+          </div>
         </div>
+      {% endif %}
+
+        <div class="inline-group">
+            <div class="tabular inline-related">
+                <fieldset id="page_states" class="module aligned collapse">
+                  <h2 class="load_remote">{% trans 'Page states' %}</h2>
+                  <div class="loading">{% trans 'Loading...' %}</div>
+                  <div class="load">./moderation-states/</div>
+                </fieldset>
+            </div>
+        </div>
+
+      {% if delete_requested %}<script type="text/javascript">
+      (function namespacing($) {
+        $(function(){
+          // disable all fields
+          function lockControls(){
+            $('input,select,textarea').attr("disabled", "disabled");
+            $('a[id^=add_],span[class^=add-plugin],a[class^=selector-],p[class^=selector-]').remove();
+          }
+          $('fieldset[class=collapsed]').remove();
+          lockControls();
+          setTimeout(lockControls,200);
+        });
+      })(window.CMS.$);
+      </script>{% endif %}
+
+    {% endif %}
+
+    {% block after_related_objects %}{% endblock %}
+
+    {% if add %}
+    <script type="text/javascript">document.getElementById("{{ adminform.first_field.auto_id }}").focus();</script>
+
+    {% endif %}
+    {% for url in unihandecode_urls %}
+    <script type="text/javascript" src="{{ url }}"></script>
+    {% endfor %}
+    {% if unihandecode_urls %}
+    <script type="text/javascript">
+        var UNIHANDECODER = unihandecode.Unihan('{{ unihandecode_lang }}');
+    </script>
+    {% endif %}
+
+    {# JavaScript for prepopulated fields #}
+    {% prepopulated_fields_js %}
+
     </div>
-
-	{% if delete_requested %}<script type="text/javascript">
-	(function namespacing($) {
-		$(function(){
-			// disable all fields
-			function lockControls(){
-				$('input,select,textarea').attr("disabled", "disabled");
-				$('a[id^=add_],span[class^=add-plugin],a[class^=selector-],p[class^=selector-]').remove();
-			}
-			$('fieldset[class=collapsed]').remove();
-			lockControls();
-			setTimeout(lockControls,200);
-		});
-	})(window.CMS.$);
-	</script>{% endif %}
-
-{% endif %}
-
-{% block after_related_objects %}{% endblock %}
-
-{% if add %}
-   <script type="text/javascript">document.getElementById("{{ adminform.first_field.auto_id }}").focus();</script>
-
-{% endif %}
-{% for url in unihandecode_urls %}
-<script type="text/javascript" src="{{ url }}"></script>
-{% endfor %}
-{% if unihandecode_urls %}
-<script type="text/javascript">
-    var UNIHANDECODER = unihandecode.Unihan('{{ unihandecode_lang }}');
-</script>
-{% endif %}
-
-{# JavaScript for prepopulated fields #}
-{% prepopulated_fields_js %}
-
-</div>
-</div>
+   </div>
   </form>
 </div>
 

@@ -41,12 +41,14 @@ body.cms-page {
             margin-left: 160px;
         }
         fieldset.plugin-holder {
+            display: block;
             background: @bgcolor;
             box-shadow: none;
             border-radius: 0;
             padding-right: 0;
             padding-bottom: 10px;
             margin: 30px 0 -35px (-@left-column-width - @padding);
+            width: auto;
             &:before, &:after:last-of-type {
                 content: '';
                 display: block;
@@ -62,14 +64,20 @@ body.cms-page {
             }
             .control-group {
                 background: transparent;
+                display: block;
+                width: 100%;
                 &.form-row {
                     padding: 0;
+                }
+                > div {
+                    display: block;
                 }
             }
             .control-label {
                 display: none;
             }
             .controls {
+                display: block;
                 margin-left: 0;
                 border: 0;
                 padding: 0;
@@ -247,14 +255,34 @@ body.plugin-change-form {
 }
 
 /* Specific plugin fields */
-div.field-body {
-    .control-label {
-        display: none;
+#text_form {
+    fieldset {
+        box-shadow: none;
     }
-    .controls {
-        margin-left: 0;
-        border: 0;
-        padding: 0;
+    .control-group {
+        .border-radius(0);
+        width: 100%;
+        display: block;
+        > div {
+            display: block;
+        }
+        .control-label {
+            display: none;
+            width: 0;
+        }
+        .controls {
+            display: block;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+            .border-radius(@border-radius);
+            .html-widget {
+                display: inline-block;
+                margin: 10px;
+            }
+
+        }
     }
 }
 #suit-loading-icon {
