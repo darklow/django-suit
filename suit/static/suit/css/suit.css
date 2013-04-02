@@ -245,7 +245,7 @@ div .datepicker{margin:0;padding:0}
 .nav-tabs-suit li a,.nav-tabs-suit li a:hover{background-color:#f6f7f8;border:1px solid #ddd}
 .nav-tabs-suit li.active a{font-weight:bold;color:#333;text-shadow:0 1px rgba(255,255,255,0.5);-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
 .nav-tabs-suit li.active a,.nav-tabs-suit li.active a:hover{text-decoration:none;background-color:#edeff1;border-bottom-color:#edeff1}
-.nav-tabs-suit::after,.nav-tabs-suit::before{display:inline;content:normal;clear:none}
+.nav-tabs-suit:after,.nav-tabs-suit:before{display:inline;content:normal;clear:none}
 body{background-color:#edeff1;min-width:960px}body.popup{min-width:inherit}
 #wrap{background:url(../img/bg_left_white.gif) top left repeat-y}.popup #wrap{background:none}
 a{text-decoration:underline}
