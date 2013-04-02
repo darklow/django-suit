@@ -216,8 +216,15 @@ h2.legend, .form-horizontal fieldset .legend {
         &.first-error .control-label {
             color: @red;
         }
-        &.multi-field-row .controls {
-            padding-top: 0px;
+        &.multi-field-row {
+            .controls {
+                padding-top: 0px;
+            }
+            &:first-child, &:first-of-type {
+                .controls {
+                    padding-top: 5px;
+                }
+            }
         }
     }
 }

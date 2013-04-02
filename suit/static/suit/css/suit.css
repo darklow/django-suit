@@ -134,6 +134,7 @@ h2.legend,.form-horizontal fieldset .legend{font-weight:bold;font-size:16px;line
 .form-horizontal .control-group .field-box .controls:not(:first-child) .controls{float:left;margin-left:10px}
 .form-horizontal .control-group.first-error .control-label{color:#b94a48}
 .form-horizontal .control-group.multi-field-row .controls{padding-top:0}
+.form-horizontal .control-group.multi-field-row:first-child .controls,.form-horizontal .control-group.multi-field-row:first-of-type .controls{padding-top:5px}
 .popup .one-column{padding-top:10px}
 .control-group .add-another,.inline-group .add-another,.control-group .related-lookup,.inline-group .related-lookup{text-decoration:none;display:inline-block;padding:0 0 0 8px}
 .control-group .related-lookup,.inline-group .related-lookup{padding-left:6px}
