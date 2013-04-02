@@ -128,7 +128,7 @@
                 reinitDateTimeShortCuts();
                 updateSelectFilter();
                 alternatingRows(row);
-                SuitAfterInline.run("{{ inline_admin_formset.formset.prefix }}", row);
+                Suit.afterInline.run("{{ inline_admin_formset.formset.prefix }}", row);
             })
         });
     });

@@ -91,7 +91,7 @@ class AutosizedTextarea(Textarea):
     def render(self, name, value, attrs=None):
         output = super(AutosizedTextarea, self).render(name, value, attrs)
         output += mark_safe(
-            "<script type=\"text/javascript\">$('#id_%s').autosize();</script>"
+            "<script type=\"text/javascript\">Suit.$('#id_%s').autosize();</script>"
             % name)
         return output
 

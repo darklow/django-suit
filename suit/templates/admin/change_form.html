@@ -24,9 +24,11 @@
 
   {% if adminform.model_admin.suit_form_tabs %}
     <script type="text/javascript">
+    (function ($) {
       $(function () {
         $('#suit_form_tabs').suit_form_tabs();
       });
+    }(Suit.$))
     </script>
   {% endif %}
 

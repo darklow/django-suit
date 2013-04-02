@@ -1251,4 +1251,4 @@
     $(target).collapse(option)
   })
 
-}(window.jQuery);
+}(Suit.$);
