@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib.auth.models import Permission
 from django.core.urlresolvers import reverse
 from suit.templatetags.suit_menu import get_menu
 from suit.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
@@ -275,6 +276,21 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         menu = self.make_menu_from_response()
         self.assertEqual(len(menu), 4)
         self.assertEqual(menu[0]['icon'], icon)
+
+    def test_user_with_add_but_not_change(self):
+        settings.SUIT_CONFIG['MENU'] = ({'app': 'tests', 'models': ['book']},
+                                        {'app': 'auth'}, 'auth')
+        settings.SUIT_CONFIG['MENU_EXCLUDE'] = ()
+        self.client.logout()
+        self.login_user()
+        self.user.user_permissions.add(
+            Permission.objects.get(codename='add_book'))
+        self.user.save()
+        self.get_response()
+        menu = self.make_menu_from_response()
+        add_book_url = reverse('admin:tests_book_add')
+        self.assertEqual(menu[0]['url'], add_book_url)
+        self.assertEqual(menu[0]['models'][0]['url'], add_book_url)
 
     #
     # Tests for old menu config format
