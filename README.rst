@@ -7,7 +7,7 @@ Django Suit
 Django Suit is alternative theme/skin/extension for `Django <http://www.djangoproject.com>`_ administration interface.
 
 * Project home: http://djangosuit.com/
-* Live demo: http://djangosuit.com/demo/
+* Live demo: http://djangosuit.com/admin/
 
 
 License
