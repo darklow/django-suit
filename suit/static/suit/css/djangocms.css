@@ -109,6 +109,7 @@ body.popup{height:auto}body.popup .suit-column{float:none;position:inherit}
 body.plugin-change-form #suit-center{padding-top:1px;padding-right:1px}
 body.plugin-change-form .plugin-submit-row{display:block;margin:10px 0 0 200px}body.plugin-change-form .plugin-submit-row .btn{padding-left:20px;padding-right:20px}
 body.plugin-change-form .plugin-submit-row .btn-info{padding-left:30px;padding-right:30px}
+body.plugin-change-form .plugin-preview{display:inline-block;display:none;box-shadow:0 0 1px rgba(0,0,0,0.4);background:#f6f7f8;padding:5px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px;font-size:12px;font-weight:normal;margin-bottom:5px}body.plugin-change-form .plugin-preview img{max-width:100px;max-height:100px}
 .control-group.form-row{padding:0}
 .control-group .control-label label{width:auto;float:none;text-align:right;padding-right:0}
 #text_form fieldset{box-shadow:none}

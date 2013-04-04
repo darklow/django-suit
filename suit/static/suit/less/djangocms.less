@@ -9,10 +9,10 @@
     height: 14px;
     background-image: url("../bootstrap/img/glyphicons-halflings.png");
     background-position: 0 -96px;
-//    text-indent: -9999px;
+    //    text-indent: -9999px;
     text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
     opacity: .6;
     margin: 0;
     &:hover {
@@ -34,8 +34,7 @@
     display: inline-block;
 }
 
-
-/* Fieldset */
+    /* Fieldset */
 body.cms-page {
     .form-horizontal {
         .control-label {
@@ -136,7 +135,7 @@ body.cms-page {
         margin: 0 0 0 @padding;
         .color-grey;
         .white-shadow;
-//        font-style: italic;
+        //        font-style: italic;
     }
 }
 .plugin-list-holder {
@@ -144,7 +143,7 @@ body.cms-page {
 }
 ul.plugin-list {
     border-top: 1px solid @border-color-light;
-/* Reset */
+    /* Reset */
     li, li.active, li:hover {
         background: transparent; //        border: 0;
         margin-right: -1px;
@@ -170,7 +169,7 @@ ul.plugin-list {
             }
             span.text {
                 color: #666;
-            width: (@left-column-width - 53px);
+                width: (@left-column-width - 53px);
             }
         }
         &.active, &.active:hover {
@@ -226,18 +225,18 @@ ul.plugin-list {
         &:hover span.drag, &.active:hover span.drag {
             background: url('../img/drag-handle.png') center center no-repeat;
         }
-    /*.drag {
-        .bs-icon;
-        padding: 2px;
-        margin-top: 8px;
-    }
-    .drag, .drag:hover, &:hover span.drag {
-        background-position: 0 -48px;
-    }*/
+        /*.drag {
+            .bs-icon;
+            padding: 2px;
+            margin-top: 8px;
+        }
+        .drag, .drag:hover, &:hover span.drag {
+            background-position: 0 -48px;
+        }*/
     }
 }
 
-/* Popup related */
+    /* Popup related */
 body.popup {
     height: auto;
     .suit-column {
@@ -246,7 +245,7 @@ body.popup {
     }
 }
 
-/* Iframe related styling */
+    /* Iframe related styling */
 body.plugin-change-form {
     #suit-center {
         padding-top: 1px;
@@ -264,6 +263,23 @@ body.plugin-change-form {
             padding-right: 30px;
         }
     }
+
+    .plugin-preview {
+        display: inline-block;
+        // Hide preview box
+        display: none;
+        .grey-box-shadow;
+        background: @bgcolor-light;
+        padding: 5px;
+        .border-radius(@border-radius);
+        font-size: 12px;
+        font-weight: normal;
+        margin-bottom: 5px;
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    }
 }
 .control-group {
     &.form-row {
@@ -277,7 +293,7 @@ body.plugin-change-form {
     }
 }
 
-/* Specific plugin fields */
+    /* Specific plugin fields */
 #text_form {
     fieldset {
         box-shadow: none;
