@@ -15,7 +15,7 @@
 
 {% if add %}
 <script type="text/javascript">
-//<![CDATA[	
+//<![CDATA[
 
 	jQuery(document).ready(function (){
         var title= jQuery('#id_title');
@@ -68,7 +68,7 @@
       <h4 class="alert-heading">{% trans "Confirm page deletion" %}!</h4>
     </div>
 	{% endif %}
-	
+
 {% endblock %}
 
 {% block content %}
@@ -208,4 +208,21 @@
   </form>
 </div>
 
+{% endblock %}
+
+{% block extrajs %}
+  <script type="text/javascript">
+    (function ($) {
+      var $menu = $('#left-nav');
+      var menu_bottom = $menu.offset().top + $menu.height();
+      var $plugin_holder = $('.plugin-holder').first();
+      if ($plugin_holder.length) {
+        var pl_top = $plugin_holder.offset().top;
+        if (menu_bottom > pl_top) {
+          var margin = parseInt($plugin_holder.css('margin-top').replace('px', ''));
+          $plugin_holder.css('margin-top', (menu_bottom - pl_top + margin)+'px');
+        }
+      }
+    }(Suit.$));
+  </script>
 {% endblock %}
