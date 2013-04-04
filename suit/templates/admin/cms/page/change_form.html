@@ -81,23 +81,24 @@
   <div class="inner-right-column">
 
     <div class="box save-box">
-
-{#      {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}#}
       {% if not moderation_delete_request %}{% page_submit_row %}{% endif %}
-
     </div>
 
     {% block object-tools %}
     {% if change %}{% if not is_popup %}
-      <h4 class="italic-title">{% trans 'tools'|capfirst %}</h4>
+      <h4 class="italic-title">{% trans 'actions'|capfirst %}</h4>
+      {% if can_publish or can_change and page.published and page.is_dirty %}
       <ul class="box menu-box">
       {% if can_publish %}
-      <li>{% if not delete_requested %}<a href="publish/" class="publishlink"><i class="{% if page.published and page.is_dirty %}icon-ok-sign{% else %}icon-ok{% endif %} icon-alpha75"></i>{% trans "Publish" %} {% trans "draft" %}</a>{% endif %}</li>
-      <li><a href="preview/?language={{ language }}" class="previewdraftlink"><i class="icon-eye-close icon-alpha75"></i>{% trans "Preview" %} {% trans "draft" %}</a></li>
+      <li>{% if not delete_requested %}<a href="publish/" class="publishlink"><i class="{% if page.published and page.is_dirty %}icon-ok{% else %}icon-ok-circle{% endif %} icon-alpha75"></i>{% trans "Publish" %} {% trans "draft" %}</a>{% endif %}</li>
+      <li><a href="preview/?language={{ language }}" class="previewdraftlink"><i class="icon-eye-open icon-alpha75"></i>{% trans "Preview" %} {% trans "draft" %}</a></li>
       {% endif %}
       {% if can_change and page.published and page.is_dirty %}<li><a href="revert/" class="revertlink"><i class="icon-repeat icon-alpha75"></i>{% trans "Revert to public" %}</a></li>{% endif %}
+      </ul>
+      {% endif %}
+      <ul class="box menu-box">
+        {% if page.publisher_public %}<li><a href="preview/?public=1&language={{ language }}"><i class="icon-globe icon-alpha75"></i>{% trans "View on site" %}</a></li>{% endif%}
       <li><a href="history/" class="historylink"><i class="icon-time icon-alpha75"></i>{% trans "History" %}</a></li>
-        {% if page.publisher_public %}<li><a href="preview/?public=1&language={{ language }}"><i class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}</a></li>{% endif%}
         {% if has_add_permission %}
           <li>
             <a href="../add/"><i class="icon-plus-sign icon-alpha75"></i>{% blocktrans with opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}

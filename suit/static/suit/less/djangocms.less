@@ -1,6 +1,6 @@
 @import 'mixins';
 @import 'variables';
-@import 'djangocms/cms-reset';
+@import 'djangocms/list';
 
 .hide-text { text-indent: 100%; white-space: nowrap; overflow: hidden; }
 .bs-icon {
@@ -9,7 +9,10 @@
     height: 14px;
     background-image: url("../bootstrap/img/glyphicons-halflings.png");
     background-position: 0 -96px;
-    text-indent: -9999px;
+//    text-indent: -9999px;
+    text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
     opacity: .6;
     &:hover {
         opacity: 1;
