@@ -115,7 +115,7 @@ h2.legend,.form-horizontal fieldset .legend{font-weight:bold;font-size:16px;line
 .form-horizontal fieldset.collapsed .collapse-toggle{background:transparent;display:inline !important}
 .form-horizontal .submit-row-bottom{margin:20px 0 0 200px}
 .form-horizontal .control-group{display:table-header-group;margin:0;}.form-horizontal .control-group>div{display:table-row;width:100%}
-.form-horizontal .control-group .control-label{background:#fff;display:table-cell;min-width:150px;float:none;padding:10px 20px 5px 10px;border-bottom:1px solid #ededed}.form-horizontal .control-group .control-label label{padding:0;margin:0}
+.form-horizontal .control-group .control-label{background:#fff;display:table-cell;min-width:150px;float:none;padding:10px 20px 5px 10px;border-bottom:1px solid #ededed;width:auto}.form-horizontal .control-group .control-label label{padding:0;margin:0}
 .form-horizontal .control-group .controls{display:table-cell;vertical-align:top;float:none;background-color:#f6f7f8;border-left:1px solid #ecedee;padding:5px 15px;width:100%;line-height:26px}.form-horizontal .control-group .controls p{margin-bottom:0}
 .form-horizontal .control-group .controls .readonly{display:inline-block;vertical-align:middle;margin-right:5px}
 .form-horizontal .control-group:first-child .control-label,.form-horizontal .control-group:first-of-type .control-label{padding-top:15px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px}
