@@ -39,7 +39,7 @@ html,body{height:100%;}
 .breadcrumb li.active,.breadcrumb li.active a{font-weight:bold;color:#333}
 .breadcrumb.toplinks{font-size:12px;margin-bottom:12px}
 .table-overview{border-spacing:0;margin-bottom:18px;border-radius:4px;background:#fff;width:auto;box-shadow:0 0 1px rgba(0,0,0,0.4)}.table-overview td,.table-overview th{padding:8px 20px 8px 15px;font-weight:normal;font-size:12px}
-.table-overview th:first-child{min-width:140px}
+.table-overview th:first-child{min-width:145px}
 .table-overview th{text-align:right;border-right:1px solid #ededed;border-bottom:1px solid #ededed;vertical-align:top}
 .table-overview td{background-color:#f6f7f8;border-bottom:1px solid #f1f1f1}
 .table-overview tr:last-child td,.table-overview tr:last-child th{border-bottom:0}
