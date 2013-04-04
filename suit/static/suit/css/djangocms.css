@@ -15,43 +15,65 @@
 .auto-width{width:auto}
 .clear{clear:both}
 .change-list .filtered{background:inherit !important}
+.white-inset-light{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.6)}
 #changelist #sitemap{box-shadow:0 0 1px rgba(0,0,0,0.4);-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:0;-moz-border-radius-bottomleft:0;border-bottom-left-radius:0;-webkit-border-bottom-right-radius:0;-moz-border-radius-bottomright:0;border-bottom-right-radius:0}#changelist #sitemap ul.header{background:transparent;color:#333;margin:0;padding:0;background-color:#e5e5e5;background-repeat:no-repeat;background-image:-webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#e5e5e5));background-image:-webkit-linear-gradient(#f3f3f3, #e5e5e5);background-image:-moz-linear-gradient(#f3f3f3, #e5e5e5);background-image:-o-linear-gradient(top, #f3f3f3, #e5e5e5);background-image:-khtml-gradient(linear, left top, left bottom, from(#f3f3f3), to(#e5e5e5));filter:progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#f3f3f3', EndColorStr='#e5e5e5', GradientType=0);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#e5e5e5', GradientType=0))";text-shadow:0 1px rgba(255,255,255,0.5);font-weight:bold;height:auto;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:0;-moz-border-radius-bottomleft:0;border-bottom-left-radius:0;-webkit-border-bottom-right-radius:0;-moz-border-radius-bottomright:0;border-bottom-right-radius:0;}#changelist #sitemap ul.header li{margin:0;display:block}#changelist #sitemap ul.header li .cont{display:block;border:0;white-space:nowrap;height:auto;box-shadow:inset 1px 1px 0 rgba(255,255,255,0.3);text-shadow:0 1px rgba(255,255,255,0.5)}
-#changelist #sitemap ul.header li .col1,#changelist #sitemap ul.header li .col2>div{padding:7px 10px 7px;text-align:center;border-right:1px solid #ededed;vertical-align:top;text-transform:capitalize}
+#changelist #sitemap ul.header li .col1,#changelist #sitemap ul.header li .col2>div{padding:7px 5px 7px;text-align:center;border-right:1px solid #ededed;vertical-align:top;text-transform:capitalize}
+#changelist #sitemap ul.header li .col1{padding-left:10px;border-right:0}
 #changelist #sitemap li .col1{float:left;display:inline;padding:6px 0 0 10px}
-#changelist #sitemap li .col2>div,#changelist #sitemap li .col2>span{padding:5px 10px 7px;text-align:center;width:auto;height:auto;float:left;display:block;min-height:18px}
+#changelist #sitemap li .col2>div,#changelist #sitemap li .col2>span{padding:5px 5px 7px;text-align:center;width:auto;height:auto;float:left;display:block;min-height:18px}
 #changelist #sitemap li .col2>div.col-view-perms{width:55px;text-align:center}
+#changelist #sitemap li .col2>div.col-actions,#changelist #sitemap li .col2>div.col-draft{padding-left:7px;padding-right:7px}
 #changelist #sitemap .tree{border-top:1px solid #ddd}#changelist #sitemap .tree .tree-default{display:block}#changelist #sitemap .tree .tree-default div.context{display:none !important}
 #changelist #sitemap .tree .tree-default li{display:block;line-height:16px}#changelist #sitemap .tree .tree-default li.last{background:none !important;border-bottom:0}
 #changelist #sitemap .tree .tree-default li a.title{background:none}
 #changelist #sitemap .tree .tree-default li a{text-decoration:none}#changelist #sitemap .tree .tree-default li a:hover{text-decoration:underline}
-#changelist #sitemap .tree .tree-default li .col1 .changelink{display:none}
-#changelist #sitemap .tree .tree-default li .col1 a.title{padding:6px 0}
+#changelist #sitemap .tree .tree-default li .col1{padding-left:0}#changelist #sitemap .tree .tree-default li .col1 .changelink{display:none}
+#changelist #sitemap .tree .tree-default li .col1 a.title{padding:6px 0;background:transparent}#changelist #sitemap .tree .tree-default li .col1 a.title:active{cursor:grabbing;cursor:-moz-grabbing;cursor:-webkit-grabbing}
+#changelist #sitemap .tree .tree-default li .col1 a.title:before{cursor:hand;cursor:grab;cursor:-moz-grab;cursor:-webkit-grab;content:'';display:inline-block;background:url('../img/drag-handle.png') 8px center no-repeat;width:26px;height:18px;vertical-align:middle;opacity:.4}
+#changelist #sitemap .tree .tree-default li .col1 a.title:hover:before{opacity:1}
 #changelist #sitemap .tree .tree-default li .col2>div{display:block;border-left:1px solid #eee}#changelist #sitemap .tree .tree-default li .col2>div.col-softroot,#changelist #sitemap .tree .tree-default li .col2>div.col-language{border-left:0}
-#changelist #sitemap .tree .tree-default li .col-language{color:#ccc;text-transform:uppercase}
+#changelist #sitemap .tree .tree-default li .col-language{color:#ddd !important;text-transform:uppercase;padding-right:10px;font-size:11px}
 #changelist #sitemap .tree .tree-default li .col-published label img,#changelist #sitemap .tree .tree-default li .col-navigation label img{display:none}
-#changelist #sitemap .tree .tree-default li .col-draft{text-align:right}#changelist #sitemap .tree .tree-default li .col-draft a{vertical-align:middle}
-#changelist #sitemap .tree .tree-default li .col-actions a{text-transform:uppercase;font-size:10px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:2px;-moz-border-radius-topleft:2px;border-top-left-radius:2px;-webkit-border-top-right-radius:2px;-moz-border-radius-topright:2px;border-top-right-radius:2px;-webkit-border-bottom-left-radius:2px;-moz-border-radius-bottomleft:2px;border-bottom-left-radius:2px;-webkit-border-bottom-right-radius:2px;-moz-border-radius-bottomright:2px;border-bottom-right-radius:2px;background:#f1f1f1;color:#666;padding:1px 3px;text-decoration:none}#changelist #sitemap .tree .tree-default li .col-actions a:hover{background:#999;color:#fff;text-shadow:none}
-#changelist #sitemap .tree .tree-default li .viewpage,#changelist #sitemap .tree .tree-default li .publish{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:100%;white-space:nowrap;overflow:hidden;opacity:.6;opacity:.8;padding:0;margin:0 0 0 2px}#changelist #sitemap .tree .tree-default li .viewpage:hover,#changelist #sitemap .tree .tree-default li .publish:hover{opacity:1}
-#changelist #sitemap .tree .tree-default li .viewpage{background-position:-336px -144px}
+#changelist #sitemap .tree .tree-default li .col-published{text-align:left}
+#changelist #sitemap .tree .tree-default li .col-draft{text-align:right;white-space:nowrap;min-width:32px}#changelist #sitemap .tree .tree-default li .col-draft a{display:inline-block;vertical-align:middle}
+#changelist #sitemap .tree .tree-default li .col-lastchange{white-space:nowrap}
+#changelist #sitemap .tree .tree-default li .col-actions a{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:100%;white-space:nowrap;overflow:hidden;opacity:.6;margin:0;margin-left:4px}#changelist #sitemap .tree .tree-default li .col-actions a:hover{opacity:1}
+#changelist #sitemap .tree .tree-default li .col-actions a:first-child{margin-left:0}
+#changelist #sitemap .tree .tree-default li .col-actions a.deletelink{background-position:-312px 0}
+#changelist #sitemap .tree .tree-default li .col-actions a.move{background-position:-120px -72px}
+#changelist #sitemap .tree .tree-default li .col-actions a.copy{background-position:-336px -96px}
+#changelist #sitemap .tree .tree-default li .viewpage,#changelist #sitemap .tree .tree-default li .publish{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:100%;white-space:nowrap;overflow:hidden;opacity:.6;margin:0;padding:0;margin-left:4px}#changelist #sitemap .tree .tree-default li .viewpage:hover,#changelist #sitemap .tree .tree-default li .publish:hover{opacity:1}
+#changelist #sitemap .tree .tree-default li .viewpage:first-child,#changelist #sitemap .tree .tree-default li .publish:first-child{margin-left:0}
+#changelist #sitemap .tree .tree-default li .viewpage{background-position:-96px -120px}
 #changelist #sitemap .tree .tree-default li .publish{background-position:-288px 0}
 #changelist #sitemap .tree .tree-default li .col-draft .viewpage{background-position:-96px -120px}
-#changelist #sitemap .tree .tree-default li:nth-child(odd)>.cont{background-color:#f9f9f9}
-#changelist #sitemap .tree .tree-default li:hover:nth-child(odd)>.cont{background-color:#f1f1f1}
-#changelist #sitemap .tree .tree-default li.selected>.cont{background-color:#fbf5d5}
-#changelist #sitemap .tree .tree-default li.selected>.cont:hover{background-color:#f9f1c7}
-#changelist #sitemap .tree .tree-default li .cont{background:#fff;border-color:#e5e5e5;box-shadow:inset 1px 1px 0 #fff;text-shadow:0 1px rgba(255,255,255,0.5)}#changelist #sitemap .tree .tree-default li .cont:hover{background-color:#f5f5f5}
-#changelist #sitemap .tree .tree-default li .cont.publisher_draft .col1 a{color:#999}
-#changelist #sitemap .tree .tree-default li .cont.publisher_dirty .col1 a:after{content:'*';color:#aaa;display:inline-block;margin-left:3px}
-#changelist #sitemap .tree .tree-default li .cont.publisher_delete_requested .col1 a{color:#b94a48;font-weight:bold}
+#changelist #sitemap .tree .tree-default li .col-lastchange .icon{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:100%;white-space:nowrap;overflow:hidden;opacity:.6;margin:0;opacity:.3;background-position:0 -72px}#changelist #sitemap .tree .tree-default li .col-lastchange .icon:hover{opacity:1}
+#changelist #sitemap .tree .tree-default li .col-lastchange .icon:hover{opacity:.3}
+#changelist #sitemap .tree .tree-default li .col-lastchange .icon.add{background-position:-408px -96px}
+#changelist #sitemap .tree .tree-default li .col-lastchange .icon.pub{background-position:-96px -120px}
+#changelist #sitemap .tree .tree-default li .col-lastchange .icon.unp{background-position:-120px -120px}
+#changelist #sitemap .tree .tree-default li .col-lastchange .icon.mov{background-position:-168px -72px}
+#changelist #sitemap .tree .tree-default li .col-lastchange .icon.del{background-position:-312px 0}
+#changelist #sitemap .tree .tree-default li .col-lastchange .icon.app{background-position:-288px 0}
+#changelist #sitemap .tree .tree-default li.selected>.cont{border:1px solid rgba(0,0,0,0.2) !important}
+#changelist #sitemap .tree .tree-default li.selected>.cont:hover{border:1px solid rgba(0,0,0,0.3) !important}
+#changelist #sitemap .tree .tree-default li .cont{background:#fff;border-color:#e5e5e5;box-shadow:inset 1px 1px 0 #fff;text-shadow:0 1px rgba(255,255,255,0.5)}#changelist #sitemap .tree .tree-default li .cont:hover{background-color:#f3f3f3}
+#changelist #sitemap .tree .tree-default li .cont.publisher_draft{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.6);background-color:#f7f7f7}#changelist #sitemap .tree .tree-default li .cont.publisher_draft a,#changelist #sitemap .tree .tree-default li .cont.publisher_draft *{color:#999}
+#changelist #sitemap .tree .tree-default li .cont.publisher_draft:hover{background-color:#efefef}
+#changelist #sitemap .tree .tree-default li .cont.publisher_dirty{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.6);background-color:#fbf6da}#changelist #sitemap .tree .tree-default li .cont.publisher_dirty .col1 a:after{content:'*';color:#aaa;display:inline-block;margin-left:3px}
+#changelist #sitemap .tree .tree-default li .cont.publisher_dirty:hover{background-color:#faf2cc}
+#changelist #sitemap .tree .tree-default li .cont.publisher_delete_requested{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.6);background-color:#fae7e7}#changelist #sitemap .tree .tree-default li .cont.publisher_delete_requested .col1 a{color:#b94a48;font-weight:bold}
+#changelist #sitemap .tree .tree-default li .cont.publisher_delete_requested:hover{background-color:#f9dfdf}
+#changelist #sitemap .tree .tree-default li .messagelist li{color:#666;padding:10px 0 8px 20px;text-shadow:0 1px rgba(255,255,255,0.5)}
 #changelist #sitemap .tree .tree-default>li.last>.cont{vertical-align:middle;border-bottom:0}
 #changelist #sitemap .tree .tree-default label{display:inline-block;margin:0}
 #changelist #sitemap .tree .tree-default input{margin-top:0}
 #changelist #sitemap .tree .tree-default img{vertical-align:inherit}
-#changelist #sitemap .tree .tree-default .move-target-container{display:none}
+#changelist #sitemap .tree .tree-default .move-target-container{display:none}#changelist #sitemap .tree .tree-default .move-target-container a{display:inline-block;text-transform:uppercase;font-size:10px;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:3px;-moz-border-radius-topleft:3px;border-top-left-radius:3px;-webkit-border-top-right-radius:3px;-moz-border-radius-topright:3px;border-top-right-radius:3px;-webkit-border-bottom-left-radius:3px;-moz-border-radius-bottomleft:3px;border-bottom-left-radius:3px;-webkit-border-bottom-right-radius:3px;-moz-border-radius-bottomright:3px;border-bottom-right-radius:3px;background:#fff;color:#333;text-align:center;text-decoration:none;margin-left:1px;border:1px solid #ddd;background-color:#e5e5e5;background-repeat:no-repeat;background-image:-webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#e5e5e5));background-image:-webkit-linear-gradient(#f3f3f3, #e5e5e5);background-image:-moz-linear-gradient(#f3f3f3, #e5e5e5);background-image:-o-linear-gradient(top, #f3f3f3, #e5e5e5);background-image:-khtml-gradient(linear, left top, left bottom, from(#f3f3f3), to(#e5e5e5));filter:progid:DXImageTransform.Microsoft.Gradient(StartColorStr='#f3f3f3', EndColorStr='#e5e5e5', GradientType=0);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#e5e5e5', GradientType=0))";box-shadow:inset 1px 1px 0 rgba(255,255,255,0.6);font-size:14px;line-height:10px;vertical-align:middle;width:20px;height:16px;padding-top:3px;margin-top:-1px}#changelist #sitemap .tree .tree-default .move-target-container a:hover{box-shadow:none;background:#fff;color:#000;text-shadow:none;text-decoration:none}
 #changelist{width:auto}
 #loader-message{display:none;position:absolute;padding:6px 15px 6px 30px;box-shadow:0 0 3px rgba(0,0,0,0.4);-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px;margin-top:-47px;font-weight:bold;right:20px;background:#fff url("../img/ajax-loader.gif") 7px center no-repeat}
 .hide-text{text-indent:100%;white-space:nowrap;overflow:hidden}
-.bs-icon{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:100%;white-space:nowrap;overflow:hidden;opacity:.6}.bs-icon:hover{opacity:1}
+.bs-icon{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:100%;white-space:nowrap;overflow:hidden;opacity:.6;margin:0}.bs-icon:hover{opacity:1}
 .delete-translation{margin-top:7px;display:inline-block}
 .confirm-delete{padding-right:15px}.confirm-delete .btn-info{margin-left:20px}
 .datetime{display:inline-block}
@@ -63,8 +85,8 @@ body.cms-page .form-horizontal fieldset.plugin-holder .control-group>div{display
 body.cms-page .form-horizontal fieldset.plugin-holder .control-label{display:none}
 body.cms-page .form-horizontal fieldset.plugin-holder .controls{display:block;margin-left:0;border:0;padding:0;overflow:auto;background:transparent;overflow:visible}
 body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder{padding-right:0}body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder select{height:26px;padding:2px;width:157px;vertical-align:text-bottom}
-body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder .add-plugin,body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder .copy-plugins{padding:2px;display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:100%;white-space:nowrap;overflow:hidden;opacity:.6}body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder .add-plugin:hover,body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder .copy-plugins:hover{opacity:1}
-body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder .copy-plugins{background-position:-72px -96px}
+body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder .add-plugin,body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder .copy-plugins{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;overflow:hidden;opacity:.6;margin:0;padding:2px;margin-left:10px;text-indent:100%;white-space:nowrap;overflow:hidden}body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder .add-plugin:hover,body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder .copy-plugins:hover{opacity:1}
+body.cms-page .form-horizontal fieldset.plugin-holder .plugin-select-holder .copy-plugins{background-position:-240px -143px}
 body.cms-page .form-horizontal fieldset.plugin-holder .control-group:first-child .controls,body.cms-page .form-horizontal fieldset.plugin-holder .control-group:first-of-type .controls{padding:0}
 body.cms-page .form-horizontal fieldset.plugin-holder:before{content:'';display:block;height:10px;margin-bottom:5px;background:#dfe1e4;border-left:200px solid #dfe1e4}
 body.cms-page .plugin-holder-separator{display:none}body.cms-page .plugin-holder-separator:last-of-type{display:block;height:10px;border:0;background:#dfe1e4;border-left:200px solid #dfe1e4;margin:35px 0 40px -220px}
@@ -78,7 +100,7 @@ ul.plugin-list li.active,ul.plugin-list li.active:hover{box-shadow:none;z-index:
 ul.plugin-list li.active .descr,ul.plugin-list li.active:hover .descr{color:#c3dee8}
 ul.plugin-list li .text{color:#666;width:170px;white-space:nowrap}ul.plugin-list li .text strong{display:block;float:left;min-width:50px}
 ul.plugin-list li .descr{color:#aaa}
-ul.plugin-list li .delete{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:100%;white-space:nowrap;overflow:hidden;opacity:.6;opacity:.2;padding:2px;margin:7px 0 0 6px;display:none}ul.plugin-list li .delete:hover{opacity:1}
+ul.plugin-list li .delete{display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;text-indent:100%;white-space:nowrap;overflow:hidden;opacity:.6;margin:0;opacity:.2;padding:2px;margin:7px 0 0 6px;display:none}ul.plugin-list li .delete:hover{opacity:1}
 ul.plugin-list li .delete,ul.plugin-list li .delete:hover,ul.plugin-list li:hover span.delete{background-position:-312px 0}
 ul.plugin-list li .drag{background:transparent;cursor:hand;cursor:grab;cursor:-moz-grab;cursor:-webkit-grab}
 ul.plugin-list li .drag:active{cursor:grabbing;cursor:-moz-grabbing;cursor:-webkit-grabbing}
