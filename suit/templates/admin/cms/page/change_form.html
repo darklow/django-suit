@@ -81,7 +81,11 @@
   <div class="inner-right-column">
 
     <div class="box save-box">
-      {% if not moderation_delete_request %}{% page_submit_row %}{% endif %}
+      {% if add %}
+        {% submit_row %}
+      {% else %}
+        {% if not moderation_delete_request %}{% page_submit_row %}{% endif %}
+      {% endif %}
     </div>
 
     {% block object-tools %}
