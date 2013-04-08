@@ -11,7 +11,7 @@
 */
 (function ($) {
     $(function () {
-        SuitAfterInline.register('autosize_textarea', function (inline_prefix, row) {
+        Suit.after_inline.register('autosize_textarea', function (inline_prefix, row) {
             $(row).find('.autosize').autosize()
         });
     });

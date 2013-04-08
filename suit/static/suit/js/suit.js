@@ -1,7 +1,7 @@
 (function ($) {
 
     // Register callbacks to perform after inline has been added
-    Suit.afterInline = function () {
+    Suit.after_inline = function () {
         var functions = {};
         var register = function (fn_name, fn_callback) {
             functions[fn_name] = fn_callback;
@@ -20,7 +20,7 @@
     }();
 
     // Backwards compatiblity
-    SuitAfterInline = Suit.afterInline;
+    SuitAfterInline = Suit.after_inline;
 
     /**
      * Fixed submit buttons.

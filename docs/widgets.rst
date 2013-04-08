@@ -172,12 +172,12 @@ JavaScript goodies
 
 When working with Django inlines and JavaScript, very often we want to hook/attach to event - when new inline row is added. Django Suit gives us such chance.
 
-Use JavaScript ``SuitAfterInline.register`` to register/attach your function to new inline addition event.
+Use JavaScript ``Suit.after_inline.register`` to register/attach your function to new inline addition event.
 
 .. code-block:: javascript
 
   $(function () {
-      SuitAfterInline.register('my_unique_func_name', function(inline_prefix, row){
+      Suit.after_inline.register('my_unique_func_name', function(inline_prefix, row){
           // Your code here
           console.info(inline_prefix)
           console.info(row)

@@ -110,7 +110,7 @@
             });
         }
 
-        SuitAfterInline.register('bind_sortable_arrows', function (prefix, row) {
+        Suit.after_inline.register('bind_sortable_arrows', function (prefix, row) {
             $(row).find('.sortable').click(on_arrow_click);
         })
     };
