@@ -82,8 +82,7 @@
                 display: block;
                 line-height: 16px;
                 &.last {
-                    background: none !important;
-                    border-bottom: 0;
+                    background-color: inherit !important;
                 }
                 a.title {
                     background: none;
@@ -269,8 +268,7 @@
                     .white-shadow;
                 }
             }
-            &>li.last > .cont {
-                vertical-align: middle;
+            li.last.closed > .cont, li.last.leaf > .cont {
                 border-bottom: 0;
             }
             label {

@@ -24,7 +24,7 @@
 #changelist #sitemap li .col2>div.col-view-perms{width:55px;text-align:center}
 #changelist #sitemap li .col2>div.col-actions,#changelist #sitemap li .col2>div.col-draft{padding-left:7px;padding-right:7px}
 #changelist #sitemap .tree{border-top:1px solid #ddd}#changelist #sitemap .tree .tree-default{display:block}#changelist #sitemap .tree .tree-default div.context{display:none !important}
-#changelist #sitemap .tree .tree-default li{display:block;line-height:16px}#changelist #sitemap .tree .tree-default li.last{background:none !important;border-bottom:0}
+#changelist #sitemap .tree .tree-default li{display:block;line-height:16px}#changelist #sitemap .tree .tree-default li.last{background-color:inherit !important}
 #changelist #sitemap .tree .tree-default li a.title{background:none}
 #changelist #sitemap .tree .tree-default li a{text-decoration:none}#changelist #sitemap .tree .tree-default li a:hover{text-decoration:underline}
 #changelist #sitemap .tree .tree-default li .col1{padding-left:0}#changelist #sitemap .tree .tree-default li .col1 .changelink{display:none}
@@ -64,7 +64,7 @@
 #changelist #sitemap .tree .tree-default li .cont.publisher_delete_requested{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.6);background-color:#fae7e7}#changelist #sitemap .tree .tree-default li .cont.publisher_delete_requested .col1 a{color:#b94a48;font-weight:bold}
 #changelist #sitemap .tree .tree-default li .cont.publisher_delete_requested:hover{background-color:#f9dfdf}
 #changelist #sitemap .tree .tree-default li .messagelist li{color:#666;padding:10px 0 8px 20px;text-shadow:0 1px rgba(255,255,255,0.5)}
-#changelist #sitemap .tree .tree-default>li.last>.cont{vertical-align:middle;border-bottom:0}
+#changelist #sitemap .tree .tree-default li.last.closed>.cont,#changelist #sitemap .tree .tree-default li.last.leaf>.cont{border-bottom:0}
 #changelist #sitemap .tree .tree-default label{display:inline-block;margin:0}
 #changelist #sitemap .tree .tree-default input{margin-top:0}
 #changelist #sitemap .tree .tree-default img{vertical-align:inherit}
