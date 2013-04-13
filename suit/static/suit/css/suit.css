@@ -14,6 +14,8 @@
 .bold{font-weight:bold}
 .auto-width{width:auto}
 .clear{clear:both}
+.hide-text{text-indent:200%;white-space:nowrap;overflow:hidden}
+.bs-icon{text-indent:200%;white-space:nowrap;overflow:hidden;display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;opacity:.6;margin:0}.bs-icon:hover{opacity:1}
 html,body{height:100%;}
 #wrap{min-height:100%;height:auto !important;height:100%;margin:0 auto -60px}
 #push,#footer{height:60px}
@@ -157,12 +159,18 @@ h3{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255,2
 .form-horizontal .inline-related.tabular table{margin-bottom:0}
 .form-horizontal .inline-related.tabular table td .errorlist{margin-bottom:5px;font-size:11px}
 .form-horizontal .inline-related.tabular table td.control-group{display:table-cell}
-.controls .selector{overflow:auto}.controls .selector .selector-available,.controls .selector .selector-chooser,.controls .selector .selector-chosen{float:left}.controls .selector .selector-available select,.controls .selector .selector-chooser select,.controls .selector .selector-chosen select{display:block}
-.controls .selector .selector-available h2,.controls .selector .selector-chooser h2,.controls .selector .selector-chosen h2{margin-left:5px;font-size:12px}
-.controls .selector .selector-chooser{list-style:none;margin:70px 10px 0 10px}.controls .selector .selector-chooser li:before{line-height:18px;content:"\00bb";display:inline-block;margin-right:5px;font-size:16px;color:#999}
-.controls .selector .selector-chooser li:last-child:before{content:"\00ab"}
-.controls .selector .selector-available a:not(.active),.controls .selector .selector-chosen a:not(.active){color:#999;text-decoration:none}
-.controls .selector .selector-filter{position:relative;margin-bottom:1px}.controls .selector .selector-filter label{position:absolute;right:4px;top:4px;opacity:.2}
+.form-horizontal .control-group .controls .selector{overflow:auto}.form-horizontal .control-group .controls .selector .selector-available,.form-horizontal .control-group .controls .selector .selector-chooser,.form-horizontal .control-group .controls .selector .selector-chosen{float:left}.form-horizontal .control-group .controls .selector .selector-available h2,.form-horizontal .control-group .controls .selector .selector-chooser h2,.form-horizontal .control-group .controls .selector .selector-chosen h2{margin-left:5px;font-size:12px}
+.form-horizontal .control-group .controls .selector .selector-available,.form-horizontal .control-group .controls .selector .selector-chosen{width:45%;min-width:150px;max-width:300px}.form-horizontal .control-group .controls .selector .selector-available select,.form-horizontal .control-group .controls .selector .selector-chosen select,.form-horizontal .control-group .controls .selector .selector-available input,.form-horizontal .control-group .controls .selector .selector-chosen input{width:100%;display:block}
+.form-horizontal .control-group .controls .selector .selector-chooser{list-style:none;margin:70px 10px 0 10px}.form-horizontal .control-group .controls .selector .selector-chooser li a{text-indent:200%;white-space:nowrap;overflow:hidden;display:inline-block;width:14px;height:14px;background-image:url("../bootstrap/img/glyphicons-halflings.png");background-position:0 -96px;opacity:.6;margin:0;display:block;padding:4px;border:1px solid transparent}.form-horizontal .control-group .controls .selector .selector-chooser li a:hover{opacity:1}
+.form-horizontal .control-group .controls .selector .selector-chooser li a:hover{background-color:#fff;-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px;border:1px solid #ddd}
+.form-horizontal .control-group .controls .selector .selector-chooser li:first-child a{background-position:-260px -92px}
+.form-horizontal .control-group .controls .selector .selector-chooser li:last-child a{background-position:-236px -92px}
+.form-horizontal .control-group .controls .selector .selector-available a:not(.active),.form-horizontal .control-group .controls .selector .selector-chosen a:not(.active){color:#999;text-decoration:none}
+.form-horizontal .control-group .controls .selector .selector-available select{-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:0;-moz-border-radius-topleft:0;border-top-left-radius:0;-webkit-border-top-right-radius:0;-moz-border-radius-topright:0;border-top-right-radius:0}
+.form-horizontal .control-group .controls .selector .selector-filter{margin-right:14px;position:relative;margin-bottom:-1px}.form-horizontal .control-group .controls .selector .selector-filter input{-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-bottom-left-radius:0;-moz-border-radius-bottomleft:0;border-bottom-left-radius:0;-webkit-border-bottom-right-radius:0;-moz-border-radius-bottomright:0;border-bottom-right-radius:0}
+.form-horizontal .control-group .controls .selector .selector-filter label{position:absolute;right:0;top:4px;margin-right:-10px;opacity:.2}
+.controls{}.controls #id_groups_from{min-height:80px}
+.controls #id_user_permissions_from{min-height:180px}
 .select2-container-multi .select2-choices{-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px}
 .select2-container-multi .select2-choices .select2-search-choice{padding:3px 20px 3px 5px !important;line-height:normal}
 .select2-container-multi .select2-search-choice-close{top:3px;left:auto !important}

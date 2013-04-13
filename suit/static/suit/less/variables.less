@@ -38,3 +38,17 @@
 .bold { font-weight: bold }
 .auto-width { width: auto }
 .clear { clear: both; }
+.hide-text { text-indent: 200%; white-space: nowrap; overflow: hidden; }
+.bs-icon {
+    .hide-text;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-image: url("../bootstrap/img/glyphicons-halflings.png");
+    background-position: 0 -96px;
+    opacity: .6;
+    margin: 0;
+    &:hover {
+        opacity: 1;
+    }
+}
