@@ -53,17 +53,16 @@
 {% endblock %}
 
 
-{% block sidebar %}
-<div id="content-related">
-    {% include "admin/filer/tools/clipboard/clipboard.html" %}
-</div>
-{% endblock %}
-
-
 {% block content_title %}<h2>&nbsp;</h2>{% endblock %}
 {% block content %}
-<div id="content-main">
+<div id="content-main" class="inner-two-columns">
+
+    <div class="inner-right-column content-related">
+        {% include "admin/filer/tools/clipboard/clipboard.html" %}
+    </div>
+
     <div class="inner-center-column">
+        <div>
         <div class="module" id="changelist">
 
             <div class="toolbar-content clearfix">
@@ -99,7 +98,7 @@
             {% if action_form and actions_on_bottom and paginator.count and not select_folder and not is_popup %}{% filer_actions %}{% endif %}
             </form>
         </div>
-    </div>
+    </div></div>
 </div>
 
 {% endblock %}

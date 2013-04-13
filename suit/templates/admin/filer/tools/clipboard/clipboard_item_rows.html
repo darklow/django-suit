@@ -1,0 +1,13 @@
+{% load thumbnail i18n %}{% if items %}
+{% for generic_item in items %}{% with generic_item as item %}
+        <tr class="clipboardItem">
+            <td class="thumbnail"><img src="{{ item.icons.32 }}" alt="{{ item.default_alt_text }}" /></td>
+            <td class="label">{{ item.label }}</td>
+            <td class="buttons"></td>
+        </tr>
+{% endwith %}{% endfor %}{% else %}
+        <tr class="clipboardItem">
+            <td class="thumbnail"></td>
+            <td class="label">{% trans "upload failed" %}</td>
+            <td class="buttons"></td>
+        </tr>{% endif %}

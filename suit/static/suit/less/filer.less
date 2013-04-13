@@ -1,0 +1,40 @@
+@clipboard-width: 260px;
+.filebrowser {
+    .inner-two-columns {
+        .inner-center-column {
+            margin-right: (@clipboard-width + 20px);
+        }
+        .inner-right-column {
+            width: @clipboard-width;
+        }
+    }
+
+    .thumbHeader {
+        width: 48px;
+    }
+    .module {
+        overflow: auto;
+    }
+    .content-related {
+        margin-top: 20px;
+    }
+    table.clipboard {
+        border: 0 !important;
+        width: @clipboard-width;
+        margin-right: 20px;
+        tr.clipboardItem {
+            .thumbnail {
+                width: 48px;
+            }
+            td.label, td.thumbnail {
+                font-size: 11px;
+                overflow: hidden;
+                color: #333;
+                display: table-cell;
+                border-radius: 0;
+                white-space: normal;
+                line-height: normal;
+            }
+        }
+    }
+}

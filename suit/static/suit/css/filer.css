@@ -1,1 +1,7 @@
-
+.filebrowser .inner-two-columns .inner-center-column{margin-right:280px}
+.filebrowser .inner-two-columns .inner-right-column{width:260px}
+.filebrowser .thumbHeader{width:48px}
+.filebrowser .module{overflow:auto}
+.filebrowser .content-related{margin-top:20px}
+.filebrowser table.clipboard{border:0 !important;width:260px;margin-right:20px}.filebrowser table.clipboard tr.clipboardItem .thumbnail{width:48px}
+.filebrowser table.clipboard tr.clipboardItem td.label,.filebrowser table.clipboard tr.clipboardItem td.thumbnail{font-size:11px;overflow:hidden;color:#333;display:table-cell;border-radius:0;white-space:normal;line-height:normal}
