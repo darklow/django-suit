@@ -138,7 +138,7 @@ h2.legend,.form-horizontal fieldset .legend{font-weight:bold;font-size:16px;line
 .control-group .add-another,.inline-group .add-another,.control-group .related-lookup,.inline-group .related-lookup{text-decoration:none;display:inline-block;padding:0 0 0 8px}
 .control-group .related-lookup,.inline-group .related-lookup{padding-left:6px}
 .control-group .vForeignKeyRawIdAdminField,.inline-group .vForeignKeyRawIdAdminField{width:90px}
-.alert ul{margin-top:10px}
+.alert>ul{margin-top:10px}.alert>ul ul{margin-top:5px;margin-bottom:5px}
 .empty-form,tr.empty-form{display:none}
 h3{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255,255,255,0.5);padding-left:10px;margin:0}
 .form-horizontal .inline-group>h2{margin-top:15px}
