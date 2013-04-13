@@ -4,9 +4,11 @@ Changelog
 v0.2.0 (Upcoming)
 -------------------------------------------------------------
 
-* [Major Feature] Django-CMS support - beta version. See notes here `#77 <https://github.com/darklow/django-suit/issues/77>`_
+* [Major Feature] Django-CMS support - beta version. See full notes here `#77 <https://github.com/darklow/django-suit/issues/77>`_
 * [CSS] Selector widget style improvements See `#80 <https://github.com/darklow/django-suit/issues/80#issuecomment-16329776>`_
-* [Fix] Many CSS/Templating fixes and tweaks. See commit log and closed issues for full changes
+* [CSS] Main content container now uses Twitter Bootstrap `row-fluid` class. See `#58 <https://github.com/darklow/django-suit/issues/58>`_
+* [Fix] CSS/Templating fixes and tweaks. See commit log and closed issues for full changes
+* [Refactor] Included jQuery now is using own namespace: `Suit.$`
 
 
 v0.1.9 (2013-03-25)
