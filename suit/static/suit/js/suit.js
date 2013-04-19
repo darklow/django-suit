@@ -58,7 +58,6 @@
             // Handle additional values for date filters
             var additional = $option.data('additional');
             if (additional) {
-                console.info(additional);
                 var hidden_id = $field.data('name') + '_add';
                 var $hidden = $('#' + hidden_id);
                 if (!$hidden.length) {
