@@ -1,6 +1,6 @@
 {% load i18n %}
 {% load url from future %}
-<div class="breadcrumb">
+<ul class="breadcrumb">
     <li>
         <a href="{% url 'admin:index' %}" title="{% trans "Go back to admin homepage" %}">{% trans "Home" %}</a>
         <span class="divider">&raquo;</span></li>
@@ -29,4 +29,4 @@
             {% if instance.label %}{{ instance.label }}{% else %}{{ instance.name }}{% endif %}
         </li>
     {% endif %}
-</div>
+</ul>

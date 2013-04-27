@@ -53,22 +53,21 @@
 {% endblock %}
 
 
-{% block content_title %}<h2>&nbsp;</h2>{% endblock %}
+{% block content_title %}<h2 class="content-title">&nbsp;</h2>{% endblock %}
 {% block content %}
-<div id="content-main" class="inner-two-columns">
+<div id="content-main" class="inner-two-columns clearfix">
 
     <div class="inner-right-column content-related">
         {% include "admin/filer/tools/clipboard/clipboard.html" %}
     </div>
 
     <div class="inner-center-column">
-        <div>
         <div class="module" id="changelist">
 
-            <div class="toolbar-content clearfix">
+            <div class="toolbar-content">
                 <div class="object-tools">
                     {% if folder.can_have_subfolders %}<a id="id_new_folder" href="{% url 'admin:filer-directory_listing-make_root_folder' %}?parent_id={{ folder.id }}" class="btn btn-success addlink" onclick="return showAddAnotherPopup(this);" title="{% trans "Adds a new Folder" %}"><i class="icon-plus-sign icon-white"></i>&nbsp; {% trans "New Folder" %}</a>{% endif %}
-                    <a id="id_upload_button" href="#" class="addlink btn btn-success" title="{% trans 'upload files' %}"><i class="icon-upload icon-white"></i>&nbsp; {% trans 'Upload' %}</a>
+                    <a id="id_upload_button" href="#" class="addlink btn btn-info" title="{% trans 'upload files' %}"><i class="icon-upload icon-white"></i>&nbsp; {% trans 'Upload' %}</a>
                     {% include 'admin/filer/tools/upload_button_js.html' %}
                 </div>
                 {% include "admin/filer/tools/search_form.html" %}
@@ -98,7 +97,7 @@
             {% if action_form and actions_on_bottom and paginator.count and not select_folder and not is_popup %}{% filer_actions %}{% endif %}
             </form>
         </div>
-    </div></div>
+    </div>
 </div>
 
 {% endblock %}

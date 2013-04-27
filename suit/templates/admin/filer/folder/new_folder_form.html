@@ -1,0 +1,53 @@
+{% extends "admin/change_form.html" %}
+{% load i18n %}
+{% block content %}
+    <h2 class="content-title">{% trans "Add new" %} {% trans "folder" %}</h2>
+    <div id="content-main">
+        <form id="folder_form" method="post" action="" enctype="multipart/form-data" class="form-horizontal">
+            {% csrf_token %}
+            {% if new_folder_form.errors %}
+                <div class="alert alert-error">
+                    {% blocktrans count new_folder_form.errors|length as counter %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+                </div>
+                {{ new_folder_form.non_field_errors }}
+            {% endif %}
+
+            <div>
+
+                <input type="hidden" value="1" name="_popup"/>
+
+                {% if select_folder %}
+                    <input type="hidden" name="select_folder" value="1"/>{% endif %}
+
+                <fieldset class="module aligned">
+                    {% for field in new_folder_form %}
+                        <div class="form-row name control-group{{ new_folder_form.errors.name|yesno:' error,' }}">
+                            <div class="control-label">
+                                <label for="id_{{ field.name }}" class="required">{{ field.label }}:</label>
+                            </div>
+                            <div class="controls">
+                                {{ field }}
+                                {% if new_folder_form.errors.name %}
+                                    <div class="help-inline">
+                                        {{ new_folder_form.errors.name.as_ul }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </fieldset>
+
+                <div class="submit-row submit-row-bottom">
+                    <input type="submit" name="_save" class="d
+                    efault btn btn-info" value="{% trans "Save" %}"/>
+                </div>
+
+                <script type="text/javascript">document.getElementById("id_name").focus();</script>
+            </div>
+        </form>
+    </div>
+
+
+    <br class="clear"/>
+{% endblock %}
