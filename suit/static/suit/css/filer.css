@@ -5,3 +5,4 @@
 .filebrowser table.clipboard{border:0 !important;width:260px;margin-right:20px;}.filebrowser table.clipboard tr.clipboardItem .thumbnail{width:48px;}
 .filebrowser table.clipboard tr.clipboardItem td.label,.filebrowser table.clipboard tr.clipboardItem td.thumbnail{font-size:11px;overflow:hidden;color:#333;display:table-cell;border-radius:0;white-space:normal;line-height:normal;}
 .filebrowser .toolbar-content label.checkbox{color:#666;font-size:11px;margin-left:5px;}.filebrowser .toolbar-content label.checkbox input[type="checkbox"]{margin-right:8px;}
+.filebrowser .folder_header span:last-child a{margin-right:5px;}

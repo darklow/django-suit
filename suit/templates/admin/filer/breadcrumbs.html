@@ -22,8 +22,9 @@
         <li><span class="divider">&raquo;</span>
             <a href="{{ instance.get_admin_directory_listing_url_path }}" title="{% blocktrans with instance.name as folder_name %}Go back to '{{ folder_name }}' folder{% endblocktrans %}">
                 {% if instance.label %}{{ instance.label }}{% else %}{{ instance.name }}{% endif %}</a>
-            &rsaquo; {{ breadcrumbs_action }}
         </li>
+        <li class="active"><span class="divider">&raquo;</span> {{ breadcrumbs_action }}</li>
+
     {% else %}
         <li class="active"><span class="divider">&raquo;</span>
             {% if instance.label %}{{ instance.label }}{% else %}{{ instance.name }}{% endif %}
