@@ -16,6 +16,9 @@ h2.legend, .form-horizontal fieldset .legend {
         &.first, .popup &:first-of-type {
             margin-top: 0;
         }
+        &.first:not(:first-of-type) {
+            margin-top: 5px;
+        }
         .legend {
             border: 0;
             margin: -30px 0 0 0;
@@ -456,6 +459,29 @@ h3 {
     /* Special styles for django auth app */
     #id_groups_from { min-height: 80px }
     #id_user_permissions_from { min-height: 184px }
+
+    /* File upload styles */
+    .file-upload {
+        .clearable-file-input {
+            display: inline-block;
+            margin: 0 0 0 30px;
+            input {
+                margin: 5px 7px 0 0;
+                vertical-align: middle;
+                float: left;
+            }
+            label {
+                font-size: 11px;
+                margin-top: 2px;
+                vertical-align: middle;
+                display: inline-block;
+                color: @grey;
+                &:hover {
+                    color: @red;
+                }
+            }
+        }
+    }
 }
 
 /* SELECT2 OVERRIDE */
