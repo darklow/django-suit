@@ -44,7 +44,7 @@
     }
 
     .distance {
-      margin-bottom: -250px; /* half of content height */
+      margin-bottom: -175px; /* half of content height */
       /*background: red;*/ /* temporary - used to see div */
       width: 1px; /* required to "hide" distance div */
       height: 50%; /* required */
@@ -53,7 +53,7 @@
     .container {
       position: relative; /* positions content on top of distance */
       text-align: left; /* horizontal centering hack for IE */
-      height: 500px; /* required - desired height */
+      height: 350px; /* required - desired height */
       width: 700px; /* required - desired width */
       margin: 0 auto; /* required */
       clear: left; /* required */ z-index: 1;
@@ -83,11 +83,15 @@
 
     <br>
     <script type="text/javascript">
-      if (document.referrer != '') {
-        document.write('<a href="javascript:history.back()" class="btn btn-info btn-large">Go back</a>')
+      if(window.location.href.toString().indexOf('popup') != -1){
+        document.write('<a href="javascript:window.close()" class="btn btn-info btn-large">Close window</a>');
+      }else {
+          if (document.referrer != '') {
+              document.write('<a href="javascript:history.back()" class="btn btn-info btn-large">Go back</a>');
+          }
+          document.write('<a href="{% url 'admin:index' %}" class="btn btn-large">Go to admin home</a>');
       }
     </script>
-    <a href="{% url 'admin:index' %}" class="btn btn-large">Go to admin home</a>
   </div>
 </div>
 
