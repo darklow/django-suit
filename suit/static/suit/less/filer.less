@@ -26,7 +26,7 @@
         border-collapse: collapse;
         tr.clipboardItem {
             td.thumbnail {
-                width: 32px;
+                width: 32px !important;
                 padding: 0px;
                 border-top: 0;
                 border-right: 0;
@@ -43,6 +43,9 @@
             }
             td.buttons {
                 display: none;
+            }
+            td.label {
+                max-width: 200px;
             }
         }
         tr:first-child td.thumbnail {
@@ -98,6 +101,12 @@
         }
         span:last-child a {
             margin-right: 5px;
+            font-size: 14px;
+            font-weight: normal;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
     .tiny {
