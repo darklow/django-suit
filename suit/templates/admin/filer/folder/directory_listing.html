@@ -82,7 +82,7 @@
                 <span class="small quiet">({% blocktrans count folder.children_count as counter %}1 folder{% plural %}{{ counter }} folders{% endblocktrans %}, {% blocktrans count folder.file_count as counter %}1 file{% plural %}{{ counter }} files{% endblocktrans %})</span>
                 <span>
                     {% if is_popup %}
-                        {% if select_folder and folder.file_type == 'Folder' %}<a class="insertlink insertlinkButton" href="" onclick="opener.dismissRelatedFolderLookupPopup(window, {{ folder.id }}, '{{ folder.pretty_logical_path }}'); return false;" >&nbsp;</a>{% endif %}
+                        {% if select_folder and folder.file_type == 'Folder' %}&nbsp;<a class="insertlink insertlinkButton btn btn-info btn-small" href="" onclick="opener.dismissRelatedFolderLookupPopup(window, {{ folder.id }}, '{{ folder.pretty_logical_path }}'); return false;"><i class="icon-ok-sign icon-white"></i></a>{% endif %}
                     {% else %}<a style="display: block; float: right;" class="changelink" href="{% url 'admin:filer_folder_change' folder.id %}" title="{% trans "Change current folder details" %}">{% trans "Change" %}</a>{% endif %}
                 </span>
             </h2>
