@@ -106,6 +106,7 @@ tr.form-row:nth-last-child(3) td .inline-sortable .sortable-down,#result_list tr
 .pagination-info{display:block;float:left;margin:5px 0 0 0;}
 h2.legend,.form-horizontal fieldset .legend{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255, 255, 255, 0.5);padding-left:10px;}
 .form-horizontal fieldset{display:table;width:100%;margin-top:35px;position:relative;box-shadow:0 0 1px rgba(0, 0, 0, 0.4);-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px;}.form-horizontal fieldset.first,.popup .form-horizontal fieldset:first-of-type{margin-top:0;}
+.form-horizontal fieldset.first:not(:first-of-type){margin-top:5px;}
 .form-horizontal fieldset .legend{border:0;margin:-30px 0 0 0;position:absolute;top:0;width:98%;white-space:nowrap;overflow:hidden;margin-right:220px;}.form-horizontal fieldset .legend .description{font-weight:normal;font-size:12px;display:inline-block;margin-left:20px;color:#999999;}
 .form-horizontal fieldset.collapse{overflow:visible;height:auto;}
 .form-horizontal fieldset.collapsed{background-color:#f6f7f8;}.form-horizontal fieldset.collapsed .legend{position:static;font-size:13px;font-weight:normal;}
@@ -173,6 +174,8 @@ h3{font-weight:bold;font-size:16px;line-height:36px;text-shadow:0 1px rgba(255, 
 .form-horizontal .control-group .controls .selector .selector-filter label{position:absolute;right:0;top:4px;margin-right:-10px;opacity:.2;}
 .controls{}.controls #id_groups_from{min-height:80px;}
 .controls #id_user_permissions_from{min-height:184px;}
+.controls .file-upload .clearable-file-input{display:inline-block;margin:0 0 0 30px;}.controls .file-upload .clearable-file-input input{margin:5px 7px 0 0;vertical-align:middle;float:left;}
+.controls .file-upload .clearable-file-input label{font-size:11px;margin-top:2px;vertical-align:middle;display:inline-block;color:#999999;}.controls .file-upload .clearable-file-input label:hover{color:#b94a48;}
 .select2-container-multi .select2-choices{-moz-background-clip:padding;-webkit-background-clip:padding-box;background-clip:padding-box;-webkit-border-top-left-radius:4px;-moz-border-radius-topleft:4px;border-top-left-radius:4px;-webkit-border-top-right-radius:4px;-moz-border-radius-topright:4px;border-top-right-radius:4px;-webkit-border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;border-bottom-left-radius:4px;-webkit-border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;border-bottom-right-radius:4px;}
 .select2-container-multi .select2-choices .select2-search-choice{padding:3px 20px 3px 5px !important;line-height:normal;}
 .select2-container-multi .select2-search-choice-close{top:3px;left:auto !important;}

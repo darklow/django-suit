@@ -112,6 +112,8 @@
           {% endif %}{% endif %}
         {% endblock %}
 
+      {% block sidebar %}{% endblock %}
+
       </div>
       <div class="inner-center-column">
         {% csrf_token %}{% block form_top %}{% endblock %}

@@ -1,3 +1,4 @@
+@import 'mixins';
 @clipboard-width: 260px;
 .filebrowser {
     .inner-two-columns {
@@ -13,18 +14,23 @@
         width: 48px;
     }
     .module {
-//        overflow: auto;
+        //        overflow: auto;
     }
     .content-related {
-        margin-top: 20px;
+        //        margin-top: 20px;
     }
     table.clipboard {
         border: 0 !important;
         width: @clipboard-width;
         margin-right: 20px;
+        border-collapse: collapse;
         tr.clipboardItem {
-            .thumbnail {
-                width: 48px;
+            td.thumbnail {
+                width: 32px;
+                padding: 0px;
+                border-top: 0;
+                border-right: 0;
+                border-bottom-color: #eee;
             }
             td.label, td.thumbnail {
                 font-size: 11px;
@@ -35,7 +41,45 @@
                 white-space: normal;
                 line-height: normal;
             }
+            td.buttons {
+                display: none;
+            }
         }
+        tr:first-child td.thumbnail {
+            border-top: 1px solid #ddd;
+        }
+        tr.noItemsRow td, tfoot tr td, td.label {
+            border-right: 1px solid #ddd;
+        }
+        tfoot tr td {
+            border-bottom: 1px solid darken(#ddd, 3%);
+            padding: 6px 8px;
+            .vertical-gradient(#f3f3f3, #e5e5e5);
+            form {
+                margin: 0;
+            }
+        }
+        .loadingThumb {
+            width: 32px;
+            height: 32px;
+            background-position: center center;
+            background-image: url(../img/ajax-loader.gif);
+            background-repeat: no-repeat;
+        }
+        @anim: progress-bar-stripes 2s linear infinite;
+        .fileUploadQueueItem .fileUploadProgress .fileUploadProgressBar {
+            background-color: #2F96B4;
+            width: 50px;
+            height: 4px !important;
+            border-radius: 2px;
+        }
+
+    }
+    .clipboard-header {
+        margin-top: 47px;
+    }
+    .clipboard-root {
+        margin-top: 20px;
     }
     .toolbar-content label.checkbox {
         color: #666;
@@ -46,8 +90,38 @@
         }
     }
     .folder_header {
+        img {
+            display: inline-block;
+            max-width: 32px;
+            margin: -5px 5px 0;
+            vertical-align: middle;
+        }
         span:last-child a {
             margin-right: 5px;
         }
     }
+    .tiny {
+        font-size: 11px;
+    }
+    .small {
+        font-size: 12px;
+        font-weight: normal;
+    }
+    .file-size {
+        color: #666;
+    }
+    .file-info {
+        line-height: normal;
+        font-size: 11px;
+    }
+}
+
+/* Siderbar */
+#navcontainer {
+    text-align: center;
+}
+#image_container {
+    position: relative;
+    margin-bottom: 5px;
+        color: #666;
 }

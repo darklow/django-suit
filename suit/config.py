@@ -2,6 +2,7 @@ from django.contrib.admin import ModelAdmin
 from django.conf import settings
 from . import VERSION
 
+
 def default_config():
     return {
         'VERSION': VERSION,
@@ -54,3 +55,21 @@ ModelAdmin.actions_on_bottom = True
 
 # Set global list_per_page
 ModelAdmin.list_per_page = get_config('LIST_PER_PAGE')
+
+def setup_filer():
+    from suit.widgets import AutosizedTextarea
+    from filer.admin.imageadmin import ImageAdminForm
+    from filer.admin.fileadmin import FileAdminChangeFrom
+
+    def ensure_meta_widgets(meta_cls):
+        if not hasattr(meta_cls, 'widgets'):
+            meta_cls.widgets = {}
+
+        meta_cls.widgets['description'] = AutosizedTextarea
+
+    ensure_meta_widgets(ImageAdminForm.Meta)
+    ensure_meta_widgets(FileAdminChangeFrom.Meta)
+
+
+if 'filer' in settings.INSTALLED_APPS:
+    setup_filer()

@@ -16,8 +16,8 @@
 
 
             {% if show_result_count %}
-            <span class="small quiet">({% trans "found" %} {% blocktrans count folder_children|length as counter %}1 folder{% plural %}{{ counter }} folders{% endblocktrans %} {% trans "and" %}
-            {% blocktrans count folder_files|length as counter %}1 file{% plural %}{{ counter }} files{% endblocktrans %}) <a href="?{% if is_popup %}_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}">{% trans "cancel search" %}</a></span>
+            <span class="small quiet"><!--({% trans "found" %} {% blocktrans count folder_children|length as counter %}1 folder{% plural %}{{ counter }} folders{% endblocktrans %} {% trans "and" %}
+            {% blocktrans count folder_files|length as counter %}1 file{% plural %}{{ counter }} files{% endblocktrans %}) --> &nbsp;<a href="?{% if is_popup %}_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}">{% trans "cancel search"|capfirst %}</a></span>
 
             {% endif %}
         </div>

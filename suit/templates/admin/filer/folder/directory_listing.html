@@ -28,7 +28,8 @@
 
 
 {% block extrastyle %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}suit/css/filer.css">
+    <link rel="stylesheet" type="text/css" href="{% filer_staticmedia_prefix %}css/admin_style.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}suit/css/filer.css">
 {{ media.css }}
 {% if action_form %}
   {% url 'admin:jsi18n' as jsi18nurl %}
@@ -74,8 +75,8 @@
             </div>
 
             {% if not folder.is_root %}
-            <h2 class="folder_header">{% if folder.parent %}<a href="{% url 'admin:filer-directory_listing' folder.parent.id %}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% trans "Go back to the parent folder" %}"><i class="icon-arrow-up"></i></a>{% else %}<a href="{% url 'admin:filer-directory_listing-root' %}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% trans "Go back to" %} {% trans "root"|title %} {% trans "folder" %}"><i class="icon-arrow-up icon-alpha75"></i></a>{% endif %}
-                <img src="{{ folder.icons.32 }}" alt="{% trans "Folder Icon" %}" hspace="5" /> {{ folder.name }}
+            <h2 class="folder_header">{% if folder.parent %}<a href="{% url 'admin:filer-directory_listing' folder.parent.id %}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% trans "Go back to the parent folder" %}"><i class="icon-arrow-up icon-alpha75"></i></a>{% else %}<a href="{% url 'admin:filer-directory_listing-root' %}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% trans "Go back to" %} {% trans "root"|title %} {% trans "folder" %}"><i class="icon-arrow-up icon-alpha75"></i></a>{% endif %}
+                <img src="{{ folder.icons.48 }}" alt="{% trans "Folder Icon" %}" /> {{ folder.name }}
                 <span class="small quiet">({% blocktrans count folder.children_count as counter %}1 folder{% plural %}{{ counter }} folders{% endblocktrans %}, {% blocktrans count folder.file_count as counter %}1 file{% plural %}{{ counter }} files{% endblocktrans %})</span>
                 <span>
                     {% if is_popup %}

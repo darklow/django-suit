@@ -26,8 +26,8 @@
                     {% if item.file_type == 'Folder' %}
                         <a style="display: block; float: right;" class="changelink" href="{{ subfolder.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with subfolder.name as item_label %}Change '{{ item_label }}' folder details{% endblocktrans %}">{% trans "Change" %}</a>
                     {% endif %}
-                    <div><b><a href="{{ subfolder.get_admin_directory_listing_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with subfolder.name as item_label %}Change '{{ item_label }}' folder details{% endblocktrans %}">{{ subfolder.name }}</a></b>{% if not subfolder.is_root %}<span class="tiny"> ({% blocktrans count subfolder.children_count as counter %}1 folder{% plural %}{{ counter }} folders{% endblocktrans %}, {% blocktrans count subfolder.file_count as counter %}1 file{% plural %}{{ counter }} files{% endblocktrans %})</span>{% endif %}</div>
-                    <div class="muted">{% trans "Owner" %}: {{ subfolder.owner|default:"n/a" }}</div>
+                    <div><b><a href="{{ subfolder.get_admin_directory_listing_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with subfolder.name as item_label %}Change '{{ item_label }}' folder details{% endblocktrans %}">{{ subfolder.name }}</a></b></div>
+                    <div class="file-info muted">{% if not subfolder.is_root %}<span class="tiny file-size">{% blocktrans count subfolder.children_count as counter %}1 folder{% plural %}{{ counter }} folders{% endblocktrans %}, {% blocktrans count subfolder.file_count as counter %}1 file{% plural %}{{ counter }} files{% endblocktrans %}</span><br>{% endif %}{% trans "Owner" %}: {{ subfolder.owner|default:"n/a" }}</div>
                 </td>
                 <td></td>
             </tr>
@@ -41,13 +41,12 @@
                 <td>
                     <a style="display: block; float: right;margin-left: 10px;" class="deletelink text-error" href="{% url 'admin:filer_file_delete' file.pk %}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with file.label as item_label %}Delete '{{ item_label }}'{% endblocktrans %}">{% trans "Delete" %}</a>
                     <a style="display: block; float: right;" class="changelink" href="{{ file.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with file.label as item_label %}Change '{{ item_label }}' details{% endblocktrans %}">{% trans "Change" %}</a>
-                    <div><b><a href="{{ file.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with file.label as item_label %}Change '{{ item_label }}' details{% endblocktrans %}">{{ file.label }}</a></b><span class="tiny"> ({{ file.size|filesize:"auto1000long" }}{% ifequal file.file_type "Image" %}, {{ file.width }}x{{ file.height }} px{% endifequal %})</span></div>
-                    <div class="muted">{% trans "Owner" %}: {{ file.owner|default:"n/a" }}</div>
-                    {% if enable_permissions %}<div class="muted">{% trans "Permissions" %}: {% if file.is_public %}{% trans "disabled" %}{% else %}{% trans "enabled" %}{% endif %}</div>{% endif %}
+                    <div><b><a href="{{ file.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with file.label as item_label %}Change '{{ item_label }}' details{% endblocktrans %}">{{ file.label }}</a></b></div>
+                    <div class="file-info muted"><span class="file-size">{{ file.size|filesizeformat }}{% ifequal file.file_type "Image" %}, {{ file.width }}x{{ file.height }} px{% endifequal %}</span><br>{% trans "Owner" %}: {{ file.owner|default:"n/a" }}{% if enable_permissions %}. {% trans "Permissions" %}: {% if file.is_public %}{% trans "disabled" %}{% else %}{% trans "enabled" %}{% endif %}{% endif %}</div>
                     {# {% if file.has_all_mandatory_data %}<div><img alt="0" src="{% admin_icon_base %}img/admin/icon-yes.gif" /> {% trans "has all mandatory metadata" %}</div>{% else %}<div><img alt="1" src="{% admin_icon_base %}img/admin/icon-no.gif"/> {% trans "missing metadata!" %}</div>{% endif %} #}
                 </td>
                 <td style="text-align: right;">
-                    <button type="submit" name="move-to-clipboard-{{ file.id }}" title="{% trans "Move to clipboard" %}"{% if file in clipboard_files %} style="color: gray;" disabled="disabled"{% endif %} class="btn"><i class="icon-arrow-right"></i></button>
+                    <button type="submit" name="move-to-clipboard-{{ file.id }}" title="{% trans "Move to clipboard" %}"{% if file in clipboard_files %} style="color: gray;" disabled="disabled"{% endif %} class="btn btn-small"><i class="icon-arrow-right"></i></button>
                 </td>
             </tr>
             {% endwith %}{% endif %}

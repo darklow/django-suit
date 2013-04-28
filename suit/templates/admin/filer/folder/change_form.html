@@ -46,9 +46,7 @@
 {% endblock %}
 
 {% block sidebar %}{% if not is_popup %}
-    <div id="content-related">
-        <div id="navcontainer">
-            <img src="{% filer_staticmedia_prefix %}icons/plainfolder_128x128.png" alt="{% trans "Folder Icon" %}"/>
-        </div>
+    <div class="box text-center">
+        <img src="{% filer_staticmedia_prefix %}icons/plainfolder_128x128.png" alt="{% trans "Folder Icon" %}"/>
     </div>
 {% endif %}{% endblock %}
