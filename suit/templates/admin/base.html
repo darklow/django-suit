@@ -130,6 +130,8 @@
               {% block content %}
                 {% block object-tools %}{% endblock %}
                 {{ content }}
+              {% endblock %}
+              {% block sidebar_content %}
                 {% block sidebar %}{% endblock %}
               {% endblock %}
             </div>
