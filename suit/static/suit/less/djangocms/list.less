@@ -205,6 +205,13 @@
                         &.mov { background-position: -168px -72px; }
                         &.del { background-position: -312px 0; }
                         &.app { background-position: -288px 0; }
+                        &.publish {
+                            opacity: .7;
+                            background-position: -72px -96px;
+                            &:hover {
+                                opacity: 1;
+                            }
+                        }
                     }
 
                 }
@@ -267,8 +274,15 @@
                     padding: 10px 0 8px 20px;
                     .white-shadow;
                 }
+                .softroot-icon {
+                    .bs-icon;
+                    &:hover {
+                        opacity: .6;
+                    }
+                    background-position: 0 -24px;
+                }
             }
-            li.last.closed > .cont, li.last.leaf > .cont {
+            li.last.closed > .cont, &>li.last.leaf > .cont {
                 border-bottom: 0;
             }
             label {

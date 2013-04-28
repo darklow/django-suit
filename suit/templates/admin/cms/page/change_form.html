@@ -94,7 +94,7 @@
       {% if can_publish or can_change and page.published and page.is_dirty %}
       <ul class="box menu-box">
       {% if can_publish %}
-      <li>{% if not delete_requested %}<a href="publish/" class="publishlink"><i class="{% if page.published and page.is_dirty %}icon-ok{% else %}icon-ok-circle{% endif %} icon-alpha75"></i>{% trans "Publish" %} {% trans "draft" %}</a>{% endif %}</li>
+      <li>{% if not delete_requested %}<a href="publish/" class="publishlink"><i class="{% if page.published and page.is_dirty %}icon-ok-sign{% else %}icon-ok{% endif %} icon-alpha75"></i>{% trans "Publish" %} {% trans "draft" %}</a>{% endif %}</li>
       <li><a href="preview/?language={{ language }}" class="previewdraftlink"><i class="icon-eye-open icon-alpha75"></i>{% trans "Preview" %} {% trans "draft" %}</a></li>
       {% endif %}
       {% if can_change and page.published and page.is_dirty %}<li><a href="revert/" class="revertlink"><i class="icon-repeat icon-alpha75"></i>{% trans "Revert to public" %}</a></li>{% endif %}
