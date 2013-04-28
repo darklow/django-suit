@@ -79,3 +79,7 @@
     {% endwith %}
   {% endfor %}
 </fieldset>
+{# For closing line #}
+{% if 'plugin-holder' in fieldset.classes %}
+  <hr class="plugin-holder-separator">
+{% endif %}
