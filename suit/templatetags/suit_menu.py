@@ -346,6 +346,9 @@ class Menu(object):
                 and self.ctx_model_plural == app['model']['label'].lower():
                 app['is_active'] = self.app_activated = True
 
+        if not self.app_activated:
+            self.activate_menu_by_url(menu)
+
     def activate_models(self, app):
         for model in app['models']:
             # Mark as active by url or model plural name match
@@ -356,6 +359,28 @@ class Menu(object):
             # Mark parent as active too
             if model['is_active'] and not self.app_activated:
                 app['is_active'] = self.app_activated = True
+
+    def activate_menu_by_url(self, menu):
+        """
+        If no active app/model is found in good/correct way, try to match
+        by simple "startswith" in request path. Some apps doesn't provide
+        nice app_label (django-filer for ex.) therefore this is the only way
+        """
+        for app in menu:
+            for model in app['models']:
+                if model['url'] and self.request.path.startswith(model['url']):
+                    model['is_active'] = True
+                    app['is_active'] = self.app_activated = True
+                    break
+            if self.app_activated:
+                break
+
+        # If still no active app found, match by app original url if any
+        if not self.app_activated:
+            for app in menu:
+                orig_url = app.get('orig_url')
+                if orig_url and self.request.path.startswith(orig_url):
+                    app['is_active'] = self.app_activated = True
 
     def process_url(self, url, app=None):
         """
