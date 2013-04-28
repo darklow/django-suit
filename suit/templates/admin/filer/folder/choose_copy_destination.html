@@ -1,0 +1,44 @@
+{% extends "admin/base_site.html" %}
+{% load i18n filer_admin_tags %}
+
+{% block breadcrumbs %}
+{% include "admin/filer/breadcrumbs.html" %}
+{% endblock %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% admin_css_base %}forms.css" />{% endblock %}
+
+{% block content %}
+{% if perms_lacking %}
+    <div class="alert alert-danger">{% blocktrans %}Your account doesn't have permissions to copy all of the selected files and/or folders.{% endblocktrans %}</div>
+{% else %}
+{% if not destination_folders %}
+    <div class="alert alert-warning">{% blocktrans %}There are no destination folders available.{% endblocktrans %}</div>
+{% else %}
+{% if not to_copy %}
+    <div class="alert alert-info">{% blocktrans %}There are no files and/or folders available to copy.{% endblocktrans %}</div>
+{% else %}
+    <form action="" method="post" class="form-horizontal">{% csrf_token %}
+    <div class="alert alert-info">{% blocktrans %}The following files and/or folders will be copied to a destination folder (retaining their tree structure):{% endblocktrans %}
+    <ul>{{ to_copy|unordered_list }}</ul>
+    {% for f in files_queryset %}
+    <input type="hidden" name="{{ action_checkbox_name }}" value="file-{{ f.pk }}" />
+    {% endfor %}
+    {% for f in folders_queryset %}
+    <input type="hidden" name="{{ action_checkbox_name }}" value="folder-{{ f.pk }}" />
+    {% endfor %}
+    <input type="hidden" name="action" value="copy_files_and_folders" />
+    <input type="hidden" name="post" value="yes" />
+    <p><label for="destination">{% blocktrans %}Destination folder:{% endblocktrans %}</label>
+    <select name="destination" id="destination">
+    {% for folder, name_and_enabled in destination_folders %}
+        <option value="{{ folder.pk }}"{% if not name_and_enabled.1 %} disabled="disabled"{% endif %}{% if selected_destination_folder and folder.pk == selected_destination_folder %} selected="selected"{% endif %}>{{ name_and_enabled.0 }}</option>
+    {% endfor %}
+    </select>{{ copy_form.as_p_with_help }}</p>
+
+    <p><input type="submit" value="{% trans "Copy" %}" class="btn btn-info" /></p>
+    </div>
+    </form>
+{% endif %}
+{% endif %}
+{% endif %}
+{% endblock %}

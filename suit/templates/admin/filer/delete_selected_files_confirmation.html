@@ -1,0 +1,51 @@
+{% extends "admin/filer/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+{% include "admin/filer/breadcrumbs.html" %}
+{% endblock %}
+
+{% block content %}
+{% if perms_lacking or protected %}
+    {% if perms_lacking %}
+        <div class="alert alert-error alert-block">{% blocktrans %}Deleting the selected files and/or folders would result in deleting related objects, but your account doesn't have permission to delete the following types of objects:{% endblocktrans %}
+        <ul>
+        {% for obj in perms_lacking %}
+            <li>{{ obj }}</li>
+        {% endfor %}
+        </ul>
+        </div>
+    {% endif %}
+    {% if protected %}
+        <div class="alert alert-error alert-block">{% blocktrans %}Deleting the selected files and/or folders would require deleting the following protected related objects:{% endblocktrans %}
+        <ul>
+        {% for obj in protected %}
+            <li>{{ obj }}</li>
+        {% endfor %}
+        </ul>
+        </div>
+    {% endif %}
+{% else %}
+    <form action="" method="post">{% csrf_token %}
+    <div class="alert alert-error alert-block">{% blocktrans %}<p>Are you sure you want to delete the selected files and/or folders? All of the following objects and their related items will be deleted:</p>{% endblocktrans %}
+    {% for deletable_object in deletable_objects %}
+        <ul>{{ deletable_object|unordered_list }}</ul>
+    {% endfor %}
+    {% for f in files_queryset %}
+    <input type="hidden" name="{{ action_checkbox_name }}" value="file-{{ f.pk }}" />
+    {% endfor %}
+    {% for f in folders_queryset %}
+    <input type="hidden" name="{{ action_checkbox_name }}" value="folder-{{ f.pk }}" />
+    {% endfor %}
+    {% if is_popup %}
+        <input type="hidden" name="_popup" value="1" />
+        {% if select_folder %}<input type="hidden" name="select_folder" value="1" />{% endif %}
+    {% endif %}
+    <br>
+    <input type="hidden" name="action" value="delete_files_or_folders" />
+    <input type="hidden" name="post" value="yes" />
+    <input type="submit" value="{% trans "Yes, I'm sure" %}" class="btn btn-danger" />
+    </div>
+    </form>
+{% endif %}
+{% endblock %}
