@@ -66,12 +66,14 @@
         <div class="module" id="changelist">
 
             <div class="toolbar-content">
+                {% block search %}
                 <div class="object-tools">
                     {% if folder.can_have_subfolders %}<a id="id_new_folder" href="{% url 'admin:filer-directory_listing-make_root_folder' %}?parent_id={{ folder.id }}" class="btn btn-success addlink" onclick="return showAddAnotherPopup(this);" title="{% trans "Adds a new Folder" %}"><i class="icon-plus-sign icon-white"></i>&nbsp; {% trans "New Folder" %}</a>{% endif %}
                     <a id="id_upload_button" href="#" class="addlink btn btn-info" title="{% trans 'upload files' %}"><i class="icon-upload icon-white"></i>&nbsp; {% trans 'Upload' %}</a>
                     {% include 'admin/filer/tools/upload_button_js.html' %}
                 </div>
                 {% include "admin/filer/tools/search_form.html" %}
+                {% endblock %}
             </div>
 
             {% if not folder.is_root %}
