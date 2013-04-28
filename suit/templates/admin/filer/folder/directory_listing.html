@@ -85,13 +85,13 @@
                 </span>
             </h2>
             {% else %}{% if folder.is_smart_folder %}
-            <h1 class="folder_header"><a href="{% url 'admin:filer-directory_listing-root' %}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}">&uarr;</a>
+            <h2 class="folder_header"><a href="{% url 'admin:filer-directory_listing-root' %}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}"><i class="icon-arrow-up icon-alpha75"></i></a>
                 <img src="{{ folder.icons.32 }}" alt="{% trans "Folder Icon" %}" /> {{ folder.name }}
-            </h1>
+            </h2>
             {% endif %}
             {% endif %}
 
-            <form id="changelist-form" action="" method="post">{% csrf_token %}
+            <form id="changelist-form" action="" method="post" class="form-inline">{% csrf_token %}
             {% if is_popup %}<input type="hidden" name="_popup" value="1" />{% endif %}
             {% if action_form and actions_on_top and paginator.count and not select_folder and not is_popup %}{% filer_actions %}{% endif %}
             {% include "admin/filer/folder/directory_table.html" %}

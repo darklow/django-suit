@@ -18,5 +18,6 @@
 .filebrowser .small{font-size:12px;font-weight:normal;}
 .filebrowser .file-size{color:#666;}
 .filebrowser .file-info{line-height:normal;font-size:11px;}
+.filebrowser .this-page{display:inline-block;margin:0 10px;}.filebrowser .this-page:first-child{margin-left:0;}
 #navcontainer{text-align:center;}
 #image_container{position:relative;margin-bottom:5px;color:#666;}
