@@ -17,10 +17,11 @@ License
 * Licence and pricing: http://djangosuit.com/pricing/
 
 
-Support
-=======
+Docs & Support
+==============
 
-* Support and documentation: http://djangosuit.com/support/
+* Documentation: http://django-suit.readthedocs.org/
+* Support: http://djangosuit.com/support/
 * `Demo app <http://djangosuit.com/admin/>`_ repository is here: `django-suit-examples <https://github.com/darklow/django-suit-examples>`_
 * IRC Channel: Feel free to join us at ``#django-suit`` on ``irc.freenode.net`` for a chat
 * Follow `on Twitter <http://twitter.com/DjangoSuit>`_ to get latest news
@@ -28,7 +29,7 @@ Support
 Changelog
 =========
 
-See `CHANGELOG.rst <https://github.com/darklow/django-suit/blob/master/CHANGELOG.rst>`_.
+See `CHANGELOG.rst <https://github.com/darklow/django-suit/blob/develop/CHANGELOG.rst>`_.
 
 
 Contributing
