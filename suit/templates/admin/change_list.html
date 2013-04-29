@@ -110,12 +110,8 @@
                   <a href="?{% if cl.is_popup %}pop=1{% endif %}">{% trans 'Reset search and filters' %}</a>
                 {% else %}
                   {% blocktrans with cl.opts.verbose_name_plural|capfirst as name_plural %}{{ name_plural }} are not created yet{% endblocktrans %}.
-
-                  <a href="
-                      {% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}">
-                    {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>
-
-
+                  {% if has_add_permission %}<a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}">
+                    {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>{% endif %}
                 {% endif %}
               </div>
             {% endif %}

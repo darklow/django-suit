@@ -9,6 +9,7 @@
   {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
   <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
   <script src="{% static 'suit/js/jquery-1.8.3.min.js' %}"></script>
+  <script type="text/javascript">var Suit = { $: $.noConflict() }; if (!$) $ = Suit.$; </script>
   {% if 'SHOW_REQUIRED_ASTERISK'|suit_conf %}
   <style type="text/css">.required:after { content: '*'; margin: 0 0 0 5px; position: absolute; color: #ccc;}</style>
   {% endif %}
@@ -121,7 +122,7 @@
             {% endblock messages %}
 
             <!-- Content -->
-            <div id="content" class="{% block coltype %}colM{% endblock %} clearfix">
+            <div id="content" class="{% block coltype %}colM{% endblock %} row-fluid">
               {% block pretitle %}{% endblock %}
               {% block content_title %}{% if title %}
                 <h2 class="content-title">{{ title }}</h2>
@@ -130,7 +131,9 @@
                 {% block object-tools %}{% endblock %}
                 {{ content }}
               {% endblock %}
-              {% block sidebar %}{% endblock %}
+              {% block sidebar_content %}
+                {% block sidebar %}{% endblock %}
+              {% endblock %}
             </div>
             <!-- END Content -->
           </div>

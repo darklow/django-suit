@@ -47,10 +47,12 @@ var confirmExitIfModified = (function () {
     var submit = false;
     return function (form_id, message) {
         var form = document.forms[form_id]
-        form.onsubmit = function (e) {
-            e = e || window.event;
-            submit = true
-        };
+        if (form) {
+            form.onsubmit = function (e) {
+                e = e || window.event;
+                submit = true
+            };
+        }
         window.onbeforeunload = function (e) {
             e = e || window.event;
             if (!submit && formIsDirty(form)) {

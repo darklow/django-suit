@@ -132,7 +132,7 @@ class WidgetsTestCase(TestCase):
         txt = AutosizedTextarea()
         self.assertHTMLEqual(txt.render('txt', ''), (
             '<textarea class="autosize " cols="40" name="txt" '
-            'rows="2">\r\n</textarea><script type="text/javascript">$('
+            'rows="2">\r\n</textarea><script type="text/javascript">Suit.$('
             '\'#id_txt\').autosize();</script>'))
 
     def test_AutosizedTextarea_media(self):

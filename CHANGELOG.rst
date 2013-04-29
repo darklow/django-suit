@@ -1,10 +1,21 @@
 Changelog
 =========
 
+v0.2.0 (2013-04-29)
+-------------------------------------------------------------
+
+* [Major Feature] `Django-CMS <https://github.com/divio/django-cms>`_ support. See full notes here `#77 <https://github.com/darklow/django-suit/issues/77>`_. See `example <http://djangosuit.com/admin/cms/page/>`_
+* [Major Feature] `Django-Filer <https://github.com/stefanfoulis/django-filer>`_ support. See `example <http://djangosuit.com/admin/filer/folder/>`_
+* [CSS] Selector widget style improvements See `#80 <https://github.com/darklow/django-suit/issues/80#issuecomment-16329776>`_
+* [CSS] Main content container now uses Twitter Bootstrap `row-fluid` class. See `#58 <https://github.com/darklow/django-suit/issues/58>`_
+* [Refactor] Included jQuery now is using own namespace: `Suit.$`
+* [Fix] CSS/Templating fixes and tweaks. See commit log and closed issues for full changes
+
+
 v0.1.9 (2013-03-25)
 -------------------------------------------------------------
 
-* [Feature] `Form tabs <http://django-suit.readthedocs.org/en/develop/form_tabs.html>`_ - help you organize form fieldsets and inlines into tabs. See `example <http://djangosuit.com/admin/examples/country/234/>`_
+* [Feature] `Form tabs <http://django-suit.readthedocs.org/en/develop/form_tabs.html>`_ - help you organize form fieldsets and inlines into tabs. See `example <http://djangosuit.com/admin/examples/country/234/>`_ [Thanks to @phihos]
 * [Feature] `Form includes <http://django-suit.readthedocs.org/en/develop/form_includes.html>`_ - shortcut to include templates into forms
 * [Feature] `New menu syntax <http://django-suit.readthedocs.org/en/develop/configuration.html#id1>`_ supports app and model labels, separators and more clear definition syntax.
 

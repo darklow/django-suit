@@ -13,15 +13,21 @@ h2.legend, .form-horizontal fieldset .legend {
         position: relative;
         .grey-box-shadow;
         .border-radius(@border-radius); //        margin-bottom: 35px;
-        &.first, .popup & {
+        &.first, .popup &:first-of-type {
             margin-top: 0;
+        }
+        &.first:not(:first-of-type) {
+            margin-top: 5px;
         }
         .legend {
             border: 0;
             margin: -30px 0 0 0;
             position: absolute;
             top: 0;
-            width: auto;
+            width: 98%;
+            white-space: nowrap;
+            overflow: hidden;
+            margin-right: (@right-column-width + (@padding * 2));
             .description {
                 font-weight: normal;
                 font-size: 12px;
@@ -106,6 +112,7 @@ h2.legend, .form-horizontal fieldset .legend {
             float: none;
             padding: 10px 20px 5px 10px;
             border-bottom: 1px solid @border-color-light;
+            width: auto;
             label {
                 padding: 0;
                 margin: 0;
@@ -215,8 +222,15 @@ h2.legend, .form-horizontal fieldset .legend {
         &.first-error .control-label {
             color: @red;
         }
-        &.multi-field-row .controls {
-            padding-top: 0px;
+        &.multi-field-row {
+            .controls {
+                padding-top: 0px;
+            }
+            &:first-child, &:first-of-type {
+                .controls {
+                    padding-top: 5px;
+                }
+            }
         }
     }
 }
@@ -244,8 +258,12 @@ h2.legend, .form-horizontal fieldset .legend {
 }
 
 .alert {
-    ul {
+    > ul {
         margin-top: 10px;
+        ul {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
     }
 }
 
@@ -267,7 +285,7 @@ h3 {
 .form-horizontal {
     .inline-group {
         &>h2 {
-            margin-top: 15px;
+            margin-top: 11px;
         }
         fieldset:first-of-type {
             margin: 0px;
@@ -356,6 +374,9 @@ h3 {
             margin-top: 15px;
             fieldset {
                 .box-shadow(none);
+                &>h2 {
+                    margin-top: -4px;
+                }
             }
             table {
                 margin-bottom: 0;
@@ -371,32 +392,51 @@ h3 {
     }
 }
 
-.controls .selector {
+.form-horizontal .control-group .controls .selector {
     overflow: auto;
     .selector-available, .selector-chooser, .selector-chosen {
         float: left;
-        select {
-            display: block;
-        }
         h2 {
             margin-left: 5px;
             font-size: 12px;
+        }
+        >a {
+            margin-left: 5px;
+        }
+    }
+    .selector-available, .selector-chosen {
+        width: 45%;
+        min-width: 150px;
+        max-width: 300px;
+        select, input {
+            width: 100%;
+            display: block;
         }
     }
     .selector-chooser {
         list-style: none;
         margin: 70px 10px 0 10px;
         li {
-            &:before {
-                line-height: 18px;
-                content: "\00bb";
-                display: inline-block;
-                margin-right: 5px;
-                font-size: 16px;
-                .color-grey;
+            a {
+                .bs-icon;
+                display: block;
+                padding: 4px;
+                border: 1px solid transparent;
+                &:hover {
+                    background-color: white;
+                    .border-radius(@border-radius);
+                    border: 1px solid #ddd;
+                }
             }
-            &:last-child:before {
-                content: "\00ab";
+            &:first-child {
+                a {
+                    background-position: -260px -92px;
+                }
+            }
+            &:last-child {
+                a {
+                    background-position: -236px -92px;
+                }
             }
         }
     }
@@ -406,14 +446,50 @@ h3 {
             text-decoration: none;
         }
     }
+    .selector-available select {
+        .border-radius(0, 0, null, null);
+    }
     .selector-filter {
+        margin-right: 14px;
         position: relative;
-        margin-bottom: 1px;
+        margin-bottom: -1px;
+        input {
+            .border-radius(null, null, 0, 0);
+        }
         label {
             position: absolute;
-            right: 4px;
+            right: 0;
             top: 4px;
+            margin-right: -10px;
             opacity: .2;
+        }
+    }
+}
+.controls {
+    /* Special styles for django auth app */
+    #id_groups_from { min-height: 80px }
+    #id_user_permissions_from { min-height: 184px }
+
+    /* File upload styles */
+    .file-upload {
+        .clearable-file-input {
+            display: inline-block;
+            margin: 0 0 0 30px;
+            input {
+                margin: 5px 7px 0 0;
+                vertical-align: middle;
+                float: left;
+            }
+            label {
+                font-size: 11px;
+                margin-top: 2px;
+                vertical-align: middle;
+                display: inline-block;
+                color: @grey;
+                &:hover {
+                    color: @red;
+                }
+            }
         }
     }
 }

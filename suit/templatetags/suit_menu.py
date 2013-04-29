@@ -77,6 +77,9 @@ class Menu(object):
 
     def make_menu(self, config):
         menu = []
+        if not isinstance(config, (tuple, list)):
+            raise TypeError('Django Suit MENU config parameter must be '
+                            'tuple or list. Got %s' % repr(config))
         for app in config:
             app = self.make_app(app)
             if app:
@@ -195,7 +198,7 @@ class Menu(object):
         native_models = native_app.get('models', {})
         if native_models:
             for model in native_models:
-                models.append(self.convert_native_model(model))
+                models.append(self.convert_native_model(model, app_name))
 
         # Skip native apps with no models
         if not models:
@@ -237,14 +240,10 @@ class Menu(object):
     def make_model_from_native(self, model_name, app_name):
         model = self.find_native_model(model_name, app_name)
         if model:
-            return self.convert_native_model(model)
+            return self.convert_native_model(model, app_name)
 
     def find_native_model(self, model_name, app_name):
         model_name = self.get_model_name(app_name, model_name)
-
-        if self.model_is_excluded(model_name):
-            return
-
         for native_model in self.all_models:
             if model_name == self.get_native_model_name(native_model):
                 return native_model
@@ -261,14 +260,19 @@ class Menu(object):
         """
         Get model name by its last part of url
         """
-        url_parts = model['admin_url'].rstrip('/').split('/')
-        return '.'.join(url_parts[-2:])
+        url_parts = self.get_native_model_url(model).rstrip('/').split('/')
+        return '.'.join(url_parts[2:4])
 
-    def convert_native_model(self, model):
+    def convert_native_model(self, model, app_name):
         return {
             'label': model['name'],
-            'url': model['admin_url'],
+            'url': self.get_native_model_url(model),
+            'name': self.get_native_model_name(model),
+            'app': app_name
         }
+
+    def get_native_model_url(self, model):
+        return model.get('admin_url', model.get('add_url'))
 
     def process_model(self, model, app_name):
         if 'model' in model:
@@ -277,12 +281,18 @@ class Menu(object):
         if model:
             self.ensure_model_keys(model)
 
-            # Detect if named url and convert it to absolute
-            model['url'] = self.process_url(model['url'])
+            if 'app' in model and 'name' in model:
+                model_name = self.get_model_name(model['app'], model['name'])
+
+                if self.model_is_excluded(model_name):
+                    return
 
             # Handle model permissions
             if self.model_is_forbidden(model):
                 return
+
+            # Detect if named url and convert it to absolute
+            model['url'] = self.process_url(model['url'])
 
             return model
 
@@ -336,6 +346,9 @@ class Menu(object):
                 and self.ctx_model_plural == app['model']['label'].lower():
                 app['is_active'] = self.app_activated = True
 
+        if not self.app_activated:
+            self.activate_menu_by_url(menu)
+
     def activate_models(self, app):
         for model in app['models']:
             # Mark as active by url or model plural name match
@@ -346,6 +359,28 @@ class Menu(object):
             # Mark parent as active too
             if model['is_active'] and not self.app_activated:
                 app['is_active'] = self.app_activated = True
+
+    def activate_menu_by_url(self, menu):
+        """
+        If no active app/model is found in good/correct way, try to match
+        by simple "startswith" in request path. Some apps doesn't provide
+        nice app_label (django-filer for ex.) therefore this is the only way
+        """
+        for app in menu:
+            for model in app['models']:
+                if model['url'] and self.request.path.startswith(model['url']):
+                    model['is_active'] = True
+                    app['is_active'] = self.app_activated = True
+                    break
+            if self.app_activated:
+                break
+
+        # If still no active app found, match by app original url if any
+        if not self.app_activated:
+            for app in menu:
+                orig_url = app.get('orig_url')
+                if orig_url and self.request.path.startswith(orig_url):
+                    app['is_active'] = self.app_activated = True
 
     def process_url(self, url, app=None):
         """

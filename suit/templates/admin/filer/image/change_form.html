@@ -1,0 +1,34 @@
+{% extends "admin/filer/change_form.html" %}
+{% load i18n admin_modify %}
+
+
+{% block object-tools %}
+    {% if change %}{% if not is_popup %}
+        <h4 class="italic-title">{% trans 'tools'|capfirst %}</h4>
+        <ul class="box menu-box">
+            <li><a href="history/" class="historylink"><i
+                class="icon-time icon-alpha75"></i>{% trans "History" %}</a>
+            </li>
+            {% if has_absolute_url %}
+                  <li>
+                    <a href="../../../r/{{ content_type_id }}/{{ object_id }}/"
+                       class="viewsitelink"><i class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}
+                    </a></li>
+                {% endif %}
+        </ul>
+    <br>
+    {% endif %}{% endif %}
+{% endblock %}
+
+
+{% block file_sidebar %}
+    <div id="navcontainer" class="box">
+        <div id="image_container">
+            <img src="{{ original.thumbnails.admin_sidebar_preview }}" alt="{{ original.label }}" rel="{{ adminform.form.sidebar_image_ratio }}"/>
+
+            <div id="paper">&nbsp;</div>
+        </div>
+        <a href="{{ original.url }}">{% trans "Full size preview" %}</a>
+    </div>
+    {{ block.super }}
+{% endblock %}

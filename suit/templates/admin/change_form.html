@@ -24,9 +24,11 @@
 
   {% if adminform.model_admin.suit_form_tabs %}
     <script type="text/javascript">
+    (function ($) {
       $(function () {
         $('#suit_form_tabs').suit_form_tabs();
       });
+    }(Suit.$))
     </script>
   {% endif %}
 
@@ -110,6 +112,8 @@
           {% endif %}{% endif %}
         {% endblock %}
 
+      {% block sidebar %}{% endblock %}
+
       </div>
       <div class="inner-center-column">
         {% csrf_token %}{% block form_top %}{% endblock %}
@@ -170,3 +174,6 @@
     </form>
   </div>
 {% endblock %}
+
+{# Empty centered sidebar as now we use sidebar in content block#}
+{% block sidebar_content %}{% endblock %}

@@ -75,7 +75,7 @@
                 reinitDateTimeShortCuts();
                 updateSelectFilter();
                 updateInlineLabel(row);
-                SuitAfterInline.run("{{ inline_admin_formset.formset.prefix }}", row);
+                Suit.after_inline.run("{{ inline_admin_formset.formset.prefix }}", row);
             })
         });
     });

@@ -162,6 +162,15 @@ How to use wysiwyg editors in Django Suit.
    wysiwyg
 
 
+JavaScript and CSS
+------------------
+
+.. toctree::
+   :maxdepth: 3
+
+   js_css
+
+
 Support
 =======
 
@@ -179,12 +188,11 @@ Supported apps
 
 Besides Django admin, Django Suit supports following third-party apps:
 
+* `django-cms <https://github.com/divio/django-cms>`_ (since v2.3.5) - `Example <http://djangosuit.com/admin/cms/page/>`_ `Read notes <https://github.com/darklow/django-suit/issues/77>`_
+* `django-filer <https://github.com/stefanfoulis/django-filer>`_ (since v0.9.4) - `Example <http://djangosuit.com/admin/filer/folder/>`_
 * `djang-mptt <https://github.com/django-mptt/django-mptt/>`_ - `Example <http://djangosuit.com/admin/examples/category/>`_
 * `django-reversion <https://github.com/etianen/django-reversion>`_ - `Example <http://djangosuit.com/admin/examples/reversioneditem/>`_
 
-In development:
-
-* `django-cms <https://github.com/divio/django-cms>`_
 
 Suggest popular apps you would like to be supported `here <https://github.com/darklow/django-suit/issues/3>`_
 

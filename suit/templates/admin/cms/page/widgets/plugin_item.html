@@ -1,0 +1,3 @@
+{% for plugin in plugin_list %}
+<li id="plugin_{{ plugin.pk }}" class="{{ plugin.plugin_type }}"><span class="drag"></span><span class="text"><strong>{{ plugin.get_plugin_name }}</strong>{% if plugin.get_short_description %}<span class="descr">&nbsp;{{ plugin.get_short_description|truncatechars:18 }}</span>{% endif %}</span><span class="delete"></span></li>
+{% endfor %}

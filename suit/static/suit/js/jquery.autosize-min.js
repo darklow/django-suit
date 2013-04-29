@@ -9,8 +9,10 @@
 /*
     Custom hook for Django Suit inlines
 */
-$(function () {
-    SuitAfterInline.register('autosize_textarea', function(inline_prefix, row){
-        $(row).find('.autosize').autosize()
+(function ($) {
+    $(function () {
+        Suit.after_inline.register('autosize_textarea', function (inline_prefix, row) {
+            $(row).find('.autosize').autosize()
+        });
     });
-});
+}(Suit.$));

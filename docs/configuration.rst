@@ -146,6 +146,9 @@ Exclude any of apps or models. You can exclude whole app or just one model from 
   }
 
 
+.. note:: This parameter excludes appp/model only from menu, it doesn't protect from accessing it by url or from app list. Use django user permissions to securely protect app/model.
+
+
 MENU_ORDER
 ----------
 
