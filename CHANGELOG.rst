@@ -1,14 +1,15 @@
 Changelog
 =========
 
-v0.2.0 (Upcoming)
+v0.2.0 (2013-04-29)
 -------------------------------------------------------------
 
-* [Major Feature] Django-CMS support - beta version. See full notes here `#77 <https://github.com/darklow/django-suit/issues/77>`_
+* [Major Feature] `Django-CMS <https://github.com/divio/django-cms>`_ support. See full notes here `#77 <https://github.com/darklow/django-suit/issues/77>`_. See `example <http://djangosuit.com/admin/cms/page/>`_
+* [Major Feature] `Django-Filer <https://github.com/stefanfoulis/django-filer>`_ support. See `example <http://djangosuit.com/admin/filer/folder/>`_
 * [CSS] Selector widget style improvements See `#80 <https://github.com/darklow/django-suit/issues/80#issuecomment-16329776>`_
 * [CSS] Main content container now uses Twitter Bootstrap `row-fluid` class. See `#58 <https://github.com/darklow/django-suit/issues/58>`_
-* [Fix] CSS/Templating fixes and tweaks. See commit log and closed issues for full changes
 * [Refactor] Included jQuery now is using own namespace: `Suit.$`
+* [Fix] CSS/Templating fixes and tweaks. See commit log and closed issues for full changes
 
 
 v0.1.9 (2013-03-25)
