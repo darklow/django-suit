@@ -162,6 +162,15 @@ How to use wysiwyg editors in Django Suit.
    wysiwyg
 
 
+JavaScript and CSS
+------------------
+
+.. toctree::
+   :maxdepth: 3
+
+   js_css
+
+
 Support
 =======
 
