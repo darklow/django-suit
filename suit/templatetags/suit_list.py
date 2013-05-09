@@ -200,7 +200,7 @@ def result_row_attrs(cl, row_index):
                         (new_attrs.__class__.__name__, new_attrs))
 
     # Merge 'class' attribute
-    if new_attrs.has_key('class'):
+    if 'class' in new_attrs:
         attrs['class'] += ' ' + new_attrs.pop('class')
 
     attrs.update(new_attrs)
@@ -234,7 +234,7 @@ def cells_handler(results, cl):
                                     attrs.__class__.__name__, attrs))
 
             # Merge 'class' attribute
-            if class_pattern in item.split('>')[0] and attrs.has_key('class'):
+            if class_pattern in item.split('>')[0] and 'class' in attrs:
                 css_class = attrs.pop('class')
                 replacement = '%s%s ' % (class_pattern, css_class)
                 result[col] = mark_safe(
