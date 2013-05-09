@@ -96,12 +96,13 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
                          ' data="2" class="row2 sky"')
 
     def test_suit_list_result_row_attrs_by_response(self):
-        for x in range(5):
-            book = Book(name='sky-%s' % x)
+        Book.objects.all().delete()
+        for x in range(2):
+            book = Book(pk=x, name='sky-%s' % x)
             book.save()
 
         self.get_changelist()
-        result = ' data="6" class="row1 suit_row_attr_class-sky-4"'
+        result = ' data="1" class="row1 suit_row_attr_class-sky-1"'
         self.assertEqual(result_row_attrs(self.changelist, 1), result)
 
 
@@ -122,8 +123,9 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         self.assertEqual(cells_handler(results, cl), result)
 
     def test_suit_list_cells_handler_by_response(self):
+        Book.objects.all().delete()
         for x in range(2):
-            book = Book(name='sky-%s' % x)
+            book = Book(pk=x, name='sky-%s' % x)
             book.save()
 
         self.get_changelist()
@@ -132,4 +134,4 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         result_cells = cells_handler(results, cl)
         self.assertTrue(
             'class="suit_cell_attr_class-id-sky-1"' in result_cells[0][1])
-        self.assertTrue(' data="3"' in result_cells[0][1])
+        self.assertTrue(' data="1"' in result_cells[0][1])

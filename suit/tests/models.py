@@ -8,6 +8,9 @@ class Book(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        ordering = ('-id',)
+
 
 class Album(models.Model):
     name = models.CharField(max_length=64)
