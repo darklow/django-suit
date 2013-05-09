@@ -1,9 +1,25 @@
 from django.contrib.admin import ModelAdmin
+from django.contrib.admin.templatetags.admin_list import result_list
 from django.core.urlresolvers import reverse
 from suit.templatetags.suit_list import paginator_number, paginator_info, \
-    pagination, suit_list_filter_select
+    pagination, suit_list_filter_select, headers_handler, dict_to_attrs, \
+    result_row_attrs, cells_handler
 from suit.tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
 from suit.tests.models import Book
+
+
+class ModelAdminMock(object):
+    def suit_row_attributes(self, obj):
+        return {'class': obj.name, 'data': obj.pk}
+
+    def suit_cell_attributes(self, obj, column):
+        return {'class': 'col-' + column, 'data': obj.pk}
+
+
+class ChangeListMock(object):
+    list_display = ('action_checkbox', 'name', 'order', 'status')
+    model_admin = ModelAdminMock()
+    result_list = [Book(pk=1, name='beach'), Book(pk=2, name='sky')]
 
 
 class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
@@ -60,3 +76,60 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         for i, spec in enumerate(self.changelist.filter_specs):
             filter_output = suit_list_filter_select(self.changelist, spec)
             self.assertTrue('value="%s"' % filter_matches[i] in filter_output)
+
+    def test_suit_list_headers_handler(self):
+        result_headers = [{'class_attrib': ' class="test"'}, {}]
+        result = [{'class_attrib': ' class="test"'},
+                  {'class_attrib': ' class="name-column "'}]
+        cl = ChangeListMock()
+        self.assertEqual(headers_handler(result_headers, cl), result)
+
+    def test_suit_list_dict_to_attrs(self):
+        attrs = {'class': 'test', 'data': 123}
+        self.assertEqual(dict_to_attrs(attrs), ' data="123" class="test"')
+
+    def test_suit_list_result_row_attrs(self):
+        cl = ChangeListMock()
+        self.assertEqual(result_row_attrs(cl, 1),
+                         ' data="1" class="row1 beach"')
+        self.assertEqual(result_row_attrs(cl, 2),
+                         ' data="2" class="row2 sky"')
+
+    def test_suit_list_result_row_attrs_by_response(self):
+        for x in range(5):
+            book = Book(name='sky-%s' % x)
+            book.save()
+
+        self.get_changelist()
+        result = ' data="6" class="row1 suit_row_attr_class-sky-4"'
+        self.assertEqual(result_row_attrs(self.changelist, 1), result)
+
+
+    def test_suit_list_cells_handler(self):
+        results = [
+            ['<td></td>', '<th class="test"></th>',
+             '<td><input class=""></td>'],
+            ['<td></td>', '<th class="test"></th>',
+             '<td><input class=""></td>'],
+        ]
+        result = [['<td data="1" class="col-action_checkbox"></td>',
+                   '<td data="1" class="test"></th>',
+                   '<td data="1" class="col-order"><input class=""></td>'],
+                  ['<td data="2" class="col-action_checkbox"></td>',
+                   '<td data="2" class="test"></th>',
+                   '<td data="2" class="col-order"><input class=""></td>']]
+        cl = ChangeListMock()
+        self.assertEqual(cells_handler(results, cl), result)
+
+    def test_suit_list_cells_handler_by_response(self):
+        for x in range(2):
+            book = Book(name='sky-%s' % x)
+            book.save()
+
+        self.get_changelist()
+        cl = self.changelist
+        results = result_list(cl)['results']
+        result_cells = cells_handler(results, cl)
+        self.assertTrue(
+            'class="suit_cell_attr_class-id-sky-1"' in result_cells[0][1])
+        self.assertTrue(' data="3"' in result_cells[0][1])
