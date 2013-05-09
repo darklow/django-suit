@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v0.2.1 (Upcoming)
+-------------------------------------------------------------
+
+* [Feature] Styling list rows and cells based on object instance. Read `Documentation <http://django-suit.readthedocs.org/en/develop/list_attributes.html>`_. See `example <http://djangosuit.com/admin/examples/continent/>`_
+* [CSS] Due to row styling, changed row selected state color to inverse
+
+
 v0.2.0 (2013-04-29)
 -------------------------------------------------------------
 
