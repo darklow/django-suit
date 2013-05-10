@@ -92,9 +92,9 @@
         var add_link = function ($select) {
             var $add_link = $select.next();
             if ($add_link.hasClass('add-another')) {
-                var $link = $add_link.next();
+                var $link = $add_link.next('a');
                 if (!$link.length) {
-                    $link = $('<a/>').addClass('f11');
+                    $link = $('<a/>').addClass('linked-select-link');
                     $add_link.after($link).after(' &nbsp; ');
                 }
                 $link.text(get_link_name($select));
