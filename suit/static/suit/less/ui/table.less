@@ -113,40 +113,50 @@
         th {
             vertical-align: middle;
             line-height: normal;
-            .sortoptions {
-                a, span {
-                    float: right; //                    padding: 8px 0;
-                    margin-right: 5px;
-                }
+            .relative-wrapper {
+                position: relative;
+                display: inline;
                 float: right;
+                width: 55px;
+            }
+            .sortoptions {
+                margin-top: 2px;
+                right: -55px;
+                position: absolute;
+                a, span {
+                    display: inline-block;
+                    float: left;
+                    padding: 0 3px;
+                }
                 .sortpriority {
-                    color: #666;
+                    color: #777;
+                    padding-right: 4px;
                 }
                 .sortremove, .toggle {
-                    padding: 0; //                    margin: 10px 10px 0 0;
                     display: block;
                     width: 12px;
                     height: 12px;
                     opacity: .4;
                     background-image: url("../bootstrap/img/glyphicons-halflings.png");
-                    background-position: -312px 0;
+                    background-position: -309px 0;
                     &:hover {
                         opacity: 0.8;
                     }
                 }
+                .sortremove {
+                    margin-right: 4px;
+                }
                 .toggle {
-                    margin-right: 10px;
                     &.ascending {
-                        background-position: -313px -119px;
+                        background-position: -310px -119px;
                     }
                     &.descending {
-                        background-position: -288px -120px;
+                        background-position: -285px -120px;
                     }
-
                 }
-
             }
             &.sorted {
+                padding-right: 55px;
                 .vertical-gradient(#e7e7e7, #ddd);
             }
         }
