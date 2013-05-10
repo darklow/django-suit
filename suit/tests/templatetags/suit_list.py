@@ -86,14 +86,18 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
 
     def test_suit_list_dict_to_attrs(self):
         attrs = {'class': 'test', 'data': 123}
-        self.assertEqual(dict_to_attrs(attrs), ' data="123" class="test"')
+        result = dict_to_attrs(attrs)
+        self.assertTrue('data="123"' in result)
+        self.assertTrue('class="test"' in result)
 
     def test_suit_list_result_row_attrs(self):
         cl = ChangeListMock()
-        self.assertEqual(result_row_attrs(cl, 1),
-                         ' data="1" class="row1 beach"')
-        self.assertEqual(result_row_attrs(cl, 2),
-                         ' data="2" class="row2 sky"')
+        result = result_row_attrs(cl, 1)
+        self.assertTrue('data="1"' in result)
+        self.assertTrue('class="row1 beach"' in result)
+        result = result_row_attrs(cl, 2)
+        self.assertTrue('data="2"' in result)
+        self.assertTrue('class="row2 sky"' in result)
 
     def test_suit_list_result_row_attrs_by_response(self):
         Book.objects.all().delete()
@@ -102,8 +106,9 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
             book.save()
 
         self.get_changelist()
-        result = ' data="1" class="row1 suit_row_attr_class-sky-1"'
-        self.assertEqual(result_row_attrs(self.changelist, 1), result)
+        result = result_row_attrs(self.changelist, 1)
+        self.assertTrue('data="1"' in result)
+        self.assertTrue('class="row1 suit_row_attr_class-sky-1"' in result)
 
 
     def test_suit_list_cells_handler(self):
@@ -120,7 +125,13 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
                    '<td data="2" class="test"></th>',
                    '<td data="2" class="col-order"><input class=""></td>']]
         cl = ChangeListMock()
-        self.assertEqual(cells_handler(results, cl), result)
+        result = cells_handler(results, cl)
+        self.assertTrue('data="1"' in result[0][0])
+        self.assertTrue('data="1"' in result[0][1])
+        self.assertTrue('data="1"' in result[0][2])
+        self.assertTrue('class="col-action_checkbox"' in result[0][0])
+        self.assertTrue('class="test"' in result[0][1])
+        self.assertTrue('class="col-order"' in result[0][2])
 
     def test_suit_list_cells_handler_by_response(self):
         Book.objects.all().delete()
