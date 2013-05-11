@@ -151,6 +151,17 @@ Django Suit provides handy shortcut to include templates into forms.
    form_includes
 
 
+List attributes
+---------------
+
+Using few callable helpers you can customize change list row and cell attributes based on object instance variables.
+
+.. toctree::
+   :maxdepth: 3
+
+   list_attributes
+
+
 Wysiwyg editors
 ---------------
 

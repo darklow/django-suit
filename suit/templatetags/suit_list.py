@@ -1,15 +1,18 @@
+from copy import copy
 from django import template
 from django.template import Context
 from django.template.loader import get_template
 from django.utils.safestring import mark_safe
 from django.contrib.admin.views.main import ALL_VAR, PAGE_VAR
 from django.utils.html import escape
+
 try:
     # Python 3.
     from urllib.parse import parse_qs
 except ImportError:
     # Python 2.5+
     from urlparse import urlparse
+
     try:
         # Python 2.6+
         from urlparse import parse_qs
@@ -106,7 +109,7 @@ def pagination(cl):
 def suit_list_filter_select(cl, spec):
     tpl = get_template(spec.template)
     choices = list(spec.choices(cl))
-    field_key = spec.field_path if hasattr(spec,'field_path') else \
+    field_key = spec.field_path if hasattr(spec, 'field_path') else \
         spec.parameter_name
     matched_key = field_key
     for choice in choices:
@@ -143,3 +146,107 @@ def suit_list_filter_select(cl, spec):
         'choices': choices,
         'spec': spec,
     }))
+
+
+@register.filter
+def headers_handler(result_headers, cl):
+    """
+    Adds field name to css class, so we can style specific columns
+    """
+    # field = cl.list_display.get()
+    attrib_key = 'class_attrib'
+    for i, header in enumerate(result_headers):
+        field_name = cl.list_display[i]
+        if field_name == 'action_checkbox':
+            continue
+        if not attrib_key in header:
+            header[attrib_key] = mark_safe(' class=""')
+
+        pattern = 'class="'
+        if pattern in header[attrib_key]:
+            replacement = '%s%s-column ' % (pattern, field_name)
+            header[attrib_key] = mark_safe(
+                header[attrib_key].replace(pattern, replacement))
+
+    return result_headers
+
+
+def dict_to_attrs(attrs):
+    return mark_safe(' ' + ' '.join(['%s="%s"' % (k, v)
+                                     for k, v in attrs.items()]))
+
+
+@register.simple_tag
+def result_row_attrs(cl, row_index):
+    """
+    Returns row attributes based on object instance
+    """
+    row_index -= 1
+    attrs = {
+        'class': 'row1' if row_index % 2 == 0 else 'row2'
+    }
+    suit_row_attributes = getattr(cl.model_admin, 'suit_row_attributes', None)
+    if not suit_row_attributes:
+        return dict_to_attrs(attrs)
+
+    instance = cl.result_list[row_index]
+    new_attrs = suit_row_attributes(instance)
+    if not new_attrs:
+        return dict_to_attrs(attrs)
+
+    # Validate
+    if not isinstance(new_attrs, dict):
+        raise TypeError('"suit_row_attributes" must return dict. Got: %s: %s' %
+                        (new_attrs.__class__.__name__, new_attrs))
+
+    # Merge 'class' attribute
+    if 'class' in new_attrs:
+        attrs['class'] += ' ' + new_attrs.pop('class')
+
+    attrs.update(new_attrs)
+    return dict_to_attrs(attrs)
+
+
+@register.filter
+def cells_handler(results, cl):
+    """
+    Changes result cell attributes based on object instance and field name
+    """
+    suit_cell_attributes = getattr(cl.model_admin, 'suit_cell_attributes', None)
+    if not suit_cell_attributes:
+        return results
+
+    class_pattern = 'class="'
+    td_pattern = '<td'
+    th_pattern = '<th'
+    for row, result in enumerate(results):
+        instance = cl.result_list[row]
+        for col, item in enumerate(result):
+            field_name = cl.list_display[col]
+            attrs = copy(suit_cell_attributes(instance, field_name))
+            if not attrs:
+                continue
+
+            # Validate
+            if not isinstance(attrs, dict):
+                raise TypeError('"suit_cell_attributes" must return dict. '
+                                'Got: %s: %s' % (
+                                    attrs.__class__.__name__, attrs))
+
+            # Merge 'class' attribute
+            if class_pattern in item.split('>')[0] and 'class' in attrs:
+                css_class = attrs.pop('class')
+                replacement = '%s%s ' % (class_pattern, css_class)
+                result[col] = mark_safe(
+                    item.replace(class_pattern, replacement))
+
+            # Add rest of attributes if any left
+            if attrs:
+                cell_pattern = td_pattern if item.startswith(
+                    td_pattern) else th_pattern
+
+                result[col] = mark_safe(
+                    item.replace(cell_pattern,
+                                 td_pattern + dict_to_attrs(attrs)))
+
+    return results

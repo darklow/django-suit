@@ -113,97 +113,55 @@
         th {
             vertical-align: middle;
             line-height: normal;
-            .sortoptions {
-                a, span {
-                    float: right; //                    padding: 8px 0;
-                    margin-right: 5px;
-                }
+            .relative-wrapper {
+                position: relative;
+                display: inline;
                 float: right;
+                width: 55px;
+            }
+            .sortoptions {
+                margin-top: 2px;
+                right: -55px;
+                position: absolute;
+                a, span {
+                    display: inline-block;
+                    float: left;
+                    padding: 0 3px;
+                }
                 .sortpriority {
-                    color: #666;
+                    color: #777;
+                    padding-right: 4px;
                 }
                 .sortremove, .toggle {
-                    padding: 0; //                    margin: 10px 10px 0 0;
                     display: block;
                     width: 12px;
                     height: 12px;
                     opacity: .4;
                     background-image: url("../bootstrap/img/glyphicons-halflings.png");
-                    background-position: -312px 0;
+                    background-position: -309px 0;
                     &:hover {
                         opacity: 0.8;
                     }
                 }
+                .sortremove {
+                    margin-right: 4px;
+                }
                 .toggle {
-                    margin-right: 10px;
                     &.ascending {
-                        background-position: -313px -119px;
+                        background-position: -310px -119px;
                     }
                     &.descending {
-                        background-position: -288px -120px;
+                        background-position: -285px -120px;
                     }
-
                 }
-
             }
             &.sorted {
+                padding-right: 55px;
                 .vertical-gradient(#e7e7e7, #ddd);
             }
         }
         th.action-checkbox-column {
             width: 33px;
-        }
-    }
-    &.table-bordered {
-        th:not(:first-child), td:not(:first-child) {
-            border-left: 0;
-        }
-        th:not(:first-child), td:not(:first-child) {
-            border-left: 0;
-        }
-    }
-    &.table-condensed tbody {
-        th, td {
-            font-weight: normal;
-            padding: 5px 10px 4px 10px;
-        }
-    }
-    &.table-striped tbody {
-        tr:nth-child(odd) {
-            &>td, &>th {
-                background-color: #f9f9f9;
-            }
-        }
-        tr:hover:nth-child(odd) {
-            &>td, &>th {
-                background-color: darken(#f9f9f9, 1.5%);
-            }
-        }
-    // Striped and selected and hover
-        tr.selected:hover {
-            &>td, &>th {
-                background-color: darken(#FCF8E3, 6%);
-            }
-        }
-        tr.selected:hover:nth-child(odd) {
-            &>td, &>th {
-                background-color: darken(#FCF8E3, 6%);
-            }
-        }
-    }
-    &.table-hover, &.table-striped {
-        tr {
-            &.selected {
-                th, td {
-                    background-color: #FCF8E3;
-                    border-top: 1px solid #f7e4c1; //                    box-shadow: none;
-                }
-            }
-        }
-        tbody > tr.selected:nth-child(odd) {
-            &>td, &>th {
-                background-color: darken(#FCF8E3, 3%);
-            }
         }
     }
 }
@@ -233,6 +191,122 @@
     }
 }
 
+/* Fix BS row styles for TH cells */
+@bs-tr-error-color: #f2dede;
+@bs-tr-warning-color: #fcf8e3;
+@bs-tr-info-color: #d9edf7;
+@bs-tr-success-color: #dff0d8;
+.table tbody {
+    >tr.error, >tr.warning, >tr.info, >tr.success {
+        box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .5);
+    }
+    >tr.error {
+        >td, >th {
+            background-color: @bs-tr-error-color;
+            border-top: 1px solid darken(@bs-tr-error-color, 3%);
+        }
+    }
+    >tr.warning {
+        >td, >th {
+            background-color: @bs-tr-warning-color;
+            border-top: 1px solid darken(@bs-tr-warning-color, 8%);
+        }
+    }
+    >tr.info {
+        >td, >th {
+            background-color: @bs-tr-info-color;
+            border-top: 1px solid darken(@bs-tr-info-color, 5%);
+        }
+    }
+    >tr.success {
+        >td, >th {
+            background-color: @bs-tr-success-color;
+            border-top: 1px solid darken(@bs-tr-success-color, 5%);
+        }
+    }
+}
+.table-hover tbody {
+    >tr.error:hover>th {
+        background-color: darken(@bs-tr-error-color, 5%);
+    }
+    >tr.warning:hover>th {
+        background-color: darken(@bs-tr-warning-color, 5%);
+    }
+    >tr.info:hover>th {
+        background-color: darken(@bs-tr-info-color, 5%);
+    }
+    >tr.success:hover>th {
+        background-color: darken(@bs-tr-success-color, 5%);
+    }
+}
+
+@tr-selected-color: #FCF8E3;
+@tr-selected-color: #83B3C3;
+.table-striped.table-hover tbody {
+    // Striped and selected and hover
+    &>tr.selected:hover {
+        &>td, &>th {
+            background-color: darken(@tr-selected-color, 6%);
+        }
+    }
+    &>tr.selected:hover:nth-child(odd) {
+        &>td, &>th {
+            background-color: darken(@tr-selected-color, 6%);
+        }
+    }
+}
+
+/* Fix text-alignment classes for tables */
+.table th, .table td {
+    &.text-left {
+        text-align: left;
+    }
+    &.text-center {
+        text-align: center;
+    }
+    &.text-right {
+        text-align: right;
+    }
+}
+
+.table-bordered {
+    th:not(:first-child), td:not(:first-child) {
+        border-left: 0;
+    }
+    th:not(:first-child), td:not(:first-child) {
+        border-left: 0;
+    }
+}
+.table-condensed tbody {
+    th, td {
+        font-weight: normal;
+        padding: 5px 10px 4px 10px;
+    }
+}
+
+.table {
+    tbody > tr.selected {
+        &>th, &>td {
+            background-color: @tr-selected-color;
+            border-top: 1px solid darken(@tr-selected-color, 5%);
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .2);
+            color: white;
+            text-shadow: none;
+            a {
+                color: white;
+                text-decoration: underline;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    tbody > tr.selected:nth-child(odd) {
+        &>td, &>th {
+            background-color: lighten(@tr-selected-color, 3%);
+        }
+    }
+}
 
 /* TabularInlines Sortables */
 .inline-sortable {

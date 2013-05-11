@@ -1,10 +1,5 @@
 {% load i18n %}
 
-
-{% if cl.formset and cl.result_count %}
-  <input type="submit" name="_save" class="default btn btn-info pull-right" value="{% trans 'Save' %}"/>
-{% endif %}
-
 <div class="actions">
     {% for field in action_form %}
         {% if field.label %}
