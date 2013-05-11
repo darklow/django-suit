@@ -54,3 +54,11 @@ Tested using Python: 2.5, 2.6, 2.7, 3.2, 3.3. Django: 1.4, 1.5. Develop / Master
    :target: http://travis-ci.org/darklow/django-suit
 
 |develop| |master|
+
+
+Preview
+=======
+
+.. image:: https://raw.github.com/darklow/django-suit/develop/docs/_static/img/django-suit.png
+   :alt: Django Suit Preview
+   :target: http://djangosuit.com/admin/
