@@ -1,11 +1,12 @@
 Changelog
 =========
 
-v0.2.1 (Upcoming)
+v0.2.1 (2013-05-11)
 -------------------------------------------------------------
 
 * [Feature] Styling list rows and cells based on object instance. Read `Documentation <http://django-suit.readthedocs.org/en/develop/list_attributes.html>`_. See `example <http://djangosuit.com/admin/examples/continent/>`_
-* [CSS] Due to row styling, changed row selected state color to inverse
+* [CSS] Changed selected rows background color to inverse, to avoid color conflict with row "warning" css class
+* [Fixes] CSS/Templating fixes and tweaks. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes
 
 
 v0.2.0 (2013-04-29)
