@@ -32,6 +32,14 @@ Resources
 * `Supported apps`_
 
 
+Preview
+-------
+
+.. image:: https://raw.github.com/darklow/django-suit/develop/docs/_static/img/django-suit.png
+   :alt: Django Suit Preview
+   :target: http://djangosuit.com/admin/
+
+
 Installation
 ============
 
