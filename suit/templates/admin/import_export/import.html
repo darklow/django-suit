@@ -1,0 +1,95 @@
+{% extends "admin/import_export/base.html" %}
+{% load url from future %}
+{% load i18n %}
+{% load admin_urls %}
+{% load import_export_tags %}
+
+{% block breadcrumbs_last %}
+{% trans "Import" %}
+{% endblock %}
+
+{% block content %}
+
+{% if not confirm_form %}
+  <form action="{{ form_url }}" method="post" id="{{ opts.module_name }}_form" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <p>
+      {% trans "This importer will import the following fields: " %}
+      {% for f in fields  %}
+        {% if forloop.counter0 %}
+        , 
+        {% endif %}
+        <tt>{{ f }}</tt>
+      {% endfor %}
+    </p>
+
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="{% trans "Import" %}">
+  </form>
+{% endif %}
+
+{% if result %}
+
+  {% if result.has_errors %}
+    <h2>{% trans "Errors" %}</h2>
+    <ul>
+      {% for error in result.base_errors  %}
+      <li>{{ error.error }}</li>
+      {% endfor %}
+      {% for line, errors in result.row_errors %}
+        {% for error in errors %}
+          <li>
+            {% trans "Line number" %}: {{ line }} - {{ error.error }}
+            <pre class="traceback">{{ error.traceback|linebreaks }}</pre>
+          </li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+  {% else %}
+
+  <h2>
+    {% trans "Preview" %}
+  </h2>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        {% for field in fields %}
+          <th>{{ field }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    {% for row in result.rows %}
+    <tr>
+      <td>
+        {% if row.import_type == 'new' %}
+          {% trans "New" %}
+        {% elif row.import_type == 'skip' %}
+          {% trans "Skipped" %}
+        {% elif row.import_type == 'delete' %}
+          {% trans "Delete" %}
+        {% elif row.import_type == 'update' %}
+          {% trans "Update" %}
+        {% endif %}
+      </td>
+      {% for field in row.diff %}
+      <td>
+        {{ field }}
+      </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+  {% endif %}
+
+{% if confirm_form %}
+  <form action="{% url opts|admin_urlname:"process_import" %}" method="POST">
+    {% csrf_token %}
+    {{ confirm_form.as_p }}
+    <input class="btn btn-success" name="confirm" type="submit" value="{% trans "Confirm import" %}">
+  </form>
+{% endif %}
+{% endblock %}
