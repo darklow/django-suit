@@ -10,13 +10,10 @@
 <ul class="breadcrumb">
   <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
       <span class="divider">&raquo;</span></li>
-  </li>
   <li><a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_label|capfirst|escape }}</a>
       <span class="divider">&raquo;</span></li>
-  </li>
   <li><a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
       <span class="divider">&raquo;</span></li>
-  </li>
   <li class=active>{% block breadcrumbs_last %}{% endblock %}</li>
 </ul>
 {% endblock %}
