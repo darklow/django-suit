@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v0.2.2 (Upcoming)
+-------------------------------------------------------------
+
+* [Feature] `django-import-export <https://github.com/bmihelac/django-import-export>`_ app support. See `example <http://djangosuit.com/admin/examples/importexportitem/>`_ [Thanks to @jonashaag]
+
+
 v0.2.1 (2013-05-11)
 -------------------------------------------------------------
 
