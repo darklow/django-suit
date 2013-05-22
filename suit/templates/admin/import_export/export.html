@@ -1,15 +1,15 @@
 {% extends "admin/import_export/base.html" %}
 {% load url from future %}
-{% load i18n %}
-{% load admin_urls %}
-{% load import_export_tags %}
+{% load i18n admin_urls import_export_tags %}
 
 {% block breadcrumbs_last %}{% trans "Export" %}{% endblock %}
 
 {% block content %}
-<form action="" method="POST">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input class="btn btn-primary" type="submit" value="{% trans "Export" %}">
-</form>
+    <form action="" method="POST" class="form-horizontal">
+        {% csrf_token %}
+        {% include 'suit/form_as_fieldset.html' %}
+        <div class="submit-row submit-row-bottom">
+            <input type="submit" value="{% trans "Export" %}" class="btn btn-info"/>
+        </div>
+    </form>
 {% endblock %}
