@@ -87,7 +87,7 @@ html,body{height:100%;}
 .table th.text-right,.table td.text-right{text-align:right;}
 .table-bordered th:not(:first-child),.table-bordered td:not(:first-child){border-left:0;}
 .table-bordered th:not(:first-child),.table-bordered td:not(:first-child){border-left:0;}
-.table-condensed tbody th,.table-condensed tbody td{font-weight:normal;padding:5px 10px 4px 10px;}
+.table.table-condensed tbody th,.table.table-condensed tbody td{font-weight:normal;padding:5px 10px 4px 10px;}
 .table tbody>tr.selected>th,.table tbody>tr.selected>td{background-color:#83b3c3;border-top:1px solid #72a8bb;box-shadow:inset 1px 1px 0 rgba(255, 255, 255, 0.2);color:white;text-shadow:none;}.table tbody>tr.selected>th a,.table tbody>tr.selected>td a{color:white;text-decoration:underline;}.table tbody>tr.selected>th a:hover,.table tbody>tr.selected>td a:hover{text-decoration:none;}
 .table tbody>tr.selected:nth-child(odd)>td,.table tbody>tr.selected:nth-child(odd)>th{background-color:#8db9c8;}
 .inline-sortable{white-space:nowrap;}.inline-sortable a{display:inline-block;padding:2px 6px 2px 2px;}.inline-sortable a:last-child{padding:0;}
