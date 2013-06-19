@@ -101,10 +101,6 @@
                 {% admin_actions %}{% endif %}
               {% result_list cl %}
 
-            {% if cl.formset and cl.result_count %}
-              <input type="submit" name="_save" class="default btn btn-info pull-right" value="{% trans 'Save' %}"/>
-            {% endif %}
-
               {% if action_form and actions_on_bottom and cl.full_result_count %}
                 {% admin_actions %}{% endif %}
             {% else %}
@@ -124,7 +120,13 @@
 
           {% block pagination %}
             {% if cl.result_count %}
+              {% if action_form and actions_on_bottom and cl.full_result_count %}
+                <div class="below-actions">
+              {% endif %}
               {% pagination cl %}
+              {% if action_form and actions_on_bottom and cl.full_result_count %}
+                </div>
+              {% endif %}
             {% endif %}
           {% endblock %}
         </form>
