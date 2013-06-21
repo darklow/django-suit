@@ -1,0 +1,13 @@
+<fieldset class="module aligned">
+    {% for field in form %}
+        <div class="control-group{{ field.errors|yesno:' error,' }}">
+            <div class="control-label">
+                {{ field.label_tag }}
+            </div>
+            <div class="controls">
+                {{ field }}
+                <div class="help-inline">{{ field.errors }}</div>
+            </div>
+        </div>
+    {% endfor %}
+</fieldset>

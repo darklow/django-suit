@@ -32,6 +32,16 @@ Resources
 * `Supported apps`_
 
 
+Preview
+-------
+
+Click on screenshot for live demo:
+
+  .. image:: https://raw.github.com/darklow/django-suit/develop/docs/_static/img/django-suit.png
+     :alt: Django Suit Preview
+     :target: http://djangosuit.com/admin/
+
+
 Installation
 ============
 
@@ -201,8 +211,9 @@ Besides Django admin, Django Suit supports following third-party apps:
 
 * `django-cms <https://github.com/divio/django-cms>`_ (since v2.3.5) - `Example <http://djangosuit.com/admin/cms/page/>`_ `Read notes <https://github.com/darklow/django-suit/issues/77>`_
 * `django-filer <https://github.com/stefanfoulis/django-filer>`_ (since v0.9.4) - `Example <http://djangosuit.com/admin/filer/folder/>`_
-* `djang-mptt <https://github.com/django-mptt/django-mptt/>`_ - `Example <http://djangosuit.com/admin/examples/category/>`_
+* `django-mptt <https://github.com/django-mptt/django-mptt/>`_ - `Example <http://djangosuit.com/admin/examples/category/>`_
 * `django-reversion <https://github.com/etianen/django-reversion>`_ - `Example <http://djangosuit.com/admin/examples/reversioneditem/>`_
+* `django-import-export <https://github.com/bmihelac/django-import-export>`_ - `Example <http://djangosuit.com/admin/examples/importexportitem/>`_
 
 
 Suggest popular apps you would like to be supported `here <https://github.com/darklow/django-suit/issues/3>`_
