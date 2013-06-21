@@ -1,10 +1,11 @@
 Changelog
 =========
 
-v0.2.2 (Upcoming)
+v0.2.2 (2013-06-21)
 -------------------------------------------------------------
 
 * [Feature] `django-import-export <https://github.com/bmihelac/django-import-export>`_ app support. See `example <http://djangosuit.com/admin/examples/importexportitem/>`_ [Thanks to @jonashaag]
+* [Fixes] CSS/Templating fixes and tweaks. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes
 
 
 v0.2.1 (2013-05-11)
