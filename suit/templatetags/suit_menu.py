@@ -261,7 +261,8 @@ class Menu(object):
         Get model name by its last part of url
         """
         url_parts = self.get_native_model_url(model).rstrip('/').split('/')
-        return '.'.join(url_parts[-2:])
+        root_url_parts = reverse('admin:index').rstrip('/').split('/')
+        return '.'.join(url_parts[len(root_url_parts):][:2])
 
     def convert_native_model(self, model, app_name):
         return {
