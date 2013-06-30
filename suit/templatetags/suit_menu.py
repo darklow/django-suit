@@ -1,6 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from django import template
 from django.contrib import admin
-from django.core.handlers.wsgi import WSGIRequest
 from django.core.urlresolvers import reverse
 import warnings
 from suit.config import get_config
@@ -8,20 +10,36 @@ from suit.config import get_config
 register = template.Library()
 
 
+def parse_context(context):
+    # 'MENU': (
+    #         'sites',
+    #         {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+    #         {'label': 'Settings', 'icon': 'icon-cog', 'models': ('auth.user', 'auth.group')},
+    #         {'label': 'Support', 'icon': 'icon-question-sign', 'url': '/support/'},
+    #     ),
+
+    app_list = [i for i in context if i.get('app_list')]
+
+    if hasattr(admin, '_menu'):
+        return admin._menu
+
+    admin._menu = ()
+    if app_list:
+        app_list = app_list[0]['app_list']
+        for app in app_list:
+            admin._menu += ({'label': app.get('name'), 'url': app.get('app_url')}, )
+
+    return admin._menu
+
+
 @register.assignment_tag(takes_context=True)
 def get_menu(context, request):
-    """
-    :type request: WSGIRequest
-    """
-    if not isinstance(request, WSGIRequest):
-        return None
-
     # Try to get app list
-    template_response = admin.site.index(request)
     try:
+        template_response = admin.site.index(request)
         app_list = template_response.context_data['app_list']
     except Exception:
-        return
+        return parse_context(context)
 
     return Menu(context, request, app_list).get_app_list()
 
@@ -102,7 +120,6 @@ class Menu(object):
             return self.process_app(app)
 
     def process_app(self, app):
-
         if 'app' in app:
             app = self.process_semi_native_app(app)
 
