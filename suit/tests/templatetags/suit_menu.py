@@ -89,7 +89,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         settings.SUIT_CONFIG['SEARCH_URL'] = 'admin:tests_book_changelist'
         admin_root = reverse('admin:index')
         self.get_response()
-        self.assertContains(self.response, 'action="{0}tests/book/"'.format(admin_root))
+        self.assertContains(self.response, 'action="%stests/book/"' % admin_root)
 
         # Test absolute url
         absolute_search_url = '/absolute/search/url'
