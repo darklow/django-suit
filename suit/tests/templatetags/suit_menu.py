@@ -87,8 +87,9 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
     def test_menu_search_url_formats(self):
         # Test named url as defined in setUp config
         settings.SUIT_CONFIG['SEARCH_URL'] = 'admin:tests_book_changelist'
+        admin_root = reverse('admin:index')
         self.get_response()
-        self.assertContains(self.response, 'action="/admin/tests/book/"')
+        self.assertContains(self.response, 'action="{0}tests/book/"'.format(admin_root))
 
         # Test absolute url
         absolute_search_url = '/absolute/search/url'
@@ -355,3 +356,15 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.setUpOldConfig()
         self.get_response(reverse('admin:app_list', args=['tests']))
         self.assertContains(self.response, '<li class="active">')
+
+
+class SuitMenuAdminRootURLTestCase(SuitMenuTestCase):
+    urls = 'suit.tests.urls.admin_at_root'
+
+
+class SuitMenuAdminI18NURLTestCase(SuitMenuTestCase):
+    urls = 'suit.tests.urls.admin_i18n'
+
+
+class SuitMenuAdminCustomURLTestCase(SuitMenuTestCase):
+    urls = 'suit.tests.urls.admin_custom'
