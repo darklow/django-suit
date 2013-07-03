@@ -290,7 +290,7 @@ a.btn{text-decoration:none;}
 a:hover .icon-alpha5,a:hover .icon-alpha75{opacity:1;}
 .input-icon{position:relative;opacity:0.2;margin-top:2px;margin-left:-25px;margin-right:8px;}
 .dashboard #content #content-main{float:left;}
-.dashboard #content #content-related{margin-left:20px;float:left;}.dashboard #content #content-related .actionlist{float:left;}
+.dashboard #content #content-related{margin-left:20px;margin-right:20px;float:right;}.dashboard #content #content-related .actionlist{float:right;}
 .colM h1{font-size:20px;margin:0 0 30px 5px;}
 h1,h2,h3,h4,h5,h6{text-shadow:0 1px rgba(255, 255, 255, 0.5);}
 h2{font-weight:bold;font-size:16px;line-height:24px;margin:0 0 0 10px;}
