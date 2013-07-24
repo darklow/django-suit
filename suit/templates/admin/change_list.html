@@ -99,7 +99,7 @@
             {% if cl.result_count %}
               {% if action_form and actions_on_top and cl.full_result_count %}
                 {% admin_actions %}{% endif %}
-              {% result_list cl %}
+              {% result_list_with_context cl %}
 
               {% if action_form and actions_on_bottom and cl.full_result_count %}
                 {% admin_actions %}{% endif %}
