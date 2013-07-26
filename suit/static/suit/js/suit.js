@@ -171,3 +171,89 @@
     });
 
 }(Suit.$));
+
+/**
+ * Add a button for toggling which columns to display
+ */
+(function ($) {
+    function create_cookie_for_page(name, value, days) {
+        var expires, date;
+        date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+        document.cookie = encodeURI(name) + "=" + encodeURI(value) + expires + "; path=" + window.location.pathname;
+    }
+
+    function read_cookie(name) {
+        var nameEQ = encodeURI(name) + "=",
+            ca = document.cookie.split(';'),
+            c, i;
+        for (i = 0; i < ca.length; i++) {
+            c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1, c.length);
+            }
+            if (c.indexOf(nameEQ) == 0) {
+                return decodeURI(c.substring(nameEQ.length, c.length));
+            }
+        }
+        return null;
+    }
+
+    $(function () {
+        var result_list = $('#result_list'),
+            toggle_column_wrapper,
+            dropdown_menu,
+            column_headers,
+            toggle_columns_init_cookie;
+        if (result_list) {
+            column_headers = result_list.find('thead th:not(.action-checkbox-column, .__unicode__-column)');
+            if (column_headers.length) {
+                result_list.addClass('table-toggle-columns');
+                toggle_column_wrapper = $('<div class="toggle-column-wrapper dropdown"><a href="#"></a><ul ' +
+                    'class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel"></ul></div>');
+                toggle_column_wrapper.insertBefore(result_list);
+                dropdown_menu = toggle_column_wrapper.children('.dropdown-menu');
+                column_headers.each(function (index, el) {
+                    var $el = $(el),
+                        el_text = $el.find('.text a').text(),
+                        el_index = $el.index();
+                    dropdown_menu.append($('<li><a tabindex="-1" href="#" data-toggle-index="' + el_index +
+                        '"><i class="icon-ok"></i>' + el_text + '</a></li>'));
+                });
+                toggle_columns_init_cookie = read_cookie('toggle-columns')
+                if (toggle_columns_init_cookie) {
+                    toggle_columns_init_cookie = JSON.parse(toggle_columns_init_cookie);
+                    if (toggle_columns_init_cookie && toggle_columns_init_cookie.length) {
+                        $.each(toggle_columns_init_cookie, function (i, v) {
+                            result_list.find('tr > *:nth-child(' + (v + 1) + ')').toggle();
+                            $(dropdown_menu.find('i')[v - 2]).toggleClass('icon-ok icon-remove');
+                        })
+                    }
+                }
+                column_headers.filter(':visible').last().addClass('last_visible');
+                dropdown_menu.on('click', 'li a', function (e) {
+                    var $this = $(this),
+                        columns,
+                        header;
+                    $this.find('i').toggleClass('icon-ok icon-remove');
+                    columns = result_list.find('tr > *:nth-child(' + ($this.data('toggle-index') + 1) + ')')
+                    columns.toggle();
+                    column_headers.filter(':visible').removeClass('last_visible').last().addClass('last_visible');
+                    create_cookie_for_page(
+                        'toggle-columns',
+                        JSON.stringify(column_headers.filter(':hidden').map(function (i, el) {
+                            return $(el).index();
+                        }).get()),
+                        3650
+                    );
+                    header = $(columns[0]).filter(':hidden');
+                    if (header.hasClass('sorted')) {
+                        window.location = header.find('.sortremove').attr('href');
+                    }
+                });
+                toggle_column_wrapper.children('a').dropdown();
+            }
+        }
+    });
+}(Suit.$));
