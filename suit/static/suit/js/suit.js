@@ -205,10 +205,13 @@
             toggle_column_wrapper,
             dropdown_menu,
             column_headers,
-            toggle_columns_init_cookie;
-        if (result_list) {
+            toggle_columns_init_cookie,
+            default_columns,
+            visible_columns;
+        if (result_list && document.getElementsByClassName('columns-togglable').length === 1) {
             column_headers = result_list.find('thead th:not(.action-checkbox-column, .__unicode__-column)');
             if (column_headers.length) {
+                // Create the toggle column drop down
                 result_list.addClass('table-toggle-columns');
                 toggle_column_wrapper = $('<div class="toggle-column-wrapper dropdown"><a href="#"></a><ul ' +
                     'class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel"></ul></div>');
@@ -216,34 +219,68 @@
                 dropdown_menu = toggle_column_wrapper.children('.dropdown-menu');
                 column_headers.each(function (index, el) {
                     var $el = $(el),
-                        el_text = $el.find('.text a').text(),
-                        el_index = $el.index();
-                    dropdown_menu.append($('<li><a tabindex="-1" href="#" data-toggle-index="' + el_index +
+                        el_text = $el.find('.text a').text();
+                    dropdown_menu.append($('<li><a tabindex="-1" href="#" data-toggle-text="' + el_text +
                         '"><i class="icon-ok"></i>' + el_text + '</a></li>'));
                 });
-                toggle_columns_init_cookie = read_cookie('toggle-columns')
+                toggle_columns_init_cookie = read_cookie('toggle-columns');
+                default_columns = document.getElementById('default-column-data-list');
+                visible_columns = [];
+                // visible_columns comes from the cookie, then the default columns, then an empty array
                 if (toggle_columns_init_cookie) {
-                    toggle_columns_init_cookie = JSON.parse(toggle_columns_init_cookie);
-                    if (toggle_columns_init_cookie && toggle_columns_init_cookie.length) {
-                        $.each(toggle_columns_init_cookie, function (i, v) {
-                            result_list.find('tr > *:nth-child(' + (v + 1) + ')').toggle();
-                            $(dropdown_menu.find('i')[v - 2]).toggleClass('icon-ok icon-remove');
-                        })
+                    visible_columns = JSON.parse(toggle_columns_init_cookie);
+                    if (!$.isArray(visible_columns)) {
+                        visible_columns = [];
                     }
+                } else if (default_columns !== null) {
+                    $.each(default_columns.children, function (i, el) {
+                        var column = el.getAttribute('data-default-column');
+                        if (column) {
+                            visible_columns.push(column);
+                        }
+                    });
+                    default_columns.parentNode.removeChild(default_columns);
+                }
+                if (visible_columns.length < column_headers.length) {
+                    // Hide the columns not in visible_column
+                    $.each(column_headers, function (i, el) {
+                        var $el = $(el),
+                            text = $.trim($el.find('div.text').text()),
+                            header,
+                            columns;
+                        if ($.inArray(text, visible_columns) === -1) {
+                            columns = result_list.find('tr > *:nth-child(' + ($el.index() + 1) + ')');
+                            columns.toggle();
+                            $(dropdown_menu.find('a[data-toggle-text="' + text +
+                                '"] i')).toggleClass('icon-ok icon-remove');
+                            column_headers.filter(':visible').removeClass('last_visible').last().addClass('last_visible');
+                            header = $(columns[0]).filter(':hidden');
+                            if (header.hasClass('sorted')) {
+                                window.location = header.find('.sortremove').attr('href');
+                            }
+                        }
+                    });
                 }
                 column_headers.filter(':visible').last().addClass('last_visible');
-                dropdown_menu.on('click', 'li a', function (e) {
+                dropdown_menu.on('click', 'li a', function () {
+                    // Show/hide column on column toggle, and update the cookie
                     var $this = $(this),
+                        toggle_text,
+                        index,
                         columns,
                         header;
                     $this.find('i').toggleClass('icon-ok icon-remove');
-                    columns = result_list.find('tr > *:nth-child(' + ($this.data('toggle-index') + 1) + ')')
+                    toggle_text = $this.data('toggle-text');
+                    index = 1 + result_list.find('tr div.text:contains(' + toggle_text + ')').filter(function () {
+                        return $.trim($(this).text()) === toggle_text;
+                    }).parent().index();
+                    columns = result_list.find('tr > *:nth-child(' + index + ')');
                     columns.toggle();
                     column_headers.filter(':visible').removeClass('last_visible').last().addClass('last_visible');
                     create_cookie_for_page(
                         'toggle-columns',
-                        JSON.stringify(column_headers.filter(':hidden').map(function (i, el) {
-                            return $(el).index();
+                        JSON.stringify(column_headers.filter(':visible').find('div.text').map(function (i, el) {
+                            return $.trim($(el).text());
                         }).get()),
                         3650
                     );

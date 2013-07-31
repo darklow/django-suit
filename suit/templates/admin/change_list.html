@@ -54,9 +54,18 @@
 {% block content %}
 
   <div id="content-main">
-
+    {% block default-columns-info %}
+      {% get_default_columns as default_columns %}
+        {% if default_columns  %}
+          <div id="default-column-data-list" style="display: none;">
+            {% for column in default_columns %}
+              <div data-default-column="{{ column }}"></div>
+            {% endfor %}
+          </div>
+        {% endif %}
+    {% endblock %}
     <div class="inner-center-column">
-      <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
+      <div class="module{% if cl.has_filters %} filtered{% endif %}{% column_hiding_class cl.model_admin %}" id="changelist">
 
         <div class="toolbar-content clearfix">
           {% block object-tools %}

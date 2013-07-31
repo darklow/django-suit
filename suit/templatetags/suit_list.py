@@ -271,3 +271,30 @@ def cells_handler(results, cl):
                                  td_pattern + dict_to_attrs(attrs)))
 
     return results
+
+
+@register.simple_tag()
+def column_hiding_class(model_admin):
+    """
+    Returns a class for the results table that adds the column hiding drop down
+    if model_admin sets allow_column_hiding to True.
+    """
+    if getattr(model_admin, 'allow_column_hiding', False):
+        return ' columns-togglable'
+    return ''
+
+
+@register.assignment_tag(takes_context=True)
+def get_default_columns(context):
+    """
+    Returns the list of default columns for the current model admin.
+    """
+    model_admin = context['cl'].model_admin
+    if 'request' not in context \
+       or 'toggle-columns' in context['request'].COOKIES \
+       or not getattr(model_admin, 'allow_column_hiding', False):
+        return []
+    if not hasattr(model_admin, 'list_defaults'):
+        return getattr(model_admin, 'list_display', [])
+    return [field.replace('_', ' ').capitalize()
+            for field in model_admin.list_defaults]
