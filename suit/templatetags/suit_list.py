@@ -1,8 +1,10 @@
 from copy import copy
+from inspect import getargspec
 from django import template
 from django.template import Context
 from django.template.loader import get_template
 from django.utils.safestring import mark_safe
+from django.contrib.admin.templatetags.admin_list import result_list
 from django.contrib.admin.views.main import ALL_VAR, PAGE_VAR
 from django.utils.html import escape
 
@@ -176,8 +178,20 @@ def dict_to_attrs(attrs):
                                      for k, v in attrs.items()]))
 
 
-@register.simple_tag
-def result_row_attrs(cl, row_index):
+@register.inclusion_tag('admin/change_list_results.html', takes_context=True)
+def result_list_with_context(context, cl):
+    """
+    Wraps Djangos default result_list to ammend the context with the request.
+
+    This gives us access to the request in change_list_results.
+    """
+    res = result_list(cl)
+    res['request'] = context['request']
+    return res
+
+
+@register.simple_tag(takes_context=True)
+def result_row_attrs(context, cl, row_index):
     """
     Returns row attributes based on object instance
     """
@@ -190,7 +204,14 @@ def result_row_attrs(cl, row_index):
         return dict_to_attrs(attrs)
 
     instance = cl.result_list[row_index]
-    new_attrs = suit_row_attributes(instance)
+
+    # Backwards compatibility for suit_row_attributes without request argument
+    args = getargspec(suit_row_attributes)
+    if 'request' in args[0]:
+        new_attrs = suit_row_attributes(instance, context['request'])
+    else:
+        new_attrs = suit_row_attributes(instance)
+
     if not new_attrs:
         return dict_to_attrs(attrs)
 

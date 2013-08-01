@@ -21,7 +21,7 @@ For example for column ``country`` list header tag will look like this ``<th cla
 List row attributes
 -------------------
 
-To add html attributes like ``class`` or ``data`` to list rows, you must define ``suit_row_attributes`` callable (function). Callable receives object instance as an argument and must return ``dict`` with attributes for current row.
+To add html attributes like ``class`` or ``data`` to list rows, you must define ``suit_row_attributes`` callable (function). Callable receives object instance and the request as arguments and must return ``dict`` with attributes for current row.
 
 Example::
 
@@ -30,11 +30,11 @@ Example::
   class CountryAdmin(ModelAdmin):
       ...
 
-      def suit_row_attributes(self, obj):
+      def suit_row_attributes(self, obj, request):
           return {'class': 'type-%s' % obj.type}
 
       # Or bit more advanced example
-      def suit_row_attributes(self, obj):
+      def suit_row_attributes(self, obj, request):
           css_class = {
               1: 'success',
               0: 'warning',
@@ -54,7 +54,7 @@ Preview:
 List cell attributes
 --------------------
 
-To add html attributes like ``class`` or ``data`` to list cells, you must define ``suit_cell_attributes`` callable (function). Callable receives object instance and column name as an arguments and must return ``dict`` with attributes for current cell.
+To add html attributes like ``class`` or ``data`` to list cells, you must define ``suit_cell_attributes`` callable (function). Callable receives object instance and column name as arguments and must return ``dict`` with attributes for current cell.
 
 Example::
 

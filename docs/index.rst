@@ -59,7 +59,7 @@ Installation
         'django.contrib.admin',
     )
 
-  .. warning:: ``'suit'`` must be added before ``'django.contrib.admin'``
+  .. warning:: ``'suit'`` must be added before ``'django.contrib.admin'``, and if you are using third-party apps with special admin support (like django-cms) you also need to add ``'suit'`` before ``'cms'``.
 
 3. You also need to add ``'django.core.context_processors.request'`` to ``TEMPLATE_CONTEXT_PROCESSORS`` setting in your Django project ``settings.py`` file.::
 

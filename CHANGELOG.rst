@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v0.2.3 (2013-08-01)
+-------------------------------------------------------------
+
+* [Feature] Added CSS file for media=print. Reposition/hide unnecessary elements when printing.
+* [Feature] More robust URL splitting/parsing for menu which now supports all kind of admin urls including `i18n_patterns` [Thanks to @philippbosch]
+* [Feature] List attributes feature improvement: `suit_row_attributes` method now receives also request as an argument. [Thanks to @asteinlein]
+* [Fix] CSS improvements for Mac/Safari: `box-shadow` fixes.
+* See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes
+
+
 v0.2.2 (2013-06-21)
 -------------------------------------------------------------
 

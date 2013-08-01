@@ -5,7 +5,7 @@ from suit.templatetags.suit_list import paginator_number, paginator_info, \
     pagination, suit_list_filter_select, headers_handler, dict_to_attrs, \
     result_row_attrs, cells_handler
 from suit.tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
-from suit.tests.models import Book
+from suit.tests.models import Album, Book
 
 
 class ModelAdminMock(object):
@@ -92,10 +92,11 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
 
     def test_suit_list_result_row_attrs(self):
         cl = ChangeListMock()
-        result = result_row_attrs(cl, 1)
+        context = {'request': 'dummy'}
+        result = result_row_attrs(context, cl, 1)
         self.assertTrue('data="1"' in result)
         self.assertTrue('class="row1 beach"' in result)
-        result = result_row_attrs(cl, 2)
+        result = result_row_attrs(context, cl, 2)
         self.assertTrue('data="2"' in result)
         self.assertTrue('class="row2 sky"' in result)
 
@@ -105,11 +106,27 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
             book = Book(pk=x, name='sky-%s' % x)
             book.save()
 
+        context = {'request': 'dummy'}
         self.get_changelist()
-        result = result_row_attrs(self.changelist, 1)
+        result = result_row_attrs(context, self.changelist, 1)
         self.assertTrue('data="1"' in result)
+        self.assertTrue('data-request="dummy"' in result)
         self.assertTrue('class="row1 suit_row_attr_class-sky-1"' in result)
 
+    def test_suit_list_result_row_attrs_backwards_compatible(self):
+        Album.objects.all().delete()
+        album = Album(pk=1, name="foo")
+        album.save()
+
+        # A bit more verbose and manual, as this is the only test against album
+        # changelist
+        self.get_response(reverse('admin:tests_album_changelist'))
+        changelist = self.response.context_data['cl']
+
+        context = {'request': 'dummy'}
+        result = result_row_attrs(context, changelist, 1)
+        self.assertTrue('data-album="1"' in result)
+        self.assertTrue('class="row1 suit_row_album_attr_class-foo"' in result)
 
     def test_suit_list_cells_handler(self):
         results = [
