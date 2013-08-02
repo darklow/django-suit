@@ -219,7 +219,7 @@
                 dropdown_menu = toggle_column_wrapper.children('.dropdown-menu');
                 column_headers.each(function (index, el) {
                     var $el = $(el),
-                        el_text = $el.find('.text a').text();
+                        el_text = $el.find('.text a, span').text();
                     dropdown_menu.append($('<li><a tabindex="-1" href="#" data-toggle-text="' + el_text +
                         '"><i class="icon-ok"></i>' + el_text + '</a></li>'));
                 });
