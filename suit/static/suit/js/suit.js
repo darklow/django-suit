@@ -57,7 +57,11 @@
             var $field = $(this);
             var $option = $field.find('option:selected');
             var select_name = $option.data('name');
-            $field.attr('name', select_name ? select_name : '')
+            if (select_name) {
+                $field.attr('name', select_name);
+            } else {
+                $field.removeAttr('name');
+            }
             // Handle additional values for date filters
             var additional = $option.data('additional');
             if (additional) {

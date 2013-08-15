@@ -92,13 +92,6 @@ class SortableModelAdmin(SortableModelAdminBase, ModelAdmin):
             self.form.Meta.widgets = {}
         self.form.Meta.widgets[self.sortable] = SortableListForm.Meta.widgets[
             'order']
-        # Store reference to form class, to use in get_changelist_form()
-        self._form = self.form
-
-    def get_changelist_form(self, request, **kwargs):
-        kwargs.setdefault('form', self._form)
-        return super(SortableModelAdmin, self).get_changelist_form(request,
-                                                                   **kwargs)
 
     def get_changelist(self, request, **kwargs):
         return SortableChangeList

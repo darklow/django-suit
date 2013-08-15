@@ -79,7 +79,7 @@
             $inline_sortable.append(create_link(icon.replace('-up', '-down'), 'down'));
         });
 
-        // Filters out unchanged selects
+        // Filters out unchanged selects and sortable field itself
         function filter_unchanged(i, input) {
             if (input.type == 'select-one' || input.type == 'select-multiple') {
                 for (var j = 0; j < input.options.length; j++) {
@@ -87,6 +87,8 @@
                         return false;
                     }
                 }
+            }else if($(input).hasClass('suit-sortable')){
+                return false;
             }
             return true;
         }

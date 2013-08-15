@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v0.2.4 (2013-08-15)
+-------------------------------------------------------------
+
+* [Fix] JS Fix preventing empty inline creation when saving inlines with blank inputs.
+* [Fix] Fixes `#140 <https://github.com/darklow/django-suit/issues/140>`_ KeyError with latest MPTT library
+* [Fix] Fixes `#139 <https://github.com/darklow/django-suit/issues/139>`_ Search form doesn't submit filters on IE10
+* See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes
+
+
 v0.2.3 (2013-08-01)
 -------------------------------------------------------------
 
