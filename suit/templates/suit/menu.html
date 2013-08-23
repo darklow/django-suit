@@ -25,7 +25,7 @@
               <ul>
                 {% for model in app.models %}
                   <li{{ model.is_active|yesno:' class=active,' }}>
-                    <a href="{{ model.url }}">{{ model.label }}</a></li>
+                    <a href="{{ model.url }}"{{ model.blank|yesno:' target=_blank,' }}>{{ model.label }}</a></li>
                 {% endfor %}
               </ul>
             {% endif %}
