@@ -31,6 +31,14 @@
     }(Suit.$))
     </script>
   {% endif %}
+        
+  <script>
+    (function ($) {
+      $(function () {
+        $("#{{ opts.module_name }}_form").suit_form_debounce();
+      });
+    }(Suit.$))    
+  </script>
 
 {% endblock %}
 
