@@ -174,7 +174,7 @@
             }
     
             submitting = true;
-            $saveButtons.attr('disabled', true);
+            $saveButtons.addClass('disabled');
         });
     };
 
