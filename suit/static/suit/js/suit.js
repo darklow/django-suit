@@ -160,21 +160,26 @@
         activate_tabs();
     };
 
-  /**
-   * Avoids double-submit issues in the change_form.
-   */
-    $.fn.suit_form_debounce = function() {
+    /**
+     * Avoids double-submit issues in the change_form.
+     */
+    $.fn.suit_form_debounce = function () {
         var $form = $(this),
-            $saveButtons = $form.find('.save-box button'),
+            $saveButtons = $form.find('.submit-row button'),
             submitting = false;
-  
-        $form.submit(function() {
+
+        $form.submit(function () {
             if (submitting) {
-              return false;
+                return false;
             }
-    
+
             submitting = true;
             $saveButtons.addClass('disabled');
+
+            setTimeout(function () {
+                $saveButtons.removeClass('disabled');
+                submitting = false;
+            }, 5000);
         });
     };
 
