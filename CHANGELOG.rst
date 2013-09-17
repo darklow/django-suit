@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.2.5 (Upcoming)
+-------------------------------------------------------------
+
+* [Feature] JS: `#147 <https://github.com/darklow/django-suit/pull/147>`_ Avoiding double submit by disabling submit buttons on change form submit [Thanks to @adamJLev]
+* [Fix] Fixes `#150 <https://github.com/darklow/django-suit/issues/150>`_ Incorrect menu is marked as active when multiple apps have models with same name
+* See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes
+
+
 v0.2.4 (2013-08-15)
 -------------------------------------------------------------
 
