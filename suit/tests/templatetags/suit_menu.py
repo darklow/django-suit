@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.models import Permission
 from django.core.urlresolvers import reverse
+import re
 from suit.templatetags.suit_menu import get_menu
 from suit.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
 
@@ -89,7 +90,8 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         settings.SUIT_CONFIG['SEARCH_URL'] = 'admin:tests_book_changelist'
         admin_root = reverse('admin:index')
         self.get_response()
-        self.assertContains(self.response, 'action="%stests/book/"' % admin_root)
+        self.assertContains(self.response,
+                            'action="%stests/book/"' % admin_root)
 
         # Test absolute url
         absolute_search_url = '/absolute/search/url'
@@ -107,7 +109,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         i = 0
         first_model_url = reverse('admin:tests_album_changelist')
         self.assertEqual(menu[i]['url'], first_model_url)
-        self.assertEqual(len(menu[i]['models']), 2)
+        self.assertEqual(len(menu[i]['models']), 3)
         self.assertEqual(menu[i]['name'], mc[i])
         self.assertEqual(menu[i]['label'], 'Tests')
         self.assertEqual(menu[i]['icon'], None)
@@ -116,7 +118,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
 
         i += 1 # as dict
         self.assertEqual(menu[i]['url'], first_model_url)
-        self.assertEqual(len(menu[i]['models']), 2)
+        self.assertEqual(len(menu[i]['models']), 3)
 
         i += 1 # with label
         self.assertEqual(menu[i]['label'], mc[i]['label'])
@@ -213,7 +215,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.get_response()
         menu = self.make_menu_from_response()
         self.assertEqual(len(menu), 1)
-        self.assertEqual(len(menu[0]['models']), 1)
+        self.assertEqual(len(menu[0]['models']), 2)
 
     def test_menu_custom_app(self):
         label = 'custom'
@@ -255,11 +257,17 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.assertTrue(menu[0]['is_active'])
 
     def test_menu_app_marked_as_active_model_link(self):
-        settings.SUIT_CONFIG['MENU'] = ({'label': 'C7', 'url': 'auth.user'},)
+        settings.SUIT_CONFIG['MENU'] = (
+            {'label': 'tests-user', 'url': 'tests.user'},
+            {'label': 'auth-user', 'url': 'auth.user'},
+        )
         self.get_response(reverse('admin:auth_user_add'))
         self.assertContains(self.response, '<li class="active">')
+
+        # Test if right user model is activated, when models have identical name
         menu = self.make_menu_from_response()
-        self.assertTrue(menu[0]['is_active'])
+        self.assertFalse(menu[0]['is_active'])
+        self.assertTrue(menu[1]['is_active'])
 
     def test_menu_model_marked_as_active(self):
         self.get_response(reverse('admin:tests_album_changelist'))
