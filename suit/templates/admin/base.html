@@ -10,6 +10,7 @@
   <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
   <script src="{% static 'suit/js/jquery-1.8.3.min.js' %}"></script>
   <script type="text/javascript">var Suit = { $: $.noConflict() }; if (!$) $ = Suit.$; </script>
+  <script src="{% static 'suit/bootstrap/js/bootstrap.min.js' %}"></script>
   {% if 'SHOW_REQUIRED_ASTERISK'|suit_conf %}
   <style type="text/css">.required:after { content: '*'; margin: 0 0 0 5px; position: absolute; color: #ccc;}</style>
   {% endif %}
@@ -203,7 +204,6 @@
   {% endif %}
 {% endblock %}
 
-  <script src="{% static 'suit/bootstrap/js/bootstrap.min.js' %}"></script>
   <script src="{% static 'suit/js/suit.js' %}"></script>
   {% block extrajs %}{% endblock %}
 
