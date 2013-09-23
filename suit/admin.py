@@ -80,18 +80,22 @@ class SortableModelAdmin(SortableModelAdminBase, ModelAdmin):
         if self.sortable not in self.exclude:
             self.exclude = list(self.exclude) + [self.sortable]
 
-        self.prepare_form()
-
-    def prepare_form(self):
+    def merge_form_meta(self, form):
         """
-        Merge originally defined form if any and prepare Meta class widgets
+        Prepare Meta class with order field widget
         """
-        if not getattr(self.form, 'Meta', None):
-            self.form.Meta = SortableListForm.Meta
-        if not getattr(self.form.Meta, 'widgets', None):
-            self.form.Meta.widgets = {}
-        self.form.Meta.widgets[self.sortable] = SortableListForm.Meta.widgets[
+        if not getattr(form, 'Meta', None):
+            form.Meta = SortableListForm.Meta
+        if not getattr(form.Meta, 'widgets', None):
+            form.Meta.widgets = {}
+        form.Meta.widgets[self.sortable] = SortableListForm.Meta.widgets[
             'order']
+
+    def get_changelist_form(self, request, **kwargs):
+        form = super(SortableModelAdmin, self).get_changelist_form(request,
+                                                                   **kwargs)
+        self.merge_form_meta(form)
+        return form
 
     def get_changelist(self, request, **kwargs):
         return SortableChangeList
