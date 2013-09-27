@@ -31,7 +31,7 @@
               <td{% if field.field.name %} class="field-{{ field.field.name }}{{ field.field.errors|yesno:' control-group error,' }}{{ field.field.errors|yesno:' control-group error,' }}"{% endif %}>
 
               {% if forloop.parentloop.first %}
-                {% if inline_admin_form.has_auto_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
+                {% if inline_admin_form.has_auto_field or inline_admin_form.needs_explicit_pk_field %}{{ inline_admin_form.pk_field.field }}{% endif %}
                 {{ inline_admin_form.fk_field.field }}
                 {% spaceless %}
                   {% for fieldset in inline_admin_form %}
