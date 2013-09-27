@@ -87,8 +87,10 @@
                         return false;
                     }
                 }
-            }else if($(input).hasClass('suit-sortable')){
-                return false;
+            } else if ($(input).hasClass('suit-sortable')) {
+                if (input.defaultValue == input.value && input.value == 0) {
+                    return false;
+                }
             }
             return true;
         }
@@ -98,7 +100,7 @@
             var $last_input = $inputs.last();
             var selector = $(this).selector;
             $($last_input[0].form).submit(function (e) {
-                var i = 0;
+                var i = 0, value;
                 $(selector).each(function () {
                     var $input = $(this);
                     var fieldset_id = $input.attr('name').split('-')[0];
