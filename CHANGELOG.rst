@@ -1,6 +1,9 @@
 Changelog
 =========
 
+Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
+
+
 v0.2.5 (2013-09-30)
 -------------------------------------------------------------
 
@@ -9,7 +12,6 @@ v0.2.5 (2013-09-30)
 * [Fix] Fixes `#146 <https://github.com/darklow/django-suit/issues/146>`_, `#152 <https://github.com/darklow/django-suit/issues/152>`_ Issues related to Sortables
 * [Fix] Fixes `#150 <https://github.com/darklow/django-suit/issues/150>`_ Incorrect menu is marked as active when multiple apps have models with same name
 * [Fix] Fixes `#149 <https://github.com/darklow/django-suit/issues/149>`_ Moved bootstrap.min.js to the <head> to support bootstrap plugins by media js
-* See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes
 
 
 v0.2.4 (2013-08-15)
@@ -18,7 +20,6 @@ v0.2.4 (2013-08-15)
 * [Fix] JS Fix preventing empty inline creation when saving inlines with blank inputs.
 * [Fix] Fixes `#140 <https://github.com/darklow/django-suit/issues/140>`_ KeyError with latest MPTT library
 * [Fix] Fixes `#139 <https://github.com/darklow/django-suit/issues/139>`_ Search form doesn't submit filters on IE10
-* See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes
 
 
 v0.2.3 (2013-08-01)
@@ -28,7 +29,6 @@ v0.2.3 (2013-08-01)
 * [Feature] More robust URL splitting/parsing for menu which now supports all kind of admin urls including `i18n_patterns` [Thanks to @philippbosch]
 * [Feature] List attributes feature improvement: `suit_row_attributes` method now receives also request as an argument. [Thanks to @asteinlein]
 * [Fix] CSS improvements for Mac/Safari: `box-shadow` fixes.
-* See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes
 
 
 v0.2.2 (2013-06-21)
