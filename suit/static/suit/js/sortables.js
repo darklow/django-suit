@@ -106,7 +106,9 @@
                     var fieldset_id = $input.attr('name').split('-')[0];
                     // Check if any of new dynamic block values has been added
                     var $set_block = $input.closest('.dynamic-' + fieldset_id);
-                    if (!$set_block.length || $set_block.find(":input[value!=''][type!='hidden']").filter(filter_unchanged).serialize()) {
+                    if (!$set_block.length
+                        || $set_block.hasClass('has_original')
+                        || $set_block.find(":input[value!=''][type!='hidden']").filter(filter_unchanged).serialize()) {
                         value = i++;
                         $input.val(value);
                     }
