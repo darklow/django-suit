@@ -1,10 +1,12 @@
 Changelog
 =========
 
-v0.2.5 (Upcoming)
+v0.2.5 (2013-09-30)
 -------------------------------------------------------------
 
 * [Feature] JS: `#147 <https://github.com/darklow/django-suit/pull/147>`_ Avoiding double submit by disabling submit buttons on change form submit [Thanks to @adamJLev]
+* [Fix] Fixes `#157 <https://github.com/darklow/django-suit/pull/157>`_ Inline template Django 1.6b4 compatibility issue [Thanks to @nliberg]
+* [Fix] Fixes `#146 <https://github.com/darklow/django-suit/issues/146>`_, `#152 <https://github.com/darklow/django-suit/issues/152>`_ Issues related to Sortables
 * [Fix] Fixes `#150 <https://github.com/darklow/django-suit/issues/150>`_ Incorrect menu is marked as active when multiple apps have models with same name
 * [Fix] Fixes `#149 <https://github.com/darklow/django-suit/issues/149>`_ Moved bootstrap.min.js to the <head> to support bootstrap plugins by media js
 * See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes
