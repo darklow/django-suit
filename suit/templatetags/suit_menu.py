@@ -332,6 +332,11 @@ class Menu(object):
 
     def activate_menu(self, menu):
         for app in menu:
+
+            # Make 'model' key as 'models' to unite activation logic
+            if 'model' in app and not app['models']:
+                app['models'] = [app['model']]
+
             # Activate models
             if app['models']:
                 self.activate_models(app)
@@ -342,20 +347,22 @@ class Menu(object):
                      or self.request.path == app.get('orig_url')):
                 app['is_active'] = self.app_activated = True
 
-            # Activate by model links
-            if not self.app_activated and 'model' in app \
-                and self.ctx_model_plural == app['model']['label'].lower():
-                app['is_active'] = self.app_activated = True
-
         if not self.app_activated:
             self.activate_menu_by_url(menu)
 
-    def activate_models(self, app):
+        # Last chance, try to activate by name
+        if not self.app_activated:
+            for app in menu:
+                self.activate_models(app, match_by_name=True)
+
+    def activate_models(self, app, match_by_name=False):
         for model in app['models']:
-            # Mark as active by url or model plural name match
-            model['is_active'] = self.request.path == model['url']
-            model['is_active'] |= self.ctx_model_plural == model[
-                'label'].lower()
+            if not match_by_name:
+                # Mark as active by url or model plural name match
+                model['is_active'] = self.request.path == model['url']
+            else:
+                model['is_active'] = self.ctx_model_plural == model[
+                    'label'].lower()
 
             # Mark parent as active too
             if model['is_active'] and not self.app_activated:

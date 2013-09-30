@@ -40,5 +40,13 @@ class AlbumAdmin(admin.ModelAdmin):
                 'data-album': obj.pk}
 
 
+class User(models.Model):
+    """
+    Class to test menu marking as active if two apps have model with same name
+    """
+    name = models.CharField(max_length=64)
+
+
 admin.site.register(Book, BookAdmin)
 admin.site.register(Album, AlbumAdmin)
+admin.site.register(User)
