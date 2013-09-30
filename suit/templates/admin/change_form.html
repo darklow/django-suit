@@ -138,7 +138,6 @@
             <input type="hidden" name="_popup" value="1"/>{% endif %}
           {% if errors %}
             <div class="alert alert-error">
-              <strong>{% trans 'error'|capfirst %}!</strong>
               {% blocktrans count counter=errors|length %}Please correct the error below.{% plural %} Please correct the errors below.{% endblocktrans %}
               {{ adminform.form.non_field_errors }}
             </div>

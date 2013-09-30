@@ -113,9 +113,6 @@
                 {% for message in messages %}
                   <div class="alert alert-{% firstof message.tags 'info' %}">
                     <button class="close" data-dismiss="alert">×</button>
-                    <strong>
-                      {% if message.tags %}{{ message.tags|capfirst }}{% else %}
-                        Message{% endif %}!</strong>
                     {{ message }}
                   </div>
                 {% endfor %}
