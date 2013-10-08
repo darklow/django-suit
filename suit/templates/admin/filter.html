@@ -2,7 +2,7 @@
 <select data-name="{{ field_name }}" class="auto-width search-filter" style="max-width: 200px">
   {% for choice in choices %}
     {% if forloop.first %}
-      <option value="">{% trans title|capfirst %}</option>
+      <option value="">{{ title|capfirst }}</option>
       <option value="">---</option>
     {% else %}
       <option{% if choice.additional %} data-additional="{{ choice.additional }}"{% endif %} data-name="{{ choice.name }}" value="{{ choice.val }}" {{ choice.selected|yesno:' selected="selected",' }}>{{ choice.display }}</option>
