@@ -64,4 +64,7 @@ def field_contents_foreign_linked(admin_field):
 @register.filter
 def admin_url(obj):
     info = (obj._meta.app_label, obj._meta.module_name)
-    return reverse("admin:%s_%s_change" % info, args=[obj.pk])
+    try:
+        return reverse("admin:%s_%s_change" % info, args=[obj.pk])
+    except NoReverseMatch:
+        return None
