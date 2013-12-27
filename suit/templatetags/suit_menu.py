@@ -39,7 +39,8 @@ def get_admin_site(current_app):
             if isinstance(func_closure.cell_contents, AdminSite):
                 return func_closure.cell_contents
     except:
-        return admin.site
+        pass
+    return admin.site
 
 
 class Menu(object):
