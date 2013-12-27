@@ -1,5 +1,6 @@
 from django import template
 from django.contrib import admin
+from django.contrib.admin import AdminSite
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.urlresolvers import reverse, resolve
 import warnings
@@ -33,9 +34,10 @@ def get_admin_site(current_app):
     in func_closer dict in index() func returned by resolver.
     """
     try:
-        url = reverse('%s:index' % current_app)
-        resolver_match = resolve(url)
-        return resolver_match.func.func_closure[1].cell_contents
+        resolver_match = resolve(reverse('%s:index' % current_app))
+        for func_closure in resolver_match.func.func_closure:
+            if isinstance(func_closure.cell_contents, AdminSite):
+                return func_closure.cell_contents
     except:
         return admin.site
 
