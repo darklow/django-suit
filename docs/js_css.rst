@@ -1,8 +1,11 @@
+JavaScript & CSS
+================
+
 JavaScript goodies
-==================
+------------------
 
 Inlines hook
-------------
+^^^^^^^^^^^^
 
 When working with Django inlines and JavaScript, very often we want to hook/attach to event - when new inline row is added. Django Suit gives us such chance.
 
@@ -23,7 +26,7 @@ Use JavaScript ``Suit.after_inline.register`` to register/attach your function t
 
 
 jQuery
-------
+^^^^^^
 
 Django Suit provides jQuery (currently v1.8.3) and it is using custom namespace to avoid collisions between different apps which also provide jQuery.
 
@@ -49,7 +52,7 @@ To use jQuery from Django Suit package:
 
 
 CSS goodies
-===========
+-----------
 
 `Original <https://docs.djangoproject.com/en/dev/ref/contrib/admin/#django.contrib.admin.ModelAdmin.fieldsets>`_ ``collapse`` and ``wide`` fieldset classes are also supported by Django Suit. Usage::
 

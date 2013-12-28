@@ -33,7 +33,7 @@ While editing ``.less`` files, run following script, which automatically watches
 
 
 Related packages
------------------
+----------------
 
 Related packages you can contribute to:
 

@@ -13,7 +13,7 @@ These packages are independent and Django Suit isn't requirement.
 
 
 Imperavi Redactor
-=================
+-----------------
 
 * Package on github: `django-suit-redactor <https://github.com/darklow/django-suit-redactor>`_
 * Editor homepage: http://imperavi.com/redactor/
@@ -54,7 +54,7 @@ Preview:
 
 
 CKEditor 4.x
-============
+------------
 
 * Package on github: `django-suit-ckeditor <https://github.com/darklow/django-suit-ckeditor>`_
 * Editor homepage: http://ckeditor.com
@@ -96,7 +96,7 @@ Preview:
 
 
 Other wysiwyg apps
-==================
+------------------
 
 Also you can integrate WYSIWYG editor using any other third party apps.
 

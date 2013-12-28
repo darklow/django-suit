@@ -4,11 +4,11 @@ Sortables
 Currently Django Suit supports three types of sortables:
 
 1. Sortable for change list
-2. Sortable for django-mptt tree list
+2. Sortable for ``django-mptt`` tree list
 3. Sortable for tabular inlines
 
 Limitations
-===========
+-----------
 
 Since sortables are based on JavaScript solution, there are known limitations:
 
@@ -16,13 +16,13 @@ Since sortables are based on JavaScript solution, there are known limitations:
 2. You won't be able to use different list order other, than by sortable parameter.
 
 Under the hood
-==============
+--------------
 
 Widgets add sortable parameter to list_editable fields as simple number inputs. Afterwards JavaScript utils replaces these editable inputs with arrows. Order is not saved instantly, but only when user saves form, which is very handy - user can do sorting first and afterwards save it or cancel if changed his mind.
 
 
 Change list sortable
-====================
+--------------------
 
 To use change list sortable you must do following:
 
@@ -48,19 +48,20 @@ That's it, you should see similar picture to example below in your admin now.
 
 
 Example
--------
+^^^^^^^
 
   .. image:: _static/img/changelist_sortable.png
      :target: http://djangosuit.com/admin/examples/continent/
 
-Resources:
+Resources
+^^^^^^^^^
 
 * `Live example <http://djangosuit.com/admin/examples/continent/>`_
 * `Github source <https://github.com/darklow/django-suit-examples>`_
 
 
 django-mptt tree sortable
-=========================
+-------------------------
 
 To use sortable on `djang-mptt <https://github.com/django-mptt/django-mptt/>`_ tree, you must follow the same instructions as for change list sortable. Combining with documentation on django-mptt, final code should look like this:
 
@@ -109,12 +110,13 @@ To use sortable on `djang-mptt <https://github.com/django-mptt/django-mptt/>`_ t
 .. note:: ``MPTTModelAdmin`` must be specified "before" ``SortableModelAdmin`` in extend syntax as shown in example.
 
 Example
--------
+^^^^^^^
 
   .. image:: _static/img/mptt_sortable.png
      :target: http://djangosuit.com/admin/examples/category/
 
-Resources:
+Resources
+^^^^^^^^^
 
 * `Live example <http://djangosuit.com/admin/examples/category/>`_
 * `Github source <https://github.com/darklow/django-suit-examples>`_
@@ -123,7 +125,7 @@ Resources:
 
 
 Tabular inlines sortable
-========================
+------------------------
 
 Currently inline sortable supports only TabularInline. Feel free to make a feature request `on Github <https://github.com/darklow/django-suit>`_, if you think also StackedInline should be supported.
 
@@ -151,12 +153,13 @@ Currently inline sortable supports only TabularInline. Feel free to make a featu
 That's it, you should see similar picture to example below in your admin now.
 
 Example
--------
+^^^^^^^
 
   .. image:: _static/img/tabular_inline_sortable.png
      :target: http://djangosuit.com/admin/examples/continent/9/
 
-Resources:
+Resources
+^^^^^^^^^
 
 * `Live example <http://djangosuit.com/admin/examples/continent/9/>`_
 * `Live example #2 <http://djangosuit.com/admin/examples/kitchensink/2/>`_

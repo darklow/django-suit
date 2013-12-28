@@ -51,6 +51,7 @@ Preview:
   .. image:: _static/img/list_attributes.png
      :target: http://djangosuit.com/admin/examples/continent/
 
+
 List cell attributes
 --------------------
 
