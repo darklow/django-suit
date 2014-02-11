@@ -1,4 +1,4 @@
-{% load i18n admin_static %}
+{% load i18n admin_static suit_tags %}
 <div class="inline-group {{ inline_admin_formset.opts.suit_classes }}" id="{{ inline_admin_formset.formset.prefix }}-group">
   <h2>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>
 {{ inline_admin_formset.formset.management_form }}
@@ -8,6 +8,7 @@
   <h3><b>{{ inline_admin_formset.opts.verbose_name|title }}:</b>&nbsp;<span class="inline_label">{% if inline_admin_form.original %}{{ inline_admin_form.original }}{% else %}{% if not forloop.first and forloop.last %}#{{ forloop.counter }}{% endif %}{% endif %}</span>
     {% if inline_admin_form.show_url %}<a href="../../../r/{{ inline_admin_form.original_content_type_id }}/{{ inline_admin_form.original.id }}/">{% trans "View on site" %}</a>{% endif %}
     {% if inline_admin_formset.formset.can_delete and inline_admin_form.original %}<span class="delete">{{ inline_admin_form.deletion_field.field }} {{ inline_admin_form.deletion_field.label_tag }}</span>{% endif %}
+    {% if inline_admin_formset.opts.suit_edit_link and inline_admin_form.original and inline_admin_form.original|admin_url %}<a href="{{ inline_admin_form.original|admin_url }}">Edit</a>{% endif %}
   </h3>
   {% if inline_admin_form.form.non_field_errors %}{{ inline_admin_form.form.non_field_errors }}{% endif %}
   {% for fieldset in inline_admin_form %}
