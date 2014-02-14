@@ -1,8 +1,9 @@
 import datetime
 from django.conf import settings
 from django.test import TestCase
+from suit import utils
 from suit.templatetags.suit_tags import suit_conf, suit_date, suit_time, \
-    admin_url, field_contents_foreign_linked
+    admin_url, field_contents_foreign_linked, suit_bc, suit_bc_value
 from django.db import models
 from django.contrib import admin
 from django.contrib.admin.helpers import AdminReadonlyField
@@ -88,3 +89,11 @@ class SuitTagsTestCase(TestCase):
         # Now it should return as link
         ro_field.model_admin.linked_readonly_fields = ('country',)
         assert admin_url(country) in field_contents_foreign_linked(ro_field)
+
+    def test_suit_bc(self):
+        args = [utils.django_major_version(), 'a']
+        self.assertEqual(utils.value_by_version(args), suit_bc(*args))
+
+    def test_suit_bc_value(self):
+        args = [utils.django_major_version(), 'a']
+        self.assertEqual(utils.value_by_version(args), suit_bc_value(*args))

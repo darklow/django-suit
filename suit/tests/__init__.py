@@ -7,6 +7,7 @@ from suit.tests.templatetags.suit_list import SuitListTestCase
 from suit.tests.templates.form_tabs import FormTabsTestCase
 from suit.tests.config import ConfigTestCase, ConfigWithModelsTestCase
 from suit.tests.widgets import WidgetsTestCase
+from suit.tests.utils import UtilsTestCase
 
 
 class NoDbTestRunner(DjangoTestSuiteRunner):
