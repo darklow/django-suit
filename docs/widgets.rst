@@ -26,7 +26,7 @@ For example if you want to add some additional CSS class to input you can do fol
 
 
 NumberInput
-===========
+-----------
 
 HTML5 number input ``type="number"``::
 
@@ -46,7 +46,7 @@ HTML5 number input ``type="number"``::
 .. note:: The same result you can achieve with ``HTML5Input(input_type='number')`` widget, this is just a shortcut.
 
 HTML5Input
-==========
+----------
 
 Specify ``input_type`` and use any of `HTML5 input types <http://www.w3schools.com/html/html5_form_input_types.asp>`_. You can see some HTML5 input examples in Django Suit Demo app in `KitchenSink forms <http://djangosuit.com/admin/examples/kitchensink/2/>`_::
 
@@ -65,7 +65,7 @@ Specify ``input_type`` and use any of `HTML5 input types <http://www.w3schools.c
 
 
 EnclosedInput
-=============
+-------------
 
 Supports `Twitter Bootstrap prepended/appended form inputs <http://twitter.github.com/bootstrap/base-css.html#forms>`_. ``EnclosedInput`` widget accepts two arguments ``prepend=`` and ``append=``. Values can be ``text``, ``icon-class`` or ``html`` (starts with html tag). You can also use both ``prepend=`` and ``append=`` together::
 
@@ -93,13 +93,13 @@ Supports `Twitter Bootstrap prepended/appended form inputs <http://twitter.githu
           }
 
 
-Preview:
+**Preview:**
 
   .. image:: _static/img/enclosed_input.png
 
 
 AutosizedTextarea
-=================
+-----------------
 
 ``AutosizedTextarea`` enables automatic height based on user input for textarea elements. Uses `jQuery Autosize <http://www.jacklmoore.com/autosize>`_ plugin. All the required javascript will be automatically attached. Usage::
 
@@ -122,7 +122,7 @@ For demo - see countries `description field <http://djangosuit.com/admin/example
 
 
 Date/Time widgets
-=================
+-----------------
 
 ``SuitDateWidget``, ``SuitTimeWidget`` and ``SuitSplitDateTimeWidget`` extends original admin widgets by adding some additional output styling only. Widgets still uses same original JavaScript for calendar and time. You can see example in `Demo app: User changeform <http://djangosuit.com/admin/auth/user/6/>`_::
 
@@ -139,14 +139,14 @@ Date/Time widgets
 
 
 
-Preview:
+**Preview:**
 
   .. image:: _static/img/dates.png
      :target: http://djangosuit.com/admin/auth/user/6/
 
 
 LinkedSelect
-============
+------------
 
 Adds link to related item right after select for foreign key fields::
 
@@ -161,7 +161,7 @@ Adds link to related item right after select for foreign key fields::
 
 
 
-Preview:
+**Preview:**
 
   .. image:: _static/img/linked_select.png
      :target: http://djangosuit.com/admin/examples/kitchensink/2/

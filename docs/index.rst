@@ -13,7 +13,7 @@ Django Suit is alternative theme/skin/extension for `Django <http://www.djangopr
    :target: http://travis-ci.org/darklow/django-suit
 
 Licence
---------
+-------
 
 * Django Suit is licensed under `Creative Commons Attribution-NonCommercial 3.0 <http://creativecommons.org/licenses/by-nc/3.0/>`_ license.
 * See licence and pricing: http://djangosuit.com/pricing/
@@ -28,7 +28,7 @@ Resources
 * Github: https://github.com/darklow/django-suit
 * Demo app on Github: https://github.com/darklow/django-suit-examples
 * Changelog: `Changelog.rst <https://github.com/darklow/django-suit/blob/develop/CHANGELOG.rst>`_
-* Supports: Django 1.4/1.5. Python: 2.5-3.3 |master|
+* Supports: Django 1.4/1.5/1.6. Python: 2.6-3.3 |master|
 * `Supported apps`_
 
 
@@ -59,7 +59,7 @@ Installation
         'django.contrib.admin',
     )
 
-  .. warning:: ``'suit'`` must be added before ``'django.contrib.admin'``, and if you are using third-party apps with special admin support (like django-cms) you also need to add ``'suit'`` before ``'cms'``.
+  .. warning:: ``'suit'`` must be added before ``'django.contrib.admin'`` and if you are using third-party apps with special admin support (like django-cms) you also need to add ``'suit'`` before ``'cms'``.
 
 3. You also need to add ``'django.core.context_processors.request'`` to ``TEMPLATE_CONTEXT_PROCESSORS`` setting in your Django project ``settings.py`` file.::
 
@@ -86,7 +86,7 @@ Develop branch
 `Develop branch <https://github.com/darklow/django-suit/commits/develop>`_ is considered as release candidate version. Check `commits <https://github.com/darklow/django-suit/commits/develop>`_ and `changelog <https://github.com/darklow/django-suit/blob/develop/CHANGELOG.rst>`_ of develop branch first, before installing develop version. It is quite stable and always tested, but can contain some flaws or behaviour changes too. To install latest develop version use::
 
   pip uninstall django-suit
-  pip install -e git+https://github.com/darklow/django-suit@develop#egg=django-suit
+  pip install https://github.com/darklow/django-suit/tarball/develop
 
 
 Customization

@@ -48,12 +48,12 @@ Configuration sample you can use as a start::
 
 
 Header
-======
+------
 
 Header related parameters
 
 ADMIN_NAME
-----------
+^^^^^^^^^^
 
 Admin name that will appear in header <title> tags and in footer::
 
@@ -63,9 +63,9 @@ Admin name that will appear in header <title> tags and in footer::
 
 
 HEADER_DATE_FORMAT
-------------------
+^^^^^^^^^^^^^^^^^^
 HEADER_TIME_FORMAT
-------------------
+^^^^^^^^^^^^^^^^^^
 
 Header date and time formats. Formatting according to `Django date templatefilter format <https://docs.djangoproject.com/en/dev/ref/templates/builtins/#std:templatefilter-date>`_. Default: as specified in example::
 
@@ -75,10 +75,10 @@ Header date and time formats. Formatting according to `Django date templatefilte
   }
 
 Forms
-=====
+-----
 
 SHOW_REQUIRED_ASTERISK
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 Automatically adds asterisk symbol ``*`` to the end of every required field label::
 
@@ -87,7 +87,7 @@ Automatically adds asterisk symbol ``*`` to the end of every required field labe
   }
 
 CONFIRM_UNSAVED_CHANGES
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Alert will be shown, when you'll try to leave page, without saving changed form first::
 
@@ -97,10 +97,10 @@ Alert will be shown, when you'll try to leave page, without saving changed form 
 
 
 Menu
-====
+----
 
 SEARCH_URL
-----------
+^^^^^^^^^^
 
 We have big plans for this field in the future, by making it global search field. However right now this field works only as a search redirect to any other urls of your admin::
 
@@ -115,7 +115,7 @@ We have big plans for this field in the future, by making it global search field
   }
 
 MENU_OPEN_FIRST_CHILD
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 Automatically replaces app's (parent link) url with url of first model's url (child)::
 
@@ -125,7 +125,7 @@ Automatically replaces app's (parent link) url with url of first model's url (ch
 
 
 MENU_ICONS
-----------
+^^^^^^^^^^
 
 Set app icons. Use any of Twitter Bootstrap `icon classes <http://twitter.github.com/bootstrap/base-css.html#icons>`_ or add your own. Twitter Bootstrap icons are provided by `Glyphicons <http://glyphicons.com/>`_. This parameter is useful, if you don't use ``MENU`` parameter (see below) and just want to set icons for default apps::
 
@@ -137,7 +137,7 @@ Set app icons. Use any of Twitter Bootstrap `icon classes <http://twitter.github
   }
 
 MENU_EXCLUDE
-------------
+^^^^^^^^^^^^
 
 Exclude any of apps or models. You can exclude whole app or just one model from app::
 
@@ -150,12 +150,12 @@ Exclude any of apps or models. You can exclude whole app or just one model from 
 
 
 MENU_ORDER
-----------
+^^^^^^^^^^
 
 `MENU_ORDER parameter <http://django-suit.readthedocs.org/en/0.1.7/configuration.html#menu-order>`_ is deprecated - use ``MENU`` instead.
 
 MENU
-----
+^^^^
 
 Most powerful of menu parameters - one parameter to rule them all :) You can rename, reorder, cross link, exclude apps and models, and even define custom menu items and child links.
 
@@ -214,10 +214,10 @@ Here is full example of ``MENU`` from simple existing app reorder to defining cu
 
 
 List
-====
+----
 
 LIST_PER_PAGE
--------------
+^^^^^^^^^^^^^
 
 Set change_list view ``list_per_page`` parameter globally for whole admin. You can still override this parameter in any ModelAdmin class::
 

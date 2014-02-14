@@ -6,6 +6,7 @@ from django.db.models import ForeignKey
 from django.template.defaulttags import NowNode
 from django.utils.safestring import mark_safe
 from suit.config import get_config
+from suit import utils
 
 register = template.Library()
 
@@ -65,3 +66,13 @@ def field_contents_foreign_linked(admin_field):
 def admin_url(obj):
     info = (obj._meta.app_label, obj._meta.module_name)
     return reverse("admin:%s_%s_change" % info, args=[obj.pk])
+
+
+@register.simple_tag
+def suit_bc(*args):
+    return utils.value_by_version(args)
+
+
+@register.assignment_tag
+def suit_bc_value(*args):
+    return utils.value_by_version(args)

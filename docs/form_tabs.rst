@@ -1,5 +1,5 @@
 Form tabs
-==========
+=========
 
 Form tabs help you organize form fieldsets and inlines into tabs. Before reading further, take a look on the tabs `in the demo app <http://djangosuit.com/admin/examples/country/234/>`_.
 
@@ -16,7 +16,9 @@ To organize form into tabs you must:
 3. To use with inlines, specify same css classes in ``suit_classes`` parameter for ``inline`` classes
 
 
-Full example::
+Example
+-------
+::
 
     from django.contrib import admin
     from .models import Country
@@ -61,7 +63,8 @@ Same way you can organize any HTML into tabs, just wrap it in previously mention
 
   <div class="suit-tab suit-tab-TAB_NAME">...</div>
 
-Preview:
+Preview
+-------
 
   .. image:: _static/img/form_tabs.png
      :target: http://djangosuit.com/admin/examples/country/234/

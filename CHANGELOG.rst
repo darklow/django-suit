@@ -4,6 +4,15 @@ Changelog
 Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
 
 
+v0.2.6 (2014-02-14)
+-------------------------------------------------------------
+
+* [Fix] Fixes `#190 <https://github.com/darklow/django-suit/issues/190>`_ Django 1.6 compatibility issue: Search fails in popups
+* [Fix] Fixes `#198 <https://github.com/darklow/django-suit/pull/198>`_ Remove unknown variable: "onclick_attrib" [Thanks to @blueyed]
+* [Fix] Fixes `#105 <https://github.com/darklow/django-suit/issues/105>`_ AdminSite detection support for various python/django versions
+* [Fix] Fixes translation issues `#162 <https://github.com/darklow/django-suit/pull/162>`_  `#175 <https://github.com/darklow/django-suit/issues/175>`_
+
+
 v0.2.5 (2013-09-30)
 -------------------------------------------------------------
 

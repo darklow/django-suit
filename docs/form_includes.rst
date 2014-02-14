@@ -14,7 +14,9 @@ Each ``suit_form_includes`` item can contain 3 parameters:
   * ``bottom`` - after inlines (Default)
 3. Specify ``TAB_NAME`` if using in combination with :doc:`/form_tabs` (Optional)
 
-Example::
+Example
+-------
+::
 
     from django.contrib import admin
     from .models import Country
@@ -28,7 +30,8 @@ Example::
         )
 
 
-Preview:
+Preview
+-------
 
   .. image:: _static/img/form_includes.png
      :target: http://djangosuit.com/admin/examples/country/234/

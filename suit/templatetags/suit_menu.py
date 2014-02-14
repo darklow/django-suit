@@ -1,7 +1,8 @@
 from django import template
 from django.contrib import admin
+from django.contrib.admin import AdminSite
 from django.core.handlers.wsgi import WSGIRequest
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, resolve
 import warnings
 from suit.config import get_config
 
@@ -17,13 +18,29 @@ def get_menu(context, request):
         return None
 
     # Try to get app list
-    template_response = admin.site.index(request)
+    template_response = get_admin_site(context.current_app).index(request)
     try:
         app_list = template_response.context_data['app_list']
     except Exception:
         return
 
     return Menu(context, request, app_list).get_app_list()
+
+
+def get_admin_site(current_app):
+    """
+    Method tries to get actual admin.site class, if any custom admin sites
+    were used. Couldn't find any other references to actual class other than
+    in func_closer dict in index() func returned by resolver.
+    """
+    try:
+        resolver_match = resolve(reverse('%s:index' % current_app))
+        for func_closure in resolver_match.func.func_closure:
+            if isinstance(func_closure.cell_contents, AdminSite):
+                return func_closure.cell_contents
+    except:
+        pass
+    return admin.site
 
 
 class Menu(object):
