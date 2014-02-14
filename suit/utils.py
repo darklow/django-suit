@@ -11,7 +11,8 @@ def value_by_version(args):
     Return latest value if version not found
     """
     version_map = args_to_dict(args)
-    return version_map.get(django_major_version(), version_map.values()[-1])
+    return version_map.get(django_major_version(),
+                           list(version_map.values())[-1])
 
 
 def args_to_dict(args):
