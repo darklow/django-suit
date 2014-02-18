@@ -41,7 +41,7 @@
 
             <form action="{{ app_path }}" method="post" id="login-form"><div class="hide">{% csrf_token %}</div>
                 <div class="form-row control-group{% if not form.this_is_the_login_form.errors and form.username.errors %} error{% endif %}">
-                    <label for="id_username" class="control-label required">{% trans 'Username' %}:</label> {{ form.username }}
+                    <label for="id_username" class="control-label required">{{ form.username.label }}:</label> {{ form.username }}
                   {% if not form.this_is_the_login_form.errors and form.username.errors %}<div class="help-block">{{ form.username.errors }}</div>{% endif %}
                 </div>
                 <div class="form-row control-group{% if not form.this_is_the_login_form.errors and form.password.errors %} error{% endif %}">
