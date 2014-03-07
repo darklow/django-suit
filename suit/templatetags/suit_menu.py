@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.urlresolvers import reverse, resolve
+from django.utils import six
 import warnings
 from suit.config import get_config
 
@@ -107,7 +108,7 @@ class Menu(object):
     def make_app(self, app_def):
         if isinstance(app_def, dict):
             app = app_def.copy()
-        elif isinstance(app_def, str):
+        elif isinstance(app_def, six.string_types):
             if app_def == '-':
                 app = self.make_separator()
             else:
@@ -246,7 +247,7 @@ class Menu(object):
     def make_model(self, model_def, app_name):
         if isinstance(model_def, dict):
             model = model_def.copy()
-        elif isinstance(model_def, str):
+        elif isinstance(model_def, six.string_types):
             model = self.make_model_from_native(model_def, app_name)
         else:
             raise TypeError('MENU list item must be string or dict. Got %s'
@@ -447,7 +448,7 @@ class Menu(object):
             if isinstance(order, (tuple, list)):
                 app_name = order[0]
                 models_order = order[1] if len(order) > 1 else None
-                if isinstance(app_name, str):
+                if isinstance(app_name, six.string_types):
                     new_app['app'] = app_name
                 elif isinstance(app_name, (tuple, list)):
                     mapping = ('label', 'url', 'icon', 'permissions')
@@ -456,7 +457,7 @@ class Menu(object):
                 if models_order and isinstance(models_order, (tuple, list)):
                     models = []
                     for model in models_order:
-                        if isinstance(model, str):
+                        if isinstance(model, six.string_types):
                             models.append({'model': model})
                         elif isinstance(model, (list, tuple)):
                             mapping = ('label', 'url', 'permissions')
