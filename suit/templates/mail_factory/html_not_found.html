@@ -1,0 +1,9 @@
+{% extends "mail_factory/base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% block content %}
+    <div id="content-main">
+        <h2>{% trans "Sorry, no HTML version was found for this email" %}</h2>
+    </div>
+{% endblock %}

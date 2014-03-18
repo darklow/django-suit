@@ -1,0 +1,91 @@
+{% extends "mail_factory/base.html" %}
+{% load url from future %}
+{% load i18n %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+            &rsaquo; <a href="{% url 'mail_factory_list' %}">Mail Factory</a>
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block extrahead %}
+    {{ block.super }}
+
+    {% if preview_messages|length > 1 %}
+    <script type="text/javascript">
+    (function ($) {
+      $(function () {
+        $('#suit_form_tabs').suit_form_tabs();
+      });
+    }(Suit.$))
+    </script>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div id="content-main" class="inner-two-columns">
+        <form method="post" class="form-horizontal">
+            {% csrf_token %}
+            <div class="inner-right-column">
+                <div class="box save-box">
+                    <input type="submit" class="btn btn-high" value="{% trans "Get HTML mail content" %}" />
+                    <input type="submit" class="btn btn-high" name="raw" value="{% trans "Get raw mail" %}" />
+                </div>
+                <div class="box save-box">
+                    <input type="text" name="email" value="" placeholder="{% trans "Email to send to" %}" style="width: 90%"/>
+                    <input type="submit" class="btn btn-high btn-info" name="send" value="{% trans "Send to mail" %}" />
+                </div>
+            </div>
+            <div class="inner-center-column">
+                <div class="content">
+                    {% if preview_messages|length > 1 %}
+                        <ul id="suit_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
+                            {% for lang_code, message in preview_messages.items %}
+                                <li class="{% if LANGUAGE_CODE != lang_code %}active{% endif %}">
+                                    <a href="#{{ lang_code }}">{{ lang_code|upper }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    <div class="tab-content tab-content-main">
+                            {% for lang_code, message in preview_messages.items %}
+                            <fieldset class="module aligned with-legend suit-tab suit-tab-{{ lang_code }}
+                                {% if LANGUAGE_CODE != lang_code %}show{% else %}hide{% endif %}
+                            ">
+                                {% if message.html %}
+                                <div class="pull-right">
+                                        <a class="btn" href="{% url "mail_factory_preview_message" lang_code mail_name %}">
+                                            {% trans  "View html alternative" %}
+                                        </a>
+                                </div>
+                                {% endif %}
+                                <h3 class="legend">{{ message.subject }}</h3>
+                                <div class="box">
+                                    {{ message.body|linebreaks }}
+                                </div>
+                            </fieldset>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <h2>{% trans "Send mail" %}</h2>
+                <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
+                    {% for field in form %}
+                        <div class="control-group form-row">
+                            <div class="control-label">
+                                {{ field.label_tag }}
+                            </div>
+                            <div class="controls">
+                                {{ field }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
