@@ -4,6 +4,7 @@ from django.contrib.admin import ModelAdmin
 from django.contrib.admin.views.main import ChangeList
 from django.forms import ModelForm
 from django.contrib import admin
+from django.contrib.contenttypes import generic
 from django.db import models
 from suit.widgets import NumberInput, SuitSplitDateTimeWidget, AutosizedTextarea
 
@@ -57,6 +58,27 @@ class SortableTabularInline(SortableModelAdminBase, admin.TabularInline):
             kwargs['widget'] = SortableListForm.Meta.widgets['order']
         return super(SortableTabularInline, self).formfield_for_dbfield(
             db_field, **kwargs)
+
+
+class SortableGenericTabularInline(SortableModelAdminBase, generic.GenericTabularInline):
+    """
+    Sortable tabular inline
+    """
+
+    def __init__(self, *args, **kwargs):
+        super(generic.GenericTabularInline, self).__init__(*args, **kwargs)
+
+        self.ordering = (self.sortable,)
+        self.fields = self.fields or []
+        if self.fields and self.sortable not in self.fields:
+            self.fields = list(self.fields) + [self.sortable]
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == self.sortable:
+            kwargs['widget'] = SortableListForm.Meta.widgets['order']
+        return super(SortableGenericTabularInline, self).formfield_for_dbfield(
+            db_field, **kwargs)
+
 
 
 class SortableModelAdmin(SortableModelAdminBase, ModelAdmin):
