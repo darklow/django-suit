@@ -60,23 +60,47 @@
         }
 
         function on_arrow_click(e) {
-            perform_move($(this), $(this).closest('tr'));
+            var $sortable = $(this);
+            var $row = $sortable.closest(
+                $sortable.hasClass('sortable-stacked') ? 'div.inline-related' : 'tr'
+            );
+            perform_move($sortable, $row);
             e.preventDefault();
         }
 
-        function create_link(text, direction) {
+        function create_link(text, direction, on_click_func, is_stacked) {
             return $('<a/>').attr('href', '#')
-                .addClass('sortable sortable-' + direction)
+                .addClass('sortable sortable-' + direction +
+                    (is_stacked ? ' sortable-stacked' : ''))
                 .attr('data-dir', direction).html(text)
-                .click(on_arrow_click);
+                .click(on_click_func);
         }
 
         $inputs.each(function () {
-            var $inline_sortable = $('<div class="inline-sortable"/>');
-            var icon = '<i class="icon-arrow-up icon-alpha5"></i>';
-            $(this).parent().append($inline_sortable);
-            $inline_sortable.append(create_link(icon, 'up'));
-            $inline_sortable.append(create_link(icon.replace('-up', '-down'), 'down'));
+            var $inline_sortable = $('<div class="inline-sortable"/>'),
+                icon = '<i class="icon-arrow-up icon-alpha5"></i>',
+                $sortable = $(this),
+                is_stacked = $sortable.hasClass('suit-sortable-stacked');
+
+            var $up_link = create_link(icon, 'up', on_arrow_click, is_stacked),
+                $down_link = create_link(icon.replace('-up', '-down'), 'down', on_arrow_click, is_stacked);
+
+            if (is_stacked) {
+                var $sortable_row = $sortable.closest('div.form-row'),
+                    $stacked_block = $sortable.closest('div.inline-related'),
+                    $links_span = $('<span/>').attr('class', 'stacked-inline-sortable');
+
+                // Add arrows to header h3, move order input and remove order field row
+                $links_span.append($up_link).append($down_link);
+                $stacked_block.find('h3').append($links_span);
+                $stacked_block.append($sortable);
+                $sortable_row.remove();
+            } else {
+                $sortable.parent().append($inline_sortable);
+                $inline_sortable.append($up_link);
+                $inline_sortable.append($down_link);
+            }
+
         });
 
         // Filters out unchanged selects and sortable field itself

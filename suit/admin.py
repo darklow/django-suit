@@ -1,11 +1,12 @@
+import copy
 from django.conf import settings
-import suit.config
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin.views.main import ChangeList
+from django.contrib.contenttypes import generic
 from django.forms import ModelForm
 from django.contrib import admin
 from django.db import models
-from suit.widgets import NumberInput, SuitSplitDateTimeWidget, AutosizedTextarea
+from suit.widgets import NumberInput, SuitSplitDateTimeWidget
 
 
 class SortableModelAdminBase(object):
@@ -39,13 +40,13 @@ class SortableChangeList(ChangeList):
         return [self.model_admin.sortable, '-' + self.model._meta.pk.name]
 
 
-class SortableTabularInline(SortableModelAdminBase, admin.TabularInline):
+class SortableTabularInlineBase(SortableModelAdminBase):
     """
     Sortable tabular inline
     """
 
     def __init__(self, *args, **kwargs):
-        super(SortableTabularInline, self).__init__(*args, **kwargs)
+        super(SortableTabularInlineBase, self).__init__(*args, **kwargs)
 
         self.ordering = (self.sortable,)
         self.fields = self.fields or []
@@ -55,8 +56,68 @@ class SortableTabularInline(SortableModelAdminBase, admin.TabularInline):
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name == self.sortable:
             kwargs['widget'] = SortableListForm.Meta.widgets['order']
-        return super(SortableTabularInline, self).formfield_for_dbfield(
+        return super(SortableTabularInlineBase, self).formfield_for_dbfield(
             db_field, **kwargs)
+
+
+class SortableTabularInline(SortableTabularInlineBase, admin.TabularInline):
+    pass
+
+
+class SortableGenericTabularInline(SortableTabularInlineBase,
+                                   generic.GenericTabularInline):
+    pass
+
+
+class SortableStackedInlineBase(SortableModelAdminBase):
+    """
+    Sortable stacked inline
+    """
+
+    def get_fieldsets(self, *args, **kwargs):
+        """
+        Iterate all fieldsets and make sure sortable is in the first fieldset
+        Remove sortable from every other fieldset, if by some reason someone
+        has added it
+        """
+        fieldsets = super(SortableStackedInlineBase, self).get_fieldsets(
+            *args, **kwargs)
+
+        sortable_added = False
+        for fieldset in fieldsets:
+            for line in fieldset:
+                if not line or not isinstance(line, dict):
+                    continue
+
+                fields = line.get('fields')
+                if self.sortable in fields:
+                    fields.remove(self.sortable)
+
+                # Add sortable field always as first
+                if not sortable_added:
+                    fields.insert(0, self.sortable)
+                    sortable_added = True
+                    break
+
+        return fieldsets
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == self.sortable:
+            kwargs['widget'] = copy.deepcopy(
+                SortableListForm.Meta.widgets['order'])
+            kwargs['widget'].attrs['class'] += ' suit-sortable-stacked'
+            kwargs['widget'].attrs['rowclass'] = ' suit-sortable-stacked-row'
+        return super(SortableStackedInlineBase, self).formfield_for_dbfield(
+            db_field, **kwargs)
+
+
+class SortableStackedInline(SortableStackedInlineBase, admin.StackedInline):
+    pass
+
+
+class SortableGenericStackedInline(SortableStackedInlineBase,
+                                   generic.GenericStackedInline):
+    pass
 
 
 class SortableModelAdmin(SortableModelAdminBase, ModelAdmin):
