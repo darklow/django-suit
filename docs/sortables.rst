@@ -1,11 +1,11 @@
 Sortables
 =========
 
-Currently Django Suit supports three types of sortables:
+Currently Django Suit supports these types of sortables:
 
 1. Sortable for change list
 2. Sortable for ``django-mptt`` tree list
-3. Sortable for tabular inlines
+3. Sortable for Tabular, Stacked, GenericTabular, GenericStacked inlines
 
 Limitations
 -----------
@@ -127,8 +127,6 @@ Resources
 Tabular inlines sortable
 ------------------------
 
-Currently inline sortable supports only TabularInline. Feel free to make a feature request `on Github <https://github.com/darklow/django-suit>`_, if you think also StackedInline should be supported.
-
 1. In ``models.py`` your model for inlines, should have integer property for sortable, same way as described in all previous sortable examples::
 
     from django.db import models
@@ -165,3 +163,30 @@ Resources
 * `Live example #2 <http://djangosuit.com/admin/examples/kitchensink/2/>`_
 * `Github source <https://github.com/darklow/django-suit-examples>`_
 
+
+Stacked and Generic inlines sortable
+------------------------------------
+
+Implementation of sortables for Stacked and Generic inlines is the same as mentioned above for Tabular inlines. You just have to use appropriate base class instead of ``SortableTabularInline``:
+
+::
+
+    # For Stacked inlines
+    from suit.admin import SortableStackedInline
+
+    # For Generic inlines
+    from suit.admin import SortableTabularStackedInline
+    from suit.admin import SortableGenericStackedInline
+
+
+Example
+^^^^^^^
+
+  .. image:: _static/img/stacked_inline_sortable.png
+     :target: http://djangosuit.com/admin/examples/kitchensink/3/
+
+Resources
+^^^^^^^^^
+
+* `Live example <http://djangosuit.com/admin/examples/kitchensink/3/>`_
+* `Github source <https://github.com/darklow/django-suit-examples>`_

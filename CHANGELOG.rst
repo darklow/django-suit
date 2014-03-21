@@ -4,6 +4,16 @@ Changelog
 Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
 
 
+v0.2.7 (2014-03-21)
+-------------------
+
+* [Feature] `Sortables <http://django-suit.readthedocs.org/en/develop/sortables.html>`_ for `StackedInline <http://djangosuit.com/admin/examples/kitchensink/3/>`_ and Generic inlines added. Closes `#137 <https://github.com/darklow/django-suit/issues/137>`_
+* [Fix] Fixes `#209 <https://github.com/darklow/django-suit/issues/209>`_ Wrap jQuery autosize in Suit jQuery scope
+* [Fix] Fixes `#206 <https://github.com/darklow/django-suit/pull/206>`_ Fixed exception when menu config is Unicode [Thanks to @kane-c]
+* [Fix] Fixes `#90 <https://github.com/darklow/django-suit/issues/90>`_ Django test sometimes crashes, because of Django Suit
+* [Fix] Fixes login template for custom user model `#200 <https://github.com/darklow/django-suit/pull/200>`_ [Thanks to @theskumar]
+
+
 v0.2.6 (2014-02-14)
 -------------------------------------------------------------
 

@@ -619,3 +619,20 @@ h3 {
     font-size: 11px;
     margin-right: 5px;
 }
+
+/* StackedInline sortables */
+.stacked-inline-sortable {
+    float: right;
+    :first-child {
+        padding-right: 1px;
+    }
+    &:nth-last-child(2) {
+        margin-right: 10px;
+    }
+}
+.inline-group > div:first-of-type .stacked-inline-sortable .sortable-up,
+.inline-group > div:nth-last-child(3) .stacked-inline-sortable .sortable-down
+{
+    opacity: .15 !important;
+    cursor: default;
+}
