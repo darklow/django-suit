@@ -4,6 +4,12 @@ Changelog
 Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
 
 
+v0.2.8 (2014-04-22)
+-------------------
+
+* [Feature] Mark active search filters. Show label prefix in selected filter option. Closes `#205 <https://github.com/darklow/django-suit/issues/205>`_
+
+
 v0.2.7 (2014-03-21)
 -------------------
 
