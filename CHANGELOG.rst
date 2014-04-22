@@ -7,7 +7,7 @@ Only important changes are mentioned below. See `commit log <https://github.com/
 v0.2.8 (2014-04-22)
 -------------------
 
-* [Feature] Mark active search filters. Show label prefix in selected filter option. Closes `#205 <https://github.com/darklow/django-suit/issues/205>`_
+* [Feature] Mark active search filters. Show label prefix in selected filter option. Closes `#207 <https://github.com/darklow/django-suit/issues/207>`_
 
 
 v0.2.7 (2014-03-21)
