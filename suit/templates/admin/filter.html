@@ -1,5 +1,5 @@
 {% load i18n %}
-<select data-name="{{ field_name }}" class="auto-width search-filter{{ spec.lookup_val|yesno:' active,' }}" style="max-width: 200px">
+<select data-name="{{ field_name }}" class="auto-width search-filter{% if spec.lookup_val or spec.used_parameters %} active{% endif %}" style="max-width: 200px">
   {% for choice in choices %}
     {% if forloop.first %}
       <option value="">{{ title|capfirst }}</option>
