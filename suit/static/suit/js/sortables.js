@@ -130,9 +130,12 @@
                     var fieldset_id = $input.attr('name').split('-')[0];
                     // Check if any of new dynamic block values has been added
                     var $set_block = $input.closest('.dynamic-' + fieldset_id);
+                    var $changed_fields = $set_block.find(":input[value!=''][type!='hidden']").filter(filter_unchanged);
                     if (!$set_block.length
                         || $set_block.hasClass('has_original')
-                        || $set_block.find(":input[value!=''][type!='hidden']").filter(filter_unchanged).serialize()) {
+                        || $changed_fields.serialize()
+                        // Since jQuery serialize() doesn't include type=file do additional check
+                        || $changed_fields.find(":input[type='file']").addBack().length) {
                         value = i++;
                         $input.val(value);
                     }
