@@ -106,8 +106,10 @@
         // Filters out unchanged selects and sortable field itself
         function filter_unchanged(i, input) {
             if (input.type == 'select-one' || input.type == 'select-multiple') {
-                for (var j = 0; j < input.options.length; j++) {
-                    if (input.options[j].selected == input.options[j].defaultSelected) {
+                var options = input.options, option;
+                for (var j = 0; j < options.length; j++) {
+                    option = options[j];
+                    if (option.selected && option.selected == option.defaultSelected) {
                         return false;
                     }
                 }
