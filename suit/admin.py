@@ -73,6 +73,9 @@ class SortableStackedInlineBase(SortableModelAdminBase):
     """
     Sortable stacked inline
     """
+    def __init__(self, *args, **kwargs):
+        super(SortableStackedInlineBase, self).__init__(*args, **kwargs)
+        self.ordering = (self.sortable,)
 
     def get_fieldsets(self, *args, **kwargs):
         """
