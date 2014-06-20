@@ -4,6 +4,13 @@ Changelog
 Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
 
 
+v0.2.9 (2014-06-20)
+-------------------
+
+* [Fix] Fixes `#240 <https://github.com/darklow/django-suit/issues/240>`_ Unable to save inline models with a FileField and "sortable" enabled.
+* [Fix] Fixes `#232 <https://github.com/darklow/django-suit/issues/232>`_ Inline sortable error when model features only FKs
+
+
 v0.2.8 (2014-04-22)
 -------------------
 
@@ -21,7 +28,7 @@ v0.2.7 (2014-03-21)
 
 
 v0.2.6 (2014-02-14)
--------------------------------------------------------------
+-------------------
 
 * [Fix] Fixes `#190 <https://github.com/darklow/django-suit/issues/190>`_ Django 1.6 compatibility issue: Search fails in popups
 * [Fix] Fixes `#198 <https://github.com/darklow/django-suit/pull/198>`_ Remove unknown variable: "onclick_attrib" [Thanks to @blueyed]
@@ -30,7 +37,7 @@ v0.2.6 (2014-02-14)
 
 
 v0.2.5 (2013-09-30)
--------------------------------------------------------------
+-------------------
 
 * [Feature] JS: `#147 <https://github.com/darklow/django-suit/pull/147>`_ Avoiding double submit by disabling submit buttons on change form submit [Thanks to @adamJLev]
 * [Fix] Fixes `#157 <https://github.com/darklow/django-suit/pull/157>`_ Inline template Django 1.6b4 compatibility issue [Thanks to @nliberg]
@@ -40,7 +47,7 @@ v0.2.5 (2013-09-30)
 
 
 v0.2.4 (2013-08-15)
--------------------------------------------------------------
+-------------------
 
 * [Fix] JS Fix preventing empty inline creation when saving inlines with blank inputs.
 * [Fix] Fixes `#140 <https://github.com/darklow/django-suit/issues/140>`_ KeyError with latest MPTT library
@@ -48,7 +55,7 @@ v0.2.4 (2013-08-15)
 
 
 v0.2.3 (2013-08-01)
--------------------------------------------------------------
+-------------------
 
 * [Feature] Added CSS file for media=print. Reposition/hide unnecessary elements when printing.
 * [Feature] More robust URL splitting/parsing for menu which now supports all kind of admin urls including `i18n_patterns` [Thanks to @philippbosch]
@@ -57,14 +64,14 @@ v0.2.3 (2013-08-01)
 
 
 v0.2.2 (2013-06-21)
--------------------------------------------------------------
+-------------------
 
 * [Feature] `django-import-export <https://github.com/bmihelac/django-import-export>`_ app support. See `example <http://djangosuit.com/admin/examples/importexportitem/>`_ [Thanks to @jonashaag]
 * [Fixes] CSS/Templating fixes and tweaks. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes
 
 
 v0.2.1 (2013-05-11)
--------------------------------------------------------------
+-------------------
 
 * [Feature] Styling list rows and cells based on object instance. Read `Documentation <http://django-suit.readthedocs.org/en/develop/list_attributes.html>`_. See `example <http://djangosuit.com/admin/examples/continent/>`_
 * [CSS] Changed selected rows background color to inverse, to avoid color conflict with row "warning" css class
@@ -72,7 +79,7 @@ v0.2.1 (2013-05-11)
 
 
 v0.2.0 (2013-04-29)
--------------------------------------------------------------
+-------------------
 
 * [Major Feature] `Django-CMS <https://github.com/divio/django-cms>`_ support. See full notes here `#77 <https://github.com/darklow/django-suit/issues/77>`_. See `example <http://djangosuit.com/admin/cms/page/>`_
 * [Major Feature] `Django-Filer <https://github.com/stefanfoulis/django-filer>`_ support. See `example <http://djangosuit.com/admin/filer/folder/>`_
@@ -83,7 +90,7 @@ v0.2.0 (2013-04-29)
 
 
 v0.1.9 (2013-03-25)
--------------------------------------------------------------
+-------------------
 
 * [Feature] `Form tabs <http://django-suit.readthedocs.org/en/develop/form_tabs.html>`_ - help you organize form fieldsets and inlines into tabs. See `example <http://djangosuit.com/admin/examples/country/234/>`_ [Thanks to @phihos]
 * [Feature] `Form includes <http://django-suit.readthedocs.org/en/develop/form_includes.html>`_ - shortcut to include templates into forms
@@ -91,7 +98,7 @@ v0.1.9 (2013-03-25)
 
 
 v0.1.8 (2013-03-20)
--------------------------------------------------------------
+-------------------
 
 * [Feature] `django-reversion <https://github.com/etianen/django-reversion>`_ app support. `Example <http://djangosuit.com/admin/examples/reversioneditem/>`_ [Thanks to @phihos]
 * [Feature] `WYSIWYG editors <http://django-suit.readthedocs.org/en/develop/wysiwyg.html>`_ support, examples and docs
@@ -104,7 +111,7 @@ v0.1.8 (2013-03-20)
 
 
 v0.1.6, v.0.1.7 (2013-03-10)
--------------------------------------------------------------
+----------------------------
 
 * [Tests] Travis CI hooked up - testing against Django 1.4-1.5, Python 2.5-3.3
 * [Tests] Tests now cover every class and method in Django Suit
@@ -113,7 +120,7 @@ v0.1.6, v.0.1.7 (2013-03-10)
 
 
 v0.1.5 (2013-03-10)
--------------------------------------------------------------
+-------------------
 
 * [Feature] New widget: `AutosizedTextarea <http://django-suit.readthedocs.org/en/develop/widgets.html#autosizedtextarea>`_
 * [Feature] New widget: `LinkedSelect <http://django-suit.readthedocs.org/en/develop/widgets.html#linkedselect>`_
@@ -125,7 +132,7 @@ v0.1.5 (2013-03-10)
 
 
 v0.1.4 (2013-03-04)
--------------------------------------------------------------
+-------------------
 
 * [Fix] Sortables improvements and fixes #12, #13, #14
 * [Fix] Python3 related fixes #11 [Thanks to @coagulant]
@@ -133,7 +140,7 @@ v0.1.4 (2013-03-04)
 
 
 v0.1.3 (2013-03-03)
--------------------------------------------------------------
+-------------------
 
 * [Feature] `Sortables <http://django-suit.readthedocs.org/en/develop/sortables.html>`_ for `change list <http://djangosuit.com/admin/examples/continent/>`_, `mptt-tree <http://djangosuit.com/admin/examples/category/>`_ list and `tabular inlines <http://djangosuit.com/admin/examples/continent/9/>`_.
 * [Feature] `EnclosedInput widget <http://django-suit.readthedocs.org/en/develop/widgets.html#enclosedinput>`_ for Twitter Bootstrap appended/prepended inputs. `Example <http://djangosuit.com/admin/examples/city/5/>`_
@@ -143,7 +150,7 @@ v0.1.3 (2013-03-03)
 
 
 v0.1.2 (2013-02-27)
--------------------------------------------------------------
+-------------------
 
 * [Feature] Customizable menu, cross apps, custom links and menus
 * [Refactoring] Moved all static files to separate directory
@@ -152,7 +159,7 @@ v0.1.2 (2013-02-27)
 
 
 v0.1.1 (2013-02-25)
--------------------------------------------------------------
+-------------------
 
 * [Feature] Added link to admin home in error templates
 * [Feature] Config key SEARCH_URL now supports also absolute urls
@@ -160,6 +167,6 @@ v0.1.1 (2013-02-25)
 
 
 v0.1.0 (2013-02-24)
--------------------------------------------------------------
+-------------------
 
 * First stable version released
