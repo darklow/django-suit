@@ -106,8 +106,10 @@
         // Filters out unchanged selects and sortable field itself
         function filter_unchanged(i, input) {
             if (input.type == 'select-one' || input.type == 'select-multiple') {
-                for (var j = 0; j < input.options.length; j++) {
-                    if (input.options[j].selected == input.options[j].defaultSelected) {
+                var options = input.options, option;
+                for (var j = 0; j < options.length; j++) {
+                    option = options[j];
+                    if (option.selected && option.selected == option.defaultSelected) {
                         return false;
                     }
                 }
@@ -130,9 +132,12 @@
                     var fieldset_id = $input.attr('name').split('-')[0];
                     // Check if any of new dynamic block values has been added
                     var $set_block = $input.closest('.dynamic-' + fieldset_id);
+                    var $changed_fields = $set_block.find(":input[value!=''][type!='hidden']").filter(filter_unchanged);
                     if (!$set_block.length
                         || $set_block.hasClass('has_original')
-                        || $set_block.find(":input[value!=''][type!='hidden']").filter(filter_unchanged).serialize()) {
+                        || $changed_fields.serialize()
+                        // Since jQuery serialize() doesn't include type=file do additional check
+                        || $changed_fields.find(":input[type='file']").addBack().length) {
                         value = i++;
                         $input.val(value);
                     }
