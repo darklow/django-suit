@@ -215,6 +215,7 @@ Besides Django admin, Django Suit supports following third-party apps:
 * `django-reversion <https://github.com/etianen/django-reversion>`_ - `Example <http://djangosuit.com/admin/examples/reversioneditem/>`_
 * `django-import-export <https://github.com/bmihelac/django-import-export>`_ - `Example <http://djangosuit.com/admin/examples/importexportitem/>`_
 
+N.B. If you are using third-party apps with special admin support (like django-cms) you also need to add ``'suit'`` before ``'cms'`` in the list of ```INSTALLED_APPS``` in your ```settings.py``` file.
 
 Suggest popular apps you would like to be supported `here <https://github.com/darklow/django-suit/issues/3>`_
 
