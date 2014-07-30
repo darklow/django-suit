@@ -186,13 +186,19 @@
     $(function () {
 
         // Fixed submit buttons
-        $('.inner-right-column').suit_fixed();
+        // $('.inner-right-column').suit_fixed();
 
         // Show link to related item after Select
         $('.linked-select').suit_linked_select();
 
         // Handle change list filter null values
         $('.search-filter').suit_search_filters();
+
+        // Menu toggle
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
 
     });
 

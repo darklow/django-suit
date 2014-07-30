@@ -1,0 +1,11 @@
+@header-height: 50px;
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: @header-height;
+}
+
+/* Hide default border to remove 1px line. */
+.navbar-fixed-top {
+    border: 0;
+}
