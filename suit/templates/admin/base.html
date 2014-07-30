@@ -1,0 +1,121 @@
+{% load admin_static suit_tags %}{% load firstof from future %}<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    {#<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />#}
+    <link rel="stylesheet" type="text/css" href="{% static 'suit/css/suit.css' %}" media="all">
+    {% block extrastyle %}{% endblock %}
+    {% if LANGUAGE_BIDI %}
+        <link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
+    <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
+    <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
+    {% block extrahead %}{% endblock %}
+    {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE"/>{% endblock %}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+ <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+ <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+{% load i18n %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %} suit-theme-{{ 'THEME'|suit_conf }} suit-menu-{{ 'MENU_POSITION'|suit_conf }}">
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {% block branding %}{{ 'ADMIN_NAME'|suit_conf }}{% endblock %}
+        </div>
+        <div class="navbar-collapse collapse">
+            {% block nav-global %}{% endblock %}
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_active and user.is_staff %}
+                    <li class="dropdown" id="user-tools">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            {% block welcome-msg %}
+                                {% trans 'Welcome,' %} {% firstof user.get_short_name user.get_username %}{% endblock %}
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            {% block userlinks %}
+                                {% url 'django-admindocs-docroot' as docsroot %}
+                                {% if docsroot %}
+                                    <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
+                                {% endif %}
+                                {% if user.has_usable_password %}
+                                    <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                                {% endif %}
+                                <li class="divider"></li>
+                                <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
+                            {% endblock %}
+                        </ul>
+                    </li>
+                {% endif %}
+                {#                <li><a href="#">Logout</a></li>#}
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        {% block content-left %}
+{#            {% include 'suit/menu.html' %}#}
+        {% endblock %}
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <!-- Django admin content -->
+                    <div id="content" class="{% block coltype %}colM{% endblock %}">
+                        {% block pretitle %}{% endblock %}
+                        {% block content_title %}{% if title %}
+                            <h1>{{ title }}</h1>{% endif %}{% endblock %}
+                        {% block content %}
+                            {% block object-tools %}{% endblock %}
+                            {{ content }}
+                        {% endblock %}
+                        {% block sidebar %}{% endblock %}
+                        <br class="clear"/>
+                    </div>
+                    <!-- END  Django admin content -->
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">var Suit = { $: $.noConflict() }; if (!$) $ = Suit.$; </script>
+<script src="{% static 'suit/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'suit/js/suit.js' %}"></script>
+
+
+</body>
+</html>

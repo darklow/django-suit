@@ -1,0 +1,13 @@
+{% extends "admin/base.html" %}
+{% load suit_tags %}
+{% load firstof from future %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+    <div id="site-name">
+        <a href="{% url 'admin:index' %}" class="navbar-brand">{% firstof  'ADMIN_NAME'|suit_conf site_header _('Django administration') %}</a>
+    </div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
