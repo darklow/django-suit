@@ -1,5 +1,3 @@
-@header-height: 50px;
-
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: @header-height;
@@ -8,4 +6,25 @@ body {
 /* Hide default border to remove 1px line. */
 .navbar-fixed-top {
     border: 0;
+}
+
+.suit-menu-vertical {
+    .navbar-header {
+        background-color: lighten(@navbar-inverse-bg, 12%);
+        width: @vertical-menu-width;
+        .navbar-brand {
+            text-align: center;
+            float: none;
+            display: block;
+        }
+    }
+}
+
+
+@media (max-width: @grid-float-breakpoint) {
+    .suit-menu-vertical {
+        .navbar-header {
+            width: auto;
+        }
+    }
 }

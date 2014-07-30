@@ -1,0 +1,30 @@
+{% load suit_tags %}
+<fieldset class="module aligned {{ fieldset.classes }}">
+    {% if fieldset.name %}
+        <h3>{{ fieldset.name }}
+            {% if fieldset.description %}
+                <small>{{ fieldset.description|safe }}</small>
+            {% endif %}
+        </h3>
+    {% endif %}
+
+    {% for line in fieldset %}
+        {% with is_single=line.fields|length_is:'1' %}
+            {% if not is_single %}
+                <div class="form-inline">
+            {% endif %}
+        {% for field in line %}
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">{{ field.label_tag }}</label>
+
+                <div class="col-sm-10">
+                    {{ field.field }}
+                </div>
+            </div>
+        {% endfor %}
+        {% if not is_single %}
+            </div>
+        {% endif %}
+        {% endwith %}
+    {% endfor %}
+</fieldset>

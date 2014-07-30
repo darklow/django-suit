@@ -27,6 +27,7 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
+        <div class="row">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -65,7 +66,7 @@
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="Search...">
             </form>
-        </div>
+        </div></div>
     </div>
 </div>
 
@@ -74,7 +75,7 @@
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         {% block content-left %}
-{#            {% include 'suit/menu.html' %}#}
+            {% include 'suit/menu.html' %}
         {% endblock %}
     </div>
     <!-- /#sidebar-wrapper -->
@@ -84,6 +85,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
+                    {% if not request %}
+                        <div class="alert alert-danger" role="alert">
+
+                            You need to add
+                            <code>django.core.context_processors.request</code> to
+                            <code>TEMPLATE_CONTEXT_PROCESSORS</code>
+
+                            <p>See Django Suit
+                                <a href="http://django-suit.readthedocs.org/en/develop/#installation" target="_blank">Installation notes</a>
+                            </p>
+                        </div>
+                    {% endif %}
+
 
                     <!-- Django admin content -->
                     <div id="content" class="{% block coltype %}colM{% endblock %}">
