@@ -1,5 +1,0 @@
-{% for template, tab_position, tab in adminform.model_admin.suit_form_includes %}
-  {% if position == tab_position or position == 'bottom' and not tab_position %}
-    <div class="suit-include{% if tab %} suit-tab suit-tab-{{ tab }}{% endif %}">{% include template %}</div>
-  {% endif %}
-{% endfor %}
