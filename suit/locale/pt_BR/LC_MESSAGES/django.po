@@ -179,7 +179,7 @@ msgstr "Adicionar %(name)s"
 msgid "Please correct the error below."
 msgid_plural " Please correct the errors below."
 msgstr[0] "Por favor, corrija o erro abaixo."
-msgstr[1] "Por fabor, corrija os erros abaixo."
+msgstr[1] "Por favor, corrija os erros abaixo."
 
 #: templates/admin/change_list.html:110
 msgid "Nothing found"
