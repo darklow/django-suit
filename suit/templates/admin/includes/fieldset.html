@@ -1,4 +1,4 @@
-{% load suit_tags %}
+{% load suit_forms %}
 <fieldset class="module aligned {{ fieldset.classes }}">
     {% if fieldset.name %}
         <h3>{{ fieldset.name }}
@@ -10,21 +10,22 @@
 
     {% for line in fieldset %}
         {% with is_single=line.fields|length_is:'1' %}
-            {% if not is_single %}
-                <div class="form-inline">
-            {% endif %}
-        {% for field in line %}
-            <div class="form-group">
-                <label for="inputEmail3" class="col-sm-2 control-label">{{ field.label_tag }}</label>
+            {% for field in line %}
+                {% if is_single or forloop.counter0 == 0 %}
+                    <div class="form-group">
+                {% endif %}
 
-                <div class="col-sm-10">
-                    {{ field.field }}
+            <label for="inputEmail3" class="control-label {{ field.field|suit_form_label_class:fieldset }}">{{ field.label_tag }}</label>
+
+            <div class="{{ field.field|suit_form_field_class:fieldset }}">
+                {{ field.field|suit_form_field }}
+            </div>
+
+
+            {% if is_single or forloop.last %}
                 </div>
-            </div>
-        {% endfor %}
-        {% if not is_single %}
-            </div>
-        {% endif %}
+            {% endif %}
+            {% endfor %}
         {% endwith %}
     {% endfor %}
 </fieldset>

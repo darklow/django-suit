@@ -8,6 +8,7 @@ def default_config():
         'VERSION': VERSION,
 
         # configurable
+        'THEME': 'dark',
         'ADMIN_NAME': 'Django Suit',
         'HEADER_DATE_FORMAT': 'l, jS F Y',
         'HEADER_TIME_FORMAT': 'H:i',
@@ -18,11 +19,16 @@ def default_config():
 
         # menu
         'SEARCH_URL': '/admin/auth/user/',
+        'MENU_POSITION': 'vertical',
         'MENU_OPEN_FIRST_CHILD': True,
         'MENU_ICONS': {
             'auth': 'icon-lock',
             'sites': 'icon-leaf',
         },
+
+        # form
+        'FORM_SIZE': 'col-sm-2:col-sm-9',
+
         # 'MENU_EXCLUDE': ('auth.group',),
         # 'MENU': (
         #     'sites',

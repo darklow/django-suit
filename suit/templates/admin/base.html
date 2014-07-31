@@ -103,7 +103,7 @@
                     <div id="content" class="{% block coltype %}colM{% endblock %}">
                         {% block pretitle %}{% endblock %}
                         {% block content_title %}{% if title %}
-                            <h1>{{ title }}</h1>{% endif %}{% endblock %}
+                            <h1 class="page-header">{{ title }}</h1>{% endif %}{% endblock %}
                         {% block content %}
                             {% block object-tools %}{% endblock %}
                             {{ content }}
@@ -129,6 +129,7 @@
 <script type="text/javascript">var Suit = { $: $.noConflict() }; if (!$) $ = Suit.$; </script>
 <script src="{% static 'suit/bootstrap/dist/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'suit/js/suit.js' %}"></script>
+{% block extrajs %}{% endblock %}
 
 
 </body>
