@@ -2,7 +2,7 @@
 {% load i18n suit_menu %}
 {% load url from future %}
 
-<ul class="nav nav-pills nav-stacked">
+<ul class="nav nav-suit-menu nav-pills nav-stacked">
     {% block menu_home %}
         {% url 'admin:index' as index_url %}
         <li{% if index_url == request.path %} class="active"{% endif %}>
