@@ -72,13 +72,13 @@
 
 <div id="wrapper">
 
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
+    <!-- Menu -->
+    <div id="menu-wrapper">
         {% block content-left %}
             {% include 'suit/menu.html' %}
         {% endblock %}
     </div>
-    <!-- /#sidebar-wrapper -->
+    <!-- /#menu-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -87,11 +87,9 @@
                 <div class="col-lg-12">
                     {% if not request %}
                         <div class="alert alert-danger" role="alert">
-
                             You need to add
                             <code>django.core.context_processors.request</code> to
                             <code>TEMPLATE_CONTEXT_PROCESSORS</code>
-
                             <p>See Django Suit
                                 <a href="http://django-suit.readthedocs.org/en/develop/#installation" target="_blank">Installation notes</a>
                             </p>
