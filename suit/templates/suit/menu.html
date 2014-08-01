@@ -1,8 +1,9 @@
 {#{% load sitetree %}#}
-{% load i18n suit_menu %}
+{% load i18n suit_menu suit_tags %}
 {% load url from future %}
 
-<ul class="nav nav-suit-menu nav-pills nav-stacked">
+{% with menu_position='MENU_POSITION'|suit_conf %}
+<ul class="nav nav-suit-menu nav-pills{% if menu_position == 'vertical' %} nav-stacked {% endif %}">
     {% block menu_home %}
         {% url 'admin:index' as index_url %}
         <li{% if index_url == request.path %} class="active"{% endif %}>
@@ -32,3 +33,4 @@
         {% endfor %}
     {% endif %}
 </ul>
+{% endwith %}

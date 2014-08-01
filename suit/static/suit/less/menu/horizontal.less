@@ -1,0 +1,25 @@
+.suit-menu-horizontal {
+    #wrapper {
+        padding-left: 0;
+    }
+
+    #menu-wrapper {
+        background-color: @gray-lighter;
+    }
+    .nav-suit-menu {
+        > li {
+            &:hover {
+                .nav {
+                    display: block;
+                }
+            }
+        }
+        .nav {
+            z-index: @zindex-dropdown;
+            position: absolute;
+            display: none;
+            background-color: @gray-lighter;
+            min-width: 150px;
+        }
+    }
+}
