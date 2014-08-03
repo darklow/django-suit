@@ -63,7 +63,8 @@
             {% if has_add_permission %}
               <div class="object-tools">
                 {% block object-tools-items %}
-                  <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-success">
+                  {% url cl.opts|admin_urlname:'add' as add_url %}
+                  <a href="{% add_preserved_filters add_url %}{% if is_popup %}?_popup=1{% endif %}" class="btn btn-success">
                     <i class="icon-plus-sign icon-white"></i>&nbsp;
                     {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
                   </a>
