@@ -103,9 +103,13 @@
 
         });
 
-        // Filters out unchanged selects and sortable field itself
+        // Filters out unchanged checkboxes, selects and sortable field itself
         function filter_unchanged(i, input) {
-            if (input.type == 'select-one' || input.type == 'select-multiple') {
+            if (input.type == 'checkbox') {
+                if (input.defaultChecked == input.checked) {
+                    return false;
+                }
+            } else if (input.type == 'select-one' || input.type == 'select-multiple') {
                 var options = input.options, option;
                 for (var j = 0; j < options.length; j++) {
                     option = options[j];
