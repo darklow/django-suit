@@ -92,7 +92,7 @@
 
                 // Add arrows to header h3, move order input and remove order field row
                 $links_span.append($up_link).append($down_link);
-                $stacked_block.find('h3').append($links_span);
+                $stacked_block.find('h3').first().append($links_span);
                 $stacked_block.append($sortable);
                 $sortable_row.remove();
             } else {
