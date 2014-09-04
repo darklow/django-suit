@@ -1,6 +1,6 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_static admin_modify suit_tags admin_urls %}
-v{% load url from future %}
+{% load url from future %}
 
 {% block extrahead %}{{ block.super }}
   {% url 'admin:jsi18n' as jsi18nurl %}
@@ -103,9 +103,7 @@ v{% load url from future %}
                 </li>
                 {% if has_absolute_url %}
                   <li>
-                    <a href="{{ original.get_absolute_url }}"
-                       class="viewsitelink"><i class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}
-                    </a>
+                    <a href="{{ original.get_absolute_url }}" class="viewsitelink"><i class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}</a>
                   </li>
                 {% endif %}
 
