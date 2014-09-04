@@ -9,20 +9,18 @@ body {
 }
 
 .suit-menu-vertical {
-    .navbar-header {
-        background-color: lighten(@navbar-inverse-bg, 12%);
+    .navbar-brand {
+        background-color: @ui-color-dark;
         width: @vertical-menu-width;
-        .navbar-brand {
-            text-align: center;
-            float: none;
-            display: block;
-        }
+        text-align: center;
+        float: none;
+        display: block;
     }
 }
 
 @media (max-width: @grid-float-breakpoint) {
     .suit-menu-vertical {
-        .navbar-header {
+        .navbar-brand {
             width: auto;
         }
     }
