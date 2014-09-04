@@ -4,6 +4,14 @@ Changelog
 Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
 
 
+v0.2.10 (2014-09-04)
+--------------------
+
+* [Fix] Fixes `#257 <https://github.com/darklow/django-suit/pull/257>`_ Fix for django-filer>=0.9.6 [Thanks to @mkutgt72]
+* [Fix] Fixes `#266 <https://github.com/darklow/django-suit/pull/266>`_ Fixed issue where SortableGenericInlines would break whenever adding blank inline forms [Thanks to @sixthgear]
+* [Fix] Fixes `#270 <https://github.com/darklow/django-suit/pull/270>`_ Use get_absolute_url() if the object has_absolute_url is True [Thanks to @stvbdn]
+
+
 v0.2.9 (2014-06-20)
 -------------------
 
