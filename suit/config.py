@@ -60,6 +60,7 @@ def setup_filer():
     from suit.widgets import AutosizedTextarea
     from filer.admin.imageadmin import ImageAdminForm
     from filer.admin.fileadmin import FileAdminChangeFrom
+    from filer.admin import FolderAdmin
 
     def ensure_meta_widgets(meta_cls):
         if not hasattr(meta_cls, 'widgets'):
@@ -69,6 +70,8 @@ def setup_filer():
 
     ensure_meta_widgets(ImageAdminForm.Meta)
     ensure_meta_widgets(FileAdminChangeFrom.Meta)
+    FolderAdmin.actions_on_top = False
+    FolderAdmin.actions_on_bottom = True
 
 
 if 'filer' in settings.INSTALLED_APPS:
