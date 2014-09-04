@@ -103,9 +103,8 @@
                 </li>
                 {% if has_absolute_url %}
                   <li>
-                    <a href="../../../r/{{ content_type_id }}/{{ object_id }}/"
-                       class="viewsitelink"><i class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}
-                    </a></li>
+                    <a href="{{ original.get_absolute_url }}" class="viewsitelink"><i class="icon-eye-open icon-alpha75"></i>{% trans "View on site" %}</a>
+                  </li>
                 {% endif %}
 
                 {% if has_add_permission %}

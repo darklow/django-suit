@@ -59,7 +59,7 @@ Installation
         'django.contrib.admin',
     )
 
-  .. warning:: ``'suit'`` must be added before ``'django.contrib.admin'`` and if you are using third-party apps with special admin support (like django-cms) you also need to add ``'suit'`` before ``'cms'``.
+  .. important:: ``'suit'`` must be added before ``'django.contrib.admin'`` and if you are using third-party apps with special admin support (like django-cms) you also need to add ``'suit'`` before ``'cms'``.
 
 3. You also need to add ``'django.core.context_processors.request'`` to ``TEMPLATE_CONTEXT_PROCESSORS`` setting in your Django project ``settings.py`` file.::
 
@@ -214,9 +214,9 @@ Besides Django admin, Django Suit supports following third-party apps:
 * `django-mptt <https://github.com/django-mptt/django-mptt/>`_ - `Example <http://djangosuit.com/admin/examples/category/>`_
 * `django-reversion <https://github.com/etianen/django-reversion>`_ - `Example <http://djangosuit.com/admin/examples/reversioneditem/>`_
 * `django-import-export <https://github.com/bmihelac/django-import-export>`_ - `Example <http://djangosuit.com/admin/examples/importexportitem/>`_
+* Suggest other popular apps you would like to be supported `here <https://github.com/darklow/django-suit/issues/3>`_
 
-
-Suggest popular apps you would like to be supported `here <https://github.com/darklow/django-suit/issues/3>`_
+.. important:: If you are using third-party apps with special admin support (like django-cms) you also need to add ``'suit'`` before ``'cms'`` in the list of ```INSTALLED_APPS``` in your ```settings.py``` file.
 
 
 Contributing

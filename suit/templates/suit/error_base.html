@@ -89,7 +89,7 @@
           if (document.referrer != '') {
               document.write('<a href="javascript:history.back()" class="btn btn-info btn-large">Go back</a> ');
           }
-          {% if request and request.user %}
+          {% if request and user.is_authenticated and user.is_staff %}
           document.write('<a href="{% url 'admin:index' %}" class="btn btn-large">Go to admin home</a> ');
           {% endif %}
       }
