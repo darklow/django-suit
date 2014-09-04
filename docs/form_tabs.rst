@@ -34,14 +34,14 @@ Example
 
         fieldsets = [
             (None, {
-                'classes': ('suit-tab suit-tab-general',),
+                'classes': ('suit-tab', 'suit-tab-general',),
                 'fields': ['name', 'continent',]
             }),
             ('Statistics', {
-                'classes': ('suit-tab suit-tab-general',),
+                'classes': ('suit-tab', 'suit-tab-general',),
                 'fields': ['area', 'population']}),
             ('Architecture', {
-                'classes': ('suit-tab suit-tab-cities',),
+                'classes': ('suit-tab', 'suit-tab-cities',),
                 'fields': ['architecture']}),
         ]
 
