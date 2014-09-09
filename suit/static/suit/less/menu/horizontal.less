@@ -1,14 +1,43 @@
 .suit-menu-horizontal {
-    #wrapper {
-        padding-left: 0;
-    }
-
-    #menu-wrapper {
-        background-color: @gray-lighter;
-    }
+    // Local variables
+    @nav-bg-color: @ui-color-dark;
+    @nav-border-color: @ui-color-darker;
+    @nav-link-color: @gray-light;
+    @nav-link-active-color: @gray-lightest;
+    @nav-link-active-border-color: @orange;
+    @nav-link-hover-bg-color: darken(@ui-color-dark, 5%);
     .nav-suit-menu {
+        padding: 0 @outer-gutter;
+        background-color: @ui-color-dark;
+        li {
+            margin: 0;
+        }
         > li {
+            border-left: 1px solid @nav-border-color;
+            a {
+                border-radius: 0;
+                color: @nav-link-color;
+                padding: 10px 20px;
+                &:hover {
+                    color: @nav-link-active-color;
+                    background-color: @nav-link-hover-bg-color;
+                }
+            }
+            &:last-child {
+                border-right: 1px solid @nav-border-color;
+            }
+            &.active {
+                > a, > a:hover, &:hover > a {
+                    background-color: #fff;
+                    color: @text-color;
+                    border-top: 3px solid @nav-link-active-border-color;
+                    padding-top: 7px;
+                }
+            }
             &:hover {
+                > a {
+                    background-color: @nav-link-hover-bg-color;
+                }
                 .nav {
                     display: block;
                 }
@@ -16,10 +45,24 @@
         }
         .nav {
             z-index: @zindex-dropdown;
+            background-color: @nav-link-hover-bg-color;
             position: absolute;
             display: none;
-            background-color: @gray-lighter;
             min-width: 150px;
+            li {
+                border-bottom: 1px solid @nav-border-color;
+                &.active {
+                    a {
+                        color: @nav-link-active-color;
+                        background-color: darken(@nav-link-hover-bg-color, 5%);
+                    }
+                }
+            }
+            a {
+                &:hover {
+                    background-color: darken(@nav-link-hover-bg-color, 2%);
+                }
+            }
         }
     }
 }

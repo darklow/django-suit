@@ -6,17 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
     {#<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />#}
+    <link rel="stylesheet" type="text/css" href="{% static 'suit/bootstrap/dist/css/bootstrap.css' %}" media="all">
     <link rel="stylesheet" type="text/css" href="{% static 'suit/css/suit.css' %}" media="all">
     {% block extrastyle %}{% endblock %}
     {% if LANGUAGE_BIDI %}
-        <link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
+        <link rel="stylesheet" type="text/css" href="
+            {% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
     <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
     <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript">var Suit = { $: $.noConflict() }; if (!$) $ = Suit.$; </script>
+    <script type="text/javascript">var Suit = { $: $.noConflict() };
+    if (!$) $ = Suit.$; </script>
     <script src="{% static 'suit/bootstrap/dist/js/bootstrap.min.js' %}"></script>
     {% block extrahead %}{% endblock %}
-    {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE"/>{% endblock %}
+    {% block blockbots %}
+        <meta name="robots" content="NONE,NOARCHIVE"/>{% endblock %}
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -28,7 +32,7 @@
 
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %} suit-theme-{{ 'THEME'|suit_conf }} suit-menu-{{ 'MENU_POSITION'|suit_conf }}">
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse navbar-suit-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -66,7 +70,10 @@
                 {#                <li><a href="#">Logout</a></li>#}
             </ul>
             <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" id="inputWarning2" placeholder="Search...">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
             </form>
         </div>
     </div>
@@ -92,6 +99,7 @@
                             You need to add
                             <code>django.core.context_processors.request</code> to
                             <code>TEMPLATE_CONTEXT_PROCESSORS</code>
+
                             <p>See Django Suit
                                 <a href="http://django-suit.readthedocs.org/en/develop/#installation" target="_blank">Installation notes</a>
                             </p>
