@@ -19,3 +19,14 @@ class NoDbTestRunner(DjangoTestSuiteRunner):
     def teardown_databases(self, *args):
         """Overrides DjangoTestSuiteRunner"""
         pass
+
+
+try:
+    # Django 1.7+
+    from ddjango.test.runner import DiscoverRunner as DjangoTestSuiteRunner
+except ImportError:
+    from django.test.simple import DjangoTestSuiteRunner
+
+
+class SuitTestRunner(DjangoTestSuiteRunner):
+    pass

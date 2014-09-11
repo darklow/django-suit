@@ -5,7 +5,9 @@ from suit.templatetags.suit_list import paginator_number, paginator_info, \
     pagination, suit_list_filter_select, headers_handler, dict_to_attrs, \
     result_row_attrs, cells_handler
 from suit.tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
-from suit.tests.models import Album, Book
+from suit.tests.models import Album, Book, test_app_label
+
+app_label = test_app_label()
 
 
 class ModelAdminMock(object):
@@ -27,7 +29,7 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
     book = None
 
     def get_changelist(self):
-        self.get_response(reverse('admin:tests_book_changelist'))
+        self.get_response(reverse('admin:%s_book_changelist' % app_label))
         self.changelist = self.response.context_data['cl']
 
     def setUp(self):
@@ -120,7 +122,7 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
 
         # A bit more verbose and manual, as this is the only test against album
         # changelist
-        self.get_response(reverse('admin:tests_album_changelist'))
+        self.get_response(reverse('admin:%s_album_changelist' % app_label))
         changelist = self.response.context_data['cl']
 
         context = {'request': 'dummy'}
@@ -136,10 +138,10 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
              '<td><input class=""></td>'],
         ]
         result = [['<td data="1" class="col-action_checkbox"></td>',
-                   '<td data="1" class="test"></th>',
+                   '<td data="1" class="test"></td>',
                    '<td data="1" class="col-order"><input class=""></td>'],
                   ['<td data="2" class="col-action_checkbox"></td>',
-                   '<td data="2" class="test"></th>',
+                   '<td data="2" class="test"></td>',
                    '<td data="2" class="col-order"><input class=""></td>']]
         cl = ChangeListMock()
         result = cells_handler(results, cl)
@@ -147,7 +149,9 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         self.assertTrue('data="1"' in result[0][1])
         self.assertTrue('data="1"' in result[0][2])
         self.assertTrue('class="col-action_checkbox"' in result[0][0])
-        self.assertTrue('class="test"' in result[0][1])
+        # Django 1.6 adds col-NAME class automatically
+        self.assertTrue('class="test"' in result[0][1]
+                        or 'class="col-name test"' in result[0][1])
         self.assertTrue('class="col-order"' in result[0][2])
 
     def test_suit_list_cells_handler_by_response(self):
@@ -161,5 +165,5 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
         results = result_list(cl)['results']
         result_cells = cells_handler(results, cl)
         self.assertTrue(
-            'class="suit_cell_attr_class-id-sky-1"' in result_cells[0][1])
-        self.assertTrue(' data="1"' in result_cells[0][1])
+            'class="suit_cell_attr_class-name-sky-1' in result_cells[0][-1])
+        self.assertTrue(' data="1"' in result_cells[0][-1])

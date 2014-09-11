@@ -7,7 +7,7 @@
     <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
       <span class="divider">&raquo;</span></li>
     <li>
-      <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ app_label|capfirst }}</a>
+      <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{% firstof opts.app_config.verbose_name app_label|capfirst|escape %}</a>
       <span class="divider">&raquo;</span></li>
     <li>
       <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>

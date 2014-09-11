@@ -4,6 +4,12 @@ Changelog
 Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
 
 
+v0.2.11 (2014-09-11)
+--------------------
+
+* [Fix] Django 1.7 compatibility fixes
+
+
 v0.2.10 (2014-09-04)
 --------------------
 

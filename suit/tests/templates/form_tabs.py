@@ -5,7 +5,9 @@ from django.template.base import TemplateDoesNotExist
 from django.utils.translation import ugettext
 from suit.templatetags.suit_menu import get_menu
 from suit.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
-from suit.tests.models import Book, BookAdmin
+from suit.tests.models import Book, BookAdmin, test_app_label
+
+app_label = test_app_label()
 
 
 class TabbedBookAdmin(BookAdmin):
@@ -21,7 +23,7 @@ admin.site.register(Book, TabbedBookAdmin)
 class FormTabsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
     def setUp(self):
         self.login_superuser()
-        self.url = reverse('admin:tests_book_add')
+        self.url = reverse('admin:%s_book_add' % app_label)
         self.get_response(self.url)
 
     def test_tabs_appearance(self):

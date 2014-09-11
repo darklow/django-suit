@@ -267,7 +267,7 @@ def cells_handler(results, cl):
                     td_pattern) else th_pattern
 
                 result[col] = mark_safe(
-                    item.replace(cell_pattern,
+                    result[col].replace(cell_pattern,
                                  td_pattern + dict_to_attrs(attrs)))
 
     return results

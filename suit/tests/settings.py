@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
 
     'suit',
+    'suit.tests.templatetags',
     'django.contrib.admin',
 )
 
@@ -59,3 +60,4 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
 )
 
 SUIT_CONFIG = {}
+TEST_RUNNER = 'suit.tests.SuitTestRunner'

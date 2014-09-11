@@ -6,6 +6,13 @@ from django.db.models.loading import load_app
 from django.test import TestCase
 from random import randint
 
+# Django 1.7 compatiblity
+try:
+    import django
+
+    django.setup()
+except AttributeError:
+    pass
 
 class UserTestCaseMixin(TestCase):
     superuser = None

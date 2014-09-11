@@ -10,6 +10,7 @@ env:
   - DJANGO=1.5
   - DJANGO=1.5.5
   - DJANGO=1.6.5
+  - DJANGO=1.7
 before_install:
   - export DJANGO_SETTINGS_MODULE=suit.tests.settings
 install:
@@ -26,6 +27,8 @@ matrix:
       env: DJANGO=1.4.5
     - python: 2.6
       env: DJANGO=1.6.5
+    - python: 2.6
+      env: DJANGO=1.7
 
     # Fails. Django issue #19944
     # https://code.djangoproject.com/ticket/19944

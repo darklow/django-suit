@@ -6,11 +6,11 @@
 <div class="breadcrumb">
   <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
     <span class="divider">&raquo;</span></li>
-    <li><a href="{% url 'admin:app_list' app_label=app_label %}">{{ app_label|capfirst|escape }}</a>
+    <li><a href="{% url 'admin:app_list' app_label=opts.app_label %}">{% firstof opts.app_config.verbose_name app_label|capfirst|escape %}</a>
       <span class="divider">&raquo;</span></li>
     <li><a href="{% url opts|admin_urlname:'changelist' %}">{{ module_name }}</a>
       <span class="divider">&raquo;</span></li>
-    <li><a href="{% url opts|admin_urlname:'changelist' %}{{ object.pk }}">{{ object|truncatewords:"18" }}</a>
+    <li><a href="{% url opts|admin_urlname:'change' object.pk %}">{{ object|truncatewords:"18" }}</a>
       <span class="divider">&raquo;</span></li>
     <li class="active">{% trans 'History' %}</li>
 </div>
