@@ -1,6 +1,7 @@
 import datetime
 from django.conf import settings
 from django.test import TestCase
+from django.utils.encoding import python_2_unicode_compatible
 from suit import utils
 from suit.templatetags.suit_tags import suit_conf, suit_date, suit_time, \
     admin_url, field_contents_foreign_linked, suit_bc, suit_bc_value
@@ -9,18 +10,20 @@ from django.contrib import admin
 from django.contrib.admin.helpers import AdminReadonlyField
 
 
+@python_2_unicode_compatible
 class Country(models.Model):
     name = models.CharField(max_length=64)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
+@python_2_unicode_compatible
 class City(models.Model):
     name = models.CharField(max_length=64)
     country = models.ForeignKey(Country)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
