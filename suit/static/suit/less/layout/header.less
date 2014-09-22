@@ -1,8 +1,3 @@
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-    //    padding-top: @header-height;
-}
-
 /* Navbar */
 .navbar-suit-top {
     min-height: @header-height;
@@ -22,6 +17,10 @@ body {
         color: @gray-lighter;
         border-radius: @border-radius-base;
         border: 0;
+    }
+    .form-control, .form-control-feedback {
+        height: 32px;
+        line-height: 32px;
     }
     .form-group {
         .form-control-feedback {
@@ -84,6 +83,11 @@ body {
         .navbar-brand {
             width: auto;
             letter-spacing: 0;
+        }
+    }
+    .suit-menu-horizontal {
+        .navbar-suit-top > .container-fluid {
+//            padding-left: 15px;
         }
     }
 }

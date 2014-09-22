@@ -34,6 +34,16 @@ def get_menu(context, request):
     return Menu(context, request, app_list).get_app_list()
 
 
+
+@register.assignment_tag
+def get_sub_menu(app_list):
+    """
+    :type app_list: list
+    """
+    for app in app_list:
+        if app['is_active'] and app['models']:
+            return app['models']
+
 def get_admin_site(current_app):
     """
     Method tries to get actual admin.site class, if any custom admin sites

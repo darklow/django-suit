@@ -54,6 +54,9 @@
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             {% block userlinks %}
+                                {% if site_url %}
+                                    <a href="{{ site_url }}">{% trans 'View site' %}</a> /
+                                {% endif %}
                                 {% url 'django-admindocs-docroot' as docsroot %}
                                 {% if docsroot %}
                                     <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
@@ -67,7 +70,7 @@
                         </ul>
                     </li>
                 {% endif %}
-                {#                <li><a href="#">Logout</a></li>#}
+                <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
             </ul>
             <form class="navbar-form navbar-right">
                 <div class="form-group has-feedback">
@@ -119,8 +122,10 @@
                         {% block sidebar %}{% endblock %}
                         <br class="clear"/>
                     </div>
+
                     <!-- END  Django admin content -->
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    {#                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>#}
+
                 </div>
             </div>
         </div>
@@ -129,6 +134,39 @@
 
 </div>
 <!-- /#wrapper -->
+
+<div class="footer">
+    <div class="container-fluid">
+        {% block footer %}
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 tools">
+                    {% block footer_links %}
+                        <a href="http://djangosuit.com/support/" target="_blank"><span class="glyphicon glyphicon-question-sign"></span>Support</a>
+                        <a href="http://djangosuit.com/pricing/" target="_blank"><span class="glyphicon glyphicon-bookmark"></span>Licence</a>
+                        <a href="http://github.com/darklow/django-suit/issues" target="_blank"><span class="glyphicon glyphicon-comment"></span>Report a bug</a>
+                    {% endblock %}
+                </div>
+                <div class="col-xs-12 col-sm-4 branding">
+                    {% block footer_branding %}
+                        {% with 'ADMIN_NAME'|suit_conf as admin_name %}
+                            {{ admin_name }}
+                            {% if admin_name == 'Django Suit' %}
+                                v{{ 'VERSION'|suit_conf }}
+                            {% endif %}
+                        {% endwith %}
+                    {% endblock %}
+                </div>
+                <div class="col-xs-12 col-sm-4 copyright">
+                    {% block copyright %}
+                        Copyright &copy; 2013 DjangoSuit.com
+                        <br>Developed by
+                        <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+</div>
 
 <script src="{% static 'suit/js/suit.js' %}"></script>
 {% block extrajs %}{% endblock %}

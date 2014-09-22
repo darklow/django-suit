@@ -1,0 +1,39 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-bottom: @footer-height;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: @footer-height;
+    background-color: #e5e5e5;
+    .white-shadow;
+    .container-fluid {
+        font-size: 11px;
+        padding-top: 15px;
+        padding-left: @outer-gutter;
+        padding-right: @outer-gutter;
+    }
+    .branding {
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    .copyright {
+        text-align: right;
+    }
+    .tools {
+        a {
+            display: inline-block;
+            margin-right: 10px;
+            .glyphicon {
+                color: @gray-dark;
+                margin-right: 5px;
+            }
+        }
+    }
+}
