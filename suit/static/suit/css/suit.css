@@ -2,7 +2,11 @@
 .white-shadow{text-shadow:0 1px rgba(255,255,255,0.3)}
 .white-shadow-max{text-shadow:0 1px rgba(255,255,255,0.7)}
 body{background-color:#f5f5f5}
-.page-header{margin:30px 0 40px;font-size:22px}
+.page-header{margin:30px 0 40px;font-size:20px;display:none}
+.breadcrumb{background-color:#fff;margin:20px 0;padding:6px 12px;border-radius:2px;font-size:13px}
+h6{text-transform:uppercase}
+.btn{padding:4px 12px;box-shadow:inset 1px 1px 0 rgba(255,255,255,0.2)}.btn .glyphicon{font-size:12px}
+.form-control{padding:4px 12px;height:30px}
 .navbar-suit-top{min-height:80px;border:0;border-radius:0;margin:0}.suit-menu-horizontal .navbar-suit-top>.container-fluid{margin-top:12px}
 .navbar-suit-top .navbar-form.navbar-right{margin-right:0}
 .navbar-suit-top .form-control{background-color:#181a1c;color:#b3bec3;border-radius:2px;border:0}
@@ -35,5 +39,7 @@ body{margin-bottom:60px}
 .suit-menu-horizontal .nav-suit-menu>li:hover .nav{display:block}
 .suit-menu-horizontal .nav-suit-menu .nav{z-index:1000;background-color:#3c4045;position:absolute;display:none;min-width:150px}.suit-menu-horizontal .nav-suit-menu .nav li{border-bottom:1px solid #303337}.suit-menu-horizontal .nav-suit-menu .nav li.active a{color:#cfd7da;background-color:#303337}
 .suit-menu-horizontal .nav-suit-menu .nav a{padding-top:8px;padding-bottom:8px}.suit-menu-horizontal .nav-suit-menu .nav a:hover{background-color:#373b3f}
-.nav-suit-sub-menu{background-color:#fff;box-shadow:0 0 3px 1px rgba(0,0,0,0.1);border:0;padding:0 40px}.nav-suit-sub-menu>li a{font-size:13px;line-height:19px;border-radius:0;padding:11px 12px 9px;color:#1b1d21}.nav-suit-sub-menu>li a:hover{background-color:inherit;text-decoration:underline}
+.nav-suit-sub-menu{background-color:#fff;box-shadow:0 0 3px 1px rgba(0,0,0,0.1);border:0;padding:0 40px}.nav-suit-sub-menu>li a{font-size:13px;line-height:19px;border-radius:0;padding:11px 12px 9px}.nav-suit-sub-menu>li a:hover{background-color:inherit;text-decoration:underline}
 .nav-suit-sub-menu>li.active>a{background-color:inherit;color:#f5a623;font-weight:bold}.nav-suit-sub-menu>li.active>a:hover{background-color:inherit;color:#f5a623}
+.breadcrumb .active{color:#555}
+.search-container{margin-bottom:15px}.search-container .btn-submit{margin-left:10px}

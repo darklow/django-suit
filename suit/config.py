@@ -37,8 +37,9 @@ def default_config():
         #     {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
         # ),
 
-        # misc
-        'LIST_PER_PAGE': 20
+        # list
+        'LIST_PER_PAGE': 20,
+        'LIST_FILTERS_POSITION': 'right',
     }
 
 
