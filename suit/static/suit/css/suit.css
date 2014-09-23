@@ -1,12 +1,13 @@
 
 .white-shadow{text-shadow:0 1px rgba(255,255,255,0.3)}
 .white-shadow-max{text-shadow:0 1px rgba(255,255,255,0.7)}
+.form-control-mixin{display:block;width:100%;height:30px;padding:4px 8px;font-size:14px;line-height:1.428571429;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:2px;-webkit-transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s}.form-control-mixin:focus{border-color:#66afe9;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6)}
+.form-control{height:30px;padding:4px 8px}
 body{background-color:#eff0f1}
 .page-header{margin:30px 0 40px;font-size:20px;display:none}
 .breadcrumb{background-color:#fff;margin:20px 0;padding:6px 12px;border-radius:2px;font-size:13px}
 .white-inset-shadow{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.2)}
 .btn{padding:4px 12px;box-shadow:inset 1px 1px 0 rgba(255,255,255,0.2)}.btn .glyphicon{font-size:12px}
-.form-control{padding:4px 8px;height:30px}
 .btn-info{color:#fff;background-color:#46acca;border-color:#37a1c0}.btn-info:hover,.btn-info:focus,.btn-info:active,.btn-info.active,.open>.dropdown-toggle.btn-info{color:#fff;background-color:#3190ac;border-color:#297990}
 .btn-info:active,.btn-info.active,.open>.dropdown-toggle.btn-info{background-image:none}
 .btn-info.disabled,.btn-info[disabled],fieldset[disabled] .btn-info,.btn-info.disabled:hover,.btn-info[disabled]:hover,fieldset[disabled] .btn-info:hover,.btn-info.disabled:focus,.btn-info[disabled]:focus,fieldset[disabled] .btn-info:focus,.btn-info.disabled:active,.btn-info[disabled]:active,fieldset[disabled] .btn-info:active,.btn-info.disabled.active,.btn-info[disabled].active,fieldset[disabled] .btn-info.active{background-color:#46acca;border-color:#37a1c0}
@@ -65,6 +66,15 @@ body{margin-bottom:60px}
 #changelist-filter .panel ul li:last-child a{padding-bottom:0}
 #changelist-filter .panel ul li a,#changelist-filter .panel ul li:first-child a,#changelist-filter .panel ul li.selected:first-child a{margin-left:20px;border-left:0;padding-left:0}
 #changelist-filter .panel ul li.selected a{margin-left:0;font-weight:bold;color:#333;border-left:3px solid #46acca;padding-left:17px}
+#changelist-form #action-toggle{display:none}
+#changelist-form .actions{font-size:12px}#changelist-form .actions .action-label{display:none}
+#changelist-form .actions span.all,#changelist-form .actions span.action-counter,#changelist-form .actions span.clear,#changelist-form .actions span.question,#changelist-form .actions span.action-label{display:none}
+#changelist-form .actions select{display:block;width:100%;height:30px;padding:4px 8px;font-size:14px;line-height:1.428571429;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:2px;-webkit-transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s, box-shadow ease-in-out .15s}#changelist-form .actions select:focus{border-color:#66afe9;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6)}
+#changelist-form .actions .btn{vertical-align:inherit;margin-right:10px}
+.paginator{margin-top:15px}.paginator .pagination{margin:0 15px 0 0;float:left}
+.paginator .pagination-info{padding:7px 0 0 0;color:#777;font-size:12px}
+.pagination>li>a{padding:4px 11px}
+.pagination>li.active>a{background-color:#46acca;box-shadow:inset 1px 1px 0 rgba(255,255,255,0.2);border-color:#37a1c0}.pagination>li.active>a:hover{background-color:#46acca}
 .table-primary{border-color:#ccc;border:0}.table-primary .action-checkbox-column{width:40px}
 .table-primary>thead>tr>th{box-shadow:inset 1px 0 0 rgba(255,255,255,0.2);padding:7px 10px 6px;background-color:#6e7277;border:0;font-weight:normal}
 .table-primary>thead>tr>th,.table-primary>thead>tr .text,.table-primary>thead>tr a{color:#fff}

@@ -79,7 +79,7 @@
         </div>
         {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
 
-        <form id="changelist-form" action="" method="post"
+        <form id="changelist-form" action="" method="post" class="form-horizontal"
           {% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>{% csrf_token %}
           {% if cl.formset %}
             <div>{{ cl.formset.management_form }}</div>
