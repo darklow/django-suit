@@ -57,7 +57,7 @@
     {% endif %}
 
     <div class="row">
-      <div class="module{% if cl.has_filters %} col-xs-10 filtered{% else %} col-xs-12{% endif %}" id="changelist">
+      <div class="module{% if cl.has_filters %} col-sm-8 col-md-10 filtered{% else %} col-xs-12{% endif %}" id="changelist">
 
         <div class="search-container">
           {% block object-tools %}
@@ -96,7 +96,7 @@
 
       {% block filters %}
         {% if cl.has_filters %}
-          <div class="col-xs-2" id="changelist-filter">
+          <div class="col-sm-4 col-md-2" id="changelist-filter">
             <h3>{% trans 'Filter' %}</h3>
             {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
           </div>

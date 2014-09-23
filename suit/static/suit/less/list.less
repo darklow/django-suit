@@ -1,8 +1,9 @@
 .search-container {
     //    overflow: auto;
     margin-bottom: 20px;
+    font-size: 12px;
     .btn-submit {
-        margin-left: 10px;
+        margin: 0 20px 0 10px;
     }
 }
 #content-main {
@@ -39,17 +40,16 @@
             }
             &.selected {
                 a {
-                    margin-left: 0;
+                    margin-left: -3px;
                     font-weight: bold;
                     color: @text-color;
                     border-left: 3px solid @active-color;
-                    padding-left: 17px;
+                    padding-left: 20px;
                 }
             }
         }
     }
 }
-
 #changelist-form {
     #action-toggle {
         display: none;
@@ -77,9 +77,12 @@
             margin-right: 10px;
         }
     }
+    .changelist-save {
+        margin-top: -35px;
+    }
 }
 .paginator {
-    margin-top: 15px;
+    margin: 15px 0;
     .pagination {
         margin: 0 15px 0 0;
         float: left;
