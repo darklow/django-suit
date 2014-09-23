@@ -1,5 +1,5 @@
 body {
-    background-color: @body-bg;
+    background-color: @body-bg-color;
 }
 
 .page-header {
@@ -18,19 +18,50 @@ body {
 }
 
 a {
-    //    color: #6591E7;
+    //        color: #3282c1;
 }
 h6 {
-    text-transform: uppercase;
+    //    text-transform: uppercase;
+}
+.white-inset-shadow {
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2);
 }
 .btn {
     padding: 4px 12px;
-    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2);
+    .white-inset-shadow;
     .glyphicon {
         font-size: 12px;
     }
 }
 .form-control {
-    padding: 4px 12px;
+    padding: 4px 8px;
     height: 30px;
+}
+
+// Buttons
+@btn-info-color: #fff;
+@btn-info-bg: @brand-info;
+@btn-info-border: darken(@btn-info-bg, 5%);
+.btn-info {
+    .button-variant(@btn-info-color; @btn-info-bg; @btn-info-border);
+}
+
+// - Primary
+@btn-primary-color: #fff;
+@btn-primary-bg: @brand-primary;
+@btn-primary-border: darken(@btn-primary-bg, 5%);
+.btn-primary {
+    .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+}
+
+// - Success
+@btn-success-color: #fff;
+@btn-success-bg: @brand-success;
+@btn-success-border: darken(@btn-success-bg, 5%);
+.btn-success {
+    .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+}
+
+.xfull {
+    display: none;
 }

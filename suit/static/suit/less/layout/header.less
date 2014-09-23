@@ -13,8 +13,8 @@
         margin-right: 0px;
     }
     .form-control {
-        background-color: darken(@ui-color-darker, 10%);
-        color: @gray-lighter;
+        background-color: @b-gray-darker;
+        color: @b-gray-lighter;
         border-radius: @border-radius-base;
         border: 0;
     }
@@ -24,19 +24,22 @@
     }
     .form-group {
         .form-control-feedback {
-            color: darken(@gray-light, 20%);
+            color: @b-gray;
         }
     }
 }
 
 .navbar-inverse {
-    background-color: @ui-color-darker;
+    background-color: @header-bg-color;
     .navbar-brand {
         letter-spacing: 1px;
-        color: @gray-light;
+        color: @b-gray-lighter;
         &:hover {
-            color: @gray-lightest;
+            color: @b-gray-lightest;
         }
+    }
+    .navbar-nav > li > a {
+        color: @b-gray-lighter;
     }
 }
 
@@ -65,7 +68,7 @@
 
 .suit-menu-vertical {
     .navbar-brand {
-        background-color: @ui-color-dark;
+        background-color: @b-gray-lighter;
         width: @vertical-menu-width;
         min-height: @header-height;
         text-align: center;
@@ -73,7 +76,7 @@
         display: block;
         padding-top: 30px;
         &:hover {
-            background-color: darken(@ui-color-dark, 3%);
+            background-color: @b-gray-lightest;
         }
     }
 }

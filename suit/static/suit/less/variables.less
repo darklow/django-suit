@@ -1,23 +1,62 @@
+// Gray tones
+@gray-darkest: lighten(#000, 5%);
+@gray-darker: lighten(#000, 13.5%);
+@gray-dark: lighten(#000, 20%);
+@gray: lighten(#000, 33.5%);
+@gray-light: lighten(#000, 46.7%);
+@gray-lighter: lighten(#000, 70%);
+@gray-lightest: lighten(#000, 93%);
+
+// Gray with bluish tone
+@blue-multiplier: #ecf5ff;
+@b-gray-dark: multiply(@gray-dark, @blue-multiplier);
+@b-gray-darker: multiply(@gray-darker, @blue-multiplier);
+@b-gray-darkest: multiply(@gray-darkest, @blue-multiplier);
+@b-gray: multiply(@gray, @blue-multiplier);
+@b-gray-light: multiply(@gray-light, @blue-multiplier);
+@b-gray-lighter: multiply(@gray-lighter, @blue-multiplier);
+@b-gray-lightest: multiply(@gray-lightest, @blue-multiplier);
+
+// Original BS3 colors
+@brand-primary: #428bca;
+@brand-success: #5cb85c;
+@brand-info: #5bc0de;
+@brand-warning: #f0ad4e;
+@brand-danger: #d9534f;
+
+// Active color
+@active-color: @brand-info;
+
+// Override BS3 colors
+//@brand-primary: #9ca3ae;
+//@brand-primary: @b-gray-lighter;
+@brand-success: #66bb55;
+@brand-info: #46acca;
+
+// Body
+@body-bg-color: #eff0f1;
+@body-text-color: #333;
+
+// Header
 @header-height: 80px;
+@header-bg-color: #373b3d;
+@header-bg-color: @b-gray-dark;
+
+// Horizontal nav
+@nav-bg-color: @b-gray;
+@nav-link-color: @b-gray-lighter;
+@nav-link-hover-color: #fff;
+@nav-link-active-border-color: @active-color;
+@nav-link-hover-bg-color: darken(@b-gray, 5%);
+
+// Footer
 @footer-height: 60px;
-@body-bg: #F5F5F5;
-@text-color: #1B1D21;
 
 @vertical-menu-width: 250px;
 @outer-gutter: 40px;
 
-@ui-color-darker: #303337;
-@ui-color-dark: lighten(@ui-color-darker, 10%);
-
-@gray-light: #96a6ad;
-@gray-lighter: lighten(@gray-light, 10%);
-@gray-lightest: lighten(@gray-lighter, 10%);
-//@icon-font-path: "../bootstrap/fonts/";
-
 @border-radius-base: 2px;
 @grid-float-breakpoint: 768px;
-
-@orange: #F5A623;
 
 .white-shadow { text-shadow: 0 1px rgba(255, 255, 255, 0.3); }
 .white-shadow-max { text-shadow: 0 1px rgba(255, 255, 255, 0.7); }

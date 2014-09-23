@@ -1,0 +1,65 @@
+@table-border-color: #eee;
+.table-primary {
+//    border-top-left-radius: 4px;
+//    border-top-right-radius: 4px;
+    border-color: #ccc;
+    border: 0;
+    .action-checkbox-column {
+        width: 40px;
+    }
+    & > thead > tr {
+        & > th {
+            box-shadow: inset 1px 0 0 rgba(255, 255, 255, .2);
+//            border-color: @table-border-color;
+            padding: 7px 10px 6px;
+//            background-color: #fff;
+            background-color: @b-gray-light;
+            border: 0;
+            font-weight: normal;
+            //            box-shadow: inset 1px 0 0 lighten(@brand-primary, 5%);
+        }
+        & > th, .text, a {
+            color: white;
+            //                        font-weight: normal;
+        }
+    }
+    & > thead > tr > th:first-child {
+//        border-top-left-radius: 4px;
+        border-left: 0;
+    }
+    & > thead > tr > th:last-child {
+//        border-top-right-radius: 4px;
+        border-right: 0;
+    }
+    & > tbody > tr {
+        &:nth-child(odd) {
+            & > td, & > th {
+                background-color: #f9f9f9;
+            }
+        }
+        & > td, & > th {
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 1);
+            border-color: @table-border-color;
+            padding: 5px 10px 4px 10px;
+            background-color: white;
+            border-left-width: 0;
+            border-right-width: 0;
+            //            border-right-color: #fff;
+            &:first-child {
+                //                border-left-color: #ddd;
+            }
+            &:last-child {
+                //                border-right-color: #ddd;
+            }
+        }
+    }
+    th, td {
+        font-size: 12px;
+        input {
+            margin: 0;
+        }
+    }
+    tbody th {
+        font-weight: normal;
+    }
+}

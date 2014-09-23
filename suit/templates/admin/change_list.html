@@ -97,7 +97,7 @@
       {% block filters %}
         {% if cl.has_filters %}
           <div class="col-xs-2" id="changelist-filter">
-            <h6>{% trans 'Filter' %}</h6>
+            <h3>{% trans 'Filter' %}</h3>
             {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}
           </div>
         {% endif %}

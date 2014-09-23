@@ -1,35 +1,29 @@
 .suit-menu-horizontal {
-    // Local variables
-    @nav-bg-color: @ui-color-dark;
-    @nav-border-color: @ui-color-darker;
-    @nav-link-color: @gray-light;
-    @nav-link-active-color: @gray-lightest;
-    @nav-link-active-border-color: @orange;
-    @nav-link-hover-bg-color: darken(@ui-color-dark, 5%);
     .nav-suit-menu {
         padding: 0 @outer-gutter;
-        background-color: @ui-color-dark;
+        background-color: @nav-bg-color;
         li {
             margin: 0;
         }
         > li {
-            border-left: 1px solid @nav-border-color;
+            border-left: 1px solid @header-bg-color;
             a {
                 border-radius: 0;
                 color: @nav-link-color;
                 padding: 10px 20px;
                 &:hover {
-                    color: @nav-link-active-color;
+                    color: @nav-link-hover-color;
                     background-color: @nav-link-hover-bg-color;
                 }
             }
             &:last-child {
-                border-right: 1px solid @nav-border-color;
+                border-right: 1px solid @header-bg-color;
             }
             &.active {
                 > a, > a:hover, &:hover > a {
+                    font-weight: bold;
                     background-color: #fff;
-                    color: @text-color;
+                    color: @b-gray-dark;
                     border-top: 3px solid @nav-link-active-border-color;
                     padding-top: 7px;
                 }
@@ -50,10 +44,10 @@
             display: none;
             min-width: 150px;
             li {
-                border-bottom: 1px solid @nav-border-color;
+                border-bottom: 1px solid @header-bg-color;
                 &.active {
                     a {
-                        color: @nav-link-active-color;
+                        color: @nav-link-hover-color;
                         background-color: darken(@nav-link-hover-bg-color, 5%);
                     }
                 }
@@ -78,22 +72,22 @@
             font-size: 13px;
             line-height: 19px;
             border-radius: 0;
-            padding: 11px 12px 9px;
-//            color: @gray;
+            padding: 13px 5px 9px;
+            margin-left: 10px;
             &:hover {
                 background-color: inherit;
-//                #gradient.vertical(lighten(@body-bg, 2%), @body-bg);
                 text-decoration: underline;
             }
         }
         &.active {
             > a {
+                border-bottom: 3px solid @nav-link-active-border-color;
                 background-color: inherit;
-                color: @orange;
+                color: @b-gray-dark;
                 font-weight: bold;
                 &:hover {
                     background-color: inherit;
-                    color: @orange;
+                    color: @b-gray-dark;
                 }
             }
         }
