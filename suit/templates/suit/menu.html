@@ -2,7 +2,7 @@
 {% load i18n suit_menu suit_tags %}
 {% load url from future %}
 
-{% with menu_position='MENU_POSITION'|suit_conf %}
+{% with menu_position='menu_position'|suit_conf %}
     <ul class="nav nav-suit-menu nav-pills{% if menu_position == 'vertical' %} nav-stacked {% endif %}">
         {% block menu_home %}
             {% url 'admin:index' as index_url %}

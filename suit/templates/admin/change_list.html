@@ -56,7 +56,7 @@
       {{ cl.formset.non_form_errors }}
     {% endif %}
 
-    {% suit_conf_value 'LIST_FILTERS_POSITION' cl.model_admin as FILTERS_POS %}
+    {% suit_conf_value 'list_filters_position' cl.model_admin as FILTERS_POS %}
     <div class="row">
       <div class="module{% if cl.has_filters and FILTERS_POS == 'right' %} col-sm-8 col-md-10 filtered{% else %} col-xs-12{% endif %}" id="changelist">
 

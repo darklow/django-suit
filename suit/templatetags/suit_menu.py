@@ -88,11 +88,11 @@ class Menu(object):
         super(Menu, self).__init__()
 
     def init_config(self):
-        self.conf_exclude = get_config('MENU_EXCLUDE')
-        self.conf_open_first_child = get_config('MENU_OPEN_FIRST_CHILD')
-        self.conf_icons = get_config('MENU_ICONS')
-        self.conf_menu_order = get_config('MENU_ORDER')
-        self.conf_menu = get_config('MENU')
+        self.conf_exclude = get_config('menu_exclude')
+        self.conf_open_first_child = get_config('menu_open_first_child')
+        self.conf_icons = get_config('menu_icons')
+        self.conf_menu_order = get_config('menu_order')
+        self.conf_menu = get_config('menu')
 
     def get_app_list(self):
         menu = None

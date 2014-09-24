@@ -1,5 +1,5 @@
 {% load i18n suit_tags %}
-{% suit_conf_value 'LIST_FILTERS_POSITION' as FILTERS_POS %}
+{% suit_conf_value 'list_filters_position' as FILTERS_POS %}
 {% if FILTERS_POS == 'center' %}
   <select data-name="{{ field_name }}" class="form-control search-filter{% if spec.lookup_val or spec.used_parameters %} active{% endif %}" style="max-width: 200px">
     {% for choice in choices %}

@@ -8,7 +8,7 @@
       {% endif %}
       {% spaceless %}
         {% block filters %}
-          {% suit_conf_value 'LIST_FILTERS_POSITION' as FILTERS_POS %}
+          {% suit_conf_value 'list_filters_position' as FILTERS_POS %}
           {% if cl.has_filters and FILTERS_POS == 'center' %}
             <span class="search-filters">
             {% for spec in cl.filter_specs %}

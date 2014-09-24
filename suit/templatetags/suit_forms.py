@@ -6,7 +6,7 @@ register = template.Library()
 
 
 def get_form_size(fieldset):
-    default_label_class = get_config('FORM_SIZE').split(':')
+    default_label_class = get_config('form_size').split(':')
 
     # Try fieldset definition at first
     size_by_fieldset = get_fieldset_size(fieldset)
@@ -22,12 +22,12 @@ def get_form_size(fieldset):
     return default_label_class
 
 
-
 def get_fieldset_size(fieldset):
     if fieldset and fieldset.classes and ':' in fieldset.classes:
         for cls in fieldset.classes.split(' '):
             if ':' in cls:
                 return cls.split(':')
+
 
 @register.filter
 def suit_form_field(field):
