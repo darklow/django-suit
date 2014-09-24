@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_urls admin_static admin_list %}
+{% load i18n admin_urls admin_static admin_list suit_tags %}
 
 {% block extrastyle %}
   {{ block.super }}
@@ -56,8 +56,9 @@
       {{ cl.formset.non_form_errors }}
     {% endif %}
 
+    {% suit_conf_value 'LIST_FILTERS_POSITION' cl.model_admin as FILTERS_POS %}
     <div class="row">
-      <div class="module{% if cl.has_filters %} col-sm-8 col-md-10 filtered{% else %} col-xs-12{% endif %}" id="changelist">
+      <div class="module{% if cl.has_filters and FILTERS_POS == 'right' %} col-sm-8 col-md-10 filtered{% else %} col-xs-12{% endif %}" id="changelist">
 
         <div class="search-container">
           {% block object-tools %}
@@ -95,7 +96,7 @@
       </div>
 
       {% block filters %}
-        {% if cl.has_filters %}
+        {% if cl.has_filters and FILTERS_POS == 'right' %}
           <div class="col-sm-4 col-md-2" id="changelist-filter">
             <h3>{% trans 'Filter' %}</h3>
             {% for spec in cl.filter_specs %}{% admin_list_filter cl spec %}{% endfor %}

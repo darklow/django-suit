@@ -1,19 +1,33 @@
-{% load i18n admin_static %}
-{% if cl.search_fields %}
-  <div id="toolbar">
-    <form id="changelist-search" action="" method="get" class="form-inline">
-      <div><!-- DIV needed for valid HTML -->
-        <input type="text" size="30" name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" class="form-control"/>
-        <input type="submit" value="{% trans 'Search' %}" class="btn btn-info btn-submit"/>
-        {% if show_result_count %}
-          <span class="text-muted">{% blocktrans count counter=cl.result_count %}{{ counter }} result{% plural %}{{ counter }} results{% endblocktrans %} &nbsp;/&nbsp; <a href="?{% if cl.is_popup %}_popup=1{% endif %}">{% blocktrans with full_result_count=cl.full_result_count %}{{ full_result_count }} total{% endblocktrans %}</a></span>
-        {% endif %}
-        {% for pair in cl.params.items %}
-          {% ifnotequal pair.0 search_var %}
-            <input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}"/>{% endifnotequal %}
-        {% endfor %}
-      </div>
-    </form>
-  </div>
-  <script type="text/javascript">document.getElementById("searchbar").focus();</script>
-{% endif %}
+{% load i18n admin_static suit_tags suit_list %}
+<div id="toolbar">
+  <form id="changelist-search" action="" method="get" class="form-inline">
+    <div><!-- DIV needed for valid HTML -->
+      {% if cl.search_fields %}
+      <input type="text" size="30" name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" class="form-control query-search {{ cl.query|yesno:' active,' }}"/>
+        <script type="text/javascript">document.getElementById("searchbar").focus();</script>
+      {% endif %}
+      {% spaceless %}
+        {% block filters %}
+          {% suit_conf_value 'LIST_FILTERS_POSITION' as FILTERS_POS %}
+          {% if cl.has_filters and FILTERS_POS == 'center' %}
+            <span class="search-filters">
+            {% for spec in cl.filter_specs %}
+              {% suit_list_filter_select cl spec %}
+            {% endfor %}
+            </span>
+          {% endif %}
+        {% endblock %}
+      {% endspaceless %}
+
+      <input type="submit" value="{% trans 'Search' %}" class="btn btn-info btn-submit"/>
+      {% if show_result_count %}
+        <span class="text-muted">{% blocktrans count counter=cl.result_count %}{{ counter }} result{% plural %}{{ counter }} results{% endblocktrans %} &nbsp;/&nbsp; <a href="?{% if cl.is_popup %}_popup=1{% endif %}">{% blocktrans with full_result_count=cl.full_result_count %}{{ full_result_count }} total{% endblocktrans %}</a></span>
+      {% endif %}
+      {% for pair in cl.params.items %}
+        {% ifnotequal pair.0 search_var %}
+          <input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}"/>{% endifnotequal %}
+      {% endfor %}
+    </div>
+  </form>
+</div>
+

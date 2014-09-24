@@ -57,7 +57,10 @@ body{margin-bottom:60px}
 .nav-suit-sub-menu{background-color:#fff;box-shadow:0 0 3px 1px rgba(0,0,0,0.1);border:0;padding:0 40px}.nav-suit-sub-menu>li a{font-size:13px;line-height:19px;border-radius:0;padding:12px 5px 9px;margin-left:10px}.nav-suit-sub-menu>li a:hover{background-color:inherit;text-decoration:underline}
 .nav-suit-sub-menu>li.active>a{margin-bottom:-3px;border-bottom:3px solid #46acca;background-color:inherit;color:#2f3133;font-weight:bold}.nav-suit-sub-menu>li.active>a:hover{background-color:inherit;color:#2f3133}
 .breadcrumb .active{color:#555}
-.search-container{margin-bottom:20px;font-size:12px}.search-container .btn-submit{margin:0 20px 0 10px}
+.search-container{margin-bottom:20px;font-size:12px}.search-container .btn-submit{margin:0 20px 0 5px}
+.search-container .search-filters *{margin-right:5px}
+.search-container .query-search{margin-right:5px}
+.search-container .active{border-color:#ffa500;box-shadow:0 0 1px 0 #ffa500}
 #content-main{margin-top:25px}
 .change-list .breadcrumb{display:none}
 #changelist-filter h3{display:none}
