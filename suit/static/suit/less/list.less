@@ -1,14 +1,14 @@
 .search-container {
-    //    overflow: auto;
     margin-bottom: 20px;
-    font-size: 12px;
     .btn-submit {
-        margin: 0 5px 0 0;
+        margin-right: 5px;
     }
     .search-filters {
-        * {
-            margin-right: 5px;
-            font-size: 12px;
+        select, input {
+            margin-right: 7px;
+            &:last-child {
+                margin-right: 5px;
+            }
         }
     }
     .query-search {
@@ -21,7 +21,8 @@
     .result-count {
     }
     .btn-reset {
-        padding: 4px 8px;
+        padding-left: 8px;
+        padding-right: 8px;
         margin: 0 10px 0 0;
         .glyphicon {
             top: 2px;
@@ -78,7 +79,6 @@
     }
 
     .actions {
-        font-size: 12px;
         .action-label {
             display: none;
         }
@@ -104,7 +104,6 @@
     }
 }
 .paginator {
-    font-size: 12px;
     margin: 15px 0;
     .pagination {
         margin: 0 15px 0 0;
