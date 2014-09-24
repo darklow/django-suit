@@ -2,6 +2,8 @@ from django.contrib.admin import ModelAdmin
 from django.conf import settings
 from . import VERSION
 
+config_key = 'SUIT_CONFIG'
+
 
 def default_config():
     return {
@@ -44,11 +46,11 @@ def default_config():
 
 
 def get_config(param=None):
-    config_key = 'SUIT_CONFIG'
     if hasattr(settings, config_key):
-        config = getattr(settings, config_key, {})
+        config = getattr(settings, config_key)
     else:
         config = default_config()
+        setattr(settings, config_key, config)
     if param:
         value = config.get(param)
         if value is None:
@@ -56,12 +58,31 @@ def get_config(param=None):
         return value
     return config
 
+
+def set_config_value(name, value):
+    config = get_config()
+    # Store previous value to reset later if needed
+    prev_value_key = '_%s' % name
+    if prev_value_key not in config:
+        config[prev_value_key] = config.get(name)
+    config[name] = value
+
+
+def reset_config_value(name):
+    config = getattr(settings, config_key, default_config())
+    prev_value_key = '_%s' % name
+    if prev_value_key in config:
+        config[name] = config.get(prev_value_key)
+        del config[prev_value_key]
+
+
 # Reverse default actions position
 ModelAdmin.actions_on_top = False
 ModelAdmin.actions_on_bottom = True
 
 # Set global list_per_page
 ModelAdmin.list_per_page = get_config('LIST_PER_PAGE')
+
 
 def setup_filer():
     from suit.widgets import AutosizedTextarea

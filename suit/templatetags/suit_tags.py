@@ -5,7 +5,7 @@ from django.core.urlresolvers import NoReverseMatch, reverse
 from django.db.models import ForeignKey
 from django.template.defaulttags import NowNode
 from django.utils.safestring import mark_safe
-from suit.config import get_config
+from suit import config
 from suit import utils
 
 register = template.Library()
@@ -13,18 +13,29 @@ register = template.Library()
 
 @register.filter(name='suit_conf')
 def suit_conf(name):
-    value = get_config(name)
+    value = config.get_config(name)
     return mark_safe(value) if isinstance(value, str) else value
+
+
+@register.assignment_tag
+def suit_conf_value(name, model_admin=None):
+    if model_admin:
+        value_by_ma = getattr(model_admin, 'suit_%s' % name.lower(), None)
+        if value_by_ma in ('center', 'right'):
+            config.set_config_value(name, value_by_ma)
+        else:
+            config.reset_config_value(name)
+    return suit_conf(name)
 
 
 @register.tag
 def suit_date(parser, token):
-    return NowNode(get_config('HEADER_DATE_FORMAT'))
+    return NowNode(config.get_config('HEADER_DATE_FORMAT'))
 
 
 @register.tag
 def suit_time(parser, token):
-    return NowNode(get_config('HEADER_TIME_FORMAT'))
+    return NowNode(config.get_config('HEADER_TIME_FORMAT'))
 
 
 @register.filter

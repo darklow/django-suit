@@ -2,9 +2,10 @@ import datetime
 from django.conf import settings
 from django.test import TestCase
 from django.utils.encoding import python_2_unicode_compatible
-from suit import utils
+from suit import utils, config
 from suit.templatetags.suit_tags import suit_conf, suit_date, suit_time, \
-    admin_url, field_contents_foreign_linked, suit_bc, suit_bc_value
+    admin_url, field_contents_foreign_linked, suit_bc, suit_bc_value, \
+    suit_conf_value
 from django.db import models
 from django.contrib import admin
 from django.contrib.admin.helpers import AdminReadonlyField
@@ -100,3 +101,26 @@ class SuitTagsTestCase(TestCase):
     def test_suit_bc_value(self):
         args = [utils.django_major_version(), 'a']
         self.assertEqual(utils.value_by_version(args), suit_bc_value(*args))
+
+
+    def test_suit_conf_value(self):
+        default_value = 'right'
+        self.assertEqual(config.get_config('LIST_FILTERS_POSITION'),
+                         default_value)
+
+        class MockModelAdmin(object):
+            suit_list_filters_position = 'center'
+
+        model_admin = MockModelAdmin()
+        suit_conf_value('LIST_FILTERS_POSITION', model_admin)
+        self.assertEqual(config.get_config('LIST_FILTERS_POSITION'),
+                         model_admin.suit_list_filters_position)
+
+        # Now test with another model_admin - should be default value
+        class MockModelAdmin(object):
+            pass
+
+        model_admin = MockModelAdmin()
+        suit_conf_value('LIST_FILTERS_POSITION', model_admin)
+        self.assertEqual(config.get_config('LIST_FILTERS_POSITION'),
+                         default_value)

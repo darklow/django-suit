@@ -1,11 +1,11 @@
 from django.contrib.admin import ModelAdmin
 from django.conf import settings
 from suit import VERSION
-from suit.config import default_config, get_config
+from suit.config import default_config, get_config, set_config_value, \
+    reset_config_value
 from suit.templatetags.suit_tags import admin_url
 from suit.tests.models import Book
 from suit.tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
-
 
 class ConfigTestCase(UserTestCaseMixin):
     def test_default_config(self):
@@ -54,6 +54,31 @@ class ConfigTestCase(UserTestCaseMixin):
         self.assertEqual(ModelAdmin.actions_on_top, False)
         self.assertEqual(ModelAdmin.actions_on_bottom, True)
         self.assertEqual(ModelAdmin.list_per_page, get_config('LIST_PER_PAGE'))
+
+    def test_suit_set_config_when_not_defined(self):
+        try:
+            del settings.SUIT_CONFIG
+        except AttributeError:
+            pass
+        new_name = 'New Django Suit'
+        old_name = 'Django Suit'
+        set_config_value('ADMIN_NAME', new_name)
+        self.assertEqual(get_config('ADMIN_NAME'), new_name)
+        self.assertEqual(get_config('_ADMIN_NAME'), old_name)
+
+        reset_config_value('ADMIN_NAME')
+        self.assertEqual(get_config('ADMIN_NAME'), old_name)
+
+    def test_set_config_value_without_model_admin(self):
+        settings.SUIT_CONFIG = {
+            'RANDOM_KEY': 123
+        }
+        new_val = 456
+        new_val2 = 789
+        set_config_value('RANDOM_KEY', new_val)
+        set_config_value('RANDOM_KEY2', 789)
+        self.assertEqual(get_config('RANDOM_KEY'), new_val)
+        self.assertEqual(get_config('RANDOM_KEY2'), new_val2)
 
 
 class ConfigWithModelsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
