@@ -3,11 +3,12 @@
     margin-bottom: 20px;
     font-size: 12px;
     .btn-submit {
-        margin: 0 20px 0 5px;
+        margin: 0 5px 0 0;
     }
     .search-filters {
         * {
             margin-right: 5px;
+            font-size: 12px;
         }
     }
     .query-search {
@@ -16,6 +17,15 @@
     .active {
         border-color: orange;
         box-shadow: 0 0 1px 0px orange;
+    }
+    .result-count {
+    }
+    .btn-reset {
+        padding: 4px 8px;
+        margin: 0 10px 0 0;
+        .glyphicon {
+            top: 2px;
+        }
     }
 }
 #content-main {
@@ -94,6 +104,7 @@
     }
 }
 .paginator {
+    font-size: 12px;
     margin: 15px 0;
     .pagination {
         margin: 0 15px 0 0;
@@ -102,13 +113,12 @@
     .pagination-info {
         padding: 7px 0 0 0;
         color: @text-muted;
-        font-size: 12px;
     }
 }
 
 .pagination > li {
     & > a {
-        padding: 4px 11px;
+        padding: 6px 11px 4px;
     }
     &.active > a {
         background-color: @brand-info;
