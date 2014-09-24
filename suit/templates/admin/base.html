@@ -11,10 +11,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'suit/css/suit.css' %}" media="all">
   {% block extrastyle %}{% endblock %}
   {% if LANGUAGE_BIDI %}
-    <link rel="stylesheet" type="text/css" href="
-
-
-      {% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
   <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
   <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -44,7 +41,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      {% block branding %}{{ 'admin_name'|suit_conf }}{% endblock %}
+      {% block branding %}{% endblock %}
     </div>
     <div class="navbar-collapse collapse">
       {% block nav-global %}{% endblock %}
@@ -173,10 +170,13 @@
           {% block footer_branding %}
             {% with 'admin_name'|suit_conf as admin_name %}
               {{ admin_name }}
-              {% if admin_name == 'Django Suit' %}
-                v{{ 'version'|suit_conf }}
-              {% endif %}
             {% endwith %}
+          {% endblock %}
+          {% block footer_versions %}
+            <div class="version">
+              <a href="http://djangosuit.com" target="_blank">Django Suit</a> v{{ 'version'|suit_conf }} /
+              <a href="https://www.djangoproject.com/" target="_blank">Django</a> v{{ 'django_version'|suit_conf }}
+            </div>
           {% endblock %}
         </div>
         <div class="col-xs-12 col-sm-4 copyright">

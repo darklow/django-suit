@@ -1,3 +1,4 @@
+from django import get_version
 from django.apps import AppConfig
 from django.conf import settings
 from django.contrib.admin.options import ModelAdmin
@@ -8,6 +9,7 @@ class DjangoSuitConfig(AppConfig):
     name = 'suit'
     verbose_name = 'Django Suit'
     version = VERSION
+    django_version = get_version()
     menu_position = 'horizontal'
     list_per_page = 18
     list_filters_position = 'right'
