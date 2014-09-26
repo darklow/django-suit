@@ -1,58 +1,14 @@
 @table-border-color: #eee;
+
+@tr-odd-darkness: 2.5%;
+@tr-hover-darkness: 4%;
+@tr-odd-bg-color: darken(#fff, @tr-odd-darkness);
+@tr-hover-bg-color: darken(#fff, @tr-hover-darkness);
+@tr-odd-hover-bg-color: darken(@tr-odd-bg-color, @tr-hover-darkness);
+
 .table-primary {
-//    border-top-left-radius: 4px;
-//    border-top-right-radius: 4px;
     border-color: #ccc;
     border: 0;
-    .action-checkbox-column {
-        width: 40px;
-    }
-    & > thead > tr {
-        & > th {
-            box-shadow: inset 1px 0 0 rgba(255, 255, 255, .2);
-//            border-color: @table-border-color;
-            padding: 7px 10px 6px;
-//            background-color: #fff;
-            background-color: @b-gray-light;
-            border: 0;
-            font-weight: normal;
-            //            box-shadow: inset 1px 0 0 lighten(@brand-primary, 5%);
-        }
-        & > th, .text, a {
-            color: white;
-            //                        font-weight: normal;
-        }
-    }
-    & > thead > tr > th:first-child {
-//        border-top-left-radius: 4px;
-        border-left: 0;
-    }
-    & > thead > tr > th:last-child {
-//        border-top-right-radius: 4px;
-        border-right: 0;
-    }
-    & > tbody > tr {
-        &:nth-child(odd) {
-            & > td, & > th {
-                background-color: #f9f9f9;
-            }
-        }
-        & > td, & > th {
-            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 1);
-            border-color: @table-border-color;
-            padding: 5px 10px 4px 10px;
-            background-color: white;
-            border-left-width: 0;
-            border-right-width: 0;
-            //            border-right-color: #fff;
-            &:first-child {
-                //                border-left-color: #ddd;
-            }
-            &:last-child {
-                //                border-right-color: #ddd;
-            }
-        }
-    }
     th, td {
         input {
             margin: 0;
@@ -60,5 +16,109 @@
     }
     tbody th {
         font-weight: normal;
+    }
+    & > thead > tr {
+        & > th {
+            box-shadow: inset 1px 0 0 rgba(255, 255, 255, .2);
+            padding: 7px 10px 6px;
+            background-color: @b-gray-light;
+            border: 0;
+            font-weight: normal;
+        }
+        & > th, .text, a {
+            color: white;
+        }
+    }
+    & > thead > tr > th:first-child {
+        border-left: 0;
+    }
+    & > thead > tr > th:last-child {
+        border-right: 0;
+    }
+    & > tbody > tr {
+        &:nth-child(odd) {
+            & > td, & > th {
+                //                background-color: @tr-odd-bg-color;
+            }
+        }
+        & > td, & > th {
+            box-shadow: inset 1px 1px 0 #fff;
+            border-color: @table-border-color;
+            padding: 5px 10px 4px 10px;
+            background-color: white;
+            border-left-width: 0;
+            border-right-width: 0;
+        }
+    }
+    &.table-hover > tbody > tr {
+        &:nth-child(odd):hover {
+            & > td, & > th {
+                background-color: @tr-odd-hover-bg-color;
+            }
+        }
+        &:hover {
+            th, td {
+                background-color: @tr-hover-bg-color;
+            }
+        }
+    }
+    .action-checkbox-column {
+        width: 40px;
+    }
+}
+.table-row-variant(@state; @background) {
+    // Exact selectors below required to override `.table-striped` and prevent
+    // inheritance to nested tables.
+    .table-primary.table > thead > tr,
+    .table-primary.table > tbody > tr,
+    .table-primary.table > tfoot > tr {
+        > td.@{state},
+        > th.@{state},
+        &.@{state} > td,
+        &.@{state} > th {
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .7);
+            background-color: @background;
+            border-color: darken(@background, 5%);
+        }
+    }
+
+    // Hover states for `.table-hover`
+    // Note: this is not available for cells or rows within `thead` or `tfoot`.
+    .table-primary.table-hover > tbody > tr {
+        > td.@{state}:hover,
+        > th.@{state}:hover,
+        &:hover > .@{state},
+        &.@{state}:nth-child(odd):hover > td,
+        &.@{state}:nth-child(odd):hover > th,
+        &.@{state}:hover > td,
+        &.@{state}:hover > th {
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .5);
+            background-color: darken(@background, 5%);
+            border-color: darken(@background, 10%);
+        }
+    }
+}
+// Generate the contextual variants
+.table-row-variant(active; @table-bg-active);
+.table-row-variant(success; @state-success-bg);
+.table-row-variant(info; @state-info-bg);
+.table-row-variant(warning; @state-warning-bg);
+.table-row-variant(danger; @state-danger-bg);
+.table-row-variant(selected; #83b3c3);
+
+.table-primary.table-hover > tbody > tr {
+    &.selected {
+        th, td {
+            box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .3);
+            text-shadow: none;
+            color: white;
+            a {
+                color: white;
+                text-decoration: underline;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
     }
 }
