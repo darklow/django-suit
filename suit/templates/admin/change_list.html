@@ -60,7 +60,7 @@
     <div class="row">
       <div class="module{% if cl.has_filters and FILTERS_POS == 'right' %} col-sm-8 col-md-10 filtered{% else %} col-xs-12{% endif %}" id="changelist">
 
-        <div class="search-container">
+        <div class="search-container clearfix">
           {% block object-tools %}
             {% if has_add_permission %}
               <div class="object-tools btn-toolbar pull-right">
