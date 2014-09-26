@@ -6,8 +6,7 @@
   {{ media }}
 {% endblock %}
 
-{% block extrastyle %}{{ block.super }}
-  <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}"/>{% endblock %}
+{% block extrastyle %}{{ block.super }}{% endblock %}
 
 {% block coltype %}colM{% endblock %}
 
@@ -19,8 +18,10 @@
       <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></li>
       <li><a href="{% url 'admin:app_list' app_label=opts.app_label %}">{{ opts.app_config.verbose_name }}</a></li>
       <li>{% if has_change_permission %}
-      <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}</li>
-      {% if add %}<li>{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}</li>{% endif %}
+        <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}
+      </li>
+      <li>
+        {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}</li>
     </ol>
   {% endblock %}
 {% endif %}

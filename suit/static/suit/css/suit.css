@@ -5,7 +5,6 @@
 .form-control{height:30px;padding:4px 8px}
 body{background-color:#eff0f1}
 .page-header{margin:10px 0 40px;font-size:20px;display:none}
-.breadcrumb{background-color:#fff;margin:0 0 20px;padding:6px 12px;border-radius:4px;font-size:13px}
 .white-inset-shadow{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.2)}
 .btn{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.2)}
 .main-messages{margin-top:5px}.main-messages ul{padding-left:20px}
@@ -21,7 +20,6 @@ body{background-color:#eff0f1}
 .btn-success:active,.btn-success.active,.open>.dropdown-toggle.btn-success{background-image:none}
 .btn-success.disabled,.btn-success[disabled],fieldset[disabled] .btn-success,.btn-success.disabled:hover,.btn-success[disabled]:hover,fieldset[disabled] .btn-success:hover,.btn-success.disabled:focus,.btn-success[disabled]:focus,fieldset[disabled] .btn-success:focus,.btn-success.disabled:active,.btn-success[disabled]:active,fieldset[disabled] .btn-success:active,.btn-success.disabled.active,.btn-success[disabled].active,fieldset[disabled] .btn-success.active{background-color:#6b5;border-color:#58b046}
 .btn-success .badge{color:#6b5;background-color:#fff}
-.xfull{display:none}
 .navbar-suit-top{min-height:70px;border:0;border-radius:0;margin:0;font-size:14px}.suit-menu-horizontal .navbar-suit-top>.container-fluid{margin-top:10px}
 .navbar-suit-top .navbar-form.navbar-right{margin-right:0}
 .navbar-suit-top .form-control{background-color:#202122;color:#a5acb3;border-radius:4px;border:0}
@@ -65,7 +63,6 @@ body{margin-bottom:60px}
 .search-container .active{border-color:#ffa500;box-shadow:0 0 1px 0 #ffa500}
 .search-container .btn-reset{padding-left:8px;padding-right:8px;margin:0 10px 0 0}.search-container .btn-reset .glyphicon{top:2px}
 #content-main{margin-top:5px}
-.change-list .breadcrumb{display:none}
 #changelist-filter h3{display:none}
 #changelist-filter .panel-body{padding-left:0}
 #changelist-filter .panel ul{list-style:none;margin:0;padding:0}#changelist-filter .panel ul li a{display:inline-block;padding-bottom:3px}
@@ -82,6 +79,9 @@ body{margin-bottom:60px}
 .paginator .pagination-info{padding:7px 0 0 0;color:#777}
 .pagination>li>a{padding:6px 11px 4px}
 .pagination>li.active>a{background-color:#46acca;box-shadow:inset 1px 1px 0 rgba(255,255,255,0.2);border-color:#37a1c0}.pagination>li.active>a:hover{background-color:#46acca}
+.breadcrumb{font-size:13px;padding:6px 12px;border-radius:4px;background-color:rgba(255,255,255,0.5)}
+.breadcrumb-light.toplinks{font-size:12px}.breadcrumb-light.toplinks li{margin-right:5px}.breadcrumb-light.toplinks li:before{display:none}
+.change-list .container-fluid>.row>div>.breadcrumb{margin-bottom:20px;display:none}
 .table-primary{border-color:#ccc;border:0}.table-primary th input,.table-primary td input{margin:0}
 .table-primary tbody th{font-weight:normal}
 .table-primary>thead>tr>th{box-shadow:inset 1px 0 0 rgba(255,255,255,0.2);padding:7px 10px 6px;background-color:#6e7277;border:0;font-weight:normal}.table-primary>thead>tr>th .text>a,.table-primary>thead>tr>th .text>span{padding:7px 10px 6px;margin:-7px -10px -6px;display:block}
