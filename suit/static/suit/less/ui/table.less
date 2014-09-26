@@ -18,12 +18,58 @@
         font-weight: normal;
     }
     & > thead > tr {
+        @local-th-padding-top: 7px;
+        @local-th-padding-sides: 10px;
+        @local-th-padding-bottom: 6px;
         & > th {
             box-shadow: inset 1px 0 0 rgba(255, 255, 255, .2);
-            padding: 7px 10px 6px;
+            padding: @local-th-padding-top @local-th-padding-sides @local-th-padding-bottom;
             background-color: @b-gray-light;
             border: 0;
             font-weight: normal;
+
+            // Sorting
+            .text {
+                & > a, & > span {
+                    padding: @local-th-padding-top @local-th-padding-sides @local-th-padding-bottom;
+                    margin: -@local-th-padding-top -@local-th-padding-sides -@local-th-padding-bottom;
+                    display: block;
+                }
+            }
+            .relative-wrapper {
+                position: relative;
+                display: inline;
+                float: right;
+                width: 55px;
+            }
+            .sortoptions {
+                right: -50px;
+                position: absolute;
+                a, .sortpriority {
+                    display: inline-block;
+                    float: left;
+                    padding: 0 3px;
+                }
+                .sortpriority {
+                    color: @b-gray-lighter;
+                    padding-right: 4px;
+                }
+                .sortremove, .toggle {
+                    display: block;
+                    width: 12px;
+                    height: 12px;
+                    opacity: .4;
+                    margin-right: 5px;
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+            }
+            &.sorted {
+                padding-right: 55px;
+                background-color: @b-gray;
+            }
+
         }
         & > th, .text, a {
             color: white;
@@ -66,6 +112,7 @@
         width: 40px;
     }
 }
+/* Row special states */
 .table-row-variant(@state; @background) {
     // Exact selectors below required to override `.table-striped` and prevent
     // inheritance to nested tables.
