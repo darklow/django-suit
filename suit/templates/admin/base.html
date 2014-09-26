@@ -110,10 +110,14 @@
 
           {% block messages %}
             {% if messages %}
-              <ul class="messagelist">{% for message in messages %}
-                <li
-                  {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
-              {% endfor %}</ul>
+              <div class="main-messages">
+                {% for message in messages %}
+                  <div class="alert alert-{% firstof message.tags 'info' %}">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    {{ message|capfirst }}
+                  </div>
+                {% endfor %}
+              </div>
             {% endif %}
           {% endblock messages %}
 
