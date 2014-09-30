@@ -109,8 +109,8 @@ class SuitDateWidget(AdminDateWidget):
     def render(self, name, value, attrs=None):
         output = super(SuitDateWidget, self).render(name, value, attrs)
         return mark_safe(
-            '<div class="input-append suit-date">%s<span '
-            'class="add-on"><i class="icon-calendar"></i></span></div>' %
+            '<div class="input-group suit-date">%s<span '
+            'class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span></div>' %
             output)
 
 

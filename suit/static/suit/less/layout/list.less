@@ -97,6 +97,24 @@
     .changelist-save {
         margin-top: -35px;
     }
+    img[alt=True], img[alt=False] {
+        display: block;
+        font-size: 12px;
+        content: '';
+        .glyphicon;
+        width: 14px;
+        height: 14px;
+        color: @brand-success;
+        &:after {
+            content: "\e013";
+        }
+    }
+    img[alt=False] {
+        &:after {
+            color: @brand-danger;
+            content: "\e014";
+        }
+    }
 }
 .paginator {
     margin: 15px 0;
