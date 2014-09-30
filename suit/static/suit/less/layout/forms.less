@@ -119,7 +119,8 @@
                         margin-right: 10px;
                     }
                     .help-block {
-                        margin: 6px 0 0 10px;
+                        line-height: normal;
+                        margin: 5px 0 0 10px;
                     }
                 }
             }
@@ -135,4 +136,43 @@
 }
 .vTextField, .form-group textarea {
     //    .form-control;
+}
+.submit-row {
+    padding: 15px 0 18px;
+    margin-bottom: 0;
+
+    &.fixed {
+        width: auto;
+        background-color: @body-bg-color;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        box-shadow: 0 0px 1px 2px rgba(0,0,0,0.15);
+        z-index: 1000;
+        .btn-group-lg {
+            margin-left: 2px;
+        }
+    }
+
+    .btn-danger {
+        margin-top: 5px;
+    }
+    .btn-group-lg {
+        .box-shadow;
+        border-radius: 4px;
+        .btn:first-child {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .btn:not(:first-child) {
+            font-size: 13px;
+            line-height: 19px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
 }

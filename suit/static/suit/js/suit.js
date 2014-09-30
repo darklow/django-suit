@@ -28,18 +28,19 @@
     $.fn.suit_fixed = function () {
         $(this).each(function () {
             // extra_offset: 70 (60 Footer height + 10 top offset)
-            var $fixed_item = $(this), pos = $fixed_item.offset(), extra_offset = 70;
+            var $fixed_item = $(this),
+                item_pos = $fixed_item.offset(),
+                extra_offset = 50;
             $(window).bind('scroll.sl resize.sl load.sl', function (e) {
-                var $win = $(this), scroll_top = $win.scrollTop();
-                if ($fixed_item.height() < $win.height() &&
-                    scroll_top > (pos.top - 10) &&
-                    $fixed_item.height() < $win.height()) {
-                    !$fixed_item.hasClass('fixed') && $fixed_item.addClass('fixed');
-                    var max_top = Math.min(10, $(document).height() - $fixed_item.height() - scroll_top - extra_offset);
-                    $fixed_item.css('top', max_top + 'px');
-                }
-                else if (scroll_top <= (pos.top - 10) &&
-                    $fixed_item.hasClass('fixed')) {
+                var $win = $(this),
+                    item_height = $fixed_item.height(),
+                    scroll_top = $win.scrollTop()
+                ;
+                if (scroll_top + $win.height() - item_height - extra_offset < item_pos.top) {
+                    if (!$fixed_item.hasClass('fixed')) {
+                        $fixed_item.addClass('fixed');
+                    }
+                } else {
                     $fixed_item.removeClass('fixed');
                 }
             });
@@ -186,7 +187,7 @@
     $(function () {
 
         // Fixed submit buttons
-        // $('.inner-right-column').suit_fixed();
+        $('.submit-row').suit_fixed();
 
         // Show link to related item after Select
         $('.linked-select').suit_linked_select();

@@ -20,6 +20,13 @@ body {
     font-size: @input-font-size;
 }
 
+.btn-lg {
+}
+.btn-lg, .btn-group-lg > .btn {
+    padding: 8px 20px;
+    font-size: 15px;
+}
+
 .main-messages {
     margin-top: 5px;
     ul {
@@ -48,5 +55,9 @@ body {
 @btn-success-bg: @brand-success;
 @btn-success-border: darken(@btn-success-bg, 5%);
 .btn-success {
+    .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
+}
+
+.btn-neutral {
     .button-variant(@btn-success-color; @btn-success-bg; @btn-success-border);
 }

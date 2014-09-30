@@ -209,6 +209,7 @@ body{background-color:#eff0f1}
 .white-inset-shadow{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.2)}
 .box-shadow{-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.05);box-shadow:0 1px 1px rgba(0,0,0,0.05)}
 .btn{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.2);font-size:13px}
+.btn-lg,.btn-group-lg>.btn{padding:8px 20px;font-size:15px}
 .main-messages{margin-top:5px}.main-messages ul{padding-left:20px}
 .btn-info{color:#fff;background-color:#46acca;border-color:#37a1c0}.btn-info:hover,.btn-info:focus,.btn-info:active,.btn-info.active,.open>.dropdown-toggle.btn-info{color:#fff;background-color:#3190ac;border-color:#297990}
 .btn-info:active,.btn-info.active,.open>.dropdown-toggle.btn-info{background-image:none}
@@ -222,6 +223,10 @@ body{background-color:#eff0f1}
 .btn-success:active,.btn-success.active,.open>.dropdown-toggle.btn-success{background-image:none}
 .btn-success.disabled,.btn-success[disabled],fieldset[disabled] .btn-success,.btn-success.disabled:hover,.btn-success[disabled]:hover,fieldset[disabled] .btn-success:hover,.btn-success.disabled:focus,.btn-success[disabled]:focus,fieldset[disabled] .btn-success:focus,.btn-success.disabled:active,.btn-success[disabled]:active,fieldset[disabled] .btn-success:active,.btn-success.disabled.active,.btn-success[disabled].active,fieldset[disabled] .btn-success.active{background-color:#6b5;border-color:#58b046}
 .btn-success .badge{color:#6b5;background-color:#fff}
+.btn-neutral{color:#fff;background-color:#6b5;border-color:#58b046}.btn-neutral:hover,.btn-neutral:focus,.btn-neutral:active,.btn-neutral.active,.open>.dropdown-toggle.btn-neutral{color:#fff;background-color:#4f9e3f;border-color:#428435}
+.btn-neutral:active,.btn-neutral.active,.open>.dropdown-toggle.btn-neutral{background-image:none}
+.btn-neutral.disabled,.btn-neutral[disabled],fieldset[disabled] .btn-neutral,.btn-neutral.disabled:hover,.btn-neutral[disabled]:hover,fieldset[disabled] .btn-neutral:hover,.btn-neutral.disabled:focus,.btn-neutral[disabled]:focus,fieldset[disabled] .btn-neutral:focus,.btn-neutral.disabled:active,.btn-neutral[disabled]:active,fieldset[disabled] .btn-neutral:active,.btn-neutral.disabled.active,.btn-neutral[disabled].active,fieldset[disabled] .btn-neutral.active{background-color:#6b5;border-color:#58b046}
+.btn-neutral .badge{color:#6b5;background-color:#fff}
 .navbar-suit-top{min-height:70px;border:0;border-radius:0;margin:0;font-size:14px}.suit-menu-horizontal .navbar-suit-top>.container-fluid{margin-top:10px}
 .navbar-suit-top .navbar-form.navbar-right{margin-right:0}
 .navbar-suit-top .form-control{background-color:#202122;color:#a5acb3;border-radius:4px;border:0}
@@ -300,8 +305,12 @@ body{margin-bottom:60px}
 .form-horizontal .fieldset-body .form-group:last-child .form-column{padding-bottom:10px}
 .form-horizontal .fieldset-body .form-group .form-column{background-color:#f6f7f8;padding:5px 15px}.form-horizontal .fieldset-body .form-group .form-column .help-block{font-size:12px;margin:0;color:#a6a6a6}
 .form-horizontal .fieldset-body .form-group .form-column.form-inline input{margin-right:10px}
-.form-horizontal .fieldset-body .form-group .form-column.form-inline .help-block{margin:6px 0 0 10px}
+.form-horizontal .fieldset-body .form-group .form-column.form-inline .help-block{line-height:normal;margin:5px 0 0 10px}
 .form-horizontal .fieldset-body .form-group .with-can-add-related select{width:93%;margin-right:5px;display:inline-block}
+.submit-row{padding:15px 0 18px;margin-bottom:0}.submit-row.fixed{width:auto;background-color:#eff0f1;position:fixed;left:0;right:0;bottom:0;padding-left:40px;padding-right:40px;box-shadow:0 0 1px 2px rgba(0,0,0,0.15);z-index:1000}.submit-row.fixed .btn-group-lg{margin-left:2px}
+.submit-row .btn-danger{margin-top:5px}
+.submit-row .btn-group-lg{-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.05);box-shadow:0 1px 1px rgba(0,0,0,0.05);border-radius:4px}.submit-row .btn-group-lg .btn:first-child{padding-left:40px;padding-right:40px}
+.submit-row .btn-group-lg .btn:not(:first-child){font-size:13px;line-height:19px;padding-left:15px;padding-right:15px}
 .breadcrumb{font-size:13px;padding:6px 12px;border-radius:4px;background-color:rgba(255,255,255,0.5);margin-bottom:20px;text-shadow:0 1px rgba(255,255,255,0.3)}.breadcrumb .active{font-weight:bold}
 .breadcrumb-light.toplinks{font-size:12px}.breadcrumb-light.toplinks li{margin-right:5px}.breadcrumb-light.toplinks li:before{display:none}
 .change-list .container-fluid>.row>div>.breadcrumb{margin-bottom:20px;display:none}
