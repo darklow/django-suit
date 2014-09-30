@@ -92,6 +92,7 @@ http://getbootstrap.com/customize/?id=5d3e1adb05c9f9d3cb86
 @input-height-base: 30px;
 @padding-base-vertical: 4px;
 @padding-base-horizontal: 8px;
+@input-border-radius: 0;
 
 // Mixin for simple form elements, for which we can't add class attribute
 .form-control-mixin {
@@ -105,7 +106,6 @@ http://getbootstrap.com/customize/?id=5d3e1adb05c9f9d3cb86
     background-color: @input-bg;
     background-image: none;
     border: 1px solid @input-border;
-    border-radius: @input-border-radius;
 
 //    .box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075));
     .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
@@ -115,4 +115,8 @@ http://getbootstrap.com/customize/?id=5d3e1adb05c9f9d3cb86
 .form-control {
     height: @input-height-base;
     padding: @padding-base-vertical @padding-base-horizontal;
+}
+
+.form-control, .form-control-mixin {
+    border-radius: @input-border-radius;
 }

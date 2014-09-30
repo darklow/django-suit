@@ -1,38 +1,20 @@
-.suit-form-control {
-    .form-control-mixin;
-    width: auto;
-    border-radius: 0;
-}
-.change-form .container-fluid {
-    .object-tools {
-        margin-top: -45px;
-    }
-    #content-main {
-        margin-top: 0;
-    }
-    .page-header {
-        margin-bottom: 0px;
-        display: none;
-        border: 0;
-    }
-    .panel-heading {
-        overflow: auto;
-        .description {
-            color: @gray-lightest;
+.change-form {
+    .container-fluid {
+        .object-tools {
+            margin-top: -45px;
+        }
+        #content-main {
+            margin-top: 0;
+        }
+        .page-header {
+            margin-bottom: 0px;
+            display: none;
+            border: 0;
         }
     }
-    .form-control {
-        line-height: 1.5;
-        border-radius: 0;
-        box-shadow: none;
-        height: 28px;
-    }
-    select {
-        .form-control-mixin;
-        height: 28px;
-        border-radius: 0;
-    }
-    &.suit-show-req-asterisk {
+}
+.form-horizontal {
+    .suit-show-req-asterisk & {
         .required:after {
             content: '*';
             margin: 0 0 0 5px;
@@ -43,13 +25,21 @@
             padding-right: 10px;
         }
     }
+    .form-control {
+        line-height: 1.5;
+        box-shadow: none;
+    }
+    select {
+        .form-control-mixin;
+    }
     .fieldset-heading {
         .fieldset-title {
+            margin-bottom: 5px;
             small {
                 display: block;
                 float: right;
                 text-align: right;
-                margin: 5px 0 0 0;
+                margin: 5px 5px 0 0;
                 font-size: 12px;
             }
         }

@@ -53,26 +53,27 @@ class EnclosedInput(TextInput):
         """
         If value doesn't starts with html open sign "<", enclose in add-on tag
         """
+        cls = 'addon'
         if value.startswith("<"):
-            return value
-        if value.startswith("icon-"):
-            value = '<i class="%s"></i>' % value
-        return '<span class="add-on">%s</span>' % value
+            cls = 'btn'
+        if value.startswith("glyphicon-"):
+            value = '<i class="glyphicon %s"></i>' % value
+        return '<span class="input-group-%s">%s</span>' % (cls, value)
 
     def render(self, name, value, attrs=None):
         output = super(EnclosedInput, self).render(name, value, attrs)
         div_classes = []
         if self.prepend:
-            div_classes.append('input-prepend')
+            # div_classes.append('input-prepend')
             self.prepend = self.enclose_value(self.prepend)
             output = ''.join((self.prepend, output))
         if self.append:
-            div_classes.append('input-append')
+            # div_classes.append('input-append')
             self.append = self.enclose_value(self.append)
             output = ''.join((output, self.append))
 
         return mark_safe(
-            '<div class="%s">%s</div>' % (' '.join(div_classes), output))
+            '<div class="input-group %s">%s</div>' % (' '.join(div_classes), output))
 
 
 class AutosizedTextarea(Textarea):

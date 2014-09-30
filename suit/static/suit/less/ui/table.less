@@ -7,7 +7,7 @@
 @tr-odd-hover-bg-color: darken(@tr-odd-bg-color, @tr-hover-darkness);
 
 .table-primary {
-    border-color: #ccc;
+    .panel-border;
     border: 0;
     th, td {
         input {
@@ -97,6 +97,11 @@
             background-color: white;
             border-left-width: 0;
             border-right-width: 0;
+        }
+        &:last-child {
+            & > td, & > th {
+                border: 0;
+            }
         }
     }
     &.table-hover > tbody > tr {
