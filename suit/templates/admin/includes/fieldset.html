@@ -1,31 +1,66 @@
 {% load suit_forms %}
-<fieldset class="module aligned {{ fieldset.classes }}">
-    {% if fieldset.name %}
-        <h3>{{ fieldset.name }}
-            {% if fieldset.description %}
-                <small>{{ fieldset.description|safe }}</small>
-            {% endif %}
-        </h3>
-    {% endif %}
+<fieldset class="module aligned {{ fieldset.classes }} panel panel-narrow panel-suit">
+  {% if fieldset.name %}
+    <div class="panel-heading">
+      <h3 class="panel-title pull-left">{{ fieldset.name }}</h3>
+      {% if fieldset.description %}
+        <div class="description pull-right">{{ fieldset.description|safe }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
 
+  <div class="panel-body form-horizontal">
     {% for line in fieldset %}
-        {% with is_single=line.fields|length_is:'1' %}
-            {% for field in line %}
-                {% if is_single or forloop.counter0 == 0 %}
-                    <div class="form-group">
-                {% endif %}
+      {% with is_single=line.fields|length_is:'1' %}
+        {% for field in line %}
+          {% if is_single or forloop.counter0 == 0 %}
+            <div class="form-group">
+          {% endif %}
 
-            <label for="inputEmail3" class="control-label {{ field.field|suit_form_label_class:fieldset }}">{{ field.label_tag }}</label>
+        <label for="inputEmail3" class="control-label {{ field.field|suit_form_label_class:fieldset }}">{{ field.label_tag }}</label>
 
-            <div class="{{ field.field|suit_form_field_class:fieldset }}">
-                {{ field.field|suit_form_field }}
-            </div>
+        <div class="{{ field.field|suit_form_field_class:fieldset }}">
+{#        {{ field.field.field.widget.can_add_related }}#}
+          {{ field.field|suit_form_field }}
 
+          {# help text #}
+          {% if field.field.help_text %}
+            <div class="help-block">{{ field.field.help_text|safe }}</div>
+          {% endif %}
 
-            {% if is_single or forloop.last %}
-                </div>
-            {% endif %}
-            {% endfor %}
-        {% endwith %}
+        </div>
+
+        {% if is_single or forloop.last %}
+          </div>
+        {% endif %}
+        {% endfor %}
+      {% endwith %}
     {% endfor %}
+  </div>
+
+  {% for line in fieldset_ZZZZZZ %}
+    <div class="form-row{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
+      {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
+      {% for field in line %}
+        <div
+          {% if not line.fields|length_is:'1' %} class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% elif field.is_checkbox %} class="checkbox-row"{% endif %}>
+          {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
+          {% if field.is_checkbox %}
+            {{ field.field }}{{ field.label_tag }}
+          {% else %}
+            {{ field.label_tag }}
+            {% if field.is_readonly %}
+              <p>{{ field.contents }}</p>
+            {% else %}
+              {{ field.field }}
+            {% endif %}
+          {% endif %}
+          {% if field.field.help_text %}
+            <p class="help">{{ field.field.help_text|safe }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+
 </fieldset>

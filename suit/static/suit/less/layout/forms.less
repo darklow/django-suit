@@ -1,3 +1,124 @@
+.suit-form-control {
+    .form-control-mixin;
+    width: auto;
+    border-radius: 0;
+}
+.change-form {
+    #content-main {
+        margin-top: 0;
+    }
+    .page-header {
+        margin-bottom: 0px;
+        display: block;
+        border: 0;
+    }
+    .panel-heading {
+        overflow: auto;
+        .description {
+            color: @gray-lightest;
+        }
+    }
+    .form-control {
+        line-height: 1.5;
+        border-radius: 0;
+        box-shadow: none;
+        height: 28px;
+    }
+    select {
+        .form-control-mixin;
+        height: 28px;
+        border-radius: 0;
+    }
+
+    .panel-body {
+        background-color: #f6f7f8;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        .form-group {
+            padding: 0;
+            margin: 0;
+            &:first-child {
+                padding-top: 0px;
+            }
+            &:last-child {
+                padding-bottom: 0px;
+                border-bottom: 0;
+            }
+            .control-label {
+                background-color: #fff;
+                padding: 8px 10px;
+                border-top: 1px solid @body-bg-color;
+                border-right: 1px solid @body-bg-color;
+                label {
+                    padding: 0 5px 0 0;
+                    margin: 0;
+                    font-weight: normal;
+                    position: relative;
+                    z-index: 1;
+                }
+            }
+
+            &:first-child {
+                .control-label {
+                    border-top: 0;
+                    padding-top: 13px;
+                    &:before {
+                        display: block;
+                        content: '';
+                        width: 100%;
+                        position: absolute;
+                        z-index: 0;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        background-color: #fff;
+                        height: 2000px;
+                        box-shadow: 1px 0 0 @body-bg-color;
+                    }
+                }
+                .form-column {
+                    padding-top: 10px;
+                }
+            }
+
+            &:last-child {
+                .control-label {
+                    padding-bottom: 13px;
+                }
+                .form-column {
+                    padding-bottom: 10px;
+                }
+            }
+            .form-column {
+                background-color: #f6f7f8;
+                padding: 5px 15px;
+
+                .help-block {
+                    font-size: 12px;
+                    margin: 0;
+                    color: darken(@gray-lighter, 5%);
+                }
+                &.form-inline {
+                    input {
+                        margin-right: 10px;
+                    }
+                    .help-block {
+                        line-height: normal;
+                        margin-left: 10px;
+                    }
+                }
+            }
+            .with-can-add-related {
+                select {
+                    width: 93%;
+                    margin-right: 5px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
 .vTextField, .form-group textarea {
-//    .form-control;
+    //    .form-control;
 }

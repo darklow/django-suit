@@ -34,8 +34,8 @@ def suit_form_field(field):
     if not hasattr(field, 'field') or \
             not isinstance(field.field.widget, (Input, Textarea)):
         return field
-    field.field.widget.attrs['class'] = \
-        '%s form-control' % field.field.widget.attrs.get('class', '')
+    field.field.widget.attrs['class'] = ' '.join((
+        'form-control', field.field.widget.attrs.get('class', '')))
     return field
 
 
@@ -58,14 +58,24 @@ def suit_form_field_class(field, fieldset):
     Return all classes with "col-" prefix
     """
     default_class = get_form_size(fieldset)[1]
-    if not hasattr(field, 'field'):
-        return default_class
 
-    widget_class = field.field.widget.attrs.get('class')
+    # Special cases
+    # Can add related [+] icon
+    special_class = ' form-column'
+    try:
+        if field.field.widget.can_add_related:
+            special_class += ' with-can-add-related'
+    except:
+        pass
+    if special_class:
+        default_class += special_class
+
+    if not hasattr(field, 'field'):
+            return default_class
+
+    widget_class = field.field.widget.attrs.get('column_class')
     if widget_class:
-        width_classes = [c for c in widget_class.split(' ')
-                         if c.startswith('col-')]
-        if width_classes:
-            return ' '.join(width_classes)
+        del field.field.widget.attrs['column_class']
+        return widget_class + special_class
 
     return default_class
