@@ -3,13 +3,13 @@
     width: auto;
     border-radius: 0;
 }
-.change-form {
+.change-form .container-fluid {
     #content-main {
         margin-top: 0;
     }
     .page-header {
         margin-bottom: 0px;
-        display: block;
+        display: none;
         border: 0;
     }
     .panel-heading {
@@ -29,9 +29,30 @@
         height: 28px;
         border-radius: 0;
     }
-
-    .panel-body {
-        background-color: #f6f7f8;
+    &.suit-show-req-asterisk {
+        .required:after {
+            content: '*';
+            margin: 0 0 0 5px;
+            position: absolute;
+            color: #ccc;
+        }
+        .fieldset-body .form-group .control-label label {
+            padding-right: 10px;
+        }
+    }
+    .fieldset-heading {
+        .fieldset-title {
+            small {
+                display: block;
+                float: right;
+                text-align: right;
+                margin: 5px 0 0 0;
+                font-size: 12px;
+            }
+        }
+    }
+    .fieldset-body {
+        background-color: @form-bg-color;
         padding: 0;
         position: relative;
         overflow: hidden;
@@ -91,7 +112,7 @@
                 }
             }
             .form-column {
-                background-color: #f6f7f8;
+                background-color: @form-bg-color;
                 padding: 5px 15px;
 
                 .help-block {

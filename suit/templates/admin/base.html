@@ -7,15 +7,16 @@
   <title>{% block title %}{% endblock %}</title>
   {#<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />#}
   <link rel="stylesheet" type="text/css" href="{% static 'suit/bootstrap/dist/css/bootstrap.css' %}" media="all">
-{#  <link rel="stylesheet" type="text/css" href="{% static 'suit/bootstrap/dist/css/bootstrap-theme.min.css' %}" media="all">#}
+  {#  <link rel="stylesheet" type="text/css" href="{% static 'suit/bootstrap/dist/css/bootstrap-theme.min.css' %}" media="all">#}
   <link rel="stylesheet" type="text/css" href="{% static 'suit/css/suit.css' %}" media="all">
   {% block extrastyle %}{% endblock %}
   {% if LANGUAGE_BIDI %}
-    <link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
+    <link rel="stylesheet" type="text/css" href="
+      {% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
   <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
   <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
   <script src="{% static 'suit/js/jquery-1.11.1.min.js' %}"></script>
-  <script type="text/javascript">var Suit = { $: $.noConflict() };
+  <script type="text/javascript">var Suit = {$: $.noConflict()};
   if (!$) $ = Suit.$; </script>
   <script src="{% static 'suit/bootstrap/dist/js/bootstrap.min.js' %}"></script>
   {% block extrahead %}{% endblock %}
@@ -29,8 +30,8 @@
 <![endif]-->
 </head>
 {% load i18n %}
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %} suit-menu-{{ 'menu_position'|suit_conf }}{{ 'show_required_asterisk'|suit_conf|yesno:' suit-show-req-asterisk,' }}">
 
-<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %} suit-menu-{{ 'menu_position'|suit_conf }}">
 
 <div class="navbar navbar-inverse navbar-suit-top" role="navigation">
   <div class="container-fluid">
@@ -113,7 +114,9 @@
               <div class="main-messages">
                 {% for message in messages %}
                   <div class="alert alert-{% firstof message.tags 'info' %}">
-                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <button type="button" class="close" data-dismiss="alert">
+                      <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
                     {{ message|capfirst }}
                   </div>
                 {% endfor %}

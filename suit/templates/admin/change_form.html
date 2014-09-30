@@ -20,7 +20,7 @@
       <li>{% if has_change_permission %}
         <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}
       </li>
-      <li>
+      <li class="active">
         {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}</li>
     </ol>
   {% endblock %}

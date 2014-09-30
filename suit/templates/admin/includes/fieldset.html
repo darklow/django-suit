@@ -1,15 +1,17 @@
 {% load suit_forms %}
-<fieldset class="module aligned {{ fieldset.classes }} panel panel-narrow panel-suit">
+<fieldset class="module aligned {{ fieldset.classes }}">
   {% if fieldset.name %}
-    <div class="panel-heading">
-      <h3 class="panel-title pull-left">{{ fieldset.name }}</h3>
-      {% if fieldset.description %}
-        <div class="description pull-right">{{ fieldset.description|safe }}</div>
-      {% endif %}
+    <div class="fieldset-heading clearfix">
+      <h3 class="fieldset-title">
+        {% if fieldset.description %}
+          <small class="description">{{ fieldset.description|safe }}</small>
+        {% endif %}
+      {{ fieldset.name }}
+      </h3>
     </div>
   {% endif %}
 
-  <div class="panel-body form-horizontal">
+  <div class="fieldset-body">
     {% for line in fieldset %}
       {% with is_single=line.fields|length_is:'1' %}
         {% for field in line %}
@@ -20,7 +22,7 @@
         <label for="inputEmail3" class="control-label {{ field.field|suit_form_label_class:fieldset }}">{{ field.label_tag }}</label>
 
         <div class="{{ field.field|suit_form_field_class:fieldset }}">
-{#        {{ field.field.field.widget.can_add_related }}#}
+          {#        {{ field.field.field.widget.can_add_related }}#}
           {{ field.field|suit_form_field }}
 
           {# help text #}

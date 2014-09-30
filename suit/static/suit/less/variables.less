@@ -1,6 +1,7 @@
 /*
 Variables for custom bootstrap generation:
-http://getbootstrap.com/customize/?id=422d070c779107bf7e0c
+http://getbootstrap.com/customize/?id=75035e43400f69df22e2
+
 ------
 @font-size: 12px;
 @padding-base-vertical: 5px
@@ -11,6 +12,13 @@ http://getbootstrap.com/customize/?id=422d070c779107bf7e0c
 @padding-small-horizontal: 10px
 @padding-xs-vertical: 1px
 @padding-xs-horizontal: 5px
+
+@font-size=h1: floor((@font-size-base * 1.7))
+@font-size=h2: floor((@font-size-base * 1.55))
+@font-size=h3: ceil((@font-size-base * 1.35))
+@font-size=h4: ceil((@font-size-base * 1.2))
+@font-size=h5: ceil((@font-size-base * 1.05))
+@font-size=h6: ceil((@font-size-base * 0.85))
 */
 
 
@@ -53,6 +61,9 @@ http://getbootstrap.com/customize/?id=422d070c779107bf7e0c
 @body-bg-color: #eff0f1;
 @body-text-color: #333;
 
+// Form
+@form-bg-color: #f6f7f8;
+
 // Header
 @header-height: 70px;
 @header-bg-color: #373b3d;
@@ -76,7 +87,7 @@ http://getbootstrap.com/customize/?id=422d070c779107bf7e0c
 .white-shadow-max { text-shadow: 0 1px rgba(255, 255, 255, 0.7); }
 
 // Inputs
-@font-size-base: 12px;
+@font-size-base: 13px;
 @input-height-base: 30px;
 @padding-base-vertical: 4px;
 @padding-base-horizontal: 8px;
