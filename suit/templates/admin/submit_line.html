@@ -5,7 +5,9 @@
     {% if show_delete_link %}
         {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
         <p class="deletelink-box">
-          <a href="{% add_preserved_filters delete_url %}" class="deletelink btn btn-sm btn-danger">{% trans "Delete" %}</a>
+          <a href="{% add_preserved_filters delete_url %}" class="deletelink text-danger">
+            <span class="glyphicon glyphicon-remove"></span>
+            {% trans "Delete" %}</a>
         </p>
     {% endif %}
   </div>

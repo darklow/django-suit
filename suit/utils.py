@@ -1,3 +1,4 @@
+import re
 from django import VERSION
 
 
@@ -21,3 +22,12 @@ def args_to_dict(args):
     Format {% suit_bc 1.5 'x' 1.6 'y' %} to { '1.5': 'x', '1.6': 'y' }
     """
     return dict(zip(args[0::2], args[1::2]))
+
+
+def attrs_by_prefix(html, prefix):
+    attrs = re.findall('(%s.+?)="(.+?)"' % prefix, html)
+    return dict(attrs)
+
+
+def dict_to_attrs(attrs_dict):
+    return ' '.join(['%s="%s"' % (k, v) for k, v in attrs_dict.items()])

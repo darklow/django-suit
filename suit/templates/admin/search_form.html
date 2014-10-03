@@ -21,7 +21,7 @@
       {% endspaceless %}
 
       {% if cl.search_fields or cl.has_filters and FILTERS_POS == 'center' %}
-        <input type="submit" value="{% trans 'Search' %}" class="btn btn-info btn-submit"/>
+        <input type="submit" value="{% trans 'Search' %}" class="btn btn-primary btn-submit"/>
       {% endif %}
       {% if show_result_count %}
         <a href="?{% if cl.is_popup %}_popup=1{% endif %}" class="btn-reset btn btn-warning"><span class="glyphicon glyphicon-remove"></span></a>

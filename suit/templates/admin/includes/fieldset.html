@@ -24,7 +24,7 @@
         <div class="{{ field.field|suit_form_field_class:fieldset }}">
           {#        {{ field.field.field.widget.can_add_related }}#}
           {{ field.field|suit_form_field }}
-
+          {{ line.errors }}
           {# help text #}
           {% if field.field.help_text %}
             <div class="help-block">{{ field.field.help_text|safe }}</div>

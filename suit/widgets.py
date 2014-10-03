@@ -2,8 +2,10 @@ from django.contrib.admin.widgets import AdminTimeWidget, AdminDateWidget
 from django.forms import TextInput, Select, Textarea
 from django.utils.safestring import mark_safe
 from django import forms
+from django.utils import formats, translation
 from django.utils.translation import ugettext as _
 from django.contrib.admin.templatetags.admin_static import static
+from suit import utils
 
 
 class NumberInput(TextInput):
@@ -73,7 +75,8 @@ class EnclosedInput(TextInput):
             output = ''.join((output, self.append))
 
         return mark_safe(
-            '<div class="input-group %s">%s</div>' % (' '.join(div_classes), output))
+            '<div class="input-group %s">%s</div>' % (
+                ' '.join(div_classes), output))
 
 
 class AutosizedTextarea(Textarea):
@@ -92,26 +95,87 @@ class AutosizedTextarea(Textarea):
     def render(self, name, value, attrs=None):
         output = super(AutosizedTextarea, self).render(name, value, attrs)
         output += mark_safe(
-            "<script type=\"text/javascript\">Suit.$('#id_%s').autosize();</script>"
+            "<script type=\"text/javascript\">Suit.$('#id_%s').autosize("
+            ");</script>"
             % name)
         return output
 
 
-#
-# Original date widgets with addition html
-#
-class SuitDateWidget(AdminDateWidget):
+class SuitDateWidget(forms.DateInput):
+    @property
+    def media(self):
+        js = ['datepicker/bootstrap-datepicker.js']
+        dp_lang = self.language()
+        if dp_lang != 'en':
+            js.append('datepicker/locales/bootstrap-datepicker.%s.js' % dp_lang)
+        return forms.Media(
+            js=[static("suit/js/%s" % path) for path in js],
+            css={'all': [static("suit/js/datepicker/css/datepicker3.css")]}
+        )
+
     def __init__(self, attrs=None, format=None):
-        defaults = {'placeholder': _('Date:')[:-1]}
-        new_attrs = _make_attrs(attrs, defaults, "vDateField input-small")
-        super(SuitDateWidget, self).__init__(attrs=new_attrs, format=format)
+        attrs = attrs or {}
+        self.format = format
+        super(SuitDateWidget, self).__init__(attrs=attrs, format=format)
+
+    def language(self):
+        lang = str(translation.get_language() or 'en').lower()
+        dp_lang = lang
+        if lang.startswith('zh-'):
+            dp_lang = {
+                'zh-cn': 'zh-CN',
+                'zh-tw': 'zh-TW'
+            }.get(lang, 'en')
+        return dp_lang
+
+    def date_format(self):
+        return self.format or formats.get_format(self.format_key)[0]
+
+    def datepicker_date_format(self, django_format):
+        # django_format = django_format.replace('%', '')
+        print django_format
+        mapping = {
+            '%Y': 'yyyy',
+            '%y': 'yy',
+            '%m': 'mm',
+            '%b': 'M',  # Oct, Nov
+            '%B': 'MM',  # October, November
+            '%d': 'dd',
+            '%M': 'i',
+            '%S': 's',
+            '.%f': '',  # Microseconds are not supported by datepicker
+        }
+        for dj_fmt, dp_fmt in mapping.items():
+            django_format = django_format.replace(dj_fmt, dp_fmt)
+
+        django_format = django_format.replace('%', '')
+        return django_format
 
     def render(self, name, value, attrs=None):
         output = super(SuitDateWidget, self).render(name, value, attrs)
+
+        # Because we wrap input tag in input-group we must copy data-* attrs
+        # for datepicker formats
+        attrs = utils.attrs_by_prefix(output, 'data-date-')
+        if 'data-date-format' not in attrs:
+            attrs['data-date-format'] = self.datepicker_date_format(
+                self.date_format())
+
+        attrs = utils.dict_to_attrs(attrs)
+
         return mark_safe(
-            '<div class="input-group suit-date">%s<span '
-            'class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span></div>' %
-            output)
+            '<div class="input-group date" %s>%s<span '
+            'class="input-group-addon"><i class="glyphicon '
+            'glyphicon-th"></i></span></div>' % (
+                attrs, output))
+
+
+class SuitDateTimeWidget(forms.DateTimeInput, SuitDateWidget):
+    def __init__(self, attrs=None, format=None):
+        self.format = format
+        attrs = attrs or {}
+        attrs['data-date-show-time'] = 'true'
+        super(SuitDateTimeWidget, self).__init__(attrs, format)
 
 
 class SuitTimeWidget(AdminTimeWidget):

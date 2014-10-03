@@ -1,8 +1,12 @@
 from django import get_version
 from django.apps import AppConfig
 from django.conf import settings
+from django.contrib.admin import options
 from django.contrib.admin.options import ModelAdmin
+from django.db import models
 from . import VERSION
+from django import forms
+from widgets import SuitDateWidget, SuitDateTimeWidget
 
 
 class DjangoSuitConfig(AppConfig):
@@ -31,6 +35,8 @@ class DjangoSuitConfig(AppConfig):
 
 
     def __init__(self, app_name, app_module):
+
+        self.override_datepickers()
         self.setup_model_admin()
 
         if 'filer' in settings.INSTALLED_APPS:
@@ -40,6 +46,24 @@ class DjangoSuitConfig(AppConfig):
                 pass
 
         super(DjangoSuitConfig, self).__init__(app_name, app_module)
+
+    def override_datepickers(self):
+        # options.FORMFIELD_FOR_DBFIELD_DEFAULTS = {
+        # models.DateTimeField: {
+        # 'form_class': forms.SplitDateTimeField,
+        # 'widget': widgets.AdminSplitDateTime
+        # },
+        # models.DateField: {'widget': widgets.AdminDateWidget},
+        # models.TimeField: {'widget': widgets.AdminTimeWidget},
+        # }
+
+        options.FORMFIELD_FOR_DBFIELD_DEFAULTS[models.DateField].update({
+            'widget': SuitDateWidget
+        })
+        options.FORMFIELD_FOR_DBFIELD_DEFAULTS[models.DateTimeField].update({
+            'form_class': forms.DateTimeField,
+            'widget': SuitDateTimeWidget
+        })
 
     def setup_model_admin(self):
         """

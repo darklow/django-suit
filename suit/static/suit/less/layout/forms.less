@@ -13,6 +13,15 @@
         }
     }
 }
+//.form-control-focus(@color: @input-border-focus) {
+//  @color-rgba: rgba(red(@color), green(@color), blue(@color), .6);
+//  &:focus {
+//    border-color: @color;
+//    outline: 0;
+//    .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+//  }
+//}
+
 .form-horizontal {
     .suit-show-req-asterisk & {
         .required:after {
@@ -28,6 +37,7 @@
     .form-control {
         line-height: 1.5;
         box-shadow: none;
+        .form-control-focus();
     }
     select {
         .form-control-mixin;
@@ -123,6 +133,9 @@
                         margin: 5px 0 0 10px;
                     }
                 }
+                .input-group.date {
+                    max-width: 180px;
+                }
             }
             .with-can-add-related {
                 select {
@@ -140,29 +153,38 @@
 .submit-row {
     padding: 15px 0 18px;
     margin-bottom: 0;
+    @save-bg-color: rgba(255, 247, 220, 0.97);
 
     &.fixed {
         width: auto;
-        background-color: @body-bg-color;
+        //        background-color: @body-bg-color;
+        //        @save-bg-color: #fff;
+        //            border-top: 3px solid @active-color;
+        //        background-color: @save-bg-color;
+        background-color: #fff;
         position: fixed;
         left: 0;
         right: 0;
         bottom: 0;
         padding-left: 40px;
         padding-right: 40px;
-        box-shadow: 0 0px 1px 2px rgba(0,0,0,0.15);
+        box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.2);
         z-index: 1000;
         .btn-group-lg {
-            margin-left: 2px;
+            margin-left: 12px;
         }
     }
-
+    .deletelink-box {
+        padding-top: 8px;
+        font-size: 13px;
+    }
     .btn-danger {
         margin-top: 5px;
     }
     .btn-group-lg {
         .box-shadow;
         border-radius: 4px;
+        margin-left: 10px;
         .btn:first-child {
             padding-left: 40px;
             padding-right: 40px;
@@ -172,6 +194,14 @@
             line-height: 19px;
             padding-left: 15px;
             padding-right: 15px;
+        }
+    }
+}
+.datepicker.dropdown-menu {
+    th.timepicker {
+        padding: 5px;
+        select:nth-child(3) {
+            display: none;
         }
     }
 

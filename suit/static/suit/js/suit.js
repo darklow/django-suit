@@ -19,6 +19,49 @@
         };
     }();
 
+
+    Suit.date_picker = (function () {
+        var lang = document.documentElement.getAttribute('lang');
+        var picker_lang_map = {
+            'pt-br': 'pt-BR',
+            'zh-cn': 'zh-CN',
+            'zh-tw': 'zh-TW'
+        };
+        if (lang.length > 2) {
+            var picker_lang = picker_lang_map[lang];
+            if (picker_lang) {
+                lang = picker_lang
+            } else {
+                lang = lang.substr(0, 2);
+            }
+        }
+        if ($.fn.datepicker) {
+            $.extend($.fn.datepicker.defaults, {
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayBtn: 'linked',
+                todayHighlight: true,
+                language: lang
+            });
+            //$.fn.datepicker.defaults['format'] = 'yyyy-mm-dd';
+            //$.fn.datepicker.defaults['todayBtn'] = 'todayBtn';
+            //$.fn.datepicker.defaults['autoclose'] = true;
+        }
+
+        function update() {
+            var selector = arguments[0];
+            if($.fn.datepicker) {
+                $(selector ? selector : '.input-group.date').datepicker({
+                    //weekStart: 1,
+                });
+            }
+        }
+
+        return {
+            update: update
+        }
+    })();
+
     // Backwards compatiblity
     SuitAfterInline = Suit.after_inline;
 
@@ -35,7 +78,7 @@
                 var $win = $(this),
                     item_height = $fixed_item.height(),
                     scroll_top = $win.scrollTop()
-                ;
+                    ;
                 if (scroll_top + $win.height() - item_height - extra_offset < item_pos.top) {
                     if (!$fixed_item.hasClass('fixed')) {
                         $fixed_item.addClass('fixed');
@@ -200,6 +243,9 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
+
+        // DatePicker
+        Suit.date_picker.update();
 
     });
 
