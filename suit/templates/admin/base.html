@@ -7,12 +7,11 @@
   <title>{% block title %}{% endblock %}</title>
   {#<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />#}
   <link rel="stylesheet" type="text/css" href="{% static 'suit/bootstrap/dist/css/bootstrap.css' %}" media="all">
-{#    <link rel="stylesheet" type="text/css" href="{% static 'suit/bootstrap/dist/css/bootstrap-theme.min.css' %}" media="all">#}
+  {#    <link rel="stylesheet" type="text/css" href="{% static 'suit/bootstrap/dist/css/bootstrap-theme.min.css' %}" media="all">#}
   <link rel="stylesheet" type="text/css" href="{% static 'suit/css/suit.css' %}" media="all">
   {% block extrastyle %}{% endblock %}
   {% if LANGUAGE_BIDI %}
-    <link rel="stylesheet" type="text/css" href="
-      {% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}"/>{% endif %}
   <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
   <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
   <script src="{% static 'suit/js/jquery-1.11.1.min.js' %}"></script>
@@ -33,66 +32,73 @@
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %} suit-menu-{{ 'menu_position'|suit_conf }}{{ 'show_required_asterisk'|suit_conf|yesno:' suit-show-req-asterisk,' }}">
 
 
-<div class="navbar navbar-inverse navbar-suit-top" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      {% block branding %}{% endblock %}
-    </div>
-    <div class="navbar-collapse collapse">
-      {% block nav-global %}{% endblock %}
-      <ul class="nav navbar-nav navbar-right">
-        {% if user.is_active and user.is_staff %}
-          <li class="dropdown" id="user-tools">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              {% block welcome-msg %}
-                {% trans 'Welcome,' %} {% firstof user.get_short_name user.get_username %}{% endblock %}
-              <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              {% block userlinks %}
-                {% if site_url %}
-                  <a href="{{ site_url }}">{% trans 'View site' %}</a> /
-                {% endif %}
-                {% url 'django-admindocs-docroot' as docsroot %}
-                {% if docsroot %}
-                  <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
-                {% endif %}
-                {% if user.has_usable_password %}
-                  <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
-                {% endif %}
-                <li class="divider"></li>
-                <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
-              {% endblock %}
-            </ul>
-          </li>
-        {% endif %}
-        <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
-      </ul>
-      <form class="navbar-form navbar-right">
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control" id="inputWarning2" placeholder="Search...">
-          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+{% block header %}
+  {% if not is_popup %}
+    <div class="navbar navbar-inverse navbar-suit-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          {% block branding %}{% endblock %}
         </div>
-      </form>
+        <div class="navbar-collapse collapse">
+          {% block nav-global %}{% endblock %}
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_active and user.is_staff %}
+              <li class="dropdown" id="user-tools">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  {% block welcome-msg %}
+                    {% trans 'Welcome,' %} {% firstof user.get_short_name user.get_username %}{% endblock %}
+                  <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  {% block userlinks %}
+                    {% if site_url %}
+                      <a href="{{ site_url }}">{% trans 'View site' %}</a> /
+                    {% endif %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                      <li><a href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
+                    {% endif %}
+                    {% if user.has_usable_password %}
+                      <li><a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a></li>
+                    {% endif %}
+                    <li class="divider"></li>
+                    <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
+                  {% endblock %}
+                </ul>
+              </li>
+            {% endif %}
+            <li><a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <div class="form-group has-feedback">
+              <input type="text" class="form-control" id="inputWarning2" placeholder="Search...">
+              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  {% endif %}
+{% endblock %}
 
+
+{% block wrapper %}
 <div id="wrapper">
 
-  <!-- Menu -->
-  <div id="menu-wrapper">
-    {% block content-left %}
-      {% include 'suit/menu.html' %}
-    {% endblock %}
-  </div>
-  <!-- /#menu-wrapper -->
-
+  {% block menu %}
+    <!-- Menu -->
+    <div id="menu-wrapper">
+      {% if not is_popup %}
+        {% include 'suit/menu.html' %}
+      {% endif %}
+    </div>
+    <!-- /#menu-wrapper -->
+  {% endblock %}
 
   <!-- Page Content -->
   <div id="page-content-wrapper">
@@ -161,42 +167,45 @@
 
 </div>
 <!-- /#wrapper -->
+{% endblock %}
 
-<div class="footer">
-  <div class="container-fluid">
-    {% block footer %}
-      <div class="row">
-        <div class="col-xs-12 col-sm-4 tools">
-          {% block footer_links %}
-            <a href="http://djangosuit.com/support/" target="_blank"><span class="glyphicon glyphicon-question-sign"></span>Support</a>
-            <a href="http://djangosuit.com/pricing/" target="_blank"><span class="glyphicon glyphicon-bookmark"></span>Licence</a>
-            <a href="http://github.com/darklow/django-suit/issues" target="_blank"><span class="glyphicon glyphicon-comment"></span>Report a bug</a>
-          {% endblock %}
+{% if not is_popup %}
+  <div class="footer">
+    <div class="container-fluid">
+      {% block footer %}
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 tools">
+            {% block footer_links %}
+              <a href="http://djangosuit.com/support/" target="_blank"><span class="glyphicon glyphicon-question-sign"></span>Support</a>
+              <a href="http://djangosuit.com/pricing/" target="_blank"><span class="glyphicon glyphicon-bookmark"></span>Licence</a>
+              <a href="http://github.com/darklow/django-suit/issues" target="_blank"><span class="glyphicon glyphicon-comment"></span>Report a bug</a>
+            {% endblock %}
+          </div>
+          <div class="col-xs-12 col-sm-4 branding">
+            {% block footer_branding %}
+              {% with 'admin_name'|suit_conf as admin_name %}
+                {{ admin_name }}
+              {% endwith %}
+            {% endblock %}
+            {% block footer_versions %}
+              <div class="version">
+                <a href="http://djangosuit.com" target="_blank">Django Suit</a> v{{ 'version'|suit_conf }} /
+                <a href="https://www.djangoproject.com/" target="_blank">Django</a> v{{ 'django_version'|suit_conf }}
+              </div>
+            {% endblock %}
+          </div>
+          <div class="col-xs-12 col-sm-4 copyright">
+            {% block copyright %}
+              Copyright &copy; 2013 DjangoSuit.com
+              <br>Developed by
+              <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>
+            {% endblock %}
+          </div>
         </div>
-        <div class="col-xs-12 col-sm-4 branding">
-          {% block footer_branding %}
-            {% with 'admin_name'|suit_conf as admin_name %}
-              {{ admin_name }}
-            {% endwith %}
-          {% endblock %}
-          {% block footer_versions %}
-            <div class="version">
-              <a href="http://djangosuit.com" target="_blank">Django Suit</a> v{{ 'version'|suit_conf }} /
-              <a href="https://www.djangoproject.com/" target="_blank">Django</a> v{{ 'django_version'|suit_conf }}
-            </div>
-          {% endblock %}
-        </div>
-        <div class="col-xs-12 col-sm-4 copyright">
-          {% block copyright %}
-            Copyright &copy; 2013 DjangoSuit.com
-            <br>Developed by
-            <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>
-          {% endblock %}
-        </div>
-      </div>
-    {% endblock %}
+      {% endblock %}
+    </div>
   </div>
-</div>
+{% endif %}
 
 <script src="{% static 'suit/js/suit.js' %}"></script>
 {% block extrajs %}{% endblock %}
