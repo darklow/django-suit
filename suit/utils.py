@@ -1,5 +1,6 @@
 import re
 from django import VERSION
+from functools import wraps
 
 
 def django_major_version():
@@ -31,3 +32,21 @@ def attrs_by_prefix(html, prefix):
 
 def dict_to_attrs(attrs_dict):
     return ' '.join(['%s="%s"' % (k, v) for k, v in attrs_dict.items()])
+
+
+def patch_class_method(target, name, external_decorator=None):
+    def decorator(patch_function):
+        original_function = getattr(target, name)
+
+        @wraps(patch_function)
+        def wrapper(*args, **kw):
+            return patch_function(original_function, *args, **kw)
+
+        if external_decorator is not None:
+            wrapper = external_decorator(wrapper)
+        setattr(target, name, wrapper)
+
+        return wrapper
+
+    return decorator
+

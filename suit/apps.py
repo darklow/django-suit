@@ -6,7 +6,10 @@ from django.contrib.admin.options import ModelAdmin
 from django.db import models
 from . import VERSION
 from django import forms
-from widgets import SuitDateWidget, SuitDateTimeWidget
+from suit import widgets
+
+SUIT_FORM_SIZE_FULL = 'col-xs-12 col-sm-2:col-xs-12'
+SUIT_FORM_SIZE_HALF = 'col-xs-12 col-sm-2:col-xs-12 col-sm-8 col-md-6 col-lg-4'
 
 
 class DjangoSuitConfig(AppConfig):
@@ -17,7 +20,6 @@ class DjangoSuitConfig(AppConfig):
     menu_position = 'horizontal'
     list_per_page = 18
     list_filters_position = 'right'
-    form_size = 'col-sm-2:col-sm-9'
     admin_name = 'Django Suit'
 
     # not used yet
@@ -28,6 +30,8 @@ class DjangoSuitConfig(AppConfig):
     # form
     show_required_asterisk = True
     confirm_unsaved_changes = True
+
+    form_size = SUIT_FORM_SIZE_HALF
 
     # menu
     search_url = '/admin/auth/user/'
@@ -58,11 +62,11 @@ class DjangoSuitConfig(AppConfig):
         # }
 
         options.FORMFIELD_FOR_DBFIELD_DEFAULTS[models.DateField].update({
-            'widget': SuitDateWidget
+            'widget': widgets.SuitDateWidget
         })
         options.FORMFIELD_FOR_DBFIELD_DEFAULTS[models.DateTimeField].update({
             'form_class': forms.DateTimeField,
-            'widget': SuitDateTimeWidget
+            'widget': widgets.SuitDateTimeWidget
         })
 
     def setup_model_admin(self):

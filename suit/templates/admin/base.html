@@ -29,7 +29,7 @@
 <![endif]-->
 </head>
 {% load i18n %}
-<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %} suit-menu-{{ 'menu_position'|suit_conf }}{{ 'show_required_asterisk'|suit_conf|yesno:' suit-show-req-asterisk,' }}">
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %} suit-menu-{{ 'menu_position'|suit_conf }}{{ 'show_required_asterisk'|suit_conf|yesno:' suit-show-req-asterisk,' }} {{ request|suit_platform }}">
 
 
 {% block header %}

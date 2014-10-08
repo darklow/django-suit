@@ -43,14 +43,11 @@
                 todayHighlight: true,
                 language: lang
             });
-            //$.fn.datepicker.defaults['format'] = 'yyyy-mm-dd';
-            //$.fn.datepicker.defaults['todayBtn'] = 'todayBtn';
-            //$.fn.datepicker.defaults['autoclose'] = true;
         }
 
         function update() {
             var selector = arguments[0];
-            if($.fn.datepicker) {
+            if ($.fn.datepicker) {
                 $(selector ? selector : '.input-group.date').datepicker({
                     //weekStart: 1,
                 });
@@ -134,19 +131,21 @@
 
         var get_url = function ($add_link, $select) {
             var value = $select.val();
-            return $add_link.attr('href') + '../' + value + '/';
+            return $add_link.attr('href').split('?')[0] + '../' + value + '/';
         };
 
         var add_link = function ($select) {
-            var $add_link = $select.next();
+            var $add_link = $select.next().find('a').first();
             if ($add_link.hasClass('add-another')) {
-                var $link = $add_link.next('a');
+                var $input_group = $add_link.parent().parent();
+                var $link = $input_group.parent().find('.linked-select-link');
                 if (!$link.length) {
-                    $link = $('<a/>').addClass('linked-select-link');
-                    $add_link.after($link).after(' &nbsp; ');
+                    $link = $('<a/>').addClass('linked-select-link btn btn-default');
+                    $link.append($('<span class="glyphicon glyphicon-link"/>'));
+                    $input_group.prepend($('<span class="input-group-btn"/>').append($link));
                 }
-                $link.text(get_link_name($select));
-                $link.attr('href', get_url($add_link, $select));
+                $link.attr('title', get_link_name($select))
+                    .attr('href', get_url($add_link, $select));
             }
         };
 

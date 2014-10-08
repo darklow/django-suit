@@ -68,10 +68,9 @@
 
     <script type="text/javascript">
       function label_to_placeholder(label_id, input_id) {
-        var input = document.getElementById(input_id);
-        input.setAttribute('class', 'form-control');
-        input.setAttribute('placeholder',
-          document.getElementById(label_id).innerText.replace(':', ''));
+        var $input = $('#'+input_id);
+        $input.attr('class', 'form-control');
+        $input.attr('placeholder', $('#'+label_id).text().replace(':', ''));
       }
       label_to_placeholder('username-label', 'id_username');
       label_to_placeholder('password-label', 'id_password');

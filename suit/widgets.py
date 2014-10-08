@@ -1,5 +1,7 @@
-from django.contrib.admin.widgets import AdminTimeWidget, AdminDateWidget
+from django.contrib.admin.widgets import AdminTimeWidget, \
+    ForeignKeyRawIdWidget, RelatedFieldWidgetWrapper
 from django.forms import TextInput, Select, Textarea
+from django.forms.widgets import Input
 from django.utils.safestring import mark_safe
 from django import forms
 from django.utils import formats, translation
@@ -36,6 +38,15 @@ class LinkedSelect(Select):
     def __init__(self, attrs=None, choices=()):
         attrs = _make_attrs(attrs, classes="linked-select")
         super(LinkedSelect, self).__init__(attrs, choices)
+
+    def renderz(self, name, value, attrs=None, choices=()):
+        select = super(LinkedSelect, self).render(name, value, attrs,
+                                                  choices)
+        select = ('<span class="input-group">%s<span class="input-group-btn">'
+                  '<a href="" class="btn btn-default">'
+                  '<span class="glyphicon glyphicon-plus-sign"></span></a>'
+                  '</span></span>') % select
+        return select
 
 
 class EnclosedInput(TextInput):
@@ -119,9 +130,9 @@ class SuitDateWidget(forms.DateInput):
         super(SuitDateWidget, self).__init__(attrs=attrs, format=format)
 
     def language(self):
-        lang = str(translation.get_language() or 'en').lower()
+        lang = str(translation.get_language() or 'en')[:2].lower()
         dp_lang = lang
-        if lang.startswith('zh-'):
+        if lang.startswith('zh'):
             dp_lang = {
                 'zh-cn': 'zh-CN',
                 'zh-tw': 'zh-TW'
@@ -132,8 +143,6 @@ class SuitDateWidget(forms.DateInput):
         return self.format or formats.get_format(self.format_key)[0]
 
     def datepicker_date_format(self, django_format):
-        # django_format = django_format.replace('%', '')
-        print django_format
         mapping = {
             '%Y': 'yyyy',
             '%y': 'yy',
@@ -213,3 +222,64 @@ def _make_attrs(attrs, defaults=None, classes=None):
     if classes:
         result["class"] = " ".join((classes, result.get("class", "")))
     return result
+
+
+class SuitForeignKeyRawIdWidget(ForeignKeyRawIdWidget):
+    def render(self, name, value, attrs=None):
+        out = super(SuitForeignKeyRawIdWidget, self).render(
+            name, value, attrs)
+
+        return wrap_as_input_group(out)
+
+
+def wrap_as_input_group(s, append=''):
+    return mark_safe('<div class="input-group">%s</div>%s' % (s, append))
+
+
+def adjust_widget(field):
+    widget = field.field.widget
+    if isinstance(widget, ForeignKeyRawIdWidget):
+        field = unicode(field)
+        field = field.replace('RawIdAdminField', 'RawIdAdminField form-control')
+        field = field.replace('<a', '<span class="input-group-btn"><a')
+        field = field.replace('</a>', '<span class="glyphicon glyphicon-search"'
+                                      '></span></a></span>')
+        field = field.replace('related-lookup',
+                              'related-lookup btn btn-default')
+
+        # Remove title and space
+        title = field.split('strong>')[-2].split('<')[0]
+        field = field.replace('&nbsp;','')
+        field = field.replace('<strong>%s</strong>' % title, '')
+        field = field.replace('</div>', '</div>%s' % title)
+        field = wrap_as_input_group(field, '<span>%s</span>' % title)
+
+    elif isinstance(widget, RelatedFieldWidgetWrapper):
+        field = unicode(field)
+        # field = field.replace('RawIdAdminField', 'RawIdAdminField form-control')
+        field = field.replace('<a', '<span class="input-group-btn"><a')
+        field = field.replace('</a>', '<span class="glyphicon glyphicon-plus-sign color-success"'
+                                      '></span></a></span>')
+        field = field.replace('add-another',
+                              'add-another btn btn-default')
+        field = wrap_as_input_group(field)
+
+    elif isinstance(widget, (Input, Textarea)):
+        widget.attrs['class'] = ' '.join((
+            'form-control', widget.attrs.get('class', '')))
+
+    return field
+
+#
+#
+# def patch_django_widgets():
+# @utils.patch_class_method(ForeignKeyRawIdWidget, 'render')
+# def render_patched(render, self, *args, **kwargs):
+#         out = render(self, *args, **kwargs)
+#         out = out.replace('vForeignKeyRawIdAdminField', 'form-control')
+#         out = out.replace('related-lookup', 'related-lookup btn btn-default')
+#         out = out.replace('<a', '<span class="input-group-btn"><a')
+#         out = out.replace('</a>',
+#                           '<span class="glyphicon '
+#                           'glyphicon-search"></span></a></span>')
+#         return wrap_as_input_group(out)

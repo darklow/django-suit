@@ -39,9 +39,6 @@
         box-shadow: none;
         .form-control-focus();
     }
-    select {
-        .form-control-mixin;
-    }
     .fieldset-heading {
         .fieldset-title {
             margin-bottom: 5px;
@@ -134,18 +131,88 @@
                     }
                 }
                 .input-group.date {
-                    max-width: 180px;
+                    max-width: 204px;
                 }
             }
-            .with-can-add-related {
+            .btn {
+                &.related-lookup, &.add-another {
+                    img {
+                        display: none;
+                    }
+                }
+            }
+            .input-group-btn:last-child > .btn,
+            .input-group-btn:last-child > .btn-group {
+                //                    margin-left: -4px;
+            }
+
+            select {
+                .form-control-mixin;
+            }
+            .input-group {
                 select {
-                    width: 93%;
-                    margin-right: 5px;
+                    position: relative;
+                    z-index: 20;
+                }
+                .glyphicon {
+                    top: 2px;
+                }
+            }
+            .form-inline .input-group:first-child {
+                max-width: 201px;
+            }
+            .widget-RelatedFieldWidgetWrapper {
+                a {
+                    .replace-a-img;
+                    img {
+                        color: @brand-success;
+                        &:after {
+                            content: "\e081";
+                        }
+                    }
+                    &:hover img:after {
+                        color: darken(@brand-success, 10%);
+                    }
+                }
+            }
+            .widget-CheckboxInput {
+                .help-block {
                     display: inline-block;
+                    margin-left: 10px;
+                }
+            }
+            .radiolist {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                label {
+                    font-weight: normal;
+                    input {
+                        margin-right: 2px;
+                    }
+                }
+                &.inline {
+                    li {
+                        display: inline-block;
+                        margin-right: 15px;
+                    }
+                }
+            }
+            .glyphicon-plus-sign {
+                color: @brand-success;
+            }
+            a.related-lookup {
+                img {
+                    display: none;
                 }
             }
         }
+        .input-group > .input-group-btn:not(:last-child) > .btn{
+            border-radius: 0;
+            margin-left: -1px;
+        }
     }
+
 }
 .vTextField, .form-group textarea {
     //    .form-control;

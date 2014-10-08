@@ -6,7 +6,7 @@
         {% if fieldset.description %}
           <small class="description">{{ fieldset.description|safe }}</small>
         {% endif %}
-      {{ fieldset.name }}
+        {{ fieldset.name }}
       </h3>
     </div>
   {% endif %}
@@ -21,9 +21,16 @@
 
         <label for="inputEmail3" class="control-label {{ field.field|suit_form_label_class:fieldset }}">{{ field.label_tag }}</label>
 
-        <div class="{{ field.field|suit_form_field_class:fieldset }}">
+        <div class="{{ field|suit_form_field_class:fieldset }}">
           {#        {{ field.field.field.widget.can_add_related }}#}
-          {{ field.field|suit_form_field }}
+
+          {% if field.is_readonly %}
+            <p>{{ field.contents }}</p>
+          {% else %}
+            {{ field.field|suit_form_field }}
+          {% endif %}
+
+
           {{ line.errors }}
           {# help text #}
           {% if field.field.help_text %}
@@ -35,6 +42,11 @@
         {% if is_single or forloop.last %}
           </div>
         {% endif %}
+
+          {% if not is_single %}
+            <div class="clearfix visible-xs visible-sm visible-md"></div>
+          {% endif %}
+
         {% endfor %}
       {% endwith %}
     {% endfor %}

@@ -17,6 +17,30 @@ def suit_conf(name):
     return mark_safe(value) if isinstance(value, str) else value
 
 
+@register.filter
+def suit_platform(request):
+    if not request:
+        return ''
+    user_agent = request.META.get('HTTP_USER_AGENT', '')
+    css = []
+
+    # OS
+    if 'Macintosh' in user_agent:
+        css.append('os-macos')
+    elif 'Linux' in user_agent:
+        css.append('os-linux')
+    else:
+        css.append('os-win')
+
+    # Browser
+    if 'Chrome' in user_agent:
+        css.append('br-chrome')
+    elif 'Firefox' in user_agent:
+        css.append('br-firefox')
+
+    return ' '.join(css)
+
+
 @register.assignment_tag
 def suit_conf_value(name, model_admin=None):
     if model_admin:
@@ -53,8 +77,8 @@ def field_contents_foreign_linked(admin_field):
 
     if not hasattr(admin_field.model_admin,
                    'linked_readonly_fields') or fieldname not in admin_field \
-        .model_admin \
-        .linked_readonly_fields:
+            .model_admin \
+            .linked_readonly_fields:
         return displayed
 
     try:
