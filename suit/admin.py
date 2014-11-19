@@ -91,8 +91,15 @@ class SortableStackedInlineBase(SortableModelAdminBase):
             for line in fieldset:
                 if not line or not isinstance(line, dict):
                     continue
-
+                
                 fields = line.get('fields')
+                
+                # Some use tuples for fields however they are immutable
+                assert isinstance(fields, tuple), "The fields attribute of your " \
+                                                  "Inline is a tuple. This must be " \
+                                                  "list as we may need to modify " \
+                                                  "it and tuples are immutable."
+                
                 if self.sortable in fields:
                     fields.remove(self.sortable)
 
