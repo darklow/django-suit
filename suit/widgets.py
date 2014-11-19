@@ -1,7 +1,7 @@
 from django.contrib.admin.widgets import AdminTimeWidget, \
     ForeignKeyRawIdWidget, RelatedFieldWidgetWrapper
 from django.forms import TextInput, Select, Textarea
-from django.forms.widgets import Input
+from django.forms.widgets import Input, RendererMixin
 from django.utils.safestring import mark_safe
 from django import forms
 from django.utils import formats, translation
@@ -36,7 +36,7 @@ class LinkedSelect(Select):
     """
 
     def __init__(self, attrs=None, choices=()):
-        attrs = _make_attrs(attrs, classes="linked-select")
+        attrs = _make_attrs(attrs, classes="form-control linked-select")
         super(LinkedSelect, self).__init__(attrs, choices)
 
     def renderz(self, name, value, attrs=None, choices=()):
@@ -264,7 +264,8 @@ def adjust_widget(field):
                               'add-another btn btn-default')
         field = wrap_as_input_group(field)
 
-    elif isinstance(widget, (Input, Textarea)):
+    elif isinstance(widget, (Input, Textarea, Select)) and \
+            not isinstance(widget, RendererMixin):
         widget.attrs['class'] = ' '.join((
             'form-control', widget.attrs.get('class', '')))
 

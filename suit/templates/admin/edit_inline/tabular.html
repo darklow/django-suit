@@ -1,13 +1,13 @@
 {% load i18n admin_static admin_modify %}{% load cycle from future %}
+{% load suit_forms %}
 <div class="inline-group" id="{{ inline_admin_formset.formset.prefix }}-group">
   <div class="tabular inline-related {% if forloop.last %}last-related{% endif %}">
 {{ inline_admin_formset.formset.management_form }}
 <fieldset class="module">
    <h2>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>
    {{ inline_admin_formset.formset.non_form_errors }}
-  <div class="panel">
-  <div class="panel-body">
-   <table>
+  <div class="panel-border">
+   <table class="table table-striped table-bordered table-hover table-condensed table-primary">
      <thead><tr>
      {% for field in inline_admin_formset.fields %}
        {% if not field.widget.is_hidden %}
@@ -52,7 +52,7 @@
                   <p>{{ field.contents }}</p>
               {% else %}
                   {{ field.field.errors.as_ul }}
-                  {{ field.field }}
+                  {{ field.field|suit_form_field }}
               {% endif %}
               </td>
               {% endif %}
@@ -65,7 +65,7 @@
         </tr>
      {% endfor %}
      </tbody>
-   </table></div>
+   </table>
   </div>
 </fieldset>
   </div>
