@@ -90,7 +90,7 @@
 
         var get_url = function ($add_link, $select) {
             var value = $select.val();
-            return $add_link.attr('href') + '../' + value + '/';
+            return $add_link.attr('href').split('?')[0] + '../' + value + '/';
         };
 
         var add_link = function ($select) {
