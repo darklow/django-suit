@@ -4,6 +4,14 @@ Changelog
 Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
 
 
+v0.2.12 (2014-11-19)
+--------------------
+
+* [Fix] Raise an exception if inline fields are defined as tuple. `#302 <https://github.com/darklow/django-suit/pull/302>`_ [Thanks to @peterfarrell]
+* [Fix] Fixes change_form first field focus. `#290 <https://github.com/darklow/django-suit/pull/290>`_ `#295 <https://github.com/darklow/django-suit/issues/295>`_ [Thanks to @cybersimon]
+* [Fix] Django 1.7: Fix LinkedSelect if extra url args. `#310 <https://github.com/darklow/django-suit/issues/310>`_ `#294 <https://github.com/darklow/django-suit/issues/294>`_
+
+
 v0.2.11 (2014-09-11)
 --------------------
 
