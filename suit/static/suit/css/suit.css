@@ -253,7 +253,7 @@ body{background-color:#eff0f1}
 .suit-menu-vertical .navbar-brand{background-color:#a5acb3;width:250px;min-height:70px;text-align:center;float:none;display:block;padding-top:30px}.suit-menu-vertical .navbar-brand:hover{background-color:#dbe4ed}
 @media (max-width:768px){.suit-menu-vertical .navbar-brand{width:auto;letter-spacing:0}}html{position:relative;min-height:100%}
 body{margin-bottom:60px}
-.footer{position:absolute;bottom:0;width:100%;height:60px;background-color:#e5e5e5;text-shadow:0 1px rgba(255,255,255,0.3)}.footer .container-fluid{padding-top:15px;padding-left:40px;padding-right:40px}
+.footer{position:absolute;bottom:0;width:100%;min-height:60px;background-color:#e5e5e5;text-shadow:0 1px rgba(255,255,255,0.3)}.footer .container-fluid{padding-top:15px;padding-left:40px;padding-right:40px}
 .footer .branding{text-align:center;font-weight:bold}.footer .branding .version{color:#777;font-size:11px;font-weight:normal}.footer .branding .version a{color:#777}
 .footer .copyright{font-size:11px;text-align:right}
 .footer .tools{font-size:11px}.footer .tools a{display:inline-block;margin-right:10px}.footer .tools a .glyphicon{color:#333;margin-right:5px}
