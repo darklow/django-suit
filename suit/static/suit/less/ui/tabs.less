@@ -1,0 +1,55 @@
+.navbar-suit-tabs {
+    margin-bottom: 20px;
+    min-height: inherit;
+    > .container-fluid {
+        padding: 0;
+    }
+    .nav > li {
+        > a {
+            padding: 10px 15px;
+            color: @link-color;
+        }
+        &.active {
+            > a {
+                background-color: @brand-primary;
+                color: #fff;
+                &:hover {
+                    background-color: darken(@brand-primary, 5%);
+                    color: #fff;
+                }
+            }
+        }
+        border-right: 1px solid @body-bg-color;
+    }
+}
+
+.nav-tabs-suit {
+    margin-bottom: 0;
+    min-height: inherit;
+    background-color: transparent;
+    > li  {
+        > a {
+            border-radius: 0;
+            padding: 9px 18px;
+            margin-right: -1px;
+            font-size: 13px;
+        }
+        > a, > a:hover {
+            background-color: #fff;
+            border-color: #ddd;
+        }
+        &.active {
+            > a, > a:hover {
+                background-color: transparent;
+                border-bottom-color: @body-bg-color;
+                font-weight: bold;
+                color: @body-text-color;
+            }
+        }
+    }
+}
+.tab-content-main {
+    > .suit-tab.show:first-child {
+        margin-top: 20px;
+    }
+}

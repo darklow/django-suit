@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_urls admin_static admin_modify %}
+{% load i18n admin_urls admin_static admin_modify suit_tags %}
 
 {% block extrahead %}{{ block.super }}
   <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
@@ -11,6 +11,37 @@
 {% block coltype %}colM{% endblock %}
 
 {% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}
+
+{% block extrajs %}
+  {{ block.super }}
+
+  {% if 'CONFIRM_UNSAVED_CHANGES'|suit_conf %}
+    <!-- Warn on leaving unsaved form -->
+    <script src="{% static 'suit/js/suit-form-confirm.js' %}"></script>
+    <script type="text/javascript">
+      confirmExitIfModified('{{ opts.module_name }}_form', '{% trans 'You have unsaved changes' %}.');
+    </script>
+  {% endif %}
+
+  {% if adminform.model_admin.suit_form_tabs %}
+    <script type="text/javascript">
+      (function ($) {
+        $(function () {
+          $('#suit_form_tabs').suit_form_tabs();
+        });
+      }(Suit.$))
+    </script>
+  {% endif %}
+
+  <script>
+    {#    (function ($) {#}
+    {#      $(function () {#}
+    {#        $("#{{ opts.module_name }}_form").suit_form_debounce();#}
+    {#      });#}
+    {#    }(Suit.$))#}
+  </script>
+
+{% endblock %}
 
 {% if not is_popup %}
   {% block breadcrumbs %}
@@ -44,9 +75,30 @@
         </ul>
       {% endif %}{% endif %}
     {% endblock %}
+
+    {% block suit_form_tabs %}
+      {% if adminform.model_admin.suit_form_tabs %}
+
+{#        <nav id="suit_form_tabs" class="navbar navbar-default panel navbar-suit-tabs" data-tab-prefix="suit-tab">#}
+{#            <div class="container-fluid">#}
+{#                <ul class="nav navbar-nav">#}
+{#                  {% for tab in adminform.model_admin.suit_form_tabs %}#}
+{#                    <li><a href="#{{ tab.0 }}">{{ tab.1 }}</a></li>{% endfor %}#}
+{#                </ul>#}
+{#            </div>#}
+{#        </nav>#}
+
+        <ul id="suit_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
+          {% for tab in adminform.model_admin.suit_form_tabs %}
+            <li><a href="#{{ tab.0 }}">{{ tab.1 }}</a></li>{% endfor %}
+        </ul>
+
+      {% endif %}
+    {% endblock %}
+
     <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" class="form-horizontal" novalidate>
       {% csrf_token %}{% block form_top %}{% endblock %}
-      <div>
+      <div class="tab-content tab-content-main">
         {% if is_popup %}
           <input type="hidden" name="{{ is_popup_var }}" value="1"/>{% endif %}
         {% if to_field %}
@@ -59,38 +111,49 @@
           {{ adminform.form.non_field_errors }}
         {% endif %}
 
+        {# render suit_form_includes at top position #}
+        {% include 'suit/includes/change_form_includes.html' with position='top' %}
+
         {% block field_sets %}
           {% for fieldset in adminform %}
             {% include "admin/includes/fieldset.html" %}
           {% endfor %}
         {% endblock %}
 
-        {% block after_field_sets %}{% endblock %}
-
-        {% block inline_field_sets %}
-          {% for inline_admin_formset in inline_admin_formsets %}
-            {% include inline_admin_formset.opts.template %}
-          {% endfor %}
-        {% endblock %}
-
-        {% block after_related_objects %}{% endblock %}
-
-        {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
-
-        {% if adminform and add %}
-          <script type="text/javascript">
-            (function ($) {
-              $(document).ready(function () {
-                $('form#{{ opts.model_name }}_form :input:visible:enabled:first').focus()
-              });
-            })(django.jQuery);
-          </script>
-        {% endif %}
-
-        {# JavaScript for prepopulated fields #}
-        {% prepopulated_fields_js %}
 
       </div>
+      {% block after_field_sets %}{% endblock %}
+
+      {# render suit_form_includes at middle position #}
+      {% include 'suit/includes/change_form_includes.html' with position='middle' %}
+
+      {% block inline_field_sets %}
+        {% for inline_admin_formset in inline_admin_formsets %}
+          {% include inline_admin_formset.opts.template %}
+        {% endfor %}
+      {% endblock %}
+
+      {% block after_related_objects %}{% endblock %}
+
+      {# render suit_form_includes at last position #}
+      {% include 'suit/includes/change_form_includes.html' with position='bottom' %}
+
+      {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+
+      {% if adminform and add %}
+        <script type="text/javascript">
+          (function ($) {
+            $(document).ready(function () {
+              $('form#{{ opts.model_name }}_form :input:visible:enabled:first').focus()
+            });
+          })(django.jQuery);
+        </script>
+      {% endif %}
+
+      {# JavaScript for prepopulated fields #}
+      {% prepopulated_fields_js %}
+
+
     </form>
   </div>
 {% endblock %}

@@ -106,14 +106,14 @@
     }
     &.table-hover > tbody > tr {
         &:nth-child(odd):hover {
-//            & > td, & > th {
-                background-color: @tr-odd-hover-bg-color;
-//            }
+            //            & > td, & > th {
+            background-color: @tr-odd-hover-bg-color;
+            //            }
         }
         &:hover {
-//            th, td {
-                background-color: @tr-hover-bg-color;
-//            }
+            //            th, td {
+            background-color: @tr-hover-bg-color;
+            //            }
         }
     }
     .action-checkbox-column {
@@ -175,5 +175,18 @@
                 }
             }
         }
+    }
+}
+.table.table-form-like {
+    background-color: @form-bg-color;
+    > tbody > tr > td, th {
+        border-color: @body-bg-color;
+    }
+    th {
+        background-color: #fff;
+        font-weight: normal;
+    }
+    td {
+        padding-left: 15px;
     }
 }
