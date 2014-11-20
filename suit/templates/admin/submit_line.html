@@ -17,12 +17,12 @@
         {% if show_save %}
           <input type="submit" value="{% trans 'Save' %}" class="default btn btn-primary" name="_save"/>{% endif %}
 
+        {% if show_save_and_continue %}
+          <input type="submit" value="{% trans 'Save and continue editing' %}" class="btn btn-default " name="_continue"/>{% endif %}
         {% if show_save_as_new %}
           <input type="submit" value="{% trans 'Save as new' %}" class="btn btn-default" name="_saveasnew"/>{% endif %}
         {% if show_save_and_add_another %}
           <input type="submit" value="{% trans 'Save and add another' %}" class="btn btn-default " name="_addanother"/>{% endif %}
-        {% if show_save_and_continue %}
-          <input type="submit" value="{% trans 'Save and continue editing' %}" class="btn btn-default " name="_continue"/>{% endif %}
       </div>
     </div>
   </div>

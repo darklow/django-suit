@@ -9,6 +9,7 @@
 .table-primary {
     .box-shadow;
     border: 0;
+    background-color: #fff;
     th, td {
         input {
             margin: 0;
@@ -94,7 +95,6 @@
             box-shadow: inset 1px 1px 0 #fff;
             border-color: @table-border-color;
             padding: 5px 10px 4px 10px;
-            background-color: white;
             border-left-width: 0;
             border-right-width: 0;
         }
@@ -106,14 +106,14 @@
     }
     &.table-hover > tbody > tr {
         &:nth-child(odd):hover {
-            & > td, & > th {
+//            & > td, & > th {
                 background-color: @tr-odd-hover-bg-color;
-            }
+//            }
         }
         &:hover {
-            th, td {
+//            th, td {
                 background-color: @tr-hover-bg-color;
-            }
+//            }
         }
     }
     .action-checkbox-column {

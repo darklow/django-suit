@@ -269,6 +269,8 @@ def adjust_widget(field):
         widget.attrs['class'] = ' '.join((
             'form-control', widget.attrs.get('class', '')))
 
+
+
     return field
 
 #

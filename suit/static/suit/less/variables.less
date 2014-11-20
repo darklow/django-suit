@@ -1,6 +1,6 @@
 /*
 Variables for custom bootstrap generation:
-http://getbootstrap.com/customize/?id=5d3e1adb05c9f9d3cb86
+http://getbootstrap.com/customize/?id=51f79e9d8e113ce08c42
 
 ------
 @font-size: 12px;
@@ -164,6 +164,25 @@ http://getbootstrap.com/customize/?id=5d3e1adb05c9f9d3cb86
                 text-decoration: none;
                 color: @b-gray-darker;
             }
+        }
+    }
+}
+.input-group {
+    select {
+        -webkit-appearance: none;
+    }
+    select + .input-group-btn {
+        &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            margin: 13px 0 0 -14px;
+            z-index: 21;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 6px 3px 0 3px;
+            border-color: #555 transparent transparent transparent;
         }
     }
 }

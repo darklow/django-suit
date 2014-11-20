@@ -133,6 +133,9 @@
                 .input-group.date {
                     max-width: 204px;
                 }
+                p {
+                    margin-top: 5px;
+                }
             }
             .btn {
                 &.related-lookup, &.add-another {
@@ -181,6 +184,11 @@
                     margin-left: 10px;
                 }
             }
+            .widget-ForeignKeyRawIdWidget {
+                .input-group {
+                    margin-right: 10px;
+                }
+            }
             .radiolist {
                 list-style: none;
                 padding: 0;
@@ -207,12 +215,68 @@
                 }
             }
         }
-        .input-group > .input-group-btn:not(:last-child) > .btn{
+        .input-group > .input-group-btn:not(:last-child) > .btn {
             border-radius: 0;
             margin-left: -1px;
         }
     }
-
+    .inline-related {
+        &.tabular {
+            table tr td.original {
+                width: 0;
+                display: none;
+            }
+            .add-row {
+                background-color: transparent;
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+    .add-row {
+        a {
+            &:before {
+                .glyphicon-before;
+                content: "\2b";
+                color: @gray-light;
+                font-size: 12px;
+                margin-right: 2px;
+            }
+        }
+    }
+    // Stacked inlines
+    .inline-group {
+        .panel-heading {
+            position: relative;
+            padding: 6px 10px 5px;
+            label {
+                margin: 0;
+                font-weight: normal;
+            }
+            // Delete checkbox column
+            .row > div:last-child {
+                text-align: right;
+            }
+            .delete {
+                input {
+                    margin-top: 0;
+                }
+            }
+            // Delete on just added inlines
+            .row + span {
+                position: absolute;
+                right: 10px;
+                top: 6px;
+                a {
+                    color: #fff;
+                }
+            }
+        }
+        .add-row {
+            margin: -5px 0 10px 10px;
+        }
+    }
 }
 .vTextField, .form-group textarea {
     //    .form-control;
@@ -272,4 +336,13 @@
         }
     }
 
+}
+// Hide empty inlines
+.empty-form {
+    display: none;
+}
+// Set width in px, instead of 1%, otherwise they
+// stretch cells when used in tables
+.input-group-addon, .input-group-btn {
+    width: 1px;
 }
