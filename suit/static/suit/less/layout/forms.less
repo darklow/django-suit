@@ -346,3 +346,26 @@
 .input-group-addon, .input-group-btn {
     width: 1px;
 }
+
+// Get rid of Mac/Chrome select rounded corners
+.os-macos.br-chrome {
+    .input-group {
+        select {
+            -webkit-appearance: none;
+        }
+        select + .input-group-btn {
+            &:before {
+                content: '';
+                position: absolute;
+                display: block;
+                margin: 13px 0 0 -14px;
+                z-index: 21;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 6px 3px 0 3px;
+                border-color: #555 transparent transparent transparent;
+            }
+        }
+    }
+}

@@ -214,8 +214,6 @@
 .glyphicon-before{content:"\2a";width:14px;height:14px;font-size:13px;color:#4f5255;position:relative;top:1px;display:inline-block;font-family:'Glyphicons Halflings';font-style:normal;font-weight:normal;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .replace-a-img img{display:block;content:'';width:14px;height:14px;font-size:13px;color:#4f5255;position:relative;top:1px;display:inline-block;font-family:'Glyphicons Halflings';font-style:normal;font-weight:normal;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;vertical-align:inherit}.replace-a-img img:after{content:"\2a"}
 .replace-a-img:hover{text-decoration:none}.replace-a-img:hover img{text-decoration:none}.replace-a-img:hover img:after{text-decoration:none;color:#202122}
-.input-group select{-webkit-appearance:none}
-.input-group select+.input-group-btn:before{content:'';position:absolute;display:block;margin:13px 0 0 -14px;z-index:21;width:0;height:0;border-style:solid;border-width:6px 3px 0 3px;border-color:#555 transparent transparent transparent}
 body{background-color:#eff0f1}
 .page-header{margin:10px 0 40px;font-size:20px;border-color:#ddd;display:none}
 .white-inset-shadow{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.2)}
@@ -351,6 +349,8 @@ body{margin-bottom:60px}
 .datepicker.dropdown-menu th.timepicker{padding:5px}.datepicker.dropdown-menu th.timepicker select:nth-child(3){display:none}
 .empty-form{display:none}
 .input-group-addon,.input-group-btn{width:1px}
+.os-macos.br-chrome .input-group select{-webkit-appearance:none}
+.os-macos.br-chrome .input-group select+.input-group-btn:before{content:'';position:absolute;display:block;margin:13px 0 0 -14px;z-index:21;width:0;height:0;border-style:solid;border-width:6px 3px 0 3px;border-color:#555 transparent transparent transparent}
 .breadcrumb{font-size:13px;padding:6px 12px;border-radius:4px;background-color:rgba(255,255,255,0.5);margin-bottom:20px;text-shadow:0 1px rgba(255,255,255,0.3)}.breadcrumb .active{font-weight:bold}
 .breadcrumb-light.toplinks{font-size:12px}.breadcrumb-light.toplinks li{margin-right:5px}.breadcrumb-light.toplinks li:before{display:none}
 .change-list .container-fluid>.row>div>.breadcrumb{margin-bottom:20px;display:none}
