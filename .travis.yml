@@ -34,3 +34,7 @@ matrix:
     # https://code.djangoproject.com/ticket/19944
     - python: pypy
       env: DJANGO=1.5
+
+branches:
+  except:
+    - bs3
