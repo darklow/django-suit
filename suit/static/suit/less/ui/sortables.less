@@ -1,0 +1,55 @@
+
+/* TabularInlines Sortables */
+.inline-sortable {
+    white-space: nowrap;
+    a {
+        display: inline-block;
+        padding: 2px 6px 0 2px;
+        color: @gray-light;
+        &:last-child {
+            padding: 0;
+        }
+        &:hover {
+            color: @gray;
+        }
+    }
+}
+.selected td {
+    .inline-sortable a i, .inline-sortable a:hover i {
+        opacity: 1;
+    }
+}
+tr:first-child td .inline-sortable .sortable-up {
+    opacity: .15;
+    cursor: default;
+}
+tr.form-row:nth-last-child(3), #result_list tr:last-child {
+    td .inline-sortable .sortable-down {
+        opacity: .15;
+        cursor: default;
+    }
+}
+
+
+/* StackedInline sortables */
+.stacked-inline-sortable {
+    float: left;
+    :first-child {
+        padding-right: 1px;
+    }
+    &:nth-last-child(2) {
+        margin-right: 10px;
+    }
+    a {
+        color: @gray-lightest;
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+.inline-group > div:first-of-type .stacked-inline-sortable .sortable-up,
+.inline-group > div:nth-last-child(3) .stacked-inline-sortable .sortable-down
+{
+    opacity: .15 !important;
+    cursor: default;
+}

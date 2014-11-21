@@ -396,3 +396,12 @@ body{margin-bottom:60px}
 .nav-tabs-suit>li>a,.nav-tabs-suit>li>a:hover{background-color:#fff;border-color:#ddd}
 .nav-tabs-suit>li.active>a,.nav-tabs-suit>li.active>a:hover{background-color:transparent;border-bottom-color:#eff0f1;font-weight:bold;color:#333}
 .tab-content-main>.suit-tab.show:first-child{margin-top:20px}
+.inline-sortable{white-space:nowrap}.inline-sortable a{display:inline-block;padding:2px 6px 0 2px;color:#777}.inline-sortable a:last-child{padding:0}
+.inline-sortable a:hover{color:#555}
+.selected td .inline-sortable a i,.selected td .inline-sortable a:hover i{opacity:1}
+tr:first-child td .inline-sortable .sortable-up{opacity:.15;cursor:default}
+tr.form-row:nth-last-child(3) td .inline-sortable .sortable-down,#result_list tr:last-child td .inline-sortable .sortable-down{opacity:.15;cursor:default}
+.stacked-inline-sortable{float:left}.stacked-inline-sortable :first-child{padding-right:1px}
+.stacked-inline-sortable:nth-last-child(2){margin-right:10px}
+.stacked-inline-sortable a{color:#ededed}.stacked-inline-sortable a:hover{color:#fff}
+.inline-group>div:first-of-type .stacked-inline-sortable .sortable-up,.inline-group>div:nth-last-child(3) .stacked-inline-sortable .sortable-down{opacity:.15 !important;cursor:default}

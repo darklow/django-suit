@@ -16,10 +16,10 @@
       {% with is_single=line.fields|length_is:'1' %}
         {% for field in line %}
           {% if is_single or forloop.counter0 == 0 %}
-            <div class="form-group">
+            <div class="form-group{% if line.errors %} {{ is_single|yesno:'has-error,first-error' }} has-errors{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %} {{ field.field.field.widget.attrs.rowclass }}{% endfor %}{{ is_single|yesno:',multi-field-row' }}">
           {% endif %}
 
-        <label for="inputEmail3" class="control-label {{ field.field|suit_form_label_class:fieldset }}">{{ field.label_tag }}</label>
+        <label class="control-label {{ field.field|suit_form_label_class:fieldset }}">{{ field.label_tag }}</label>
 
         <div class="{{ field|suit_form_field_class:fieldset }}">
           {#        {{ field.field.field.widget.can_add_related }}#}
@@ -51,30 +51,5 @@
       {% endwith %}
     {% endfor %}
   </div>
-
-  {% for line in fieldset_ZZZZZZ %}
-    <div class="form-row{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
-      {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
-      {% for field in line %}
-        <div
-          {% if not line.fields|length_is:'1' %} class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% elif field.is_checkbox %} class="checkbox-row"{% endif %}>
-          {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
-          {% if field.is_checkbox %}
-            {{ field.field }}{{ field.label_tag }}
-          {% else %}
-            {{ field.label_tag }}
-            {% if field.is_readonly %}
-              <p>{{ field.contents }}</p>
-            {% else %}
-              {{ field.field }}
-            {% endif %}
-          {% endif %}
-          {% if field.field.help_text %}
-            <p class="help">{{ field.field.help_text|safe }}</p>
-          {% endif %}
-        </div>
-      {% endfor %}
-    </div>
-  {% endfor %}
 
 </fieldset>

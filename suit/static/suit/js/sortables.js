@@ -71,14 +71,14 @@
         function create_link(text, direction, on_click_func, is_stacked) {
             return $('<a/>').attr('href', '#')
                 .addClass('sortable sortable-' + direction +
-                    (is_stacked ? ' sortable-stacked' : ''))
+                (is_stacked ? ' sortable-stacked' : ''))
                 .attr('data-dir', direction).html(text)
                 .click(on_click_func);
         }
 
         $inputs.each(function () {
             var $inline_sortable = $('<div class="inline-sortable"/>'),
-                icon = '<i class="icon-arrow-up icon-alpha5"></i>',
+                icon = '<span class="glyphicon glyphicon-arrow-up icon-alpha5"></span>',
                 $sortable = $(this),
                 is_stacked = $sortable.hasClass('suit-sortable-stacked');
 
@@ -86,13 +86,13 @@
                 $down_link = create_link(icon.replace('-up', '-down'), 'down', on_arrow_click, is_stacked);
 
             if (is_stacked) {
-                var $sortable_row = $sortable.closest('div.form-row'),
+                var $sortable_row = $sortable.closest('div.form-group'),
                     $stacked_block = $sortable.closest('div.inline-related'),
                     $links_span = $('<span/>').attr('class', 'stacked-inline-sortable');
 
                 // Add arrows to header h3, move order input and remove order field row
                 $links_span.append($up_link).append($down_link);
-                $stacked_block.find('h3').append($links_span);
+                $stacked_block.find('.panel-heading > .row > div:last-child').append($links_span);
                 $stacked_block.append($sortable);
                 $sortable_row.remove();
             } else {
@@ -140,7 +140,7 @@
                     if (!$set_block.length
                         || $set_block.hasClass('has_original')
                         || $changed_fields.serialize()
-                        // Since jQuery serialize() doesn't include type=file do additional check
+                            // Since jQuery serialize() doesn't include type=file do additional check
                         || $changed_fields.find(":input[type='file']").addBack().length) {
                         value = i++;
                         $input.val(value);
@@ -150,8 +150,9 @@
         }
 
         Suit.after_inline.register('bind_sortable_arrows', function (prefix, row) {
-            $(row).find('.sortable').click(on_arrow_click);
-        })
+                $(row).find('.sortable').click(on_arrow_click);
+            }
+        );
     };
 
 
@@ -160,3 +161,19 @@
     });
 
 }(Suit.$));
+
+// Extend original inlines formset function for Suit.after_inline hook
+(function ($) {
+    var _orig_formset = $.fn.formset;
+    $.fn.formset = function (opts) {
+        opts = $.extend({}, _orig_formset.defaults, opts);
+        var _orig_added = opts.added;
+        opts.added = function (row) {
+            if (_orig_added) {
+                _orig_added.call(this, row);
+                Suit.after_inline.run(opts.prefix, row);
+            }
+        };
+        return _orig_formset.call(this, opts);
+    };
+})(django.jQuery);
