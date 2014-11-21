@@ -170,7 +170,11 @@
         {% include 'suit/includes/change_form_includes.html' with position='bottom' %}
 
         {% if adminform and add %}
-          <script type="text/javascript">document.getElementById("{{ adminform.first_field.id_for_label }}").focus();</script>
+          <script type="text/javascript">
+            (function ($) {
+              $('form#{{ opts.module_name }}_form :input[type!=button][type!=submit]:visible:enabled:first').focus();
+            })(django.jQuery);
+          </script>
         {% endif %}
 
         {# JavaScript for prepopulated fields #}
