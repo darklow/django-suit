@@ -248,11 +248,16 @@ def adjust_widget(field):
                               'related-lookup btn btn-default')
 
         # Remove title and space
-        title = field.split('strong>')[-2].split('<')[0]
-        field = field.replace('&nbsp;','')
-        field = field.replace('<strong>%s</strong>' % title, '')
-        field = field.replace('</div>', '</div>%s' % title)
-        field = wrap_as_input_group(field, '<span>%s</span>' % title)
+        # Temporary fix
+        # Todo: rewrite to regexp or use different override technique
+        if 'strong>' in field:
+            title = field.split('strong>')[-2].split('<')[0]
+            field = field.replace('&nbsp;','')
+            field = field.replace('<strong>%s</strong>' % title, '')
+            field = field.replace('</div>', '</div>%s' % title)
+            field = wrap_as_input_group(field, '<span>%s</span>' % title)
+
+        return mark_safe(field)
 
     elif isinstance(widget, RelatedFieldWidgetWrapper):
         field = unicode(field)
