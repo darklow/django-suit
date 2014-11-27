@@ -3,28 +3,26 @@
 
   <div class="col-sm-2">
     {% if show_delete_link %}
-        {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
-        <p class="deletelink-box">
-          <a href="{% add_preserved_filters delete_url %}" class="deletelink text-danger">
-            <span class="glyphicon glyphicon-remove"></span>
-            {% trans "Delete" %}</a>
-        </p>
+      {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+      <p class="deletelink-box">
+        <a href="{% add_preserved_filters delete_url %}" class="deletelink text-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+          {% trans "Delete" %}</a>
+      </p>
     {% endif %}
   </div>
   <div class="col-sm-10">
 
-      <div class="btn-group btn-group-lg">
-        {% if show_save %}
-          <input type="submit" value="{% trans 'Save' %}" class="default btn btn-primary" name="_save"/>{% endif %}
+    <div class="btn-group btn-group-lg">
+      {% if show_save %}
+        <input type="submit" value="{% trans 'Save' %}" class="default btn btn-primary" name="_save"/>{% endif %}
 
-        {% if show_save_and_continue %}
-          <input type="submit" value="{% trans 'Save and continue editing' %}" class="btn btn-default " name="_continue"/>{% endif %}
-        {% if show_save_as_new %}
-          <input type="submit" value="{% trans 'Save as new' %}" class="btn btn-default" name="_saveasnew"/>{% endif %}
-        {% if show_save_and_add_another %}
-          <input type="submit" value="{% trans 'Save and add another' %}" class="btn btn-default " name="_addanother"/>{% endif %}
-      </div>
+      {% if show_save_and_continue %}
+        <input type="submit" value="{% trans 'Save and continue editing' %}" class="btn btn-default " name="_continue"/>{% endif %}
+      {% if show_save_as_new %}
+        <input type="submit" value="{% trans 'Save as new' %}" class="btn btn-default" name="_saveasnew"/>{% endif %}
+      {% if show_save_and_add_another %}
+        <input type="submit" value="{% trans 'Save and add another' %}" class="btn btn-default " name="_addanother"/>{% endif %}
     </div>
   </div>
-
 </div>
