@@ -201,7 +201,6 @@ if 'cms' in settings.INSTALLED_APPS:
 if 'modeltranslation' in settings.INSTALLED_APPS:
     try:
         from modeltranslation.admin import TranslationAdmin
-        from modeltranslation.translator import translator
 
         TranslationAdmin.suit_form_tabs = settings.LANGUAGES
         TranslationAdmin.old_fieldsets = TranslationAdmin.get_fieldsets
@@ -237,5 +236,4 @@ if 'modeltranslation' in settings.INSTALLED_APPS:
 
         TranslationAdmin.get_fieldsets = new_get_fieldsets
     except Exception as e:
-        print e
         pass
