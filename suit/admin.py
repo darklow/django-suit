@@ -208,6 +208,7 @@ if 'modeltranslation' in settings.INSTALLED_APPS:
         def new_get_fieldsets(self, *args, **kwargs):
             fieldsets = TranslationAdmin.old_fieldsets(self, *args, **kwargs)
 
+            fieldsets = copy.deepcopy(fieldsets)
             translated_fields = self.trans_opts.get_field_names()
 
             languages = [code for code, _ in settings.LANGUAGES]
