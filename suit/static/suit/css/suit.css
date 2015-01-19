@@ -240,7 +240,7 @@ body{background-color:#eff0f1}
 .glyphlink>.glyphicon{color:#5cb85c;margin-right:5px}
 .navbar-suit-top{min-height:70px;border:0;border-radius:0;margin:0;font-size:14px}.suit-menu-horizontal .navbar-suit-top>.container-fluid{margin-top:10px}
 .navbar-suit-top .navbar-form.navbar-right{margin-right:0}
-.navbar-suit-top .form-control{background-color:#202122;color:#a5acb3;border-radius:2px;border:0}
+.navbar-suit-top .form-control{background-color:#202122;color:#a5acb3;border-radius:4px;border:0}
 .navbar-suit-top .form-control,.navbar-suit-top .form-control-feedback{font-size:14px;height:32px;line-height:32px}
 .navbar-suit-top .form-group .form-control-feedback{color:#6e7277}
 .navbar-inverse{background-color:#2f3133}.navbar-inverse .navbar-brand{font-size:18px;letter-spacing:1px;color:#a5acb3}.navbar-inverse .navbar-brand:hover{color:#dbe4ed}
@@ -352,7 +352,7 @@ body{margin-bottom:60px}
 .input-group-addon,.input-group-btn{width:1px}
 .os-macos.br-chrome .input-group select{-webkit-appearance:none}
 .os-macos.br-chrome .input-group select+.input-group-btn:before{content:'';position:absolute;display:block;margin:13px 0 0 -14px;z-index:21;width:0;height:0;border-style:solid;border-width:6px 3px 0 3px;border-color:#555 transparent transparent transparent}
-.breadcrumb{font-size:13px;padding:6px 12px;border-radius:2px;background-color:rgba(255,255,255,0.5);margin-bottom:20px;text-shadow:0 1px rgba(255,255,255,0.3)}.breadcrumb .active{font-weight:bold}
+.breadcrumb{font-size:13px;padding:6px 12px;border-radius:4px;background-color:rgba(255,255,255,0.5);margin-bottom:20px;text-shadow:0 1px rgba(255,255,255,0.3)}.breadcrumb .active{font-weight:bold}
 .breadcrumb-light.toplinks{font-size:12px}.breadcrumb-light.toplinks li{margin-right:5px}.breadcrumb-light.toplinks li:before{display:none}
 .change-list .container-fluid>.row>div>.breadcrumb{margin-bottom:20px;display:none}
 .table-primary{-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.05);box-shadow:0 1px 1px rgba(0,0,0,0.05);border:0;background-color:#fff}.table-primary th input,.table-primary td input{margin:0}
