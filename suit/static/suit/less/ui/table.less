@@ -177,16 +177,25 @@
         }
     }
 }
-.table.table-form-like {
-    background-color: @form-bg-color;
-    > tbody > tr > td, th {
-        border-color: @body-bg-color;
+.table {
+    &.table-form-like {
+        background-color: @form-bg-color;
+        > tbody > tr > td, th {
+            border-color: @body-bg-color;
+        }
+        th {
+            background-color: #fff;
+            font-weight: normal;
+        }
+        td {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
-    th {
-        background-color: #fff;
-        font-weight: normal;
-    }
-    td {
-        padding-left: 15px;
+    &.table-non-fluid {
+        width: auto !important;
+        th {
+            min-width: 150px;
+        }
     }
 }

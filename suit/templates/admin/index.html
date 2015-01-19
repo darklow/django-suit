@@ -1,0 +1,88 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+{% if app_list %}
+    {% for app in app_list %}
+        <div class="app-{{ app.app_label }} module">
+            <h3><a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a></h3>
+        <table class="table table-bordered table-form-like table-non-fluid">
+        {% for model in app.models %}
+            <tr class="model-{{ model.object_name|lower }}">
+              <th scope="row" class="text-right">{{ model.name }}</th>
+
+              {% if model.admin_url %}
+                  <td><a href="{{ model.admin_url }}" class="changelink">{% trans 'Change' %}</a></td>
+              {% else %}
+                  <td>&nbsp;</td>
+              {% endif %}
+
+            {% if model.add_url %}
+                <td><a href="{{ model.add_url }}" class="addlink glyphlink"><span class="glyphicon glyphicon-plus-sign"></span>{% trans 'Add' %}</a></td>
+            {% else %}
+                <td>&nbsp;</td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+        </table>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>{% trans "You don't have permission to edit anything." %}</p>
+{% endif %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="content-related">
+    <div class="module" id="recent-actions-module">
+        <h2 class="hide">{% trans 'Recent Actions' %}</h2>
+        <h3>{% trans 'My Actions' %}</h3>
+            {% load log %}
+            {% get_admin_log 10 as admin_log for_user user %}
+            {% if not admin_log %}
+            <div class="text-muted">{% trans 'None available' %}</div>
+            {% else %}
+            <table class="table table-bordered table-form-like table-non-fluid actionlist">
+            {% for entry in admin_log %}
+            <tr>
+            <th class="text-right">
+              {% if entry.is_addition %}
+                <span class="glyphicon glyphicon-plus text-muted pull-left"></span>
+                <span class="text-success">{% trans 'added'|capfirst %}{% endif %}</span>
+              {% if entry.is_change %}
+                <span class="glyphicon glyphicon-pencil text-muted pull-left"></span>
+                {% trans 'changed'|capfirst %}{% endif %}
+              {% if entry.is_deletion %}
+                <span class="glyphicon glyphicon-trash text-muted pull-left"></span>
+                <span class="text-danger">{% trans 'deleted'|capfirst %}</span>{% endif %}
+            </th>
+            <td>
+                {% if entry.content_type %}
+                    {% filter capfirst %}{{ entry.content_type }}{% endfilter %}
+                {% else %}
+                    <span class="text-muted">{% trans 'Unknown content' %}</span>
+                {% endif %}
+            </td>
+            <td>
+              {% if entry.is_deletion or not entry.get_admin_url %}
+                  {{ entry.object_repr }}
+              {% else %}
+                  <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+              {% endif %}
+            </td>
+            </tr>
+            {% endfor %}
+            </table>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}
