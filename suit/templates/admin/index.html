@@ -13,7 +13,7 @@
 {% if app_list %}
     {% for app in app_list %}
         <div class="app-{{ app.app_label }} module">
-            <h3><a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a></h3>
+            <h3><a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{% trans app.name %}</a></h3>
         <table class="table table-bordered table-form-like table-non-fluid">
         {% for model in app.models %}
             <tr class="model-{{ model.object_name|lower }}">
@@ -51,20 +51,27 @@
             {% if not admin_log %}
             <div class="text-muted">{% trans 'None available' %}</div>
             {% else %}
-            <table class="table table-bordered table-form-like table-non-fluid actionlist">
+            <table class="table table-condensed table-bordered table-form-like table-non-fluid actionlist">
+            <tbody>
             {% for entry in admin_log %}
             <tr>
             <th class="text-right">
               {% if entry.is_addition %}
-                <span class="glyphicon glyphicon-plus text-muted pull-left"></span>
-                <span class="text-success">{% trans 'added'|capfirst %}{% endif %}</span>
-              {% if entry.is_change %}
-                <span class="glyphicon glyphicon-pencil text-muted pull-left"></span>
-                {% trans 'changed'|capfirst %}{% endif %}
-              {% if entry.is_deletion %}
-                <span class="glyphicon glyphicon-trash text-muted pull-left"></span>
-                <span class="text-danger">{% trans 'deleted'|capfirst %}</span>{% endif %}
+                <span class="glyphicon glyphicon-plus text-muted"></span>
+              {% elif entry.is_change %}
+                <span class="glyphicon glyphicon-pencil text-muted"></span>
+            {% elif entry.is_deletion %}
+                <span class="text-danger"><span class="glyphicon glyphicon-trash"></span>
+                </span>
+              {% endif %}
             </th>
+            <td class="text-muted">
+              {% if entry.is_deletion or not entry.get_admin_url %}
+                  {{ entry.object_repr }}
+              {% else %}
+                  <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+              {% endif %}
+            </td>
             <td>
                 {% if entry.content_type %}
                     {% filter capfirst %}{{ entry.content_type }}{% endfilter %}
@@ -72,15 +79,10 @@
                     <span class="text-muted">{% trans 'Unknown content' %}</span>
                 {% endif %}
             </td>
-            <td>
-              {% if entry.is_deletion or not entry.get_admin_url %}
-                  {{ entry.object_repr }}
-              {% else %}
-                  <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
-              {% endif %}
-            </td>
+            <td>{{ entry }}</td>
             </tr>
             {% endfor %}
+            </tbody>
             </table>
             {% endif %}
     </div>
