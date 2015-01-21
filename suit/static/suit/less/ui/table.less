@@ -183,13 +183,18 @@
         > tbody > tr > td, th {
             border-color: @body-bg-color;
         }
-        th {
+        > tbody > tr > th {
             background-color: #fff;
             font-weight: normal;
         }
-        td {
+        > tbody > tr > td {
             padding-left: 15px;
             padding-right: 15px;
+        }
+        &.table-condensed {
+            > tbody > tr > th {
+                padding-right: 10px;
+            }
         }
     }
     &.table-non-fluid {
