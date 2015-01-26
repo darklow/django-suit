@@ -237,6 +237,7 @@ body{background-color:#eff0f1}
 .btn-neutral:active,.btn-neutral.active,.open>.dropdown-toggle.btn-neutral{background-image:none}
 .btn-neutral.disabled,.btn-neutral[disabled],fieldset[disabled] .btn-neutral,.btn-neutral.disabled:hover,.btn-neutral[disabled]:hover,fieldset[disabled] .btn-neutral:hover,.btn-neutral.disabled:focus,.btn-neutral[disabled]:focus,fieldset[disabled] .btn-neutral:focus,.btn-neutral.disabled.focus,.btn-neutral[disabled].focus,fieldset[disabled] .btn-neutral.focus,.btn-neutral.disabled:active,.btn-neutral[disabled]:active,fieldset[disabled] .btn-neutral:active,.btn-neutral.disabled.active,.btn-neutral[disabled].active,fieldset[disabled] .btn-neutral.active{background-color:#5cb85c;border-color:#4cae4c}
 .btn-neutral .badge{color:#5cb85c;background-color:#fff}
+.glyphlink>.glyphicon{color:#5cb85c;margin-right:5px}
 .navbar-suit-top{min-height:70px;border:0;border-radius:0;margin:0;font-size:14px}.suit-menu-horizontal .navbar-suit-top>.container-fluid{margin-top:10px}
 .navbar-suit-top .navbar-form.navbar-right{margin-right:0}
 .navbar-suit-top .form-control{background-color:#202122;color:#a5acb3;border-radius:4px;border:0}
@@ -385,7 +386,8 @@ body{margin-bottom:60px}
 .table-primary.table-hover>tbody>tr.selected th,.table-primary.table-hover>tbody>tr.selected td{box-shadow:inset 1px 1px 0 rgba(255,255,255,0.3);text-shadow:none;color:#fff}.table-primary.table-hover>tbody>tr.selected th a,.table-primary.table-hover>tbody>tr.selected td a{color:#fff;text-decoration:underline}.table-primary.table-hover>tbody>tr.selected th a:hover,.table-primary.table-hover>tbody>tr.selected td a:hover{text-decoration:none}
 .table.table-form-like{background-color:#f6f7f8}.table.table-form-like>tbody>tr>td,.table.table-form-like th{border-color:#eff0f1}
 .table.table-form-like th{background-color:#fff;font-weight:normal}
-.table.table-form-like td{padding-left:15px}
+.table.table-form-like td{padding-left:15px;padding-right:15px}
+.table.table-non-fluid{width:auto !important}.table.table-non-fluid th{min-width:150px}
 .panel{border-radius:0;border:0}.panel>.panel-heading{border-radius:0}
 .panel-narrow{font-size:13px}.panel-narrow>.panel-heading{padding:4px 10px 3px}
 .panel-suit>.panel-heading{background-color:#6e7277;color:#fff}
