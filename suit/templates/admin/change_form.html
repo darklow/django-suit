@@ -85,14 +85,14 @@
     {% block suit_form_tabs %}
       {% if adminform.model_admin.suit_form_tabs %}
 
-{#        <nav id="suit_form_tabs" class="navbar navbar-default panel navbar-suit-tabs" data-tab-prefix="suit-tab">#}
-{#            <div class="container-fluid">#}
-{#                <ul class="nav navbar-nav">#}
-{#                  {% for tab in adminform.model_admin.suit_form_tabs %}#}
-{#                    <li><a href="#{{ tab.0 }}">{{ tab.1 }}</a></li>{% endfor %}#}
-{#                </ul>#}
-{#            </div>#}
-{#        </nav>#}
+        {#        <nav id="suit_form_tabs" class="navbar navbar-default panel navbar-suit-tabs" data-tab-prefix="suit-tab">#}
+        {#            <div class="container-fluid">#}
+        {#                <ul class="nav navbar-nav">#}
+        {#                  {% for tab in adminform.model_admin.suit_form_tabs %}#}
+        {#                    <li><a href="#{{ tab.0 }}">{{ tab.1 }}</a></li>{% endfor %}#}
+        {#                </ul>#}
+        {#            </div>#}
+        {#        </nav>#}
 
         <ul id="suit_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
           {% for tab in adminform.model_admin.suit_form_tabs %}
@@ -110,11 +110,19 @@
         {% if to_field %}
           <input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}"/>{% endif %}
         {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
+
         {% if errors %}
-          <p class="errornote">
+          <div class="alert alert-danger" role="alert">
             {% if errors|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
-          </p>
-          {{ adminform.form.non_field_errors }}
+          </div>
+
+          {% if adminform.form.non_field_errors %}
+            {% for non_field_error in adminform.form.non_field_errors %}
+              <div class="alert alert-danger" role="alert">
+                  <p>{{ non_field_error }}</p>
+              </div>
+            {% endfor %}
+          {% endif %}
         {% endif %}
 
         {# render suit_form_includes at top position #}

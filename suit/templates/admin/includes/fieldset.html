@@ -16,7 +16,7 @@
       {% with is_single=line.fields|length_is:'1' %}
         {% for field in line %}
           {% if is_single or forloop.counter0 == 0 %}
-            <div class="form-group{% if line.errors %} {{ is_single|yesno:'has-error,first-error' }} has-errors{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %} {{ field.field.field.widget.attrs.rowclass }}{% endfor %}{{ is_single|yesno:',multi-field-row' }}">
+            <div class="form-group{% if line.errors %} {{ is_single|yesno:'has-error,first-error' }} has-errors{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %} {{ field.field.field.widget.attrs.rowclass }}{% endfor %}{% if field.is_checkbox %} flex-checkbox{% endif %}{{ is_single|yesno:',multi-field-row' }}">
           {% endif %}
 
         <label class="control-label {{ field.field|suit_form_label_class:fieldset }}">{{ field.label_tag }}</label>
@@ -29,9 +29,18 @@
           {% else %}
             {{ field.field|suit_form_field }}
           {% endif %}
+            {% if line.errors %}
+                <div class="help-block">
+                    <ul class="list-unstyled">
+                        {% for line_errors in line|line_errors_as_data %}
+                            {% for line_error in line_errors %}
+                                <li class="text-danger">{{ line_error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
 
-
-          {{ line.errors }}
           {# help text #}
           {% if field.field.help_text %}
             <div class="help-block">{{ field.field.help_text|safe }}</div>
