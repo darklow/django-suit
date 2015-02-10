@@ -29,15 +29,15 @@
           {% else %}
             {{ field.field|suit_form_field }}
           {% endif %}
-
-
             {% if line.errors %}
                 <div class="help-block">
-                <ul class="list-unstyled">
-                {% for line_error in line|line_errors_as_data %}
-                    <li class="text-danger">{{ line_error|join:" " }}</li>
-                {% endfor %}
-                </ul>
+                    <ul class="list-unstyled">
+                        {% for line_errors in line|line_errors_as_data %}
+                            {% for line_error in line_errors %}
+                                <li class="text-danger">{{ line_error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
                 </div>
             {% endif %}
 
