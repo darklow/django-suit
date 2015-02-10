@@ -31,7 +31,16 @@
           {% endif %}
 
 
-          {{ line.errors }}
+            {% if line.errors %}
+                <div class="help-block">
+                <ul class="list-unstyled">
+                {% for line_error in line|line_errors_as_data %}
+                    <li class="text-danger">{{ line_error|join:" " }}</li>
+                {% endfor %}
+                </ul>
+                </div>
+            {% endif %}
+
           {# help text #}
           {% if field.field.help_text %}
             <div class="help-block">{{ field.field.help_text|safe }}</div>

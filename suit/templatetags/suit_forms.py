@@ -2,6 +2,7 @@ from django import template
 from django.contrib.admin.widgets import ForeignKeyRawIdWidget, \
     RelatedFieldWidgetWrapper
 from django.forms.widgets import Input, Textarea, Select
+from django.utils.safestring import mark_safe
 from suit.config import get_config
 from suit.widgets import adjust_widget
 
@@ -38,7 +39,7 @@ def suit_form_field(field):
         Input, Textarea, ForeignKeyRawIdWidget, RelatedFieldWidgetWrapper,
         Select)
     if not hasattr(field, 'field') or \
-            not isinstance(field.field.widget, adjustable_widgets):
+                    not isinstance(field.field.widget, adjustable_widgets):
         return field
     field = adjust_widget(field)
     return field
@@ -84,3 +85,16 @@ def suit_form_field_class(field, fieldset):
         css_classes.append(default_class)
 
     return ' '.join(css_classes)
+
+
+@register.filter()
+def line_errors_as_data(line):
+    if not line.errors:
+        return None
+
+    errs = []
+    for f in line.fields:
+        if f in line.readonly_fields:
+            continue
+        errs += line.form[f].errors.as_data()
+    return errs
