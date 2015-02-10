@@ -57,23 +57,28 @@
   {% endblock %}
 {% endif %}
 
+
 {% block content %}
   <div id="content-main">
+
     {% block object-tools %}
-      {% if change %}{% if not is_popup %}
-        <ul class="object-tools pull-right">
-          {% block object-tools-items %}
-            <li>
-              {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
-              <a href="{% add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
-            </li>
-            {% if has_absolute_url %}
-              <li>
-                <a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a>
-              </li>{% endif %}
-          {% endblock %}
-        </ul>
-      {% endif %}{% endif %}
+        {% if change %}
+            {% if not is_popup %}
+                <div class="search-container clearfix">
+                    <div class="btn-toolbar pull-right">
+                        <div class=" btn-group">
+                            {% block object-tools-items %}
+                                {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+                                <a href="{% add_preserved_filters history_url %}" class="historylink btn btn-primary">{% trans "History" %}</a>
+                                {% if has_absolute_url %}
+                                    <a href="{{ absolute_url }}" class="viewsitelink btn btn-primary" target="_blank">{% trans "View on site" %}</a>
+                                {% endif %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
     {% endblock %}
 
     {% block suit_form_tabs %}
