@@ -351,7 +351,7 @@ body{margin-bottom:60px}
 .input-group-addon,.input-group-btn{width:1px}
 .os-macos.br-chrome .input-group select{-webkit-appearance:none}
 .os-macos.br-chrome .input-group select+.input-group-btn:before{content:'';position:absolute;display:block;margin:13px 0 0 -14px;z-index:21;width:0;height:0;border-style:solid;border-width:6px 3px 0 3px;border-color:#555 transparent transparent transparent}
-.breadcrumb{display:inline-block;font-size:13px;padding:6px 12px;border-radius:4px;background-color:transparent;margin-bottom:20px;text-shadow:0 1px rgba(255,255,255,0.3)}.breadcrumb .active{font-weight:bold}
+@media (min-width:768px){.flex-checkbox{display:flex;display:-ms-flex;display:-webkit-flex;align-items:center;-ms-align-items:center;-webkit-align-items:center}}.breadcrumb{display:inline-block;font-size:13px;padding:6px 12px;border-radius:4px;background-color:transparent;margin-bottom:20px;text-shadow:0 1px rgba(255,255,255,0.3)}.breadcrumb .active{font-weight:bold}
 .breadcrumb-light.toplinks{font-size:12px}.breadcrumb-light.toplinks li{margin-right:5px}.breadcrumb-light.toplinks li:before{display:none}
 .change-list .container-fluid>.row>div>.breadcrumb{margin-bottom:20px;display:none}
 .table-primary{-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.05);box-shadow:0 1px 1px rgba(0,0,0,0.05);border:0;background-color:#fff}.table-primary th input,.table-primary td input{margin:0}
