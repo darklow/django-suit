@@ -1,7 +1,8 @@
 from django.contrib.admin import widgets as admin_widgets
-from django.forms import TextInput, Select, Textarea, fields
 from django.forms import widgets as form_widgets
+from django.forms import TextInput, Select, Textarea, fields
 from django.utils.safestring import mark_safe
+from django.core.urlresolvers import reverse
 from django import forms
 from django.utils import formats, translation
 from django.utils.translation import ugettext as _
@@ -15,17 +16,8 @@ class LinkedSelect(Select):
     """
 
     def __init__(self, attrs=None, choices=()):
-        attrs = _make_attrs(attrs, classes="form-control linked-select")
+        attrs = _make_attrs(attrs, classes="linked-select")
         super(LinkedSelect, self).__init__(attrs, choices)
-
-    def renderz(self, name, value, attrs=None, choices=()):
-        select = super(LinkedSelect, self).render(name, value, attrs,
-                                                  choices)
-        select = ('<span class="input-group">%s<span class="input-group-btn">'
-                  '<a href="" class="btn btn-default">'
-                  '<span class="glyphicon glyphicon-plus-sign"></span></a>'
-                  '</span></span>') % select
-        return select
 
 
 class EnclosedInput(TextInput):
@@ -207,52 +199,7 @@ def wrap_as_input_group(s, append=''):
     return mark_safe('<div class="input-group">%s</div>%s' % (s, append))
 
 
-def adjust_widget(field):
-    return field
-    widget = field.field.widget
-    if isinstance(widget, ForeignKeyRawIdWidget):
-        field = unicode(field)
-        field = field.replace('RawIdAdminField', 'RawIdAdminField form-control')
-        field = field.replace('<a', '<span class="input-group-btn"><a')
-        field = field.replace('</a>', '<span class="glyphicon glyphicon-search"'
-                                      '></span></a></span>')
-        field = field.replace('related-lookup',
-                              'related-lookup btn btn-default')
-
-        # Remove title and space
-        # Temporary fix
-        # Todo: rewrite to regexp or use different override technique
-        if 'strong>' in field:
-            title = field.split('strong>')[-2].split('<')[0]
-            field = field.replace('&nbsp;', '')
-            field = field.replace('<strong>%s</strong>' % title, '')
-            field = field.replace('</div>', '</div>%s' % title)
-            field = wrap_as_input_group(field, '<span>%s</span>' % title)
-
-        return mark_safe(field)
-
-    elif isinstance(widget, RelatedFieldWidgetWrapper):
-        field = unicode(field)
-        # field = field.replace('RawIdAdminField', 'RawIdAdminField
-        # form-control')
-        field = field.replace('<a', '<span class="input-group-btn"><a')
-        field = field.replace('</a>',
-                              '<span class="glyphicon glyphicon-plus-sign '
-                              'color-success"'
-                              '></span></a></span>')
-        field = field.replace('add-another',
-                              'add-another btn btn-default')
-        field = wrap_as_input_group(field)
-
-    elif isinstance(widget, (Input, Textarea, Select)) and \
-            not isinstance(widget, RendererMixin):
-        widget.attrs['class'] = ' '.join((
-            'form-control', widget.attrs.get('class', '')))
-
-    return field
-
-
-def add_bs3_form_control_class():
+def add_bs3_markup():
     def _build_attrs(self, *args, **kwargs):
         """
         Merge bs3_class attribute with existing class
@@ -285,3 +232,88 @@ def add_bs3_form_control_class():
     fields.Field.widget_attrs = _widget_attrs
     form_widgets.Widget.build_attrs_original = form_widgets.Widget.build_attrs
     form_widgets.Widget.build_attrs = _build_attrs
+
+    ###########
+    #
+    # Adjust markup for special widgets
+    # I monkey patched, to support all the inherited classes in 3rd party apps
+    #
+
+    # Select dropdown + PLUS button
+    def render_RelatedFieldWidgetWrapper(self, name, value, *args, **kwargs):
+        """
+        Method is a clone from original widget, with adjusted markup
+        """
+        from django.contrib.admin.views.main import TO_FIELD_VAR
+
+        rel_to = self.rel.to
+        info = (rel_to._meta.app_label, rel_to._meta.model_name)
+        self.widget.choices = self.choices
+        output = ['<div class="input-group">',
+                  self.widget.render(name, value, *args, **kwargs)]
+        if self.can_add_related:
+            related_url = reverse('admin:%s_%s_add' % info,
+                                  current_app=self.admin_site.name)
+            url_params = '?%s=%s' % (
+                TO_FIELD_VAR, self.rel.get_related_field().name)
+            # TODO: "add_id_" is hard-coded here. This should instead use the
+            # correct API to determine the ID dynamically.
+            output.append(
+                '<span class="input-group-btn">'
+                '<a href="%s%s" class="add-another btn btn-default" '
+                'id="add_id_%s" onclick="return showAddAnotherPopup(this);" '
+                'title="%s"><span class="glyphicon glyphicon-plus-sign '
+                'color-success"></span></a></span>'
+                % (related_url, url_params, name, _('Add Another')))
+
+        output.append('</div>')
+        return mark_safe(''.join(output))
+
+    admin_widgets.RelatedFieldWidgetWrapper.render = \
+        render_RelatedFieldWidgetWrapper
+
+    # Select dropdown + PLUS button
+    def render_ForeignKeyRawIdWidget(self, name, value, attrs=None):
+        rel_to = self.rel.to
+        if attrs is None:
+            attrs = {}
+        extra = []
+        if rel_to in self.admin_site._registry:
+            # The related object is registered with the same AdminSite
+            related_url = reverse(
+                'admin:%s_%s_changelist' % (
+                    rel_to._meta.app_label,
+                    rel_to._meta.model_name,
+                ),
+                current_app=self.admin_site.name,
+            )
+
+            params = self.url_parameters()
+            if params:
+                url = '?' + '&amp;'.join(
+                    '%s=%s' % (k, v) for k, v in params.items())
+            else:
+                url = ''
+            if "class" not in attrs:
+                attrs['class'] = 'vForeignKeyRawIdAdminField'
+                # The JavaScript code looks for this hook.
+            # TODO: "lookup_id_" is hard-coded here. This should instead use
+            # the correct API to determine the ID dynamically.
+            extra.append(
+                '<span class="input-group-btn"><a href="%s%s" '
+                'class="related-lookup btn btn-default" id="lookup_id_%s" '
+                'onclick="return showRelatedObjectLookupPopup(this);" '
+                'title="%s"><span class="glyphicon '
+                'glyphicon-search"></span></a></span>' %
+                (related_url, url, name, _('Lookup')))
+
+        output = ['<div class="input-group">',
+                  super(self.__class__, self).render(name, value, attrs)]
+        output.extend(extra)
+        output.append('</div>')
+        if value:
+            output.append(self.label_for_value(value))
+
+        return mark_safe(''.join(output))
+
+    admin_widgets.ForeignKeyRawIdWidget.render = render_ForeignKeyRawIdWidget
