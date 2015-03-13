@@ -51,7 +51,7 @@
                   <p>{{ field.contents }}</p>
               {% else %}
                   {{ field.field.errors.as_ul }}
-                  {{ field.field|suit_form_field }}
+                  {{ field.field }}
               {% endif %}
               </td>
               {% endif %}

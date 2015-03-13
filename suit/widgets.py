@@ -1,7 +1,6 @@
-from django.contrib.admin.widgets import AdminTimeWidget, \
-    ForeignKeyRawIdWidget, RelatedFieldWidgetWrapper
-from django.forms import TextInput, Select, Textarea
-from django.forms.widgets import Input, RendererMixin
+from django.contrib.admin import widgets as admin_widgets
+from django.forms import TextInput, Select, Textarea, fields
+from django.forms import widgets as form_widgets
 from django.utils.safestring import mark_safe
 from django import forms
 from django.utils import formats, translation
@@ -10,26 +9,6 @@ from django.contrib.admin.templatetags.admin_static import static
 from suit import utils
 
 
-class NumberInput(TextInput):
-    """
-    HTML5 Number input
-    Left for backwards compatibility
-    """
-    input_type = 'number'
-
-
-class HTML5Input(TextInput):
-    """
-    Supports any HTML5 input
-    http://www.w3schools.com/html/html5_form_input_types.asp
-    """
-
-    def __init__(self, attrs=None, input_type=None):
-        self.input_type = input_type
-        super(HTML5Input, self).__init__(attrs)
-
-
-#
 class LinkedSelect(Select):
     """
     Linked select - Adds link to foreign item, when used with foreign key field
@@ -187,7 +166,7 @@ class SuitDateTimeWidget(forms.DateTimeInput, SuitDateWidget):
         super(SuitDateTimeWidget, self).__init__(attrs, format)
 
 
-class SuitTimeWidget(AdminTimeWidget):
+class SuitTimeWidget(admin_widgets.AdminTimeWidget):
     def __init__(self, attrs=None, format=None):
         defaults = {'placeholder': _('Time:')[:-1]}
         new_attrs = _make_attrs(attrs, defaults, "vTimeField input-small")
@@ -224,19 +203,12 @@ def _make_attrs(attrs, defaults=None, classes=None):
     return result
 
 
-class SuitForeignKeyRawIdWidget(ForeignKeyRawIdWidget):
-    def render(self, name, value, attrs=None):
-        out = super(SuitForeignKeyRawIdWidget, self).render(
-            name, value, attrs)
-
-        return wrap_as_input_group(out)
-
-
 def wrap_as_input_group(s, append=''):
     return mark_safe('<div class="input-group">%s</div>%s' % (s, append))
 
 
 def adjust_widget(field):
+    return field
     widget = field.field.widget
     if isinstance(widget, ForeignKeyRawIdWidget):
         field = unicode(field)
@@ -252,7 +224,7 @@ def adjust_widget(field):
         # Todo: rewrite to regexp or use different override technique
         if 'strong>' in field:
             title = field.split('strong>')[-2].split('<')[0]
-            field = field.replace('&nbsp;','')
+            field = field.replace('&nbsp;', '')
             field = field.replace('<strong>%s</strong>' % title, '')
             field = field.replace('</div>', '</div>%s' % title)
             field = wrap_as_input_group(field, '<span>%s</span>' % title)
@@ -261,10 +233,13 @@ def adjust_widget(field):
 
     elif isinstance(widget, RelatedFieldWidgetWrapper):
         field = unicode(field)
-        # field = field.replace('RawIdAdminField', 'RawIdAdminField form-control')
+        # field = field.replace('RawIdAdminField', 'RawIdAdminField
+        # form-control')
         field = field.replace('<a', '<span class="input-group-btn"><a')
-        field = field.replace('</a>', '<span class="glyphicon glyphicon-plus-sign color-success"'
-                                      '></span></a></span>')
+        field = field.replace('</a>',
+                              '<span class="glyphicon glyphicon-plus-sign '
+                              'color-success"'
+                              '></span></a></span>')
         field = field.replace('add-another',
                               'add-another btn btn-default')
         field = wrap_as_input_group(field)
@@ -274,20 +249,39 @@ def adjust_widget(field):
         widget.attrs['class'] = ' '.join((
             'form-control', widget.attrs.get('class', '')))
 
-
-
     return field
 
-#
-#
-# def patch_django_widgets():
-# @utils.patch_class_method(ForeignKeyRawIdWidget, 'render')
-# def render_patched(render, self, *args, **kwargs):
-#         out = render(self, *args, **kwargs)
-#         out = out.replace('vForeignKeyRawIdAdminField', 'form-control')
-#         out = out.replace('related-lookup', 'related-lookup btn btn-default')
-#         out = out.replace('<a', '<span class="input-group-btn"><a')
-#         out = out.replace('</a>',
-#                           '<span class="glyphicon '
-#                           'glyphicon-search"></span></a></span>')
-#         return wrap_as_input_group(out)
+
+def add_bs3_form_control_class():
+    def _build_attrs(self, *args, **kwargs):
+        """
+        Merge bs3_class attribute with existing class
+        """
+        attrs = self.build_attrs_original(*args, **kwargs) or {}
+        bs3_class = attrs.pop('bs3_class', '')
+        if bs3_class:
+            css_class = attrs.get('class')
+            css_classes = [css_class] if css_class else []
+            css_classes.append(bs3_class)
+            attrs['class'] = ' '.join(css_classes)
+        return attrs
+
+
+    def _widget_attrs(self, widget):
+        """
+        Add Bootstrap 3 form-control CSS class
+        """
+        apply_to = (fields.CharField, fields.BaseTemporalField,
+                    fields.IntegerField, fields.ChoiceField)
+        attrs = self.widget_attrs_original(widget) or {}
+        if issubclass(self.__class__, apply_to) and not \
+                issubclass(widget.__class__, (
+                        form_widgets.HiddenInput, form_widgets.RadioSelect)):
+            attrs.update({'bs3_class': 'form-control'})
+        return attrs
+
+    # Override widget_attrs and build_attrs globally to add form-control class
+    fields.Field.widget_attrs_original = fields.Field.widget_attrs
+    fields.Field.widget_attrs = _widget_attrs
+    form_widgets.Widget.build_attrs_original = form_widgets.Widget.build_attrs
+    form_widgets.Widget.build_attrs = _build_attrs
