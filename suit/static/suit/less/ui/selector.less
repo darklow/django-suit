@@ -1,0 +1,92 @@
+// Special style for user auth app
+#user_form {
+    .field-groups {
+        .input-group-btn {
+            display: block;
+        }
+    }
+}
+.form-horizontal .selector {
+    overflow: auto;
+    @chooser-height: 150px;
+    select {
+        min-height: @chooser-height;
+        max-width: 250px;
+    }
+    .selector-chosen {
+        select {
+            min-height: @chooser-height + 20px !important;
+            height: auto !important;
+        }
+    }
+    .input-group {
+        width: 100%;
+    }
+    .selector-available, .selector-chooser, .selector-chosen {
+        float: left;
+        h2 {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        > a {
+            margin-left: 5px;
+        }
+    }
+    .selector-available, .selector-chosen {
+        //        width: 40%;
+        min-width: 150px;
+        max-width: 300px;
+        select, input {
+            width: 100%;
+            display: block;
+        }
+    }
+    .selector-chooser {
+        list-style: none;
+        padding: 0;
+        margin: 70px 10px 0 10px;
+        min-height: @chooser-height;
+        li {
+            a {
+                //                .bs-icon;
+                display: block;
+                padding: 4px;
+                border: 1px solid transparent;
+                background-position: -236px -92px;
+                &:hover {
+                    background-color: white;
+                    //                    .border-radius(@border-radius);
+                    border: 1px solid #ddd;
+                }
+            }
+            &:first-child {
+                a {
+                    background-position: -260px -92px;
+                }
+            }
+        }
+    }
+    .selector-available, .selector-chosen {
+        a:not(.active) {
+            //            .color-grey;
+            text-decoration: none;
+        }
+    }
+    .selector-available select {
+        //        .border-radius(0, 0, null, null);
+    }
+    .selector-filter {
+        position: relative;
+        margin-bottom: -1px;
+        input {
+            //            .border-radius(null, null, 0, 0);
+        }
+        label {
+            position: absolute;
+            right: 0;
+            top: 2px;
+            right: 3px;
+            opacity: .25;
+        }
+    }
+}
