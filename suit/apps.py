@@ -8,11 +8,12 @@ from . import VERSION
 from django import forms
 from suit import widgets
 
-SUIT_FORM_SIZE_FULL = 'col-xs-12 col-sm-2:col-xs-12'
-SUIT_FORM_SIZE_HALF = 'col-xs-12 col-sm-2:col-xs-12 col-sm-8 col-md-6 col-lg-4'
-
 
 class DjangoSuitConfig(AppConfig):
+    SUIT_FORM_SIZE_FULL = 'col-xs-12 col-sm-2:col-xs-12 col-sm-10'
+    SUIT_FORM_SIZE_HALF = 'col-xs-12 col-sm-2:col-xs-12 col-sm-8 col-md-6 ' \
+                          'col-lg-4'
+
     name = 'suit'
     verbose_name = 'Django Suit'
     version = VERSION
@@ -39,8 +40,8 @@ class DjangoSuitConfig(AppConfig):
 
 
     def __init__(self, app_name, app_module):
-
-        self.override_datepickers()
+        widgets.add_bs3_markup()
+        self.override_widgets()
         self.setup_model_admin()
 
         if 'filer' in settings.INSTALLED_APPS:
@@ -51,16 +52,13 @@ class DjangoSuitConfig(AppConfig):
 
         super(DjangoSuitConfig, self).__init__(app_name, app_module)
 
-    def override_datepickers(self):
-        # options.FORMFIELD_FOR_DBFIELD_DEFAULTS = {
-        # models.DateTimeField: {
-        # 'form_class': forms.SplitDateTimeField,
-        # 'widget': widgets.AdminSplitDateTime
-        # },
-        # models.DateField: {'widget': widgets.AdminDateWidget},
-        # models.TimeField: {'widget': widgets.AdminTimeWidget},
-        # }
+    def ready(self):
+        super(DjangoSuitConfig, self).ready()
 
+        if 'django.contrib.auth' in settings.INSTALLED_APPS:
+            self.setup_auth_app()
+
+    def override_widgets(self):
         options.FORMFIELD_FOR_DBFIELD_DEFAULTS[models.DateField].update({
             'widget': widgets.SuitDateWidget
         })
@@ -96,3 +94,8 @@ class DjangoSuitConfig(AppConfig):
         # FolderAdmin.actions_on_top = False
         # FolderAdmin.actions_on_bottom = True
 
+    def setup_auth_app(self):
+        from django.contrib.auth.admin import UserAdmin, GroupAdmin
+
+        UserAdmin.suit_form_size = DjangoSuitConfig.SUIT_FORM_SIZE_FULL
+        GroupAdmin.suit_form_size = DjangoSuitConfig.SUIT_FORM_SIZE_FULL

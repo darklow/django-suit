@@ -142,7 +142,7 @@
                 if (!$link.length) {
                     $link = $('<a/>').addClass('linked-select-link btn btn-default');
                     $link.append($('<span class="glyphicon glyphicon-link"/>'));
-                    $input_group.prepend($('<span class="input-group-btn"/>').append($link));
+                    $input_group.append($('<span class="input-group-btn"/>').append($link));
                 }
                 $link.attr('title', get_link_name($select))
                     .attr('href', get_url($add_link, $select));

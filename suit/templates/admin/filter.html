@@ -8,7 +8,7 @@
         <option value="">---</option>
       {% else %}
         <option
-          {% if choice.additional %} data-additional="{{ choice.additional }}"{% endif %} data-name="{{ choice.name }}" value="{{ choice.val }}" {{ choice.selected|yesno:' selected="selected",' }}>
+          {% if choice.additional %} data-additional="{{ choice.additional }}"{% endif %} data-name="{{ choice.name }}" value="{{ choice.val }}" {{ choice.selected|yesno:' selected=selected,' }}>
           {% if choice.selected %}{{ title|capfirst }}: {% endif %}{{ choice.display }}</option>
       {% endif %}
     {% endfor %}

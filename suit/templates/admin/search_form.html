@@ -28,10 +28,12 @@
         <span class="result-count text-muted">{% blocktrans count counter=cl.result_count %}{{ counter }} result{% plural %}{{ counter }} results{% endblocktrans %} &nbsp;/&nbsp; {% blocktrans with full_result_count=cl.full_result_count %}{{ full_result_count }} total{% endblocktrans %}
         </span>
       {% endif %}
-      {% for pair in cl.params.items %}
-        {% ifnotequal pair.0 search_var %}
-          <input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}"/>{% endifnotequal %}
-      {% endfor %}
+
+{#      Not needed for horizontal filters in Django Suit, as it handles it by itself #}
+{#      {% for pair in cl.params.items %}#}
+{#        {% ifnotequal pair.0 search_var %}#}
+{#          <input type="hidden" name="{{ pair.0 }}" value="{{ pair.1 }}"/>{% endifnotequal %}#}
+{#      {% endfor %}#}
     </div>
   </form>
 </div>

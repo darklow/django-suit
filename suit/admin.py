@@ -3,10 +3,10 @@ from django.conf import settings
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin.views.main import ChangeList
 from django.contrib.contenttypes import generic
-from django.forms import ModelForm
+from django.forms import ModelForm, NumberInput
 from django.contrib import admin
 from django.db import models
-from suit.widgets import NumberInput, SuitSplitDateTimeWidget
+from suit.widgets import SuitSplitDateTimeWidget
 
 
 class SortableModelAdminBase(object):
@@ -23,7 +23,6 @@ class SortableListForm(ModelForm):
     """
     Just Meta holder class
     """
-
     class Meta:
         widgets = {
             'order': NumberInput(
