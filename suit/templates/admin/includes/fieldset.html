@@ -41,7 +41,7 @@
           {% endif %}
 
         {% if field.is_readonly %}
-            <span class="readonly">{{ field|field_contents_foreign_linked }}</span>
+            <span class="readonly">{{ field|field_contents_foreign_linked|linebreaksbr }}</span>
         {% else %}
             {{ field.field }}
         {% endif %}
