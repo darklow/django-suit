@@ -161,10 +161,10 @@
                     top: 2px;
                 }
             }
-//            Check why was this active
-//            .form-inline .input-group:first-child {
-//                max-width: 201px;
-//            }
+            //            Check why was this active
+            //            .form-inline .input-group:first-child {
+            //                max-width: 201px;
+            //            }
             .widget-RelatedFieldWidgetWrapper {
                 a {
                     .replace-a-img;
@@ -347,7 +347,6 @@
 .input-group-addon, .input-group-btn {
     width: 1px;
 }
-
 // Get rid of Mac/Chrome select rounded corners
 .os-macos.br-chrome {
     .input-group {
@@ -367,6 +366,17 @@
                 border-width: 6px 3px 0 3px;
                 border-color: #555 transparent transparent transparent;
             }
+        }
+    }
+}
+// Remove borders from select2 widgets
+.form-horizontal {
+    .form-control {
+        &.select2-container {
+            height: auto;
+            padding: 0;
+            border: none;
+            background-color: transparent;
         }
     }
 }
