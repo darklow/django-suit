@@ -166,6 +166,40 @@
     }
 }
 
+.table.table-toggle-columns thead th {
+    &.last_visible {
+        padding-right: 40px;
+    }
+    &.sorted.last_visible {
+        padding-right: 76px;
+    }
+}
+
+.toggle-column-wrapper {
+    float: right;
+    position: relative;
+    &>a {
+        background-image: url("../bootstrap/img/glyphicons-halflings.png");
+        background-repeat: no-repeat;
+        background-position: -360px -50px;
+        display: inline-block;
+        margin-top: 1px;
+        padding: 0px 3px;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        right: 7px;
+        bottom: -23px;
+        opacity: 0.4;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .dropdown-menu {
+        top: 25px;
+    }
+}
+
 .inline-group .tabular {
     table.table {
         tr.add-row td { //            background-color: #eee;
