@@ -1,12 +1,12 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_urls %}
-{% load url from future %}
+{% load url firstof from future %}
 
 {% block breadcrumbs %}
 <div class="breadcrumb">
   <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
     <span class="divider">&raquo;</span></li>
-    <li><a href="{% url 'admin:app_list' app_label=opts.app_label %}">{% firstof opts.app_config.verbose_name app_label|capfirst|escape %}</a>
+    <li><a href="{% url 'admin:app_list' app_label=opts.app_label %}">{% firstof opts.app_config.verbose_name app_label|capfirst %}</a>
       <span class="divider">&raquo;</span></li>
     <li><a href="{% url opts|admin_urlname:'changelist' %}">{{ module_name }}</a>
       <span class="divider">&raquo;</span></li>
