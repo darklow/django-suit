@@ -1,12 +1,1 @@
-#content-main{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;margin-top:-115px;}
-.alert{border-radius:0}
-.form-signin{max-width:400px;margin:0 auto;position:relative}.form-signin .form-signin-heading{margin-bottom:20px}
-.form-signin .input-group{width:100%}.form-signin .input-group .input-group-addon{background-color:rgba(255,255,255,0.5)}
-.form-signin .input-group .errorlist{top:5px;right:5px;position:absolute;list-style:none;z-index:10;color:#d9534f}
-.form-signin .input-group-username{margin-bottom:-1px}.form-signin .input-group-username .input-group-addon:first-child{border-radius:0}
-.form-signin .input-group-username input{border-radius:0}
-.form-signin .input-group-password .input-group-addon:first-child{border-radius:0}
-.form-signin .input-group-password input{border-radius:0}
-.form-signin .form-control{position:relative;height:auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:10px;font-size:16px}.form-signin .form-control:focus{z-index:5}
-.form-signin .password-reset-link{margin-top:5px}
-.form-signin .submit-row{margin-top:5px}.form-signin .submit-row .btn-lg{border-radius:0;padding:10px}
+#content-main{position:absolute;width:400px;left:50%;top:40%;margin-left:-200px;margin-top:-115px}.alert{border-radius:0}.form-signin{max-width:400px;margin:0 auto;position:relative}.form-signin .form-signin-heading{margin-bottom:20px}.form-signin .input-group{width:100%}.form-signin .input-group .input-group-addon{background-color:rgba(255,255,255,0.5)}.form-signin .input-group .errorlist{top:5px;right:5px;position:absolute;list-style:none;z-index:10;color:#d9534f}.form-signin .input-group-username{margin-bottom:-1px}.form-signin .input-group-username .input-group-addon:first-child{border-radius:0}.form-signin .input-group-username input{border-radius:0}.form-signin .input-group-password .input-group-addon:first-child{border-radius:0}.form-signin .input-group-password input{border-radius:0}.form-signin .form-control{position:relative;height:auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:10px;font-size:16px}.form-signin .form-control:focus{z-index:5}.form-signin .password-reset-link{margin-top:5px}.form-signin .submit-row{margin-top:5px}.form-signin .submit-row .btn-lg{border-radius:0;padding:10px}
