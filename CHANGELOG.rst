@@ -4,6 +4,17 @@ Changelog
 Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
 
 
+v0.2.13 (2015-04-22)
+--------------------
+
+* [Fix] Django 1.8 related fixes
+* [Fix] Minor fixes and accepted PR: `#358 <https://github
+.com/darklow/django-suit/pull/358>`_ `#322 <https://github.com/darklow/django-suit/pull/322>`_ `#356 <https://github.com/darklow/django-suit/pull/356>`_ `#357 <https://github.com/darklow/django-suit/pull/357>`_ `#325 <https://github.com/darklow/django-suit/pull/325>`_ `#333 <https://github.com/darklow/django-suit/pull/333>`_ `#351 <https://github.com/darklow/django-suit/pull/351>`_ `#354 <https://github
+.com/darklow/django-suit/issues/354>`_ `#360 <https://github
+.com/darklow/django-suit/issues/360>`_
+* [Tests] Fixed Django 1.8 and deprecated travis tests
+
+
 v0.2.12 (2014-11-19)
 --------------------
 
