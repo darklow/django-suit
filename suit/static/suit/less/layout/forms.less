@@ -61,10 +61,10 @@
             padding: 0;
             margin: 0;
             &:first-child {
-                padding-top: 0px;
+                padding-top: 0;
             }
             &:last-child {
-                padding-bottom: 0px;
+                padding-bottom: 0;
                 border-bottom: 0;
             }
             .control-label {
@@ -78,6 +78,17 @@
                     font-weight: normal;
                     position: relative;
                     z-index: 1;
+                }
+                @media (max-width: @screen-xs-max) {
+                    padding: 10px 0 0 @grid-gutter-width / 2;
+                    margin-bottom: 2px;
+                    &, &:before {
+                        background-color: transparent !important;
+                    }
+                    label {
+                        padding: 0;
+                        font-weight: bold;
+                    }
                 }
             }
 
