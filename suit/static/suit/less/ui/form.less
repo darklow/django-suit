@@ -244,13 +244,43 @@ h2.legend, .form-horizontal fieldset .legend {
 }
 
 .control-group, .inline-group {
-    .add-another, .related-lookup {
+    // Django < 1.8
+    .add-another {
         text-decoration: none;
         display: inline-block;
         padding: 0 0 0 8px;
     }
-    .related-lookup {
+    // Django 1.8+
+    .related-widget-wrapper-link.change-related {
+        &, &:hover {
+            opacity: .2;
+        }
+        &:link {
+            opacity: .6;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    .add-related, .related-lookup, .change-related {
+        .bs-icon;
+        display: inline-block;
+        padding: 4px;
+        border: 1px solid transparent;
         padding-left: 6px;
+        vertical-align: middle;
+        img {
+            display: none;
+        }
+    }
+    .add-related {
+        background-position: 1px -92px;
+    }
+    .related-lookup {
+        background-position: -42px 4px;
+    }
+    .change-related {
+        background-position: 7px -68px;
     }
     .vForeignKeyRawIdAdminField {
         width: 90px;
