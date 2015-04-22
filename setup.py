@@ -11,7 +11,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 2 - Pre-Alpha',
         'Framework :: Django',
         'License :: Free for non-commercial use',
         'Intended Audience :: Developers',
