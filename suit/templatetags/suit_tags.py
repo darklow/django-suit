@@ -1,5 +1,4 @@
 from django import template
-from django.contrib.admin.util import lookup_field
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import NoReverseMatch, reverse
 from django.db.models import ForeignKey
@@ -7,6 +6,11 @@ from django.template.defaulttags import NowNode
 from django.utils.safestring import mark_safe
 from suit.config import get_config
 from suit import utils
+try:
+    # Django 1.9
+    from django.contrib.admin.utils import lookup_field
+except ImportError:
+    from django.contrib.admin.util import lookup_field
 
 register = template.Library()
 
