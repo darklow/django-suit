@@ -404,6 +404,19 @@ h3 {
             margin-left: 5px;
         }
     }
+    &.stacked {
+        .selector-available, .selector-chosen {
+            width: 100%;
+            min-width: 150px;
+            max-width: 100%;
+            select, input {
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+
+
     .selector-available, .selector-chosen {
         width: 45%;
         min-width: 150px;
@@ -435,6 +448,23 @@ h3 {
                 }
             }
         }
+    }
+    &.stacked .selector-chooser {
+        list-style: none;
+        margin: 5px 0 0 0;
+        width: 100%;
+        li {
+            display: inline-block;
+            a {
+                background-position: -284px -92px;
+            }
+            &:first-child {
+                a {
+                    background-position: -308px -92px;
+                }
+            }
+        }
+
     }
     .selector-available, .selector-chosen {
         a:not(.active) {

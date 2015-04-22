@@ -23,7 +23,7 @@ CSS/LESS
 
 Contributing on specifically UI/CSS features/fixes have more requirements:
 
-* ``lessc`` compiler - http://lesscss.org/
+* ``lessc`` compiler - http://lesscss.org/ (**Note:** please use ``less@1.4.2``. Versions of ``less`` 1.5.0 and greater compress differently.)
 * ``watchdog`` package - ``pip install watchdog``
 * ``django-suit-examples`` - it may be a good idea to add `examples app <https://github.com/darklow/django-suit-examples>`_ to your project
 
