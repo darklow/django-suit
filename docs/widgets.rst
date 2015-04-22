@@ -129,7 +129,7 @@ Date/Time widgets
   from django.forms import ModelForm
   from suit.widgets import SuitDateWidget, SuitTimeWidget, SuitSplitDateTimeWidget
 
-  class UserChangeForm(UserChangeForm):
+  class UserChangeForm(ModelForm):
       class Meta:
           model = User
           widgets = {
