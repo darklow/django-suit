@@ -182,7 +182,7 @@
                             showRelatedObjectLookupPopup(this);
                         });
                     {% if adminform and add %}
-                        $('form#{{ opts.model_name }}_form :input:visible:enabled:first').focus()
+                        $('form#{{ opts.model_name }}_form :input[type!=button][type!=submit]:visible:enabled:first').focus()
                     {% endif %}
                     });
                 })(django.jQuery);
