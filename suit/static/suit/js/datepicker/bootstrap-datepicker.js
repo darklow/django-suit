@@ -48,7 +48,7 @@
 				var val = d && d.valueOf();
 				ignoreTime = typeof(ignoreTime) === 'undefined';
 				if (ignoreTime) {
-					val = d.getFullYear().toString() + d.getMonth() + d.getUTCDate();
+					val = d.getUTCFullYear().toString() + d.getUTCMonth() + d.getUTCDate();
 				}
 				for (var i=0, l=this.length; i < l; i++)
 					if (ignoreTime) {
