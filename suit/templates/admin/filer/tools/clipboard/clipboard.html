@@ -1,5 +1,5 @@
 {% load thumbnail i18n %}
-{% load url from future %}
+{% load url from suit_compat %}
 
 <h4 class="italic-title clipboard-header{{ folder.is_root|yesno:' clipboard-root,' }}">{% trans "Clipboard" %}</h4>
 {% for clipboard in user.filer_clipboards.all %}

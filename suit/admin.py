@@ -6,11 +6,7 @@ from django.forms import ModelForm
 from django.contrib import admin
 from django.db import models
 from suit.widgets import NumberInput, SuitSplitDateTimeWidget
-try:
-    # Django 1.8 +
-    from django.contrib.contenttypes import admin as ct_admin
-except ImportError:
-    from django.contrib.contenttypes import generic as ct_admin
+from suit.compat import ct_admin
 
 
 class SortableModelAdminBase(object):
