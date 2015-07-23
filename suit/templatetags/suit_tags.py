@@ -80,3 +80,8 @@ def suit_bc(*args):
 @register.assignment_tag
 def suit_bc_value(*args):
     return utils.value_by_version(args)
+
+
+@register.assignment_tag
+def suit_django_version():
+    return utils.django_major_version()
