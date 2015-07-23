@@ -18,7 +18,7 @@
     <!-- Warn on leaving unsaved form -->
     <script src="{% static 'suit/js/suit-form-confirm.js' %}"></script>
     <script type="text/javascript">
-      confirmExitIfModified('{{ opts.module_name }}_form', '{% trans 'You have unsaved changes' %}.');
+      confirmExitIfModified('{% firstof opts.model_name opts.module_name %}_form', '{% trans 'You have unsaved changes' %}.');
     </script>
   {% endif %}
 
@@ -83,7 +83,7 @@
   <div id="content-main" class="inner-two-columns">
 
     <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post"
-          id="{{ opts.module_name }}_form" class="form-horizontal">
+          id="{% firstof opts.model_name opts.module_name %}_form" class="form-horizontal">
 
       <div class="inner-right-column">
 
@@ -182,7 +182,7 @@
                             showRelatedObjectLookupPopup(this);
                         });
                     {% if adminform and add %}
-                        $('form#{{ opts.model_name }}_form :input[type!=button][type!=submit]:visible:enabled:first').focus()
+                        $('form#{% firstof opts.model_name opts.module_name %}_form :input[type!=button][type!=submit]:visible:enabled:first').focus()
                     {% endif %}
                     });
                 })(django.jQuery);

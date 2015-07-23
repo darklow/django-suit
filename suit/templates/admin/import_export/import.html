@@ -9,7 +9,7 @@
 {% block content %}
 
     {% if not confirm_form %}
-        <form action="{{ form_url }}" method="POST" id="{{ opts.module_name }}_form" enctype="multipart/form-data" class="form-horizontal">
+        <form action="{{ form_url }}" method="POST" id="{% firstof opts.model_name opts.module_name %}_form" enctype="multipart/form-data" class="form-horizontal">
             {% csrf_token %}
 
 
