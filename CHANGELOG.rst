@@ -4,6 +4,16 @@ Changelog
 Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
 
 
+v0.2.14 (2015-07-23)
+--------------------
+
+* [Fix] Django 1.8/1.9 DeprecationWarning fixes. `#396 <https://github
+.com/darklow/django-suit/issues/396>`_ `#365 <https://github.com/darklow/django-suit/pull/365>`_ `#383 <https://github.com/darklow/django-suit/issues/383>`_
+* [Feature] Django 1.8 show_change_link inlines parameter implementation. `#366 <https://github.com/darklow/django-suit/issues/366>`_
+* [Fix] Fix issues related to Django 1.7 opts.module_name to opts.model_name transition. `#405 <https://github.com/darklow/django-suit/issues/405>`_
+* [Fix] Add {% welcome-msg %} block around welcome message text. `#379 <https://github.com/darklow/django-suit/issues/379>`_
+
+
 v0.2.13 (2015-04-22)
 --------------------
 
