@@ -1,4 +1,4 @@
-{% load admin_static %}{% load suit_tags %}{% load url from future %}<!DOCTYPE html>
+{% load admin_static %}{% load suit_tags %}{% load url from suit_compat %}<!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,22 +63,24 @@
 
             {% if user.is_active and user.is_staff %}
               <div id="user-tools">
-                {% trans 'Welcome,' %}
-                <strong>
-                  {% filter force_escape %}
-                    {% firstof user.first_name user.username %}{% endfilter %}</strong>.
+                {% block welcome-msg %}
+                  {% trans 'Welcome,' %}
+                  <strong>
+                    {% filter force_escape %}
+                      {% firstof user.first_name user.username %}{% endfilter %}</strong>.
+                {% endblock %}
                 <span class="user-links">
                 {% block userlinks %}
                   {% url 'django-admindocs-docroot' as docsroot %}
                   {% if docsroot %}
                     <a href="{{ docsroot }}">{% trans 'Documentation' %}</a>
-                   <span class="separator">|</span>
+                    <span class="separator">|</span>
                   {% endif %}
                   <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a>
                   <span class="separator">|</span>
                   <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
-                  </span>
                 {% endblock %}
+                </span>
               </div>
             {% endif %}
             {% block nav-global %}{% endblock %}

@@ -1,4 +1,5 @@
-{% load i18n admin_static admin_modify %}
+{% load i18n admin_static admin_modify suit_tags admin_urls %}
+{% suit_django_version as django_version %}
 <div class="inline-group {{ inline_admin_formset.opts.suit_classes }}" id="{{ inline_admin_formset.formset.prefix }}-group">
   <div class="tabular inline-related {% if forloop.last %}last-related{% endif %}">
 {{ inline_admin_formset.formset.management_form }}
@@ -14,7 +15,8 @@
          </th>
        {% endif %}
      {% endfor %}
-     {% if inline_admin_formset.formset.can_delete %}<th>{% trans "Delete?" %}</th>{% endif %}
+     {% if inline_admin_formset.opts.show_change_link and inline_admin_formset.opts.has_registered_model %}<th class="text-center">{% trans "Change" %}</th>{% endif %}
+     {% if django_version > 1.7 and inline_admin_formset.formset.can_delete %}<th>{% trans "Delete?" %}</th>{% endif %}
      </tr></thead>
 
      <tbody>
@@ -60,6 +62,12 @@
             {% endfor %}
           {% endfor %}
         {% endfor %}
+          {% if django_version > 1.7 and inline_admin_form.model_admin.show_change_link and inline_admin_form.model_admin.has_registered_model %}
+            <td class="text-center">
+              {% if inline_admin_form.original %}
+                <p><a href="{% url inline_admin_form.model_admin.opts|admin_urlname:'change' inline_admin_form.original.pk|admin_urlquote %}" class="inlinechangelink">{% trans "Change" %}</a></p>
+              {% endif %}
+            </td>{% endif %}
         {% if inline_admin_formset.formset.can_delete %}
           <td class="delete">{% if inline_admin_form.original %}{{ inline_admin_form.deletion_field.field }}{% endif %}</td>
         {% endif %}

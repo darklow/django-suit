@@ -1,6 +1,6 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_static admin_modify suit_tags admin_urls %}
-{% load url from future %}
+{% load url from suit_compat %}
 
 {% block extrahead %}{{ block.super }}
   {% url 'admin:jsi18n' as jsi18nurl %}
@@ -18,7 +18,7 @@
     <!-- Warn on leaving unsaved form -->
     <script src="{% static 'suit/js/suit-form-confirm.js' %}"></script>
     <script type="text/javascript">
-      confirmExitIfModified('{{ opts.module_name }}_form', '{% trans 'You have unsaved changes' %}.');
+      confirmExitIfModified('{% firstof opts.model_name opts.module_name %}_form', '{% trans 'You have unsaved changes' %}.');
     </script>
   {% endif %}
 
@@ -83,7 +83,7 @@
   <div id="content-main" class="inner-two-columns">
 
     <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post"
-          id="{{ opts.module_name }}_form" class="form-horizontal">
+          id="{% firstof opts.model_name opts.module_name %}_form" class="form-horizontal">
 
       <div class="inner-right-column">
 
@@ -169,13 +169,25 @@
         {# render suit_form_includes at last position #}
         {% include 'suit/includes/change_form_includes.html' with position='bottom' %}
 
-        {% if adminform and add %}
-          <script type="text/javascript">
-            (function ($) {
-              $('form#{{ opts.module_name }}_form :input[type!=button][type!=submit]:visible:enabled:first').focus();
-            })(django.jQuery);
-          </script>
-        {% endif %}
+        {% block admin_change_form_document_ready %}
+            <script type="text/javascript">
+                (function($) {
+                    $(document).ready(function() {
+                        $('.add-another').click(function(e) {
+                            e.preventDefault();
+                            showAddAnotherPopup(this);
+                        });
+                        $('.related-lookup').click(function(e) {
+                            e.preventDefault();
+                            showRelatedObjectLookupPopup(this);
+                        });
+                    {% if adminform and add %}
+                        $('form#{% firstof opts.model_name opts.module_name %}_form :input[type!=button][type!=submit]:visible:enabled:first').focus()
+                    {% endif %}
+                    });
+                })(django.jQuery);
+            </script>
+        {% endblock %}
 
         {# JavaScript for prepopulated fields #}
         {% prepopulated_fields_js %}

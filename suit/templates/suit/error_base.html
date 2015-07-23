@@ -1,4 +1,4 @@
-{% load admin_static i18n %}{% load url from future %}<!DOCTYPE html>
+{% load admin_static i18n %}{% load url from suit_compat %}<!DOCTYPE html>
 <!--[if lt IE 9 ]><html lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
@@ -83,15 +83,15 @@
 
     <br>
     <script type="text/javascript">
-      if(window.location.href.toString().indexOf('popup') != -1){
-        document.write('<a href="javascript:window.close()" class="btn btn-info btn-large">Close window</a> ');
-      }else {
-          if (document.referrer != '') {
-              document.write('<a href="javascript:history.back()" class="btn btn-info btn-large">Go back</a> ');
-          }
-          {% if request and user.is_authenticated and user.is_staff %}
-          document.write('<a href="{% url 'admin:index' %}" class="btn btn-large">Go to admin home</a> ');
-          {% endif %}
+      if (window.location.href.toString().indexOf('popup') != -1) {
+        document.write('<a href="javascript:window.close()" class="btn btn-info btn-large">{% trans 'Close window' %}</a> ');
+      } else {
+        if (document.referrer != '') {
+          document.write('<a href="javascript:history.back()" class="btn btn-info btn-large">{% trans 'Go back' %}</a> ');
+        }
+        {% if request and user.is_authenticated and user.is_staff %}
+        document.write('<a href="{% url 'admin:index' %}" class="btn btn-large">{% trans 'Go to admin home' %}</a> ');
+        {% endif %}
       }
     </script>
   </div>

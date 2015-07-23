@@ -6,11 +6,11 @@ python:
   - 3.4
   - pypy
 env:
-  - DJANGO=1.4.5
-  - DJANGO=1.5
-  - DJANGO=1.5.5
-  - DJANGO=1.6.5
-  - DJANGO=1.7
+  - DJANGO=1.4.20
+  - DJANGO=1.5.12
+  - DJANGO=1.6.11
+  - DJANGO=1.7.7
+  - DJANGO=1.8.3
 before_install:
   - export DJANGO_SETTINGS_MODULE=suit.tests.settings
 install:
@@ -22,15 +22,16 @@ matrix:
   exclude:
     # Django doesn't support following combinations
     - python: 3.3
-      env: DJANGO=1.4.5
+      env: DJANGO=1.4.20
     - python: 3.4
-      env: DJANGO=1.4.5
+      env: DJANGO=1.4.20
     - python: 2.6
-      env: DJANGO=1.6.5
+      env: DJANGO=1.6.11
     - python: 2.6
-      env: DJANGO=1.7
-
-    # Fails. Django issue #19944
-    # https://code.djangoproject.com/ticket/19944
+      env: DJANGO=1.7.7
+    - python: 2.6
+      env: DJANGO=1.8.3
     - python: pypy
-      env: DJANGO=1.5
+      env: DJANGO=1.4.20
+    - python: pypy
+      env: DJANGO=1.5.12

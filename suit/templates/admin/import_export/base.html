@@ -1,7 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_static admin_modify %}
 {% load admin_urls %}
-{% load url from future %}
+{% load url from suit_compat %}
 
 {% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
 {% if not is_popup %}

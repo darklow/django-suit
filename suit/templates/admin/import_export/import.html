@@ -1,5 +1,5 @@
 {% extends "admin/import_export/base.html" %}
-{% load url from future %}
+{% load url from suit_compat %}
 {% load i18n admin_urls import_export_tags %}
 
 {% block breadcrumbs_last %}
@@ -9,7 +9,7 @@
 {% block content %}
 
     {% if not confirm_form %}
-        <form action="{{ form_url }}" method="POST" id="{{ opts.module_name }}_form" enctype="multipart/form-data" class="form-horizontal">
+        <form action="{{ form_url }}" method="POST" id="{% firstof opts.model_name opts.module_name %}_form" enctype="multipart/form-data" class="form-horizontal">
             {% csrf_token %}
 
 

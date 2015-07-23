@@ -2,11 +2,11 @@ import copy
 from django.conf import settings
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin.views.main import ChangeList
-from django.contrib.contenttypes import generic
 from django.forms import ModelForm
 from django.contrib import admin
 from django.db import models
 from suit.widgets import NumberInput, SuitSplitDateTimeWidget
+from suit.compat import ct_admin
 
 
 class SortableModelAdminBase(object):
@@ -65,7 +65,7 @@ class SortableTabularInline(SortableTabularInlineBase, admin.TabularInline):
 
 
 class SortableGenericTabularInline(SortableTabularInlineBase,
-                                   generic.GenericTabularInline):
+                                   ct_admin.GenericTabularInline):
     pass
 
 
@@ -128,7 +128,7 @@ class SortableStackedInline(SortableStackedInlineBase, admin.StackedInline):
 
 
 class SortableGenericStackedInline(SortableStackedInlineBase,
-                                   generic.GenericStackedInline):
+                                   ct_admin.GenericStackedInline):
     pass
 
 

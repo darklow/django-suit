@@ -244,13 +244,43 @@ h2.legend, .form-horizontal fieldset .legend {
 }
 
 .control-group, .inline-group {
-    .add-another, .related-lookup {
+    // Django < 1.8
+    .add-another {
         text-decoration: none;
         display: inline-block;
         padding: 0 0 0 8px;
     }
-    .related-lookup {
+    // Django 1.8+
+    .related-widget-wrapper-link.change-related {
+        &, &:hover {
+            opacity: .2;
+        }
+        &:link {
+            opacity: .6;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    .add-related, .related-lookup, .change-related {
+        .bs-icon;
+        display: inline-block;
+        padding: 4px;
+        border: 1px solid transparent;
         padding-left: 6px;
+        vertical-align: middle;
+        img {
+            display: none;
+        }
+    }
+    .add-related {
+        background-position: 1px -92px;
+    }
+    .related-lookup {
+        background-position: -42px 4px;
+    }
+    .change-related {
+        background-position: 7px -68px;
     }
     .vForeignKeyRawIdAdminField {
         width: 90px;
@@ -404,6 +434,18 @@ h3 {
             margin-left: 5px;
         }
     }
+    &.stacked {
+        // Filter vertical
+        .selector-available, .selector-chosen {
+            width: 100%;
+            min-width: 150px;
+            max-width: 100%;
+            select, input {
+                width: 100%;
+                display: block;
+            }
+        }
+    }
     .selector-available, .selector-chosen {
         width: 45%;
         min-width: 150px;
@@ -432,6 +474,25 @@ h3 {
             &:first-child {
                 a {
                     background-position: -260px -92px;
+                }
+            }
+        }
+    }
+    &.stacked {
+        // Filter vertical
+        .selector-chooser {
+            list-style: none;
+            margin: 5px 0 0 0;
+            width: 100%;
+            li {
+                display: inline-block;
+                a {
+                    background-position: -284px -92px;
+                }
+                &:first-child {
+                    a {
+                        background-position: -308px -92px;
+                    }
                 }
             }
         }

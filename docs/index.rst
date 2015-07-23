@@ -28,7 +28,7 @@ Resources
 * Github: https://github.com/darklow/django-suit
 * Demo app on Github: https://github.com/darklow/django-suit-examples
 * Changelog: `Changelog.rst <https://github.com/darklow/django-suit/blob/develop/CHANGELOG.rst>`_
-* Supports: Django 1.4-1.7. Python: 2.6-3.4 |master|
+* Supports: Django 1.4-1.8. Python: 2.6-3.4 |master|
 * `Supported apps`_
 
 
@@ -45,11 +45,11 @@ Click on screenshot for live demo:
 Installation
 ============
 
-1. You can get Django Suit by using pip or easy_install::
+1. You can get stable version of Django Suit by using pip or easy_install::
 
-    pip install django-suit
+    pip install django-suit==0.2.14
     # or
-    easy_install django-suit
+    easy_install django-suit==0.2.14
 
 2. You will need to add the ``'suit'`` application to the ``INSTALLED_APPS`` setting of your Django project ``settings.py`` file.::
 
@@ -87,6 +87,14 @@ Develop branch
 
   pip uninstall django-suit
   pip install https://github.com/darklow/django-suit/tarball/develop
+
+
+Bootstrap3 branch
+-----------------
+
+`BS3 branch <https://github.com/darklow/django-suit/commits/bs3>`_ is considered as alpha version and is not yet ready for production use. To install latest bs3 version use::
+
+  pip install django-suit==0.3a1
 
 
 Customization
