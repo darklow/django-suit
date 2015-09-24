@@ -11,6 +11,8 @@ except ImportError:
     # For Django < 1.4.2
     string_types = basestring,
 
+import re
+
 import warnings
 from suit.config import get_config
 
@@ -58,6 +60,8 @@ def get_admin_site(current_app):
 
 class Menu(object):
     app_activated = False
+    MULTIPLE_MODELS_RE = re.compile(ur'([^*]*)[*]')
+
 
     def __init__(self, context, request, app_list):
         self.request = request
@@ -251,11 +255,36 @@ class Menu(object):
         models = []
         models_def = app.get('models', [])
         for model_def in models_def:
-            model = self.make_model(model_def, app['name'])
-            if model:
-                models.append(model)
+            # multiple models may be returned
+            # the 'invisible_in_admin' permission is used
+            # in some applications
+            models += [
+                m
+                for m in self.make_models(model_def, app['name'])
+                if not m['permissions'].get('invisible_in_admin',False)
+            ]
 
         app['models'] = models
+
+    def make_models(self, model_def, app_name):
+        if not isinstance(model_def, string_types):
+            model = self.make_model(model_def, app_name)
+            return [model] if model else []
+        match = self.MULTIPLE_MODELS_RE.match(model_def)
+        if not match:
+            model = self.make_model(model_def, app_name)
+            return [model] if model else []
+        prefix = match.group(1)
+        prefix = self.get_model_name(app_name,prefix)
+        return [
+            m
+            for m in [
+                self.convert_native_model(native_model,app_name)
+                for native_model in self.all_models
+                if self.get_native_model_name(native_model).startswith(prefix)
+            ]
+            if m
+        ]
 
     def make_model(self, model_def, app_name):
         if isinstance(model_def, dict):
@@ -283,6 +312,10 @@ class Menu(object):
         return self.conf_exclude and model_name in self.conf_exclude
 
     def get_model_name(self, app_name, model_name):
+        if app_name:
+            app_name = app_name.lower()
+        if model_name:
+            model_name = model_name.lower()
         if '.' not in model_name:
             model_name = '%s.%s' % (app_name, model_name)
         return model_name
@@ -300,7 +333,9 @@ class Menu(object):
             'label': model['name'],
             'url': self.get_native_model_url(model),
             'name': self.get_native_model_name(model),
-            'app': app_name
+            'app': app_name,
+            'permissions': model.get('perms',None),
+            'add_url': model.get('add_url',None),
         }
 
     def get_native_model_url(self, model):
