@@ -256,13 +256,7 @@ class Menu(object):
         models_def = app.get('models', [])
         for model_def in models_def:
             # multiple models may be returned
-            # the 'invisible_in_admin' permission is used
-            # in some applications
-            models += [
-                m
-                for m in self.make_models(model_def, app['name'])
-                if not m['permissions'].get('invisible_in_admin',False)
-            ]
+            models += self.make_models(model_def, app['name'])
 
         app['models'] = models
 
