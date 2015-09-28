@@ -1,3 +1,4 @@
+import itertools
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import NoReverseMatch, reverse
@@ -80,6 +81,15 @@ def suit_bc(*args):
 @register.assignment_tag
 def suit_bc_value(*args):
     return utils.value_by_version(args)
+
+
+@register.assignment_tag
+def admin_extra_filters(cl):
+    """ Return the dict of used filters which is not included
+    in list_filters form """
+    used_parameters = list(itertools.chain(*(s.used_parameters.keys()
+                                             for s in cl.filter_specs)))
+    return {k: v for k, v in cl.params.items() if k not in used_parameters}
 
 
 @register.assignment_tag

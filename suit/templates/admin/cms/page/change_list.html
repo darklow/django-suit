@@ -133,16 +133,16 @@
 
   <div class="toolbar-content clearfix">
     {% block object-tools %}
-      {% if has_add_permission %}
-        <div class="object-tools">
-          {% block object-tools-items %}
+      <div class="object-tools">
+        {% block object-tools-items %}
+          {% if has_add_permission %}
             <a href="add/{% if is_popup %}?_popup=1{% endif %}" class="btn btn-success">
               <i class="icon-plus-sign icon-white"></i>&nbsp;
               {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
             </a>
-          {% endblock %}
-        </div>
-      {% endif %}
+          {% endif %}
+        {% endblock %}
+      </div>
     {% endblock %}
 
     {% block search %}{% search_form cl %}{% endblock %}
