@@ -1,7 +1,7 @@
-from django.template.base import Library
+from django import template
 from ..compat import url as url_compat
 
-register = Library()
+register = template.Library()
 
 
 @register.tag
