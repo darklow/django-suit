@@ -89,7 +89,7 @@ def admin_extra_filters(cl):
     in list_filters form """
     used_parameters = list(itertools.chain(*(s.used_parameters.keys()
                                              for s in cl.filter_specs)))
-    return {k: v for k, v in cl.params.items() if k not in used_parameters}
+    return dict((k, v) for k, v in cl.params.items() if k not in used_parameters)
 
 
 @register.assignment_tag
