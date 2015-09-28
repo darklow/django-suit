@@ -35,7 +35,7 @@
   <script>
     (function ($) {
       $(function () {
-        $("#{{ opts.module_name }}_form").suit_form_debounce();
+        $("#{% firstof opts.model_name opts.module_name %}_form").suit_form_debounce();
       });
     }(Suit.$))    
   </script>
