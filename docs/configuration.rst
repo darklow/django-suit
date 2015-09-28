@@ -175,6 +175,11 @@ Following keys are available for each app and model level links:
 
 ``permissions`` are verified using `user.has_perms() <https://docs.djangoproject.com/en/dev/ref/contrib/auth/#django.contrib.auth.models.User.has_perm>`_ method.
 
+A custom application can contain a ``models`` list (or tuple) to customize the application models
+list. The ``models`` list can contain model references and model definitions. The model reference
+is a string referencing to the model through the application label and model name. The model
+name may be globbed to reference all models in the application like 'auth.*'.
+
 Here is full example of ``MENU`` from simple existing app reorder to defining custom menu items::
 
   SUIT_CONFIG = {
