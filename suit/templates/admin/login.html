@@ -29,11 +29,19 @@
         {% endif %}
 
         {% if form.non_field_errors or form.this_is_the_login_form.errors %}
-            {% for error in form.non_field_errors|add:form.this_is_the_login_form.errors %}
-                <p class="errornote alert alert-error">
-                    {{ error }}
-                </p>
-            {% endfor %}
+            {% if form.this_is_the_login_form.errors %}
+                {% for error in form.non_field_errors|add:form.this_is_the_login_form.errors %}
+                    <p class="errornote alert alert-error">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            {% else %}
+                {% for error in form.non_field_errors %}
+                    <p class="errornote alert alert-error">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            {% endif %}
         {% endif %}
 
         <div id="content-main">
