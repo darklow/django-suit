@@ -60,8 +60,7 @@ def get_admin_site(current_app):
 
 class Menu(object):
     app_activated = False
-    MULTIPLE_MODELS_RE = re.compile(ur'([^*]*)[*]')
-
+    MULTIPLE_MODELS_RE = re.compile(r'([^*]*)[*]')
 
     def __init__(self, context, request, app_list):
         self.request = request
