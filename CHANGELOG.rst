@@ -1,7 +1,18 @@
 Changelog
 =========
 
-Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
+Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_, `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ and `closed pull
+requests <https://github.com/darklow/django-suit/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aclosed>`_ for full changes.
+
+
+v0.2.15 (2015-09-28)
+--------------------
+
+* [Fix] Multiple Django 1.8/1.9/1.10 DeprecationWarning and compatibility fixes.
+* [Fix] Fixed bug with not showing login errors in Django>1.8 `#410 <https://github.com/darklow/django-suit/pull/410>`_
+* [Fix] Menu fixes and improvements `#430 <https://github.com/darklow/django-suit/pull/430>`_
+* [Fix] Reversion app support fixes `#424 <https://github.com/darklow/django-suit/pull/424>`_
+* [Feature] New `before_suit_styles` block in base.html `#408 <https://github.com/darklow/django-suit/pull/408>`_
 
 
 v0.2.14 (2015-07-23)
