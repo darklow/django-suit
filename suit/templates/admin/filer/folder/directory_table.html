@@ -1,7 +1,6 @@
 {% load i18n %}
-{% load admin_list filer_tags %}
+{% load admin_static admin_list filer_tags %}
 {% load url from suit_compat %}
-
 <div id="toolbartable" class="results">
       <table id="result_list" class="table table-striped table-bordered table-hover table-condensed">
         <thead>
@@ -43,7 +42,9 @@
                     <a style="display: block; float: right;" class="changelink" href="{{ file.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with file.label as item_label %}Change '{{ item_label }}' details{% endblocktrans %}">{% trans "Change" %}</a>
                     <div><b><a href="{{ file.get_admin_url_path }}{% if is_popup %}?_popup=1{% if select_folder %}&select_folder=1{% endif %}{% endif %}" title="{% blocktrans with file.label as item_label %}Change '{{ item_label }}' details{% endblocktrans %}">{{ file.label }}</a></b></div>
                     <div class="file-info muted"><span class="file-size">{{ file.size|filesizeformat }}{% ifequal file.file_type "Image" %}, {{ file.width }}x{{ file.height }} px{% endifequal %}</span><br>{% trans "Owner" %}: {{ file.owner|default:"n/a" }}{% if enable_permissions %}. {% trans "Permissions" %}: {% if file.is_public %}{% trans "disabled" %}{% else %}{% trans "enabled" %}{% endif %}{% endif %}</div>
-                    {# {% if file.has_all_mandatory_data %}<div><img alt="0" src="{% admin_icon_base %}img/admin/icon-yes.gif" /> {% trans "has all mandatory metadata" %}</div>{% else %}<div><img alt="1" src="{% admin_icon_base %}img/admin/icon-no.gif"/> {% trans "missing metadata!" %}</div>{% endif %} #}
+                    {# {% if file.has_all_mandatory_data %}<div>
+                    <img alt="0" src="{% if django_version < 1.9 %}{% static 'admin/img/admin/icon-yes.gif' %}{% else %}{% static 'admin/img/admin/icon-yes.svg' %}{% endif %}" /> {% trans "has all mandatory metadata" %}</div>{% else %}<div>
+                    <img alt="1" src="{% if django_version < 1.9 %}{% static 'admin/img/admin/icon-no.gif' %}{% else %}{% static 'admin/img/admin/icon-no.svg' %}{% endif %}"/> {% trans "missing metadata!" %}</div>{% endif %} #}
                 </td>
                 <td style="text-align: right;">
                     <button type="submit" name="move-to-clipboard-{{ file.id }}" title="{% trans "Move to clipboard" %}"{% if file in clipboard_files or not item_perms.change %} style="color: gray;" disabled="disabled"{% endif %} class="btn btn-small"><i class="icon-arrow-right"></i></button>
