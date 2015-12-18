@@ -116,7 +116,7 @@ Templates
 
 You must extend ``base_site.html`` template to customize footer links, copyright text or to add extra JS/CSS files. Example file is available on `github <https://github.com/darklow/django-suit/blob/master/suit/templates/admin/base_site.html>`_.
 
-Copy customized ``base_site.html`` `template file <https://github.com/darklow/django-suit/blob/master/suit/templates/admin/base_site.html>`_ to your project's main application ``template/admin/`` directory and un-comment and edit the blocks you would like to extend.
+Copy customized ``base_site.html`` `template file <https://github.com/darklow/django-suit/blob/master/suit/templates/admin/base_site.html>`_ to your project's main application ``templates/admin/`` directory and un-comment and edit the blocks you would like to extend.
 
 Alternatively you can copy ``base_site.html`` to any of template directories, which are defined in ``TEMPLATE_DIRS`` setting (if any). By default Django looks in every registered application ``templates/`` dir.
 
