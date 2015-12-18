@@ -7,6 +7,9 @@ from django.template.defaulttags import NowNode
 from django.utils.safestring import mark_safe
 from suit.config import get_config
 from suit import utils
+
+django_version = utils.django_major_version()
+
 try:
     # Django 1.9
     from django.contrib.admin.utils import lookup_field
@@ -94,4 +97,11 @@ def admin_extra_filters(cl):
 
 @register.assignment_tag
 def suit_django_version():
-    return utils.django_major_version()
+    return django_version
+
+
+if django_version < 1.9:
+    # Add empty tags to avoid Django template errors if < Django 1.9
+    @register.simple_tag
+    def add_preserved_filters(*args, **kwargs):
+        pass
