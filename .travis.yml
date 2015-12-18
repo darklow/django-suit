@@ -29,6 +29,8 @@ matrix:
       env: DJANGO=1.6.5
     - python: 2.6
       env: DJANGO=1.7
+    - python: pypy
+      env: DJANGO=1.6.11
 
     # Fails. Django issue #19944
     # https://code.djangoproject.com/ticket/19944
