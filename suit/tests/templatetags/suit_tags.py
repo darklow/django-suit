@@ -104,12 +104,12 @@ class SuitTagsTestCase(TestCase):
 
 
     def test_suit_conf_value(self):
-        default_value = 'right'
+        default_value = 'center'
         self.assertEqual(config.get_config('LIST_FILTERS_POSITION'),
                          default_value)
 
         class MockModelAdmin(object):
-            suit_list_filters_position = 'center'
+            suit_list_filters_position = 'right'
 
         model_admin = MockModelAdmin()
         suit_conf_value('LIST_FILTERS_POSITION', model_admin)

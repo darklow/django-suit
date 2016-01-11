@@ -20,7 +20,7 @@ class DjangoSuitConfig(AppConfig):
     django_version = get_version()
     menu_position = 'horizontal'
     list_per_page = 18
-    list_filters_position = 'right'
+    list_filters_position = 'center'
     admin_name = 'Django Suit'
 
     # not used yet
