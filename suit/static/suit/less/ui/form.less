@@ -607,11 +607,13 @@ h3 {
         margin-left: 32px;
         color: #f6f7f8;
         a:last-child {
-            padding: 0 5px;
+            padding: 0;
             position: absolute;
+            width: 28px;
+            height: 28px;
             left: (@date-input-width + @date-icon-offset);
             z-index: 2;
-            img {
+            span, img {
                 visibility: hidden;
             }
         }
