@@ -5,6 +5,12 @@ Only important changes are mentioned below. See `commit log <https://github.com/
 requests <https://github.com/darklow/django-suit/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aclosed>`_ for full changes.
 
 
+v0.2.16 (2016-01-16)
+--------------------
+
+* [Fix] Django 1.9 Compatibility fixes.
+
+
 v0.2.15 (2015-09-28)
 --------------------
 
