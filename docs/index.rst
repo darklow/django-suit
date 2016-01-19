@@ -47,9 +47,9 @@ Installation
 
 1. You can get stable version of Django Suit by using pip or easy_install::
 
-    pip install django-suit==0.2.15
+    pip install django-suit==0.2.16
     # or
-    easy_install django-suit==0.2.15
+    easy_install django-suit==0.2.16
 
 2. You will need to add the ``'suit'`` application to the ``INSTALLED_APPS`` setting of your Django project ``settings.py`` file.::
 
@@ -204,7 +204,7 @@ Support
 =======
 
 * Github: Use `django-suit github issues <https://github.com/darklow/django-suit/issues>`_, if you have any problems using Django Suit.
-* IRC Channel: Feel free to join us at ``#django-suit`` on ``irc.freenode.net`` for a chat.
+
 
 Examples
 --------
@@ -217,7 +217,7 @@ Supported apps
 
 Besides Django admin, Django Suit supports following third-party apps:
 
-* `django-cms <https://github.com/divio/django-cms>`_ (since v2.3.5) - `Example <http://djangosuit.com/admin/cms/page/>`_ `Read notes <https://github.com/darklow/django-suit/issues/77>`_
+* `django-cms <https://github.com/divio/django-cms>`_ (v2.3.5 - v2.4.3) - `Example <http://djangosuit.com/admin/cms/page/>`_ `Read notes <https://github.com/darklow/django-suit/issues/77>`_
 * `django-filer <https://github.com/stefanfoulis/django-filer>`_ (since v0.9.4) - `Example <http://djangosuit.com/admin/filer/folder/>`_
 * `django-mptt <https://github.com/django-mptt/django-mptt/>`_ - `Example <http://djangosuit.com/admin/examples/category/>`_
 * `django-reversion <https://github.com/etianen/django-reversion>`_ - `Example <http://djangosuit.com/admin/examples/reversioneditem/>`_
