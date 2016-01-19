@@ -1,14 +1,30 @@
 Changelog
 =========
 
-Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_ and `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ for full changes.
+Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_, `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ and `closed pull
+requests <https://github.com/darklow/django-suit/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aclosed>`_ for full changes.
+
+
+v0.2.16 (2016-01-16)
+--------------------
+
+* [Fix] Django 1.9 Compatibility fixes.
+
+
+v0.2.15 (2015-09-28)
+--------------------
+
+* [Fix] Multiple Django 1.8/1.9/1.10 DeprecationWarning and compatibility fixes.
+* [Fix] Fixed bug with not showing login errors in Django>1.8 `#410 <https://github.com/darklow/django-suit/pull/410>`_
+* [Fix] Menu fixes and improvements `#430 <https://github.com/darklow/django-suit/pull/430>`_
+* [Fix] Reversion app support fixes `#424 <https://github.com/darklow/django-suit/pull/424>`_
+* [Feature] New `before_suit_styles` block in base.html `#408 <https://github.com/darklow/django-suit/pull/408>`_
 
 
 v0.2.14 (2015-07-23)
 --------------------
 
-* [Fix] Django 1.8/1.9 DeprecationWarning fixes. `#396 <https://github
-.com/darklow/django-suit/issues/396>`_ `#365 <https://github.com/darklow/django-suit/pull/365>`_ `#383 <https://github.com/darklow/django-suit/issues/383>`_
+* [Fix] Django 1.8/1.9 DeprecationWarning fixes. `#396 <https://github.com/darklow/django-suit/issues/396>`_ `#365 <https://github.com/darklow/django-suit/pull/365>`_ `#383 <https://github.com/darklow/django-suit/issues/383>`_
 * [Feature] Django 1.8 show_change_link inlines parameter implementation. `#366 <https://github.com/darklow/django-suit/issues/366>`_
 * [Fix] Fix issues related to Django 1.7 opts.module_name to opts.model_name transition. `#405 <https://github.com/darklow/django-suit/issues/405>`_
 * [Fix] Add {% welcome-msg %} block around welcome message text. `#379 <https://github.com/darklow/django-suit/issues/379>`_
@@ -18,10 +34,7 @@ v0.2.13 (2015-04-22)
 --------------------
 
 * [Fix] Django 1.8 related fixes
-* [Fix] Minor fixes and accepted PR: `#358 <https://github
-.com/darklow/django-suit/pull/358>`_ `#322 <https://github.com/darklow/django-suit/pull/322>`_ `#356 <https://github.com/darklow/django-suit/pull/356>`_ `#357 <https://github.com/darklow/django-suit/pull/357>`_ `#325 <https://github.com/darklow/django-suit/pull/325>`_ `#333 <https://github.com/darklow/django-suit/pull/333>`_ `#351 <https://github.com/darklow/django-suit/pull/351>`_ `#354 <https://github
-.com/darklow/django-suit/issues/354>`_ `#360 <https://github
-.com/darklow/django-suit/issues/360>`_
+* [Fix] Minor fixes and accepted PR: `#358 <https://github.com/darklow/django-suit/pull/358>`_ `#322 <https://github.com/darklow/django-suit/pull/322>`_ `#356 <https://github.com/darklow/django-suit/pull/356>`_ `#357 <https://github.com/darklow/django-suit/pull/357>`_ `#325 <https://github.com/darklow/django-suit/pull/325>`_ `#333 <https://github.com/darklow/django-suit/pull/333>`_ `#351 <https://github.com/darklow/django-suit/pull/351>`_ `#354 <https://github.com/darklow/django-suit/issues/354>`_ `#360 <https://github.com/darklow/django-suit/issues/360>`_
 * [Tests] Fixed Django 1.8 and deprecated travis tests
 
 

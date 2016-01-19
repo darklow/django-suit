@@ -1,6 +1,6 @@
 {% extends "admin/base_site.html" %}
 {% load url from suit_compat %}
-{% load i18n %}
+{% load i18n admin_urls %}
 
 
 {% block breadcrumbs %}
@@ -9,7 +9,7 @@
         <span class="divider">&raquo;</span></li>
     <li><a href="{% url 'admin:app_list' app_label %}">{{ app_label|capfirst|escape }}</a>
         <span class="divider">&raquo;</span></li>
-    <li><a href="{{changelist_url}}">{{opts.verbose_name_plural|capfirst}}</a>
+    <li><a href="{% url opts|admin_urlname:'changelist' %}">{{opts.verbose_name_plural|capfirst}}</a>
         <span class="divider">&raquo;</span></li>
     <li class="active">{% blocktrans with opts.verbose_name_plural|escape as name %}Recover deleted {{name}}{% endblocktrans %}</li>
 </ul>

@@ -1,17 +1,16 @@
 {% extends "admin/base_site.html" %}
-{% load filer_admin_tags filermedia i18n %}
+{% load filer_admin_tags i18n staticfiles %}
 {% load url from suit_compat %}
 
 {% block extrahead %}{{ block.super }}
 {# upload stuff #}
 {{ media.js }}
-<script type="text/javascript" src="{% admin_js_base %}jquery.min.js"></script>
-<script type="text/javascript" src="{% filer_staticmedia_prefix %}js/jquery-ui-1.7.2.custom.min.js"></script>
-<script type="text/javascript" src="{% filer_staticmedia_prefix %}js/jquery.cookie.js"></script>
-<script type="text/javascript" src="{% filer_staticmedia_prefix %}js/fileuploader.js"></script>
-<script type="text/javascript" src="{% filer_staticmedia_prefix %}js/retina.js"></script>
-<script type="text/javascript" src="{% admin_js_base %}admin/RelatedObjectLookups.js"></script>
-<script type="text/javascript" src="{% filer_staticmedia_prefix %}js/popup_handling.js"></script>
+<script type="text/javascript" src="{% static 'admin/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'filer/js/jquery.cookie.js' %}"></script>
+<script type="text/javascript" src="{% static 'filer/js/fileuploader.js' %}"></script>
+<script type="text/javascript" src="{% static 'filer/js/retina.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/admin/RelatedObjectLookups.js' %}"></script>
+<script type="text/javascript" src="{% static 'filer/js/popup_handling.js' %}"></script>
 {% if action_form %}{% if actions_on_top or actions_on_bottom %}
 <script type="text/javascript">
 (function($) {
@@ -28,8 +27,8 @@
 
 
 {% block extrastyle %}{{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% filer_staticmedia_prefix %}css/admin_style.css">
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}suit/css/filer.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'filer/css/admin_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'suit/css/filer.css' %}">
 {{ media.css }}
 {% if action_form %}
   {% url 'admin:jsi18n' as jsi18nurl %}

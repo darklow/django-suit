@@ -1,5 +1,5 @@
 {% extends "admin/change_form.html" %}
-{% load i18n admin_modify filermedia %}
+{% load i18n admin_modify staticfiles %}
 
 {% block extrahead %}{{ block.super }}
 {% endblock %}
@@ -11,8 +11,8 @@
 {% endblock %}
 
 {% block extrastyle %}{{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% filer_staticmedia_prefix %}css/admin_style.css">
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}suit/css/filer.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'filer/css/admin_style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'suit/css/filer.css' %}">
 {% endblock %}
 
 {% block coltype %}colMS{% endblock %}

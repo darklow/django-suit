@@ -35,3 +35,5 @@ matrix:
       env: DJANGO=1.4.20
     - python: pypy
       env: DJANGO=1.5.12
+    - python: pypy
+      env: DJANGO=1.6.11

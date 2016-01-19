@@ -38,5 +38,6 @@ Related packages
 Related packages you can contribute to:
 
 * `django-suit-redactor <https://github.com/darklow/django-suit-redactor>`_ - Imperavi Redactor (WYSIWYG editor) integration app
-* `django-suit-ckeditor <https://github.com/darklow/django-suit-ckeditor>`_ - CKEditor (WYSIWYG editor) integration app:
+* `django-suit-ckeditor <https://github.com/darklow/django-suit-ckeditor>`_ - CKEditor (WYSIWYG editor) integration app
+* `django-suit-rq <https://github.com/gsmke/django-suit-rq>`_ - Django-RQ (Queuing library) integration app
 * `django-suit-examples <https://github.com/darklow/django-suit-examples>`_ - demo app

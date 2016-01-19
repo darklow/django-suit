@@ -23,6 +23,7 @@ var confirmExitIfModified = (function () {
             else if (type == "hidden" || type == "password" ||
                 type == "text" || type == "textarea") {
                 var cls = element.getAttribute('class');
+                if (!cls) cls = '';
                 if (element.value != element.defaultValue &&
                     // Fix for select2 multiple
                     cls.indexOf('select2') == -1 &&

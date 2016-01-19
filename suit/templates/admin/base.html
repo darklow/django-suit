@@ -3,6 +3,7 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{% block title %}{{ title }} | {{ 'ADMIN_NAME'|suit_conf }}{% endblock %}</title>
+  {% block before_suit_styles %}{% endblock %}
   <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% endblock %}"/>
   <link rel="stylesheet" type="text/css" href="{% static 'suit/bootstrap/css/bootstrap.min.css' %}" media="all"/>
   <link rel="stylesheet" type="text/css" href="{% static 'suit/css/suit.css' %}" media="all">
