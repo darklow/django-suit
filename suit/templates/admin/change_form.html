@@ -116,8 +116,14 @@
 
                 {% if has_add_permission %}
                   <li>
-                    <a href="../add/"><i class="icon-plus-sign icon-alpha75"></i>{% blocktrans with opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
-                    </a></li>
+                    {% if django_version < 1.9 %}
+                    <a href="../add/">
+                    {% else %}
+                    <a href="{% url opts|admin_urlname:'add' %}">
+                    {% endif %}
+                      <i class="icon-plus-sign icon-alpha75"></i>{% blocktrans with opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+                    </a>
+                  </li>
                   {# {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}</a>#}
                 {% endif %}
 
