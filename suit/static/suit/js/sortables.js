@@ -133,7 +133,7 @@
                 var i = 0, value;
                 $(selector).each(function () {
                     var $input = $(this);
-                    var fieldset_id = $input.attr('name').split(/-\d+-/)[0];
+                    var fieldset_id = $input.attr('name').split(/-(\d+)-/)[1];
                     // Check if any of new dynamic block values has been added
                     var $set_block = $input.closest('.dynamic-' + fieldset_id);
                     var $changed_fields = $set_block.find(":input[value!=''][type!='hidden']").filter(filter_unchanged);
