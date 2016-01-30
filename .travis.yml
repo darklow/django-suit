@@ -1,0 +1,15 @@
+language: python
+python:
+  - 2.7
+  - 3.3
+  - 3.4
+  - pypy
+env:
+  - DJANGO=1.9.1
+before_install:
+  - export DJANGO_SETTINGS_MODULE=suit.tests.settings
+install:
+  - pip install -q Django==$DJANGO --use-mirrors
+  - pip install . --use-mirrors
+script:
+  - django-admin test suit
