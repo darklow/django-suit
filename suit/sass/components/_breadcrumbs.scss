@@ -1,0 +1,14 @@
+.breadcrumbs {
+  display: none;
+  padding: 1.4rem $nav-padding-horizontal 0;
+  font-size: $font-size-sm;
+  color: $header-muted-color;
+  a {
+    color: $link-color;
+    display: inline-block;
+    margin: 0 .2rem;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

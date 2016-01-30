@@ -1,0 +1,16 @@
+{% load i18n %}
+<li{{ parent_item.is_active|yesno:' class=active,' }}>
+    <a href="{{ parent_item.url }}"
+            {{ parent_item.target_blank|yesno:' target=_blank,' }}><i class="{% firstof parent_item.icon 'icon-chevron-right' %}"></i>{% trans parent_item.label|capfirst %}
+    </a>
+    {% if parent_item.children and not parent_item.is_active %}
+        <ul class="sub-nav">
+            {% for child_item in parent_item.children %}
+                <li{{ child_item.is_active|yesno:' class=active,' }}>
+                    <a href="{{ child_item.url }}"
+                            {{ child_item.target_blank|yesno:' target=_blank,' }}>{{ child_item.label }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

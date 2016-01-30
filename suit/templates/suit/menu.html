@@ -1,37 +1,42 @@
-{#{% load sitetree %}#}
-{% load i18n suit_menu %}
-{% load url from suit_compat %}
+{% load i18n suit_menu suit_tags %}
 
-<div class="left-nav" id="left-nav">
-  <ul>
-    {% block menu_home %}
-      {% url 'admin:index' as index_url %}
-      <li{% if index_url == request.path %} class="active"{% endif %}>
-        <a href="{{ index_url }}"><i class="icon-home"></i>{% trans 'Home' %}
-        </a>
-      </li>
-    {% endblock %}
-
-    {% get_menu request as app_list %}
-    {% if app_list %}
-      {% for app in app_list %}
-        {% if app.separator %}
-          <li class="separator"></li>
-        {% else %}
-          <li{{ app.is_active|yesno:' class=active,' }}>
-            <a href="{{ app.url }}"{{ app.blank|yesno:' target=_blank,' }}><i class="{% firstof app.icon 'icon-chevron-right' %}"></i>{% trans app.label|capfirst %}
-            </a>
-            {% if app.models %}
-              <ul>
-                {% for model in app.models %}
-                  <li{{ model.is_active|yesno:' class=active,' }}>
-                    <a href="{{ model.url }}"{{ model.blank|yesno:' target=_blank,' }}>{{ model.label }}</a></li>
-                {% endfor %}
-              </ul>
+{% get_menu request as menu %}
+<div id="suit-nav">
+    <ul>
+        {% block menu_home %}
+            {% if 'menu_show_home'|suit_conf %}
+                {% url 'admin:index' as index_url %}
+                <li{% if index_url == request.path %} class="active"{% endif %}>
+                    <a href="{{ index_url }}"><i class="icon-home"></i>{% trans 'Home' %}
+                    </a>
+                </li>
             {% endif %}
-          </li>
+        {% endblock %}
+
+        {% if menu %}
+            {% for parent_item in menu %}
+                {% if not parent_item.align_right %}
+                    {% include 'suit/menu_item.html' %}
+                {% endif %}
+            {% endfor %}
         {% endif %}
-      {% endfor %}
+    </ul>
+    {% if menu.aligned_right_menu_items %}
+        <ul class="suit-nav-right">
+            {% for parent_item in menu.aligned_right_menu_items %}
+                {% include 'suit/menu_item.html' %}
+            {% endfor %}
+        </ul>
     {% endif %}
-  </ul>
 </div>
+{% if menu and menu.active_parent_item %}
+    <div id="suit-sub-nav">
+        <ul>
+            {% for child_item in menu.active_parent_item.children %}
+                <li{{ child_item.is_active|yesno:' class=active,' }}>
+                    <a href="{{ child_item.url }}"
+                            {{ child_item.blank|yesno:' target=_blank,' }}>{{ child_item.label }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

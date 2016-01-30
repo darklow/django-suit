@@ -1,0 +1,113 @@
+
+#suit-nav {
+  flex-basis: 100%;
+  margin-top: $header-padding-vertical;
+  background-color: $top-nav-bg;
+  > ul {
+    @include reset-list();
+    margin: 0 $header-padding-horizontal;
+    > li {
+      position: relative;
+      display: block;
+      float: left;
+      a {
+        display: block;
+        //font-size: $font-size-sm;
+        color: transparentize(#fff, .3);
+        &:hover {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+      > a {
+        position: relative;
+        padding: $header-padding-vertical/1.5 $header-padding-horizontal/1.4;
+        border-left: 1px solid $header-bg;
+      }
+      &:last-child {
+        > a {
+          border-right: 1px solid $header-bg;
+        }
+      }
+      &.active {
+        a {
+          background-color: #fff;
+          color: $body-color;
+          font-weight: bold;
+          box-shadow: inset 0 3px 0 $link-color-brighter;
+          &:hover {
+            @include gradient-vertical(darken($body-bg, 3%), #fff);
+          }
+        }
+      }
+      &:hover {
+        > a {
+          background-color: lighten($top-nav-bg, 5%);
+        }
+        > ul {
+          background-color: lighten($top-nav-bg, 5%);
+          display: block;
+        }
+      }
+      > ul {
+        @include reset-list();
+        z-index: 1000;
+        display: none;
+        background-color: $top-nav-bg;
+        position: absolute;
+        min-width: 180px;
+        box-shadow: 0 -1px 2px 0 rgba(0, 0, 0, .07);
+        font-size: $font-size-sm;
+        > li {
+          > a {
+            display: block;
+            padding: $header-padding-vertical/2 $header-padding-horizontal/1.4;
+            border-bottom: 1px solid darken($top-nav-bg, 5%);
+            &:hover {
+              background-color: darken($top-nav-bg, 2%);
+            }
+          }
+        }
+      }
+    }
+    &.suit-nav-right {
+      float: right;
+      > li > ul {
+        right: 0;
+      }
+    }
+  }
+}
+#suit-sub-nav {
+  flex-basis: 100%;
+  display: block;
+  background-color: #fff;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15);
+  ul {
+    @include reset-list();
+    margin: 0 $nav-padding-horizontal;
+    > li {
+      > a {
+        color: $link-color;
+        display: block;
+        float: left;
+        font-size: $font-size-sm;
+        padding: $header-padding-vertical/1.3 4px;
+        margin: 2px $header-padding-horizontal/3.75 0;
+        margin-bottom: -3px;
+      }
+      &:first-child {
+        a {
+          margin-left: 0;
+        }
+      }
+      &.active {
+        a {
+          color: $body-color;
+          font-weight: bold;
+          border-bottom: 3px solid $link-color-bright;
+        }
+      }
+    }
+  }
+}

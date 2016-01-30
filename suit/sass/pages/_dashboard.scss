@@ -1,0 +1,99 @@
+body.dashboard {
+  .module {
+    margin: 0 $grid-gutter-width $grid-gutter-width/2 0;
+    table {
+      width: 100%;
+      border-spacing: 1px;
+      border-collapse: separate;
+      caption {
+        caption-side: inherit;
+        font-weight: $headings-font-weight;
+        font-size: $font-size-h4;
+        padding: 0;
+      }
+      tr {
+        td, th {
+          font-size: $font-size-sm;
+          padding: $table-cell-padding;
+          background-color: lighten($body-bg, 2%);
+        }
+        th {
+          width: 200px;
+          background-color: #fff;
+          font-weight: normal;
+        }
+        td {
+
+        }
+      }
+    }
+  }
+  #recent-actions-module {
+    h2 {
+      display: none;
+    }
+    h3 {
+      font-size: $font-size-h4;
+    }
+    ul.actionlist {
+      @include reset-list();
+      > li {
+        background-color: lighten($body-bg, 2%);
+        margin-bottom: 1px;
+        padding: $table-cell-padding;
+        font-size: $font-size-sm;
+        padding-left: 2.8rem;
+        overflow: auto;
+        position: relative;
+        span {
+          display: block;
+          float: right;
+          color: $text-muted;
+          font-size: $font-size-xs;
+        }
+        br {
+          display: none;
+        }
+        &:before {
+          min-width: 2rem;
+          text-align: center;
+          //position: relative;
+          background-color: #fff;
+          border-right: 1px solid $body-bg;
+          position: absolute;
+          padding-top: .4rem;
+          top: 0;
+          left: 0;
+          height: 100%;
+
+        }
+      }
+    }
+  }
+  .addlink, .changelink, .deletelink {
+    &:before {
+      @include fa-icon-font();
+      display: block;
+      float: left;
+      min-width: 1.2rem;
+    }
+  }
+  .addlink {
+    &:before {
+      content: $icon-plus;
+      color: $brand-success;
+    }
+  }
+  .changelink {
+    &:before {
+      content: $icon-pencil;
+      color: $brand-warning;
+    }
+  }
+  .deletelink {
+    &:before {
+      content: $icon-remove;
+      color: $brand-danger;
+    }
+  }
+}

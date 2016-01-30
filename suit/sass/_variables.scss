@@ -1,0 +1,67 @@
+// Enable Flex | Welcome to the future :)
+// --------------------------------------------------
+$enable-flex: true;
+
+// Colors
+$brand-primary: #279bee;
+$brand-primary: #4298DE;
+$brand-success: #4ACB68;
+$brand-danger: #E04F3C;
+$brand-warning: #F1C40F;
+$link-color-brighter: #279bee;
+$link-color-bright: darken($link-color-brighter, 10%);
+$link-color: darken($link-color-brighter, 20%);
+$body-bg: #f5f5f5;
+$inverse: #252830;
+$header-bg: $inverse;
+$inverse-light: lighten($inverse, 10%);
+$inverse-lighter: lighten($inverse, 15%);
+$inverse-lightest: lighten($inverse, 25%);
+$top-nav-bg: $inverse-light;
+$header-color: #fff;
+$header-muted-color: lighten($header-bg, 30%);
+
+// Import all Bootstrap variables
+@import "../../bower_components/bootstrap/scss/variables";
+
+
+// Typography
+// --------------------------------------------------
+$font-size-root: 14px;
+$font-family-sans-serif: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-base: $font-family-sans-serif;
+$headings-font-weight: 500;
+
+// http://pxtoem.com/
+$font-size-h1: 1.714rem;
+$font-size-h2: 1.571rem;
+$font-size-h3: 1.429rem;
+$font-size-h4: 1.286rem;
+$font-size-h5: 1.143rem;
+$font-size-h6: 1rem;
+$font-size-sm: .929rem;
+$font-size-xs: .857rem;
+
+// Suit
+// --------------------------------------------------
+$gray-light: lighten($gray-light, 10%);
+$text-muted: $gray-light;
+$sidebar-width: 200px;
+$header-padding-horizontal: $grid-gutter-width;
+$header-padding-vertical: $grid-gutter-width/1.8;
+$nav-padding-horizontal: $grid-gutter-width + .75rem;
+
+// Buttons
+// --------------------------------------------------
+$btn-padding-x: 1.2rem;
+$btn-padding-y: .35rem;
+
+// Inputs
+// --------------------------------------------------
+$input-padding-y: $btn-padding-y;
+
+// Tables
+// --------------------------------------------------
+$table-th-padding: .7rem .8rem;
+$table-cell-padding: .4rem .8rem;
+$table-sm-cell-padding: .3rem;

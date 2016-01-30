@@ -20,45 +20,21 @@ License
 Docs & Support
 ==============
 
-* Documentation: http://django-suit.readthedocs.org/
+* Documentation v2: http://django-suit.readthedocs.org/en/v2/
+* Documentation v1: http://django-suit.readthedocs.org/en/latest/
 * Support: http://djangosuit.com/support/
-* `Demo app <http://djangosuit.com/admin/>`_ repository is here: `django-suit-examples <https://github.com/darklow/django-suit-examples>`_
-* IRC Channel: Feel free to join us at ``#django-suit`` on ``irc.freenode.net`` for a chat
 * Follow `on Twitter <http://twitter.com/DjangoSuit>`_ to get latest news
 
 Changelog
 =========
 
-See `CHANGELOG.rst <https://github.com/darklow/django-suit/blob/develop/CHANGELOG.rst>`_.
+**Note:** Django Suit v2.0 is in active development and not yet ready for production use.
+
+Read more here: Todo: Add issue refernce
 
 
 Contributing
 ============
 
-See `Contributing documentation <http://django-suit.readthedocs.org/en/develop/contributing.html>`_
+See `Contributing documentation <http://django-suit.readthedocs.org/en/v2/contributing.html>`_
 
-
-Build Status
-============
-
-Django Suit uses Travis CI to perform tests on different Django and Python versions.
-
-Tested using Python: 2.5-3.4. Django: 1.4-1.8. Develop / Master:
-
-.. |develop| image:: https://travis-ci.org/darklow/django-suit.png?branch=develop
-   :alt: Build Status - develop branch
-   :target: http://travis-ci.org/darklow/django-suit
-
-.. |master| image:: https://travis-ci.org/darklow/django-suit.png?branch=master
-   :alt: Build Status - master branch
-   :target: http://travis-ci.org/darklow/django-suit
-
-|develop| |master|
-
-
-Preview
-=======
-
-.. image:: https://raw.github.com/darklow/django-suit/develop/docs/_static/img/django-suit.png
-   :alt: Django Suit Preview
-   :target: http://djangosuit.com/admin/

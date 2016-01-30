@@ -1,0 +1,18 @@
+body.login {
+  #header {
+    #branding {
+      flex-basis: 100%;
+      padding-left: 0;
+      #site-name {
+        margin: .25rem 0;
+        a {
+          display: block;
+        }
+        .header-label {
+          padding-top: .35rem;
+          float: right;
+        }
+      }
+    }
+  }
+}

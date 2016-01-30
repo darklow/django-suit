@@ -1,0 +1,23 @@
+
+.btn-round {
+  border-radius: 40px;
+}
+@mixin btn-mixin($state, $icon: none, $size: none, $round: false) {
+  display: inline-block;
+  @extend .btn;
+  @extend .btn-#{$state};
+  @if $size {
+    @extend .btn-#{$size};
+  }
+  @if $round {
+    border-radius: 70px;
+  }
+  @if $icon {
+    &:before {
+      margin-right: 3px;
+      display: inline-block;
+      @include fa-icon-font();
+      content: $icon;
+    }
+  }
+}

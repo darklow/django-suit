@@ -1,0 +1,15 @@
+@mixin fa-icon-font() {
+  font-family: FontAwesome;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: auto;
+}
+$icon-ok: "\f00c";
+$icon-remove: "\f00d";
+$icon-cog: "\f013";
+$icon-home: "\f013";
+$icon-plus: "\f067";
+$icon-plus-circle: "\f055";
+$icon-pencil: "\f040";
+$icon-chevron-up: "\f077";
+$icon-chevron-down: "\f078";

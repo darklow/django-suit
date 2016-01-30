@@ -1,0 +1,36 @@
+#content {
+  padding: 2rem $header-padding-horizontal;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-end;
+  align-items: flex-start;
+  > h1 {
+    flex-basis: 100%;
+    &:first-child {
+      display: none;
+    }
+  }
+
+  #content-main {
+    flex-grow: 1;
+  }
+  #content-related {
+    flex-grow: 1;
+  }
+}
+
+#content-main {
+  .object-tools {
+    float: right;
+    position: relative;
+    z-index: 5;
+    @include reset-list();
+    > li {
+      > a {
+        @include btn-mixin(success, $icon-plus-circle, sm, round=true);
+      }
+    }
+  }
+}
