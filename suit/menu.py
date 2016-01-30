@@ -1,8 +1,5 @@
-"""
-Variable available_apps structure:
-https://docs.djangoproject.com/en/1.9/ref/contrib/admin/#adminsite-methods
-"""
 from copy import deepcopy
+from django.utils.translation import ugettext_lazy as _
 
 
 class ChildItem(object):
@@ -43,14 +40,19 @@ class MenuManager(object):
         from .config import suit_config
 
         super(MenuManager, self).__init__()
+
+        # Variable available_apps structure:
+        # https://docs.djangoproject.com/en/1.9/ref/contrib/admin/#adminsite-methods
         self.available_apps = available_apps
+
         self.context = context
         self.request = request
         self.user_menu = suit_config.menu
         self.menu_items = None
-        self._available_apps = {'apps': {}, 'models': {}}
         self.aligned_right_menu_items = []
         self.active_parent_item = None
+        self.suit_config = suit_config
+        self._available_apps = {'apps': {}, 'models': {}}
 
     def __iter__(self):
         for each in self.get_menu_items():
@@ -92,6 +94,10 @@ class MenuManager(object):
 
                 if parent_item.align_right:
                     self.aligned_right_menu_items.append(parent_item)
+
+        if self.suit_config.menu_show_home:
+            home_item = ParentItem(_('Home'), url='admin:index')
+            menu_items.insert(0, self.handle_user_url(home_item))
 
         return self.mark_active(menu_items)
 
@@ -201,6 +207,7 @@ class MenuManager(object):
             menu_item._url_name = menu_item.url
         except NoReverseMatch:
             menu_item.url = '#no-reverse-match'
+        return menu_item
 
     def parent_item_is_forbidden(self, parent_item, native_app):
         """

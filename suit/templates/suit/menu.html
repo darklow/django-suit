@@ -3,16 +3,6 @@
 {% get_menu request as menu %}
 <div id="suit-nav">
     <ul>
-        {% block menu_home %}
-            {% if 'menu_show_home'|suit_conf %}
-                {% url 'admin:index' as index_url %}
-                <li{% if index_url == request.path %} class="active"{% endif %}>
-                    <a href="{{ index_url }}"><i class="icon-home"></i>{% trans 'Home' %}
-                    </a>
-                </li>
-            {% endif %}
-        {% endblock %}
-
         {% if menu %}
             {% for parent_item in menu %}
                 {% if not parent_item.align_right %}
