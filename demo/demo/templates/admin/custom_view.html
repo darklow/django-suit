@@ -1,0 +1,24 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            Isn't this neat?
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">Custom view</h4>
+            <p class="card-text">This is an example how easy you can create custom views and add them to menu.
+                <br/> Django + Django Suit = awesome!</p>
+            <p></p>
+            <a href="{% url 'admin:index' %}" class="btn btn-primary">Go home</a>
+            <a href="{% url 'admin:index' %}" class="btn btn-primary-outline">View on github</a>
+        </div>
+    </div>
+
+    <div class="card">
+
+    </div>
+
+{% endblock %}

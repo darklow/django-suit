@@ -7,8 +7,8 @@ import subprocess
 
 sassc_binary = 'sassc'
 check_interval = .2
-base_dir = os.path.dirname(os.path.abspath(__file__))
-sass_dir = os.path.join(base_dir, 'suit', 'sass')
+base_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'suit')
+sass_dir = os.path.join(base_dir, 'sass')
 
 
 def watch_file():
@@ -34,6 +34,7 @@ def watch_file():
         cmd = '%s -t compact %s/suit.scss %s/static/suit/css/suit.css' % \
               (sassc_binary, sass_dir, base_dir)
         err = subprocess.call(cmd, shell=True)
+        print cmd
         if err == 0:
             write(cmd)
 
