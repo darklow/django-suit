@@ -126,6 +126,9 @@ $filter-col-width: 15rem;
       }
     }
   }
+  .toplinks {
+    @include reset-list();
+  }
 }
 body.change-list {
   #content-main {
