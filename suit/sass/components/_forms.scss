@@ -51,11 +51,13 @@ fieldset {
   }
 }
 .form-row, .suit-form .form-group {
+  label {
+    font-size: $font-size-sm;
+  }
   > label {
     margin: 0;
     line-height: 1.25rem;
     text-align: right;
-    font-size: $font-size-sm;
     background-color: $form-label-bg;
     padding-top: $suit-label-padding-top;
     padding-bottom: $suit-label-padding-bottom;
@@ -95,7 +97,7 @@ fieldset {
     label {
       margin: 0;
     }
-    .form-control-label + div {
+    .form-control-label + div[class^='col-'] {
       padding-top: $suit-form-padding-vertical;
       padding-bottom: $suit-form-padding-vertical;
       @include media-breakpoint-down(xs) {
@@ -107,29 +109,73 @@ fieldset {
       .form-control-label {
         padding-top: $suit-label-padding-top + $suit-padding-first-extra;
       }
-      .form-control-label + div {
-        &:nth-child(2) {
-          padding-top: $suit-form-padding-vertical + $suit-padding-first-extra;
-        }
+      .form-control-label + div[class^='col-'] {
+        padding-top: $suit-form-padding-vertical + $suit-padding-first-extra;
       }
     }
     &:last-child {
-      .form-control-label + div {
-        &:nth-child(2) {
-          padding-bottom: $suit-form-padding-vertical + $suit-padding-first-extra;
-        }
+      .form-control-label + div[class^='col-'] {
+        padding-bottom: $suit-form-padding-vertical + $suit-padding-first-extra;
       }
     }
   }
 }
+// Multiple in single line fields
+// -----------------------------------------
+.col-multi-fields {
+  padding-bottom: 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+  @include media-breakpoint-down(xs) {
+    padding-top: 0 !important;
+  }
+  .multi-field {
+    flex-basis: 15rem;
+    white-space: nowrap;
+    margin-bottom: $suit-form-padding-vertical;
+    @include media-breakpoint-down(xs) {
+      flex-basis: 100%;
+      padding-bottom: 0;
+    }
+    .form-control-label {
+      vertical-align: top;
+      display: inline-block;
+      padding-top: $suit-form-padding-vertical !important;
+      padding-left: 0;
+      @include media-breakpoint-up(sm) {
+        padding-bottom: 0;
+      }
+      @include media-breakpoint-down(xs) {
+        font-weight: bold;
+      }
+    }
+    .multi-field-content {
+      display: inline-block;
+      @include media-breakpoint-up(sm) {
+        padding-top: 0 !important;
+        input, select {
+          width: auto;
+        }
+      }
+    }
+    @include media-breakpoint-down(xs) {
+      .form-control-label, .multi-field-content {
+        display: block;
+      }
+    }
+  }
+}
+
+
 .hidden {
   display: none;
 }
 .empty-form {
   display: none;
 }
-/* COLLAPSED FIELDSETS */
 
+/* COLLAPSED FIELDSETS */
+// TODO: ...
 fieldset.collapsed * {
   display: none;
 }

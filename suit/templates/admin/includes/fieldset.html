@@ -6,32 +6,62 @@
     {% endif %}
     {% for line in fieldset %}
         {% with is_single=line.fields|length_is:'1' %}
-            {% for field in line %}
-                <div class="form-group row form-row {% if is_single and line.errors or field.errors %} has-danger{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if field.field.is_hidden %} hidden{% endif %}{% endfor %} form-field-{{ forloop.counter }} form-fields-{{ line.fields|length }}">
 
-                    <label for="{{ field.field.id_for_label }}" class="form-control-label col-xs-12 col-sm-3 col-md-2">{{ field.label_tag }}</label>
-                    <div class="col-xs-12 col-sm-7 col-md-6 col-lg-5">
-                        {% if field.is_readonly %}
-                            <p class="form-control-static">{{ field.contents }}</p>
-                        {% else %}
-                            {{ field.field }}
-                        {% endif %}
-                        {% if not is_single and not field.is_readonly %}
-                            <span class="text-help">
-                            {{ field.errors }}
-                            </span>
-                        {% endif %}
-                        {% if is_single and line.errors %}
-                            <span class="text-help">
-                                {{ line.errors }}
-                                </span>
-                        {% endif %}
-                        {% if field.field.help_text %}
-                            <small class="text-help">{{ field.field.help_text|safe }}</small>
-                        {% endif %}
+            <div class="form-group row form-row {% if is_single and line.errors or field.errors %} has-danger{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if field.field.is_hidden %} hidden{% endif %}{% endfor %}">
+
+                {% for field in line %}
+                    {% if is_single or forloop.first %}
+                        <label for="{{ field.field.id_for_label }}" class="form-control-label col-xs-12 col-sm-3 col-md-2">{{ field.label_tag }}</label>
+                        <div class="col-xs-12{% if is_single %} col-sm-7 col-md-6 col-lg-5{% else %} col-sm-9 col-md-10 col-multi-fields{% endif %}">
+                    {% endif %}
+
+                {# Open multi-field #}
+                {% if not is_single %}
+                    <div class="multi-field{% if field.errors %} has-danger{% endif %}">
+                    {% if not forloop.first %}
+                        <label for="{{ field.field.id_for_label }}" class="form-control-label col-xs-12 col-sm-3 col-md-2">{{ field.label_tag }}</label>
+                        <div class="multi-field-content">
+                    {% endif %}
+                {% endif %}
+
+                {% if field.is_readonly %}
+                    <p class="form-control-static">{{ field.contents }}</p>
+                {% else %}
+                    {{ field.field }}
+                {% endif %}
+                {% if field.errors and not is_single and not field.is_readonly %}
+                    <div class="text-help">
+                        {{ field.errors }}
                     </div>
-                </div>
-            {% endfor %}
+                {% endif %}
+                {% if is_single and line.errors %}
+                    <div class="text-help">
+                        {{ line.errors }}
+                    </div>
+                {% endif %}
+                {% if field.field.help_text %}
+                    <small class="text-help">{{ field.field.help_text|safe }}</small>
+                {% endif %}
+
+                {# Close multi-field #}
+                {% if not is_single %}
+
+                    {# Close multi-field-content #}
+                    {% if not forloop.first %}
+                        </div>
+                    {% endif %}
+
+                    </div>
+                {% endif %}
+
+                {# Close multi-row first field container #}
+                {% if is_single or forloop.last %}
+                    </div>
+                {% endif %}
+
+                {% endfor %}
+
+            </div>
         {% endwith %}
     {% endfor %}
 </fieldset>
