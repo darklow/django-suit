@@ -24,7 +24,7 @@ class SuitConfig(DjangoSuitConfig):
         super(SuitConfig, self).ready()
 
         # DO NOT COPY FOLLOWING LINE
-        # It is only to prevent db updating last_login for demo app
+        # It is only to prevent updating last_login in DB for demo app
         self.prevent_user_last_login()
 
     def prevent_user_last_login(self):

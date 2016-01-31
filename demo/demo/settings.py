@@ -128,5 +128,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # For demo app specific only:
-# Use cache backend for sessions, to not mess DB
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+# Use file backend for sessions, to not mess DB
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'
