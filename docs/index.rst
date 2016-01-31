@@ -20,10 +20,13 @@ Resources
 ---------
 
 * Home page: http://djangosuit.com
-* Demo: http://djangosuit.com/admin/
+* Demo v1: http://djangosuit.com/admin/
+* Demo v2: http://v2.djangosuit.com/admin/
 * Licence and Pricing: http://djangosuit.com/pricing/
 * Github: https://github.com/darklow/django-suit
-* Demo app on Github: https://github.com/darklow/django-suit/examples
+* Demo app v1 on Github: https://github.com/darklow/django-suit-examples
+* Demo app v2 on Github: https://github.com/darklow/django-suit/tree/v2/demo
+
 
 
 Contents:

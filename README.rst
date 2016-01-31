@@ -38,7 +38,7 @@ Read more here: Todo: Add issue refernce
 Contributing
 ============
 
-See `Contributing documentation <http://django-suit.readthedocs.org/en/v2/contributing.html>`_
+See `Contributing documentation <http://django-suit.readthedocs.org/en/v2/contribute.html>`_
 
 
 Build Status
@@ -57,3 +57,12 @@ Tested using Python: 2.7-3.4 and PyPy. Django: 1.9+ and Django Suit v2.0 alpha:
    :target: http://travis-ci.org/darklow/django-suit
 
 |v2| |develop|
+
+
+Preview
+=======
+
+
+.. image:: https://cloud.githubusercontent.com/assets/445304/12699480/3eee898e-c7c5-11e5-931c-ba1b0cabdecb.png
+:alt: Django Suit Preview
+   :target: http://v2.djangosuit.com/admin/
