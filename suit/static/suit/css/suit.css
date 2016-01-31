@@ -1362,11 +1362,11 @@ a.label:focus, a.label:hover { color: #fff; text-decoration: none; cursor: point
 
 .label-danger[href]:focus, .label-danger[href]:hover { background-color: #c93420; }
 
-.alert { padding: 15px; margin-bottom: 1rem; border: 1px solid transparent; border-radius: 0.25rem; }
+.alert, .errornote, .messagelist li { padding: 15px; margin-bottom: 1rem; border: 1px solid transparent; border-radius: 0.25rem; }
 
-.alert > p, .alert > ul { margin-bottom: 0; }
+.alert > p, .errornote > p, .messagelist li > p, .alert > ul, .errornote > ul, .messagelist li > ul { margin-bottom: 0; }
 
-.alert > p + p { margin-top: 5px; }
+.alert > p + p, .errornote > p + p, .messagelist li > p + p { margin-top: 5px; }
 
 .alert-heading { color: inherit; }
 
@@ -1376,17 +1376,17 @@ a.label:focus, a.label:hover { color: #fff; text-decoration: none; cursor: point
 
 .alert-dismissible .close { position: relative; top: -2px; right: -21px; color: inherit; }
 
-.alert-success { background-color: #dff0d8; border-color: #d0e9c6; color: #3c763d; }
+.alert-success, .messagelist li.success { background-color: #dff0d8; border-color: #d0e9c6; color: #3c763d; }
 
-.alert-success hr { border-top-color: #c1e2b3; }
+.alert-success hr, .messagelist li.success hr { border-top-color: #c1e2b3; }
 
-.alert-success .alert-link { color: #2b542c; }
+.alert-success .alert-link, .messagelist li.success .alert-link { color: #2b542c; }
 
-.alert-info { background-color: #d9edf7; border-color: #bcdff1; color: #31708f; }
+.alert-info, .messagelist li.info { background-color: #d9edf7; border-color: #bcdff1; color: #31708f; }
 
-.alert-info hr { border-top-color: #a6d5ec; }
+.alert-info hr, .messagelist li.info hr { border-top-color: #a6d5ec; }
 
-.alert-info .alert-link { color: #245269; }
+.alert-info .alert-link, .messagelist li.info .alert-link { color: #245269; }
 
 .alert-warning { background-color: #fcf8e3; border-color: #faf2cc; color: #8a6d3b; }
 
@@ -1394,11 +1394,11 @@ a.label:focus, a.label:hover { color: #fff; text-decoration: none; cursor: point
 
 .alert-warning .alert-link { color: #66512c; }
 
-.alert-danger { background-color: #f2dede; border-color: #ebcccc; color: #a94442; }
+.alert-danger, .errornote { background-color: #f2dede; border-color: #ebcccc; color: #a94442; }
 
-.alert-danger hr { border-top-color: #e4b9b9; }
+.alert-danger hr, .errornote hr { border-top-color: #e4b9b9; }
 
-.alert-danger .alert-link { color: #843534; }
+.alert-danger .alert-link, .errornote .alert-link { color: #843534; }
 
 @-webkit-keyframes progress-bar-stripes { from { background-position: 1rem 0; }
   to { background-position: 0 0; } }
@@ -1850,6 +1850,8 @@ fieldset select { border-radius: 0.25rem; }
 fieldset .vIntegerField, fieldset .vBigIntegerField, fieldset .vDateField { width: auto; }
 
 .timezonewarning { display: inline-block; margin-top: .5rem; }
+
+.messagelist { list-style: none; margin: 0; padding: 0; display: block; margin: 1rem 1.875rem 0; }
 
 .breadcrumbs { display: none; padding: 1.4rem 2.625rem 0; font-size: 0.929rem; color: #687086; }
 

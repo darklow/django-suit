@@ -18,72 +18,8 @@
             <span class="header-label">{% trans 'Admin' %}</span></a>
     </h1>
 {% endblock %}
-{% block messages %}
-    <div style="margin: 2rem">
 
-        <br/>
-        <fieldset class="module aligned wide">
-
-            <div class="field-box field-box-2">
-                <div class="form-row">
-                    <label for="id_name" class="">Name</label>
-                    <input class="vTextField" id="id_name" maxlength="256" name="name" type="text" value="American Samoa">
-
-                </div>
-                <div class="form-row">
-                    <label for="id_name" class="">Name</label>
-                    <input class="vTextField" id="id_name" maxlength="256" name="name" type="text" value="American Samoa">
-
-                </div>
-            </div>
-
-
-            <div class="form-row">
-
-                <label class="required" for="id_old_password">Old password:</label>
-                <input id="id_old_password" name="old_password" type="password">
-            </div>
-
-            <div class="form-row">
-
-                <label class="required" for="id_new_password1">New password:</label>
-                <input id="id_new_password1" name="new_password1" type="password">
-
-                <p class="help"></p>
-                <ul>
-                    <li>Your password can't be too similar to your other personal information.</li>
-                </ul>
-                <p></p>
-
-            </div>
-
-            <div class="form-row">
-
-                <label class="required" for="id_new_password2">New password confirmation:</label>
-                <input id="id_new_password2" name="new_password2" type="password">
-
-            </div>
-
-        </fieldset>
-        <br/>
-        <fieldset class="suit-form">
-            <form>
-                <div class="form-group row">
-                    <label class="col-sm-2 form-control-label">Email</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">email@example.com</p>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 form-control-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                    </div>
-                </div>
-            </form>
-        </fieldset>
-
-    </div>
+{% block messages_zzz %}
 {% endblock %}
 
 {% block nav-global %}

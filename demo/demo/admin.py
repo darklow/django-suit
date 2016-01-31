@@ -13,8 +13,28 @@ class CountryAdmin(admin.ModelAdmin):
     list_filter = ('continent',)
     list_select_related = True
     date_hierarchy = 'independence_day'
-    fields = (('name', 'code', 'continent'), 'independence_day', 'population', 'description')
-
+    # fields = ('name', 'continent', 'code', 'independence_day')
+    fieldsets = [
+        (None, {
+            'classes': ('suit-tab suit-tab-general',),
+            'fields': ['name', 'continent', 'code', 'independence_day']
+        }),
+        ('Statistics', {
+            'classes': ('suit-tab suit-tab-general',),
+            'description': 'EnclosedInput widget examples',
+            'fields': ['area', 'population']}),
+        ('Autosized textarea', {
+            'classes': ('suit-tab suit-tab-general',),
+            'description': 'AutosizedTextarea widget example - adapts height '
+                           'based on user input',
+            'fields': ['description']}),
+        ('Architecture', {
+            'classes': ('suit-tab suit-tab-cities',),
+            'description': 'Tabs can contain any fieldsets and inlines',
+            'fields': ['architecture']}),
+    ]
+    # fields = (('name', 'code', 'continent'), 'independence_day', 'population', 'description')
+#
 
 admin.site.register(Country, CountryAdmin)
 
