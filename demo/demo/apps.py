@@ -13,8 +13,9 @@ class SuitConfig(DjangoSuitConfig):
             ChildItem('User groups', 'auth.group'),
             ChildItem('Custom page', url='/admin/custom/'),
         ]),
-        ParentItem('Configuration', children=[
-            ChildItem('Custom page', url='/admin/custom/'),
+        ParentItem('Right Side Menu', children=[
+            ChildItem('Password change', url='admin:password_change'),
+            ChildItem('Open Google', url='http://google.com', target_blank=True),
 
         ], align_right=True),
     )
