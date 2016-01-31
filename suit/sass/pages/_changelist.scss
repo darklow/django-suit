@@ -126,8 +126,17 @@ $filter-col-width: 15rem;
       }
     }
   }
+  // Django date-hierarchy feature
   .toplinks {
     @include reset-list();
+    margin-right: $filter-col-width + 2rem;
+    li {
+      display: inline-block;
+      a {
+        margin-right: .28rem;
+        display: inline-block;
+      }
+    }
   }
 }
 body.change-list {

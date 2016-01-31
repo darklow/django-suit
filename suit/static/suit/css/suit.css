@@ -2003,6 +2003,10 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist #changelist-form .paginator span.this-page { background-color: #5d6478; color: #fff; }
 
-#changelist .toplinks { list-style: none; margin: 0; padding: 0; }
+#changelist .toplinks { list-style: none; margin: 0; padding: 0; margin-right: 17rem; }
+
+#changelist .toplinks li { display: inline-block; }
+
+#changelist .toplinks li a { margin-right: .28rem; display: inline-block; }
 
 body.change-list #content-main .object-tools { float: right; margin-right: 17rem; margin-bottom: 1.25rem; }
