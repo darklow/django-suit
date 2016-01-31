@@ -25,7 +25,7 @@
             {% for child_item in menu.active_parent_item.children %}
                 <li{{ child_item.is_active|yesno:' class=active,' }}>
                     <a href="{{ child_item.url }}"
-                            {{ child_item.blank|yesno:' target=_blank,' }}>{{ child_item.label }}</a></li>
+                            {{ child_item.target_blank|yesno:' target=_blank,' }}>{{ child_item.label }}</a></li>
             {% endfor %}
         </ul>
     </div>
