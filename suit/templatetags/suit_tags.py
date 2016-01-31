@@ -10,6 +10,18 @@ def suit_conf(name):
     value = config.get_config(name)
     return mark_safe(value) if isinstance(value, str) else value
 
+@register.filter(name='suit_body_class')
+def suit_body_class(value):
+    css_classes = []
+    if config.suit_config.toggle_changelist_top_actions:
+        css_classes.append('suit_toggle_changelist_top_actions')
+    return ' '.join(css_classes)
+
+@register.filter(name='suit_conf')
+def suit_conf(name):
+    value = config.get_config(name)
+    return mark_safe(value) if isinstance(value, str) else value
+
 
 @register.assignment_tag
 def suit_conf_value(name, model_admin=None):

@@ -91,6 +91,21 @@ $filter-col-width: 15rem;
         width: auto;
         height: 2.05rem;
       }
+      span.all,
+      span.action-counter,
+      span.clear,
+      span.question {
+        font-size: 13px;
+        margin: 0 0.5em;
+        display: none;
+      }
+
+    }
+    // Actions before results
+    input[type=hidden] + .actions {
+      .suit_toggle_changelist_top_actions & {
+        display: none;
+      }
     }
     // Actions after results
     .results + .actions {
@@ -147,4 +162,5 @@ body.change-list {
       margin-bottom: $grid-gutter-width/1.5;
     }
   }
+  .hiddenfields { display: none; }
 }

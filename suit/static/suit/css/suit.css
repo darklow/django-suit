@@ -1991,6 +1991,10 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist #changelist-form .actions select { display: inline; width: auto; height: 2.05rem; }
 
+#changelist #changelist-form .actions span.all, #changelist #changelist-form .actions span.action-counter, #changelist #changelist-form .actions span.clear, #changelist #changelist-form .actions span.question { font-size: 13px; margin: 0 0.5em; display: none; }
+
+.suit_toggle_changelist_top_actions #changelist #changelist-form input[type=hidden] + .actions { display: none; }
+
 #changelist #changelist-form .results + .actions { margin: 1rem 0 0; }
 
 #changelist #changelist-form .paginator { margin-top: 1rem; font-size: 0.929rem; }
@@ -2010,3 +2014,5 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 #changelist .toplinks li a { margin-right: .28rem; display: inline-block; }
 
 body.change-list #content-main .object-tools { float: right; margin-right: 17rem; margin-bottom: 1.25rem; }
+
+body.change-list .hiddenfields { display: none; }
