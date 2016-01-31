@@ -1,0 +1,28 @@
+fieldset {
+  input[type=text],
+  input[type=password],
+  .vTextField,
+  .vIntegerField,
+  .vBigIntegerField,
+  .vLargeTextField,
+  .vDateField {
+    @extend .form-control;
+    display: inline-block;
+    max-width: 90%;
+  }
+  select {
+    @extend .c-select;
+    border-radius: $input-border-radius;
+  }
+  .vIntegerField, .vBigIntegerField, .vDateField {
+    width: auto;
+  }
+}
+
+// Date fields
+.timezonewarning {
+  display: inline-block;
+  margin-top: .5rem;
+  @extend .text-muted;
+  @extend small;
+}

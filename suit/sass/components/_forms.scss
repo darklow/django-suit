@@ -1,0 +1,155 @@
+$suit-form-padding-vertical: .5rem;
+$suit-form-padding-horizontal: 1.1rem;
+$suit-label-padding-top: $suit-form-padding-vertical + .55rem;
+$suit-label-padding-bottom: $suit-form-padding-vertical + .4rem;
+$suit-padding-first-extra: .25rem;
+
+fieldset {
+  box-shadow: 0 1px 0 0 darken($body-bg, 5%);
+  margin-bottom: 2rem;
+}
+// Django plain/original markup
+// -----------------------------------------
+.form-row:not(.form-group) {
+  display: flex;
+  background-color: $form-bg;
+
+  &:last-child {
+    > label:not(.form-control-label) {
+      border-bottom: 0;
+    }
+  }
+  // Since content after label is not wrapped in container
+  // we must fake padding for input
+  padding: $suit-form-padding-vertical $suit-form-padding-horizontal;
+  @include media-breakpoint-down(xs) {
+    flex-wrap: wrap;
+  }
+  > * {
+    align-self: flex-start;
+  }
+  > label:not(.form-control-label) {
+    @extend .col-sm-2;
+    align-self: stretch;
+    margin: (-$suit-form-padding-vertical) $suit-form-padding-horizontal (-$suit-form-padding-vertical) (-$suit-form-padding-horizontal);
+    @include media-breakpoint-down(sm) {
+      // Use as .col-sm-3
+      flex: 0 0 25%;
+    }
+    @include media-breakpoint-down(xs) {
+      flex: 0 0 100%;
+    }
+  }
+}
+// Django "plain" and BS4 markup
+// -----------------------------------------
+fieldset {
+  .text-help {
+    @extend .text-muted;
+    margin-top: .5rem;
+    display: block;
+  }
+}
+.form-row, .suit-form .form-group {
+  > label {
+    margin: 0;
+    line-height: 1.25rem;
+    text-align: right;
+    font-size: $font-size-sm;
+    background-color: $form-label-bg;
+    padding-top: $suit-label-padding-top;
+    padding-bottom: $suit-label-padding-bottom;
+    border-bottom: 1px solid $form-border-color;
+    @include media-breakpoint-down(xs) {
+      padding-top: $suit-label-padding-top/2;
+      background-color: transparent;
+      text-align: left;
+      font-weight: bold;
+      border-bottom: none;
+    }
+  }
+  &:last-child {
+    > label {
+      border-bottom: none;
+    }
+  }
+  ul {
+    margin: 0;
+    padding-left: 2rem;
+    font-size: $font-size-xs;
+    @include media-breakpoint-down(xs) {
+      margin-top: .5rem;
+      padding-left: 1.5rem;
+    }
+  }
+}
+// BS4 markup in .suit-form
+// -----------------------------------------
+.suit-form {
+  .form-group {
+    margin: 0;
+    background-color: $form-bg;
+    @include media-breakpoint-down(xs) {
+      padding-bottom: 1rem;
+    }
+    label {
+      margin: 0;
+    }
+    .form-control-label + div {
+      padding-top: $suit-form-padding-vertical;
+      padding-bottom: $suit-form-padding-vertical;
+      @include media-breakpoint-down(xs) {
+        padding-top: 0;
+      }
+    }
+    // More spacing for first and last rows
+    &:first-child {
+      .form-control-label {
+        padding-top: $suit-label-padding-top + $suit-padding-first-extra;
+      }
+      .form-control-label + div {
+        &:nth-child(2) {
+          padding-top: $suit-form-padding-vertical + $suit-padding-first-extra;
+        }
+      }
+    }
+    &:last-child {
+      .form-control-label + div {
+        &:nth-child(2) {
+          padding-bottom: $suit-form-padding-vertical + $suit-padding-first-extra;
+        }
+      }
+    }
+  }
+}
+.hidden {
+  display: none;
+}
+.empty-form {
+  display: none;
+}
+/* COLLAPSED FIELDSETS */
+
+fieldset.collapsed * {
+  display: none;
+}
+fieldset.collapsed h2, fieldset.collapsed {
+  display: block;
+}
+fieldset.collapsed {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+fieldset.collapsed h2 {
+  background: #f8f8f8;
+  color: #666;
+}
+fieldset .collapse-toggle {
+  color: $form-label-bg;
+}
+fieldset.collapsed .collapse-toggle {
+  background: transparent;
+  display: inline;
+  color: #447e9b;
+}

@@ -13,6 +13,7 @@ class CountryAdmin(admin.ModelAdmin):
     list_filter = ('continent',)
     list_select_related = True
     date_hierarchy = 'independence_day'
+    fields = (('name', 'code', 'continent'), 'independence_day', 'population', 'description')
 
 
 admin.site.register(Country, CountryAdmin)

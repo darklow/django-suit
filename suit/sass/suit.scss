@@ -4,6 +4,9 @@
 
 @import 'components/icons';
 @import 'components/buttons';
+@import 'components/forms';
+@import 'components/widgets';
+@import 'components/submit_row';
 @import 'components/breadcrumbs';
 @import 'components/results';
 
@@ -16,3 +19,4 @@
 @import 'pages/login';
 @import 'pages/dashboard';
 @import 'pages/changelist';
+@import 'pages/changeform';

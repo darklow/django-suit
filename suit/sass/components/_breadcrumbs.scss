@@ -3,6 +3,14 @@
   padding: 1.4rem $nav-padding-horizontal 0;
   font-size: $font-size-sm;
   color: $header-muted-color;
+  body.change-form & {
+    display: block;
+    position: relative;
+    z-index: 6;
+    li {
+      float: left;
+    }
+  }
   a {
     color: $link-color;
     display: inline-block;

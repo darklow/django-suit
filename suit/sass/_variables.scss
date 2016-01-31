@@ -11,7 +11,7 @@ $brand-warning: #F1C40F;
 $link-color-brighter: #279bee;
 $link-color-bright: darken($link-color-brighter, 10%);
 $link-color: darken($link-color-brighter, 20%);
-$body-bg: #f5f5f5;
+$body-bg: #f1f1f1;
 $inverse: #252830;
 $header-bg: $inverse;
 $inverse-light: lighten($inverse, 10%);
@@ -65,3 +65,9 @@ $input-padding-y: $btn-padding-y;
 $table-th-padding: .7rem .8rem;
 $table-cell-padding: .4rem .8rem;
 $table-sm-cell-padding: .3rem;
+
+// Forms
+// --------------------------------------------------
+$form-bg: lighten($body-bg, 2%);
+$form-border-color: darken($body-bg, 1%);
+$form-label-bg: #fff;
