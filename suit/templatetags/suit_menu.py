@@ -49,6 +49,10 @@ def get_admin_site(current_app):
     """
     try:
         resolver_match = resolve(reverse('%s:index' % current_app))
+        # Django 1.9 exposes AdminSite instance directly on view function
+        if hasattr(resolver_match.func, 'admin_site'):
+            return resolver_match.func.admin_site
+
         for func_closure in resolver_match.func.func_closure:
             if isinstance(func_closure.cell_contents, AdminSite):
                 return func_closure.cell_contents
