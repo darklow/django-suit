@@ -32,7 +32,7 @@ $filter-col-width: 15rem;
   #changelist-filter {
     float: right;
     width: $filter-col-width;
-    position: absolute;
+    //position: absolute;
     top: 0;
     right: 0;
     font-size: $font-size-sm;
@@ -73,8 +73,12 @@ $filter-col-width: 15rem;
       }
     }
   }
+  &.filtered {
+    #changelist-form {
+        margin-right: $filter-col-width + 2rem;
+    }
+  }
   #changelist-form {
-    margin-right: $filter-col-width + 2rem;
     .actions {
       margin: -.5rem 0 1rem 0;
       font-size: $font-size-sm;
@@ -158,7 +162,7 @@ body.change-list {
   #content-main {
     .object-tools {
       float: right;
-      margin-right: $filter-col-width + 2rem;
+      //margin-right: $filter-col-width + 2rem;
       margin-bottom: $grid-gutter-width/1.5;
     }
   }

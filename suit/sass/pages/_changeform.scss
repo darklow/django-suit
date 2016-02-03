@@ -1,11 +1,14 @@
 body.change-form {
   .object-tools {
+    float: right;
     margin-top: -3.5rem;
     margin-bottom: 20px;
-    overflow: auto;
+    overflow: hidden;
     li {
-      float: right;
+      display: inline-block;
     }
-
+  }
+  .object-tools + form {
+    clear: both;
   }
 }

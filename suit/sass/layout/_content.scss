@@ -23,10 +23,17 @@
 .object-tools {
   @include reset-list();
   position: relative;
-  z-index: 5;
+  overflow: hidden;
+  z-index: 6;
   > li {
-    > a {
+    &:not(:first-child){
+      margin-left: .5rem;
+    }
+    > a:not(.btn) {
       @include btn-mixin(success, $icon-plus-circle, sm, round=true);
+    }
+    a {
+      @extend .btn-round;
     }
   }
 }
