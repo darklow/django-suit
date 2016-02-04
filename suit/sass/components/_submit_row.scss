@@ -1,0 +1,18 @@
+.submit-row {
+  .deletelink-box {
+    float: right;
+    margin: 0;
+    .deletelink {
+      @extend .btn;
+      @extend .btn-danger-outline;
+    }
+  }
+  input[type='submit'], input[type='button'], button {
+    @extend .btn;
+    @extend .btn-lg;
+    @extend .btn-secondary;
+    &:first-child {
+      @extend .btn-primary;
+    }
+  }
+}

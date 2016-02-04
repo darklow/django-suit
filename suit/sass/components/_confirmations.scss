@@ -1,0 +1,34 @@
+body.delete-confirmation {
+  #content {
+    display: block;
+    @extend .alert;
+    @extend .alert-danger;
+    margin: 1.5rem $nav-padding-horizontal;
+    //padding: 1.5rem $header-padding-horizontal;
+    h1, h2, ul {
+      display: block;
+      float: none;
+    }
+    h1 {
+      font-size: $font-size-h2;
+    }
+    h2 {
+      margin-top: 1.2rem;
+      font-size: $font-size-h5;
+    }
+    form {
+      margin-top: 2rem;
+    }
+    input[type='button'], input[type='submit'], button {
+      @extend .btn;
+      @extend .btn-lg;
+      margin-right: 1.5rem;
+    }
+    input[type='button'], button {
+      @extend .btn-secondary;
+    }
+    input[type='submit'] {
+      @extend .btn-danger;
+    }
+  }
+}

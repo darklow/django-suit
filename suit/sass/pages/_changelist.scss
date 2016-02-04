@@ -7,7 +7,6 @@ $filter-col-width: 15rem;
     display: flex;
     flex-wrap: wrap;
     #toolbar {
-      margin-top: -3.5rem;
       flex: 10;
       flex-basis: 100%;
     }
@@ -131,23 +130,22 @@ $filter-col-width: 15rem;
     .paginator {
       margin-top: 1rem;
       font-size: $font-size-sm;
-      a, span {
+      margin-left: 1rem;
+      a:not(.showall), span {
         font-size: 1rem;
         display: inline-block;
         //float: left;
         padding: .5rem;
         background-color: #fff;
-        margin-right: -2px;
         line-height: normal;
         min-width: 2.3rem;
         text-align: center;
-        &:last-child {
-          margin-right: 1rem;
-        }
+        margin-left: -1.1rem;
+        margin-right: 1rem;
       }
       a {
         &:hover {
-          background-color: $body-bg;
+          background-color: lighten($body-bg, 3%);
           text-decoration: none;
         }
       }
@@ -168,6 +166,12 @@ $filter-col-width: 15rem;
         display: inline-block;
       }
     }
+  }
+}
+// Only add negative margin if object-tools are present
+.object-tools + #changelist.filtered {
+  #toolbar {
+    margin-top: -3.5rem;
   }
 }
 body.change-list {

@@ -27,12 +27,6 @@ $header-muted-color: lighten($header-bg, 30%);
 
 // Typography
 // --------------------------------------------------
-$font-size-root: 14px;
-$font-family-sans-serif: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-family-base: $font-family-sans-serif;
-$headings-font-weight: 500;
-
-// http://pxtoem.com/
 $font-size-h1: 1.714rem;
 $font-size-h2: 1.571rem;
 $font-size-h3: 1.429rem;
@@ -41,6 +35,14 @@ $font-size-h5: 1.143rem;
 $font-size-h6: 1rem;
 $font-size-sm: .929rem;
 $font-size-xs: .857rem;
+
+$font-size-root: 14px;
+$font-family-sans-serif: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family-base: $font-family-sans-serif;
+$headings-font-weight: 500;
+$font-size-lg: $font-size-h5;
+
+// http://pxtoem.com/
 
 // Suit
 // --------------------------------------------------
@@ -55,6 +57,8 @@ $nav-padding-horizontal: $grid-gutter-width + .75rem;
 // --------------------------------------------------
 $btn-padding-x: 1.2rem;
 $btn-padding-y: .35rem;
+$btn-padding-x-lg: 1.5rem;
+$btn-padding-y-lg: .6rem;
 
 // Inputs
 // --------------------------------------------------

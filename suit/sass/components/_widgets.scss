@@ -5,6 +5,7 @@ fieldset {
   .vIntegerField,
   .vBigIntegerField,
   .vLargeTextField,
+  .vTimeField,
   .vDateField {
     @extend .form-control;
     display: inline-block;
@@ -13,7 +14,7 @@ fieldset {
       max-width: none;
     }
   }
-  select {
+  select:not([multiple="multiple"]) {
     @extend .c-select;
     border-radius: $input-border-radius;
   }
@@ -21,6 +22,7 @@ fieldset {
     &.vIntegerField,
     &.vBigIntegerField,
     &.vDateField,
+    &.vTimeField,
     &.vForeignKeyRawIdAdminField {
       width: auto;
     }

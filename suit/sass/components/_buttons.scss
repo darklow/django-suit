@@ -21,3 +21,8 @@
     }
   }
 }
+
+.btn-danger-outline {
+  border-color: transparentize($brand-danger, .25);
+  background-color: #fff;
+}
