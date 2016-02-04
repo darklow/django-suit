@@ -17,15 +17,32 @@ fieldset {
     @extend .c-select;
     border-radius: $input-border-radius;
   }
-  .vIntegerField, .vBigIntegerField, .vDateField {
-    width: auto;
+  input[type=text] {
+    &.vIntegerField,
+    &.vBigIntegerField,
+    &.vDateField,
+    &.vForeignKeyRawIdAdminField {
+      width: auto;
+    }
   }
 }
-
 // Date fields
 .timezonewarning {
   display: inline-block;
   margin-top: .5rem;
   @extend .text-muted;
   @extend small;
+}
+.related-lookup {
+  &:before {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    @include fa-icon-font();
+    content: $icon-search;
+    color: $body-color;
+    font-size: $font-size-lg;
+    margin-left: 5px;
+  }
+
 }

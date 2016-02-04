@@ -1,10 +1,27 @@
 $filter-col-width: 15rem;
 #changelist {
   display: block;
-  //clear: both;
   position: relative;
+  &.filtered {
+    clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    #toolbar {
+      margin-top: -3.5rem;
+      flex: 10;
+      flex-basis: 100%;
+    }
+    #changelist-filter {
+      flex-basis: 15rem;
+      order: 3;
+    }
+    #changelist-form {
+      flex: 1;
+      margin-right: 2rem;
+    }
+  }
   #toolbar {
-    margin-bottom: $grid-gutter-width/1.5;
+    margin-bottom: 1.5rem;
     #changelist-search {
       label {
         display: none;
@@ -71,11 +88,6 @@ $filter-col-width: 15rem;
           display: block;
         }
       }
-    }
-  }
-  &.filtered {
-    #changelist-form {
-        margin-right: $filter-col-width + 2rem;
     }
   }
   #changelist-form {
@@ -162,8 +174,7 @@ body.change-list {
   #content-main {
     .object-tools {
       float: right;
-      //margin-right: $filter-col-width + 2rem;
-      margin-bottom: $grid-gutter-width/1.5;
+      margin-bottom: 1.5rem;
     }
   }
   .hiddenfields { display: none; }

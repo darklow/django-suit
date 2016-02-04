@@ -1,7 +1,7 @@
 body.change-form {
   .object-tools {
     float: right;
-    margin-top: -3.5rem;
+    margin-top: -2.85rem;
     margin-bottom: 20px;
     overflow: hidden;
     li {
@@ -9,6 +9,7 @@ body.change-form {
     }
   }
   .object-tools + form {
+    width: 100%;
     clear: both;
   }
 }

@@ -1847,13 +1847,15 @@ fieldset input[type=text], fieldset input[type=password], fieldset .vTextField, 
 
 fieldset select { border-radius: 0.25rem; }
 
-fieldset .vIntegerField, fieldset .vBigIntegerField, fieldset .vDateField { width: auto; }
+fieldset input[type=text].vIntegerField, fieldset input[type=text].vBigIntegerField, fieldset input[type=text].vDateField, fieldset input[type=text].vForeignKeyRawIdAdminField { width: auto; }
 
 .timezonewarning { display: inline-block; margin-top: .5rem; }
 
+.related-lookup:before { display: inline-block; width: 20px; height: 20px; font-family: FontAwesome; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; content: ""; color: #373a3c; font-size: 1.25rem; margin-left: 5px; }
+
 .messagelist { list-style: none; margin: 0; padding: 0; display: block; margin: 1rem 1.875rem 0; }
 
-.breadcrumbs { display: none; padding: 1.4rem 2.625rem 0; font-size: 0.929rem; color: #687086; }
+.breadcrumbs { display: none; padding: 1.5rem 2.625rem 0; font-size: 0.929rem; color: #687086; }
 
 body.change-form .breadcrumbs { display: block; position: relative; z-index: 6; }
 
@@ -1995,7 +1997,7 @@ body { padding: 0; margin: 0; }
 
 #suit-sub-nav ul > li.active a { color: #373a3c; font-weight: bold; border-bottom: 3px solid #1081d2; }
 
-#content { padding: 2rem 1.875rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-pack: start; -webkit-justify-content: flex-start; -ms-flex-pack: start; justify-content: flex-start; -webkit-align-content: flex-end; -ms-flex-line-pack: end; align-content: flex-end; -webkit-box-align: start; -webkit-align-items: flex-start; -ms-flex-align: start; align-items: flex-start; }
+#content { padding: 1.5rem 1.875rem; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; -webkit-box-pack: start; -webkit-justify-content: flex-start; -ms-flex-pack: start; justify-content: flex-start; -webkit-align-content: flex-end; -ms-flex-line-pack: end; align-content: flex-end; -webkit-box-align: start; -webkit-align-items: flex-start; -ms-flex-align: start; align-items: flex-start; }
 
 #content > h1 { -webkit-flex-basis: 100%; -ms-flex-preferred-size: 100%; flex-basis: 100%; }
 
@@ -2055,7 +2057,15 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist { display: block; position: relative; }
 
-#changelist #toolbar { margin-bottom: 1.25rem; }
+#changelist.filtered { clear: both; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+#changelist.filtered #toolbar { margin-top: -3.5rem; -webkit-box-flex: 10; -webkit-flex: 10; -ms-flex: 10; flex: 10; -webkit-flex-basis: 100%; -ms-flex-preferred-size: 100%; flex-basis: 100%; }
+
+#changelist.filtered #changelist-filter { -webkit-flex-basis: 15rem; -ms-flex-preferred-size: 15rem; flex-basis: 15rem; -webkit-box-ordinal-group: 4; -webkit-order: 3; -ms-flex-order: 3; order: 3; }
+
+#changelist.filtered #changelist-form { -webkit-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1; margin-right: 2rem; }
+
+#changelist #toolbar { margin-bottom: 1.5rem; }
 
 #changelist #toolbar #changelist-search label { display: none; }
 
@@ -2085,8 +2095,6 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist #changelist-filter ul li a { padding: .1rem; padding-left: 1.25rem; display: block; }
 
-#changelist.filtered #changelist-form { margin-right: 17rem; }
-
 #changelist #changelist-form .actions { margin: -.5rem 0 1rem 0; font-size: 0.929rem; }
 
 #changelist #changelist-form .actions button { display: inline-block; margin-right: 1rem; }
@@ -2115,12 +2123,12 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist .toplinks li a { margin-right: .28rem; display: inline-block; }
 
-body.change-list #content-main .object-tools { float: right; margin-bottom: 1.25rem; }
+body.change-list #content-main .object-tools { float: right; margin-bottom: 1.5rem; }
 
 body.change-list .hiddenfields { display: none; }
 
-body.change-form .object-tools { float: right; margin-top: -3.5rem; margin-bottom: 20px; overflow: hidden; }
+body.change-form .object-tools { float: right; margin-top: -2.85rem; margin-bottom: 20px; overflow: hidden; }
 
 body.change-form .object-tools li { display: inline-block; }
 
-body.change-form .object-tools + form { clear: both; }
+body.change-form .object-tools + form { width: 100%; clear: both; }
