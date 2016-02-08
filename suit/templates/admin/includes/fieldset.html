@@ -7,7 +7,7 @@
     {% for line in fieldset %}
         {% with is_single=line.fields|length_is:'1' %}
 
-            <div class="form-group row form-row {% if is_single and line.errors or field.errors %} has-danger{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if field.field.is_hidden %} hidden{% endif %}{% endfor %}">
+            <div class="form-group row form-row {% if is_single and line.errors or field.errors %} has-danger errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if field.field.is_hidden %} hidden{% endif %}{% endfor %}">
 
                 {% for field in line %}
                     {% if is_single or forloop.first %}
@@ -17,7 +17,7 @@
 
                 {# Open multi-field #}
                 {% if not is_single %}
-                    <div class="multi-field{% if field.errors %} has-danger{% endif %}">
+                    <div class="multi-field{% if field.errors %} has-danger errors{% endif %}">
                     {% if not forloop.first %}
                         <label for="{{ field.field.id_for_label }}" class="form-control-label col-xs-12 col-sm-3 col-md-2">{{ field.label_tag }}</label>
                         <div class="multi-field-content">

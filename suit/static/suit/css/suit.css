@@ -1783,6 +1783,8 @@ fieldset .text-help { margin-top: .5rem; display: block; }
 
 @media (max-width: 543px) { .form-row > label, .suit-form .form-group > label { padding-top: 0.525rem; background-color: transparent; text-align: left; font-weight: bold; border-bottom: none; } }
 
+.form-row.has-danger, .suit-form .form-group.has-danger { display: -webkit-box !important; display: -webkit-flex !important; display: -ms-flexbox !important; display: flex !important; }
+
 .form-row:last-child > label, .suit-form .form-group:last-child > label { border-bottom: none; }
 
 .form-row ul, .suit-form .form-group ul { margin: 0; padding-left: 2rem; font-size: 0.857rem; }
@@ -1831,17 +1833,17 @@ fieldset .text-help { margin-top: .5rem; display: block; }
 .empty-form { display: none; }
 
 /* COLLAPSED FIELDSETS */
-fieldset.collapsed * { display: none; }
+fieldset.collapsed { background-color: #f6f6f6; overflow: hidden; margin-top: -1rem; }
 
-fieldset.collapsed h2, fieldset.collapsed { display: block; }
+fieldset.collapsed > * { display: none; }
 
-fieldset.collapsed { border: 1px solid #eee; border-radius: 4px; overflow: hidden; }
+fieldset.collapsed h2 { font-size: 1.143rem; margin: 0; padding: .5rem 1rem; font-weight: normal; display: block; }
 
-fieldset.collapsed h2 { background: #f8f8f8; color: #666; }
+fieldset.collapse { display: block; }
 
-fieldset .collapse-toggle { color: #fff; }
+fieldset:not(.collapsed) + fieldset.collapsed { margin-top: 0; }
 
-fieldset.collapsed .collapse-toggle { background: transparent; display: inline; color: #447e9b; }
+fieldset.collapsed .collapse-toggle { display: inline; }
 
 fieldset input[type=text], fieldset input[type=password], fieldset .vTextField, fieldset .vIntegerField, fieldset .vBigIntegerField, fieldset .vLargeTextField, fieldset .vTimeField, fieldset .vDateField { display: inline-block; max-width: 90%; }
 

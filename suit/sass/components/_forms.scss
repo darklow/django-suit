@@ -13,7 +13,6 @@ fieldset {
 .form-row:not(.form-group) {
   display: flex;
   background-color: $form-bg;
-
   &:last-child {
     > label:not(.form-control-label) {
       border-bottom: 0;
@@ -69,6 +68,9 @@ fieldset {
       font-weight: bold;
       border-bottom: none;
     }
+  }
+  &.has-danger {
+    display: flex !important;
   }
   &:last-child {
     > label {
@@ -176,26 +178,36 @@ fieldset {
 
 /* COLLAPSED FIELDSETS */
 // TODO: ...
-fieldset.collapsed * {
-  display: none;
+fieldset {
+  &.collapsed {
+    background-color: $form-bg;
+    overflow: hidden;
+    margin-top: -1rem;
+
+    > * {
+      display: none;
+    }
+    h2 {
+      font-size: $font-size-h5;
+      margin: 0;
+      padding: .5rem 1rem;
+      font-weight: normal;
+      display: block;
+    }
+  }
+  &.collapse {
+    display: block;
+  }
 }
-fieldset.collapsed h2, fieldset.collapsed {
-  display: block;
+fieldset:not(.collapsed) + fieldset.collapsed {
+  margin-top: 0;
 }
-fieldset.collapsed {
-  border: 1px solid #eee;
-  border-radius: 4px;
-  overflow: hidden;
-}
-fieldset.collapsed h2 {
-  background: #f8f8f8;
-  color: #666;
+fieldset.collapsed + fieldset.collapsed {
+  //margin-bottom: 1rem;
 }
 fieldset .collapse-toggle {
-  color: $form-label-bg;
+
 }
 fieldset.collapsed .collapse-toggle {
-  background: transparent;
   display: inline;
-  color: #447e9b;
 }
