@@ -10,7 +10,7 @@ fieldset {
 }
 // Django plain/original markup
 // -----------------------------------------
-.form-row:not(.form-group) {
+.form-row:not(.form-group):not(tr) {
   display: flex;
   background-color: $form-bg;
   &:last-child {
@@ -77,7 +77,7 @@ fieldset {
       border-bottom: none;
     }
   }
-  ul {
+  > ul, .errorlist {
     margin: 0;
     padding-left: 2rem;
     font-size: $font-size-xs;
@@ -172,42 +172,54 @@ fieldset {
 .hidden {
   display: none;
 }
-.empty-form {
-  display: none;
-}
 
 /* COLLAPSED FIELDSETS */
-// TODO: ...
 fieldset {
   &.collapsed {
     background-color: $form-bg;
-    overflow: hidden;
     margin-top: -1rem;
-
+    overflow: hidden;
     > * {
       display: none;
     }
     h2 {
+      display: block;
       font-size: $font-size-h5;
+      font-weight: normal;
       margin: 0;
       padding: .5rem 1rem;
-      font-weight: normal;
-      display: block;
     }
   }
   &.collapse {
     display: block;
   }
 }
-fieldset:not(.collapsed) + fieldset.collapsed {
-  margin-top: 0;
-}
-fieldset.collapsed + fieldset.collapsed {
-  //margin-bottom: 1rem;
-}
-fieldset .collapse-toggle {
 
+/* IN-LINES */
+.empty-form {
+  display: none !important;
 }
-fieldset.collapsed .collapse-toggle {
-  display: inline;
+
+.tabular {
+  table {
+    @extend .table;
+    @extend #result_list;
+  }
+}
+.inline-group {
+  .tabular {
+    table {
+      thead {
+        > tr th {
+          padding: $table-th-padding;
+        }
+      }
+      th, td {
+        font-size: $font-size-base;
+      }
+    }
+    fieldset{
+      box-shadow: none;
+    }
+  }
 }

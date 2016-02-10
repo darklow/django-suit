@@ -26,14 +26,18 @@
   overflow: hidden;
   z-index: 6;
   > li {
-    &:not(:first-child){
+    display: inline;
+    &:not(:first-child) {
       margin-left: .5rem;
     }
-    > a:not(.btn) {
-      @include btn-mixin(success, $icon-plus-circle, sm, round=true);
-    }
-    a {
+    > a {
       @extend .btn-round;
+      &:not(.btn) {
+        @include btn-mixin(info, none, sm, round=true);
+        &.addlink {
+          @include btn-mixin(success, $icon-plus-circle, sm, round=true);
+        }
+      }
     }
   }
 }
