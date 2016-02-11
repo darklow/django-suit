@@ -23,17 +23,22 @@ def get_form_class(field, fieldset, idx):
     field_class = []
     form_size = get_form_size(fieldset)
 
+    if not form_size:
+        raise Exception('"form_size" parameter must be set in Django Suit config')
+
     # Try field config first
     if not field_class:
         form_size_fields = form_size.get('fields')
-        field_class = form_size_fields.get(field.name)
+        if form_size_fields:
+            field_class = form_size_fields.get(field.name)
 
     # Try widgets config
     if not field_class:
         try:
             form_size_widgets = form_size.get('widgets')
-            field_class = form_size_widgets.get(
-                field.field.widget.__class__.__name__)
+            if form_size_widgets:
+                field_class = form_size_widgets.get(
+                    field.field.widget.__class__.__name__)
         except AttributeError:
             pass
 
@@ -47,13 +52,10 @@ def get_form_class(field, fieldset, idx):
     if not field_class:
         field_class = form_size.get('default')
 
-    if field_class:
-        assert len(field_class), \
-            'Django Suit form_size definitions must be tuples containing two string items'
+    assert len(field_class), \
+        'Django Suit form_size definitions must be tuples containing two string items'
 
-        return field_class[idx]
-
-    raise Exception('"form_size" parameter must be set in Django Suit config')
+    return field_class[idx]
 
 
 @register.filter

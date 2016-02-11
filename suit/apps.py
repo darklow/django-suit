@@ -4,8 +4,14 @@ from django.contrib.admin.options import ModelAdmin
 from . import VERSION
 
 # Form row sizing as Bootstrap CSS grid classes: (for label, for field column)
-SUIT_FORM_SIZE_HALF = ('col-xs-12 col-sm-3 col-md-2', 'col-xs-12 col-sm-7 col-md-6 col-lg-5')
-SUIT_FORM_SIZE_FULL = ('col-xs-12 col-sm-3 col-md-2', 'col-xs-12 col-sm-9 col-md-10')
+SUIT_FORM_SIZE_LABEL = 'col-xs-12 col-sm-3 col-md-2'
+SUIT_FORM_SIZE_SMALL = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-6 col-md-5 col-lg-4')
+SUIT_FORM_SIZE_HALF = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-7 col-md-6 col-lg-5')
+SUIT_FORM_SIZE_LARGE = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-8 col-md-7 col-lg-6')
+SUIT_FORM_SIZE_X_LARGE = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-9 col-md-8 col-lg-7')
+SUIT_FORM_SIZE_XX_LARGE = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-9 col-md-10 col-lg-8')
+SUIT_FORM_SIZE_XXX_LARGE = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-9 col-md-10 col-lg-9')
+SUIT_FORM_SIZE_FULL = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-9 col-md-10')
 
 
 class DjangoSuitConfig(AppConfig):
@@ -42,8 +48,8 @@ class DjangoSuitConfig(AppConfig):
     # suit_form_size = {
     #     'default': 'col-xs-12 col-sm-2', 'col-xs-12 col-sm-10',
     #     'fields': {
-    #          'field_name': SUIT_FORM_SIZE_FULL,
-    #          'field_name2': SUIT_FORM_SIZE_FULL,
+    #          'field_name': SUIT_FORM_SIZE_LARGE,
+    #          'field_name2': SUIT_FORM_SIZE_X_LARGE,
     #      },
     #      'widgets': {
     #          'widget_class_name': SUIT_FORM_SIZE_FULL,

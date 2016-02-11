@@ -1,5 +1,5 @@
 from django.contrib import admin
-from suit.apps import DjangoSuitConfig
+from suit import apps
 from .models import *
 from .views import *
 
@@ -35,11 +35,8 @@ class CountryAdmin(admin.ModelAdmin):
     ]
 
     suit_form_size = {
-        'fields': {
-            'body': DjangoSuitConfig.SUIT_FORM_SIZE_FULL
-        },
         'widgets': {
-            'AdminTextareaWidget': DjangoSuitConfig.SUIT_FORM_SIZE_FULL
+            'AdminTextareaWidget': apps.SUIT_FORM_SIZE_XX_LARGE
         },
     }
 
