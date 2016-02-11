@@ -1771,6 +1771,8 @@ fieldset .form-row:not(.form-group):not(tr) > * { -webkit-align-self: flex-start
 
 fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-align-self: stretch; -ms-flex-item-align: stretch; align-self: stretch; margin: -0.5rem 1.1rem -0.5rem -1.1rem; }
 
+fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label).required { padding-right: 1.5rem; }
+
 @media (max-width: 767px) { fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-box-flex: 0; -webkit-flex: 0 0 25%; -ms-flex: 0 0 25%; flex: 0 0 25%; } }
 
 @media (max-width: 543px) { fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-box-flex: 0; -webkit-flex: 0 0 100%; -ms-flex: 0 0 100%; flex: 0 0 100%; } }
@@ -1778,6 +1780,8 @@ fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -
 fieldset .text-help { margin-top: .5rem; display: block; }
 
 fieldset .form-row label, fieldset .suit-form .form-group label { font-size: 0.929rem; }
+
+fieldset .form-row label.required:after, fieldset .suit-form .form-group label.required:after { content: '*'; margin: 0 0 0 5px; position: absolute; color: #ccc; }
 
 fieldset .form-row > label, fieldset .suit-form .form-group > label { margin: 0; line-height: 1.25rem; text-align: right; background-color: #fff; padding-top: 1.05rem; padding-bottom: 0.9rem; border-bottom: 1px solid #eeeeee; }
 
@@ -1796,6 +1800,8 @@ fieldset .form-row > ul, fieldset .form-row .errorlist, fieldset .suit-form .for
 @media (max-width: 543px) { .suit-form .form-group { padding-bottom: 1rem; } }
 
 .suit-form .form-group label { margin: 0; }
+
+.suit-form .form-group label.required { padding-right: .55rem; }
 
 .suit-form .form-group .form-control-label + div[class^='col-'] { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 

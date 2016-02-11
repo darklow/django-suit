@@ -32,6 +32,9 @@ fieldset {
       @extend .col-sm-2;
       align-self: stretch;
       margin: (-$suit-form-padding-vertical) $suit-form-padding-horizontal (-$suit-form-padding-vertical) (-$suit-form-padding-horizontal);
+      &.required {
+        padding-right: 1.5rem;
+      }
       @include media-breakpoint-down(sm) {
         // Use as .col-sm-3
         flex: 0 0 25%;
@@ -55,6 +58,14 @@ fieldset {
   .form-row, .suit-form .form-group {
     label {
       font-size: $font-size-sm;
+      &.required {
+          &:after {
+            content: '*';
+            margin: 0 0 0 5px;
+            position: absolute;
+            color: #ccc;
+          }
+        }
     }
     > label {
       margin: 0;
@@ -102,6 +113,9 @@ fieldset {
     }
     label {
       margin: 0;
+      &.required {
+        padding-right: .55rem;
+      }
     }
     .form-control-label + div[class^='col-'] {
       padding-top: $suit-form-padding-vertical;
