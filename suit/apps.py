@@ -27,9 +27,33 @@ class DjangoSuitConfig(AppConfig):
     SUIT_FORM_SIZE_HALF = ('col-xs-12 col-sm-3 col-md-2', 'col-xs-12 col-sm-7 col-md-6 col-lg-5')
     SUIT_FORM_SIZE_FULL = ('col-xs-12 col-sm-3 col-md-2', 'col-xs-12 col-sm-9 col-md-10')
 
+    # For size
     form_size = {
-        'default': SUIT_FORM_SIZE_HALF
+        'default': SUIT_FORM_SIZE_HALF,
+        # 'fields': {}
+        # 'widgets': {}
+        # 'fieldsets': {}
     }
+
+    # form_size setting can be overridden in ModelAdmin using suit_form_size parameter
+    #
+    # Example:
+    # ----------------------------------------------
+    # suit_form_size = {
+    #     'default': 'col-xs-12 col-sm-2', 'col-xs-12 col-sm-10',
+    #     'fields': {
+    #          'field_name': SUIT_FORM_SIZE_FULL,
+    #          'field_name2': SUIT_FORM_SIZE_FULL,
+    #      },
+    #      'widgets': {
+    #          'widget_class_name': SUIT_FORM_SIZE_FULL,
+    #          'AdminTextareaWidget': SUIT_FORM_SIZE_FULL,
+    #      },
+    #      'fieldsets': {
+    #          'fieldset_name': SUIT_FORM_SIZE_FULL,
+    #          'fieldset_name2': SUIT_FORM_SIZE_FULL,
+    #      }
+    # }
 
     def __init__(self, app_name, app_module):
         self.setup_model_admin_defaults()
