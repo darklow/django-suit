@@ -9,7 +9,6 @@ fieldset {
   .vDateField {
     @extend .form-control;
     display: inline-block;
-    max-width: 90%;
     @include media-breakpoint-down(xs) {
       max-width: none;
     }

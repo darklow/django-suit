@@ -284,7 +284,7 @@ pre code { padding: 0; font-size: inherit; color: inherit; background-color: tra
 
 .row { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; margin-left: -0.9375rem; margin-right: -0.9375rem; }
 
-.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .form-row:not(.form-group):not(tr) > label:not(.form-control-label), .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 { position: relative; min-height: 1px; padding-left: 0.9375rem; padding-right: 0.9375rem; }
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label), .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 { position: relative; min-height: 1px; padding-left: 0.9375rem; padding-right: 0.9375rem; }
 
 .col-xs-1 { -webkit-box-flex: 0; -webkit-flex: 0 0 8.33333%; -ms-flex: 0 0 8.33333%; flex: 0 0 8.33333%; }
 
@@ -390,7 +390,7 @@ pre code { padding: 0; font-size: inherit; color: inherit; background-color: tra
 
 @media (min-width: 544px) {
   .col-sm-1 { -webkit-box-flex: 0; -webkit-flex: 0 0 8.33333%; -ms-flex: 0 0 8.33333%; flex: 0 0 8.33333%; }
-  .col-sm-2, .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-box-flex: 0; -webkit-flex: 0 0 16.66667%; -ms-flex: 0 0 16.66667%; flex: 0 0 16.66667%; }
+  .col-sm-2, fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-box-flex: 0; -webkit-flex: 0 0 16.66667%; -ms-flex: 0 0 16.66667%; flex: 0 0 16.66667%; }
   .col-sm-3 { -webkit-box-flex: 0; -webkit-flex: 0 0 25%; -ms-flex: 0 0 25%; flex: 0 0 25%; }
   .col-sm-4 { -webkit-box-flex: 0; -webkit-flex: 0 0 33.33333%; -ms-flex: 0 0 33.33333%; flex: 0 0 33.33333%; }
   .col-sm-5 { -webkit-box-flex: 0; -webkit-flex: 0 0 41.66667%; -ms-flex: 0 0 41.66667%; flex: 0 0 41.66667%; }
@@ -1761,35 +1761,35 @@ a.bg-danger:focus, a.bg-danger:hover { background-color: #c93420; }
 
 fieldset { box-shadow: 0 1px 0 0 #e4e4e4; margin-bottom: 2rem; }
 
-.form-row:not(.form-group):not(tr) { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; background-color: #f6f6f6; padding: 0.5rem 1.1rem; }
+fieldset .form-row:not(.form-group):not(tr) { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; background-color: #f6f6f6; padding: 0.5rem 1.1rem; }
 
-.form-row:not(.form-group):not(tr):last-child > label:not(.form-control-label) { border-bottom: 0; }
+fieldset .form-row:not(.form-group):not(tr):last-child > label:not(.form-control-label) { border-bottom: 0; }
 
-@media (max-width: 543px) { .form-row:not(.form-group):not(tr) { -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; } }
+@media (max-width: 543px) { fieldset .form-row:not(.form-group):not(tr) { -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; } }
 
-.form-row:not(.form-group):not(tr) > * { -webkit-align-self: flex-start; -ms-flex-item-align: start; align-self: flex-start; }
+fieldset .form-row:not(.form-group):not(tr) > * { -webkit-align-self: flex-start; -ms-flex-item-align: start; align-self: flex-start; }
 
-.form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-align-self: stretch; -ms-flex-item-align: stretch; align-self: stretch; margin: -0.5rem 1.1rem -0.5rem -1.1rem; }
+fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-align-self: stretch; -ms-flex-item-align: stretch; align-self: stretch; margin: -0.5rem 1.1rem -0.5rem -1.1rem; }
 
-@media (max-width: 767px) { .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-box-flex: 0; -webkit-flex: 0 0 25%; -ms-flex: 0 0 25%; flex: 0 0 25%; } }
+@media (max-width: 767px) { fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-box-flex: 0; -webkit-flex: 0 0 25%; -ms-flex: 0 0 25%; flex: 0 0 25%; } }
 
-@media (max-width: 543px) { .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-box-flex: 0; -webkit-flex: 0 0 100%; -ms-flex: 0 0 100%; flex: 0 0 100%; } }
+@media (max-width: 543px) { fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-box-flex: 0; -webkit-flex: 0 0 100%; -ms-flex: 0 0 100%; flex: 0 0 100%; } }
 
 fieldset .text-help { margin-top: .5rem; display: block; }
 
-.form-row label, .suit-form .form-group label { font-size: 0.929rem; }
+fieldset .form-row label, fieldset .suit-form .form-group label { font-size: 0.929rem; }
 
-.form-row > label, .suit-form .form-group > label { margin: 0; line-height: 1.25rem; text-align: right; background-color: #fff; padding-top: 1.05rem; padding-bottom: 0.9rem; border-bottom: 1px solid #eeeeee; }
+fieldset .form-row > label, fieldset .suit-form .form-group > label { margin: 0; line-height: 1.25rem; text-align: right; background-color: #fff; padding-top: 1.05rem; padding-bottom: 0.9rem; border-bottom: 1px solid #eeeeee; }
 
-@media (max-width: 543px) { .form-row > label, .suit-form .form-group > label { padding-top: 0.525rem; background-color: transparent; text-align: left; font-weight: bold; border-bottom: none; } }
+@media (max-width: 543px) { fieldset .form-row > label, fieldset .suit-form .form-group > label { padding-top: 0.525rem; background-color: transparent; text-align: left; font-weight: bold; border-bottom: none; } }
 
-.form-row.has-danger, .suit-form .form-group.has-danger { display: -webkit-box !important; display: -webkit-flex !important; display: -ms-flexbox !important; display: flex !important; }
+fieldset .form-row.has-danger, fieldset .suit-form .form-group.has-danger { display: -webkit-box !important; display: -webkit-flex !important; display: -ms-flexbox !important; display: flex !important; }
 
-.form-row:last-child > label, .suit-form .form-group:last-child > label { border-bottom: none; }
+fieldset .form-row:last-child > label, fieldset .suit-form .form-group:last-child > label { border-bottom: none; }
 
-.form-row > ul, .form-row .errorlist, .suit-form .form-group > ul, .suit-form .form-group .errorlist { margin: 0; padding-left: 2rem; font-size: 0.857rem; }
+fieldset .form-row > ul, fieldset .form-row .errorlist, fieldset .suit-form .form-group > ul, fieldset .suit-form .form-group .errorlist { margin: 0; padding-left: 2rem; font-size: 0.857rem; }
 
-@media (max-width: 543px) { .form-row > ul, .form-row .errorlist, .suit-form .form-group > ul, .suit-form .form-group .errorlist { margin-top: .5rem; padding-left: 1.5rem; } }
+@media (max-width: 543px) { fieldset .form-row > ul, fieldset .form-row .errorlist, fieldset .suit-form .form-group > ul, fieldset .suit-form .form-group .errorlist { margin-top: .5rem; padding-left: 1.5rem; } }
 
 .suit-form .form-group { margin: 0; background-color: #f6f6f6; }
 
@@ -1848,7 +1848,7 @@ fieldset.collapse { display: block; }
 
 .inline-group .tabular fieldset { box-shadow: none; }
 
-fieldset input[type=text], fieldset input[type=password], fieldset .vTextField, fieldset .vIntegerField, fieldset .vBigIntegerField, fieldset .vLargeTextField, fieldset .vTimeField, fieldset .vDateField { display: inline-block; max-width: 90%; }
+fieldset input[type=text], fieldset input[type=password], fieldset .vTextField, fieldset .vIntegerField, fieldset .vBigIntegerField, fieldset .vLargeTextField, fieldset .vTimeField, fieldset .vDateField { display: inline-block; }
 
 @media (max-width: 543px) { fieldset input[type=text], fieldset input[type=password], fieldset .vTextField, fieldset .vIntegerField, fieldset .vBigIntegerField, fieldset .vLargeTextField, fieldset .vTimeField, fieldset .vDateField { max-width: none; } }
 
@@ -2143,6 +2143,8 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 #changelist #changelist-form .paginator a:hover { background-color: #f9f9f9; text-decoration: none; }
 
 #changelist #changelist-form .paginator span.this-page { background-color: #5d6478; color: #fff; }
+
+#changelist .xfull { -webkit-flex-basis: 100%; -ms-flex-preferred-size: 100%; flex-basis: 100%; }
 
 #changelist .toplinks { list-style: none; margin: 0; padding: 0; margin-right: 17rem; }
 

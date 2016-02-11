@@ -156,6 +156,9 @@ $filter-col-width: 15rem;
     }
   }
   // Django date-hierarchy feature
+  .xfull {
+    flex-basis: 100%;
+  }
   .toplinks {
     @include reset-list();
     margin-right: $filter-col-width + 2rem;

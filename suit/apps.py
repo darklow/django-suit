@@ -23,6 +23,14 @@ class DjangoSuitConfig(AppConfig):
     # Automatically add home link
     menu_show_home = True
 
+    # Form row sizing as Bootstrap CSS grid classes: (for label, for field column)
+    SUIT_FORM_SIZE_HALF = ('col-xs-12 col-sm-3 col-md-2', 'col-xs-12 col-sm-7 col-md-6 col-lg-5')
+    SUIT_FORM_SIZE_FULL = ('col-xs-12 col-sm-3 col-md-2', 'col-xs-12 col-sm-9 col-md-10')
+
+    form_size = {
+        'default': SUIT_FORM_SIZE_HALF
+    }
+
     def __init__(self, app_name, app_module):
         self.setup_model_admin_defaults()
         super(DjangoSuitConfig, self).__init__(app_name, app_module)

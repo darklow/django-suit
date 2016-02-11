@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from suit.apps import DjangoSuitConfig
 from .models import *
 from .views import *
 
@@ -33,6 +33,16 @@ class CountryAdmin(admin.ModelAdmin):
             'description': 'Tabs can contain any fieldsets and inlines',
             'fields': ['architecture']}),
     ]
+
+    suit_form_size = {
+        'fields': {
+            'body': DjangoSuitConfig.SUIT_FORM_SIZE_FULL
+        },
+        'widgets': {
+            'AdminTextareaWidget': DjangoSuitConfig.SUIT_FORM_SIZE_FULL
+        },
+    }
+
     # fields = (('name', 'code', 'continent'), 'independence_day', 'population', 'description')
 #
 
