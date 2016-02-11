@@ -3,6 +3,10 @@ from django.apps import AppConfig
 from django.contrib.admin.options import ModelAdmin
 from . import VERSION
 
+# Form row sizing as Bootstrap CSS grid classes: (for label, for field column)
+SUIT_FORM_SIZE_HALF = ('col-xs-12 col-sm-3 col-md-2', 'col-xs-12 col-sm-7 col-md-6 col-lg-5')
+SUIT_FORM_SIZE_FULL = ('col-xs-12 col-sm-3 col-md-2', 'col-xs-12 col-sm-9 col-md-10')
+
 
 class DjangoSuitConfig(AppConfig):
     name = 'suit'
@@ -22,10 +26,6 @@ class DjangoSuitConfig(AppConfig):
 
     # Automatically add home link
     menu_show_home = True
-
-    # Form row sizing as Bootstrap CSS grid classes: (for label, for field column)
-    SUIT_FORM_SIZE_HALF = ('col-xs-12 col-sm-3 col-md-2', 'col-xs-12 col-sm-7 col-md-6 col-lg-5')
-    SUIT_FORM_SIZE_FULL = ('col-xs-12 col-sm-3 col-md-2', 'col-xs-12 col-sm-9 col-md-10')
 
     # For size
     form_size = {
