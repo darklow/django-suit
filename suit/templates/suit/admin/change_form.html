@@ -1,0 +1,33 @@
+{% extends 'admin/change_form.html' %}
+
+{% block form_top %}
+    <div class="row edit-row">
+    <div class="col-left">
+
+    {{ block.super }}
+
+{% endblock %}
+
+{% block after_related_objects %}
+    {{ block.super }}
+    <!-- Close left column, and that empty div -->
+    </div>
+    </div>
+
+    <!-- Start right column -->
+    <div class="col-right">
+{% endblock %}
+
+
+{% block admin_change_form_document_ready %}
+
+    {# Move object-tools inside rigth column #}
+    {% block object-tools %}
+        {{ block.super }}
+    {% endblock %}
+
+    <!-- Close right column and row -->
+    </div>
+    </div>
+    {{ block.super }}
+{% endblock %}

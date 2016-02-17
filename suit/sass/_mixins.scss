@@ -3,6 +3,9 @@
   margin: 0;
   padding: 0;
 }
+@mixin suit-box-shadow($darken: 5%) {
+  box-shadow: 0 1px 0 0 darken($body-bg, $darken);
+}
 .text-lighter { font-weight: 200; }
 .text-light { font-weight: 300; }
 .text-normal { font-weight: 400; }

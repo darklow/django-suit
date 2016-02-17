@@ -7,14 +7,18 @@
       @extend .btn-danger-outline;
     }
   }
-  input[type='submit'], input[type='button'], button {
-    @extend .btn;
-    @extend .btn-lg;
-    @extend .btn-secondary;
-    &:first-child {
-      @extend .btn-primary;
-    }
+  input[type='submit'], input[type='button'], button, .btn {
     margin-bottom: .5rem;
+  }
+  input[type='submit'], input[type='button'], button {
+    &:not(.btn) {
+      @extend .btn;
+      @extend .btn-lg;
+      @extend .btn-secondary;
+      &:first-child {
+        @extend .btn-primary;
+      }
+    }
   }
   &.fixed {
     position: fixed;
@@ -25,5 +29,72 @@
     padding: 1.2rem $header-padding-horizontal 1rem;
     z-index: 5000;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+.col-right {
+  .submit-row {
+    @include media-breakpoint-up(lg) {
+      position: relative;
+      padding: $grid-gutter-width/2;
+      background-color: $form-bg;
+      display: flex;
+      flex-wrap: wrap;
+      @include suit-box-shadow();
+      a.btn:not(.deletelink), button, input[type='submit'], input[type='button'] {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      > * {
+        width: 100%;
+      }
+      .deletelink-box {
+        text-align: right;
+        margin-top: $grid-gutter-width/2;
+        order: 10;
+      }
+    }
+  }
+  .object-tools {
+    @include reset-list();
+    margin-top: $grid-gutter-width;
+    //padding: $grid-gutter-width/2;
+    @include media-breakpoint-down(md) {
+      display: none;
+      li {
+        display: inline-block;
+        margin-right: 10px;
+        &.heading {
+          display: block;
+          font-weight: bold;
+        }
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      li {
+        a {
+          background-color: $form-bg;
+          padding: $grid-gutter-width/3 $grid-gutter-width/2;
+          display: block;
+          margin-top: 1px;
+          @include suit-box-shadow();
+          &:hover {
+            text-decoration: none;
+            background-color: #fff;
+          }
+        }
+        &.heading {
+          @extend .text-semibold;
+          font-size: $font-size-lg;
+          padding: 0 $grid-gutter-width/3 $grid-gutter-width/4;
+          &.heading-inverse {
+            background-color: $inverse-lightest;
+            color: #fff;
+            font-weight: normal;
+            font-size: $font-size-base;
+            padding: $grid-gutter-width/4 $grid-gutter-width/3;
+          }
+        }
+      }
+    }
   }
 }

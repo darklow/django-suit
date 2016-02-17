@@ -33,6 +33,9 @@ class DjangoSuitConfig(AppConfig):
     # Automatically add home link
     menu_show_home = True
 
+    # Enables two column layout for change forms with submit row on the right
+    form_submit_on_right = True
+
     # For size
     form_size = {
         'default': SUIT_FORM_SIZE_HALF,

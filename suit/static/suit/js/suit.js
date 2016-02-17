@@ -36,7 +36,7 @@ window.Suit = Suit;
     Suit.FixedBar = function () {
         var didScroll = false, $fixedItem, $fixedItemParent, $win, $body,
             itemOffset,
-            extraOffset = 30,
+            extraOffset = 0,
             fixed = false;
 
         function init(selector) {
@@ -44,7 +44,7 @@ window.Suit = Suit;
             if (!$fixedItem.length)
                 return;
 
-            $fixedItemParent = $fixedItem.parent().addClass('fixed-bar-parent');
+            $fixedItemParent = $fixedItem.parents('form');
             itemOffset = $fixedItem.offset();
             $win = $(window);
             window.onscroll = onScroll;

@@ -5,7 +5,7 @@ $suit-label-padding-bottom: $suit-form-padding-vertical + .4rem;
 $suit-padding-first-extra: .25rem;
 
 fieldset {
-  box-shadow: 0 1px 0 0 darken($body-bg, 5%);
+  @include suit-box-shadow();
   margin-bottom: 2rem;
 }
 // Django plain/original markup

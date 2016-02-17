@@ -33,7 +33,7 @@
         <script type="text/javascript">
             Suit.ListActionsToggle.init();
         </script>
-    {% elif adminform %}
+    {% elif adminform and 'form_submit_on_right'|suit_conf %}
         <script type="text/javascript">
             Suit.FixedBar.init();
         </script>

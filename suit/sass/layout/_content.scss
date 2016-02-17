@@ -1,3 +1,10 @@
+body.change-form {
+  #container {
+    br.clear:last-child {
+      display: none;
+    }
+  }
+}
 #content {
   padding: 1.5rem $header-padding-horizontal;
   display: flex;
@@ -20,22 +27,24 @@
     flex-grow: 1;
   }
 }
-.object-tools {
-  @include reset-list();
-  position: relative;
-  overflow: hidden;
-  z-index: 6;
-  > li {
-    display: inline;
-    &:not(:first-child) {
-      margin-left: .5rem;
-    }
-    > a {
-      @extend .btn-round;
-      &:not(.btn) {
-        @include btn-mixin(info, none, sm, round=true);
-        &.addlink {
-          @include btn-mixin(success, $icon-plus-circle, sm, round=true);
+#content-main {
+  > .object-tools {
+    @include reset-list();
+    position: relative;
+    overflow: hidden;
+    z-index: 6;
+    > li {
+      display: inline;
+      &:not(:first-child) {
+        margin-left: .5rem;
+      }
+      > a {
+        @extend .btn-round;
+        &:not(.btn) {
+          @include btn-mixin(info, none, sm, round=true);
+          &.addlink {
+            @include btn-mixin(success, $icon-plus-circle, sm, round=true);
+          }
         }
       }
     }

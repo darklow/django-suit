@@ -10,12 +10,16 @@ def suit_conf(name):
     value = config.get_config(name)
     return mark_safe(value) if isinstance(value, str) else value
 
+
 @register.filter(name='suit_body_class')
 def suit_body_class(value):
     css_classes = []
-    if config.suit_config.toggle_changelist_top_actions:
-        css_classes.append('suit_toggle_changelist_top_actions')
+    config_vars_to_add = ['toggle_changelist_top_actions', 'form_submit_on_right']
+    for each in config_vars_to_add:
+        if getattr(config.suit_config, each):
+            css_classes.append('suit_%s' % each)
     return ' '.join(css_classes)
+
 
 @register.filter(name='suit_conf')
 def suit_conf(name):
