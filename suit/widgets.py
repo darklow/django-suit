@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import Textarea
+from django.forms import Textarea, ClearableFileInput
 from django.utils.safestring import mark_safe
 from django.contrib.admin.templatetags.admin_static import static
 
@@ -23,6 +23,17 @@ class AutosizedTextarea(Textarea):
             "<script type=\"text/javascript\">autosize(document.getElementById('id_%s'));</script>"
             % name)
         return output
+
+
+class ImageWidget(ClearableFileInput):
+    def render(self, name, value, attrs=None):
+        html = super(ImageWidget, self).render(name, value, attrs)
+        if not value or not value.url:
+            return html
+        html = u'<div class="ImageWidget"><div class="pull-xs-left"><a href="%s" target="_blank">' \
+               u'<img src="%s" width="75"></a></div>' \
+               u'%s</div>' % (value.url, value.url, html)
+        return mark_safe(html)
 
 
 def _make_attrs(attrs, defaults=None, classes=None):

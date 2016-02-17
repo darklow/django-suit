@@ -1876,6 +1876,8 @@ fieldset input[type=text].vIntegerField, fieldset input[type=text].vBigIntegerFi
 
 .autosize { max-height: 12rem; }
 
+.ImageWidget .pull-xs-left { margin-right: 1rem; max-width: 75px; max-height: 75px; }
+
 .messagelist { list-style: none; margin: 0; padding: 0; display: block; margin: 1rem 1.875rem 0; }
 
 body.delete-confirmation #content { display: block; margin: 1.5rem 2.625rem; }
