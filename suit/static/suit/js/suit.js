@@ -32,4 +32,56 @@ window.Suit = Suit;
 
     }();
 
+
+    Suit.FixedBar = function () {
+        var didScroll = false, $fixedItem, $fixedItemParent, $win, $body,
+            itemOffset,
+            extraOffset = 30,
+            fixed = false;
+
+        function init(selector) {
+            $fixedItem = $(selector || '.submit-row');
+            if (!$fixedItem.length)
+                return;
+
+            $fixedItemParent = $fixedItem.parent().addClass('fixed-bar-parent');
+            itemOffset = $fixedItem.offset();
+            $win = $(window);
+            window.onscroll = onScroll;
+            window.onresize = onScroll;
+            onScroll();
+
+            setInterval(function () {
+                if (didScroll) {
+                    didScroll = false;
+                }
+            }, 200);
+        }
+
+        function onScroll() {
+            didScroll = true;
+
+            var itemHeight = $fixedItem.height(),
+                scrollTop = $win.scrollTop();
+
+            if (scrollTop + $win.height() - itemHeight - extraOffset < itemOffset.top) {
+                if (!fixed) {
+                    $fixedItem.addClass('fixed');
+                    $fixedItemParent.addClass('fixed').css('padding-bottom', itemHeight+'px');
+                    fixed = true;
+                }
+            } else {
+                if (fixed) {
+                    $fixedItem.removeClass('fixed');
+                    $fixedItemParent.removeClass('fixed').css('padding-bottom', '');
+                    fixed = false;
+                }
+            }
+        }
+
+        return {
+            init: init
+        };
+    }();
+
 })(typeof django !== 'undefined' ? django.jQuery : undefined);

@@ -14,5 +14,16 @@
     &:first-child {
       @extend .btn-primary;
     }
+    margin-bottom: .5rem;
+  }
+  &.fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    padding: 1.2rem $header-padding-horizontal 1rem;
+    z-index: 5000;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   }
 }

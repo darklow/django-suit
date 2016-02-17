@@ -1882,6 +1882,10 @@ body.delete-confirmation #content input[type='button'], body.delete-confirmation
 
 .submit-row .deletelink-box { float: right; margin: 0; }
 
+.submit-row input[type='submit'], .submit-row input[type='button'], .submit-row button { margin-bottom: .5rem; }
+
+.submit-row.fixed { position: fixed; left: 0; right: 0; bottom: 0; background-color: #fff; padding: 1.2rem 1.875rem 1rem; z-index: 5000; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15); }
+
 .breadcrumbs { padding: 1.5rem 2.625rem 0; font-size: 0.929rem; color: #687086; }
 
 body.change-list .breadcrumbs { display: none; }
