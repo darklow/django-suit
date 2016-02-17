@@ -63,6 +63,12 @@ fieldset {
     margin-top: .5rem;
     display: block;
   }
+  .form-inline {
+    .text-help {
+      display: inline-block;
+      margin-left: .5rem;
+    }
+  }
 }
 fieldset {
   .form-row, .suit-form .form-group {

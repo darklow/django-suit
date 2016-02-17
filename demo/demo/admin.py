@@ -37,7 +37,7 @@ class CountryAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {
             'classes': ('suit-tab suit-tab-general',),
-            'fields': ['name', 'continent', 'code', 'independence_day']
+            'fields': ['name', 'code', 'continent', 'independence_day']
         }),
         ('Statistics', {
             'classes': ('suit-tab suit-tab-general',),
@@ -55,8 +55,11 @@ class CountryAdmin(admin.ModelAdmin):
     ]
 
     suit_form_size = {
+        'fields': {
+            'code': apps.SUIT_FORM_SIZE_INLINE
+        },
         'widgets': {
-            'AutosizedTextarea': apps.SUIT_FORM_SIZE_XXX_LARGE
+            'AutosizedTextarea': apps.SUIT_FORM_SIZE_XXX_LARGE,
         },
     }
 

@@ -5,6 +5,7 @@ from . import VERSION
 
 # Form row sizing as Bootstrap CSS grid classes: (for label, for field column)
 SUIT_FORM_SIZE_LABEL = 'col-xs-12 col-sm-3 col-md-2'
+SUIT_FORM_SIZE_INLINE = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-9 col-md-10 form-inline')
 SUIT_FORM_SIZE_SMALL = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-6 col-md-5 col-lg-4')
 SUIT_FORM_SIZE_HALF = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-7 col-md-6 col-lg-5')
 SUIT_FORM_SIZE_LARGE = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-8 col-md-7 col-lg-6')

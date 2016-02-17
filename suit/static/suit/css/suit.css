@@ -1783,6 +1783,8 @@ fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label).req
 
 fieldset .text-help { margin-top: .5rem; display: block; }
 
+fieldset .form-inline .text-help { display: inline-block; margin-left: .5rem; }
+
 fieldset .form-row, fieldset .suit-form .form-group { clear: both; }
 
 fieldset .form-row label, fieldset .suit-form .form-group label { font-size: 0.929rem; }
