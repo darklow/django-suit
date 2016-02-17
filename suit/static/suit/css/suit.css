@@ -1551,7 +1551,7 @@ button.close { padding: 0; cursor: pointer; background: transparent; border: 0; 
 
 .font-italic { font-style: italic; }
 
-.text-muted, fieldset .text-help, .timezonewarning { color: #9ca3a9; }
+.text-muted, fieldset > .description, fieldset .text-help, .timezonewarning { color: #9ca3a9; }
 
 .text-primary { color: #4298DE !important; }
 
@@ -1761,6 +1761,10 @@ a.bg-danger:focus, a.bg-danger:hover { background-color: #c93420; }
 
 fieldset { box-shadow: 0 1px 0 0 #e4e4e4; margin-bottom: 2rem; }
 
+fieldset > h2 { float: left; padding-right: 2rem; }
+
+fieldset > .description { font-size: 0.929rem; padding-top: .35rem; display: inline-block; }
+
 fieldset .form-row:not(.form-group):not(tr) { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; background-color: #f6f6f6; padding: 0.5rem 1.1rem; }
 
 fieldset .form-row:not(.form-group):not(tr):last-child > label:not(.form-control-label) { border-bottom: 0; }
@@ -1778,6 +1782,8 @@ fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label).req
 @media (max-width: 543px) { fieldset .form-row:not(.form-group):not(tr) > label:not(.form-control-label) { -webkit-box-flex: 0; -webkit-flex: 0 0 100%; -ms-flex: 0 0 100%; flex: 0 0 100%; } }
 
 fieldset .text-help { margin-top: .5rem; display: block; }
+
+fieldset .form-row, fieldset .suit-form .form-group { clear: both; }
 
 fieldset .form-row label, fieldset .suit-form .form-group label { font-size: 0.929rem; }
 

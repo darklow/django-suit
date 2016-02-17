@@ -38,7 +38,7 @@ class DjangoSuitConfig(AppConfig):
 
     # For size
     form_size = {
-        'default': SUIT_FORM_SIZE_HALF,
+        'default': SUIT_FORM_SIZE_X_LARGE,
         # 'fields': {}
         # 'widgets': {}
         # 'fieldsets': {}

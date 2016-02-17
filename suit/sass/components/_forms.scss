@@ -11,6 +11,16 @@ fieldset {
 // Django plain/original markup
 // -----------------------------------------
 fieldset {
+  > h2 {
+    float: left;
+    padding-right: 2rem;
+  }
+  > .description {
+    font-size: $font-size-sm;
+    padding-top: .35rem;
+    display: inline-block;
+    @extend .text-muted;
+  }
   .form-row:not(.form-group):not(tr) {
     display: flex;
     background-color: $form-bg;
@@ -56,6 +66,7 @@ fieldset {
 }
 fieldset {
   .form-row, .suit-form .form-group {
+    clear: both;
     label {
       font-size: $font-size-sm;
       &.required {

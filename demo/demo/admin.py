@@ -56,7 +56,7 @@ class CountryAdmin(admin.ModelAdmin):
 
     suit_form_size = {
         'widgets': {
-            'AdminTextareaWidget': apps.SUIT_FORM_SIZE_XX_LARGE
+            'AutosizedTextarea': apps.SUIT_FORM_SIZE_XXX_LARGE
         },
     }
 
