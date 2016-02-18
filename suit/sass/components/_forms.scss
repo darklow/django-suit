@@ -170,6 +170,7 @@ fieldset {
     flex-basis: 15rem;
     white-space: nowrap;
     margin-bottom: $suit-form-padding-vertical;
+    padding-right: 1rem;
     @include media-breakpoint-down(xs) {
       flex-basis: 100%;
       padding-bottom: 0;

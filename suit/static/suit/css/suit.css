@@ -1825,7 +1825,7 @@ fieldset .form-row > ul, fieldset .form-row .errorlist, fieldset .suit-form .for
 
 @media (max-width: 543px) { .col-multi-fields { padding-top: 0 !important; } }
 
-.col-multi-fields .multi-field { -webkit-flex-basis: 15rem; -ms-flex-preferred-size: 15rem; flex-basis: 15rem; white-space: nowrap; margin-bottom: 0.5rem; }
+.col-multi-fields .multi-field { -webkit-flex-basis: 15rem; -ms-flex-preferred-size: 15rem; flex-basis: 15rem; white-space: nowrap; margin-bottom: 0.5rem; padding-right: 1rem; }
 
 @media (max-width: 543px) { .col-multi-fields .multi-field { -webkit-flex-basis: 100%; -ms-flex-preferred-size: 100%; flex-basis: 100%; padding-bottom: 0; } }
 
