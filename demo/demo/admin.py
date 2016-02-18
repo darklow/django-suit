@@ -126,10 +126,10 @@ class ShowcaseAdmin(admin.ModelAdmin):
             'description': 'Original Django admin date/time widgets',
             'fields': ['date_and_time', 'date', 'time_only']}),
 
-        ('Date and time', {
-            'description': 'Improved date/time widgets (SuitDateWidget, '
-                           'SuitSplitDateTimeWidget) . Uses original JS.',
-            'fields': ['date_widget', 'datetime_widget']}),
+        # ('Date and time', {
+        #     'description': 'Improved date/time widgets (SuitDateWidget, '
+        #                    'SuitSplitDateTimeWidget) . Uses original JS.',
+        #     'fields': ['date_widget', 'datetime_widget']}),
 
         # ('Foreign key relations',
         #  {'description': 'Original select and linked select feature',
