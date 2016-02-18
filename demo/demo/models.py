@@ -45,7 +45,7 @@ class Showcase(models.Model):
     multiple2 = models.CharField(max_length=10, blank=True)
     date = models.DateField(blank=True, null=True)
     date_and_time = models.DateTimeField(blank=True, null=True)
-    time_only = models.TimeField(blank=True, null=True)
+    time_only = models.TimeField(blank=True, null=True, verbose_name='Time')
 
     date_widget = models.DateField(blank=True, null=True)
     datetime_widget = models.DateTimeField(blank=True, null=True)

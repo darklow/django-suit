@@ -124,7 +124,7 @@ class ShowcaseAdmin(admin.ModelAdmin):
                            'readonly_field']}),
         ('Date and time', {
             'description': 'Original Django admin date/time widgets',
-            'fields': ['date', 'date_and_time', 'time_only']}),
+            'fields': ['date_and_time', 'date', 'time_only']}),
 
         ('Date and time', {
             'description': 'Improved date/time widgets (SuitDateWidget, '
