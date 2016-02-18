@@ -48,12 +48,99 @@ fieldset {
 
 }
 .autosize {
-    max-height: 12rem;
+  max-height: 12rem;
 }
 .ImageWidget {
   .pull-xs-left {
     margin-right: 1rem;
     max-width: 75px;
     max-height: 75px;
+  }
+}
+.widget-AdminSplitDateTime, .widget-AdminDateWidget, .widget-AdminTimeWidget {
+  // Hide all text
+  font-size: 0;
+  color: transparent;
+  p {
+    margin: 0;
+  }
+
+  .datetimeshortcuts {
+    position: relative;
+    margin: 0 1.5rem 0 0;
+    white-space: nowrap;
+    a {
+      white-space: nowrap;
+      font-size: $font-size-sm;
+      &:first-child {
+        margin-left: 3.15rem;
+      }
+      $icon-width: 2rem;
+      &[id^='calendarlink'], &[id^='clocklink'] {
+        padding: 0.6rem 0.75rem;
+        position: absolute;
+        left: -1px;
+        z-index: 0;
+        //width: $icon-width;
+        text-align: center;
+        white-space: nowrap;
+        @extend .input-group-addon;
+        &:hover {
+          text-decoration: none;
+          color: $link-color;
+        }
+        .date-icon, .clock-icon {
+          @include fa-icon-font();
+        }
+        .date-icon {
+          &:before {
+            content: $icon-calendar;
+          }
+        }
+        .clock-icon {
+          &:before {
+            content: $icon-time;
+          }
+        }
+      }
+      &[id^='clocklink'] {
+        &:before {
+        }
+      }
+    }
+  }
+  input {
+    white-space: nowrap;
+    &.vDateField, &.vTimeField {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      position: relative;
+      z-index: 2;
+      text-indent: 0;
+      //padding-right: 2rem;
+    }
+  }
+  br {
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+  .timezonewarning {
+    display: block;
+    font-size: 11px;
+  }
+}
+.widget-AdminSplitDateTime {
+  input.vDateField {
+    @include media-breakpoint-down(md) {
+      margin-bottom: .2rem;
+    }
+  }
+}
+.module {
+  &.calendarbox, &.clockbox {
+    margin: 1rem 0 0 3rem;
+  }
+  &.clockbox {
   }
 }

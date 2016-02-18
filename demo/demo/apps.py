@@ -7,6 +7,7 @@ class SuitConfig(DjangoSuitConfig):
         ParentItem('Content', children=[
             ChildItem(model='demo.country'),
             ChildItem(model='demo.continent'),
+            ChildItem(model='demo.showcase'),
         ]),
         ParentItem('Users', children=[
             ChildItem(model='auth.user'),

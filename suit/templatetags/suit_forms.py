@@ -20,7 +20,7 @@ def get_form_size(fieldset):
 
 
 def get_form_class(field, fieldset, idx):
-    field_class = []
+    field_class, extra_class = [], ''
     form_size = get_form_size(fieldset)
 
     if not form_size:
@@ -32,15 +32,21 @@ def get_form_class(field, fieldset, idx):
         if form_size_fields:
             field_class = form_size_fields.get(field.name)
 
+    # Detect widget class
+    try:
+        widget_class_name = field.field.widget.__class__.__name__
+        print widget_class_name
+        # Add CSS class for field by widget name, for easier style targeting
+        if idx == 1:
+            extra_class = ' widget-%s' % widget_class_name
+    except AttributeError:
+        widget_class_name = None
+
     # Try widgets config
-    if not field_class:
-        try:
-            form_size_widgets = form_size.get('widgets')
-            if form_size_widgets:
-                field_class = form_size_widgets.get(
-                    field.field.widget.__class__.__name__)
-        except AttributeError:
-            pass
+    if not field_class and widget_class_name:
+        form_size_widgets = form_size.get('widgets')
+        if form_size_widgets:
+            field_class = form_size_widgets.get(widget_class_name)
 
     # Try fieldset config
     if not field_class:
@@ -55,7 +61,7 @@ def get_form_class(field, fieldset, idx):
     assert len(field_class), \
         'Django Suit form_size definitions must be tuples containing two string items'
 
-    return field_class[idx]
+    return field_class[idx] + extra_class
 
 
 @register.filter

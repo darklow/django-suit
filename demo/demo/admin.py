@@ -7,6 +7,7 @@ from .views import *
 
 admin.site.site_header = 'Django Suit'
 
+
 class CountryForm(ModelForm):
     class Meta:
         widgets = {
@@ -65,6 +66,7 @@ class CountryAdmin(admin.ModelAdmin):
 
     # fields = (('name', 'code', 'continent'), 'independence_day', 'population', 'description')
 
+
 admin.site.register(Country, CountryAdmin)
 
 
@@ -98,3 +100,68 @@ class ContinentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Continent, ContinentAdmin)
+
+class ShowcaseForm(ModelForm):
+    class Meta:
+        widgets = {
+            'textfield': AutosizedTextarea,
+        }
+
+class ShowcaseAdmin(admin.ModelAdmin):
+    form = ShowcaseForm
+    # inlines = (FridgeInline, MicrowaveInline)
+    search_fields = ['name']
+    # radio_fields = {"horizontal_choices": admin.HORIZONTAL,
+    #                 'vertical_choices': admin.VERTICAL}
+    # list_editable = ('boolean',)
+    # list_filter = ('choices', 'date', CountryFilter)
+    list_display = ('name', 'help_text')
+    readonly_fields = ('readonly_field',)
+    # raw_id_fields = ('raw_id_field',)
+    fieldsets = [
+        (None, {'fields': ['name', 'help_text', 'textfield',
+                           ('multiple_in_row', 'multiple2'),
+                           'readonly_field']}),
+        ('Date and time', {
+            'description': 'Original Django admin date/time widgets',
+            'fields': ['date', 'date_and_time', 'time_only']}),
+
+        ('Date and time', {
+            'description': 'Improved date/time widgets (SuitDateWidget, '
+                           'SuitSplitDateTimeWidget) . Uses original JS.',
+            'fields': ['date_widget', 'datetime_widget']}),
+
+        # ('Foreign key relations',
+        #  {'description': 'Original select and linked select feature',
+        #   'fields': ['country', 'linked_foreign_key', 'raw_id_field']}),
+        #
+        # ('EnclosedInput widget',
+        #  {
+        #      'description': 'Supports Twitter Bootstrap prepended, '
+        #                     'appended inputs',
+        #      'fields': ['enclosed1', 'enclosed2']}),
+        #
+        # ('Boolean and choices',
+        #  {'fields': ['boolean', 'boolean_with_help', 'choices',
+        #              'horizontal_choices', 'vertical_choices']}),
+        #
+        # ('Collapsed settings', {
+        #     'classes': ('collapse',),
+        #     'fields': ['hidden_checkbox', 'hidden_choice']}),
+        # ('And one more collapsable', {
+        #     'classes': ('collapse',),
+        #     'fields': ['hidden_charfield', 'hidden_charfield2']}),
+
+    ]
+    suit_form_size = {
+        # 'fields': {
+        #     'code': apps.SUIT_FORM_SIZE_INLINE
+        # },
+        'widgets': {
+            # 'AutosizedTextarea': apps.SUIT_FORM_SIZE_XXX_LARGE,
+        },
+    }
+    # list_display = ('name', 'help_text', 'choices', 'horizontal_choices', 'boolean')
+
+
+admin.site.register(Showcase, ShowcaseAdmin)
