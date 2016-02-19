@@ -49,3 +49,6 @@ class Showcase(models.Model):
 
     date_widget = models.DateField(blank=True, null=True)
     datetime_widget = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = 'Showcase'
