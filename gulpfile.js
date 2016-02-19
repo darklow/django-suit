@@ -37,6 +37,7 @@ gulp.task('watch', function () {
         notify: false,
         ghostMode: false,
         https: false,
+        startPath: '/admin/',
         proxy: {
             target: config.djangoHost + ':' + config.djangoPort
         }

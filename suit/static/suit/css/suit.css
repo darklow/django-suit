@@ -1860,7 +1860,43 @@ fieldset.collapse { display: block; }
 
 .inline-group .tabular table th, .inline-group .tabular table td { font-size: 1rem; }
 
+.inline-group .tabular table tbody td.original { font-size: 0; width: 0; padding: 0; }
+
+.inline-group .tabular table tbody td .errorlist { margin: 0; padding-left: 1.5rem; font-size: 0.857rem; color: #E04F3C; }
+
+.inline-group .tabular table tbody td .errorlist + input { border-color: #E04F3C; }
+
 .inline-group .tabular fieldset { box-shadow: none; }
+
+/* TabularInlines Sortables */
+.inline-sortable { white-space: nowrap; }
+
+.inline-sortable a { display: inline-block; padding: .3rem .4rem 0 .2rem; color: #000; opacity: .4; }
+
+.inline-sortable a:last-child { padding: 0; }
+
+.inline-sortable a:hover { opacity: .7; }
+
+.suit-sortable { color: #373a3c; }
+
+.selected td .inline-sortable a { color: #fff; }
+
+tr:first-child td .inline-sortable .sortable-up { visibility: hidden; cursor: default; }
+
+tr.form-row:nth-last-child(3) td .inline-sortable .sortable-down, #result_list tr:last-child td .inline-sortable .sortable-down, .tabular table tr:last-child td .inline-sortable .sortable-down { visibility: hidden; cursor: default; }
+
+/* StackedInline sortables */
+.stacked-inline-sortable { float: left; }
+
+.stacked-inline-sortable :first-child { padding-right: 1px; }
+
+.stacked-inline-sortable:nth-last-child(2) { margin-right: 10px; }
+
+.stacked-inline-sortable a { color: #eceeef; }
+
+.stacked-inline-sortable a:hover { color: #fff; }
+
+.inline-group > div:first-of-type .stacked-inline-sortable .sortable-up, .inline-group > div:nth-last-child(3) .stacked-inline-sortable .sortable-down { opacity: .15 !important; cursor: default; }
 
 fieldset input[type=text], fieldset input[type=password], fieldset .vTextField, fieldset .vIntegerField, fieldset .vBigIntegerField, fieldset .vLargeTextField, fieldset .vTimeField, fieldset .vDateField { display: inline-block; }
 

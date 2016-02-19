@@ -33,9 +33,14 @@
         <script type="text/javascript">
             Suit.ListActionsToggle.init();
         </script>
-    {% elif adminform and 'form_submit_on_right'|suit_conf %}
+    {% elif adminform %}
         <script type="text/javascript">
-            Suit.FixedBar.init();
+
+            Suit.$("#{{ opts.model_name }}_form").suitFormDebounce();
+
+            {% if 'form_submit_on_right'|suit_conf %}
+                Suit.FixedBar.init();
+            {% endif %}
         </script>
     {% endif %}
 {% endblock %}

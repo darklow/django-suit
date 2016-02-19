@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.forms import ModelForm
 from suit import apps
+from suit.sortables import SortableTabularInline
 from suit.widgets import AutosizedTextarea
 from .models import *
 from .views import *
@@ -70,7 +71,7 @@ class CountryAdmin(admin.ModelAdmin):
 admin.site.register(Country, CountryAdmin)
 
 
-# Inlines for KitchenSink
+# Inlines for ContinentAdmin
 class CountryInlineForm(ModelForm):
     class Meta:
         widgets = {
@@ -80,7 +81,7 @@ class CountryInlineForm(ModelForm):
         }
 
 
-class CountryInline(admin.TabularInline):
+class CountryInline(SortableTabularInline):
     form = CountryInlineForm
     model = Country
     fields = ('name', 'code', 'population',)

@@ -242,11 +242,30 @@ fieldset {
     table {
       thead {
         > tr th {
+          // Override padding by previous @extend #result_list;
           padding: $table-th-padding;
         }
       }
       th, td {
         font-size: $font-size-base;
+      }
+      tbody {
+        td {
+          &.original {
+            font-size: 0;
+            width: 0;
+            padding: 0;
+          }
+          .errorlist {
+            margin: 0;
+            padding-left: 1.5rem;
+            font-size: $font-size-xs;
+            color: $brand-danger;
+          }
+          .errorlist + input {
+            border-color: $brand-danger;
+          }
+        }
       }
     }
     fieldset {

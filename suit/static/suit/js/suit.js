@@ -5,6 +5,27 @@ window.Suit = Suit;
     if (!$)
         return;
 
+    Suit.$ = $;
+
+// Register callbacks to perform after inline has been added
+    Suit.after_inline = function () {
+        var functions = {};
+        var register = function (fn_name, fn_callback) {
+            functions[fn_name] = fn_callback;
+        };
+
+        var run = function (inline_prefix, row) {
+            for (var fn_name in functions) {
+                functions[fn_name](inline_prefix, row);
+            }
+        };
+
+        return {
+            register: register,
+            run: run
+        };
+    }();
+
     Suit.ListActionsToggle = function () {
         var $topActions;
 
@@ -67,7 +88,7 @@ window.Suit = Suit;
             if (scrollTop + $win.height() - itemHeight - extraOffset < itemOffset.top) {
                 if (!fixed) {
                     $fixedItem.addClass('fixed');
-                    $fixedItemParent.addClass('fixed').css('padding-bottom', itemHeight+'px');
+                    $fixedItemParent.addClass('fixed').css('padding-bottom', itemHeight + 'px');
                     fixed = true;
                 }
             } else {
@@ -83,5 +104,29 @@ window.Suit = Suit;
             init: init
         };
     }();
+
+    /**
+     * Avoids double-submit issues in the change_form.
+     */
+    $.fn.suitFormDebounce = function () {
+        var $form = $(this),
+            $saveButtons = $form.find('.submit-row button, .submit-row input[type=button], .submit-row input[type=submit]'),
+            submitting = false;
+
+        $form.submit(function () {
+            if (submitting) {
+                return false;
+            }
+
+            submitting = true;
+            $saveButtons.addClass('disabled');
+
+            setTimeout(function () {
+                $saveButtons.removeClass('disabled');
+                submitting = false;
+            }, 5000);
+        });
+    };
+
 
 })(typeof django !== 'undefined' ? django.jQuery : undefined);

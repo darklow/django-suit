@@ -1,0 +1,60 @@
+/* TabularInlines Sortables */
+.inline-sortable {
+  white-space: nowrap;
+  a {
+    display: inline-block;
+    padding: .3rem .4rem 0 .2rem;
+    color: #000;
+    opacity: .4;
+    &:last-child {
+      padding: 0;
+    }
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
+// For debugging purposes
+.suit-sortable {
+  //display: block !important;
+  color: $body-color;
+}
+.selected td {
+  .inline-sortable a {
+    color: #fff;
+    &:hover {
+
+    }
+  }
+}
+tr:first-child td .inline-sortable .sortable-up {
+  visibility: hidden;
+  cursor: default;
+}
+tr.form-row:nth-last-child(3), #result_list tr:last-child {
+  td .inline-sortable .sortable-down {
+    visibility: hidden;
+    cursor: default;
+  }
+}
+/* StackedInline sortables */
+.stacked-inline-sortable {
+  float: left;
+  :first-child {
+    padding-right: 1px;
+  }
+  &:nth-last-child(2) {
+    margin-right: 10px;
+  }
+  a {
+    color: $gray-lighter;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+.inline-group > div:first-of-type .stacked-inline-sortable .sortable-up,
+.inline-group > div:nth-last-child(3) .stacked-inline-sortable .sortable-down {
+  opacity: .15 !important;
+  cursor: default;
+}
