@@ -35,7 +35,6 @@ def get_form_class(field, fieldset, idx):
     # Detect widget class
     try:
         widget_class_name = field.field.widget.__class__.__name__
-        print widget_class_name
         # Add CSS class for field by widget name, for easier style targeting
         if idx == 1:
             extra_class = ' widget-%s' % widget_class_name
