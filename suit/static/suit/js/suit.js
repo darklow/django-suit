@@ -31,7 +31,7 @@ window.Suit = Suit;
 
         var init = function () {
             $(document).ready(function () {
-                $topActions = $('.results').prev('.actions');
+                $topActions = $('.results').parent().find('.actions').eq(0);
                 if (!$topActions.length)
                     return;
 

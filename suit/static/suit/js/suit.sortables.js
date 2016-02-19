@@ -142,9 +142,11 @@
                             return $(this).val() != "";
                         });//.filter(filter_unchanged);
                     // console.log($changed_fields.length, $changed_fields);
-                    if ($set_block.hasClass('has_original')
+                    var is_changelist = !$set_block.length;
+                    if (is_changelist
+                        || $set_block.hasClass('has_original')
                         || $changed_fields.serializeArray().length
-                            // Since jQuery serialize() doesn't include type=file do additional check
+                        // Since jQuery serialize() doesn't include type=file do additional check
                         || $changed_fields.find(":input[type='file']").addBack().length) {
                         value = i++;
                         $input.val(value);

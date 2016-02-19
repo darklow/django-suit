@@ -116,21 +116,23 @@ $filter-col-width: 15rem;
       }
 
     }
-    // Actions before results
-    input[type=hidden] + .actions {
+    // Hide actions, show only after results
+    .actions {
       .suit_toggle_changelist_top_actions & {
         display: none;
       }
     }
     // Actions after results
     .results + .actions {
+      .suit_toggle_changelist_top_actions & {
+        display: block;
+      }
       margin: 1rem 0 0;
     }
 
     .paginator {
       margin-top: 1rem;
       font-size: $font-size-sm;
-      margin-left: 1rem;
       a:not(.showall), span {
         font-size: 1rem;
         display: inline-block;
@@ -140,8 +142,10 @@ $filter-col-width: 15rem;
         line-height: normal;
         min-width: 2.3rem;
         text-align: center;
-        margin-left: -1.1rem;
-        margin-right: 1rem;
+        margin-left: -.1rem;
+        &.end {
+          margin-right: 1rem;
+        }
       }
       a {
         &:hover {
@@ -152,6 +156,13 @@ $filter-col-width: 15rem;
       span.this-page {
         background-color: $inverse-lightest;
         color: #fff;
+      }
+      // This is odd, but dango admin has Save in paginator
+      input[type='submit'] {
+        @extend .btn;
+        @extend .btn-primary;
+        float: right;
+        margin-top: -.75rem;
       }
     }
   }

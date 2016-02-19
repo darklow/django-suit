@@ -1,0 +1,35 @@
+{% load i18n admin_urls %}
+<div class="submit-row">
+    {% url opts|admin_urlname:'clickme' original.pk|admin_urlquote as custom_url %}
+    <a href="{% add_preserved_filters custom_url %}" class="btn btn-lg btn-success">Click me</a>
+
+    {% if show_save %}
+        <input type="hidden" id="publish" name="_publish" value="">
+
+        <button type="submit" name="_continue" class="btn btn-lg btn-primary" onclick="document.getElementById('publish').value = 1">Save & publish</button>
+
+        <button type="submit" name="_continue" class="btn btn-lg btn-warning" onclick="document.getElementById('publish').value = -1">Unpublish</button>
+    {% endif %}
+
+    {% if show_delete_link %}
+        {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+        <p class="deletelink-box">
+            <a href="{% add_preserved_filters delete_url %}" class="deletelink">{% trans "Delete" %}</a>
+        </p>
+    {% endif %}
+
+    {% if show_save %}
+        <input type="submit" value="Save" class="btn btn-lg btn-secondary" name="_save"/>
+    {% endif %}
+
+    {% if show_save_as_new %}
+        <input type="submit" value="{% trans 'Save as new' %}" name="_saveasnew"/>{% endif %}
+
+    {% if show_save_and_continue %}
+        <input type="submit" value="{% trans 'Save and continue editing' %}" name="_continue"/>{% endif %}
+    {% if show_save_as_new %}
+        <input type="submit" value="{% trans 'Save as new' %}" name="_saveasnew"/>{% endif %}
+{#    {% if show_save_and_add_another %}#}
+{#        <input type="submit" value="{% trans 'Save and add another' %}" name="_addanother"/>{% endif %}#}
+
+</div>

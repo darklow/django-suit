@@ -1,0 +1,39 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n admin_urls demo_tags %}
+
+{# Example of extending object-tools-items #}
+{% block object-tools-items %}
+    <li>
+        {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+        <a href="{% add_preserved_filters history_url %}" class="historylink">
+            <i class="fa fa-fw fa-history"></i>{% trans "History" %}</a>
+    </li>
+
+    {% if has_absolute_url %}
+        <li><a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a>
+        </li>
+    {% endif %}
+
+    <li>
+        <a href="https://www.google.com/search?q={{ original }}" target="_blank">
+            <i class="fa fa-fw fa-rocket"></i>Do something useful</a>
+    </li>
+{% endblock %}
+
+{% block object-tools %}
+    {{ block.super }}
+    <ul class="object-tools">
+        <li class="heading">More tools</li>
+        <li><a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a></li>
+        <li><a href="http://djangosuit.com/docs/" target="_blank">Documentation</a></li>
+    </ul>
+    <ul class="object-tools">
+        <li class="heading heading-inverse">Heading inverse</li>
+        <li><a href="https://github.com/darklow/django-suit" target="_blank">DjangoSuit On Github</a></li>
+    </ul>
+{% endblock %}
+
+{% block submit_buttons_bottom %}
+    {# Currently only way extending submit_row.html is by custom tempalte tag #}
+    {% submit_row_custom %}
+{% endblock %}

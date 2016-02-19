@@ -51,3 +51,13 @@ body.change-form {
     }
   }
 }
+// History table
+table#change-history {
+  @extend .table;
+  @extend #result_list;
+  thead {
+    > tr th {
+      padding: $table-th-padding !important;
+    }
+  }
+}

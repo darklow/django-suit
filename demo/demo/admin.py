@@ -1,7 +1,12 @@
+from django.conf.urls import url
 from django.contrib import admin
 from django.forms import ModelForm
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib import messages
+from django.shortcuts import redirect
+
 from suit import apps
-from suit.sortables import SortableTabularInline
+from suit.sortables import SortableTabularInline, SortableModelAdmin
 from suit.widgets import AutosizedTextarea
 from .models import *
 from .views import *
@@ -90,7 +95,7 @@ class CountryInline(SortableTabularInline):
     sortable = 'order'
 
 
-class ContinentAdmin(admin.ModelAdmin):
+class ContinentAdmin(SortableModelAdmin):
     search_fields = ('name',)
     list_display = ('name', 'countries')
     sortable = 'order'
@@ -102,11 +107,23 @@ class ContinentAdmin(admin.ModelAdmin):
 
 admin.site.register(Continent, ContinentAdmin)
 
+
 class ShowcaseForm(ModelForm):
     class Meta:
         widgets = {
             'textfield': AutosizedTextarea,
         }
+
+
+@staff_member_required
+def showcase_custom_view_example(request, pk):
+    instance = Showcase.objects.get(pk=pk)
+
+    # Do something legendary here
+    messages.success(request, 'Something legendary was done to "%s"' % instance)
+
+    return redirect('admin:demo_showcase_change', pk)
+
 
 class ShowcaseAdmin(admin.ModelAdmin):
     form = ShowcaseForm
@@ -116,6 +133,7 @@ class ShowcaseAdmin(admin.ModelAdmin):
     #                 'vertical_choices': admin.VERTICAL}
     # list_editable = ('boolean',)
     # list_filter = ('choices', 'date', CountryFilter)
+    # list_display = ('name', 'help_text', 'choices', 'horizontal_choices', 'boolean')
     list_display = ('name', 'help_text')
     readonly_fields = ('readonly_field',)
     # raw_id_fields = ('raw_id_field',)
@@ -162,7 +180,16 @@ class ShowcaseAdmin(admin.ModelAdmin):
             # 'AutosizedTextarea': apps.SUIT_FORM_SIZE_XXX_LARGE,
         },
     }
-    # list_display = ('name', 'help_text', 'choices', 'horizontal_choices', 'boolean')
+
+    def get_urls(self):
+        """
+        Example how to extend Django ModelAdmin with extra actions and views
+        """
+        urls = super(ShowcaseAdmin, self).get_urls()
+        my_urls = [
+            url(r'^(\d+)/clickme/$', showcase_custom_view_example, name='demo_showcase_clickme')
+        ]
+        return my_urls + urls
 
 
 admin.site.register(Showcase, ShowcaseAdmin)

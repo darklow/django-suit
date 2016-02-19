@@ -2,9 +2,12 @@
 .inline-sortable {
   white-space: nowrap;
   a {
-    display: inline-block;
-    padding: .3rem .4rem 0 .2rem;
     color: #000;
+    padding: .3rem .4rem 0 .2rem;
+    #result_list & {
+      padding-top: .05rem;
+    }
+    display: inline-block;
     opacity: .4;
     &:last-child {
       padding: 0;
@@ -23,7 +26,6 @@
   .inline-sortable a {
     color: #fff;
     &:hover {
-
     }
   }
 }
@@ -31,7 +33,18 @@ tr:first-child td .inline-sortable .sortable-up {
   visibility: hidden;
   cursor: default;
 }
-tr.form-row:nth-last-child(3), #result_list tr:last-child {
+.tabular {
+  tr.form-row:nth-last-child(2)
+    // Can't use following 3rd child as it will be wrong if max inlines limit is reached
+    //tr.form-row:nth-last-child(3),
+  {
+    td .inline-sortable .sortable-down {
+      visibility: hidden;
+      cursor: default;
+    }
+  }
+}
+#result_list tr:last-child {
   td .inline-sortable .sortable-down {
     visibility: hidden;
     cursor: default;

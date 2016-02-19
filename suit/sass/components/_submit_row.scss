@@ -81,6 +81,9 @@
             text-decoration: none;
             background-color: #fff;
           }
+          .fa {
+            margin-right: .2rem;
+          }
         }
         &.heading {
           @extend .text-semibold;
