@@ -53,7 +53,7 @@ def get_admin_site(current_app):
         if hasattr(resolver_match.func, 'admin_site'):
             return resolver_match.func.admin_site
 
-        for func_closure in resolver_match.func.func_closure:
+        for func_closure in resolver_match.func.__closure__:
             if isinstance(func_closure.cell_contents, AdminSite):
                 return func_closure.cell_contents
     except:
