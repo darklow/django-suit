@@ -3,7 +3,6 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.urlresolvers import reverse, resolve
-from django.core.urlresolvers import NoReverseMatch
 
 try:
     from django.utils.six import string_types
@@ -28,11 +27,11 @@ def get_menu(context, request):
         return None
 
     # Try to get app list
-    try:
-        template_response = get_admin_site(context.current_app).index(request)
-    except NoReverseMatch:
+    if hasattr(request, 'current_app'):
         # Django 1.8 uses request.current_app instead of context.current_app
         template_response = get_admin_site(request.current_app).index(request)
+    else:
+        template_response = get_admin_site(context.current_app).index(request)
 
     try:
         app_list = template_response.context_data['app_list']
@@ -50,7 +49,11 @@ def get_admin_site(current_app):
     """
     try:
         resolver_match = resolve(reverse('%s:index' % current_app))
-        for func_closure in resolver_match.func.func_closure:
+        # Django 1.9 exposes AdminSite instance directly on view function
+        if hasattr(resolver_match.func, 'admin_site'):
+            return resolver_match.func.admin_site
+
+        for func_closure in resolver_match.func.__closure__:
             if isinstance(func_closure.cell_contents, AdminSite):
                 return func_closure.cell_contents
     except:
