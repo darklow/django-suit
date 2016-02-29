@@ -69,11 +69,16 @@ fieldset {
     position: relative;
     margin: 0 1.5rem 0 0;
     white-space: nowrap;
+    display: inline-flex;
     a {
       white-space: nowrap;
       font-size: $font-size-sm;
       &:first-child {
         margin-left: 3.15rem;
+        margin-top: .45rem;
+      }
+      &:not(:first-child) {
+        vertical-align: top;
       }
       $icon-width: 2rem;
       &[id^='calendarlink'], &[id^='clocklink'] {
@@ -111,6 +116,7 @@ fieldset {
   }
   input {
     white-space: nowrap;
+    vertical-align: top;
     &.vDateField, &.vTimeField {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;

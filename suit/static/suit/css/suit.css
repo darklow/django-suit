@@ -172,7 +172,7 @@ input[type="search"] { box-sizing: inherit; -webkit-appearance: none; }
 
 output { display: inline-block; }
 
-[hidden] { display: none !important; }
+[hidden] { display: none; }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { margin-bottom: 0.5rem; font-family: inherit; font-weight: 500; line-height: 1.1; color: inherit; }
 
@@ -1922,11 +1922,13 @@ fieldset input[type=text].vIntegerField, fieldset input[type=text].vBigIntegerFi
 
 .widget-AdminSplitDateTime p, .widget-AdminDateWidget p, .widget-AdminTimeWidget p { margin: 0; }
 
-.widget-AdminSplitDateTime .datetimeshortcuts, .widget-AdminDateWidget .datetimeshortcuts, .widget-AdminTimeWidget .datetimeshortcuts { position: relative; margin: 0 1.5rem 0 0; white-space: nowrap; }
+.widget-AdminSplitDateTime .datetimeshortcuts, .widget-AdminDateWidget .datetimeshortcuts, .widget-AdminTimeWidget .datetimeshortcuts { position: relative; margin: 0 1.5rem 0 0; white-space: nowrap; display: -webkit-inline-box; display: -webkit-inline-flex; display: -ms-inline-flexbox; display: inline-flex; }
 
 .widget-AdminSplitDateTime .datetimeshortcuts a, .widget-AdminDateWidget .datetimeshortcuts a, .widget-AdminTimeWidget .datetimeshortcuts a { white-space: nowrap; font-size: 0.929rem; }
 
-.widget-AdminSplitDateTime .datetimeshortcuts a:first-child, .widget-AdminDateWidget .datetimeshortcuts a:first-child, .widget-AdminTimeWidget .datetimeshortcuts a:first-child { margin-left: 3.15rem; }
+.widget-AdminSplitDateTime .datetimeshortcuts a:first-child, .widget-AdminDateWidget .datetimeshortcuts a:first-child, .widget-AdminTimeWidget .datetimeshortcuts a:first-child { margin-left: 3.15rem; margin-top: .45rem; }
+
+.widget-AdminSplitDateTime .datetimeshortcuts a:not(:first-child), .widget-AdminDateWidget .datetimeshortcuts a:not(:first-child), .widget-AdminTimeWidget .datetimeshortcuts a:not(:first-child) { vertical-align: top; }
 
 .widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink'], .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink'], .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink'], .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink'], .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink'], .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink'] { padding: 0.6rem 0.75rem; position: absolute; left: -1px; z-index: 0; text-align: center; white-space: nowrap; }
 
@@ -1938,7 +1940,7 @@ fieldset input[type=text].vIntegerField, fieldset input[type=text].vBigIntegerFi
 
 .widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink'] .clock-icon:before, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink'] .clock-icon:before, .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink'] .clock-icon:before, .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink'] .clock-icon:before, .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink'] .clock-icon:before, .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink'] .clock-icon:before { content: ""; }
 
-.widget-AdminSplitDateTime input, .widget-AdminDateWidget input, .widget-AdminTimeWidget input { white-space: nowrap; }
+.widget-AdminSplitDateTime input, .widget-AdminDateWidget input, .widget-AdminTimeWidget input { white-space: nowrap; vertical-align: top; }
 
 .widget-AdminSplitDateTime input.vDateField, .widget-AdminSplitDateTime input.vTimeField, .widget-AdminDateWidget input.vDateField, .widget-AdminDateWidget input.vTimeField, .widget-AdminTimeWidget input.vDateField, .widget-AdminTimeWidget input.vTimeField { border-top-right-radius: 0; border-bottom-right-radius: 0; position: relative; z-index: 2; text-indent: 0; }
 
