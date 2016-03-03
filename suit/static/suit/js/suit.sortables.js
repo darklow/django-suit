@@ -174,7 +174,6 @@
         opts = $.extend({}, _orig_formset.defaults, opts);
         var _orig_added = opts.added;
         opts.added = function (row) {
-            console.info(row);
             if (_orig_added) {
                 _orig_added.call(this, row);
                 Suit.after_inline.run(opts.prefix, row);
