@@ -76,13 +76,13 @@ fieldset {
     label {
       font-size: $font-size-sm;
       &.required {
-          &:after {
-            content: '*';
-            margin: 0 0 0 5px;
-            position: absolute;
-            color: #ccc;
-          }
+        &:after {
+          content: '*';
+          margin: 0 0 0 5px;
+          position: absolute;
+          color: #ccc;
         }
+      }
     }
     > label {
       margin: 0;
@@ -308,9 +308,11 @@ fieldset {
       margin-bottom: 1rem;
     }
   }
+  .last-related + .empty-form + .add-row {
+    margin-top: -1rem;
+  }
   div.add-row {
     border-top: 2px solid $body-bg;
-    margin-top: -1rem;
     margin-bottom: 2rem;
     padding: $table-cell-padding;
     background-color: $form-bg;

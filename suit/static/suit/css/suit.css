@@ -1884,7 +1884,9 @@ fieldset.collapse { display: block; }
 
 .inline-group .inline-related fieldset.suit-form { margin-bottom: 1rem; }
 
-.inline-group div.add-row { border-top: 2px solid #f1f1f1; margin-top: -1rem; margin-bottom: 2rem; padding: 0.4rem 0.8rem; background-color: #f6f6f6; }
+.inline-group .last-related + .empty-form + .add-row { margin-top: -1rem; }
+
+.inline-group div.add-row { border-top: 2px solid #f1f1f1; margin-bottom: 2rem; padding: 0.4rem 0.8rem; background-color: #f6f6f6; }
 
 /* TabularInlines Sortables */
 .inline-sortable { white-space: nowrap; }
