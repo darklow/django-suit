@@ -20,7 +20,7 @@ class AutosizedTextarea(Textarea):
     def render(self, name, value, attrs=None):
         output = super(AutosizedTextarea, self).render(name, value, attrs)
         output += mark_safe(
-            "<script type=\"text/javascript\">autosize(document.getElementById('id_%s'));</script>"
+            "<script type=\"text/javascript\">django.jQuery(function () { autosize(document.getElementById('id_%s')); });</script>"
             % name)
         return output
 
