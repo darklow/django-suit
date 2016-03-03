@@ -1,5 +1,9 @@
 from django.db import models
 
+TYPE_CHOICES = ((1, 'Awesome'), (2, 'Good'), (3, 'Normal'), (4, 'Bad'))
+TYPE_CHOICES2 = ((1, 'Hot'), (2, 'Normal'), (3, 'Cold'))
+TYPE_CHOICES3 = ((1, 'Tall'), (2, 'Normal'), (3, 'Short'))
+
 
 class Continent(models.Model):
     name = models.CharField(max_length=256)
@@ -52,3 +56,34 @@ class Showcase(models.Model):
 
     class Meta:
         verbose_name_plural = 'Showcase'
+
+
+# Tabular inline model for Showcase
+class Movie(models.Model):
+    showcase = models.ForeignKey(Showcase)
+    title = models.CharField(max_length=64)
+    rating = models.SmallIntegerField(choices=TYPE_CHOICES, default=2)
+    description = models.TextField(blank=True)
+    is_released = models.BooleanField(default=False)
+    order = models.PositiveIntegerField()
+
+    class Meta:
+        ordering = ('order',)
+
+    def __unicode__(self):
+        return self.title
+
+
+# Stacked inline model for Showcase
+class Book(models.Model):
+    showcase = models.ForeignKey(Showcase)
+    title = models.CharField(max_length=64)
+    rating = models.SmallIntegerField(choices=TYPE_CHOICES, help_text='Choose wisely')
+    is_released = models.BooleanField(default=False)
+    order = models.PositiveIntegerField()
+
+    class Meta:
+        ordering = ('order',)
+
+    def __unicode__(self):
+        return self.title

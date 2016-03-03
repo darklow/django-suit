@@ -1,12 +1,12 @@
 from django.conf.urls import url
 from django.contrib import admin
-from django.forms import ModelForm
+from django.forms import ModelForm, Select
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.shortcuts import redirect
 
 from suit import apps
-from suit.sortables import SortableTabularInline, SortableModelAdmin
+from suit.sortables import SortableTabularInline, SortableModelAdmin, SortableStackedInline
 from suit.widgets import AutosizedTextarea
 from .models import *
 from .views import *
@@ -125,9 +125,36 @@ def showcase_custom_view_example(request, pk):
     return redirect('admin:demo_showcase_change', pk)
 
 
+# Inlines for Showcase
+class BookInline(SortableTabularInline):
+    model = Book
+    min_num = 1
+    extra = 0
+    verbose_name_plural = 'Books (Tabular inline)'
+
+
+class MovieInlineForm(ModelForm):
+    class Meta:
+        fields = '__all__'
+        model = Movie
+        widgets = {
+            'description': AutosizedTextarea(attrs={'rows': 2}),
+            'type': Select(attrs={'class': 'input-small'}),
+        }
+
+
+class MovieInline(SortableStackedInline):
+    model = Movie
+    form = MovieInlineForm
+    min_num = 1
+    extra = 0
+    verbose_name_plural = 'Movies (Stacked inline)'
+    fields = ['title', 'description', 'rating', 'is_released']
+
+
 class ShowcaseAdmin(admin.ModelAdmin):
     form = ShowcaseForm
-    # inlines = (FridgeInline, MicrowaveInline)
+    inlines = (BookInline, MovieInline)
     search_fields = ['name']
     # radio_fields = {"horizontal_choices": admin.HORIZONTAL,
     #                 'vertical_choices': admin.VERTICAL}

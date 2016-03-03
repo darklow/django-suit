@@ -238,6 +238,7 @@ fieldset {
   }
 }
 .inline-group {
+  // Tabular inlines
   .tabular {
     table {
       thead {
@@ -271,5 +272,43 @@ fieldset {
     fieldset {
       box-shadow: none;
     }
+  }
+  // Stacked
+  .inline-related {
+    h3 {
+      margin: 0;
+      color: #fff;
+      font-size: $font-size-base;
+      padding: $table-th-padding;
+      font-weight: normal;
+      background-color: $inverse-lightest;
+      b {
+        display: inline-block;
+        min-width: 17.5%;
+      }
+      a {
+        color: #fff;
+        text-decoration: underline;
+        &.inline-deletelink {
+          float: right;
+        }
+      }
+      label {
+        margin: 0;
+      }
+      .delete {
+        float: right;
+      }
+    }
+    fieldset.suit-form {
+      margin-bottom: 1rem;
+    }
+  }
+  div.add-row {
+    border-top: 2px solid $body-bg;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    padding: $table-cell-padding;
+    background-color: #fff;
   }
 }

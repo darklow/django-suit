@@ -1,6 +1,7 @@
+from copy import deepcopy
 from django.contrib import admin
 from django.contrib.admin.views.main import ChangeList
-from django.contrib.contenttypes.admin import GenericTabularInline
+from django.contrib.contenttypes.admin import GenericTabularInline, GenericStackedInline
 from django.forms import ModelForm, NumberInput
 from django.db import models
 
@@ -64,10 +65,59 @@ class SortableGenericTabularInline(SortableTabularInlineBase,
                                    GenericTabularInline):
     pass
 
+class SortableStackedInlineBase(SortableModelAdminBase):
+    """
+    Sortable stacked inline
+    """
+    def __init__(self, *args, **kwargs):
+        super(SortableStackedInlineBase, self).__init__(*args, **kwargs)
+        self.ordering = (self.sortable,)
+
+    def get_fieldsets(self, *args, **kwargs):
+        """
+        Iterate all fieldsets and make sure sortable is in the first fieldset
+        Remove sortable from every other fieldset, if by some reason someone
+        has added it
+        """
+        fieldsets = super(SortableStackedInlineBase, self).get_fieldsets(*args, **kwargs)
+
+        sortable_added = False
+        for fieldset in fieldsets:
+            for line in fieldset:
+                if not line or not isinstance(line, dict):
+                    continue
+
+                fields = line.get('fields')
+                if self.sortable in fields:
+                    fields.remove(self.sortable)
+
+                # Add sortable field always as first
+                if not sortable_added:
+                    fields.insert(0, self.sortable)
+                    sortable_added = True
+                    break
+
+        return fieldsets
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == self.sortable:
+            kwargs['widget'] = deepcopy(SortableListForm.Meta.widgets['order'])
+            kwargs['widget'].attrs['class'] += ' suit-sortable-stacked'
+            kwargs['widget'].attrs['rowclass'] = ' suit-sortable-stacked-row'
+        return super(SortableStackedInlineBase, self).formfield_for_dbfield(db_field, **kwargs)
+
+
+class SortableStackedInline(SortableStackedInlineBase, admin.StackedInline):
+    pass
+
+
+class SortableGenericStackedInline(SortableStackedInlineBase,
+                                   GenericStackedInline):
+    pass
 
 class SortableModelAdmin(SortableModelAdminBase, admin.ModelAdmin):
     """
-    Sortable tabular inline
+    Sortable change list
     """
     list_per_page = 500
 
