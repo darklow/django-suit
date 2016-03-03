@@ -234,7 +234,6 @@ h2.legend, .form-horizontal fieldset .legend {
         }
     }
 }
-
 .popup {
     .form-horizontal {
     }
@@ -242,7 +241,6 @@ h2.legend, .form-horizontal fieldset .legend {
         padding-top: 10px;
     }
 }
-
 .control-group, .inline-group {
     // Django < 1.8
     .add-another {
@@ -286,7 +284,6 @@ h2.legend, .form-horizontal fieldset .legend {
         width: 90px;
     }
 }
-
 .alert {
     > ul {
         margin-top: 10px;
@@ -296,12 +293,10 @@ h2.legend, .form-horizontal fieldset .legend {
         }
     }
 }
-
 /* Stacked & Tabular */
 .empty-form, tr.empty-form {
     display: none;
 }
-
 h3 {
     font-weight: bold;
     font-size: 16px;
@@ -310,11 +305,10 @@ h3 {
     padding-left: 10px;
     margin: 0;
 }
-
 /* STACKED */
 .form-horizontal {
     .inline-group {
-        &>h2 {
+        & > h2 {
             margin-top: 11px;
         }
         fieldset:first-of-type {
@@ -404,7 +398,7 @@ h3 {
             margin-top: 15px;
             fieldset {
                 .box-shadow(none);
-                &>h2 {
+                & > h2 {
                     margin-top: -4px;
                 }
             }
@@ -421,7 +415,6 @@ h3 {
         }
     }
 }
-
 .form-horizontal .control-group .controls .selector {
     overflow: auto;
     .selector-available, .selector-chooser, .selector-chosen {
@@ -430,7 +423,7 @@ h3 {
             margin-left: 5px;
             font-size: 12px;
         }
-        >a {
+        > a {
             margin-left: 5px;
         }
     }
@@ -550,12 +543,10 @@ h3 {
         }
     }
 }
-
 /* SELECT2 OVERRIDE */
 .select2-container-multi .select2-choices {
     .border-radius(4px);
 }
-
 /* Set close on right size */
 .select2-container-multi .select2-choices .select2-search-choice {
     padding: 3px 20px 3px 5px !important;
@@ -565,22 +556,20 @@ h3 {
     top: 3px;
     left: auto !important;
 }
-
 .select2-search-choice .s2-size {
     float: right;
 }
-
 .select2-search-choice .s2-size em {
     font-style: normal;
     color: grey;
     font-size: 9px;
     text-shadow: 0 1px 0 #fff;
 }
-
 .datetimeshortcuts {
     font-size: 11px;
     margin-left: 5px;
     vertical-align: middle;
+    color: transparent;
     a:first-child {
         margin-right: 4px;
     }
@@ -589,13 +578,29 @@ h3 {
         margin-right: 10px;
     }
 }
-
+// Original date widgets for Django 1.9+
+.datetime > div:not(.input-append) {
+    .datetimeshortcuts {
+        .date-icon, .clock-icon {
+            .bs-icon;
+            background-color: @bgcolor-light;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .date-icon {
+            background-position: -192px -120px;
+        }
+        .clock-icon {
+            .bs-icon;
+            background-position: -48px -24px;
+        }
+    }
+}
 /* Fix original date/time fields */
 .vDateField, .vTimeField {
     width: auto;
     vertical-align: top;
 }
-
 /* DATETIME IMPROVEMENTS */
 @date-input-width: 80px;
 @time-input-width: 60px;
@@ -614,6 +619,14 @@ h3 {
             img {
                 visibility: hidden;
             }
+        }
+
+        // Original date widgets for Django 1.9+
+        .date-icon, .clock-icon {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            margin: 1px 0 0 -5px;
         }
     }
     input {
@@ -645,7 +658,6 @@ h3 {
 .autosize {
     max-height: 150px;
 }
-
 .legend, h2 {
     .description {
         font-weight: normal;
@@ -656,7 +668,6 @@ h3 {
         .color-grey;
     }
 }
-
 /* Legend/H2 for suit_form_includes */
 .form-horizontal .suit-tab {
     visibility: hidden;
@@ -668,19 +679,17 @@ h3 {
     }
 }
 .suit-tab, .form-horizontal .suit-include {
-    >h2 {
+    > h2 {
         margin-top: -10px;
         margin-bottom: -6px;
         line-height: 36px;
         padding: 0;
     }
 }
-
 .linked-select-link {
     font-size: 11px;
     margin-right: 5px;
 }
-
 /* StackedInline sortables */
 .stacked-inline-sortable {
     float: right;
@@ -692,8 +701,7 @@ h3 {
     }
 }
 .inline-group > div:first-of-type .stacked-inline-sortable .sortable-up,
-.inline-group > div:nth-last-child(3) .stacked-inline-sortable .sortable-down
-{
+.inline-group > div:nth-last-child(3) .stacked-inline-sortable .sortable-down {
     opacity: .15 !important;
     cursor: default;
 }
