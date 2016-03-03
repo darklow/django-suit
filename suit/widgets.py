@@ -28,7 +28,7 @@ class AutosizedTextarea(Textarea):
 class ImageWidget(ClearableFileInput):
     def render(self, name, value, attrs=None):
         html = super(ImageWidget, self).render(name, value, attrs)
-        if not value or not value.url:
+        if not value or not hasattr(value, 'url') or not value.url:
             return html
         html = u'<div class="ImageWidget"><div class="pull-xs-left"><a href="%s" target="_blank">' \
                u'<img src="%s" width="75"></a></div>' \
