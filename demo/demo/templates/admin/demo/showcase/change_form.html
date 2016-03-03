@@ -34,6 +34,17 @@
 {% endblock %}
 
 {% block submit_buttons_bottom %}
-    {# Currently only way extending submit_row.html is by custom tempalte tag #}
+    {# Currently only way extending submit_row.html is by custom template tag #}
     {% submit_row_custom %}
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+
+    <!-- This is an example how to call javascript to a newly added inline row -->
+    <script type="text/javascript">
+        Suit.after_inline.register('apply_autosize', function (prefix, row) {
+            autosize(Suit.$(row).find('.autosize'));
+        });
+    </script>
 {% endblock %}

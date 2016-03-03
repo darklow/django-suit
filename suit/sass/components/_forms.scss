@@ -296,8 +296,12 @@ fieldset {
       label {
         margin: 0;
       }
-      .delete {
+      span.delete, span:not(.inline_label):not(:first-child) {
         float: right;
+      }
+      .stacked-inline-sortable {
+        float: right;
+        margin-left: 1.5rem;
       }
     }
     fieldset.suit-form {
@@ -309,6 +313,6 @@ fieldset {
     margin-top: -1rem;
     margin-bottom: 2rem;
     padding: $table-cell-padding;
-    background-color: #fff;
+    background-color: $form-bg;
   }
 }

@@ -73,7 +73,7 @@
                 .addClass('sortable sortable-' + direction +
                     (is_stacked ? ' sortable-stacked' : ''))
                 .attr('data-dir', direction).html(text)
-                .click(on_click_func);
+                .on('click', on_click_func);
         }
 
         $inputs.each(function () {
@@ -92,7 +92,7 @@
 
                 // Add arrows to header h3, move order input and remove order field row
                 $links_span.append($up_link).append($down_link);
-                $stacked_block.find('.panel-heading > .row > div:last-child').append($links_span);
+                $links_span.insertAfter($stacked_block.find('.inline_label'));
                 $stacked_block.append($sortable);
                 $sortable_row.remove();
             } else {
@@ -156,7 +156,7 @@
         }
 
         Suit.after_inline.register('bind_sortable_arrows', function (prefix, row) {
-            $(row).find('.suit-sortable').click(on_arrow_click);
+            $(row).find('.suit-sortable').on('click', on_arrow_click);
         });
     };
 
@@ -174,6 +174,7 @@
         opts = $.extend({}, _orig_formset.defaults, opts);
         var _orig_added = opts.added;
         opts.added = function (row) {
+            console.info(row);
             if (_orig_added) {
                 _orig_added.call(this, row);
                 Suit.after_inline.run(opts.prefix, row);

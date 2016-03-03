@@ -150,6 +150,9 @@ class MovieInline(SortableStackedInline):
     extra = 0
     verbose_name_plural = 'Movies (Stacked inline)'
     fields = ['title', 'description', 'rating', 'is_released']
+    suit_form_size = {
+        'default': apps.SUIT_FORM_SIZE_X_LARGE,
+    }
 
 
 class ShowcaseAdmin(admin.ModelAdmin):
