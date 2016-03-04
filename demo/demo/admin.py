@@ -70,6 +70,20 @@ class CountryAdmin(admin.ModelAdmin):
         },
     }
 
+    suit_form_tabs = (
+        ('general', 'General'),
+        ('cities', 'Cities'),
+        ('flag', 'Flag'),
+        ('info', 'Info on tabs')
+    )
+
+    suit_form_includes = (
+        ('admin/demo/country/tab_disclaimer.html', 'middle', 'cities'),
+        ('admin/demo/country/tab_flag.html', '', 'flag'),
+        ('admin/demo/country/tab_info.html', '', 'info'),
+    )
+
+
     # fields = (('name', 'code', 'continent'), 'independence_day', 'population', 'description')
 
 

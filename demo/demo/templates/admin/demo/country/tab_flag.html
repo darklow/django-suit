@@ -1,0 +1,22 @@
+<h2 class="legend">Country flag
+    <span class="description">Content of this tab is also included template file</span>
+</h2>
+
+{% if original.pk %}
+    <table class="table-overview">
+        <tr>
+            <th>Flag presented by</th>
+            <td>
+                <a href="http://www.geonames.org" target="_blank">http://www.geonames.org</a>
+            </td>
+        </tr>
+        <tr>
+            <th>Flag of {{ original.name }}</th>
+            <td>
+                <img src="http://www.geonames.org/flags/x/{{ original.code|lower }}.gif" alt="" style="width: 50%">
+            </td>
+        </tr>
+    </table>
+{% else %}
+    Item is not saved yet
+{% endif %}

@@ -41,6 +41,12 @@
             {% if 'form_submit_on_right'|suit_conf %}
                 Suit.FixedBar.init();
             {% endif %}
+
+            {% if adminform.model_admin.suit_form_tabs %}
+                Suit.$(function () {
+                    Suit.$('#suit_form_tabs').suitFormTabs();
+                });
+            {% endif %}
         </script>
     {% endif %}
 {% endblock %}

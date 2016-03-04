@@ -128,5 +128,50 @@ window.Suit = Suit;
         });
     };
 
+    /**
+     * Content tabs
+     */
+    $.fn.suitFormTabs = function () {
+
+        var $tabs = $(this);
+        var tabPrefix = $tabs.data('tab-prefix');
+        if (!tabPrefix)
+            return;
+
+        var $tabLinks = $tabs.find('a');
+
+        function tabContents($link) {
+            return $('.' + tabPrefix + '-' + $link.attr('href').replace('#', ''));
+        }
+
+        function activateTabs() {
+            // Init tab by error, by url hash or init first tab
+            if (window.location.hash) {
+                var foundError;
+                $tabLinks.each(function () {
+                    var $link = $(this);
+                    if (tabContents($link).find('.error').length != 0) {
+                        $link.addClass('error');
+                        $link.trigger('click');
+                        foundError = true;
+                    }
+                });
+                !foundError && $($tabs).find('a[href=' + window.location.hash + ']').click();
+            } else {
+                $tabLinks.first().trigger('click');
+            }
+        }
+
+        $tabLinks.click(function () {
+            var $link = $(this);
+            $link.parent().parent().find('.active').removeClass('active');
+            $link.addClass('active');
+            $('.' + tabPrefix).removeClass('show').addClass('hidden-xs-up');
+            tabContents($link).removeClass('hidden-xs-up').addClass('show')
+        });
+
+        activateTabs();
+    };
+
 
 })(typeof django !== 'undefined' ? django.jQuery : undefined);

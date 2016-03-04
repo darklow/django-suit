@@ -1,0 +1,27 @@
+.nav-tabs-suit {
+  margin-bottom: 1rem;
+  .nav-item {
+    &:first-child {
+      margin-left: .75rem;
+    }
+    + .nav-item {
+      margin-left: .3rem;
+    }
+  }
+  .nav-link {
+    padding: 0.65em 1.5em;
+    background-color: #fff;
+    border-color: $nav-tabs-border-color;
+    @include hover-focus {
+      $border-hover: lighten(desaturate($link-color-brighter, 45%), 15%);
+      //$border-hover: #fff;
+      border-color: $border-hover $border-hover $nav-tabs-border-color;
+    }
+    &.active {
+      &, &:focus {
+        color: #222;
+        @extend .text-semibold;
+      }
+    }
+  }
+}
