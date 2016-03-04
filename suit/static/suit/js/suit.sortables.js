@@ -10,36 +10,36 @@
         // Detect if this is normal or mptt table
         var mptt_table = $inputs.first().closest('table').hasClass('table-mptt');
 
-        function perform_move($arrow, $row) {
+        function performMove($arrow, $row) {
             var $next, $prev;
             if (mptt_table) {
-                function get_padding($tr) {
+                function getPadding($tr) {
                     return parseInt($tr.find('th:first').css('padding-left'));
                 }
 
-                function find_with_children($tr) {
-                    var padding = get_padding($tr);
+                function findWithChildren($tr) {
+                    var padding = getPadding($tr);
                     return $tr.nextUntil(function () {
-                        return get_padding($(this)) <= padding
+                        return getPadding($(this)) <= padding
                     }).andSelf();
                 }
 
                 $('.selected').removeClass('selected');
-                var padding = get_padding($row);
-                var $rows_to_move = find_with_children($row);
+                var padding = getPadding($row);
+                var $rows_to_move = findWithChildren($row);
                 if ($arrow.data('dir') === 'down') {
                     $next = $rows_to_move.last().next();
-                    if ($next.length && get_padding($next) === padding) {
-                        var $after = find_with_children($next).last();
+                    if ($next.length && getPadding($next) === padding) {
+                        var $after = findWithChildren($next).last();
                         if ($after.length) {
                             $rows_to_move.insertAfter($after).addClass('selected');
                         }
                     }
                 } else {
                     $prev = $row.prevUntil(function () {
-                        return get_padding($(this)) <= padding
+                        return getPadding($(this)) <= padding
                     }).andSelf().first().prev();
-                    if ($prev.length && get_padding($prev) === padding) {
+                    if ($prev.length && getPadding($prev) === padding) {
                         $rows_to_move.insertBefore($prev).addClass('selected')
                     }
                 }
@@ -57,18 +57,19 @@
                     }
                 }
             }
+            markLastInline($row.parent());
         }
 
-        function on_arrow_click(e) {
+        function onArrowClick(e) {
             var $sortable = $(this);
             var $row = $sortable.closest(
                 $sortable.hasClass('sortable-stacked') ? 'div.inline-related' : 'tr'
             );
-            perform_move($sortable, $row);
+            performMove($sortable, $row);
             e.preventDefault();
         }
 
-        function create_link(text, direction, on_click_func, is_stacked) {
+        function createLink(text, direction, on_click_func, is_stacked) {
             return $('<a/>').attr('href', '#')
                 .addClass('sortable sortable-' + direction +
                     (is_stacked ? ' sortable-stacked' : ''))
@@ -76,14 +77,20 @@
                 .on('click', on_click_func);
         }
 
+        function markLastInline($rowParent) {
+            $rowParent.find(' > .last-sortable').removeClass('last-sortable');
+            $rowParent.find('tr.form-row:visible:last').addClass('last-sortable');
+        }
+
+        var $lastSortable;
         $inputs.each(function () {
             var $inline_sortable = $('<div class="inline-sortable"/>'),
                 icon = '<span class="fa fa-lg fa-arrow-up"></span>',
                 $sortable = $(this),
                 is_stacked = $sortable.hasClass('suit-sortable-stacked');
 
-            var $up_link = create_link(icon, 'up', on_arrow_click, is_stacked),
-                $down_link = create_link(icon.replace('-up', '-down'), 'down', on_arrow_click, is_stacked);
+            var $up_link = createLink(icon, 'up', onArrowClick, is_stacked),
+                $down_link = createLink(icon.replace('-up', '-down'), 'down', onArrowClick, is_stacked);
 
             if (is_stacked) {
                 var $sortable_row = $sortable.closest('div.form-group'),
@@ -99,9 +106,11 @@
                 $sortable.parent().append($inline_sortable);
                 $inline_sortable.append($up_link);
                 $inline_sortable.append($down_link);
+                $lastSortable = $sortable;
             }
-
         });
+
+        $lastSortable && markLastInline($lastSortable.closest('.form-row').parent());
 
         // Filters out unchanged checkboxes, selects and sortable field itself
         function filter_unchanged(i, input) {
@@ -146,7 +155,7 @@
                     if (is_changelist
                         || $set_block.hasClass('has_original')
                         || $changed_fields.serializeArray().length
-                        // Since jQuery serialize() doesn't include type=file do additional check
+                            // Since jQuery serialize() doesn't include type=file do additional check
                         || $changed_fields.find(":input[type='file']").addBack().length) {
                         value = i++;
                         $input.val(value);
@@ -156,7 +165,8 @@
         }
 
         Suit.after_inline.register('bind_sortable_arrows', function (prefix, row) {
-            $(row).find('.suit-sortable').on('click', on_arrow_click);
+            $(row).find('.suit-sortable').on('click', onArrowClick);
+            markLastInline($(row).parent());
         });
     };
 

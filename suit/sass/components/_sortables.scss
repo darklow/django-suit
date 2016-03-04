@@ -34,6 +34,8 @@ tr:first-child td .inline-sortable .sortable-up {
   cursor: default;
 }
 .tabular {
+  // Class added by sortable JS
+  tr.last-sortable,
   tr.form-row:nth-last-child(2)
     // Can't use following 3rd child as it will be wrong if max inlines limit is reached
     //tr.form-row:nth-last-child(3),

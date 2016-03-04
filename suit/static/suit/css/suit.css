@@ -172,7 +172,7 @@ input[type="search"] { box-sizing: inherit; -webkit-appearance: none; }
 
 output { display: inline-block; }
 
-[hidden] { display: none; }
+[hidden] { display: none !important; }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { margin-bottom: 0.5rem; font-family: inherit; font-weight: 500; line-height: 1.1; color: inherit; }
 
@@ -1884,7 +1884,7 @@ fieldset.collapse { display: block; }
 
 .inline-group .inline-related fieldset.suit-form { margin-bottom: 1rem; }
 
-.inline-group .last-related + .empty-form + .add-row { margin-top: -1rem; }
+.inline-group .inline-related + .empty-form + .add-row { margin-top: -1rem; }
 
 .inline-group div.add-row { border-top: 2px solid #f1f1f1; margin-bottom: 2rem; padding: 0.4rem 0.8rem; background-color: #f6f6f6; }
 
@@ -1905,7 +1905,7 @@ fieldset.collapse { display: block; }
 
 tr:first-child td .inline-sortable .sortable-up { visibility: hidden; cursor: default; }
 
-.tabular tr.form-row:nth-last-child(2) td .inline-sortable .sortable-down { visibility: hidden; cursor: default; }
+.tabular tr.last-sortable td .inline-sortable .sortable-down, .tabular tr.form-row:nth-last-child(2) td .inline-sortable .sortable-down { visibility: hidden; cursor: default; }
 
 #result_list tr:last-child td .inline-sortable .sortable-down, .tabular table tr:last-child td .inline-sortable .sortable-down, table#change-history tr:last-child td .inline-sortable .sortable-down { visibility: hidden; cursor: default; }
 
