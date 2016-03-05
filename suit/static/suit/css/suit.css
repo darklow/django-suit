@@ -1276,7 +1276,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 
 .nav-tabs .dropdown-menu { margin-top: -1px; border-top-right-radius: 0; border-top-left-radius: 0; }
 
-.card { position: relative; display: block; margin-bottom: 0.75rem; background-color: #fff; border: 1px solid #e5e5e5; border-radius: 0.25rem; }
+.card { position: relative; display: block; margin-bottom: 0.75rem; background-color: #fff; border: 1px solid transparent; border-radius: 0; }
 
 .card-block { padding: 1.25rem; }
 
@@ -1290,15 +1290,15 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 
 .card-link + .card-link { margin-left: 1.25rem; }
 
-.card > .list-group:first-child .list-group-item:first-child { border-radius: 0.25rem 0.25rem 0 0; }
+.card > .list-group:first-child .list-group-item:first-child { border-radius: 0 0 0 0; }
 
-.card > .list-group:last-child .list-group-item:last-child { border-radius: 0 0 0.25rem 0.25rem; }
+.card > .list-group:last-child .list-group-item:last-child { border-radius: 0 0 0 0; }
 
-.card-header { padding: 0.75rem 1.25rem; background-color: #f5f5f5; border-bottom: 1px solid #e5e5e5; }
+.card-header { padding: 0.75rem 1.25rem; background-color: #f5f5f5; border-bottom: 1px solid transparent; }
 
 .card-header:first-child { border-radius: 0.25rem 0.25rem 0 0; }
 
-.card-footer { padding: 0.75rem 1.25rem; background-color: #f5f5f5; border-top: 1px solid #e5e5e5; }
+.card-footer { padding: 0.75rem 1.25rem; background-color: #f5f5f5; border-top: 1px solid transparent; }
 
 .card-footer:last-child { border-radius: 0 0 0.25rem 0.25rem; }
 
@@ -2077,7 +2077,7 @@ fieldset input[type=text].vIntegerField, fieldset input[type=text].vBigIntegerFi
 
 .widget-AdminSplitDateTime .datetimeshortcuts a:not(:first-child), .widget-AdminDateWidget .datetimeshortcuts a:not(:first-child), .widget-AdminTimeWidget .datetimeshortcuts a:not(:first-child) { vertical-align: top; }
 
-.widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink'], .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink'], .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink'], .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink'], .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink'], .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink'] { padding: 0.6rem 0.75rem; position: absolute; left: -1px; z-index: 0; text-align: center; white-space: nowrap; }
+.widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink'], .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink'], .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink'], .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink'], .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink'], .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink'] { padding: 0.57rem 0.75rem; position: absolute; left: -1px; z-index: 0; text-align: center; white-space: nowrap; }
 
 .widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink']:hover, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink']:focus, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink']:hover, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink']:focus, .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink']:hover, .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink']:focus, .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink']:hover, .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink']:focus, .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink']:hover, .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink']:focus, .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink']:hover, .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink']:focus { text-decoration: none; color: #0d64a2; }
 
@@ -2273,6 +2273,8 @@ body.change-form .breadcrumbs li { float: left; }
 .nav-tabs-suit .nav-link.active, .nav-tabs-suit .nav-link.active:focus { color: #222; }
 
 .nav-tabs-suit .nav-link.has-error, .nav-tabs-suit .nav-link.has-error.active, .nav-tabs-suit .nav-link.has-error:focus { color: #a94442; }
+
+.card { box-shadow: 0 1px 0 0 #e4e4e4; }
 
 body { padding: 0; margin: 0; }
 

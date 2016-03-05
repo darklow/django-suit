@@ -1,0 +1,4 @@
+// Cards should act like
+.card {
+  @include suit-box-shadow();
+}
