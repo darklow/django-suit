@@ -36,6 +36,21 @@ class Country(models.Model):
         verbose_name_plural = 'Countries'
 
 
+class City(models.Model):
+    name = models.CharField(max_length=64)
+    country = models.ForeignKey(Country)
+    is_capital = models.BooleanField()
+    area = models.BigIntegerField(blank=True, null=True)
+    population = models.BigIntegerField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Cities (django-select2)"
+        unique_together = ('name', 'country')
+
+
 class Showcase(models.Model):
     name = models.CharField(max_length=64)
     help_text = models.CharField(max_length=64,

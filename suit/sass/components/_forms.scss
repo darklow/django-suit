@@ -21,6 +21,10 @@ fieldset {
     display: inline-block;
     @extend .text-muted;
   }
+  // Clear float
+  h2 + .description + * {
+    clear: both;
+  }
   .form-row:not(.form-group):not(tr) {
     display: flex;
     background-color: $form-bg;
@@ -53,6 +57,15 @@ fieldset {
         flex: 0 0 100%;
       }
     }
+  }
+}
+// Remove bottom border from suit-include fieldsets
+.suit-include {
+  fieldset:not(.suit-form):not(.module) {
+    box-shadow: none;
+  }
+  .card:last-child {
+    margin-bottom: 0;
   }
 }
 // Django "plain" and BS4 markup

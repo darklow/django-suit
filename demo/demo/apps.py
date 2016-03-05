@@ -9,6 +9,9 @@ class SuitConfig(DjangoSuitConfig):
             ChildItem(model='demo.continent'),
             ChildItem(model='demo.showcase'),
         ]),
+        ParentItem('Integrations', children=[
+            ChildItem(model='demo.city'),
+        ]),
         ParentItem('Users', children=[
             ChildItem(model='auth.user'),
             ChildItem('User groups', 'auth.group'),

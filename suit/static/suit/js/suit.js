@@ -150,8 +150,8 @@ window.Suit = Suit;
                 var foundError;
                 $tabLinks.each(function () {
                     var $link = $(this);
-                    if (tabContents($link).find('.error').length != 0) {
-                        $link.addClass('error');
+                    if (tabContents($link).find('.error, .errorlist').length != 0) {
+                        $link.addClass('has-error');
                         $link.trigger('click');
                         foundError = true;
                     }
@@ -163,11 +163,16 @@ window.Suit = Suit;
         }
 
         $tabLinks.click(function () {
-            var $link = $(this);
+            var $link = $(this),
+                showEvent = $.Event('shown.suit.tab', {
+                    relatedTarget: $link,
+                    tab: $link.attr('href').replace('#', '')
+                });
             $link.parent().parent().find('.active').removeClass('active');
             $link.addClass('active');
             $('.' + tabPrefix).removeClass('show').addClass('hidden-xs-up');
-            tabContents($link).removeClass('hidden-xs-up').addClass('show')
+            tabContents($link).removeClass('hidden-xs-up').addClass('show');
+            $link.trigger(showEvent);
         });
 
         activateTabs();

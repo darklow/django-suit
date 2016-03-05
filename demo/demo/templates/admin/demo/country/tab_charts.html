@@ -1,0 +1,57 @@
+<fieldset class="suit-form">
+    <h2>Statistics</h2>
+    <div class="description">Google Charts example initiated on shown.suit.tab event</div>
+
+    <div class="form-group row form-row">
+        <label class="form-control-label col-xs-12 col-sm-3 col-md-2">
+            Activities
+        </label>
+        <div class="col-xs-12 col-sm-9 col-md-10 col-lg-9">
+            <div class="form-control-static">
+                <div id="piechart" style="width: 100%; height: 300px;"></div>
+            </div>
+        </div>
+    </div>
+
+</fieldset>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+    // Init Google Chart API
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(initChart);
+
+    // Init chart on tab click
+    django.jQuery('#suit_form_tab_charts').on('shown.suit.tab', initChart);
+
+    // Some handling to ensure Google API is loaded and not drawn yet
+    var chartIsDrawn, googleApiLoaded;
+    function initChart(e) {
+        googleApiLoaded = (typeof google !== 'undefined' && typeof google.visualization !== 'undefined');
+        if (googleApiLoaded && !chartIsDrawn &&
+                (window.location.hash == '#charts' || (e && e.tab && e.tab === 'charts'))) {
+            drawChart();
+            chartIsDrawn = true;
+        }
+    }
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Work', 11],
+            ['Eat', 2],
+            ['Commute', 2],
+            ['Watch TV', 2],
+            ['Sleep', 7]
+        ]);
+
+        var options = {
+            title: 'Activities of citizens',
+            pieHole: 0.4,
+            backgroundColor: 'transparent'
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+    }
+</script>

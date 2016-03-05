@@ -9,6 +9,7 @@
     }
   }
   .nav-link {
+    border-radius: 2px;
     padding: 0.65em 1.5em;
     background-color: #fff;
     border-color: $nav-tabs-border-color;
@@ -21,6 +22,11 @@
       &, &:focus {
         color: #222;
         @extend .text-semibold;
+      }
+    }
+    &.has-error {
+      &, &.active, &:focus {
+        color: $state-danger-text;
       }
     }
   }

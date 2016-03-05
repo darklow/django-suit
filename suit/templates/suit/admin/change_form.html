@@ -9,7 +9,7 @@
             <ul id="suit_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
                 {% for tab in adminform.model_admin.suit_form_tabs %}
                     <li class="nav-item">
-                        <a href="#{{ tab.0 }}" class="nav-link">{{ tab.1 }}</a>
+                        <a href="#{{ tab.0 }}" id="suit_form_tab_{{ tab.0 }}" class="nav-link">{{ tab.1 }}</a>
                     </li>
                 {% endfor %}
             </ul>
@@ -27,6 +27,14 @@
 
     {{ block.super }}
 
+{% endblock %}
+
+{% block inline_field_sets %}
+    {% for inline_admin_formset in inline_admin_formsets %}
+        <div class="{{ inline_admin_formset.opts.suit_classes }}">
+            {% include inline_admin_formset.opts.template %}
+        </div>
+    {% endfor %}
 {% endblock %}
 
 {% block after_field_sets %}

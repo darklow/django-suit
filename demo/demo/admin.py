@@ -14,6 +14,25 @@ from .views import *
 admin.site.site_header = 'Django Suit'
 
 
+class CityInlineForm(ModelForm):
+    class Meta:
+        widgets = {
+            # 'area': EnclosedInput(prepend='icon-globe', append='km<sup>2</sup>',
+            #                       attrs={'class': 'input-small'}),
+            # 'population': EnclosedInput(append='icon-user',
+            #                             attrs={'class': 'input-small'}),
+        }
+
+
+class CityInline(admin.TabularInline):
+    form = CityInlineForm
+    model = City
+    min_num = 3
+    extra = 0
+    verbose_name_plural = 'Cities'
+    suit_classes = 'suit-tab suit-tab-cities'
+
+
 class CountryForm(ModelForm):
     class Meta:
         widgets = {
@@ -39,6 +58,7 @@ class CountryAdmin(admin.ModelAdmin):
     list_filter = ('continent',)
     list_select_related = True
     date_hierarchy = 'independence_day'
+    inlines = (CityInline,)
 
     # fields = ('name', 'continent', 'code', 'independence_day')
     fieldsets = [
@@ -74,13 +94,15 @@ class CountryAdmin(admin.ModelAdmin):
         ('general', 'General'),
         ('cities', 'Cities'),
         ('flag', 'Flag'),
+        ('charts', 'Charts'),
         ('info', 'Info on tabs')
     )
 
     suit_form_includes = (
-        ('admin/demo/country/tab_disclaimer.html', 'middle', 'cities'),
+        ('admin/demo/country/tab_notice.html', 'middle', 'cities'),
         ('admin/demo/country/tab_flag.html', '', 'flag'),
-        ('admin/demo/country/tab_info.html', '', 'info'),
+        ('admin/demo/country/tab_charts.html', '', 'charts'),
+        ('admin/demo/country/tab_docs.html', '', 'info'),
     )
 
 
@@ -103,7 +125,7 @@ class CountryInlineForm(ModelForm):
 class CountryInline(SortableTabularInline):
     form = CountryInlineForm
     model = Country
-    fields = ('name', 'code', 'population',)
+    fields = ('name', 'code', 'population', 'continent')
     extra = 1
     verbose_name_plural = 'Countries (Sortable example)'
     sortable = 'order'
