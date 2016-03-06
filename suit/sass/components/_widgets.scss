@@ -1,10 +1,8 @@
 fieldset {
   input[type=text],
+  input[type=number],
   input[type=password],
   .vTextField,
-  .vURLField,
-  .vIntegerField,
-  .vBigIntegerField,
   .vLargeTextField,
   .vTimeField,
   .vDateField {
@@ -18,9 +16,10 @@ fieldset {
     @extend .c-select;
     border-radius: $input-border-radius;
   }
-  input[type=text] {
+  input {
+    &[type=number],
     &.vIntegerField,
-    &.vBigIntegerField,
+    &.vIntegerField,
     &.vDateField,
     &.vTimeField,
     &.vForeignKeyRawIdAdminField {
