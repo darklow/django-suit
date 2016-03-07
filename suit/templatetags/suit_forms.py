@@ -29,7 +29,7 @@ def get_form_class(field, fieldset, idx):
     # Try field config first
     if not field_class:
         form_size_fields = form_size.get('fields')
-        if form_size_fields:
+        if form_size_fields and hasattr(field, 'name'):
             field_class = form_size_fields.get(field.name)
 
     # Detect widget class
