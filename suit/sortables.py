@@ -1,4 +1,4 @@
-from copy import deepcopy
+from copy import deepcopy, copy
 from django.contrib import admin
 from django.contrib.admin.views.main import ChangeList
 from django.contrib.contenttypes.admin import GenericTabularInline, GenericStackedInline
@@ -65,10 +65,12 @@ class SortableGenericTabularInline(SortableTabularInlineBase,
                                    GenericTabularInline):
     pass
 
+
 class SortableStackedInlineBase(SortableModelAdminBase):
     """
     Sortable stacked inline
     """
+
     def __init__(self, *args, **kwargs):
         super(SortableStackedInlineBase, self).__init__(*args, **kwargs)
         self.ordering = (self.sortable,)
@@ -115,6 +117,7 @@ class SortableGenericStackedInline(SortableStackedInlineBase,
                                    GenericStackedInline):
     pass
 
+
 class SortableModelAdmin(SortableModelAdminBase, admin.ModelAdmin):
     """
     Sortable change list
@@ -124,17 +127,13 @@ class SortableModelAdmin(SortableModelAdminBase, admin.ModelAdmin):
     def __init__(self, *args, **kwargs):
         super(SortableModelAdmin, self).__init__(*args, **kwargs)
 
-        self.ordering = (self.sortable,)
-        if self.list_display and self.sortable not in self.list_display:
-            self.list_display = list(self.list_display) + [self.sortable]
+        # Keep originals for restore
+        self._original_ordering = copy(self.ordering)
+        self._original_list_display = copy(self.list_display)
+        self._original_list_editable = copy(self.list_editable)
+        self._original_exclude = copy(self.exclude)
 
-        self.list_editable = self.list_editable or []
-        if self.sortable not in self.list_editable:
-            self.list_editable = list(self.list_editable) + [self.sortable]
-
-        self.exclude = self.exclude or []
-        if self.sortable not in self.exclude:
-            self.exclude = list(self.exclude) + [self.sortable]
+        self.enable_sortable()
 
     def merge_form_meta(self, form):
         """
@@ -155,6 +154,27 @@ class SortableModelAdmin(SortableModelAdminBase, admin.ModelAdmin):
 
     def get_changelist(self, request, **kwargs):
         return SortableChangeList
+
+    def enable_sortable(self):
+        self.ordering = (self.sortable,)
+        if self.list_display and self.sortable not in self.list_display:
+            self.list_display = list(self.list_display) + [self.sortable]
+
+        self.list_editable = self.list_editable or []
+        if self.sortable not in self.list_editable:
+            self.list_editable = list(self.list_editable) + [self.sortable]
+
+        self.exclude = self.exclude or []
+        if self.sortable not in self.exclude:
+            self.exclude = list(self.exclude) + [self.sortable]
+
+    def disable_sortable(self):
+        if self.sortable not in self.list_display:
+            return
+        self.ordering = self._original_ordering
+        self.list_display = self._original_list_display
+        self.list_editable = self._original_list_editable
+        self.exclude = self._original_exclude
 
     def save_model(self, request, obj, form, change):
         if not obj.pk:
