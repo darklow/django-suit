@@ -34,7 +34,9 @@ class SortableChangeList(ChangeList):
     """
 
     def get_ordering(self, request, queryset):
-        return [self.model_admin.sortable, '-' + self.model._meta.pk.name]
+        if self.model_admin.sortable_is_enabled():
+            return [self.model_admin.sortable, '-' + self.model._meta.pk.name]
+        return super(SortableChangeList, self).get_ordering(request, queryset)
 
 
 class SortableTabularInlineBase(SortableModelAdminBase):
@@ -169,12 +171,15 @@ class SortableModelAdmin(SortableModelAdminBase, admin.ModelAdmin):
             self.exclude = list(self.exclude) + [self.sortable]
 
     def disable_sortable(self):
-        if self.sortable not in self.list_display:
+        if not self.sortable_is_enabled():
             return
         self.ordering = self._original_ordering
         self.list_display = self._original_list_display
         self.list_editable = self._original_list_editable
         self.exclude = self._original_exclude
+
+    def sortable_is_enabled(self):
+        return self.list_display and self.sortable in self.list_display
 
     def save_model(self, request, obj, form, change):
         if not obj.pk:
