@@ -1,5 +1,5 @@
 from django import template
-from django.core.handlers.wsgi import WSGIRequest
+from django.http import HttpRequest
 from suit.menu import MenuManager
 
 register = template.Library()
@@ -10,7 +10,7 @@ def get_menu(context, request):
     """
     :type request: WSGIRequest
     """
-    if not isinstance(request, WSGIRequest):
+    if not isinstance(request, HttpRequest):
         return None
 
     available_apps = context.get('available_apps')
