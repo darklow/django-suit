@@ -33,13 +33,9 @@ def get_form_class(field, fieldset, idx):
             field_class = form_size_fields.get(field.name)
 
     # Detect widget class
-    try:
-        widget_class_name = field.field.widget.__class__.__name__
-        # Add CSS class for field by widget name, for easier style targeting
-        if idx == 1:
-            extra_class = ' widget-%s' % widget_class_name
-    except AttributeError:
-        widget_class_name = None
+    widget_class_name = suit_form_field_widget_class(field)
+    if idx == 1:
+        extra_class = ' %s' % widget_class_name
 
     # Try widgets config
     if not field_class and widget_class_name:
@@ -77,3 +73,15 @@ def suit_form_field_class(field, fieldset):
     Get CSS class for form-row field column
     """
     return get_form_class(field, fieldset, 1)
+
+
+@register.filter
+def suit_form_field_widget_class(field):
+    """
+    Get CSS class for field by widget name, for easier styling
+    """
+    try:
+        widget_class_name = field.field.widget.__class__.__name__
+        return ' widget-%s' % widget_class_name
+    except AttributeError:
+        return ''

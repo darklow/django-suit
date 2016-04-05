@@ -147,7 +147,7 @@ fieldset {
         padding-right: .55rem;
       }
     }
-    .form-control-label + div[class^='col-'] {
+    .form-control-label + div[class*='col-'] {
       padding-top: $suit-form-padding-vertical;
       padding-bottom: $suit-form-padding-vertical;
       @include media-breakpoint-down(xs) {
@@ -159,12 +159,12 @@ fieldset {
       .form-control-label {
         padding-top: $suit-label-padding-top + $suit-padding-first-extra;
       }
-      .form-control-label + div[class^='col-'] {
+      .form-control-label + div[class*='col-'] {
         padding-top: $suit-form-padding-vertical + $suit-padding-first-extra;
       }
     }
     &:last-child {
-      .form-control-label + div[class^='col-'] {
+      .form-control-label + div[class*='col-'] {
         padding-bottom: $suit-form-padding-vertical + $suit-padding-first-extra;
       }
     }

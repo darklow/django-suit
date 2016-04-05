@@ -165,6 +165,14 @@ fieldset {
       }
     }
 }
+.widget-CheckboxInput, [class*='CheckboxInput'], .tabular .form-row {
+  input[type="checkbox"] {
+    margin-top: .65rem;
+  }
+  > .text-help {
+    margin-top: .25rem;
+  }
+}
 .calendarbox {
   z-index: 3;
   > div:first-child {

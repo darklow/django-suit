@@ -1938,15 +1938,15 @@ fieldset .form-row > ul, fieldset .form-row .errorlist, fieldset .suit-form .for
 
 .suit-form .form-group label.required { padding-right: .55rem; }
 
-.suit-form .form-group .form-control-label + div[class^='col-'] { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.suit-form .form-group .form-control-label + div[class*='col-'] { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 
-@media (max-width: 543px) { .suit-form .form-group .form-control-label + div[class^='col-'] { padding-top: 0; } }
+@media (max-width: 543px) { .suit-form .form-group .form-control-label + div[class*='col-'] { padding-top: 0; } }
 
 .suit-form .form-group:first-child .form-control-label { padding-top: 1.3rem; }
 
-.suit-form .form-group:first-child .form-control-label + div[class^='col-'] { padding-top: 0.75rem; }
+.suit-form .form-group:first-child .form-control-label + div[class*='col-'] { padding-top: 0.75rem; }
 
-.suit-form .form-group:last-child .form-control-label + div[class^='col-'] { padding-bottom: 0.75rem; }
+.suit-form .form-group:last-child .form-control-label + div[class*='col-'] { padding-bottom: 0.75rem; }
 
 .col-multi-fields { padding-bottom: 0 !important; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
@@ -2104,6 +2104,10 @@ fieldset input[type=number], fieldset input.vIntegerField, fieldset input.vInteg
 .calendarbox .calendar-cancel a, .clockbox .calendar-cancel a { padding: .3rem 0; display: block; color: #fff; border-bottom-left-radius: 0.25rem; border-bottom-right-radius: 0.25rem; text-align: center; background-color: #828a9f; }
 
 .calendarbox .calendar-cancel a:hover, .clockbox .calendar-cancel a:hover { text-decoration: none; background-color: #5d6478; }
+
+.widget-CheckboxInput input[type="checkbox"], [class*='CheckboxInput'] input[type="checkbox"], .tabular .form-row input[type="checkbox"] { margin-top: .65rem; }
+
+.widget-CheckboxInput > .text-help, [class*='CheckboxInput'] > .text-help, .tabular .form-row > .text-help { margin-top: .25rem; }
 
 .calendarbox { z-index: 3; }
 
