@@ -1,0 +1,3 @@
+{% load i18n %}
+{% load url from compat %}
+{% if can_su_login %}<a class="btn btn-default" href="{% url 'su_login' %}">{% trans "Login as other user" %}</a>{% endif %}
