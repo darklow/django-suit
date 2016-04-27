@@ -2,6 +2,7 @@ from copy import deepcopy, copy
 from django.contrib import admin
 from django.contrib.admin.views.main import ChangeList
 from django.contrib.contenttypes.admin import GenericTabularInline, GenericStackedInline
+from django.contrib.admin.templatetags.admin_static import static
 from django.forms import ModelForm, NumberInput
 from django.db import models
 
@@ -13,7 +14,7 @@ class SortableModelAdminBase(object):
     sortable = 'order'
 
     class Media:
-        js = ('suit/js/suit.sortables.js',)
+        js = (static('suit/js/suit.sortables.js'),)
 
 
 class SortableListForm(ModelForm):
