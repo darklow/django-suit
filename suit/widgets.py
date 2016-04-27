@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import Textarea, ClearableFileInput
 from django.utils.safestring import mark_safe
-from django.contrib.admin.templatetags.admin_static import static
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
 class AutosizedTextarea(Textarea):

@@ -2,7 +2,7 @@ from copy import deepcopy, copy
 from django.contrib import admin
 from django.contrib.admin.views.main import ChangeList
 from django.contrib.contenttypes.admin import GenericTabularInline, GenericStackedInline
-from django.contrib.admin.templatetags.admin_static import static
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.forms import ModelForm, NumberInput
 from django.db import models
 
