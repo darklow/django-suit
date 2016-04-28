@@ -32,12 +32,12 @@ def get_form_class(field, fieldset, idx):
         if form_size_fields and hasattr(field, 'name'):
             field_class = form_size_fields.get(field.name)
 
-    # Detect widget class
-    widget_class_name = suit_form_field_widget_class(field)
+    # Add widgets CSS class
     if idx == 1:
-        extra_class = ' %s' % widget_class_name
+        extra_class = ' %s' % suit_form_field_widget_class(field)
 
     # Try widgets config
+    widget_class_name = get_field_widget_class_name(field)
     if not field_class and widget_class_name:
         form_size_widgets = form_size.get('widgets')
         if form_size_widgets:
@@ -53,10 +53,19 @@ def get_form_class(field, fieldset, idx):
     if not field_class:
         field_class = form_size.get('default')
 
-    assert len(field_class), \
-        'Django Suit form_size definitions must be tuples containing two string items'
+    assert isinstance(field_class, (tuple, list)) and len(field_class) == 2, \
+        u'Django Suit form_size definition must be list or tuple containing two string items. ' \
+        u'You have: "%s" (%s)' % (field_class, field_class.__class__)
 
     return field_class[idx] + extra_class
+
+
+def get_field_widget_class_name(field):
+    try:
+        widget_class_name = field.field.widget.__class__.__name__
+        return widget_class_name
+    except AttributeError:
+        pass
 
 
 @register.filter
@@ -80,8 +89,7 @@ def suit_form_field_widget_class(field):
     """
     Get CSS class for field by widget name, for easier styling
     """
-    try:
-        widget_class_name = field.field.widget.__class__.__name__
-        return ' widget-%s' % widget_class_name
-    except AttributeError:
-        return ''
+    widget_class_name = get_field_widget_class_name(field)
+    if widget_class_name:
+        return 'widget-%s' % widget_class_name
+    return ''
