@@ -20,7 +20,7 @@
                     <div class="multi-field {{ field.field|suit_form_field_widget_class }} {% if field.errors %} has-danger errors{% endif %}">
                     {% if not forloop.first %}
                         <label for="{{ field.field.id_for_label }}" class="form-control-label col-xs-12 col-sm-3 col-md-2">{{ field.label_tag }}</label>
-                        <div class="multi-field-content{{ field.field|suit_form_field_widget_class }}">
+                        <div class="multi-field-content {{ field.field|suit_form_field_widget_class }}">
                     {% endif %}
                 {% endif %}
 
