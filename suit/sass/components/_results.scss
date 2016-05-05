@@ -1,6 +1,6 @@
 $table-border-color: darken(#fff, 5%);
 ;
-$tr-odd-bg-color: darken(#fff, 3%);
+$tr-odd-bg-color: $table-bg-accent;
 $tr-hover-bg-color: darken(#fff, 10%);
 $tr-odd-hover-bg-color: darken($tr-odd-bg-color, 6%);
 

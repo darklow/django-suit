@@ -678,7 +678,7 @@ pre code { padding: 0; font-size: inherit; color: inherit; background-color: tra
 
 .table-bordered thead th, .table-bordered thead td { border-bottom-width: 2px; }
 
-.table-striped tbody tr:nth-of-type(odd) { background-color: #f9f9f9; }
+.table-striped tbody tr:nth-of-type(odd) { background-color: #f7f7f7; }
 
 .table-hover tbody tr:hover { background-color: #f5f5f5; }
 
@@ -2277,6 +2277,20 @@ body.change-form .breadcrumbs li { float: left; }
 .nav-tabs-suit .nav-link.active, .nav-tabs-suit .nav-link.active:focus { color: #222; }
 
 .nav-tabs-suit .nav-link.has-error, .nav-tabs-suit .nav-link.has-error.active, .nav-tabs-suit .nav-link.has-error:focus { color: #a94442; }
+
+.table, .tabular table, table#change-history { background-color: #fff; }
+
+.table-inverse { color: #eceeef; background-color: #fff; }
+
+.table-inverse th, .table-inverse td, .table-inverse thead th { border-color: #f2f2f2; font-weight: normal; }
+
+.table-inverse thead th { background-color: #5d6478; }
+
+.table-inverse:not(.table-bordered) thead th:not(:first-child) { box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.2); }
+
+.table-inverse tbody th, .table-inverse tbody td { color: #373a3c; }
+
+.thead-inverse th { background-color: #5d6478; color: #eceeef; font-weight: normal; }
 
 .card { box-shadow: 0 1px 0 0 #e4e4e4; }
 

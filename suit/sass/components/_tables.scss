@@ -1,0 +1,33 @@
+.table {
+  background-color: #fff;
+}
+.table-inverse {
+  color: $gray-lighter;
+  background-color: #fff;
+  th,
+  td,
+  thead th {
+    border-color: $table-border-color;
+    font-weight: normal;
+  }
+  thead th {
+    background-color: $inverse-lightest;
+  }
+  &:not(.table-bordered) {
+    thead th:not(:first-child) {
+      box-shadow: inset 1px 0 0 rgba(255, 255, 255, .2);
+    }
+  }
+  tbody {
+    th, td {
+      color: $body-color;
+    };
+  }
+}
+.thead-inverse {
+  th {
+    background-color: $inverse-lightest;
+    color: $gray-lighter;
+    font-weight: normal;
+  }
+}
