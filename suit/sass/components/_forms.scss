@@ -76,6 +76,12 @@ fieldset {
     margin-top: .5rem;
     display: block;
   }
+  // Help text right after checkbox only (User permissions for example)
+  input[type="checkbox"] + .text-help,
+  .form-inline .text-help {
+    display: inline;
+    margin-left: .5rem;
+  }
   .form-inline {
     .text-help {
       display: inline-block;

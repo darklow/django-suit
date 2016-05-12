@@ -324,3 +324,71 @@ fieldset {
     }
   }
 }
+/* Two column selector */
+.selector {
+ display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: flex-start;
+  .selector-chooser {
+    //align-items: center;
+    @include reset-list();
+    //padding: 1rem;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    > * {
+      height: 20px;
+    }
+  }
+  .selector-available, .selector-chosen {
+    flex: 1 1 200px;
+    h2 {
+      font-size: 16px;
+      margin-top: .1rem;
+      //margin: 0;
+      //padding: 0;
+    }
+    p {
+      margin: 0;
+    }
+    label {
+      display: none;
+    }
+    select {
+      @extend .form-control;
+      padding: .25rem 0;
+      display: block;
+    }
+  }
+  .selector-available {
+    //margin-bottom: 20px;
+    p {
+      //margin-bottom: 20px;
+      //padding-bottom: -20px;
+    }
+    input {
+      display: block;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    select {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin-top: -1px;
+      min-height: 142px;
+    }
+  }
+  .selector-chosen {
+    select {
+      min-height: 162px;
+    }
+  }
+}
