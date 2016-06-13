@@ -392,3 +392,18 @@ fieldset {
     }
   }
 }
+.radiolist {
+  @include reset-list();
+  margin-top: 0.375rem;
+  input {
+    margin-right: .35rem;
+  }
+  &.inline {
+    li {
+      display: inline-block;
+      &:not(:last-child) {
+        margin-right: .5rem;
+      }
+    }
+  }
+}
