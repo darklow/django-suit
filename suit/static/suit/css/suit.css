@@ -2423,6 +2423,24 @@ body.change-form #container br.clear:last-child { display: none; }
 
 #content-main > .object-tools > li > a:not(.btn).addlink:before { margin-right: 3px; display: inline-block; font-family: FontAwesome; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; content: ""; }
 
+/* Sticky footer styles  */
+@media (min-width: 544px) { html { position: relative; min-height: 100%; }
+  body { margin-bottom: 66px; }
+  .footer { position: absolute; bottom: 0; width: 100%; min-height: 66px; } }
+
+/* Styles */
+.footer { background-color: #e4e4e4; color: #55595c; font-size: 0.929rem; }
+
+.footer > .container-fluid { padding: 1rem 1.875rem; }
+
+.footer > .container-fluid > .row { -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; -webkit-align-content: center; -ms-flex-line-pack: center; align-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; -ms-grid-row-align: center; align-items: center; }
+
+@media (max-width: 543px) { .footer > .container-fluid > .row > div:not(:first-child) { margin-top: .75rem; } }
+
+.footer .footer-links a { white-space: nowrap; }
+
+.footer .footer-links a:not(:last-child) { margin-right: .75rem; }
+
 body.login #header #branding { -webkit-flex-basis: 100%; -ms-flex-preferred-size: 100%; flex-basis: 100%; padding-left: 0; }
 
 body.login #header #branding #site-name { margin: .25rem 0; }

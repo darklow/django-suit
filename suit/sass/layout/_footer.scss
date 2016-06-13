@@ -1,0 +1,46 @@
+/* Sticky footer styles  */
+$footer-height: 66px;
+@include media-breakpoint-up(sm) {
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    margin-bottom: $footer-height;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: $footer-height;
+  }
+}
+/* Styles */
+.footer {
+  background-color: darken($body-bg, 5%);
+  color: $gray;
+  font-size: $font-size-sm;
+  > .container-fluid {
+    padding: 1rem $grid-gutter-width;
+    > .row {
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      > div {
+        &:not(:first-child) {
+          @include media-breakpoint-down(xs) {
+            margin-top: .75rem;
+          }
+        }
+      }
+    }
+  }
+  .footer-links {
+    a {
+      white-space: nowrap;
+      &:not(:last-child) {
+        margin-right: .75rem;
+      }
+    }
+  }
+}

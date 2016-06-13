@@ -27,6 +27,46 @@
 {% endblock %}
 
 {% block footer %}
+    {% if not is_popup %}
+        <footer class="footer">
+            <div class="container-fluid">
+                {% block footer_content %}
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-3 footer-links">
+                            {% block footer_links %}
+                                <a href="http://djangosuit.com/support/" target="_blank" class="icon"><i class="icon-question-sign"></i>Support</a>
+                                <a href="http://djangosuit.com/pricing/" target="_blank" class="icon"><i class="icon-bookmark"></i>Licence</a>
+                                <a href="http://github.com/darklow/django-suit/issues" target="_blank" class="icon"><i class="icon-comment"></i>Report a bug</a>
+                            {% endblock %}
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 text-sm-center footer-copyright">
+                            {% block copyright %}
+                                Copyright &copy;
+                                <span class="hidden-md-down">2013-</span>{% now "Y" %} DjangoSuit.com
+                                <br>Developed by
+                                <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>
+                            {% endblock %}
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3 text-sm-right footer-version">
+                            {% block footer_branding %}
+                                {% with site_header|default:_('Django administration') as admin_name %}
+                                    {{ admin_name }}
+                                    {% if admin_name == 'Django Suit' %}
+                                        v{{ 'version'|suit_conf }}
+                                    {% endif %}
+                                {% endwith %}
+                            {% endblock %}
+                        </div>
+
+                    </div>
+                {% endblock %}
+            </div>
+        </footer>
+    {% endif %}
+
     {{ block.super }}
     <script src="{% static "suit/js/suit.js" %}"></script>
     {% if cl.formset or action_form and 'toggle_changelist_top_actions'|suit_conf %}
