@@ -1,0 +1,13 @@
+{% extends "admin/change_list.html" %}
+{# Extended just to add disclaimer #}
+
+{% block search %}
+    {{ block.super }}
+    <div class="blockquote">
+        An example of
+        <a href="http://django-suit.readthedocs.org/en/develop/sortables.html#change-list-sortable" target="_blank">changelist sortable</a> and also
+        <a href="http://django-suit.readthedocs.org/en/develop/list_attributes.html#list-row-attributes" target="_blank">suit_row_attributes</a>,
+        <a href="http://django-suit.readthedocs.org/en/develop/list_attributes.html#list-cell-attributes" target="_blank">suit_cell_attributes</a> and suit_column_attributes callables for ModelAdmin class which allows styling (colors, alignment, etc.) for rows and cells based on field and object instance. See code of this exact example
+        <a href="https://github.com/darklow/django-suit/blob/v2/demo/demo/admin.py#L139" target="_blank"> on github</a>.
+    </div>
+{% endblock %}

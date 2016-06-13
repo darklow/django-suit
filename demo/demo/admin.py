@@ -137,6 +137,32 @@ class ContinentAdmin(SortableModelAdmin):
     sortable = 'order'
     inlines = (CountryInline,)
 
+    def suit_row_attributes(self, obj):
+        class_map = {
+            'Europe': 'table-success',
+            'South America': 'table-warning',
+            'North America': 'table-success',
+            'Africa': 'table-danger',
+            'Australia': 'table-warning',
+            'Asia': 'table-info',
+            'Antarctica': 'table-info',
+        }
+
+        css_class = class_map.get(obj.name)
+        if css_class:
+            return {'class': css_class}
+
+    def suit_column_attributes(self, column):
+        if column == 'countries':
+            return {'class': 'text-xs-center'}
+
+    def suit_cell_attributes(self, obj, column):
+        if column == 'countries':
+            cls = 'text-xs-center'
+            if obj.name == 'Antarctica':
+                cls += ' table-danger'
+            return {'class': cls}
+
     def countries(self, obj):
         return len(obj.country_set.all())
 

@@ -157,7 +157,7 @@ $filter-col-width: 15rem;
         background-color: $inverse-lightest;
         color: #fff;
       }
-      // This is odd, but dango admin has Save in paginator
+      // This is odd, but django admin has Save in paginator
       input[type='submit'] {
         @extend .btn;
         @extend .btn-primary;

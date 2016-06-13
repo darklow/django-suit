@@ -1,5 +1,4 @@
 $table-border-color: darken(#fff, 5%);
-;
 $tr-odd-bg-color: $table-bg-accent;
 $tr-hover-bg-color: darken(#fff, 10%);
 $tr-odd-hover-bg-color: darken($tr-odd-bg-color, 6%);
@@ -110,12 +109,12 @@ $tr-odd-hover-bg-color: darken($tr-odd-bg-color, 6%);
         }
       }
       &.selected {
-        background-color: lighten($inverse-lightest, 15%);
+        background-color: lighten($inverse-lightest, 15%) !important;
         &:hover {
           background-color: darken($inverse-lightest, 5%);
         }
         &:nth-child(even) {
-          background-color: lighten($inverse-lightest, 5%);
+          background-color: lighten($inverse-lightest, 5%) !important;
           &:hover {
             background-color: darken($inverse-lightest, 5%);
           }
@@ -125,6 +124,53 @@ $tr-odd-hover-bg-color: darken($tr-odd-bg-color, 6%);
           &, a {
             color: #fff;
           }
+        }
+      }
+      // Bootstrap colors
+      &.table-danger, &.table-warning, &.table-info, &.table-success {
+        &.selected {
+          > td, > th {
+            background-color: transparent;
+          }
+        }
+      }
+      &.table-danger {
+        > td, > th {
+          border-bottom: 1px solid $state-danger-border;
+        }
+      }
+      &.table-warning {
+        > td, > th {
+          border-bottom: 1px solid $state-warning-border;
+        }
+      }
+      &.table-info {
+        > td, > th {
+          border-bottom: 1px solid $state-info-border;
+        }
+      }
+      &.table-success {
+        > td, > th {
+          border-bottom: 1px solid $state-success-border;
+        }
+      }
+      // Per cell styling
+      th, td {
+        &.table-danger {
+          background-color: $state-danger-bg;
+          border-bottom: 1px solid $state-danger-border;
+        }
+        &.table-warning {
+          background-color: $state-warning-bg;
+          border-bottom: 1px solid $state-warning-border;
+        }
+        &.table-info {
+          background-color: $state-info-bg;
+          border-bottom: 1px solid $state-info-border;
+        }
+        &.table-success {
+          background-color: $state-success-bg;
+          border-bottom: 1px solid $state-success-border;
         }
       }
     }

@@ -82,3 +82,9 @@ $form-label-bg: #fff;
 // --------------------------------------------------
 $card-border-radius: 0;
 $card-border-color: transparent;
+
+
+// Blockquotes
+// --------------------------------------------------
+$blockquote-font-size: $font-size-base;
+$blockquote-border-color: darken($gray-lighter, 10%);
