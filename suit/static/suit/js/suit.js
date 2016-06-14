@@ -178,5 +178,50 @@ window.Suit = Suit;
         activateTabs();
     };
 
+    /* Characters count for CharacterCountTextarea */
+    $.fn.suitCharactersCount = function () {
+        var $elements = $(this);
+
+        if (!$elements.length)
+            return;
+
+        $elements.each(function () {
+            var $el = $(this),
+                $countEl = $('<div class="suit-char-count"></div>');
+            $el.after($countEl);
+            $el.on('keyup', function (e) {
+                updateCount($(e.currentTarget));
+            });
+            updateCount($el);
+        });
+
+        function updateCount($el) {
+            var maxCount = $el.data('suit-maxcount'),
+                twitterCount = $el.data('suit-twitter-count'),
+                value = $el.val(),
+                len = twitterCount ? getTweetLength(value) : value.length,
+                count = maxCount ? maxCount - len : len;
+            if (count < 0)
+                count = '<span class="text-danger">' + count + '</span>';
+
+            if (twitterCount) {
+                count = $('<a href="javascript:">' + count + '<i class="fa fa-twitter" aria-hidden="true"></i></a>');
+                count.on('click', function () {
+                    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(value), 'twitter_preview', 'width=575,height=400');
+                });
+            }
+            $el.next().first().html(count);
+        }
+
+        function getTweetLength(input) {
+            var tmp = "";
+            for (var i = 0; i < 23; i++) {
+                tmp += "o"
+            }
+            return input.replace(/(http:\/\/[\S]*)/g, tmp).length;
+        }
+
+    }
+
 
 })(typeof django !== 'undefined' ? django.jQuery : undefined);

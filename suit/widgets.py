@@ -25,6 +25,18 @@ class AutosizedTextarea(Textarea):
         return output
 
 
+class CharacterCountTextarea(AutosizedTextarea):
+    """
+    TextArea with character count. Supports also twitter specific count.
+    """
+    def render(self, name, value, attrs=None):
+        output = super(CharacterCountTextarea, self).render(name, value, attrs)
+        output += mark_safe(
+            "<script type=\"text/javascript\">django.jQuery(function () { django.jQuery('#id_%s').suitCharactersCount(); });</script>"
+            % name)
+        return output
+
+
 class ImageWidget(ClearableFileInput):
     def render(self, name, value, attrs=None):
         html = super(ImageWidget, self).render(name, value, attrs)

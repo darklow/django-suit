@@ -407,3 +407,23 @@ fieldset {
     }
   }
 }
+.suit-char-count {
+  position: absolute;
+  height: 1rem;
+  right: 1.25rem;
+  margin-top: -1.2rem;
+  font-size: 11px;
+  color: $gray-light;
+  a {
+    color: $gray-light;
+    &:hover, &:focus {
+      color: #55acee;
+      text-decoration: none;
+    }
+    .fa {
+      font-size: 12px;
+      display: inline-block;
+      padding-left: 2px;
+    }
+  }
+}

@@ -2194,6 +2194,14 @@ fieldset input[type=number], fieldset input.vIntegerField, fieldset input.vInteg
 
 .radiolist.inline li:not(:last-child) { margin-right: .5rem; }
 
+.suit-char-count { position: absolute; height: 1rem; right: 1.25rem; margin-top: -1.2rem; font-size: 11px; color: #9ca3a9; }
+
+.suit-char-count a { color: #9ca3a9; }
+
+.suit-char-count a:hover, .suit-char-count a:focus { color: #55acee; text-decoration: none; }
+
+.suit-char-count a .fa { font-size: 12px; display: inline-block; padding-left: 2px; }
+
 .messagelist { list-style: none; margin: 0; padding: 0; display: block; margin: 1rem 1.875rem 0; }
 
 body.delete-confirmation #content { display: block; margin: 1.5rem 2.625rem; }
