@@ -2194,7 +2194,7 @@ fieldset input[type=number], fieldset input.vIntegerField, fieldset input.vInteg
 
 .radiolist.inline li:not(:last-child) { margin-right: .5rem; }
 
-.suit-char-count { position: absolute; height: 1rem; right: 1.25rem; margin-top: -1.2rem; font-size: 11px; color: #9ca3a9; }
+.suit-char-count { position: absolute; height: 1rem; right: 1.25rem; margin-top: -1.15rem; font-size: 11px; color: #9ca3a9; }
 
 .suit-char-count a { color: #9ca3a9; }
 

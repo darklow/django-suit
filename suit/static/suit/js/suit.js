@@ -204,12 +204,6 @@ window.Suit = Suit;
             if (count < 0)
                 count = '<span class="text-danger">' + count + '</span>';
 
-            if (twitterCount) {
-                count = $('<a href="javascript:">' + count + '<i class="fa fa-twitter" aria-hidden="true"></i></a>');
-                count.on('click', function () {
-                    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(value), 'twitter_preview', 'width=575,height=400');
-                });
-            }
             $el.next().first().html(count);
         }
 
