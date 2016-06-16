@@ -177,23 +177,7 @@
 
 }(django.jQuery));
 
-// Extend original inlines formset function for Suit.after_inline hook
-(function ($) {
-    var checkForInlinesJS = setInterval(function () {
-        var _orig_formset = $.fn.formset;
-        if (_orig_formset) {
-            clearInterval(checkForInlinesJS);
-            $.fn.formset = function (opts) {
-                opts = $.extend({}, _orig_formset.defaults, opts);
-                var _orig_added = opts.added;
-                opts.added = function (row) {
-                    if (_orig_added) {
-                        _orig_added.call(this, row);
-                        Suit.after_inline.run(opts.prefix, row);
-                    }
-                };
-                return _orig_formset.call(this, opts);
-            };
-        }
-    }, 10);
-})(django.jQuery);
+// Call Suit.after_inline
+django.jQuery(document).on('formset:added', function (e, row, prefix) {
+    Suit.after_inline.run(prefix, row);
+});
