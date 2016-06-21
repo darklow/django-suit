@@ -29,8 +29,15 @@ def get_form_class(field, fieldset, idx):
     # Try field config first
     if not field_class:
         form_size_fields = form_size.get('fields')
-        if form_size_fields and hasattr(field, 'name'):
-            field_class = form_size_fields.get(field.name)
+        if form_size_fields:
+            field_name = None
+            if hasattr(field, 'name'):
+                field_name = field.name
+            elif isinstance(field, dict) and 'name' in field:
+                # field may be a dict as well (for stacked inlines)
+                field_name = field['name']
+            if field_name:
+                field_class = form_size_fields.get(field_name)
 
     # Add widgets CSS class
     if idx == 1:
