@@ -10,6 +10,8 @@ $footer-height: 66px;
   }
   .footer {
     position: absolute;
+    left: 0;
+    right: 0;
     bottom: 0;
     width: 100%;
     min-height: $footer-height;

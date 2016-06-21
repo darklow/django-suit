@@ -2460,7 +2460,7 @@ body.change-form #container br.clear:last-child { display: none; }
 /* Sticky footer styles  */
 @media (min-width: 544px) { html { position: relative; min-height: 100%; }
   body { margin-bottom: 66px; }
-  .footer { position: absolute; bottom: 0; width: 100%; min-height: 66px; } }
+  .footer { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; min-height: 66px; } }
 
 /* Styles */
 .footer { background-color: #e4e4e4; color: #55595c; font-size: 0.929rem; }
