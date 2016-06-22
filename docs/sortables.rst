@@ -12,8 +12,8 @@ Limitations
 
 Since sortables are based on JavaScript solution, there are known limitations:
 
-1. They doesn't work with pagination.
-2. You won't be able to use different list order other, than by sortable parameter.
+1. They don't work with pagination.
+2. You won't be able to use different list order other than by sortable parameter.
 
 Under the hood
 --------------

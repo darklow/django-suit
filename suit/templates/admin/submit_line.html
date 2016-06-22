@@ -10,7 +10,8 @@
     {% if django_version < 1.9 %}
       <a href="delete/" class="text-error deletelink">{% trans "Delete" %}</a>
     {% else %}
-      <a href="{% url opts|admin_urlname:'delete' original.pk|admin_urlquote %}" class="text-error deletelink">{% trans "Delete" %}</a>
+        {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+        <a href="{% add_preserved_filters delete_url %}" class="text-error deletelink">{% trans "Delete" %}</a>
     {% endif %}
   {% endif %}
 </div>
