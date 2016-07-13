@@ -7,6 +7,9 @@ body.change-form {
       overflow: hidden;
       li {
         display: inline-block;
+        &.list-item {
+          display: none;
+        }
       }
     }
     > .object-tools + form {

@@ -2233,7 +2233,7 @@ body.delete-confirmation #content input[type='button'], body.delete-confirmation
   .col-right .object-tools li { display: inline-block; margin-right: 10px; }
   .col-right .object-tools li.heading { display: block; font-weight: bold; } }
 
-@media (min-width: 992px) { .col-right .object-tools li a { background-color: #f6f6f6; padding: 0.625rem 0.9375rem; display: block; margin-top: 1px; box-shadow: 0 1px 0 0 #e4e4e4; }
+@media (min-width: 992px) { .col-right .object-tools li.list-item, .col-right .object-tools li a { display: block; margin-top: 1px; background-color: #f6f6f6; padding: 0.625rem 0.9375rem; box-shadow: 0 1px 0 0 #e4e4e4; }
   .col-right .object-tools li a:hover { text-decoration: none; background-color: #fff; }
   .col-right .object-tools li a .fa { margin-right: .2rem; }
   .col-right .object-tools li.heading { font-size: 1.143rem; padding: 0 0.625rem 0.46875rem; }
@@ -2598,6 +2598,8 @@ body.change-list .hiddenfields { display: none; }
 body.change-form #content-main > .object-tools { float: right; margin-top: -2.85rem; margin-bottom: 20px; overflow: hidden; }
 
 body.change-form #content-main > .object-tools li { display: inline-block; }
+
+body.change-form #content-main > .object-tools li.list-item { display: none; }
 
 body.change-form #content-main > .object-tools + form { width: 100%; clear: both; }
 

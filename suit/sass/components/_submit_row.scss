@@ -71,12 +71,14 @@
     }
     @include media-breakpoint-up(lg) {
       li {
-        a {
-          background-color: $form-bg;
-          padding: $grid-gutter-width/3 $grid-gutter-width/2;
+        &.list-item, a {
           display: block;
           margin-top: 1px;
+          background-color: $form-bg;
+          padding: $grid-gutter-width/3 $grid-gutter-width/2;
           @include suit-box-shadow();
+        }
+        a {
           &:hover {
             text-decoration: none;
             background-color: #fff;
