@@ -2475,6 +2475,10 @@ body.change-form #container br.clear:last-child { display: none; }
 
 .footer .footer-links a:not(:last-child) { margin-right: .75rem; }
 
+/* Override BS4 [hidden] in reboot.scss to show Django debug toolbar */
+/* Override BS4 [hidden] in reboot.scss to show Django debug toolbar */
+#djDebug[hidden], #djDebug [hidden][style*="display: block"], #djDebug [hidden][style*="display:block"] { display: block !important; }
+
 body.login #header #branding { -webkit-flex-basis: 100%; -ms-flex-preferred-size: 100%; flex-basis: 100%; padding-left: 0; }
 
 body.login #header #branding #site-name { margin: .25rem 0; }

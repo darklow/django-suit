@@ -46,3 +46,10 @@ $footer-height: 66px;
     }
   }
 }
+
+/* Override BS4 [hidden] in reboot.scss to show Django debug toolbar */
+#djDebug {
+  &[hidden], [hidden][style*="display: block"], [hidden][style*="display:block"] {
+    display: block !important;
+  }
+}
