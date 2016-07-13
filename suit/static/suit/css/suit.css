@@ -2233,9 +2233,9 @@ body.delete-confirmation #content input[type='button'], body.delete-confirmation
   .col-right .object-tools li { display: inline-block; margin-right: 10px; }
   .col-right .object-tools li.heading { display: block; font-weight: bold; } }
 
-@media (min-width: 992px) { .col-right .object-tools li.list-item, .col-right .object-tools li a { display: block; margin-top: 1px; background-color: #f6f6f6; padding: 0.625rem 0.9375rem; box-shadow: 0 1px 0 0 #e4e4e4; }
-  .col-right .object-tools li a:hover { text-decoration: none; background-color: #fff; }
-  .col-right .object-tools li a .fa { margin-right: .2rem; }
+@media (min-width: 992px) { .col-right .object-tools li.list-item, .col-right .object-tools li:not(.list-item) > a { display: block; margin-top: 1px; background-color: #f6f6f6; padding: 0.625rem 0.9375rem; box-shadow: 0 1px 0 0 #e4e4e4; }
+  .col-right .object-tools li:not(.list-item) a:hover { text-decoration: none; background-color: #fff; }
+  .col-right .object-tools li:not(.list-item) a .fa { margin-right: .2rem; }
   .col-right .object-tools li.heading { font-size: 1.143rem; padding: 0 0.625rem 0.46875rem; }
   .col-right .object-tools li.heading.heading-inverse { background-color: #5d6478; color: #fff; font-weight: normal; font-size: 1rem; padding: 0.46875rem 0.625rem; } }
 
@@ -2475,7 +2475,6 @@ body.change-form #container br.clear:last-child { display: none; }
 
 .footer .footer-links a:not(:last-child) { margin-right: .75rem; }
 
-/* Override BS4 [hidden] in reboot.scss to show Django debug toolbar */
 /* Override BS4 [hidden] in reboot.scss to show Django debug toolbar */
 #djDebug[hidden], #djDebug [hidden][style*="display: block"], #djDebug [hidden][style*="display:block"] { display: block !important; }
 
