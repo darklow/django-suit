@@ -50,10 +50,21 @@
                     if ($next.is(':visible') && $next.length) {
                         $row.insertAfter($next).addClass('selected')
                     }
-                } else {
+                } else if ($arrow.data('dir') === 'up') {
                     $prev = $row.prev();
                     if ($prev.is(':visible') && $prev.length) {
                         $row.insertBefore($prev).addClass('selected')
+                    }
+                } else if ($arrow.data('dir') === 'top') {
+                    $prev = $($row.parents('tbody').children()[0]);
+                    if ($prev.is(':visible') && $prev.length) {
+                        $row.insertBefore($prev).addClass('selected')
+                    }
+                } else if ($arrow.data('dir') === 'bottom') {
+                    var children = $row.parents('tbody').children();
+                    $prev = $(children[children.length - 2]);
+                    if ($prev.is(':visible') && $prev.length) {
+                        $row.insertAfter($prev).addClass('selected')
                     }
                 }
             }
@@ -82,8 +93,10 @@
                 $sortable = $(this),
                 is_stacked = $sortable.hasClass('suit-sortable-stacked');
 
-            var $up_link = create_link(icon, 'up', on_arrow_click, is_stacked),
-                $down_link = create_link(icon.replace('-up', '-down'), 'down', on_arrow_click, is_stacked);
+            var $top_link = create_link(icon.replace('-arrow-up', '-chevron-up'), 'top', on_arrow_click, is_stacked),
+                $up_link = create_link(icon, 'up', on_arrow_click, is_stacked),
+                $down_link = create_link(icon.replace('-up', '-down'), 'down', on_arrow_click, is_stacked),
+                $bottom_link = create_link(icon.replace('-arrow-up', '-chevron-down'), 'bottom', on_arrow_click, is_stacked);
 
             if (is_stacked) {
                 var $sortable_row = $sortable.closest('div.form-row'),
@@ -97,8 +110,10 @@
                 $sortable_row.remove();
             } else {
                 $sortable.parent().append($inline_sortable);
+                $inline_sortable.append($top_link);
                 $inline_sortable.append($up_link);
                 $inline_sortable.append($down_link);
+                $inline_sortable.append($bottom_link);
             }
 
         });
