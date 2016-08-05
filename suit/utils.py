@@ -2,7 +2,7 @@ from django import VERSION
 
 
 def django_major_version():
-    return float('.'.join([str(i) for i in VERSION][:2]))
+    return VERSION[:2]
 
 
 def value_by_version(args):
@@ -11,7 +11,8 @@ def value_by_version(args):
     Return latest value if version not found
     """
     version_map = args_to_dict(args)
-    return version_map.get(django_major_version(),
+    major_version = '.'.join(str(v) for v in django_major_version())
+    return version_map.get(major_version,
                            list(version_map.values())[-1])
 
 
