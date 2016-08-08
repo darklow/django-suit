@@ -1,8 +1,17 @@
 from django import VERSION
+from distutils.version import StrictVersion
 
 
-def django_major_version():
-    return float('.'.join([str(i) for i in VERSION][:2]))
+def django_major_version(strict_version=False):
+    """
+    Return django's major version
+    """
+    version = '.'.join(map(str, VERSION[:2]))
+
+    if strict_version:
+        version = StrictVersion(version)
+
+    return version
 
 
 def value_by_version(args):

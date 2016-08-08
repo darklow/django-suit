@@ -1,5 +1,6 @@
 import itertools
 from django import template
+from distutils.version import StrictVersion
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import NoReverseMatch, reverse
 from django.db.models import ForeignKey
@@ -8,12 +9,12 @@ from django.utils.safestring import mark_safe
 from suit.config import get_config
 from suit import utils
 
-django_version = utils.django_major_version()
 
-try:
-    # Django 1.9
+django_version = utils.django_major_version(strict_version=True)
+
+if django_version >= StrictVersion('1.9'):
     from django.contrib.admin.utils import lookup_field
-except ImportError:
+else:
     from django.contrib.admin.util import lookup_field
 
 register = template.Library()
@@ -100,13 +101,13 @@ def suit_django_version():
     return django_version
 
 
-if django_version < 1.9:
+if django_version < StrictVersion('1.9'):
     # Add empty tags to avoid Django template errors if < Django 1.9
     @register.simple_tag
     def add_preserved_filters(*args, **kwargs):
         pass
 
-if django_version < 1.5:
+if django_version < StrictVersion('1.5'):
     # Add admin_urlquote filter to support Django 1.4
     from django.contrib.admin.util import quote
     @register.filter
