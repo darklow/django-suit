@@ -4,9 +4,6 @@ from django.test import TestCase
 
 
 class UtilsTestCase(TestCase):
-    def test_django_major_version(self):
-        self.assertEqual(utils.django_major_version(), float(get_version()[:3]))
-
     def get_args(self):
         return [1.4, 'x', 1.5, 'y', 's', 'z']
 

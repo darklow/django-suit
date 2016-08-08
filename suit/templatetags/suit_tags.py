@@ -100,13 +100,13 @@ def suit_django_version():
     return django_version
 
 
-if django_version < 1.9:
+if django_version < (1, 9):
     # Add empty tags to avoid Django template errors if < Django 1.9
     @register.simple_tag
     def add_preserved_filters(*args, **kwargs):
         pass
 
-if django_version < 1.5:
+if django_version < (1, 5):
     # Add admin_urlquote filter to support Django 1.4
     from django.contrib.admin.util import quote
     @register.filter
