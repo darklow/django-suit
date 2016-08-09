@@ -31,7 +31,10 @@ def get_menu(context, request):
         # Django 1.8 uses request.current_app instead of context.current_app
         template_response = get_admin_site(request.current_app).index(request)
     else:
-        template_response = get_admin_site(context.current_app).index(request)
+        try:
+            template_response = get_admin_site(context.current_app).index(request)
+        except AttributeError:
+            template_response = get_admin_site(context.request.resolver_match.namespace).index(request)
 
     try:
         app_list = template_response.context_data['app_list']
