@@ -9,8 +9,10 @@ env:
   - DJANGO=1.4.20
   - DJANGO=1.5.12
   - DJANGO=1.6.11
-  - DJANGO=1.7.7
-  - DJANGO=1.8.3
+  - DJANGO=1.7.11
+  - DJANGO=1.8.14
+  - DJANGO=1.9.9
+  - DJANGO=1.10
 before_install:
   - export DJANGO_SETTINGS_MODULE=suit.tests.settings
 install:
