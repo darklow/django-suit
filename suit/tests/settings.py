@@ -55,9 +55,9 @@ STATIC_URL = '/static/'
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+TEMPLATE_CONTEXT_PROCESSORS = list(TCP) + [
     'django.core.context_processors.request',
-)
+]
 
 SUIT_CONFIG = {}
 TEST_RUNNER = 'suit.tests.SuitTestRunner'
