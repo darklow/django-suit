@@ -53,11 +53,15 @@ INSTALLED_APPS = (
 
 STATIC_URL = '/static/'
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+try:
+    from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
-TEMPLATE_CONTEXT_PROCESSORS = list(TCP) + [
-    'django.core.context_processors.request',
-]
+    TEMPLATE_CONTEXT_PROCESSORS = list(TCP) + [
+        'django.core.context_processors.request',
+    ]
+except ImportError:
+    # Django 1.9+ has context_processors key in TEMPLATES settings
+    pass
 
 SUIT_CONFIG = {}
 TEST_RUNNER = 'suit.tests.SuitTestRunner'
