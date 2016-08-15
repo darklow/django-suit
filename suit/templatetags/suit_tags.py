@@ -50,8 +50,8 @@ def field_contents_foreign_linked(admin_field):
 
     if not hasattr(admin_field.model_admin,
                    'linked_readonly_fields') or fieldname not in admin_field \
-        .model_admin \
-        .linked_readonly_fields:
+            .model_admin \
+            .linked_readonly_fields:
         return displayed
 
     try:
@@ -100,6 +100,30 @@ def suit_django_version():
     return django_version
 
 
+@register.filter
+def django_version_lt(string):
+    return django_version < str_to_version(string)
+
+
+@register.filter
+def django_version_lte(string):
+    return django_version <= str_to_version(string)
+
+
+@register.filter
+def django_version_gt(string):
+    return django_version > str_to_version(string)
+
+
+@register.filter
+def django_version_gte(string):
+    return django_version >= str_to_version(string)
+
+
+def str_to_version(string):
+    return tuple([int(s) for s in string.split('.')])
+
+
 if django_version < (1, 9):
     # Add empty tags to avoid Django template errors if < Django 1.9
     @register.simple_tag
@@ -109,6 +133,8 @@ if django_version < (1, 9):
 if django_version < (1, 5):
     # Add admin_urlquote filter to support Django 1.4
     from django.contrib.admin.util import quote
+
+
     @register.filter
     def admin_urlquote(value):
         return quote(value)
