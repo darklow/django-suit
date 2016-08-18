@@ -58,9 +58,22 @@ try:
     TEMPLATE_CONTEXT_PROCESSORS = list(TCP) + [
         'django.core.context_processors.request',
     ]
-except ImportError:
-    # Django 1.9+ has context_processors key in TEMPLATES settings
-    pass
+except ImportError:  # Django 1.9+
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },
+    ]
 
 SUIT_CONFIG = {}
 TEST_RUNNER = 'suit.tests.SuitTestRunner'
