@@ -83,7 +83,7 @@
   <div id="content-main" class="inner-two-columns">
 
     <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post"
-          id="{% firstof opts.model_name opts.module_name %}_form" class="form-horizontal">
+          id="{% firstof opts.model_name opts.module_name %}_form" class="form-horizontal" novalidate>
 
       <div class="inner-right-column">
 
