@@ -20,6 +20,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         self.login_superuser()
 
     def setUpConfig(self):
+        settings.SUIT_CONFIG = getattr(settings, 'SUIT_CONFIG', {})
         settings.SUIT_CONFIG.update({
             'MENU_OPEN_FIRST_CHILD': True,
             'MENU_ICONS': {

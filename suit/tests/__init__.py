@@ -1,4 +1,10 @@
 import django
+try:
+    # Django 1.9+
+    django.setup()
+except Exception:
+    pass
+
 from suit.tests.templatetags.suit_menu import SuitMenuTestCase, \
     SuitMenuAdminRootURLTestCase, SuitMenuAdminI18NURLTestCase, \
     SuitMenuAdminCustomURLTestCase
@@ -14,12 +20,6 @@ try:
     from django.test.runner import DiscoverRunner as DjangoTestSuiteRunner
 except ImportError:
     from django.test.simple import DjangoTestSuiteRunner
-
-try:
-    # Django 1.9 only
-    django.setup()
-except Exception:
-    pass
 
 
 class NoDbTestRunner(DjangoTestSuiteRunner):

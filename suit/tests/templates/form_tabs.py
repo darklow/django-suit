@@ -1,9 +1,6 @@
-from django.conf import settings
 from django.contrib import admin
 from django.core.urlresolvers import reverse
-from django.template.base import TemplateDoesNotExist
 from django.utils.translation import ugettext
-from suit.templatetags.suit_menu import get_menu
 from suit.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
 from suit.tests.models import Book, BookAdmin, test_app_label
 
