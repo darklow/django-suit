@@ -15,7 +15,6 @@ DATABASES = {
 
 
 TIME_ZONE = 'Europe/Riga'
-LANGUAGE_CODE = 'en-uk'
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
