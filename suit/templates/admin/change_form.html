@@ -80,11 +80,10 @@
 {% endif %}
 
 {% block content %}
-  {% suit_django_version as django_version %}
   <div id="content-main" class="inner-two-columns">
 
     <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post"
-          id="{% firstof opts.model_name opts.module_name %}_form" class="form-horizontal">
+          id="{% firstof opts.model_name opts.module_name %}_form" class="form-horizontal" novalidate>
 
       <div class="inner-right-column">
 
@@ -100,7 +99,7 @@
             <ul class="box menu-box">
               {% block object-tools-items %}
                 <li>
-                  {% if django_version < 1.9 %}
+                  {% if '1.9'|django_version_lt %}
                   <a href="history/" class="historylink">
                   {% else %}
                   {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
@@ -116,7 +115,7 @@
 
                 {% if has_add_permission %}
                   <li>
-                    {% if django_version < 1.9 %}
+                    {% if '1.9'|django_version_lt %}
                     <a href="../add/">
                     {% else %}
                     <a href="{% url opts|admin_urlname:'add' %}">

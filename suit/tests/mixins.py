@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.core.management import CommandError
 from django.core.management import call_command
 from django.core.urlresolvers import reverse
-from django.db.models.loading import load_app
 from django.test import TestCase
 from random import randint
 
@@ -53,9 +53,17 @@ class ModelsTestCaseMixin(TestCase):
             list(self.saved_INSTALLED_APPS) + [test_app]
         )
         settings.DEBUG = True
-        # load our fake application and syncdb
-        load_app(test_app)
-        call_command('syncdb', verbosity=0, interactive=False)
+
+        # Legacy Django < 1.9: load our fake application and syncdb
+        try:
+            from django.db.models.loading import load_app
+            load_app(test_app)
+        except ImportError:
+            pass
+        try:
+            call_command('syncdb', verbosity=0, interactive=False)
+        except CommandError:
+            pass
         super(ModelsTestCaseMixin, self)._pre_setup()
 
     def _post_teardown(self):

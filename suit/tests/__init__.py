@@ -1,3 +1,10 @@
+import django
+try:
+    # Django 1.9+
+    django.setup()
+except Exception:
+    pass
+
 from suit.tests.templatetags.suit_menu import SuitMenuTestCase, \
     SuitMenuAdminRootURLTestCase, SuitMenuAdminI18NURLTestCase, \
     SuitMenuAdminCustomURLTestCase
@@ -8,7 +15,6 @@ from suit.tests.config import ConfigTestCase, ConfigWithModelsTestCase
 from suit.tests.widgets import WidgetsTestCase
 from suit.tests.utils import UtilsTestCase
 
-
 try:
     # Django 1.7+
     from django.test.runner import DiscoverRunner as DjangoTestSuiteRunner
@@ -18,6 +24,7 @@ except ImportError:
 
 class NoDbTestRunner(DjangoTestSuiteRunner):
     """A test suite runner that does not set up and tear down a database."""
+
     def setup_databases(self):
         """Overrides DjangoTestSuiteRunner"""
         pass

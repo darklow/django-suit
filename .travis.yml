@@ -2,37 +2,40 @@ language: python
 python:
   - 2.6
   - 2.7
-  - 3.3
   - 3.4
   - pypy
 env:
-  - DJANGO=1.4.20
+  - DJANGO=1.4.22
   - DJANGO=1.5.12
   - DJANGO=1.6.11
-  - DJANGO=1.7.7
-  - DJANGO=1.8.3
+  - DJANGO=1.7.11
+  - DJANGO=1.8.14
+  - DJANGO=1.9.9
+  - DJANGO=1.10
 before_install:
   - export DJANGO_SETTINGS_MODULE=suit.tests.settings
 install:
-  - pip install -q Django==$DJANGO --use-mirrors
-  - pip install . --use-mirrors
+  - pip install -q Django==$DJANGO
+  - pip install .
 script:
   - python manage.py test suit
 matrix:
   exclude:
     # Django doesn't support following combinations
-    - python: 3.3
-      env: DJANGO=1.4.20
     - python: 3.4
-      env: DJANGO=1.4.20
+      env: DJANGO=1.4.22
     - python: 2.6
       env: DJANGO=1.6.11
     - python: 2.6
-      env: DJANGO=1.7.7
+      env: DJANGO=1.7.11
     - python: 2.6
-      env: DJANGO=1.8.3
+      env: DJANGO=1.8.14
+    - python: 2.6
+      env: DJANGO=1.9.9
+    - python: 2.6
+      env: DJANGO=1.10
     - python: pypy
-      env: DJANGO=1.4.20
+      env: DJANGO=1.4.22
     - python: pypy
       env: DJANGO=1.5.12
     - python: pypy

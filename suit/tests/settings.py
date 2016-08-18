@@ -15,7 +15,6 @@ DATABASES = {
 
 
 TIME_ZONE = 'Europe/Riga'
-LANGUAGE_CODE = 'en-uk'
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
@@ -53,11 +52,28 @@ INSTALLED_APPS = (
 
 STATIC_URL = '/static/'
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+try:
+    from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-    'django.core.context_processors.request',
-)
+    TEMPLATE_CONTEXT_PROCESSORS = list(TCP) + [
+        'django.core.context_processors.request',
+    ]
+except ImportError:  # Django 1.9+
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },
+    ]
 
 SUIT_CONFIG = {}
 TEST_RUNNER = 'suit.tests.SuitTestRunner'

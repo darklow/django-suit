@@ -43,7 +43,7 @@ Build Status
 
 Django Suit uses Travis CI to perform tests on different Django and Python versions.
 
-Tested using Python: 2.5-3.4. Django: 1.4-1.8. Develop / Master:
+Tested using Python: 2.5-3.4. Django: 1.4-1.10. Develop / Master:
 
 .. |develop| image:: https://travis-ci.org/darklow/django-suit.png?branch=develop
    :alt: Build Status - develop branch
@@ -62,3 +62,9 @@ Preview
 .. image:: https://raw.github.com/darklow/django-suit/develop/docs/_static/img/django-suit.png
    :alt: Django Suit Preview
    :target: http://djangosuit.com/admin/
+
+
+v2.0-dev
+========
+
+Check out new v2.0-dev version notes: https://github.com/darklow/django-suit/issues/475
