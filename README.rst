@@ -62,3 +62,9 @@ Preview
 .. image:: https://raw.github.com/darklow/django-suit/develop/docs/_static/img/django-suit.png
    :alt: Django Suit Preview
    :target: http://djangosuit.com/admin/
+
+
+v2.0-dev
+========
+
+Check out new v2.0-dev version notes: https://github.com/darklow/django-suit/issues/475
