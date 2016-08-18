@@ -15,8 +15,8 @@ env:
 before_install:
   - export DJANGO_SETTINGS_MODULE=suit.tests.settings
 install:
-  - pip install -q Django==$DJANGO --use-mirrors
-  - pip install . --use-mirrors
+  - pip install -q Django==$DJANGO
+  - pip install .
 script:
   - python manage.py test suit
 matrix:
