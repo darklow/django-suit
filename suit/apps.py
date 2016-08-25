@@ -84,3 +84,17 @@ class DjangoSuitConfig(AppConfig):
 
         if self.list_per_page:
             ModelAdmin.list_per_page = self.list_per_page
+
+        self.add_template_loader()
+
+    def add_template_loader(self):
+        """
+        To support Django 1.8 add custom template loader.
+        Not needed for Django 1.9+.
+        """
+        from django.template import engines
+        from django.template.backends.django import DjangoTemplates
+        for engine in engines.all():
+            if isinstance(engine, DjangoTemplates):
+                print engine.engine.loaders, '<<<'
+                engine.engine.loaders.append('suit.template.Loader')
