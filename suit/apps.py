@@ -1,6 +1,7 @@
 from django import get_version
 from django.apps import AppConfig
 from django.contrib.admin.options import ModelAdmin
+from django import VERSION as DJANGO_VERSION
 from . import VERSION
 
 # Form row sizing as Bootstrap CSS grid classes: (for label, for field column)
@@ -85,16 +86,16 @@ class DjangoSuitConfig(AppConfig):
         if self.list_per_page:
             ModelAdmin.list_per_page = self.list_per_page
 
-        self.add_template_loader()
+        # For Django 1.8 only
+        if (1, 8) <= DJANGO_VERSION < (1, 9):
+            self.add_custom_template_loader()
 
-    def add_template_loader(self):
+    def add_custom_template_loader(self):
         """
-        To support Django 1.8 add custom template loader.
-        Not needed for Django 1.9+.
+        To support Django 1.8 (LTE) add custom template loader to avoid circular imports in admin.
         """
         from django.template import engines
         from django.template.backends.django import DjangoTemplates
         for engine in engines.all():
             if isinstance(engine, DjangoTemplates):
-                print engine.engine.loaders, '<<<'
                 engine.engine.loaders.append('suit.template.Loader')
