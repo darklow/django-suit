@@ -1,6 +1,4 @@
 from os.path import dirname, join, abspath
-from django.conf import settings
-from django.utils.importlib import import_module
 from django.template.loaders.filesystem import Loader as FilesystemLoader
 
 _cache = {}
@@ -35,6 +33,8 @@ def get_app_template_dir(app_name):
 
     Returns a full path, or None if the app was not found.
     """
+    from django.utils.importlib import import_module
+    from django.conf import settings
     if app_name in _cache:
         return _cache[app_name]
     template_dir = None

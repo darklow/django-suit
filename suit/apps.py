@@ -110,4 +110,6 @@ class DjangoSuitConfig(AppConfig):
         from django.template.backends.django import DjangoTemplates
         for engine in engines.all():
             if isinstance(engine, DjangoTemplates):
+                if isinstance(engine.engine.loaders, tuple):
+                    engine.engine.loaders = list(engine.engine.loaders)
                 engine.engine.loaders.append('suit.template.Loader')

@@ -7,6 +7,7 @@ DATABASES = {
 
 INSTALLED_APPS = [
     'suit',
+    'django.contrib.admin',
     'django.contrib.sessions',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -28,5 +29,5 @@ MIDDLEWARE_CLASSES = [
 SITE_ID = 1
 SECRET_KEY = 'secret-key'
 
-# ROOT_URLCONF = 'tests.urls'
+ROOT_URLCONF = 'suit.tests.urls'
 # STATIC_URL = '/site_media/static/'
