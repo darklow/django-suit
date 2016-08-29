@@ -74,6 +74,18 @@ class DjangoSuitConfig(AppConfig):
 
     def ready(self):
         super(DjangoSuitConfig, self).ready()
+        self.add_suit_default_template_tags()
+
+    def add_suit_default_template_tags(self):
+        suit_template_extend_tag = 'suit.templatetags.suit_template'
+        try:
+            # Django 1.9+
+            from django.template.engine import Engine
+            Engine.default_builtins.append(suit_template_extend_tag)
+        except AttributeError:
+            # Django <= 1.8
+            from django.template.base import add_to_builtins
+            add_to_builtins(suit_template_extend_tag)
 
     def setup_model_admin_defaults(self):
         """
@@ -86,7 +98,7 @@ class DjangoSuitConfig(AppConfig):
         if self.list_per_page:
             ModelAdmin.list_per_page = self.list_per_page
 
-        # For Django 1.8 only
+        # For Django 1.8 support only
         if (1, 8) <= DJANGO_VERSION < (1, 9):
             self.add_custom_template_loader()
 

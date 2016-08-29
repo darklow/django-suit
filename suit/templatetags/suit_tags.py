@@ -1,12 +1,6 @@
 from django import template
-from django.template.backends.django import Template
-from django.template.loader import get_template
-from django.template.utils import get_app_template_dirs
 from django.utils.safestring import mark_safe
-from django.template import TemplateSyntaxError
-from django.template.loader_tags import ExtendsNode, do_extends
 from suit import config
-from django import VERSION as DJANGO_VERSION
 
 register = template.Library()
 
@@ -42,19 +36,3 @@ def suit_conf_value(name, model_admin=None):
         else:
             config.reset_config_value(name)
     return suit_conf(name)
-
-
-@register.tag('suit_extends')
-def do_extends_override(parser, token):
-    """
-    Simple wrapper to remove "admin:" prefix for Django 1.9+
-    For Django 1.8 custom template loader is used to load "app:" prefixed templates
-    and avoid circular imports
-    """
-    if DJANGO_VERSION >= (1, 9):
-        token.contents = token.contents.replace('admin:', '')
-
-    # Call original template tag
-    extends_node = do_extends(parser, token)
-    extends_node.must_be_first = False
-    return extends_node
