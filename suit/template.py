@@ -33,8 +33,8 @@ def get_app_template_dir(app_name):
 
     Returns a full path, or None if the app was not found.
     """
-    from django.utils.importlib import import_module
     from django.conf import settings
+    from importlib import import_module
     if app_name in _cache:
         return _cache[app_name]
     template_dir = None
