@@ -1,7 +1,6 @@
 from django import forms
 from django.forms import Textarea, ClearableFileInput
 from django.utils.safestring import mark_safe
-from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
 class AutosizedTextarea(Textarea):
@@ -15,7 +14,7 @@ class AutosizedTextarea(Textarea):
 
     @property
     def media(self):
-        return forms.Media(js=[static("suit/js/autosize.min.js")])
+        return forms.Media(js=('suit/js/autosize.min.js',))
 
     def render(self, name, value, attrs=None):
         output = super(AutosizedTextarea, self).render(name, value, attrs)
