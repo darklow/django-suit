@@ -52,7 +52,7 @@ def paginator_info(cl):
 
     # If we show all rows of list (without pagination)
     if cl.show_all and cl.can_show_all:
-        entries_from = 1
+        entries_from = 1 if paginator.count > 0 else 0
         entries_to = paginator.count
     else:
         entries_from = (
