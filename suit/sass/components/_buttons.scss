@@ -7,7 +7,7 @@
   @extend .btn;
   @extend .btn-#{$state};
   @if $size {
-    @extend .btn-#{$size};
+    @extend .btn-#{$size} !optional;
   }
   @if $round {
     border-radius: 70px;

@@ -6,10 +6,9 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
-var watch = require('gulp-watch');
 
 var config = {
-    djangoHost: '0.0.0.0',
+    djangoHost: 'localhost',
     djangoPort: 8000,
     jsPort: 8001,
     watchSassFiles: 'suit/sass/**/*.scss',
@@ -17,7 +16,7 @@ var config = {
     watchHtmlFiles: [
         'suit/templates/**/*.html',
         'demo/demo/templates/**/*.html'
-    ],
+    ]
 };
 
 gulp.task('styles', function () {

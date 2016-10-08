@@ -11,7 +11,7 @@
     margin-bottom: .5rem;
   }
   input[type='submit'], input[type='button'], button {
-    &:not(.btn) {
+    &:not([class*=".btn-"]) {
       @extend .btn;
       @extend .btn-lg;
       @extend .btn-secondary;
@@ -88,7 +88,7 @@
           }
         }
         &.heading {
-          @extend .text-semibold;
+          @include text-semibold();
           font-size: $font-size-lg;
           padding: 0 $grid-gutter-width/3 $grid-gutter-width/4;
           &.heading-inverse {
