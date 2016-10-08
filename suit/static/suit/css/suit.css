@@ -2594,7 +2594,7 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 .object-tools + #changelist.filtered #toolbar { margin-top: -3.5rem; }
 
-body.change-list #content-main .object-tools { float: right; margin-bottom: 1.5rem; }
+body.change-list #content-main .object-tools { float: right; margin-bottom: 1.5rem; min-height: 2rem; }
 
 body.change-list .hiddenfields { display: none; }
 
