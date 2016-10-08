@@ -133,6 +133,8 @@ class MenuManager(object):
             parent_item = self.make_parent_from_native_app(native_app)
             menu_items.append(parent_item)
             self.make_children_from_native_app(parent_item, native_app)
+            if parent_item.children:
+                parent_item.url = parent_item.children[0].url
         return menu_items
 
     def make_parent_from_native_app(self, native_app):
