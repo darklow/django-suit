@@ -65,7 +65,7 @@ class MenuManager(object):
 
     def build_menu(self):
         if not self.user_menu:
-            return self.build_menu_by_available_apps()
+            return self.mark_active(self.build_menu_by_available_apps())
 
         self.map_native_apps()
 
@@ -148,7 +148,9 @@ class MenuManager(object):
         :type native_app: dict
         """
         for native_model in native_app['models']:
-            parent_item.children.append(self.make_child_from_native_model(native_model))
+            child_item = self.make_child_from_native_model(native_model)
+            parent_item.children.append(child_item)
+            child_item._parent_item = parent_item
 
     def make_child_from_native_model(self, native_model):
         """
