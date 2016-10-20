@@ -7,3 +7,5 @@
 docs/_build/
 /build
 /dist/
+/.project
+/.pydevproject
