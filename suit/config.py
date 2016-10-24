@@ -7,9 +7,12 @@ def get_config_instance(app_name=None):
     :rtype: DjangoSuitConfig()
     """
     try:
-        return apps.get_app_config(app_name or 'suit')
+        config = apps.get_app_config(app_name or 'suit')
+        if isinstance(config, DjangoSuitConfig):
+            return config
     except LookupError:
-        return apps.get_app_config('suit')
+        pass
+    return apps.get_app_config('suit')
 
 
 #: :type: DjangoSuitConfig()
