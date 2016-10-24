@@ -55,7 +55,7 @@
                                 {% with site_header|default:_('Django administration') as admin_name %}
                                     {{ admin_name }}
                                     {% if admin_name == 'Django Suit' %}
-                                        v{{ 'version'|suit_conf }}
+                                        v{{ 'version'|suit_conf:request.current_app }}
                                     {% endif %}
                                 {% endwith %}
                             {% endblock %}
@@ -69,7 +69,7 @@
 
     {{ block.super }}
     <script src="{% static "suit/js/suit.js" %}"></script>
-    {% if cl.formset or action_form and 'toggle_changelist_top_actions'|suit_conf %}
+    {% if cl.formset or action_form and 'toggle_changelist_top_actions'|suit_conf:request.current_app %}
         <script type="text/javascript">
             Suit.ListActionsToggle.init();
         </script>
@@ -78,7 +78,7 @@
 
             Suit.$("#{{ opts.model_name }}_form").suitFormDebounce();
 
-            {% if 'form_submit_on_right'|suit_conf %}
+            {% if 'form_submit_on_right'|suit_conf:request.current_app %}
                 Suit.FixedBar.init();
             {% endif %}
 
@@ -91,4 +91,4 @@
     {% endif %}
 {% endblock %}
 
-{% block bodyclass %}{{ block.super|suit_body_class }}{% endblock %}
+{% block bodyclass %}{{ block.super|suit_body_class:request.current_app }}{% endblock %}

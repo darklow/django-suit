@@ -35,6 +35,9 @@ class DjangoSuitConfig(AppConfig):
     # Automatically add home link
     menu_show_home = True
 
+    # Define callback / handler to change menu before it is getting rendered
+    menu_handler = None
+
     # Enables two column layout for change forms with submit row on the right
     form_submit_on_right = True
 

@@ -6,25 +6,19 @@ register = template.Library()
 
 
 @register.filter(name='suit_conf')
-def suit_conf(name):
-    value = config.get_config(name)
+def suit_conf(name, current_app):
+    value = config.get_config(name, current_app)
     return mark_safe(value) if isinstance(value, str) else value
 
 
 @register.filter(name='suit_body_class')
-def suit_body_class(value):
+def suit_body_class(value, current_app):
     css_classes = []
     config_vars_to_add = ['toggle_changelist_top_actions', 'form_submit_on_right']
     for each in config_vars_to_add:
-        if getattr(config.suit_config, each):
+        if getattr(config.get_config(None, current_app), each):
             css_classes.append('suit_%s' % each)
     return ' '.join(css_classes)
-
-
-@register.filter(name='suit_conf')
-def suit_conf(name):
-    value = config.get_config(name)
-    return mark_safe(value) if isinstance(value, str) else value
 
 
 @register.assignment_tag

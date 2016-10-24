@@ -1,14 +1,22 @@
 from django.apps import apps
 from suit.apps import DjangoSuitConfig
 
-#: :type: DjangoSuitConfig
-suit_config = apps.get_app_config('suit')
+
+def get_config_instance(app_name=None):
+    """
+    :rtype: DjangoSuitConfig()
+    """
+    try:
+        return apps.get_app_config(app_name or 'suit')
+    except LookupError:
+        return apps.get_app_config('suit')
+
 
 #: :type: DjangoSuitConfig()
 suit_config_cls = DjangoSuitConfig
 
-
-def get_config(param=None):
+def get_config(param=None, app_name=None):
+    suit_config = get_config_instance(app_name)
     if param:
         value = getattr(suit_config, param, None)
         if value is None:
