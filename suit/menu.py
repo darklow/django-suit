@@ -213,9 +213,10 @@ class MenuManager(object):
         :type menu_item: ChildItem or ParentItem
         """
         if callable(menu_item.url):
-            return menu_item.url(self.request, self.context)
+            menu_item.url = menu_item.url(self.request, self.context)
+            return menu_item
         if '/' in menu_item.url:
-            return menu_item.url
+            return menu_item
         from django.core.urlresolvers import reverse, NoReverseMatch
         try:
             menu_item.url = reverse(menu_item.url, current_app=self.request.current_app)
