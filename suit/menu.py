@@ -212,6 +212,8 @@ class MenuManager(object):
         Evaluate user defined URL
         :type menu_item: ChildItem or ParentItem
         """
+        if callable(menu_item.url):
+            return menu_item.url(self.request, self.context)
         if '/' in menu_item.url:
             return menu_item.url
         from django.core.urlresolvers import reverse, NoReverseMatch
