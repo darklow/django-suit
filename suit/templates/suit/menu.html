@@ -19,7 +19,7 @@
         </ul>
     {% endif %}
 </div>
-{% if menu and menu.active_parent_item %}
+{% if 'layout'|suit_conf:request.current_app == 'horizontal' and menu and menu.active_parent_item %}
     <div id="suit-sub-nav">
         <ul>
             {% for child_item in menu.active_parent_item.children %}

@@ -22,6 +22,9 @@ class DjangoSuitConfig(AppConfig):
     django_version = get_version()
     version = VERSION
 
+    # Menu and header layout - horizontal or vertical
+    layout = 'vertical'
+
     # Set default list per page
     list_per_page = 20
 

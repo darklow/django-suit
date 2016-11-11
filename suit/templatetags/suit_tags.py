@@ -14,10 +14,13 @@ def suit_conf(name, current_app):
 @register.filter(name='suit_body_class')
 def suit_body_class(value, current_app):
     css_classes = []
-    config_vars_to_add = ['toggle_changelist_top_actions', 'form_submit_on_right']
+    config_vars_to_add = ['toggle_changelist_top_actions', 'form_submit_on_right', 'layout']
     for each in config_vars_to_add:
-        if getattr(config.get_config(None, current_app), each, None):
-            css_classes.append('suit_%s' % each)
+        suit_conf_param = getattr(config.get_config(None, current_app), each, None)
+        if suit_conf_param:
+            value = each if isinstance(suit_conf_param, bool) \
+                else '_'.join((each, suit_conf_param))
+            css_classes.append('suit_%s' % value)
     return ' '.join(css_classes)
 
 

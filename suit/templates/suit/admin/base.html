@@ -6,8 +6,9 @@
 {% block extrastyle %}
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
 {% endblock %}
+
+{% block bodyclass %}{{ block.super|suit_body_class:request.current_app }}{% endblock %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
@@ -27,7 +28,9 @@
 {% endblock %}
 
 {% block footer %}
+{#    </div> <!-- Put footer outside #container -->#}
     {% if not is_popup %}
+        <div id="footer">
         <footer class="footer">
             <div class="container-fluid">
                 {% block footer_content %}
@@ -67,7 +70,7 @@
         </footer>
     {% endif %}
 
-    {{ block.super }}
+{#    {{ block.super }}#}
     <script src="{% static "suit/js/suit.js" %}"></script>
     {% if cl.formset or action_form and 'toggle_changelist_top_actions'|suit_conf:request.current_app %}
         <script type="text/javascript">
@@ -87,8 +90,12 @@
                     Suit.$('#suit_form_tabs').suitFormTabs();
                 });
             {% endif %}
+
+{#            {% if 'layout'|suit_conf:request.current_app == 'vertical' %}#}
+{#                Suit.$('#content').prepend(Suit.$('.breadcrumbs'));#}
+{#            {% endif %}#}
         </script>
     {% endif %}
-{% endblock %}
 
-{% block bodyclass %}{{ block.super|suit_body_class:request.current_app }}{% endblock %}
+{#    <div> <!-- Fix/close div previously closed by footer -->#}
+{% endblock %}
