@@ -42,83 +42,15 @@ Click on screenshot for live demo:
      :target: http://djangosuit.com/admin/
 
 
-Installation
-============
-
-1. You can get stable version of Django Suit by using pip or easy_install::
-
-    pip install django-suit==0.2.21
-
-2. You will need to add the ``'suit'`` application to the ``INSTALLED_APPS`` setting of your Django project ``settings.py`` file.::
-
-    INSTALLED_APPS = (
-        ...
-        'suit',
-        'django.contrib.admin',
-    )
-
-  .. important:: ``'suit'`` must be added before ``'django.contrib.admin'`` and if you are using third-party apps with special admin support (like django-cms) you also need to add ``'suit'`` before ``'cms'``.
-
-3. You also need to add ``'django.core.context_processors.request'`` to ``TEMPLATE_CONTEXT_PROCESSORS`` setting in your Django project ``settings.py`` file.::
-
-      from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-
-      TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-          'django.core.context_processors.request',
-      )
-
-  Note: This is required to handle left side menu. If by some reason you removed original Django Suit ``menu.html``, you can skip this.
-
-
-Deployment
-----------
-
-Deployment with Django Suit should not be different than any other Django application. If you have problems with deployment on production, read `Django docs on wsgi <https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/modwsgi/>`_ first.
-
-.. note:: If you deploy your project with Apache or ``Debug=False`` don't forget to run ``./manage.py collectstatic``
-
-
-Develop branch
---------------
-
-`Develop branch <https://github.com/darklow/django-suit/commits/develop>`_ is considered as release candidate version. Check `commits <https://github.com/darklow/django-suit/commits/develop>`_ and `changelog <https://github.com/darklow/django-suit/blob/develop/CHANGELOG.rst>`_ of develop branch first, before installing develop version. It is quite stable and always tested, but can contain some flaws or behaviour changes too. To install latest develop version use::
-
-  pip uninstall django-suit
-  pip install https://github.com/darklow/django-suit/tarball/develop
-
-
-Bootstrap3 branch
------------------
-
-`BS3 branch <https://github.com/darklow/django-suit/commits/bs3>`_ is considered as alpha version and is not yet ready for production use. To install latest bs3 version use::
-
-  pip install django-suit==0.3a1
-
-
-Customization
-=============
-
-Configuration
--------------
-
-You can customize Django Suit behaviour by adding ``SUIT_CONFIG`` configuration variable to your Django project ``settings.py`` file.
+Getting Started
+===============
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
+   getting_started
    configuration
 
-
-Templates
----------
-
-You must extend ``base_site.html`` template to customize footer links, copyright text or to add extra JS/CSS files. Example file is available on `github <https://github.com/darklow/django-suit/blob/master/suit/templates/admin/base_site.html>`_.
-
-Copy customized ``base_site.html`` `template file <https://github.com/darklow/django-suit/blob/master/suit/templates/admin/base_site.html>`_ to your project's main application ``templates/admin/`` directory and un-comment and edit the blocks you would like to extend.
-
-Alternatively you can copy ``base_site.html`` to any of template directories, which are defined in ``TEMPLATE_DIRS`` setting (if any). By default Django looks in every registered application ``templates/`` dir.
-
-In the same way you can override any of Django Suit admin templates. More about customizing project's templates, you can read in `Django Admin Tutorial <https://docs.djangoproject.com/en/dev/intro/tutorial02/#customizing-your-project-s-templates>`_
 
 Features
 ========
