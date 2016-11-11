@@ -98,10 +98,11 @@ $filter-col-width: 15rem;
         //line-height: default;
         @extend .btn;
         @extend .btn-secondary;
-        @include btn-mixin(primary, null, $size: sm);
+        @include btn-mixin(primary, null);
         margin-right: 1rem;
       }
       select {
+        vertical-align: middle;
         @extend .form-control;
         display: inline;
         width: auto;

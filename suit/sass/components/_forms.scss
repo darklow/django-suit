@@ -202,6 +202,7 @@ fieldset {
       display: inline-block;
       padding-top: $suit-form-padding-vertical !important;
       padding-left: 0;
+      padding-right: $suit-form-padding-horizontal / 2;
       @include media-breakpoint-up(sm) {
         padding-bottom: 0;
       }
