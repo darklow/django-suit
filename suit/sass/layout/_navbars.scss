@@ -36,7 +36,7 @@
           font-weight: bold;
           box-shadow: inset 0 3px 0 $link-color-brighter;
           &:hover {
-            @include gradient-vertical(darken($body-bg, 3%), #fff);
+            @include gradient-y(darken($body-bg, 3%), #fff);
           }
         }
       }

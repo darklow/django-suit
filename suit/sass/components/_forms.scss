@@ -4,6 +4,9 @@ $suit-label-padding-top: $suit-form-padding-vertical + .55rem;
 $suit-label-padding-bottom: $suit-form-padding-vertical + .4rem;
 $suit-padding-first-extra: .25rem;
 
+textarea.form-control {
+  line-height: $textarea-line-height;
+}
 fieldset {
   @include suit-box-shadow();
   margin-bottom: 2rem;

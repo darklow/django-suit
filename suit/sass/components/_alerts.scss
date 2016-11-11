@@ -5,7 +5,7 @@
 .messagelist {
   @include reset-list();
   display: block;
-  margin: 1rem $grid-gutter-width 0;
+  margin: 1rem $grid-gutter-width-base 0;
   li {
     @extend .alert;
     &.success {

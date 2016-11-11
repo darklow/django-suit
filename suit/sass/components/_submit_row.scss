@@ -4,7 +4,7 @@
     margin: 0;
     .deletelink {
       @extend .btn;
-      @extend .btn-danger-outline;
+      @extend .btn-outline-danger;
     }
   }
   input[type='submit'], input[type='button'], button, .btn {
@@ -35,7 +35,7 @@
   .submit-row {
     @include media-breakpoint-up(lg) {
       position: relative;
-      padding: $grid-gutter-width/2;
+      padding: $grid-gutter-width-base/2;
       background-color: $form-bg;
       display: flex;
       flex-wrap: wrap;
@@ -49,14 +49,14 @@
       }
       .deletelink-box {
         text-align: right;
-        margin-top: $grid-gutter-width/2;
+        margin-top: $grid-gutter-width-base/2;
         order: 10;
       }
     }
   }
   .object-tools {
     @include reset-list();
-    margin-top: $grid-gutter-width;
+    margin-top: $grid-gutter-width-base;
     //padding: $grid-gutter-width/2;
     @include media-breakpoint-down(md) {
       display: none;
@@ -75,7 +75,7 @@
           display: block;
           margin-top: 1px;
           background-color: $form-bg;
-          padding: $grid-gutter-width/3 $grid-gutter-width/2;
+          padding: $grid-gutter-width-base/3 $grid-gutter-width-base/2;
           @include suit-box-shadow();
         }
         &:not(.list-item) a {
@@ -90,13 +90,13 @@
         &.heading {
           @include text-semibold();
           font-size: $font-size-lg;
-          padding: 0 $grid-gutter-width/3 $grid-gutter-width/4;
+          padding: 0 $grid-gutter-width-base/3 $grid-gutter-width-base/4;
           &.heading-inverse {
             background-color: $inverse-lightest;
             color: #fff;
             font-weight: normal;
             font-size: $font-size-base;
-            padding: $grid-gutter-width/4 $grid-gutter-width/3;
+            padding: $grid-gutter-width-base/4 $grid-gutter-width-base/3;
           }
         }
       }

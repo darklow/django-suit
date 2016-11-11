@@ -43,7 +43,7 @@ body.change-form {
           @extend .btn-round;
           @include btn-mixin(info, none, sm, round=true);
           &.addlink {
-            @include btn-mixin(success, $icon-plus-circle, sm, round=true);
+            @include btn-mixin(success, $icon-plus-circle, null, round=true);
           }
         }
       }
