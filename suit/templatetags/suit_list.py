@@ -49,11 +49,18 @@ def paginator_number(cl, i):
 @register.simple_tag
 def paginator_info(cl):
     paginator = cl.paginator
-    entries_from = (
-        (paginator.per_page * cl.page_num) + 1) if paginator.count > 0 else 0
-    entries_to = entries_from - 1 + paginator.per_page
-    if paginator.count < entries_to:
+
+    # If we show all rows of list (without pagination)
+    if cl.show_all and cl.can_show_all:
+        entries_from = 1 if paginator.count > 0 else 0
         entries_to = paginator.count
+    else:
+        entries_from = (
+            (paginator.per_page * cl.page_num) + 1) if paginator.count > 0 else 0
+        entries_to = entries_from - 1 + paginator.per_page
+        if paginator.count < entries_to:
+            entries_to = paginator.count
+
     return '%s - %s' % (entries_from, entries_to)
 
 
