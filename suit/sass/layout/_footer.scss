@@ -1,14 +1,12 @@
 /* Sticky footer styles  */
-body.suit_layout_horizontal {
-  @include media-breakpoint-up(sm) {
-    html {
-      position: relative;
-      min-height: 100%;
-    }
-    body {
-      margin-bottom: $footer-height;
-    }
-    .footer {
+@include media-breakpoint-up(sm) {
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  body.suit_layout_horizontal {
+    margin-bottom: $footer-height;
+    #footer {
       position: absolute;
       left: 0;
       right: 0;

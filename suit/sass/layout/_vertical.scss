@@ -22,7 +22,7 @@ body.suit_layout_vertical {
       align-items: flex-start;
       align-content: flex-start;
       flex-wrap: wrap;
-      padding-bottom: $footer-height; // Footer compensation
+      padding-bottom: $footer-height + 30px; // Footer compensation
       padding-top: 4rem; // Breadcrumbs compensation
     }
     #footer {

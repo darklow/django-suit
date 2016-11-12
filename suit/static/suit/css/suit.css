@@ -2515,7 +2515,7 @@ body.suit_layout_vertical #container { -webkit-box-flex: 1; -ms-flex: 1; flex: 1
 
 body.suit_layout_vertical #container #header { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; width: 230px; -ms-flex-negative: 0; flex-shrink: 0; }
 
-body.suit_layout_vertical #container #content { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; -ms-flex-line-pack: start; align-content: flex-start; -ms-flex-wrap: wrap; flex-wrap: wrap; padding-bottom: 66px; padding-top: 4rem; }
+body.suit_layout_vertical #container #content { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; -webkit-box-align: start; -ms-flex-align: start; align-items: flex-start; -ms-flex-line-pack: start; align-content: flex-start; -ms-flex-wrap: wrap; flex-wrap: wrap; padding-bottom: 96px; padding-top: 4rem; }
 
 body.suit_layout_vertical #container #footer { left: 230px; bottom: 0; right: 0; position: absolute; -ms-flex-wrap: wrap; flex-wrap: wrap; -ms-flex-preferred-size: 100%; flex-basis: 100%; }
 
@@ -2736,9 +2736,9 @@ body.dashboard #content .content-wrap { display: -webkit-box; display: -ms-flexb
 #content-main > .object-tools > li > a:not([class*="btn-"]).addlink:before { margin-right: 3px; display: inline-block; font-family: FontAwesome; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; content: ""; }
 
 /* Sticky footer styles  */
-@media (min-width: 576px) { body.suit_layout_horizontal html { position: relative; min-height: 100%; }
-  body.suit_layout_horizontal body { margin-bottom: 66px; }
-  body.suit_layout_horizontal .footer { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; min-height: 66px; margin-top: -66px; } }
+@media (min-width: 576px) { html { position: relative; min-height: 100%; }
+  body.suit_layout_horizontal { margin-bottom: 66px; }
+  body.suit_layout_horizontal #footer { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; min-height: 66px; margin-top: -66px; } }
 
 /* Styles */
 .footer { min-height: 66px; background-color: #e4e4e4; color: #55595c; font-size: 0.929rem; }
