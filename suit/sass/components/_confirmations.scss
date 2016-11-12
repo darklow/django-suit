@@ -1,5 +1,5 @@
 body.delete-confirmation {
-  #content {
+  .content-wrap {
     display: block;
     @extend .alert;
     @extend .alert-danger;

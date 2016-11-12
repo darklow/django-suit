@@ -1,4 +1,5 @@
 from django.apps import apps
+from django.template import VariableDoesNotExist
 from suit.apps import DjangoSuitConfig
 
 
@@ -18,8 +19,9 @@ def get_config_instance(app_name=None):
 #: :type: DjangoSuitConfig()
 suit_config_cls = DjangoSuitConfig
 
-def get_config(param=None, app_name=None):
-    suit_config = get_config_instance(app_name)
+
+def get_config(param=None, request=None):
+    suit_config = get_config_instance(get_current_app(request) if request else None)
     if param:
         value = getattr(suit_config, param, None)
         if value is None:
@@ -27,6 +29,14 @@ def get_config(param=None, app_name=None):
         return value
 
     return suit_config
+
+
+def get_current_app(request):
+    try:
+        return request.current_app
+    except (VariableDoesNotExist, AttributeError):
+        pass
+    return None
 
 
 def set_config_value(name, value):

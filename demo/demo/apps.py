@@ -8,6 +8,7 @@ class SuitConfig(DjangoSuitConfig):
             ChildItem(model='demo.country'),
             ChildItem(model='demo.continent'),
             ChildItem(model='demo.showcase'),
+            ChildItem('Custom view', url='/admin/custom/'),
         ]),
         ParentItem('Integrations', children=[
             ChildItem(model='demo.city'),
@@ -15,7 +16,6 @@ class SuitConfig(DjangoSuitConfig):
         ParentItem('Users', children=[
             ChildItem(model='auth.user'),
             ChildItem('User groups', 'auth.group'),
-            ChildItem('Custom page', url='/admin/custom/'),
         ]),
         ParentItem('Right Side Menu', children=[
             ChildItem('Password change', url='admin:password_change'),
@@ -23,6 +23,8 @@ class SuitConfig(DjangoSuitConfig):
 
         ], align_right=True),
     )
+
+    layout = 'vertical'
 
     def ready(self):
         super(SuitConfig, self).ready()

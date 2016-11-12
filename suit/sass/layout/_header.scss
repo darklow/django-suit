@@ -65,6 +65,14 @@ body.suit_layout_horizontal {
         }
       }
     }
+    .suit-user-tools {
+      .welcome {
+        display: inline-block;
+      }
+      .user-links {
+        display: inline-block;
+      }
+    }
     #site-name {
       margin: 0;
       font-weight: normal;
@@ -134,14 +142,21 @@ body.suit_layout_vertical {
     }
     .suit-user-tools {
       background-color: $top-nav-bg;
-      padding: $header-padding-vertical*1.2 $header-padding-horizontal/2;
+      padding: $header-padding-vertical*1.1 $header-padding-horizontal/2;
       text-align: center;
       font-size: 13px;
-
+      .separator {
+        display: none;
+      }
       .welcome {
-        display: inline-block;
-        color: $header-color;
+        display: block;
         font-size: 12px;
+        color: $header-muted-color;
+        margin-bottom: .25rem;
+        strong {
+          color: $header-color;
+          font-weight: normal;
+        }
         .fa, .icon-link:before {
           margin-right: 2px;
           font-size: 13px;
@@ -153,12 +168,12 @@ body.suit_layout_vertical {
         margin-bottom: .25rem;
       }
       .icon-link {
+        @include text-hide();
         display: inline-block;
-        padding: .10rem 0;
+        padding: .4rem 0;
         width: 26px;
         text-align: center;
         border-radius: $border-radius-sm;
-        font-size: $font-size-lg;
         position: relative;
         transition: background-color .2s, color .2s;
         color: #fff;
@@ -171,15 +186,17 @@ body.suit_layout_vertical {
         }
         &:before {
           @include fa-icon-font();
+          font-size: $font-size-lg;
           line-height: normal;
           display: inline-block;
         }
         &:after {
+          font-family: $font-family-base;
           display: block;
           position: absolute;
           content: attr(data-title);
           left: 0;
-          top: -15px;
+          top: 40px;
           font-size: 10px;
           white-space: nowrap;
           opacity: 0;

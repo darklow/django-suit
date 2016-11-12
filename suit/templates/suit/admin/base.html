@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
-{% block bodyclass %}{{ block.super|suit_body_class:request.current_app }}{% endblock %}
+{% block bodyclass %}{{ block.super|suit_body_class:request }}{% endblock %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
@@ -20,35 +20,47 @@
     </h1>
 {% endblock %}
 
+{% block pretitle %}
+<div class="content-wrap">
+{% endblock %}
+
+{% block sidebar %}
+    </div> <!-- Close content-wrap -->
+{% endblock %}
+
 {% block messages_zzz %}
 {% endblock %}
 
 {% block usertools %}
     {% if has_permission %}
         <div id="user-tools" class="suit-user-tools">
+            {% block welcome-msg %}
+                <span class="welcome">
+                Welcome,
+                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+            </span>
+            {% endblock %}
             <div class="user-links">
             {% block userlinks %}
                 {% if site_url %}
-                    <a href="{{ site_url }}" class="icon-link view-site-link" data-title="{% trans 'View site' %}"></a>
+                    <a href="{{ site_url }}" class="icon-link view-site-link" data-title="{% trans 'View site' %}">{% trans 'View site' %}</a>
+                    <span class="separator">/</span>
+
                 {% endif %}
                 {% if user.is_active and user.is_staff %}
                     {% url 'django-admindocs-docroot' as docsroot %}
                     {% if docsroot %}
-                        <a href="{{ docsroot }}" class="icon-link documentation-link" data-title="{% trans 'Documentation' %}"></a>
+                        <a href="{{ docsroot }}" class="icon-link documentation-link" data-title="{% trans 'Documentation' %}">{% trans 'Documentation' %}</a>
+                        <span class="separator">/</span>
                     {% endif %}
                 {% endif %}
                 {% if user.has_usable_password %}
-                    <a href="{% url 'admin:password_change' %}" class="icon-link change-password-link" data-title="{% trans 'Change password' %}"></a>
+                    <a href="{% url 'admin:password_change' %}" class="icon-link change-password-link" data-title="{% trans 'Change password' %}">{% trans 'Change password' %}</a>
+                    <span class="separator">/</span>
                 {% endif %}
-                <a href="{% url 'admin:logout' %}" class="icon-link logout-link" data-title="{% trans 'Log out' %}"></a>
+                <a href="{% url 'admin:logout' %}" class="icon-link logout-link" data-title="{% trans 'Log out' %}">{% trans 'Log out' %}</a>
             {% endblock %}
             </div>
-            {% block welcome-msg %}
-                <span class="welcome">
-                <span class="fa fa-user"></span>
-                {% firstof user.get_short_name user.get_username %}
-            </span>
-            {% endblock %}
         </div>
     {% endif %}
 {% endblock %}
@@ -88,7 +100,7 @@
                                 {% with site_header|default:_('Django administration') as admin_name %}
                                     {{ admin_name }}
                                     {% if admin_name == 'Django Suit' %}
-                                        v{{ 'version'|suit_conf:request.current_app }}
+                                        v{{ 'version'|suit_conf:request }}
                                     {% endif %}
                                 {% endwith %}
                             {% endblock %}
@@ -102,7 +114,7 @@
 
 {#    {{ block.super }}#}
     <script src="{% static "suit/js/suit.js" %}"></script>
-    {% if cl.formset or action_form and 'toggle_changelist_top_actions'|suit_conf:request.current_app %}
+    {% if cl.formset or action_form and 'toggle_changelist_top_actions'|suit_conf:request %}
         <script type="text/javascript">
             Suit.ListActionsToggle.init();
         </script>
@@ -111,7 +123,7 @@
 
             Suit.$("#{{ opts.model_name }}_form").suitFormDebounce();
 
-            {% if 'form_submit_on_right'|suit_conf:request.current_app %}
+            {% if 'form_submit_on_right'|suit_conf:request %}
                 Suit.FixedBar.init();
             {% endif %}
 

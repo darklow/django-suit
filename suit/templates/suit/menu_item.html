@@ -1,5 +1,5 @@
 {% load i18n %}
-<li{{ parent_item.is_active|yesno:' class=active,' }}>
+<li class="{{ parent_item.is_active|yesno:' active,' }}{{ parent_item.children|yesno:' has-children,' }}">
     <a href="{{ parent_item.url }}"
             {{ parent_item.target_blank|yesno:' target=_blank,' }}><i class="{% firstof parent_item.icon 'icon-chevron-right' %}"></i>{% trans parent_item.label|capfirst %}
     </a>

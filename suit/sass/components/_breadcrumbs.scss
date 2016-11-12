@@ -22,9 +22,15 @@ body.suit_layout_vertical {
       padding: 1.5rem $grid-gutter-width-base;
       left: $vertical-menu-width;
     }
+    > .messagelist {
+      display: none;
+    }
     #content {
       .breadcrumbs {
         display: none;
+      }
+      .messagelist {
+        margin: 0 0 $grid-gutter-width-base/2 0;
       }
     }
   }
@@ -53,6 +59,7 @@ body.suit_layout_horizontal {
   &.change-form {
     #content {
       .breadcrumbs {
+        display: none;
         padding: 1.5rem 0;
         position: relative;
         z-index: 6;

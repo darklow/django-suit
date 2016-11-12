@@ -37,7 +37,7 @@ class ParentItem(ChildItem):
 
 class MenuManager(object):
     def __init__(self, available_apps, context, request):
-        from .config import get_config_instance
+        from .config import get_config_instance, get_current_app
 
         super(MenuManager, self).__init__()
 
@@ -47,7 +47,8 @@ class MenuManager(object):
 
         self.context = context
         self.request = request
-        self.suit_config = get_config_instance(request.current_app)
+        self.current_app = get_current_app(request)
+        self.suit_config = get_config_instance(self.current_app)
         self.user_menu = self.suit_config.menu
         self.menu_items = None
         self.aligned_right_menu_items = []
@@ -219,7 +220,7 @@ class MenuManager(object):
             return menu_item
         from django.core.urlresolvers import reverse, NoReverseMatch
         try:
-            menu_item.url = reverse(menu_item.url, current_app=self.request.current_app)
+            menu_item.url = reverse(menu_item.url, current_app=self.current_app)
             menu_item._url_name = menu_item.url
         except NoReverseMatch:
             menu_item.url = '#no-reverse-match'

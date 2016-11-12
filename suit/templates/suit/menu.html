@@ -1,7 +1,7 @@
 {% load i18n suit_menu suit_tags %}
 
 {% get_menu request as menu %}
-{% with suit_layout='layout'|suit_conf:request.current_app %}
+{% with suit_layout='layout'|suit_conf:request %}
     <div id="suit-nav">
         <ul>
             {% if menu %}

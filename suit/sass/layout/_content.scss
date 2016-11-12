@@ -13,10 +13,16 @@ body.change-form {
   justify-content: flex-start;
   align-content: flex-end;
   align-items: flex-start;
-  > h1 {
+  .content-wrap {
+    body.dashboard & {
+      display: flex;
+    }
     flex-basis: 100%;
-    &:first-child {
-      display: none;
+    > h1 {
+      flex-basis: 100%;
+      &:first-child {
+        display: none;
+      }
     }
   }
 
