@@ -140,14 +140,34 @@ body.suit_layout_vertical {
         > a {
           //transition: background-color .1s, color .1s;
           display: block;
-          padding: .5rem $header-padding-horizontal/1.5;
+          padding: .6rem $header-padding-horizontal/1.5;
           color: transparentize(#fff, .3);
         }
         &:not(.active) {
           a {
             &:hover {
               color: #fff;
-              background-color: darken($top-nav-bg, 5%);
+            }
+          }
+          &:hover {
+            background-color: darken($top-nav-bg, 5%);
+            position: relative;
+            > ul {
+              box-shadow: 0 0 2px 2px rgba(0,0,0,.1);
+              top: 0;
+              left: 70%;
+              display: block;
+              position: absolute;
+              z-index: 1000;
+              padding: 0;
+              > li {
+                > a {
+                  white-space: nowrap;
+                  &:hover {
+                    background-color: $inverse-lighter;
+                  }
+                }
+              }
             }
           }
         }
@@ -160,8 +180,8 @@ body.suit_layout_vertical {
           > li {
             &.active {
               background-color: #fff;
-              box-shadow: inset 4px 0 0 $link-color-brighter;
               a {
+                box-shadow: inset 4px 0 0 $link-color-brighter;
                 &, &:hover, &:focus {
                   color: $link-color-brighter;
                 }
@@ -170,8 +190,9 @@ body.suit_layout_vertical {
             a {
               color: $header-muted-color;
               display: block;
-              padding: .35rem $header-padding-horizontal/1.5;
+              padding: .4rem $header-padding-horizontal/1.5;
               &:hover {
+                background-color: lighten($body-bg, 2%);
                 color: darken($header-muted-color, 25%);
               }
               //border-bottom: 1px solid $body-bg;

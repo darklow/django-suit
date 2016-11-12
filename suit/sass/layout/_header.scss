@@ -137,22 +137,31 @@ body.suit_layout_vertical {
       padding: $header-padding-vertical*1.2 $header-padding-horizontal/2;
       text-align: center;
       font-size: 13px;
+
       .welcome {
+        display: inline-block;
         color: $header-color;
-        margin-right: .75rem;
-        font-size: 13px;
+        font-size: 12px;
         .fa, .icon-link:before {
           margin-right: 2px;
+          font-size: 13px;
         }
       }
-
+      .user-links {
+        display: inline-block;
+        margin-right: .75rem;
+        margin-bottom: .25rem;
+      }
       .icon-link {
-        font-size: $font-size-lg;
-        padding: .25rem .2rem;
+        display: inline-block;
+        padding: .10rem 0;
+        width: 26px;
+        text-align: center;
         border-radius: $border-radius-sm;
+        font-size: $font-size-lg;
+        position: relative;
         transition: background-color .2s, color .2s;
         color: #fff;
-        position: relative;
         &:hover {
           background-color: darken($top-nav-bg, 7%);
           color: $link-color-brighter;
@@ -164,8 +173,6 @@ body.suit_layout_vertical {
           @include fa-icon-font();
           line-height: normal;
           display: inline-block;
-          width: 24px;
-          height: 24px;
         }
         &:after {
           display: block;

@@ -2577,17 +2577,19 @@ body.suit_layout_vertical #header #user-tools:not(.suit-user-tools) a:nth-child(
 
 body.suit_layout_vertical #header .suit-user-tools { background-color: #383d4b; padding: 1.25rem 0.9375rem; text-align: center; font-size: 13px; }
 
-body.suit_layout_vertical #header .suit-user-tools .welcome { color: #fff; margin-right: .75rem; font-size: 13px; }
+body.suit_layout_vertical #header .suit-user-tools .welcome { display: inline-block; color: #fff; font-size: 12px; }
 
-body.suit_layout_vertical #header .suit-user-tools .welcome .fa, body.suit_layout_vertical #header .suit-user-tools .welcome .icon-link:before { margin-right: 2px; }
+body.suit_layout_vertical #header .suit-user-tools .welcome .fa, body.suit_layout_vertical #header .suit-user-tools .welcome .icon-link:before { margin-right: 2px; font-size: 13px; }
 
-body.suit_layout_vertical #header .suit-user-tools .icon-link { font-size: 1.143rem; padding: .25rem .2rem; border-radius: 0.2rem; -webkit-transition: background-color .2s, color .2s; transition: background-color .2s, color .2s; color: #fff; position: relative; }
+body.suit_layout_vertical #header .suit-user-tools .user-links { display: inline-block; margin-right: .75rem; margin-bottom: .25rem; }
+
+body.suit_layout_vertical #header .suit-user-tools .icon-link { display: inline-block; padding: .10rem 0; width: 26px; text-align: center; border-radius: 0.2rem; font-size: 1.143rem; position: relative; -webkit-transition: background-color .2s, color .2s; transition: background-color .2s, color .2s; color: #fff; }
 
 body.suit_layout_vertical #header .suit-user-tools .icon-link:hover { background-color: #282c37; color: #279bee; }
 
 body.suit_layout_vertical #header .suit-user-tools .icon-link:hover:after { opacity: 1; }
 
-body.suit_layout_vertical #header .suit-user-tools .icon-link:before { font-family: FontAwesome; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; line-height: normal; display: inline-block; width: 24px; height: 24px; }
+body.suit_layout_vertical #header .suit-user-tools .icon-link:before { font-family: FontAwesome; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; line-height: normal; display: inline-block; }
 
 body.suit_layout_vertical #header .suit-user-tools .icon-link:after { display: block; position: absolute; content: attr(data-title); left: 0; top: -15px; font-size: 10px; white-space: nowrap; opacity: 0; -webkit-transition: opacity .2s; transition: opacity .2s; }
 
@@ -2653,19 +2655,29 @@ body.suit_layout_vertical #suit-nav > ul > li.active > a, body.suit_layout_verti
 
 body.suit_layout_vertical #suit-nav > ul > li.active > ul { display: block; }
 
-body.suit_layout_vertical #suit-nav > ul > li > a { display: block; padding: 0.5rem 1.25rem; color: rgba(255, 255, 255, 0.7); }
+body.suit_layout_vertical #suit-nav > ul > li > a { display: block; padding: 0.6rem 1.25rem; color: rgba(255, 255, 255, 0.7); }
 
-body.suit_layout_vertical #suit-nav > ul > li:not(.active) a:hover { color: #fff; background-color: #2d313d; }
+body.suit_layout_vertical #suit-nav > ul > li:not(.active) a:hover { color: #fff; }
+
+body.suit_layout_vertical #suit-nav > ul > li:not(.active):hover { background-color: #2d313d; position: relative; }
+
+body.suit_layout_vertical #suit-nav > ul > li:not(.active):hover > ul { box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1); top: 0; left: 70%; display: block; position: absolute; z-index: 1000; padding: 0; }
+
+body.suit_layout_vertical #suit-nav > ul > li:not(.active):hover > ul > li > a { white-space: nowrap; }
+
+body.suit_layout_vertical #suit-nav > ul > li:not(.active):hover > ul > li > a:hover { background-color: #464c5b; }
 
 body.suit_layout_vertical #suit-nav > ul > li > ul { list-style: none; margin: 0; padding: 0; background-color: #fff; display: none; font-size: 13px; padding: .5rem 0; }
 
-body.suit_layout_vertical #suit-nav > ul > li > ul > li.active { background-color: #fff; box-shadow: inset 4px 0 0 #279bee; }
+body.suit_layout_vertical #suit-nav > ul > li > ul > li.active { background-color: #fff; }
+
+body.suit_layout_vertical #suit-nav > ul > li > ul > li.active a { box-shadow: inset 4px 0 0 #279bee; }
 
 body.suit_layout_vertical #suit-nav > ul > li > ul > li.active a, body.suit_layout_vertical #suit-nav > ul > li > ul > li.active a:hover, body.suit_layout_vertical #suit-nav > ul > li > ul > li.active a:focus { color: #279bee; }
 
-body.suit_layout_vertical #suit-nav > ul > li > ul > li a { color: #687086; display: block; padding: 0.35rem 1.25rem; }
+body.suit_layout_vertical #suit-nav > ul > li > ul > li a { color: #687086; display: block; padding: 0.4rem 1.25rem; }
 
-body.suit_layout_vertical #suit-nav > ul > li > ul > li a:hover { color: #30343e; }
+body.suit_layout_vertical #suit-nav > ul > li > ul > li a:hover { background-color: #f6f6f6; color: #30343e; }
 
 body.change-form #container br.clear:last-child { display: none; }
 
@@ -2791,11 +2803,13 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist #changelist-filter ul li a { padding: .1rem; padding-left: 1.25rem; display: block; }
 
-#changelist #changelist-form .actions { margin: -.5rem 0 1rem 0; font-size: 0.929rem; }
+#changelist #changelist-form .actions { margin: -.5rem 0 1rem 0; font-size: 0.929rem; -webkit-box-align: baseline; -ms-flex-align: baseline; align-items: baseline; }
+
+#changelist #changelist-form .actions[style*='block'] { display: -webkit-box !important; display: -ms-flexbox !important; display: flex !important; }
 
 #changelist #changelist-form .actions button { display: inline-block; margin-right: 1rem; }
 
-#changelist #changelist-form .actions select { vertical-align: middle; display: inline; width: auto; height: 2.05rem; }
+#changelist #changelist-form .actions select { display: inline; width: auto; height: 2.05rem; margin-right: .25rem; }
 
 #changelist #changelist-form .actions span.all, #changelist #changelist-form .actions span.action-counter, #changelist #changelist-form .actions span.clear, #changelist #changelist-form .actions span.question { font-size: 13px; margin: 0 0.5em; display: none; }
 
@@ -2803,7 +2817,7 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist #changelist-form .results + .actions { margin: 1rem 0 0; }
 
-.suit_toggle_changelist_top_actions #changelist #changelist-form .results + .actions { display: block; }
+.suit_toggle_changelist_top_actions #changelist #changelist-form .results + .actions { display: -webkit-box; display: -ms-flexbox; display: flex; }
 
 #changelist #changelist-form .paginator { margin-top: 1rem; font-size: 0.929rem; }
 

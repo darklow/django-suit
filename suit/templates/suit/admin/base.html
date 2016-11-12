@@ -26,12 +26,7 @@
 {% block usertools %}
     {% if has_permission %}
         <div id="user-tools" class="suit-user-tools">
-            {% block welcome-msg %}
-                <span class="welcome">
-                    <span class="fa fa-user"></span>
-                    {% firstof user.get_short_name user.get_username %}
-                </span>
-            {% endblock %}
+            <div class="user-links">
             {% block userlinks %}
                 {% if site_url %}
                     <a href="{{ site_url }}" class="icon-link view-site-link" data-title="{% trans 'View site' %}"></a>
@@ -46,6 +41,13 @@
                     <a href="{% url 'admin:password_change' %}" class="icon-link change-password-link" data-title="{% trans 'Change password' %}"></a>
                 {% endif %}
                 <a href="{% url 'admin:logout' %}" class="icon-link logout-link" data-title="{% trans 'Log out' %}"></a>
+            {% endblock %}
+            </div>
+            {% block welcome-msg %}
+                <span class="welcome">
+                <span class="fa fa-user"></span>
+                {% firstof user.get_short_name user.get_username %}
+            </span>
             {% endblock %}
         </div>
     {% endif %}
