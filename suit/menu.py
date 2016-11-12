@@ -98,7 +98,7 @@ class MenuManager(object):
             if not self.parent_item_is_forbidden(parent_item, native_app):
                 menu_items.append(parent_item)
 
-                if parent_item.align_right:
+                if parent_item.align_right and self.suit_config.layout == 'horizontal':
                     self.aligned_right_menu_items.append(parent_item)
 
         if self.suit_config.menu_show_home:

@@ -14,11 +14,13 @@ $link-color-bright: darken($link-color-brighter, 10%);
 $link-color: darken($link-color-brighter, 20%);
 $body-bg: #f1f1f1;
 $inverse: #252830;
+//$inverse: #292C3A;
 $header-bg: $inverse;
 $inverse-light: lighten($inverse, 10%);
 $inverse-lighter: lighten($inverse, 15%);
 $inverse-lightest: lighten($inverse, 25%);
-$top-nav-bg: $inverse-light;
+$top-nav-bg: saturate(lighten($inverse, 9%), 2%);
+//$top-nav-bg: desaturate(#363B4D, 1%);
 $header-color: #fff;
 $header-muted-color: lighten($header-bg, 30%);
 

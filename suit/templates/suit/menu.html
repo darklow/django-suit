@@ -1,32 +1,35 @@
 {% load i18n suit_menu suit_tags %}
 
 {% get_menu request as menu %}
-<div id="suit-nav">
-    <ul>
-        {% if menu %}
-            {% for parent_item in menu %}
-                {% if not parent_item.align_right %}
-                    {% include 'suit/menu_item.html' %}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </ul>
-    {% if menu.aligned_right_menu_items %}
-        <ul class="suit-nav-right">
-            {% for parent_item in menu.aligned_right_menu_items %}
-                {% include 'suit/menu_item.html' %}
-            {% endfor %}
-        </ul>
-    {% endif %}
-</div>
-{% if 'layout'|suit_conf:request.current_app == 'horizontal' and menu and menu.active_parent_item %}
-    <div id="suit-sub-nav">
+{% with suit_layout='layout'|suit_conf:request.current_app %}
+    <div id="suit-nav">
         <ul>
-            {% for child_item in menu.active_parent_item.children %}
-                <li{{ child_item.is_active|yesno:' class=active,' }}>
-                    <a href="{{ child_item.url }}"
-                            {{ child_item.target_blank|yesno:' target=_blank,' }}>{{ child_item.label }}</a></li>
-            {% endfor %}
+            {% if menu %}
+                {% for parent_item in menu %}
+                    {% if not parent_item.align_right or suit_layout == 'vertical' %}
+                        {% include 'suit/menu_item.html' %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </ul>
+        {% if menu.aligned_right_menu_items %}
+            <ul class="suit-nav-right">
+                {% for parent_item in menu.aligned_right_menu_items %}
+                    {% include 'suit/menu_item.html' %}
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
-{% endif %}
+    {% if suit_layout == 'horizontal' and menu and menu.active_parent_item %}
+        <div id="suit-sub-nav">
+            <ul>
+                {% for child_item in menu.active_parent_item.children %}
+                    <li{{ child_item.is_active|yesno:' class=active,' }}>
+                        <a href="{{ child_item.url }}"
+                                {{ child_item.target_blank|yesno:' target=_blank,' }}>{{ child_item.label }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endwith %}

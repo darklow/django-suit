@@ -5,7 +5,7 @@
 
 {% block extrastyle %}
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block bodyclass %}{{ block.super|suit_body_class:request.current_app }}{% endblock %}
@@ -21,6 +21,34 @@
 {% endblock %}
 
 {% block messages_zzz %}
+{% endblock %}
+
+{% block usertools %}
+    {% if has_permission %}
+        <div id="user-tools" class="suit-user-tools">
+            {% block welcome-msg %}
+                <span class="welcome">
+                    <span class="fa fa-user"></span>
+                    {% firstof user.get_short_name user.get_username %}
+                </span>
+            {% endblock %}
+            {% block userlinks %}
+                {% if site_url %}
+                    <a href="{{ site_url }}" class="icon-link view-site-link" data-title="{% trans 'View site' %}"></a>
+                {% endif %}
+                {% if user.is_active and user.is_staff %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}" class="icon-link documentation-link" data-title="{% trans 'Documentation' %}"></a>
+                    {% endif %}
+                {% endif %}
+                {% if user.has_usable_password %}
+                    <a href="{% url 'admin:password_change' %}" class="icon-link change-password-link" data-title="{% trans 'Change password' %}"></a>
+                {% endif %}
+                <a href="{% url 'admin:logout' %}" class="icon-link logout-link" data-title="{% trans 'Log out' %}"></a>
+            {% endblock %}
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block nav-global %}
