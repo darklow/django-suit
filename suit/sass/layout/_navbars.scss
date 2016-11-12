@@ -156,10 +156,12 @@ body.suit_layout_vertical {
           }
         }
         > a {
-          //transition: background-color .1s, color .1s;
           display: block;
           padding: .6rem $header-padding-horizontal/1.5;
           color: transparentize(#fff, .3);
+          .fa {
+            margin-right: .7rem;
+          }
         }
         &:not(.active) {
           a {

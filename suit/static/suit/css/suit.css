@@ -2679,6 +2679,8 @@ body.suit_layout_vertical #suit-nav > ul > li.active > ul { display: block; }
 
 body.suit_layout_vertical #suit-nav > ul > li > a { display: block; padding: 0.6rem 1.25rem; color: rgba(255, 255, 255, 0.7); }
 
+body.suit_layout_vertical #suit-nav > ul > li > a .fa { margin-right: .7rem; }
+
 body.suit_layout_vertical #suit-nav > ul > li:not(.active) a:hover { color: #fff; }
 
 body.suit_layout_vertical #suit-nav > ul > li:not(.active):hover { background-color: #2d313d; }

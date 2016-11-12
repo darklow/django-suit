@@ -22,12 +22,12 @@ class ChildItem(object):
 
 class ParentItem(ChildItem):
     def __init__(self, label=None, app=None, url=None, target_blank=False, permissions=None,
-                 children=None, align_right=False, use_first_child_url=True):
+                 children=None, align_right=False, use_first_child_url=True, icon=None):
         super(ParentItem, self).__init__(label, None, url, target_blank, permissions)
         self.user_children = children or []
         self.children = []
         self.align_right = align_right
-        self.icon = None
+        self.icon = icon
         self.app = app
         self.use_first_child_url = use_first_child_url
 
@@ -103,7 +103,7 @@ class MenuManager(object):
                     self.aligned_right_menu_items.append(parent_item)
 
         if self.suit_config.menu_show_home:
-            home_item = ParentItem(_('Home'), url='admin:index')
+            home_item = ParentItem(_('Home'), url='admin:index', icon='fa fa-home')
             menu_items.insert(0, self.handle_user_url(home_item))
 
         return self.mark_active(menu_items)
