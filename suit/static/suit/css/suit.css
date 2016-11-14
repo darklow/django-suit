@@ -2342,6 +2342,8 @@ fieldset input[type=number], fieldset input.vIntegerField, fieldset input.vInteg
 
 .messagelist { list-style: none; margin: 0; padding: 0; display: block; margin: 1rem 1.875rem 0; }
 
+.messagelist li:last-child { margin-bottom: 0; }
+
 body.delete-confirmation .content-wrap { display: block; margin: 1.5rem 2.625rem; }
 
 body.delete-confirmation .content-wrap h1, body.delete-confirmation .content-wrap h2, body.delete-confirmation .content-wrap ul { display: block; float: none; }
@@ -2402,6 +2404,8 @@ body.suit_layout_horizontal.change-list .breadcrumbs { display: none; }
 body.suit_layout_horizontal.change-form #content .breadcrumbs { display: none; padding: 1.5rem 0; position: relative; z-index: 6; }
 
 body.suit_layout_horizontal.change-form #content .breadcrumbs li { float: left; }
+
+body.suit_layout_horizontal.change-form #content .messagelist { display: none; }
 
 #result_list, .tabular table, table#change-history { width: 100%; border: 0; background-color: #fff; border-collapse: collapse; }
 
