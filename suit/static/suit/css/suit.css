@@ -2203,7 +2203,7 @@ fieldset input[type=number], fieldset input.vIntegerField, fieldset input.vInteg
 
 .autosize { max-height: 12rem; }
 
-.ImageWidget .pull-xs-left { margin-right: 1rem; max-width: 75px; max-height: 75px; }
+.ImageWidget .float-xs-left { margin-right: 1rem; max-width: 75px; max-height: 75px; }
 
 .widget-AdminSplitDateTime, .widget-AdminDateWidget, .widget-AdminTimeWidget { font-size: 0; color: transparent; }
 
