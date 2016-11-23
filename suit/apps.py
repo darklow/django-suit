@@ -41,6 +41,10 @@ class DjangoSuitConfig(AppConfig):
     # Enables two column layout for change forms with submit row on the right
     form_submit_on_right = True
 
+    # Hide name/"original" column for all tabular inlines.
+    # May be overridden in Inline class by suit_form_inlines_hide_original = False
+    form_inlines_hide_original = False
+
     # For size
     form_size = {
         'default': SUIT_FORM_SIZE_X_LARGE,

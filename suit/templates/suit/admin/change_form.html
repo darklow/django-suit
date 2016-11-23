@@ -1,4 +1,5 @@
 {% suit_extends 'admin:admin/change_form.html' %}
+{% load suit_forms %}
 
 {% block form_top %}
     <div class="row edit-row">
@@ -30,8 +31,11 @@
 {% endblock %}
 
 {% block inline_field_sets %}
+{#    {% suit_form_conf 'form_inlines_hide_original' as suit_form_inlines_hide_original %}#}
+{#    {{ suit_form_inlines_hide_original }}#}
     {% for inline_admin_formset in inline_admin_formsets %}
-        <div class="{{ inline_admin_formset.opts.suit_classes }}">
+        {% suit_form_conf 'form_inlines_hide_original' inline_admin_formset as suit_form_inlines_hide_original %}
+        <div class="{{ inline_admin_formset.opts.suit_classes }} {% if suit_form_inlines_hide_original %} suit-inlines-hide-original{% endif %}">
             {% include inline_admin_formset.opts.template %}
         </div>
     {% endfor %}

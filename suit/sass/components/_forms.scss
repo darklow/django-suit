@@ -276,9 +276,22 @@ fieldset {
       tbody {
         td {
           &.original {
-            font-size: 0;
-            width: 0;
-            padding: 0;
+            p {
+              margin: 0;
+              @extend .form-control-static;
+              a {
+                float: right;
+                font-size: $font-size-xs;
+              }
+            }
+            .suit-inlines-hide-original:not(.suit-inlines-show-original) & {
+              font-size: 0;
+              width: 0;
+              padding: 0;
+              > * {
+                display: none;
+              }
+            }
           }
           .errorlist {
             margin: 0;

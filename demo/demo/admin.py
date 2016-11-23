@@ -31,6 +31,7 @@ class CityInline(admin.TabularInline):
     extra = 0
     verbose_name_plural = 'Cities'
     suit_classes = 'suit-tab suit-tab-cities'
+    suit_form_inlines_hide_original = True
 
 
 class CountryForm(ModelForm):
@@ -129,6 +130,7 @@ class CountryInline(SortableTabularInline):
     extra = 1
     verbose_name_plural = 'Countries (Sortable example)'
     sortable = 'order'
+    show_change_link = True
 
 
 class ContinentAdmin(SortableModelAdmin):
@@ -193,6 +195,7 @@ class BookInline(SortableTabularInline):
     min_num = 1
     extra = 0
     verbose_name_plural = 'Books (Tabular inline)'
+    suit_form_inlines_hide_original = True
 
 
 class MovieInlineForm(ModelForm):
@@ -228,7 +231,6 @@ class ShowcaseAdmin(admin.ModelAdmin):
     # list_display = ('name', 'help_text', 'choices', 'horizontal_choices', 'boolean')
     list_display = ('name', 'help_text')
     readonly_fields = ('readonly_field',)
-    # raw_id_fields = ('raw_id_field',)
     fieldsets = [
         (None, {'fields': ['name', 'help_text', 'textfield',
                            ('multiple_in_row', 'multiple2'),
