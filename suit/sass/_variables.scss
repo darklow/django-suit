@@ -60,14 +60,21 @@ $nav-padding-horizontal: $grid-gutter-width-base + .75rem;
 //$btn-line-height: $line-height-base;
 //$btn-padding-x: 1.2rem;
 //$btn-padding-y: .35rem;
-$btn-padding-x-md: .85rem;
-$btn-padding-y-md: .35rem;
+$btn-padding-x-sm: .75rem;
+$btn-padding-y-sm: .35rem;
+//$btn-padding-x-md: .85rem;
+//$btn-padding-y-md: .35rem;
 $font-size-md: 0.9375rem;
 //$btn-padding-x-sm: .75rem;
 
 // Inputs
 // --------------------------------------------------
+$input-padding-x-sm: $btn-padding-x-sm;
+$input-padding-y-sm: $btn-padding-y-sm;
 $textarea-line-height: $line-height-base;
+$custom-select-sm-padding-y: $btn-padding-x-sm;
+$custom-select-sm-font-size: $font-size-xs;
+
 //$input-padding-y: $btn-padding-y;
 
 // Tables

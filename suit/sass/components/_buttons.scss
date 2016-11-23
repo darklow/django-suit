@@ -26,7 +26,3 @@
   border-color: transparentize($brand-danger, .25);
   background-color: #fff;
 }
-.btn-md {
-  // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-y-md, $btn-padding-x-md, $font-size-md, $btn-border-radius-sm);
-}
