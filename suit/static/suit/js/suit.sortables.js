@@ -12,6 +12,8 @@
 
         function performMove($arrow, $row) {
             var $next, $prev;
+
+            $row.closest('table').find('tr.selected').removeClass('selected');
             if (mptt_table) {
                 function getPadding($tr) {
                     return parseInt($tr.find('th:first').css('padding-left'));
@@ -24,7 +26,6 @@
                     }).andSelf();
                 }
 
-                $('.selected').removeClass('selected');
                 var padding = getPadding($row);
                 var $rows_to_move = findWithChildren($row);
                 if ($arrow.data('dir') === 'down') {
@@ -44,7 +45,6 @@
                     }
                 }
             } else {
-                $('.selected').removeClass('selected');
                 if ($arrow.data('dir') === 'down') {
                     $next = $row.next();
                     if ($next.is(':visible') && $next.length) {
