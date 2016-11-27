@@ -2076,6 +2076,8 @@ fieldset .form-row > ul, fieldset .form-row .errorlist, fieldset .suit-form .for
 
 @media (max-width: 575px) { .suit-form .form-group .form-control-label + div[class*='col-'] { padding-top: 0; } }
 
+.suit-form .form-group p.form-control-static, .suit-form .form-group .inline-group .tabular table tbody td.original p, .inline-group .tabular table tbody td.original .suit-form .form-group p { margin: 0; }
+
 .suit-form .form-group:first-child .form-control-label { padding-top: 1.3rem; }
 
 .suit-form .form-group:first-child .form-control-label + div[class*='col-'] { padding-top: 0.75rem; }

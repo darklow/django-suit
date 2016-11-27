@@ -163,6 +163,9 @@ fieldset {
         padding-top: 0;
       }
     }
+    p.form-control-static {
+      margin: 0;
+    }
     // More spacing for first and last rows
     &:first-child {
       .form-control-label {
