@@ -1,0 +1,49 @@
+.form-horizontal fieldset.collapse.collapsed .fieldset-heading ,
+.form-horizontal fieldset.collapse.collapsed .fieldset-heading * {
+    visibility: visible;
+}
+.form-horizontal fieldset.collapse.collapsed .fieldset-heading {
+    display: block;
+    position: static;
+}
+.form-horizontal .fieldset-heading .fieldset-title {
+    font-size: 18px;
+}
+.form-horizontal fieldset.collapse .fieldset-heading .fieldset-title {
+    line-height: 36px;
+    margin-top: 0;
+    display: block;
+}
+.form-horizontal fieldset.collapse .fieldset-heading .fieldset-title *,
+.form-horizontal fieldset.collapse {
+    display: block;
+}
+.form-horizontal fieldset.collapse .collapse-toggle {
+    display: inline !important;
+}
+.form-horizontal fieldset.collapse.collapsed * {
+    display: none;
+}
+.form-horizontal fieldset.collapse * {
+    visibility: visible;
+}
+
+
+.form-horizontal fieldset.collapse.collapsed {
+    background-color: #f6f7f8;
+    visibility: visible;
+}
+.form-horizontal fieldset.collapse {
+    height: auto;
+    overflow: visible;
+}
+.form-horizontal fieldset.collapse {
+    margin-top: 35px;
+}
+.form-horizontal fieldset.collapse.collapsed .fieldset-heading {
+    position: static;
+}
+.form-horizontal fieldset.collapse .fieldset-heading {
+    margin: -30px 0 0 0;
+    position: absolute;
+}
