@@ -143,7 +143,7 @@
                         found_error = true;
                     }
                 });
-                !found_error && $($tabs).find('a[href=' + window.location.hash + ']').click();
+                !found_error && $($tabs).find('a[href=\\' + window.location.hash + ']').click();
             } else {
                 $tab_links.first().trigger('click');
             }

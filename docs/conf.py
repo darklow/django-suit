@@ -56,7 +56,7 @@ copyright = u'2013, Kaspars Sprogis (darklow)'
 # built documents.
 #
 # The short X.Y version.
-version = '0.2.22'
+version = '0.2.23'
 # The full version, including alpha/beta/rc tags.
 release = version
 
