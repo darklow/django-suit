@@ -24,8 +24,6 @@ class SuitConfig(DjangoSuitConfig):
         ], align_right=True, icon='fa fa-cog'),
     )
 
-    layout = 'vertical'
-
     def ready(self):
         super(SuitConfig, self).ready()
 
