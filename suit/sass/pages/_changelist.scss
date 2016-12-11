@@ -94,6 +94,10 @@ $filter-col-width: 15rem;
     .actions {
       margin: -.5rem 0 1rem 0;
       font-size: $font-size-sm;
+      align-items: baseline;
+      &[style*='block'] {
+        display: flex !important;
+      }
       button {
         //line-height: default;
         @extend .btn;
@@ -102,11 +106,11 @@ $filter-col-width: 15rem;
         margin-right: 1rem;
       }
       select {
-        vertical-align: middle;
         @extend .form-control;
         display: inline;
         width: auto;
         height: 2.05rem;
+        margin-right: .25rem;
       }
       span.all,
       span.action-counter,
@@ -116,7 +120,6 @@ $filter-col-width: 15rem;
         margin: 0 0.5em;
         display: none;
       }
-
     }
     // Hide actions, show only after results
     .actions {
@@ -127,7 +130,7 @@ $filter-col-width: 15rem;
     // Actions after results
     .results + .actions {
       .suit_toggle_changelist_top_actions & {
-        display: block;
+        display: flex;
       }
       margin: 1rem 0 0;
     }

@@ -1,78 +1,220 @@
-body {
-  padding: 0;
-  margin: 0;
-}
-#header {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
-  background-color: $header-bg;
-  padding-top: $header-padding-vertical;
-  a {
-    color: $header-color;
-  }
-  #branding, #user-tools {
-    flex-basis: map-get($grid-breakpoints, sm)/2;
-  }
-  .header-label {
-    font-size: $font-size-h1/2;
-    color: $header-muted-color;
-    text-transform: uppercase;
-    font-weight: normal;
-  }
-  #branding {
-    min-width: $sidebar-width;
-    padding-left: $header-padding-horizontal;
-    #site-name {
-      font-size: $font-size-h1;
+body.suit_layout_horizontal {
+  #header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    background-color: $header-bg;
+    padding-top: $header-padding-vertical;
+    a {
+      color: $header-color;
+    }
+    #branding, #user-tools {
+      flex-basis: map-get($grid-breakpoints, sm)/2;
+    }
+    .header-label {
+      font-size: $font-size-h1/2;
+      color: $header-muted-color;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+    #branding {
+      min-width: $sidebar-width;
+      padding-left: $header-padding-horizontal;
+      #site-name {
+        font-size: $font-size-h1;
+        a {
+          display: inline-block;
+          &:hover {
+            text-decoration: none;
+            color: transparentize($header-color, .2);
+          }
+          .header-label {
+            display: block;
+            margin-top: 2px;
+            text-align: right;
+            @include media-breakpoint-down(sm) {
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+    #user-tools {
+      flex-grow: 2;
+      padding: 0 $header-padding-horizontal;
+      text-align: right;
+      color: $header-muted-color;
+      //font-size: $font-size-sm;
+      strong {
+        color: $header-color;
+        @extend .text-light;
+      }
       a {
         display: inline-block;
-        &:hover {
-          text-decoration: none;
-          color: transparentize($header-color, .2);
+        margin: 0 2px;
+        &:nth-child(2):not(:last-child) {
+          margin-left: 20px;
         }
-        .header-label {
-          display: block;
-          margin-top: 2px;
-          text-align: right;
-          @include media-breakpoint-down(sm) {
+        color: lighten(desaturate($link-color-bright, 5%), 20%);
+        &:hover {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+    .suit-user-tools {
+      .welcome {
+        display: inline-block;
+      }
+      .user-links {
+        display: inline-block;
+      }
+    }
+    #site-name {
+      margin: 0;
+      font-weight: normal;
+      a {
+        color: $header-color;
+      }
+    }
+  }
+}
+body.suit_layout_vertical {
+  #header {
+    background-color: $header-bg;
+    #branding {
+      padding: $header-padding-vertical $header-padding-horizontal/3 $header-padding-vertical;
+      #site-name {
+        margin: 0;
+        font-weight: normal;
+        font-size: $font-size-h3;
+        line-height: $line-height-lg;
+        text-align: center;
+        a {
+          display: inline-block;
+          &:hover {
+            text-decoration: none;
+            color: transparentize($header-color, .2);
+          }
+          .header-label {
+            display: none;
+            margin-top: 2px;
             text-align: left;
           }
         }
       }
     }
-  }
-  #user-tools {
-    flex-grow: 2;
-    padding: 0 $header-padding-horizontal;
-    text-align: right;
-    color: $header-muted-color;
-    //font-size: $font-size-sm;
-    strong {
-      color: $header-color;
-      @extend .text-light;
+    #site-name {
+      a {
+        color: $header-color;
+      }
     }
     a {
-      display: inline-block;
-      margin: 0 2px;
-      &:nth-child(2):not(:last-child) {
-        margin-left: 20px;
+      color: $header-color;
+    }
+    .header-label {
+      font-size: $font-size-h1/2;
+      color: $header-muted-color;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+    #user-tools:not(.suit-user-tools) {
+      padding: $header-padding-vertical/1.2 $header-padding-horizontal/3;
+      font-size: $font-size-xs;
+      color: $header-muted-color;
+      background-color: darken($top-nav-bg, 7%);
+      strong {
+        color: $header-color;
+        @extend .text-light;
       }
-      color: lighten(desaturate($link-color-bright, 5%), 20%);
-      &:hover {
+      a {
+        display: inline-block;
+        margin: 0 2px;
+        &:nth-child(2):not(:last-child) {
+          margin-left: 5px;
+        }
+        //margin-right: .25rem;
+        color: lighten(desaturate($link-color-bright, 5%), 20%);
+      }
+    }
+    .suit-user-tools {
+      background-color: $top-nav-bg;
+      padding: $header-padding-vertical*1.1 $header-padding-horizontal/2;
+      text-align: center;
+      font-size: 13px;
+      .separator {
+        display: none;
+      }
+      .welcome {
+        display: block;
+        font-size: 12px;
+        color: $header-muted-color;
+        margin-bottom: .25rem;
+        strong {
+          color: $header-color;
+          font-weight: normal;
+        }
+        .fa, .icon-link:before {
+          margin-right: 2px;
+          font-size: 13px;
+        }
+      }
+      .user-links {
+        display: inline-block;
+        margin-right: .75rem;
+        margin-bottom: .25rem;
+      }
+      .icon-link {
+        @include text-hide();
+        display: inline-block;
+        padding: .4rem 0;
+        width: 26px;
+        text-align: center;
+        border-radius: $border-radius-sm;
+        position: relative;
+        transition: background-color .2s, color .2s;
         color: #fff;
-        text-decoration: none;
+        &:hover {
+          background-color: darken($top-nav-bg, 7%);
+          color: $link-color-brighter;
+          &:after {
+            opacity: 1;
+          }
+        }
+        &:before {
+          @include fa-icon-font();
+          font-size: $font-size-lg;
+          line-height: normal;
+          display: inline-block;
+        }
+        &:after {
+          font-family: $font-family-base;
+          display: block;
+          position: absolute;
+          content: attr(data-title);
+          left: 0;
+          top: 40px;
+          font-size: 10px;
+          white-space: nowrap;
+          opacity: 0;
+          transition: opacity .2s;
+        }
+        &.view-site-link:before {
+          content: $icon-home;
+        }
+        &.change-password-link:before {
+          content: "\f084";
+        }
+        &.documentation-link:before {
+          content: "\f02d";
+        }
+        &.logout-link:before {
+          content: "\f08b";
+        }
       }
-    }
-  }
-  #site-name {
-    margin: 0;
-    font-weight: normal;
-    a {
-      color: $header-color;
     }
   }
 }

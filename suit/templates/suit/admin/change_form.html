@@ -5,6 +5,12 @@
     <div class="row edit-row">
     <div class="col-left">
     {% block suit_form_tabs %}
+        {% block breadcrumbs %}
+            {{ block.super }}
+        {% endblock %}
+        {% block messages %}
+            {{ block.super }}
+        {% endblock %}
         {% if adminform.model_admin.suit_form_tabs %}
 
             <ul id="suit_form_tabs" class="nav nav-tabs nav-tabs-suit" data-tab-prefix="suit-tab">
@@ -73,6 +79,6 @@
 
     <!-- Close right column and row -->
     </div>
-    </div>
+{#    </div>#}
     {{ block.super }}
 {% endblock %}

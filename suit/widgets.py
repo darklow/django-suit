@@ -41,8 +41,8 @@ class ImageWidget(ClearableFileInput):
         html = super(ImageWidget, self).render(name, value, attrs)
         if not value or not hasattr(value, 'url') or not value.url:
             return html
-        html = u'<div class="ImageWidget"><div class="pull-xs-left"><a href="%s" target="_blank">' \
-               u'<img src="%s" width="75"></a></div>' \
+        html = u'<div class="ImageWidget"><div class="float-xs-left">' \
+               u'<a href="%s" target="_blank"><img src="%s" width="75"></a></div>' \
                u'%s</div>' % (value.url, value.url, html)
         return mark_safe(html)
 

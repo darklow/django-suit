@@ -58,7 +58,7 @@ class CountryAdmin(admin.ModelAdmin):
     list_display = ('name', 'code', 'continent', 'independence_day')
     list_filter = ('continent',)
     list_select_related = True
-    date_hierarchy = 'independence_day'
+    # date_hierarchy = 'independence_day'
     inlines = (CityInline,)
 
     # fields = ('name', 'continent', 'code', 'independence_day')
