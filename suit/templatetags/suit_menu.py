@@ -103,6 +103,7 @@ class Menu(object):
         self.conf_icons = get_config('menu_icons')
         self.conf_menu_order = get_config('menu_order')
         self.conf_menu = get_config('menu')
+        self.conf_menu_extra = get_config('menu_extra')
 
     def get_app_list(self):
         menu = None
@@ -112,6 +113,9 @@ class Menu(object):
             menu = self.make_menu_from_old_format(self.conf_menu_order)
         else:
             menu = self.make_menu_from_native_only()
+
+        if self.conf_menu_extra:
+            menu += self.make_menu(self.conf_menu_extra)
 
         # Add icons and match active
         if menu:
