@@ -36,7 +36,7 @@
         <div id="user-tools" class="suit-user-tools">
             {% block welcome-msg %}
                 <span class="welcome">
-                Welcome,
+                {% trans 'Welcome,' %}
                 <strong>{% firstof user.get_short_name user.get_username %}</strong>.
             </span>
             {% endblock %}
