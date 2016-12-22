@@ -1,7 +1,6 @@
 from django import get_version
 from django.apps import AppConfig
 from django.contrib.admin.options import ModelAdmin
-from django import VERSION as DJANGO_VERSION
 from . import VERSION
 
 # Form row sizing as Bootstrap CSS grid classes: (for label, for field column)
@@ -84,18 +83,6 @@ class DjangoSuitConfig(AppConfig):
 
     def ready(self):
         super(DjangoSuitConfig, self).ready()
-        self.add_suit_default_template_tags()
-
-    def add_suit_default_template_tags(self):
-        suit_template_extend_tag = 'suit.templatetags.suit_template'
-        try:
-            # Django 1.9+
-            from django.template.engine import Engine
-            Engine.default_builtins.append(suit_template_extend_tag)
-        except AttributeError:
-            # Django <= 1.8
-            from django.template.base import add_to_builtins
-            add_to_builtins(suit_template_extend_tag)
 
     def setup_model_admin_defaults(self):
         """
@@ -107,19 +94,3 @@ class DjangoSuitConfig(AppConfig):
 
         if self.list_per_page:
             ModelAdmin.list_per_page = self.list_per_page
-
-        # For Django 1.8 support only
-        if (1, 8) <= DJANGO_VERSION < (1, 9):
-            self.add_custom_template_loader()
-
-    def add_custom_template_loader(self):
-        """
-        To support Django 1.8 (LTE) add custom template loader to avoid circular imports in admin.
-        """
-        from django.template import engines
-        from django.template.backends.django import DjangoTemplates
-        for engine in engines.all():
-            if isinstance(engine, DjangoTemplates):
-                if isinstance(engine.engine.loaders, tuple):
-                    engine.engine.loaders = list(engine.engine.loaders)
-                engine.engine.loaders.append('suit.template.Loader')
