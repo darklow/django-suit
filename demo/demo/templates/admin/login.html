@@ -1,12 +1,32 @@
 {% extends 'admin/login.html' %}
+{% load i18n %}
+
+{% block branding %}
+    <div class="suit-login-graphic">
+        <svg width="75px" height="75px" viewBox="0 0 90 90" version="1.1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink">
+            <desc>Copyright: Businessman by Ferran Brown from the Noun Project.</desc>
+            <defs></defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Group" fill="#000000">
+                    <circle id="Oval" cx="44.998" cy="17.583" r="17.582"></circle>
+                    <polygon id="Shape" points="49.699 41.668 40.299 41.668 41.299 47.447 48.699 47.447"></polygon>
+                    <path d="M78.249,50.844 L56.41,41.668 L50.022,56.59 L48.668,49.109 L46.432,49.109 L43.565,49.109 L41.251,49.109 L40.007,56.609 L40.014,56.685 L33.588,41.668 L11.351,50.844 L0.693,90 L15.462,90 L20.251,73.813 L21.503,90 L44.998,90 L68.494,90 L69.748,73.813 L74.535,90 L89.306,90 L78.249,50.844 L78.249,50.844 Z M55.962,65.105 L64.148,59.568 L66.851,65.201 L55.962,65.105 L55.962,65.105 Z"
+                          id="Shape"></path>
+                </g>
+            </g>
+        </svg>
+    </div>
+    {{ block.super }}
+{% endblock %}
 
 {% block footer %}
-    {{ block.super }}
-    <hr>
-    <p style="padding: 0 1.5rem">
+    <p style="margin: 0; padding: 1rem 0; background-color: #F1F1F1">
         <span class="text-muted">For demo use: </span>
         <br/>
         Username: <strong>demo</strong><br/>
         Password: <strong>demodemo</strong>
     </p>
+    {{ block.super }}
 {% endblock %}
+

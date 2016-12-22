@@ -115,3 +115,12 @@ def suit_form_conf(context, param_name, inline_admin_formset=None):
     if param_by_model_admin is not None:
         return param_by_model_admin
     return get_config(param_name, context['request'])
+
+
+@register.filter
+def suit_form_field_placeholder(field, placeholder):
+    """
+    Get CSS class for field by widget name, for easier styling
+    """
+    field.field.widget.attrs['placeholder'] = placeholder
+    return field

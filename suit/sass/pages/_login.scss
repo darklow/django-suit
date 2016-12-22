@@ -1,18 +1,105 @@
+.login #container {
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 28em;
+  margin: 0 auto;
+  @include media-breakpoint-up(sm) {
+    min-width: 400px;
+    margin-top: 15vh;
+  }
+}
+
 body.login {
+  $spacing: 1.5rem;
+  svg {
+    * {
+      fill: $body-color;
+    }
+  }
+  .suit-login-graphic {
+    display: block;
+    margin: 2rem auto $spacing;
+  }
+  #content {
+    padding: $spacing;
+    .errornote {
+      border-radius: 0;
+      border: 0;
+    }
+  }
   #header {
+    background-color: transparent;
+    padding: 0;
     #branding {
+      padding: 0;
       flex-basis: 100%;
-      padding-left: 0;
+      text-align: center;
       #site-name {
-        margin: .25rem 0;
-        a {
-          display: block;
+        margin: 0 auto;
+        &:first-child {
+          margin-top: $spacing*1.5;
         }
-        .header-label {
-          padding-top: .35rem;
-          float: right;
+        a {
+          @extend .text-semibold;
+          &, &:hover {
+            color: $body-color;
+          }
+          .header-label {
+            font-weight: normal;
+            text-align: center;
+            margin-top: .3rem;
+          }
         }
       }
+    }
+  }
+  .errorlist {
+    @include reset-list();
+    margin: -.5rem $spacing/2 $spacing;
+    color: $alert-danger-text;
+  }
+  .form-row {
+    input:not([type='hidden']) {
+      padding-left: $spacing/2;
+      padding-right: $spacing/2;
+      margin-bottom: $spacing/1.75;
+      &:not(:focus) {
+        background-color: $body-bg;
+        border-color: $body-bg;
+      }
+    }
+    &.has-danger {
+      input:not([type='hidden']) {
+        border-color: $alert-danger-text;
+      }
+    }
+  }
+  .submit-row {
+    label {
+      display: none;
+    }
+    input[type='submit'] {
+      display: block;
+      width: 100%;
+      margin: $spacing 0 0 0;
+      border: none;
+      //color: #fff !important;
+      text-align: center;
+      @extend .btn;
+      @extend .btn-lg;
+      @extend .btn-primary;
+      //background-color: desaturate($link-color-brighter, 5%);
+      padding: $spacing/1.5 $spacing;
+      //&:hover, &:focus {
+      //  background-color: $link-color-bright;
+      //  &:active {
+      //    background-color: $link-color;
+      //  }
+      //}
+      //&:active {
+      //  background-color: $link-color;
+      //}
     }
   }
 }
