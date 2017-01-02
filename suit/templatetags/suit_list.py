@@ -1,9 +1,6 @@
 from copy import copy
-
 from django import template
-from django.contrib.admin.templatetags.admin_list import result_list
 from django.utils.safestring import mark_safe
-from inspect import getargspec
 
 register = template.Library()
 
@@ -22,14 +19,7 @@ def result_row_attrs(context, cl, row_index):
         return dict_to_attrs(attrs)
 
     instance = cl.result_list[row_index]
-
-    # Backwards compatibility for suit_row_attributes without request argument
-    args = getargspec(suit_row_attributes)
-    if 'request' in args[0]:
-        new_attrs = suit_row_attributes(instance, context['request'])
-    else:
-        new_attrs = suit_row_attributes(instance)
-
+    new_attrs = suit_row_attributes(**{'obj': instance, 'request': context.request})
     if not new_attrs:
         return dict_to_attrs(attrs)
 
