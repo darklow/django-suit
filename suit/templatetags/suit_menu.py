@@ -28,9 +28,12 @@ def get_menu(context, request):
             try:
                 from django.contrib import admin
                 template_response = get_admin_site(request.current_app).index(request)
-                available_apps = template_response.context_data['app_list']
-            except Exception:
-                pass
+            # Django 1.10 removed the current_app parameter for some classes and functions.
+            # Check the release notes.
+            except AttributeError:
+                template_response = get_admin_site(context.request.resolver_match.namespace).index(request)
+
+            available_apps = template_response.context_data['app_list']
 
     if not available_apps:
         logging.warn('Django Suit was unable to retrieve apps list for menu.')
