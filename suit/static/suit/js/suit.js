@@ -156,7 +156,7 @@ window.Suit = Suit;
                         foundError = true;
                     }
                 });
-                !foundError && $($tabs).find('a[href=' + window.location.hash + ']').click();
+                !foundError && $($tabs).find('a[href=\\' + window.location.hash + ']').click();
             } else {
                 $tabLinks.first().trigger('click');
             }
