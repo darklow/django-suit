@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
 }
-body.suit_layout_vertical {
+body.suit_layout_vertical:not(.login) {
   display: flex;
   min-height: 100vh;
   //flex-direction: column;

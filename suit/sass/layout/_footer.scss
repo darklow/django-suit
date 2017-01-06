@@ -4,19 +4,22 @@
     position: relative;
     min-height: 100%;
   }
-  body.suit_layout_horizontal {
-    margin-bottom: $footer-height;
-    #footer {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      min-height: $footer-height;
-      margin-top: -$footer-height;
+  body {
+    &.suit_layout_horizontal, &.login {
+      margin-bottom: $footer-height;
+      #footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        min-height: $footer-height;
+        margin-top: -$footer-height;
+      }
     }
   }
 }
+
 /* Styles */
 .footer {
   min-height: $footer-height;
@@ -47,6 +50,7 @@
     }
   }
 }
+
 /* Override BS4 [hidden] in reboot.scss to show Django debug toolbar */
 #djDebug {
   &[hidden], [hidden][style*="display: block"], [hidden][style*="display:block"] {
