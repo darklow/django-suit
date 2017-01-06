@@ -2018,7 +2018,7 @@ fieldset > h2 { float: left; padding-right: 2rem; }
 
 fieldset > .description { font-size: 0.929rem; padding-top: .35rem; display: inline-block; }
 
-fieldset h2 + .description + * { clear: both; }
+fieldset h2 + .description + *, fieldset .inline-related { clear: both; }
 
 fieldset .form-row:not(.form-group):not(tr) { display: -webkit-box; display: -ms-flexbox; display: flex; background-color: #f6f6f6; padding: 0.5rem 1.1rem; }
 

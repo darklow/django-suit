@@ -25,7 +25,7 @@ fieldset {
     @extend .text-muted;
   }
   // Clear float
-  h2 + .description + * {
+  h2 + .description + *, .inline-related {
     clear: both;
   }
   .form-row:not(.form-group):not(tr) {
