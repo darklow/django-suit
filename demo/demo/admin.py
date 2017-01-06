@@ -139,7 +139,7 @@ class ContinentAdmin(SortableModelAdmin):
     sortable = 'order'
     inlines = (CountryInline,)
 
-    def suit_row_attributes(self, obj):
+    def suit_row_attributes(self, obj, request):
         class_map = {
             'Europe': 'table-success',
             'South America': 'table-warning',
