@@ -7,10 +7,12 @@ $suit-padding-first-extra: .25rem;
 textarea.form-control {
   line-height: $textarea-line-height;
 }
+
 fieldset {
   @include suit-box-shadow();
   margin-bottom: 2rem;
 }
+
 // Django plain/original markup
 // -----------------------------------------
 fieldset {
@@ -62,6 +64,7 @@ fieldset {
     }
   }
 }
+
 // Remove bottom border from suit-include fieldsets
 .suit-include {
   fieldset:not(.suit-form):not(.module) {
@@ -71,6 +74,7 @@ fieldset {
     margin-bottom: 0;
   }
 }
+
 // Django "plain" and BS4 markup
 // -----------------------------------------
 fieldset {
@@ -92,6 +96,7 @@ fieldset {
     }
   }
 }
+
 fieldset {
   .form-row, .suit-form .form-group {
     clear: both;
@@ -141,6 +146,7 @@ fieldset {
     }
   }
 }
+
 // BS4 markup in .suit-form
 // -----------------------------------------
 .suit-form {
@@ -182,6 +188,7 @@ fieldset {
     }
   }
 }
+
 // Multiple in single line fields
 // -----------------------------------------
 .col-multi-fields {
@@ -229,9 +236,11 @@ fieldset {
     }
   }
 }
+
 .hidden {
   display: none;
 }
+
 /* COLLAPSED FIELDSETS */
 fieldset {
   &.collapsed {
@@ -253,16 +262,19 @@ fieldset {
     display: block;
   }
 }
+
 /* IN-LINES */
 .empty-form {
   display: none !important;
 }
+
 .tabular {
   table {
     @extend .table;
     @extend #result_list;
   }
 }
+
 .inline-group {
   // Tabular inlines
   .tabular {
@@ -287,14 +299,6 @@ fieldset {
                 font-size: $font-size-xs;
               }
             }
-            .suit-inlines-hide-original:not(.suit-inlines-show-original) & {
-              font-size: 0;
-              width: 0;
-              padding: 0;
-              > * {
-                display: none;
-              }
-            }
           }
           .errorlist {
             margin: 0;
@@ -304,6 +308,29 @@ fieldset {
           }
           .errorlist + input {
             border-color: $brand-danger;
+          }
+        }
+      }
+
+      // Hide "original"/name column
+      .suit-inlines-hide-original:not(.suit-inlines-show-original) & {
+        tbody, thead {
+          > tr {
+            td, th {
+              &.original {
+                font-size: 0;
+                width: 0;
+                padding: 0;
+                border-color: transparent;
+                box-shadow: none;
+                > * {
+                  display: none;
+                }
+              }
+            }
+            th.original:empty + th {
+              box-shadow: none;
+            }
           }
         }
       }
@@ -357,6 +384,7 @@ fieldset {
     background-color: $form-bg;
   }
 }
+
 .custom-select-sm {
   $select-border-width: ($border-width * 2);
   height: calc(#{$input-height} - #{$select-border-width} - 5px);

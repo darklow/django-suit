@@ -2127,13 +2127,15 @@ fieldset.collapse { display: block; }
 
 .inline-group .tabular table tbody td.original p a { float: right; font-size: 0.857rem; }
 
-.suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table tbody td.original { font-size: 0; width: 0; padding: 0; }
-
-.suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table tbody td.original > * { display: none; }
-
 .inline-group .tabular table tbody td .errorlist { margin: 0; padding-left: 1.5rem; font-size: 0.857rem; color: #E04F3C; }
 
 .inline-group .tabular table tbody td .errorlist + input { border-color: #E04F3C; }
+
+.suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table tbody > tr td.original, .suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table tbody > tr th.original, .suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table thead > tr td.original, .suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table thead > tr th.original { font-size: 0; width: 0; padding: 0; border-color: transparent; box-shadow: none; }
+
+.suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table tbody > tr td.original > *, .suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table tbody > tr th.original > *, .suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table thead > tr td.original > *, .suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table thead > tr th.original > * { display: none; }
+
+.suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table tbody > tr th.original:empty + th, .suit-inlines-hide-original:not(.suit-inlines-show-original) .inline-group .tabular table thead > tr th.original:empty + th { box-shadow: none; }
 
 .inline-group .tabular fieldset { box-shadow: none; }
 
