@@ -117,12 +117,17 @@
                         return false;
                     }
                 }
-            } else if ($(input).hasClass('suit-sortable')) {
-                if (input.defaultValue == input.value && input.value == 0) {
+            } else {
+                var $input = $(input);
+                if ($input.hasClass('suit-sortable')) {
+                    if (input.defaultValue == input.value && input.value == 0) {
+                        return false;
+                    }
+                } else if (!$input.val()) {
                     return false;
                 }
+                return true;
             }
-            return true;
         }
 
         // Update input count right before submit
@@ -136,7 +141,7 @@
                     var fieldset_id = $input.attr('name').split(/-\d+-/)[0];
                     // Check if any of new dynamic block values has been added
                     var $set_block = $input.closest('.dynamic-' + fieldset_id);
-                    var $changed_fields = $set_block.find(":input[value!=''][type!='hidden']").filter(filter_unchanged);
+                    var $changed_fields = $set_block.find(":input[type!='hidden']").filter(filter_unchanged);
                     if (!$set_block.length
                         || $set_block.hasClass('has_original')
                         || $changed_fields.serialize()

@@ -368,30 +368,27 @@ h3 {
                 margin-right: 10px;
             }
             span {
-
+                display: inline-block; //            margin-left: 20px;
                 &.delete, &:last-child {
                     float: right;
                     margin-right: 10px;
                     font-weight: normal;
+                }
+                &.delete {
+                    input {
+                        margin: 0;
+                    }
+                    label {
+                        padding: 7px 0 0 5px;
+                        vertical-align: middle;
+                        margin: 0;
+                    }
                 }
             }
         }
         &:not(:first-of-type) {
             h3 {
                 margin-top: 5px;
-            }
-        }
-        span {
-            display: inline-block; //            margin-left: 20px;
-            &.delete {
-                input {
-                    margin: 0;
-                }
-                label {
-                    padding: 7px 0 0 5px;
-                    vertical-align: middle;
-                    margin: 0;
-                }
             }
         }
         &.tabular {
