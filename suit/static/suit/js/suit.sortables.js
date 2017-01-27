@@ -149,7 +149,7 @@
                     var $changed_fields = $set_block.find(":input[type!='hidden']:not(.suit-sortable)").filter(
                         function () {
                             return $(this).val() != "";
-                        });//.filter(filter_unchanged);
+                        }).filter(filter_unchanged);
                     // console.log($changed_fields.length, $changed_fields);
                     var is_changelist = !$set_block.length;
                     if (is_changelist
