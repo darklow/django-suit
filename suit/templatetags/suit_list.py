@@ -1,11 +1,10 @@
 from copy import copy
-from urlparse import parse_qs
-
 from django import template
 from django.template import Context
 from django.template.loader import get_template
 from django.utils.safestring import mark_safe
 from django.contrib.admin.views.main import SEARCH_VAR
+from suit.compat import parse_qs
 
 register = template.Library()
 
