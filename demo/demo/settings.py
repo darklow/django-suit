@@ -38,6 +38,10 @@ INSTALLED_APPS = [
     # Django Suit
     'demo.apps.SuitConfig',
 
+    # 3rd party apps
+    'django_select2',
+
+    # Django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -4,12 +4,12 @@ from django.forms import ModelForm, Select
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.shortcuts import redirect
-from django.utils.encoding import force_text
+from django_select2.forms import ModelSelect2Widget
 from suit import apps
-
 from suit.admin_filters import IsNullFieldListFilter
 from suit.sortables import SortableTabularInline, SortableModelAdmin, SortableStackedInline
 from suit.widgets import AutosizedTextarea
+from .widgets import Bootstrap4Select
 from .models import *
 from .views import *
 
@@ -205,10 +205,18 @@ class MovieInline(SortableStackedInline):
     }
 
 
+class CountrySelect2Widget(Bootstrap4Select, ModelSelect2Widget):
+    search_fields = [
+        'name__icontains',
+        'code__iexact',
+    ]
+
+
 class ShowcaseForm(ModelForm):
     class Meta:
         widgets = {
             'textfield': AutosizedTextarea,
+            'country2': CountrySelect2Widget()
         }
 
 
@@ -220,12 +228,14 @@ class ShowcaseAdmin(admin.ModelAdmin):
     # radio_fields = {"horizontal_choices": admin.HORIZONTAL,
     #                 'vertical_choices': admin.VERTICAL}
     # list_editable = ('boolean',)
-    list_filter = ('horizontal_choices',)
+    list_filter = ('choices', 'vertical_choices')
+    suit_list_filter_horizontal = ('choices',)
     # list_display = ('name', 'help_text', 'choices', 'horizontal_choices', 'boolean')
     list_display = ('name', 'help_text')
     readonly_fields = ('readonly_field',)
     radio_fields = {"horizontal_choices": admin.HORIZONTAL,
                     'vertical_choices': admin.VERTICAL}
+    raw_id_fields = ('raw_id_field',)
 
     fieldsets = [
         (None, {'fields': ['name', 'help_text', 'textfield',
@@ -242,6 +252,10 @@ class ShowcaseAdmin(admin.ModelAdmin):
         ('Boolean and choices',
          {'fields': ['boolean', 'boolean_with_help', 'choices',
                      'horizontal_choices', 'vertical_choices']}),
+
+        ('Foreign key relations',
+         {'description': 'Original select and linked select feature',
+          'fields': ['country', 'country2', 'raw_id_field']}),
 
         # ('Date and time', {
         #     'description': 'Improved date/time widgets (SuitDateWidget, '

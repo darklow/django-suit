@@ -82,6 +82,12 @@ class Showcase(models.Model):
     choices = models.SmallIntegerField(
         choices=TYPE_CHOICES3, default=3, help_text="Help text")
 
+    country = models.ForeignKey(Country, null=True, blank=True)
+    country2 = models.ForeignKey(Country, null=True, blank=True, related_name='showcase_country2_set', verbose_name='Django Select 2')
+    raw_id_field = models.ForeignKey(Country, null=True, blank=True, related_name='showcase_raw_set')
+    # linked_foreign_key = models.ForeignKey(Country, limit_choices_to={
+    #     'continent__name': 'Europe'}, related_name='foreign_key_linked')
+
     class Meta:
         verbose_name_plural = 'Showcase'
 
