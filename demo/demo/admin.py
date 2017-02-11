@@ -4,8 +4,10 @@ from django.forms import ModelForm, Select
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.shortcuts import redirect
-
+from django.utils.encoding import force_text
 from suit import apps
+
+from suit.admin_filters import IsNullFieldListFilter
 from suit.sortables import SortableTabularInline, SortableModelAdmin, SortableStackedInline
 from suit.widgets import AutosizedTextarea
 from .models import *
@@ -52,16 +54,25 @@ class CountryForm(ModelForm):
         }
 
 
+class PopulationFilter(IsNullFieldListFilter):
+    notnull_label = 'With population data'
+    isnull_label = 'Missing population data'
+    # def __init__(self, *args, **kwargs):
+    #     super(ContinentFilter, self).__init__(*args, **kwargs)
+    #     self.title = 'override filter title'
+
+
+@admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
     form = CountryForm
     search_fields = ('name', 'code')
     list_display = ('name', 'code', 'continent', 'independence_day')
-    list_filter = ('continent',)
+    list_filter = ('continent', 'independence_day', 'code', ('population', PopulationFilter))
+    suit_list_filter_horizontal = ('code', 'population')
     list_select_related = True
-    # date_hierarchy = 'independence_day'
     inlines = (CityInline,)
+    # date_hierarchy = 'independence_day'
 
-    # fields = ('name', 'continent', 'code', 'independence_day')
     fieldsets = [
         (None, {
             'classes': ('suit-tab suit-tab-general',),
@@ -107,12 +118,6 @@ class CountryAdmin(admin.ModelAdmin):
     )
 
 
-    # fields = (('name', 'code', 'continent'), 'independence_day', 'population', 'description')
-
-
-admin.site.register(Country, CountryAdmin)
-
-
 # Inlines for ContinentAdmin
 class CountryInlineForm(ModelForm):
     class Meta:
@@ -133,6 +138,7 @@ class CountryInline(SortableTabularInline):
     show_change_link = True
 
 
+@admin.register(Continent)
 class ContinentAdmin(SortableModelAdmin):
     search_fields = ('name',)
     list_display = ('name', 'countries')
@@ -169,27 +175,6 @@ class ContinentAdmin(SortableModelAdmin):
         return len(obj.country_set.all())
 
 
-admin.site.register(Continent, ContinentAdmin)
-
-
-class ShowcaseForm(ModelForm):
-    class Meta:
-        widgets = {
-            'textfield': AutosizedTextarea,
-        }
-
-
-@staff_member_required
-def showcase_custom_view_example(request, pk):
-    instance = Showcase.objects.get(pk=pk)
-
-    # Do something legendary here
-    messages.success(request, 'Something legendary was done to "%s"' % instance)
-
-    return redirect('admin:demo_showcase_change', pk)
-
-
-# Inlines for Showcase
 class BookInline(SortableTabularInline):
     model = Book
     min_num = 1
@@ -220,6 +205,14 @@ class MovieInline(SortableStackedInline):
     }
 
 
+class ShowcaseForm(ModelForm):
+    class Meta:
+        widgets = {
+            'textfield': AutosizedTextarea,
+        }
+
+
+@admin.register(Showcase)
 class ShowcaseAdmin(admin.ModelAdmin):
     form = ShowcaseForm
     inlines = (BookInline, MovieInline)
@@ -227,10 +220,13 @@ class ShowcaseAdmin(admin.ModelAdmin):
     # radio_fields = {"horizontal_choices": admin.HORIZONTAL,
     #                 'vertical_choices': admin.VERTICAL}
     # list_editable = ('boolean',)
-    # list_filter = ('choices', 'date', CountryFilter)
+    list_filter = ('horizontal_choices',)
     # list_display = ('name', 'help_text', 'choices', 'horizontal_choices', 'boolean')
     list_display = ('name', 'help_text')
     readonly_fields = ('readonly_field',)
+    radio_fields = {"horizontal_choices": admin.HORIZONTAL,
+                    'vertical_choices': admin.VERTICAL}
+
     fieldsets = [
         (None, {'fields': ['name', 'help_text', 'textfield',
                            ('multiple_in_row', 'multiple2'),
@@ -238,6 +234,14 @@ class ShowcaseAdmin(admin.ModelAdmin):
         ('Date and time', {
             'description': 'Original Django admin date/time widgets',
             'fields': ['date_and_time', 'date', 'time_only']}),
+
+        ('Collapsed settings', {
+            'classes': ('collapse',),
+            'fields': ['collapsed_param']}),
+
+        ('Boolean and choices',
+         {'fields': ['boolean', 'boolean_with_help', 'choices',
+                     'horizontal_choices', 'vertical_choices']}),
 
         # ('Date and time', {
         #     'description': 'Improved date/time widgets (SuitDateWidget, '
@@ -254,13 +258,7 @@ class ShowcaseAdmin(admin.ModelAdmin):
         #                     'appended inputs',
         #      'fields': ['enclosed1', 'enclosed2']}),
         #
-        # ('Boolean and choices',
-        #  {'fields': ['boolean', 'boolean_with_help', 'choices',
-        #              'horizontal_choices', 'vertical_choices']}),
-        #
-        # ('Collapsed settings', {
-        #     'classes': ('collapse',),
-        #     'fields': ['hidden_checkbox', 'hidden_choice']}),
+
         # ('And one more collapsable', {
         #     'classes': ('collapse',),
         #     'fields': ['hidden_charfield', 'hidden_charfield2']}),
@@ -286,4 +284,11 @@ class ShowcaseAdmin(admin.ModelAdmin):
         return my_urls + urls
 
 
-admin.site.register(Showcase, ShowcaseAdmin)
+@staff_member_required
+def showcase_custom_view_example(request, pk):
+    instance = Showcase.objects.get(pk=pk)
+
+    # Do something legendary here
+    messages.success(request, 'Something legendary was done to "%s"' % instance)
+
+    return redirect('admin:demo_showcase_change', pk)
