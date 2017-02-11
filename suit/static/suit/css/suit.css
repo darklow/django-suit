@@ -2842,7 +2842,7 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist.filtered #changelist-filter { -ms-flex-preferred-size: 15rem; flex-basis: 15rem; -webkit-box-ordinal-group: 4; -ms-flex-order: 3; order: 3; }
 
-#changelist.filtered #changelist-form { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; margin-right: 2rem; }
+#changelist #changelist-filter + #changelist-form { margin-right: 2rem; }
 
 #changelist #toolbar { margin-bottom: 1.5rem; }
 
@@ -2873,6 +2873,8 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 #changelist #changelist-filter ul li.selected a { font-weight: bold; color: #373a3c; }
 
 #changelist #changelist-filter ul li a { padding: .1rem; padding-left: 1.25rem; display: block; }
+
+#changelist #changelist-form { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
 
 #changelist #changelist-form .actions { margin: -.5rem 0 1rem 0; font-size: 0.929rem; -webkit-box-align: baseline; -ms-flex-align: baseline; align-items: baseline; }
 
