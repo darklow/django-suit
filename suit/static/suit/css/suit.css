@@ -2346,6 +2346,10 @@ fieldset input[type=number], fieldset input.vIntegerField, fieldset input.vInteg
 
 .suit-char-count a .fa { font-size: 12px; display: inline-block; padding-left: 2px; }
 
+.related-widget-wrapper-link:not([href]) { display: none; }
+
+.related-widget-wrapper-link:hover, .related-widget-wrapper-link:focus { text-decoration: none; }
+
 .messagelist { list-style: none; margin: 0; padding: 0; display: block; margin: 1rem 1.875rem 0; }
 
 .messagelist li:last-child { margin-bottom: 0; }

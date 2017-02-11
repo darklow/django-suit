@@ -427,3 +427,14 @@ fieldset {
     }
   }
 }
+
+// Edit related for django foreign keys
+.related-widget-wrapper-link {
+  &:not([href]) {
+    display: none;
+    //background-color: red;
+  }
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
