@@ -22,6 +22,16 @@ suit_config_cls = DjangoSuitConfig
 
 def get_config(param=None, request=None):
     suit_config = get_config_instance(get_current_app(request) if request else None)
+
+    # Allow overriding suit config by request
+    # Used only for demo purposes
+    req_key = '__suit_config_by_request'
+    if request and not hasattr(req_key, req_key):
+        setattr(request, req_key, True)
+        for k, v in request.GET.items():
+            if k.startswith('__suit_'):
+                setattr(suit_config, k[7:], v)
+
     if param:
         value = getattr(suit_config, param, None)
         if value is None:
