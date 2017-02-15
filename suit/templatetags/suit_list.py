@@ -150,8 +150,7 @@ def suit_admin_list_filter(cl, spec):
 
     tpl = get_template(spec.template)
     choices = list(spec.choices(cl))
-    field_key = spec.field_path if hasattr(spec, 'field_path') else \
-        spec.parameter_name
+    field_key = get_filter_id(spec)
     matched_key = field_key
     for choice in choices:
         query_string = choice['query_string'][1:]
@@ -192,13 +191,13 @@ def suit_admin_list_filter(cl, spec):
 @register.filter
 def suit_list_filter_vertical(filters, cl):
     filter_horizontal = getattr(cl.model_admin, 'suit_list_filter_horizontal', [])
-    return [f for f in filters if f.field_path not in filter_horizontal]
+    return [f for f in filters if get_filter_id(f) not in filter_horizontal]
 
 
 @register.filter
 def suit_list_filter_horizontal(filters, cl):
     filter_horizontal = getattr(cl.model_admin, 'suit_list_filter_horizontal', [])
-    return [f for f in filters if f.field_path in filter_horizontal]
+    return [f for f in filters if get_filter_id(f) in filter_horizontal]
 
 
 @register.filter
@@ -206,3 +205,14 @@ def suit_list_filter_horizontal_params(params, cl):
     filter_horizontal = getattr(cl.model_admin, 'suit_list_filter_horizontal', [])
     # Add split for date__gte, field__isnull filters
     return [p for p in params if p[0].split('__')[0] not in filter_horizontal]
+
+
+def get_filter_id(spec):
+    try:
+        return getattr(spec, 'field_path')
+    except AttributeError:
+        try:
+            return getattr(spec, 'parameter_name')
+        except AttributeError:
+            pass
+    return spec.title
