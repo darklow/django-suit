@@ -11,11 +11,16 @@ $filter-col-width: 15rem;
       flex-basis: 100%;
     }
     #changelist-filter {
-      flex-basis: 15rem;
-      order: 3;
+      &:not(:empty) {
+        flex-basis: 15rem;
+        order: 3;
+      }
+      &:empty {
+        display: none;
+      }
     }
   }
-  #changelist-filter + #changelist-form {
+  #changelist-filter:not(:empty) + #changelist-form {
     margin-right: 2rem;
   }
   #toolbar {

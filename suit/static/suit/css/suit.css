@@ -2844,9 +2844,11 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist.filtered #toolbar { -webkit-box-flex: 10; -ms-flex: 10; flex: 10; -ms-flex-preferred-size: 100%; flex-basis: 100%; }
 
-#changelist.filtered #changelist-filter { -ms-flex-preferred-size: 15rem; flex-basis: 15rem; -webkit-box-ordinal-group: 4; -ms-flex-order: 3; order: 3; }
+#changelist.filtered #changelist-filter:not(:empty) { -ms-flex-preferred-size: 15rem; flex-basis: 15rem; -webkit-box-ordinal-group: 4; -ms-flex-order: 3; order: 3; }
 
-#changelist #changelist-filter + #changelist-form { margin-right: 2rem; }
+#changelist.filtered #changelist-filter:empty { display: none; }
+
+#changelist #changelist-filter:not(:empty) + #changelist-form { margin-right: 2rem; }
 
 #changelist #toolbar { margin-bottom: 1.5rem; }
 
