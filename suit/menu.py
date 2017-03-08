@@ -223,7 +223,7 @@ class MenuManager(object):
             menu_item.url = reverse(menu_item.url, current_app=self.current_app)
             menu_item._url_name = menu_item.url
         except NoReverseMatch:
-            menu_item.url = '#no-reverse-match'
+            pass
         return menu_item
 
     def parent_item_is_forbidden(self, parent_item, native_app):
