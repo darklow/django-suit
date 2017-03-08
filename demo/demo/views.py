@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin.views.decorators import staff_member_required
+from django.http import HttpResponse
 from django.shortcuts import render
 
 
@@ -17,3 +18,13 @@ def custom_admin_view(request):
 
     template = 'admin/custom_view.html'
     return render(request, template, context)
+
+
+def home(request):
+    return HttpResponse("""<html><head>
+    <style>body {font-family: sans-serif; margin: 5rem; text-align: center; line-height: 1.7; font-size: 18px;}</style>
+    </head>
+    <body>
+     Welcome to Django Suit demo app.<br>
+     Go to <a href="/admin/">admin</a> to explore all the features.
+    </body></html>""")

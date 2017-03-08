@@ -31,4 +31,6 @@ urlpatterns = [
 
     # Documentation url for menu documentation link
     url(r'^admin/custom2/', RedirectView.as_view(url='http://djangosuit.com/support/'), name='django-admindocs-docroot'),
+
+    url(r'^$', views.home, name='home'),
 ]
