@@ -28,6 +28,7 @@ class CharacterCountTextarea(AutosizedTextarea):
     """
     TextArea with character count. Supports also twitter specific count.
     """
+
     def render(self, name, value, attrs=None):
         output = super(CharacterCountTextarea, self).render(name, value, attrs)
         output += mark_safe(
@@ -45,36 +46,41 @@ class ImageWidget(ClearableFileInput):
                u'<a href="%s" target="_blank"><img src="%s" width="75"></a></div>' \
                u'%s</div>' % (value.url, value.url, html)
         return mark_safe(html)
-    
-    
+
+
 class EnclosedInput(TextInput):
     """
     Widget for bootstrap appended/prepended inputs
     """
 
-    def __init__(self, attrs=None, prepend=None, append=None):
+    def __init__(self, attrs=None, prepend=None, append=None, prepend_class='addon', append_class='addon'):
         """
-        For prepend, append parameters use string like %, $ or html
+        :param prepend_class|append_class: CSS class applied to wrapper element. Values: addon or btn
         """
         self.prepend = prepend
+        self.prepend_class = prepend_class
         self.append = append
+        self.append_class = append_class
         super(EnclosedInput, self).__init__(attrs=attrs)
 
-    def enclose_value(self, value):
-        if value.startswith("<"):
-            return value
-        return '<span class="input-group-addon">%s</span>' % value
+    def enclose_value(self, value, wrapper_class):
+        if value.startswith("fa-"):
+            value = '<i class="fa %s"></i>' % value
+        return '<span class="input-group-%s">%s</span>' % (wrapper_class, value)
+
+    def enclose_valueaaz(self, value, wrapper_class):
+        return '<span class="input-group-%s">%s</span>' % (wrapper_class, value)
 
     def render(self, name, value, attrs=None):
         output = super(EnclosedInput, self).render(name, value, attrs)
-        div_classes = []
+        div_classes = set()
         if self.prepend:
-            div_classes.append('input-group')
-            self.prepend = self.enclose_value(self.prepend)
+            div_classes.add('input-group')
+            self.prepend = self.enclose_value(self.prepend, self.prepend_class)
             output = ''.join((self.prepend, output))
         if self.append:
-            div_classes.append('input-group')
-            self.append = self.enclose_value(self.append)
+            div_classes.add('input-group')
+            self.append = self.enclose_value(self.append, self.append_class)
             output = ''.join((output, self.append))
 
         return mark_safe('<div class="%s">%s</div>' % (' '.join(div_classes), output))

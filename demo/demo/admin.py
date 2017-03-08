@@ -8,7 +8,7 @@ from django_select2.forms import ModelSelect2Widget
 from suit import apps
 from suit.admin_filters import IsNullFieldListFilter
 from suit.sortables import SortableTabularInline, SortableModelAdmin, SortableStackedInline
-from suit.widgets import AutosizedTextarea
+from suit.widgets import AutosizedTextarea, EnclosedInput
 from .widgets import Bootstrap4Select
 from .models import *
 from .views import *
@@ -19,10 +19,8 @@ admin.site.site_header = 'Django Suit'
 class CityInlineForm(ModelForm):
     class Meta:
         widgets = {
-            # 'area': EnclosedInput(prepend='icon-globe', append='km<sup>2</sup>',
-            #                       attrs={'class': 'input-small'}),
-            # 'population': EnclosedInput(append='icon-user',
-            #                             attrs={'class': 'input-small'}),
+            'area': EnclosedInput(prepend='fa-globe', append='km<sup>2</sup>'),
+            'population': EnclosedInput(prepend='fa-users'),
         }
 
 
@@ -41,14 +39,12 @@ class CountryForm(ModelForm):
         widgets = {
             # 'code': TextInput(attrs={'class': 'input-mini'}),
             # 'independence_day': SuitDateWidget,
-            # 'area': EnclosedInput(prepend='icon-globe', append='km<sup>2</sup>',
-            #                       attrs={'class': 'input-small'}),
-            # 'population': EnclosedInput(prepend='icon-user',
-            #                             append='<input type="button" '
-            #                                    'class="btn" onclick="window'
-            #                                    '.open(\'https://www.google'
-            #                                    '.com/\')" value="Search">',
-            #                             attrs={'class': 'input-small'}),
+            'area': EnclosedInput(prepend='fa-globe', append='km<sup>2</sup>',
+                                  attrs={'placeholder': 'Country area'}),
+            'population': EnclosedInput(
+                prepend='fa-users',
+                append='<button class="btn btn-secondary" type="button" onclick="window.open(\'https://www.google.com/\')">Search</button>',
+                append_class='btn', attrs={'placeholder': 'Human population'}),
             'description': AutosizedTextarea,
             'architecture': AutosizedTextarea,
         }
@@ -95,7 +91,9 @@ class CountryAdmin(admin.ModelAdmin):
 
     suit_form_size = {
         'fields': {
-            'code': apps.SUIT_FORM_SIZE_INLINE
+            'code': apps.SUIT_FORM_SIZE_INLINE,
+            'area': apps.SUIT_FORM_SIZE_SMALL,
+            'population': apps.SUIT_FORM_SIZE_SMALL,
         },
         'widgets': {
             'AutosizedTextarea': apps.SUIT_FORM_SIZE_XXX_LARGE,
