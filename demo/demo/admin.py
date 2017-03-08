@@ -43,7 +43,8 @@ class CountryForm(ModelForm):
                                   attrs={'placeholder': 'Country area'}),
             'population': EnclosedInput(
                 prepend='fa-users',
-                append='<button class="btn btn-secondary" type="button" onclick="window.open(\'https://www.google.com/\')">Search</button>',
+                append='<button class="btn btn-secondary" type="button" '
+                       'onclick="window.open(\'https://www.google.com/\')">Search</button>',
                 append_class='btn', attrs={'placeholder': 'Human population'}),
             'description': AutosizedTextarea,
             'architecture': AutosizedTextarea,

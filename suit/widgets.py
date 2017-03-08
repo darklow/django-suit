@@ -68,9 +68,6 @@ class EnclosedInput(TextInput):
             value = '<i class="fa %s"></i>' % value
         return '<span class="input-group-%s">%s</span>' % (wrapper_class, value)
 
-    def enclose_valueaaz(self, value, wrapper_class):
-        return '<span class="input-group-%s">%s</span>' % (wrapper_class, value)
-
     def render(self, name, value, attrs=None):
         output = super(EnclosedInput, self).render(name, value, attrs)
         div_classes = set()
