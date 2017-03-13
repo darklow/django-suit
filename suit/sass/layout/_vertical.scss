@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+body.suit_layout_vertical:not(.login) {
+  display: flex;
+  min-height: 100vh;
+  //flex-direction: column;
+  #container {
+    flex: 1;
+    display: flex;
+    position: relative;
+    align-content: flex-start;
+    #header {
+      display: flex;
+      flex-direction: column;
+      width: $vertical-menu-width;
+      flex-shrink: 0;
+    }
+    #content {
+      flex: 1;
+      align-items: flex-start;
+      align-content: flex-start;
+      flex-wrap: wrap;
+      padding-bottom: $footer-height + 30px; // Footer compensation
+      padding-top: 4rem; // Breadcrumbs compensation
+    }
+    #footer {
+      left: $vertical-menu-width;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      flex-wrap: wrap;
+      flex-basis: 100%;
+      //width: 100%;
+    }
+
+  }
+  > #footer {
+
+  }
+  &.dashboard:not([class*="app-"]) {
+    #container {
+      #content {
+        padding-top: $grid-gutter-width-base;
+      }
+    }
+  }
+}
+

@@ -14,11 +14,13 @@ $link-color-bright: darken($link-color-brighter, 10%);
 $link-color: darken($link-color-brighter, 20%);
 $body-bg: #f1f1f1;
 $inverse: #252830;
+//$inverse: #292C3A;
 $header-bg: $inverse;
 $inverse-light: lighten($inverse, 10%);
 $inverse-lighter: lighten($inverse, 15%);
 $inverse-lightest: lighten($inverse, 25%);
-$top-nav-bg: $inverse-light;
+$top-nav-bg: saturate(lighten($inverse, 9%), 2%);
+//$top-nav-bg: desaturate(#363B4D, 1%);
 $header-color: #fff;
 $header-muted-color: lighten($header-bg, 30%);
 
@@ -50,20 +52,34 @@ $font-size-lg: $font-size-h5;
 $gray-light: lighten($gray-light, 10%);
 $text-muted: $gray-light;
 $sidebar-width: 200px;
-$header-padding-horizontal: $grid-gutter-width;
-$header-padding-vertical: $grid-gutter-width/1.8;
-$nav-padding-horizontal: $grid-gutter-width + .75rem;
+$grid-gutter-width-base: 1.875rem;
+$header-padding-horizontal: $grid-gutter-width-base;
+$header-padding-vertical: $grid-gutter-width-base/1.8;
+$nav-padding-horizontal: $grid-gutter-width-base + .75rem;
+$footer-height: 66px;
+$vertical-menu-width: 230px;
 
 // Buttons
 // --------------------------------------------------
-$btn-padding-x: 1.2rem;
-$btn-padding-y: .35rem;
-$btn-padding-x-lg: 1.5rem;
-$btn-padding-y-lg: .6rem;
+//$btn-line-height: $line-height-base;
+//$btn-padding-x: 1.2rem;
+//$btn-padding-y: .35rem;
+$btn-padding-x-sm: .75rem;
+$btn-padding-y-sm: .35rem;
+//$btn-padding-x-md: .85rem;
+//$btn-padding-y-md: .35rem;
+$font-size-md: 0.9375rem;
+//$btn-padding-x-sm: .75rem;
 
 // Inputs
 // --------------------------------------------------
-$input-padding-y: $btn-padding-y;
+$input-padding-x-sm: $btn-padding-x-sm;
+$input-padding-y-sm: $btn-padding-y-sm;
+$textarea-line-height: $line-height-base;
+$custom-select-sm-padding-y: $btn-padding-x-sm;
+$custom-select-sm-font-size: $font-size-xs;
+
+//$input-padding-y: $btn-padding-y;
 
 // Tables
 // --------------------------------------------------
@@ -81,7 +97,10 @@ $form-label-bg: #fff;
 // Cards
 // --------------------------------------------------
 $card-border-radius: 0;
+$card-border-radius-inner: 0;
 $card-border-color: transparent;
+$card-cap-bg: $inverse-lightest;
+$card-cap-color: #fff;
 
 
 // Blockquotes

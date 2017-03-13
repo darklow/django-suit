@@ -1,9 +1,10 @@
 from copy import copy
-
 from django import template
-from django.contrib.admin.templatetags.admin_list import result_list
+from django.template import Context
+from django.template.loader import get_template
 from django.utils.safestring import mark_safe
-from inspect import getargspec
+from django.contrib.admin.views.main import SEARCH_VAR
+from suit.compat import parse_qs
 
 register = template.Library()
 
@@ -22,14 +23,7 @@ def result_row_attrs(context, cl, row_index):
         return dict_to_attrs(attrs)
 
     instance = cl.result_list[row_index]
-
-    # Backwards compatibility for suit_row_attributes without request argument
-    args = getargspec(suit_row_attributes)
-    if 'request' in args[0]:
-        new_attrs = suit_row_attributes(instance, context['request'])
-    else:
-        new_attrs = suit_row_attributes(instance)
-
+    new_attrs = suit_row_attributes(**{'obj': instance, 'request': context.request})
     if not new_attrs:
         return dict_to_attrs(attrs)
 
@@ -135,3 +129,90 @@ def cells_handler(results, cl):
 def dict_to_attrs(attrs):
     return mark_safe(' ' + ' '.join(['%s="%s"' % (k, v)
                                      for k, v in attrs.items()]))
+
+
+@register.inclusion_tag('suit/search_form.html')
+def suit_search_form(cl):
+    """
+    Displays a search form for searching the list.
+    """
+    return {
+        'cl': cl,
+        'show_result_count': cl.result_count != cl.full_result_count,
+        'search_var': SEARCH_VAR
+    }
+
+
+@register.simple_tag
+def suit_admin_list_filter(cl, spec):
+    if spec.template == 'admin/filter.html':
+        spec.template = 'admin/filter_horizontal.html'
+
+    tpl = get_template(spec.template)
+    choices = list(spec.choices(cl))
+    field_key = get_filter_id(spec)
+    matched_key = field_key
+    for choice in choices:
+        query_string = choice['query_string'][1:]
+        query_parts = parse_qs(query_string)
+
+        value = ''
+        matches = {}
+        for key in query_parts.keys():
+            if key == field_key:
+                value = query_parts[key][0]
+                matched_key = key
+            elif key.startswith(
+                            field_key + '__') or '__' + field_key + '__' in key:
+                value = query_parts[key][0]
+                matched_key = key
+
+            if value:
+                matches[matched_key] = value
+
+        # Iterate matches, use first as actual values, additional for hidden
+        i = 0
+        for key, value in matches.items():
+            if i == 0:
+                choice['name'] = key
+                choice['val'] = value
+            else:
+                choice['additional'] = '%s=%s' % (key, value)
+            i += 1
+
+    return tpl.render(Context({
+        'field_name': field_key,
+        'title': spec.title,
+        'choices': choices,
+        'spec': spec,
+    }))
+
+
+@register.filter
+def suit_list_filter_vertical(filters, cl):
+    filter_horizontal = getattr(cl.model_admin, 'suit_list_filter_horizontal', [])
+    return [f for f in filters if get_filter_id(f) not in filter_horizontal]
+
+
+@register.filter
+def suit_list_filter_horizontal(filters, cl):
+    filter_horizontal = getattr(cl.model_admin, 'suit_list_filter_horizontal', [])
+    return [f for f in filters if get_filter_id(f) in filter_horizontal]
+
+
+@register.filter
+def suit_list_filter_horizontal_params(params, cl):
+    filter_horizontal = getattr(cl.model_admin, 'suit_list_filter_horizontal', [])
+    # Add split for date__gte, field__isnull filters
+    return [p for p in params if p[0].split('__')[0] not in filter_horizontal]
+
+
+def get_filter_id(spec):
+    try:
+        return getattr(spec, 'field_path')
+    except AttributeError:
+        try:
+            return getattr(spec, 'parameter_name')
+        except AttributeError:
+            pass
+    return spec.title

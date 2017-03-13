@@ -4,10 +4,12 @@ from django.forms import ModelForm, Select
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.shortcuts import redirect
-
+from django_select2.forms import ModelSelect2Widget
 from suit import apps
+from suit.admin_filters import IsNullFieldListFilter
 from suit.sortables import SortableTabularInline, SortableModelAdmin, SortableStackedInline
-from suit.widgets import AutosizedTextarea
+from suit.widgets import AutosizedTextarea, EnclosedInput
+from .widgets import Bootstrap4Select
 from .models import *
 from .views import *
 
@@ -17,10 +19,8 @@ admin.site.site_header = 'Django Suit'
 class CityInlineForm(ModelForm):
     class Meta:
         widgets = {
-            # 'area': EnclosedInput(prepend='icon-globe', append='km<sup>2</sup>',
-            #                       attrs={'class': 'input-small'}),
-            # 'population': EnclosedInput(append='icon-user',
-            #                             attrs={'class': 'input-small'}),
+            'area': EnclosedInput(prepend='fa-globe', append='km<sup>2</sup>'),
+            'population': EnclosedInput(prepend='fa-users'),
         }
 
 
@@ -31,6 +31,7 @@ class CityInline(admin.TabularInline):
     extra = 0
     verbose_name_plural = 'Cities'
     suit_classes = 'suit-tab suit-tab-cities'
+    suit_form_inlines_hide_original = True
 
 
 class CountryForm(ModelForm):
@@ -38,29 +39,37 @@ class CountryForm(ModelForm):
         widgets = {
             # 'code': TextInput(attrs={'class': 'input-mini'}),
             # 'independence_day': SuitDateWidget,
-            # 'area': EnclosedInput(prepend='icon-globe', append='km<sup>2</sup>',
-            #                       attrs={'class': 'input-small'}),
-            # 'population': EnclosedInput(prepend='icon-user',
-            #                             append='<input type="button" '
-            #                                    'class="btn" onclick="window'
-            #                                    '.open(\'https://www.google'
-            #                                    '.com/\')" value="Search">',
-            #                             attrs={'class': 'input-small'}),
+            'area': EnclosedInput(prepend='fa-globe', append='km<sup>2</sup>',
+                                  attrs={'placeholder': 'Country area'}),
+            'population': EnclosedInput(
+                prepend='fa-users',
+                append='<button class="btn btn-secondary" type="button" '
+                       'onclick="window.open(\'https://www.google.com/\')">Search</button>',
+                append_class='btn', attrs={'placeholder': 'Human population'}),
             'description': AutosizedTextarea,
             'architecture': AutosizedTextarea,
         }
 
 
+class PopulationFilter(IsNullFieldListFilter):
+    notnull_label = 'With population data'
+    isnull_label = 'Missing population data'
+    # def __init__(self, *args, **kwargs):
+    #     super(ContinentFilter, self).__init__(*args, **kwargs)
+    #     self.title = 'override filter title'
+
+
+@admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
     form = CountryForm
     search_fields = ('name', 'code')
     list_display = ('name', 'code', 'continent', 'independence_day')
-    list_filter = ('continent',)
+    list_filter = ('continent', 'independence_day', 'code', ('population', PopulationFilter))
+    suit_list_filter_horizontal = ('code', 'population')
     list_select_related = True
-    date_hierarchy = 'independence_day'
     inlines = (CityInline,)
+    # date_hierarchy = 'independence_day'
 
-    # fields = ('name', 'continent', 'code', 'independence_day')
     fieldsets = [
         (None, {
             'classes': ('suit-tab suit-tab-general',),
@@ -83,7 +92,9 @@ class CountryAdmin(admin.ModelAdmin):
 
     suit_form_size = {
         'fields': {
-            'code': apps.SUIT_FORM_SIZE_INLINE
+            'code': apps.SUIT_FORM_SIZE_INLINE,
+            'area': apps.SUIT_FORM_SIZE_SMALL,
+            'population': apps.SUIT_FORM_SIZE_SMALL,
         },
         'widgets': {
             'AutosizedTextarea': apps.SUIT_FORM_SIZE_XXX_LARGE,
@@ -106,12 +117,6 @@ class CountryAdmin(admin.ModelAdmin):
     )
 
 
-    # fields = (('name', 'code', 'continent'), 'independence_day', 'population', 'description')
-
-
-admin.site.register(Country, CountryAdmin)
-
-
 # Inlines for ContinentAdmin
 class CountryInlineForm(ModelForm):
     class Meta:
@@ -129,15 +134,17 @@ class CountryInline(SortableTabularInline):
     extra = 1
     verbose_name_plural = 'Countries (Sortable example)'
     sortable = 'order'
+    show_change_link = True
 
 
+@admin.register(Continent)
 class ContinentAdmin(SortableModelAdmin):
     search_fields = ('name',)
     list_display = ('name', 'countries')
     sortable = 'order'
     inlines = (CountryInline,)
 
-    def suit_row_attributes(self, obj):
+    def suit_row_attributes(self, obj, request):
         class_map = {
             'Europe': 'table-success',
             'South America': 'table-warning',
@@ -167,32 +174,12 @@ class ContinentAdmin(SortableModelAdmin):
         return len(obj.country_set.all())
 
 
-admin.site.register(Continent, ContinentAdmin)
-
-
-class ShowcaseForm(ModelForm):
-    class Meta:
-        widgets = {
-            'textfield': AutosizedTextarea,
-        }
-
-
-@staff_member_required
-def showcase_custom_view_example(request, pk):
-    instance = Showcase.objects.get(pk=pk)
-
-    # Do something legendary here
-    messages.success(request, 'Something legendary was done to "%s"' % instance)
-
-    return redirect('admin:demo_showcase_change', pk)
-
-
-# Inlines for Showcase
 class BookInline(SortableTabularInline):
     model = Book
     min_num = 1
     extra = 0
     verbose_name_plural = 'Books (Tabular inline)'
+    suit_form_inlines_hide_original = True
 
 
 class MovieInlineForm(ModelForm):
@@ -217,6 +204,22 @@ class MovieInline(SortableStackedInline):
     }
 
 
+class CountrySelect2Widget(Bootstrap4Select, ModelSelect2Widget):
+    search_fields = [
+        'name__icontains',
+        'code__iexact',
+    ]
+
+
+class ShowcaseForm(ModelForm):
+    class Meta:
+        widgets = {
+            'textfield': AutosizedTextarea,
+            'country2': CountrySelect2Widget()
+        }
+
+
+@admin.register(Showcase)
 class ShowcaseAdmin(admin.ModelAdmin):
     form = ShowcaseForm
     inlines = (BookInline, MovieInline)
@@ -224,11 +227,15 @@ class ShowcaseAdmin(admin.ModelAdmin):
     # radio_fields = {"horizontal_choices": admin.HORIZONTAL,
     #                 'vertical_choices': admin.VERTICAL}
     # list_editable = ('boolean',)
-    # list_filter = ('choices', 'date', CountryFilter)
+    list_filter = ('choices', 'vertical_choices')
+    suit_list_filter_horizontal = ('choices',)
     # list_display = ('name', 'help_text', 'choices', 'horizontal_choices', 'boolean')
     list_display = ('name', 'help_text')
     readonly_fields = ('readonly_field',)
-    # raw_id_fields = ('raw_id_field',)
+    radio_fields = {"horizontal_choices": admin.HORIZONTAL,
+                    'vertical_choices': admin.VERTICAL}
+    raw_id_fields = ('raw_id_field',)
+
     fieldsets = [
         (None, {'fields': ['name', 'help_text', 'textfield',
                            ('multiple_in_row', 'multiple2'),
@@ -236,6 +243,18 @@ class ShowcaseAdmin(admin.ModelAdmin):
         ('Date and time', {
             'description': 'Original Django admin date/time widgets',
             'fields': ['date_and_time', 'date', 'time_only']}),
+
+        ('Collapsed settings', {
+            'classes': ('collapse',),
+            'fields': ['collapsed_param']}),
+
+        ('Boolean and choices',
+         {'fields': ['boolean', 'boolean_with_help', 'choices',
+                     'horizontal_choices', 'vertical_choices']}),
+
+        ('Foreign key relations',
+         {'description': 'Original select and linked select feature',
+          'fields': ['country', 'country2', 'raw_id_field']}),
 
         # ('Date and time', {
         #     'description': 'Improved date/time widgets (SuitDateWidget, '
@@ -252,13 +271,7 @@ class ShowcaseAdmin(admin.ModelAdmin):
         #                     'appended inputs',
         #      'fields': ['enclosed1', 'enclosed2']}),
         #
-        # ('Boolean and choices',
-        #  {'fields': ['boolean', 'boolean_with_help', 'choices',
-        #              'horizontal_choices', 'vertical_choices']}),
-        #
-        # ('Collapsed settings', {
-        #     'classes': ('collapse',),
-        #     'fields': ['hidden_checkbox', 'hidden_choice']}),
+
         # ('And one more collapsable', {
         #     'classes': ('collapse',),
         #     'fields': ['hidden_charfield', 'hidden_charfield2']}),
@@ -284,4 +297,11 @@ class ShowcaseAdmin(admin.ModelAdmin):
         return my_urls + urls
 
 
-admin.site.register(Showcase, ShowcaseAdmin)
+@staff_member_required
+def showcase_custom_view_example(request, pk):
+    instance = Showcase.objects.get(pk=pk)
+
+    # Do something legendary here
+    messages.success(request, 'Something legendary was done to "%s"' % instance)
+
+    return redirect('admin:demo_showcase_change', pk)

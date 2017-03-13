@@ -12,6 +12,8 @@
 
         function performMove($arrow, $row) {
             var $next, $prev;
+
+            $row.closest('table').find('tr.selected').removeClass('selected');
             if (mptt_table) {
                 function getPadding($tr) {
                     return parseInt($tr.find('th:first').css('padding-left'));
@@ -24,7 +26,6 @@
                     }).andSelf();
                 }
 
-                $('.selected').removeClass('selected');
                 var padding = getPadding($row);
                 var $rows_to_move = findWithChildren($row);
                 if ($arrow.data('dir') === 'down') {
@@ -44,7 +45,6 @@
                     }
                 }
             } else {
-                $('.selected').removeClass('selected');
                 if ($arrow.data('dir') === 'down') {
                     $next = $row.next();
                     if ($next.is(':visible') && $next.length) {
@@ -149,7 +149,7 @@
                     var $changed_fields = $set_block.find(":input[type!='hidden']:not(.suit-sortable)").filter(
                         function () {
                             return $(this).val() != "";
-                        });//.filter(filter_unchanged);
+                        }).filter(filter_unchanged);
                     // console.log($changed_fields.length, $changed_fields);
                     var is_changelist = !$set_block.length;
                     if (is_changelist

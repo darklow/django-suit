@@ -22,12 +22,12 @@ class ChildItem(object):
 
 class ParentItem(ChildItem):
     def __init__(self, label=None, app=None, url=None, target_blank=False, permissions=None,
-                 children=None, align_right=False, use_first_child_url=True):
+                 children=None, align_right=False, use_first_child_url=True, icon=None):
         super(ParentItem, self).__init__(label, None, url, target_blank, permissions)
         self.user_children = children or []
         self.children = []
         self.align_right = align_right
-        self.icon = None
+        self.icon = icon
         self.app = app
         self.use_first_child_url = use_first_child_url
 
@@ -37,7 +37,7 @@ class ParentItem(ChildItem):
 
 class MenuManager(object):
     def __init__(self, available_apps, context, request):
-        from .config import get_config_instance
+        from .config import get_config_instance, get_current_app
 
         super(MenuManager, self).__init__()
 
@@ -47,7 +47,8 @@ class MenuManager(object):
 
         self.context = context
         self.request = request
-        self.suit_config = get_config_instance(request.current_app)
+        self.current_app = get_current_app(request)
+        self.suit_config = get_config_instance(self.current_app)
         self.user_menu = self.suit_config.menu
         self.menu_items = None
         self.aligned_right_menu_items = []
@@ -98,11 +99,11 @@ class MenuManager(object):
             if not self.parent_item_is_forbidden(parent_item, native_app):
                 menu_items.append(parent_item)
 
-                if parent_item.align_right:
+                if parent_item.align_right and self.suit_config.layout == 'horizontal':
                     self.aligned_right_menu_items.append(parent_item)
 
         if self.suit_config.menu_show_home:
-            home_item = ParentItem(_('Home'), url='admin:index')
+            home_item = ParentItem(_('Home'), url='admin:index', icon='fa fa-home')
             menu_items.insert(0, self.handle_user_url(home_item))
 
         return self.mark_active(menu_items)
@@ -115,6 +116,9 @@ class MenuManager(object):
             app_key = native_app['app_url'].split('/')[-2]
             self._available_apps['apps'][app_key] = native_app
             for native_model in native_app['models']:
+                if 'admin_url' not in native_model:
+                    # Can happen with incomplete permissions, like Delete only, etc.
+                    continue
                 model_key = '.'.join(native_model['admin_url'].split('/')[-3:-1])
                 self._available_apps['models'][model_key] = native_model
                 model_key2 = '.'.join([app_key, native_model['object_name'].lower()])
@@ -209,14 +213,17 @@ class MenuManager(object):
         Evaluate user defined URL
         :type menu_item: ChildItem or ParentItem
         """
+        if callable(menu_item.url):
+            menu_item.url = menu_item.url(self.request, self.context)
+            return menu_item
         if '/' in menu_item.url:
-            return menu_item.url
+            return menu_item
         from django.core.urlresolvers import reverse, NoReverseMatch
         try:
-            menu_item.url = reverse(menu_item.url, current_app=self.request.current_app)
+            menu_item.url = reverse(menu_item.url, current_app=self.current_app)
             menu_item._url_name = menu_item.url
         except NoReverseMatch:
-            menu_item.url = '#no-reverse-match'
+            pass
         return menu_item
 
     def parent_item_is_forbidden(self, parent_item, native_app):

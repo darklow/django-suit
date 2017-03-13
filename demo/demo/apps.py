@@ -8,20 +8,20 @@ class SuitConfig(DjangoSuitConfig):
             ChildItem(model='demo.country'),
             ChildItem(model='demo.continent'),
             ChildItem(model='demo.showcase'),
-        ]),
+            ChildItem('Custom view', url='/admin/custom/'),
+        ], icon='fa fa-leaf'),
         ParentItem('Integrations', children=[
             ChildItem(model='demo.city'),
         ]),
         ParentItem('Users', children=[
             ChildItem(model='auth.user'),
             ChildItem('User groups', 'auth.group'),
-            ChildItem('Custom page', url='/admin/custom/'),
-        ]),
+        ], icon='fa fa-users'),
         ParentItem('Right Side Menu', children=[
             ChildItem('Password change', url='admin:password_change'),
             ChildItem('Open Google', url='http://google.com', target_blank=True),
 
-        ], align_right=True),
+        ], align_right=True, icon='fa fa-cog'),
     )
 
     def ready(self):

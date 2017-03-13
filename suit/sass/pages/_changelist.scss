@@ -11,13 +11,17 @@ $filter-col-width: 15rem;
       flex-basis: 100%;
     }
     #changelist-filter {
-      flex-basis: 15rem;
-      order: 3;
+      &:not(:empty) {
+        flex-basis: 15rem;
+        order: 3;
+      }
+      &:empty {
+        display: none;
+      }
     }
-    #changelist-form {
-      flex: 1;
-      margin-right: 2rem;
-    }
+  }
+  #changelist-filter:not(:empty) + #changelist-form {
+    margin-right: 2rem;
   }
   #toolbar {
     margin-bottom: 1.5rem;
@@ -35,6 +39,7 @@ $filter-col-width: 15rem;
         @extend .form-control;
         display: inline-block;
         width: auto;
+        vertical-align: middle;
         &:before {
           @include fa-icon-font();
           content: $icon-plus;
@@ -53,7 +58,7 @@ $filter-col-width: 15rem;
     right: 0;
     font-size: $font-size-sm;
     h2 {
-      margin-bottom: $grid-gutter-width/2;
+      margin-bottom: $grid-gutter-width-base/2;
       display: none;
     }
     h3 {
@@ -61,14 +66,14 @@ $filter-col-width: 15rem;
       color: #fff;
       font-size: $font-size-sm;
       font-weight: normal;
-      padding: $grid-gutter-width/4 $grid-gutter-width/3;
+      padding: $grid-gutter-width-base/4 $grid-gutter-width-base/3;
       margin: 0;
     }
     ul {
       background-color: #fff;
       @include reset-list();
-      padding: $grid-gutter-width/3 0;
-      margin-bottom: $grid-gutter-width/1.5;
+      padding: $grid-gutter-width-base/3 0;
+      margin-bottom: $grid-gutter-width-base/1.5;
       li {
         border-left: 3px solid transparent;
         margin-left: -3px;
@@ -83,21 +88,26 @@ $filter-col-width: 15rem;
         }
         a {
           padding: .1rem;
-          padding-left: $grid-gutter-width / 1.5;
+          padding-left: $grid-gutter-width-base / 1.5;
           display: block;
         }
       }
     }
   }
   #changelist-form {
+    flex: 1;
     .actions {
       margin: -.5rem 0 1rem 0;
       font-size: $font-size-sm;
+      align-items: baseline;
+      &[style*='block'] {
+        display: flex !important;
+      }
       button {
         //line-height: default;
         @extend .btn;
         @extend .btn-secondary;
-        @include btn-mixin(primary, null, $size: sm);
+        @include btn-mixin(primary, null);
         margin-right: 1rem;
       }
       select {
@@ -105,6 +115,7 @@ $filter-col-width: 15rem;
         display: inline;
         width: auto;
         height: 2.05rem;
+        margin-right: .25rem;
       }
       span.all,
       span.action-counter,
@@ -114,7 +125,6 @@ $filter-col-width: 15rem;
         margin: 0 0.5em;
         display: none;
       }
-
     }
     // Hide actions, show only after results
     .actions {
@@ -125,7 +135,7 @@ $filter-col-width: 15rem;
     // Actions after results
     .results + .actions {
       .suit_toggle_changelist_top_actions & {
-        display: block;
+        display: flex;
       }
       margin: 1rem 0 0;
     }
@@ -182,12 +192,14 @@ $filter-col-width: 15rem;
     }
   }
 }
+
 // Only add negative margin if object-tools are present
 .object-tools + #changelist.filtered {
   #toolbar {
     margin-top: -3.5rem;
   }
 }
+
 body.change-list {
   #content-main {
     .object-tools {
@@ -196,5 +208,7 @@ body.change-list {
       min-height: 2rem;
     }
   }
-  .hiddenfields { display: none; }
+  .hiddenfields {
+    display: none;
+  }
 }

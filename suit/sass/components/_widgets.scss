@@ -16,7 +16,7 @@ fieldset {
     }
   }
   select:not([multiple="multiple"]) {
-    @extend .c-select;
+    @extend .custom-select;
     border-radius: $input-border-radius;
   }
   input {
@@ -54,10 +54,10 @@ fieldset {
   max-height: 12rem;
 }
 .ImageWidget {
-  .pull-xs-left {
+  .float-xs-left {
     margin-right: 1rem;
     max-width: 75px;
-    max-height: 75px;
+    height: auto;
   }
 }
 .widget-AdminSplitDateTime, .widget-AdminDateWidget, .widget-AdminTimeWidget {
@@ -85,7 +85,7 @@ fieldset {
       }
       $icon-width: 2rem;
       &[id^='calendarlink'], &[id^='clocklink'] {
-        padding: 0.575rem 0.75rem;
+        padding: $input-padding-y 0.75rem;
         position: absolute;
         left: -1px;
         z-index: 0;
@@ -425,5 +425,16 @@ fieldset {
       display: inline-block;
       padding-left: 2px;
     }
+  }
+}
+
+// Edit related for django foreign keys
+.related-widget-wrapper-link {
+  &:not([href]) {
+    display: none;
+    //background-color: red;
+  }
+  &:hover, &:focus {
+    text-decoration: none;
   }
 }

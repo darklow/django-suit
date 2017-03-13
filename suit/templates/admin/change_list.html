@@ -1,0 +1,26 @@
+{% extends 'admin/change_list.html' %}
+{% load i18n admin_list suit_list %}
+
+{% block search %}{% suit_search_form cl %}{% endblock %}
+
+{% block filters %}
+    {% if cl.has_filters %}
+        <div id="changelist-filter">{% for spec in cl.filter_specs|suit_list_filter_vertical:cl %}
+            {% if forloop.first %}
+                <h2>{% trans 'Filter' %}</h2>
+            {% endif %}
+            {% admin_list_filter cl spec %}
+        {% endfor %}</div>
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    {{ block.super }}
+
+    {% if cl.has_filters %}
+        <script type="text/javascript">
+            // Handle change list filter null values
+            Suit.$('.search-filter').suitSearchFilters();
+        </script>
+    {% endif %}
+{% endblock %}

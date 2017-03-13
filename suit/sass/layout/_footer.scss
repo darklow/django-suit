@@ -1,29 +1,33 @@
 /* Sticky footer styles  */
-$footer-height: 66px;
 @include media-breakpoint-up(sm) {
   html {
     position: relative;
     min-height: 100%;
   }
   body {
-    margin-bottom: $footer-height;
-  }
-  .footer {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    min-height: $footer-height;
+    &.suit_layout_horizontal, &.login {
+      margin-bottom: $footer-height;
+      #footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        min-height: $footer-height;
+        margin-top: -$footer-height;
+      }
+    }
   }
 }
+
 /* Styles */
 .footer {
+  min-height: $footer-height;
   background-color: darken($body-bg, 5%);
   color: $gray;
   font-size: $font-size-sm;
   > .container-fluid {
-    padding: 1rem $grid-gutter-width;
+    padding: 1rem $grid-gutter-width-base;
     > .row {
       justify-content: center;
       align-content: center;

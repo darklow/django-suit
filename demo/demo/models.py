@@ -68,6 +68,25 @@ class Showcase(models.Model):
 
     date_widget = models.DateField(blank=True, null=True)
     datetime_widget = models.DateTimeField(blank=True, null=True)
+    collapsed_param = models.BooleanField(default=False)
+
+    TYPE_CHOICES = ((1, 'Awesome'), (2, 'Good'), (3, 'Normal'), (4, 'Bad'))
+    TYPE_CHOICES2 = ((1, 'Hot'), (2, 'Normal'), (3, 'Cold'))
+    TYPE_CHOICES3 = ((1, 'Tall'), (2, 'Normal'), (3, 'Short'))
+    boolean = models.BooleanField(default=True)
+    boolean_with_help = models.BooleanField(default=False, help_text="Boolean field with help text")
+    horizontal_choices = models.SmallIntegerField(
+        choices=TYPE_CHOICES, default=1, help_text='Horizontal choices look like this')
+    vertical_choices = models.SmallIntegerField(
+        choices=TYPE_CHOICES2, default=2, help_text="Some help on vertical choices")
+    choices = models.SmallIntegerField(
+        choices=TYPE_CHOICES3, default=3, help_text="Help text")
+
+    country = models.ForeignKey(Country, null=True, blank=True)
+    country2 = models.ForeignKey(Country, null=True, blank=True, related_name='showcase_country2_set', verbose_name='Django Select 2')
+    raw_id_field = models.ForeignKey(Country, null=True, blank=True, related_name='showcase_raw_set')
+    # linked_foreign_key = models.ForeignKey(Country, limit_choices_to={
+    #     'continent__name': 'Europe'}, related_name='foreign_key_linked')
 
     class Meta:
         verbose_name_plural = 'Showcase'

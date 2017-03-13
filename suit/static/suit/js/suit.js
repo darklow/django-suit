@@ -156,7 +156,7 @@ window.Suit = Suit;
                         foundError = true;
                     }
                 });
-                !foundError && $($tabs).find('a[href=' + window.location.hash + ']').click();
+                !foundError && $($tabs).find('a[href=\\' + window.location.hash + ']').click();
             } else {
                 $tabLinks.first().trigger('click');
             }
@@ -214,8 +214,37 @@ window.Suit = Suit;
             }
             return input.replace(/(http:\/\/[\S]*)/g, tmp).length;
         }
+    };
 
-    }
+    /**
+     * Search filters - submit only changed fields
+     */
+    $.fn.suitSearchFilters = function () {
+        $(this).change(function () {
+            var $field = $(this);
+            var $option = $field.find('option:selected');
+            var select_name = $option.data('name');
+            if (select_name) {
+                $field.attr('name', select_name);
+            } else {
+                $field.removeAttr('name');
+            }
+            // Handle additional values for date filters
+            var additional = $option.data('additional');
+            console.log($field, additional)
+            if (additional) {
+                var hiddenId = $field.data('name') + '_add';
+                var $hidden = $('#' + hiddenId);
+                if (!$hidden.length) {
+                    $hidden = $('<input/>').attr('type', 'hidden').attr('id', hiddenId);
+                    $field.after($hidden);
+                }
+                additional = additional.split('=');
+                $hidden.attr('name', additional[0]).val(additional[1])
+            }
+        });
+        $(this).trigger('change');
+    };
 
 
 })(typeof django !== 'undefined' ? django.jQuery : undefined);

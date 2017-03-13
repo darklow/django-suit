@@ -100,3 +100,27 @@ def suit_form_field_widget_class(field):
     if widget_class_name:
         return 'widget-%s' % widget_class_name
     return ''
+
+
+@register.assignment_tag(takes_context=True)
+def suit_form_conf(context, param_name, inline_admin_formset=None):
+    """
+    Get form config param
+    """
+    if inline_admin_formset:
+        model_admin = inline_admin_formset.opts
+    else:
+        model_admin = context['adminform'].model_admin
+    param_by_model_admin = getattr(model_admin, 'suit_%s' % param_name, None)
+    if param_by_model_admin is not None:
+        return param_by_model_admin
+    return get_config(param_name, context['request'])
+
+
+@register.filter
+def suit_form_field_placeholder(field, placeholder):
+    """
+    Get CSS class for field by widget name, for easier styling
+    """
+    field.field.widget.attrs['placeholder'] = placeholder
+    return field

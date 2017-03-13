@@ -1,0 +1,30 @@
+.django-select2 {
+    min-width: 250px;
+}
+
+/* Improve Bootstrap4 to make it more matching */
+#content .select2-container--bootstrap {
+    display: inline-block;
+    margin-right: 5px;
+    border-radius: .25rem;
+}
+
+#content .select2-container--bootstrap .select2-selection {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+#content .select2-container--bootstrap:not(.select2-container--focus):not(.select2-container--open) .select2-selection {
+    border-color: #d9d9d9;
+}
+
+#content .select2-container--bootstrap .select2-selection--single {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 32px;
+}
+
+#content .select2-container--bootstrap .select2-selection__choice {
+    background-color: #F1F1F1;
+    border: 1px solid #ddd;
+}
