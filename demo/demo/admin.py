@@ -6,6 +6,8 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django_select2.forms import ModelSelect2Widget
 from suit import apps
+
+from suit.admin import RelatedFieldAdmin, getter_for_related_field
 from suit.admin_filters import IsNullFieldListFilter
 from suit.sortables import SortableTabularInline, SortableModelAdmin, SortableStackedInline
 from suit.widgets import AutosizedTextarea, EnclosedInput
@@ -60,10 +62,10 @@ class PopulationFilter(IsNullFieldListFilter):
 
 
 @admin.register(Country)
-class CountryAdmin(admin.ModelAdmin):
+class CountryAdmin(RelatedFieldAdmin):
     form = CountryForm
     search_fields = ('name', 'code')
-    list_display = ('name', 'code', 'continent', 'independence_day')
+    list_display = ('name', 'code', 'link_to_continent', 'independence_day')
     list_filter = ('continent', 'independence_day', 'code', ('population', PopulationFilter))
     suit_list_filter_horizontal = ('code', 'population')
     list_select_related = True
@@ -220,7 +222,7 @@ class ShowcaseForm(ModelForm):
 
 
 @admin.register(Showcase)
-class ShowcaseAdmin(admin.ModelAdmin):
+class ShowcaseAdmin(RelatedFieldAdmin):
     form = ShowcaseForm
     inlines = (BookInline, MovieInline)
     search_fields = ['name']
@@ -230,11 +232,15 @@ class ShowcaseAdmin(admin.ModelAdmin):
     list_filter = ('choices', 'vertical_choices')
     suit_list_filter_horizontal = ('choices',)
     # list_display = ('name', 'help_text', 'choices', 'horizontal_choices', 'boolean')
-    list_display = ('name', 'help_text')
+    list_display = ('name', 'help_text', 'link_to_country__continent')
     readonly_fields = ('readonly_field',)
     radio_fields = {"horizontal_choices": admin.HORIZONTAL,
                     'vertical_choices': admin.VERTICAL}
     raw_id_fields = ('raw_id_field',)
+
+    # Optional: Use following to override short_description or admin_order_field if needed
+    link_to_country__continent = getter_for_related_field(
+        'link_to_country__continent', short_description='Continent (2nd level FK link)')
 
     fieldsets = [
         (None, {'fields': ['name', 'help_text', 'textfield',

@@ -4,6 +4,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-rendering: auto;
 }
+
 $icon-ok: "\f00c";
 $icon-remove: "\f00d";
 $icon-cog: "\f013";
@@ -17,3 +18,9 @@ $icon-search: "\f002";
 $icon-calendar: "\f073";
 $icon-calendar-o: "\f133";
 $icon-time: "\f017";
+.link-with-icon {
+  .fa {
+    vertical-align: text-bottom;
+    margin-left: 3px;
+  }
+}

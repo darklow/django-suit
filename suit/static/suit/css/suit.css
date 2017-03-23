@@ -2006,6 +2006,8 @@ a.text-gray-dark:focus, a.text-gray-dark:hover { color: #1f2021 !important; }
 
 .text-semibold, .text-light-bold strong, #result_list tbody > tr > th, .tabular table tbody > tr > th, table#change-history tbody > tr > th, .nav-tabs-suit .nav-link.active, .nav-tabs-suit .nav-link.active:focus, body.login #header #branding #site-name a { font-weight: 500; }
 
+.link-with-icon .fa { vertical-align: text-bottom; margin-left: 3px; }
+
 .btn-round, #content-main > .object-tools > li > a:not([class*="btn-"]) { border-radius: 40px; }
 
 .btn-outline-danger, .submit-row .deletelink-box .deletelink { border-color: rgba(224, 79, 60, 0.75); background-color: #fff; }
