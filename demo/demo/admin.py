@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from django_select2.forms import ModelSelect2Widget
 from suit import apps
 
-from suit.admin import RelatedFieldAdmin, getter_for_related_field
+from suit.admin import RelatedFieldAdmin, get_related_field
 from suit.admin_filters import IsNullFieldListFilter
 from suit.sortables import SortableTabularInline, SortableModelAdmin, SortableStackedInline
 from suit.widgets import AutosizedTextarea, EnclosedInput
@@ -233,14 +233,15 @@ class ShowcaseAdmin(RelatedFieldAdmin):
     suit_list_filter_horizontal = ('choices',)
     # list_display = ('name', 'help_text', 'choices', 'horizontal_choices', 'boolean')
     list_display = ('name', 'help_text', 'link_to_country__continent')
-    readonly_fields = ('readonly_field',)
+    readonly_fields = ('readonly_field', 'link_to_country')
     radio_fields = {"horizontal_choices": admin.HORIZONTAL,
                     'vertical_choices': admin.VERTICAL}
     raw_id_fields = ('raw_id_field',)
 
     # Optional: Use following to override short_description or admin_order_field if needed
-    link_to_country__continent = getter_for_related_field(
+    link_to_country__continent = get_related_field(
         'link_to_country__continent', short_description='Continent (2nd level FK link)')
+    link_to_country = get_related_field('link_to_country')
 
     fieldsets = [
         (None, {'fields': ['name', 'help_text', 'textfield',
@@ -260,7 +261,7 @@ class ShowcaseAdmin(RelatedFieldAdmin):
 
         ('Foreign key relations',
          {'description': 'Original select and linked select feature',
-          'fields': ['country', 'country2', 'raw_id_field']}),
+          'fields': ['link_to_country', 'country', 'country2', 'raw_id_field']}),
 
         # ('Date and time', {
         #     'description': 'Improved date/time widgets (SuitDateWidget, '

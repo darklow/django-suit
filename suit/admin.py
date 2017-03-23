@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.db import models
+from django.core.urlresolvers import reverse_lazy
 
 """
 Adapted by using following examples:
@@ -10,10 +11,20 @@ http://stackoverflow.com/a/7192721/641263
 link_to_prefix = 'link_to_'
 
 
-def getter_for_related_field(name, short_description=None, admin_order_field=None):
+def get_admin_url(instance, admin_prefix='admin', current_app=None):
+    if not instance.pk:
+        return
+    return reverse_lazy(
+        '%s:%s_%s_change' % (admin_prefix, instance._meta.app_label, instance._meta.model_name),
+        args=(instance.pk,),
+        current_app=current_app
+    )
+
+
+def get_related_field(name, short_description=None, admin_order_field=None, admin_prefix='admin'):
     """
     Create a function that can be attached to a ModelAdmin to use as a list_display field, e.g:
-    client__name = getter_for_related_field('client__name', short_description='Client')
+    client__name = get_related_field('client__name', short_description='Client')
     """
     as_link = name.startswith(link_to_prefix)
     if as_link:
@@ -26,10 +37,8 @@ def getter_for_related_field(name, short_description=None, admin_order_field=Non
                 continue
             obj = getattr(obj, related_name)
         if obj and as_link:
-            obj = u'<a href="../../%s/%s/%d/" class="link-with-icon">%s<i class="fa fa-caret-right"></i></a>' % (
-                obj._meta.app_label, obj._meta.model_name,
-                obj.id, obj
-            )
+            obj = u'<a href="%s" class="link-with-icon">%s<i class="fa fa-caret-right"></i></a>' % \
+                  (get_admin_url(obj, admin_prefix, current_app=self.admin_site.name), obj)
         return obj
 
     getter.admin_order_field = admin_order_field or name
@@ -40,13 +49,16 @@ def getter_for_related_field(name, short_description=None, admin_order_field=Non
 
 
 class RelatedFieldAdminMetaclass(type(admin.ModelAdmin)):
+    related_field_admin_prefix = 'admin'
+
     def __new__(cls, name, bases, attrs):
         new_class = super(RelatedFieldAdminMetaclass, cls).__new__(cls, name, bases, attrs)
 
         for field in new_class.list_display:
             if '__' in field or field.startswith(link_to_prefix):
                 if not hasattr(new_class, field):
-                    setattr(new_class, field, getter_for_related_field(field))
+                    setattr(new_class, field, get_related_field(
+                        field, admin_prefix=cls.related_field_admin_prefix))
 
         return new_class
 
