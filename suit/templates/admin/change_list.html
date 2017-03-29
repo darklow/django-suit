@@ -4,14 +4,16 @@
 {% block search %}{% suit_search_form cl %}{% endblock %}
 
 {% block filters %}
-    {% if cl.has_filters %}
-        <div id="changelist-filter">{% for spec in cl.filter_specs|suit_list_filter_vertical:cl %}
-            {% if forloop.first %}
-                <h2>{% trans 'Filter' %}</h2>
-            {% endif %}
-            {% admin_list_filter cl spec %}
-        {% endfor %}</div>
-    {% endif %}
+    {% with vertical_filters=cl.filter_specs|suit_list_filter_vertical:cl %}
+        {% if vertical_filters %}
+            <div id="changelist-filter">{% for spec in vertical_filters %}
+                {% if forloop.first %}
+                    <h2>{% trans 'Filter' %}</h2>
+                {% endif %}
+                {% admin_list_filter cl spec %}
+            {% endfor %}</div>
+        {% endif %}
+    {% endwith %}
 {% endblock %}
 
 {% block footer %}
