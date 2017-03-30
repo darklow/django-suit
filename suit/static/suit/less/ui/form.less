@@ -576,21 +576,21 @@ h3 {
     }
 }
 // Original date widgets for Django 1.9+
-.datetime > div:not(.input-append) {
-    .datetimeshortcuts {
-        .date-icon, .clock-icon {
-            .bs-icon;
-            background-color: @bgcolor-light;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .date-icon {
-            background-position: -192px -120px;
-        }
-        .clock-icon {
-            .bs-icon;
-            background-position: -48px -24px;
-        }
+.datetime > div:not(.input-append) .datetimeshortcuts,
+.controls > .datetimeshortcuts,
+.controls > .datetime > .datetimeshortcuts {
+    .date-icon, .clock-icon {
+        .bs-icon;
+        background-color: @bgcolor-light;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .date-icon {
+        background-position: -192px -120px;
+    }
+    .clock-icon {
+        .bs-icon;
+        background-position: -48px -24px;
     }
 }
 /* Fix original date/time fields */
