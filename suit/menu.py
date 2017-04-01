@@ -120,6 +120,7 @@ class MenuManager(object):
                     # Can happen with incomplete permissions, like Delete only, etc.
                     continue
                 model_key = '.'.join(native_model['admin_url'].split('/')[-3:-1])
+                native_model['model'] = model_key
                 self._available_apps['models'][model_key] = native_model
                 model_key2 = '.'.join([app_key, native_model['object_name'].lower()])
                 self._available_apps['models'][model_key2] = native_model
@@ -168,7 +169,7 @@ class MenuManager(object):
         """
         :type native_model: dict
         """
-        child_item = ChildItem(native_model['name'], url=native_model['admin_url'])
+        child_item = ChildItem(native_model['name'],  model=native_model['model'], url=native_model['admin_url'])
         return child_item
 
     def handle_parent_menu(self, parent_item, native_app):
