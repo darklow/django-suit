@@ -4,8 +4,9 @@ python:
   - 3.4
   - pypy
 env:
-  - DJANGO=1.9.12
-  - DJANGO=1.10.5
+  - DJANGO=1.9.13
+  - DJANGO=1.10.7
+  - DJANGO=1.11.5
 install:
   - pip install -e .
   - pip install -q Django==$DJANGO
