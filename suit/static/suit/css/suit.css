@@ -2374,22 +2374,22 @@ body.delete-confirmation .content-wrap input[type='button'], body.delete-confirm
 
 .submit-row.fixed { position: fixed; left: 0; right: 0; bottom: 0; background-color: #fff; padding: 1.2rem 1.875rem 1rem; z-index: 5000; box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15); }
 
-@media (min-width: 992px) { .col-right .submit-row { position: relative; padding: 0.9375rem; background-color: #f6f6f6; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; box-shadow: 0 1px 0 0 #e4e4e4; }
-  .col-right .submit-row a.btn:not(.deletelink), .col-right .submit-row .deletelink-box a.deletelink:not(.deletelink), .col-right .submit-row #content-main > .object-tools > li > a:not(.deletelink):not([class*="btn-"]), .col-right .submit-row button, .col-right .submit-row input[type='submit'], .col-right .submit-row input[type='button'] { padding-left: 0; padding-right: 0; }
-  .col-right .submit-row > * { width: 100%; }
-  .col-right .submit-row .deletelink-box { text-align: right; margin-top: 0.9375rem; -webkit-box-ordinal-group: 11; -ms-flex-order: 10; order: 10; } }
+@media (min-width: 992px) { body.suit_form_submit_on_right .col-right .submit-row { position: relative; padding: 0.9375rem; background-color: #f6f6f6; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; box-shadow: 0 1px 0 0 #e4e4e4; }
+  body.suit_form_submit_on_right .col-right .submit-row a.btn:not(.deletelink), body.suit_form_submit_on_right .col-right .submit-row .deletelink-box a.deletelink:not(.deletelink), body.suit_form_submit_on_right .col-right .submit-row #content-main > .object-tools > li > a:not(.deletelink):not([class*="btn-"]), body.suit_form_submit_on_right .col-right .submit-row button, body.suit_form_submit_on_right .col-right .submit-row input[type='submit'], body.suit_form_submit_on_right .col-right .submit-row input[type='button'] { padding-left: 0; padding-right: 0; }
+  body.suit_form_submit_on_right .col-right .submit-row > * { width: 100%; }
+  body.suit_form_submit_on_right .col-right .submit-row .deletelink-box { text-align: right; margin-top: 0.9375rem; -webkit-box-ordinal-group: 11; -ms-flex-order: 10; order: 10; } }
 
-.col-right .object-tools { list-style: none; margin: 0; padding: 0; margin-top: 1.875rem; }
+body.suit_form_submit_on_right .col-right .object-tools { list-style: none; margin: 0; padding: 0; margin-top: 1.875rem; }
 
-@media (max-width: 991px) { .col-right .object-tools { display: none; }
-  .col-right .object-tools li { display: inline-block; margin-right: 10px; }
-  .col-right .object-tools li.heading { display: block; font-weight: bold; } }
+@media (max-width: 991px) { body.suit_form_submit_on_right .col-right .object-tools { display: none; }
+  body.suit_form_submit_on_right .col-right .object-tools li { display: inline-block; margin-right: 10px; }
+  body.suit_form_submit_on_right .col-right .object-tools li.heading { display: block; font-weight: bold; } }
 
-@media (min-width: 992px) { .col-right .object-tools li.list-item, .col-right .object-tools li:not(.list-item) > a { display: block; margin-top: 1px; background-color: #f6f6f6; padding: 0.625rem 0.9375rem; box-shadow: 0 1px 0 0 #e4e4e4; }
-  .col-right .object-tools li:not(.list-item) a:hover { text-decoration: none; background-color: #fff; }
-  .col-right .object-tools li:not(.list-item) a .fa { margin-right: .2rem; }
-  .col-right .object-tools li.heading { font-weight: 500; font-size: 1.143rem; padding: 0 0.625rem 0.46875rem; }
-  .col-right .object-tools li.heading.heading-inverse { background-color: #5d6478; color: #fff; font-weight: normal; font-size: 1rem; padding: 0.46875rem 0.625rem; } }
+@media (min-width: 992px) { body.suit_form_submit_on_right .col-right .object-tools li.list-item, body.suit_form_submit_on_right .col-right .object-tools li:not(.list-item) > a { display: block; margin-top: 1px; background-color: #f6f6f6; padding: 0.625rem 0.9375rem; box-shadow: 0 1px 0 0 #e4e4e4; }
+  body.suit_form_submit_on_right .col-right .object-tools li:not(.list-item) a:hover { text-decoration: none; background-color: #fff; }
+  body.suit_form_submit_on_right .col-right .object-tools li:not(.list-item) a .fa { margin-right: .2rem; }
+  body.suit_form_submit_on_right .col-right .object-tools li.heading { font-weight: 500; font-size: 1.143rem; padding: 0 0.625rem 0.46875rem; }
+  body.suit_form_submit_on_right .col-right .object-tools li.heading.heading-inverse { background-color: #5d6478; color: #fff; font-weight: normal; font-size: 1rem; padding: 0.46875rem 0.625rem; } }
 
 .breadcrumbs { font-size: 0.929rem; color: #687086; position: relative; }
 
@@ -2934,6 +2934,14 @@ body.change-form #content-main > .object-tools li.list-item { display: none; }
 
 body.change-form #content-main > .object-tools + form { width: 100%; clear: both; }
 
+body.change-form .edit-row { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+body.change-form .edit-row > div { margin: 0 0.9375rem; }
+
+body.change-form:not(.suit_form_submit_on_right) .edit-row > div.col-left, body.change-form:not(.suit_form_submit_on_right) .edit-row > div.col-right { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; -ms-flex-preferred-size: 100%; flex-basis: 100%; }
+
+body.change-form:not(.suit_form_submit_on_right) .edit-row > div.col-right .object-tools { display: none; }
+
 body.change-form.suit_form_submit_on_right #content-main > .object-tools { margin-top: 0; }
 
 body.change-form.suit_form_submit_on_right #content-main > .object-tools li.heading { display: none; }
@@ -2942,7 +2950,7 @@ body.change-form.suit_form_submit_on_right #content-main > .object-tools li.head
 
 body.change-form.suit_form_submit_on_right .edit-row { display: -webkit-box; display: -ms-flexbox; display: flex; }
 
-body.change-form.suit_form_submit_on_right .edit-row > div { margin: 0 0.9375rem; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+body.change-form.suit_form_submit_on_right .edit-row > div { margin: 0 0.9375rem; }
 
 body.change-form.suit_form_submit_on_right .edit-row > div.col-left { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
 

@@ -31,7 +31,7 @@
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
   }
 }
-.col-right {
+body.suit_form_submit_on_right .col-right {
   .submit-row {
     @include media-breakpoint-up(lg) {
       position: relative;
