@@ -1,6 +1,7 @@
+from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
-from django.forms import ModelForm, Select
+from django.forms import ModelForm, Select, TextInput, NumberInput
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.shortcuts import redirect
@@ -213,9 +214,20 @@ class CountrySelect2Widget(Bootstrap4Select, ModelSelect2Widget):
     ]
 
 
+class ColorInput(TextInput):
+    input_type = 'color'
+
+
+class DateInput(TextInput):
+    input_type = 'date'
+
+
 class ShowcaseForm(ModelForm):
     class Meta:
         widgets = {
+            'html5_color': ColorInput,
+            'html5_number': NumberInput,
+            'html5_date': DateInput,
             'textfield': AutosizedTextarea,
             'country2': CountrySelect2Widget()
         }
@@ -250,6 +262,9 @@ class ShowcaseAdmin(RelatedFieldAdmin):
         ('Date and time', {
             'description': 'Original Django admin date/time widgets',
             'fields': ['date_and_time', 'date', 'time_only']}),
+        ('Native HTML5 inputs', {
+            'description': 'Some HTML5 inputs are still not supported by IE!',
+            'fields': ['html5_color', 'html5_number', 'html5_date']}),
 
         ('Collapsed settings', {
             'classes': ('collapse',),

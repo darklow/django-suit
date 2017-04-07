@@ -4,6 +4,7 @@ fieldset {
   input[type=email],
   input[type=number],
   input[type=password],
+  input[type=date],
   .vTextField,
   .vURLField,
   .vLargeTextField,
@@ -21,6 +22,7 @@ fieldset {
   }
   input {
     &[type=number],
+    &[type=date],
     &.vIntegerField,
     &.vIntegerField,
     &.vDateField,

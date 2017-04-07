@@ -87,6 +87,9 @@ class Showcase(models.Model):
     raw_id_field = models.ForeignKey(Country, null=True, blank=True, related_name='showcase_raw_set')
     # linked_foreign_key = models.ForeignKey(Country, limit_choices_to={
     #     'continent__name': 'Europe'}, related_name='foreign_key_linked')
+    html5_color = models.CharField(null=True, blank=True, max_length=7)
+    html5_number = models.IntegerField(null=True, blank=True)
+    html5_date = models.DateField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'Showcase'
