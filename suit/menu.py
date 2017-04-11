@@ -169,7 +169,7 @@ class MenuManager(object):
         """
         :type native_model: dict
         """
-        child_item = ChildItem(native_model['name'],  model=native_model['model'], url=native_model['admin_url'])
+        child_item = ChildItem(native_model['name'],  model=native_model.get('model'), url=native_model['admin_url'])
         return child_item
 
     def handle_parent_menu(self, parent_item, native_app):
