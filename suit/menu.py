@@ -72,6 +72,7 @@ class MenuManager(object):
 
     def build_menu(self):
         if not self.user_menu:
+            self.map_native_apps()
             return self.mark_active(self.build_menu_by_available_apps())
 
         self.map_native_apps()
@@ -285,7 +286,7 @@ class MenuManager(object):
                 break
 
             if not active_parent:
-                if url_name == parent_item._url_name or request_path == parent_item.url:
+                if url_name and url_name == parent_item._url_name or request_path == parent_item.url:
                     active_parent = parent_item
 
         if not active_child:
