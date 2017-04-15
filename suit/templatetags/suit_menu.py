@@ -122,9 +122,12 @@ class Menu(object):
             raise TypeError('Django Suit MENU config parameter must be '
                             'tuple or list. Got %s' % repr(config))
         for app in config:
-            app = self.make_app(app)
-            if app:
-                menu.append(app)
+            if app == 'sites':
+                menu += self.make_menu_from_native_only()
+            else:
+                app = self.make_app(app)
+                if app:
+                    menu.append(app)
 
         return menu
 
