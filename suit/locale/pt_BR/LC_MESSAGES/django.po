@@ -1,0 +1,1033 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-28 11:09-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: widgets.py:104 tests/widgets.py:63
+msgid "Date:"
+msgstr "Data:"
+
+#: widgets.py:118 tests/widgets.py:91
+msgid "Time:"
+msgstr "Hora:"
+
+#: templates/403.html:4
+msgid "forbidden"
+msgstr "proibido"
+
+#: templates/403.html:6 templates/404.html:6 templates/500.html:6
+#: templates/suit/error_base.html:76
+msgid "error"
+msgstr "erro"
+
+#: templates/403.html:9
+msgid "We're sorry, but the requested action is forbidden"
+msgstr "Desculpe, mas essa acão é proibida"
+
+#: templates/404.html:4
+msgid "Page not found"
+msgstr "Página não encontrada"
+
+#: templates/404.html:9
+msgid "We're sorry, but the requested page could not be found."
+msgstr "Destaulpe, mas a página solicita não existe."
+
+#: templates/500.html:4
+msgid "Server Error"
+msgstr "Erro no servidor"
+
+#: templates/500.html:9
+msgid ""
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr "Foi encontrado um erro. Por favor, reporte ao administrador "
+"do site via e-mail para que possa corrigir esse problema. Obrigado!"
+
+#: templates/admin/actions.html:14 templates/admin/filer/actions.html:5
+msgid "Run the selected action"
+msgstr "Executar ação selecionada"
+
+#: templates/admin/actions.html:14 templates/admin/filer/actions.html:5
+msgid "Go"
+msgstr "Ir"
+
+#: templates/admin/actions.html:22 templates/admin/filer/actions.html:14
+msgid "Click here to select the objects across all pages"
+msgstr "Clique aqui para selecionar os objetos de todas as páginas"
+
+#: templates/admin/actions.html:23
+#, python-format
+msgid ""
+"Select all %(total_count)s\n"
+"                    %(module_name)s"
+msgstr ""
+"Selecionar todos %(total_count)s\n"
+"                    %(module_name)s"
+
+#: templates/admin/actions.html:26 templates/admin/filer/actions.html:16
+msgid "Clear selection"
+msgstr "Limpar seleção"
+
+#: templates/admin/app_index.html:8 templates/admin/base.html:99
+#: templates/admin/change_form.html:61 templates/admin/change_list.html:42
+#: templates/admin/delete_confirmation.html:7
+#: templates/admin/delete_selected_confirmation.html:7
+#: templates/admin/object_history.html:7
+#: templates/admin/auth/user/change_password.html:19
+#: templates/admin/cms/page/change_form.html:46
+#: templates/admin/cms/page/change_list.html:8
+#: templates/admin/cms/page/plugin_change_form.html:82
+#: templates/admin/filer/breadcrumbs.html:5
+#: templates/admin/filer/folder/change_form.html:8
+#: templates/admin/import_export/base.html:10
+#: templates/registration/logged_out.html:6
+#: templates/registration/password_change_form.html:26
+#: templates/reversion/recover_form.html:8
+#: templates/reversion/recover_list.html:8
+#: templates/reversion/revision_form.html:8 templates/suit/menu.html:10
+msgid "Home"
+msgstr "Página inicial"
+
+#: templates/admin/app_index.html:11
+#, python-format
+msgid "%(name)s"
+msgstr "%(name)s"
+
+#: templates/admin/base.html:66
+msgid "Welcome,"
+msgstr "Bem-vindo,"
+
+#: templates/admin/base.html:74
+#: templates/registration/password_change_form.html:15
+msgid "Documentation"
+msgstr "Documentação"
+
+#: templates/admin/base.html:77
+#: templates/admin/auth/user/change_password.html:32
+#: templates/admin/auth/user/change_password.html:75
+#: templates/registration/password_change_form.html:19
+msgid "Change password"
+msgstr "Alterar senha"
+
+#: templates/admin/base.html:79
+#: templates/registration/password_change_form.html:21
+msgid "Log out"
+msgstr "Sair"
+
+#: templates/admin/change_form.html:21
+msgid "You have unsaved changes"
+msgstr "Você tem alterações não salvas"
+
+#: templates/admin/change_form.html:50 templates/admin/change_form.html:76
+#: templates/admin/index.html:34 templates/admin/cms/page/change_form.html:53
+#: templates/admin/cms/page/plugin_change_form.html:85
+msgid "Add"
+msgstr "Adicionar"
+
+#: templates/admin/change_form.html:98
+#: templates/admin/filer/image/change_form.html:7
+msgid "tools"
+msgstr "configurações"
+
+#: templates/admin/change_form.html:102 templates/admin/object_history.html:15
+#: templates/admin/cms/page/change_form.html:105
+#: templates/admin/filer/folder/change_form.html:33
+#: templates/admin/filer/image/change_form.html:10
+#: templates/reversion/revision_form.html:16
+msgid "History"
+msgstr "Histórico"
+
+#: templates/admin/change_form.html:107
+#: templates/admin/cms/page/change_form.html:104
+#: templates/admin/edit_inline/stacked.html:9
+#: templates/admin/filer/folder/change_form.html:37
+#: templates/admin/filer/image/change_form.html:15
+msgid "View on site"
+msgstr "Ver no site"
+
+#: templates/admin/change_form.html:113 templates/admin/change_list.html:68
+#: templates/admin/change_list.html:116
+#: templates/admin/cms/page/change_form.html:108
+#: templates/admin/cms/page/change_list.html:113
+#: templates/admin/cms/page/change_list.html:141
+#, python-format
+msgid "Add %(name)s"
+msgstr "Adicionar %(name)s"
+
+#: templates/admin/change_form.html:141 templates/admin/change_list.html:86
+#: templates/admin/login.html:27
+#: templates/admin/auth/user/change_password.html:45
+#: templates/admin/cms/page/change_form.html:137
+#: templates/admin/cms/page/plugin_change_form.html:99
+#: templates/admin/filer/folder/new_folder_form.html:10
+#: templates/registration/password_change_form.html:44
+msgid "Please correct the error below."
+msgid_plural " Please correct the errors below."
+msgstr[0] "Por favor, corrija o erro abaixo."
+msgstr[1] "Por favor, corrija os erros abaixo."
+
+#: templates/admin/change_list.html:110
+msgid "Nothing found"
+msgstr "Nada encontrado"
+
+#: templates/admin/change_list.html:112
+msgid "Reset search and filters"
+msgstr "Limpar pesquisa e filtros"
+
+#: templates/admin/change_list.html:114
+#, python-format
+msgid "%(name_plural)s are not created yet"
+msgstr "%(name_plural)s não foram criados ainda"
+
+#: templates/admin/change_list_results.html:19
+#, python-format
+msgid "Sorting priority: %(priority_number)s"
+msgstr "Ordenar prioridade: %(priority_number)s"
+
+#: templates/admin/change_list_results.html:20
+msgid "Toggle sorting"
+msgstr "Trocar ordenação"
+
+#: templates/admin/change_list_results.html:22
+msgid "Remove from sorting"
+msgstr "Remover da ordenação"
+
+#: templates/admin/delete_confirmation.html:18
+#: templates/admin/delete_confirmation.html:49
+#: templates/admin/page_submit_line.html:8 templates/admin/submit_line.html:8
+#: templates/admin/filer/folder/directory_table.html:42
+#: templates/admin/import_export/import.html:69
+msgid "Delete"
+msgstr "Remover"
+
+#: templates/admin/delete_confirmation.html:26
+#: templates/admin/filer/delete_confirmation.html:12
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
+"related objects, but your account doesn't have permission to delete the "
+"following types of objects:"
+msgstr ""
+"Removendo %(object_name)s '%(escaped_object)s' deve resultar em excluir "
+"dados relacionados, mas sua conta não tem permissão para essa ação, "
+"seguindo os tipos de objetos:"
+
+#: templates/admin/delete_confirmation.html:36
+#: templates/admin/filer/delete_confirmation.html:21
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
+msgstr ""
+"Removendo %(object_name)s '%(escaped_object)s' deve requerer excluir "
+"os seguintes dados relacionados:"
+
+#: templates/admin/delete_confirmation.html:51
+#: templates/admin/filer/delete_confirmation.html:31
+#, python-format
+msgid ""
+"Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
+"All of the following related items will be deleted:"
+msgstr ""
+"Tem certeza que deseja excluir %(object_name)s \"%(escaped_object)s\"? "
+"Todas essas informações, estão relacionados e vão ser removidos:"
+
+#: templates/admin/delete_confirmation.html:57
+#: templates/admin/delete_selected_confirmation.html:61
+#: templates/admin/filer/delete_confirmation.html:36
+#: templates/admin/filer/delete_selected_files_confirmation.html:47
+msgid "Yes, I'm sure"
+msgstr "Sim, tenho certeza"
+
+#: templates/admin/delete_selected_confirmation.html:15
+msgid "Delete multiple objects"
+msgstr "Excluir vários registros"
+
+#: templates/admin/delete_selected_confirmation.html:23
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would result in deleting related "
+"objects, but your account doesn't have permission to delete the following "
+"types of objects:"
+msgstr ""
+"Removendo %(objects_name)s selecionados, deve resultar em excluir "
+"essas informações relacionados a esse registro, mas sua conta não "
+"possui permissão para isso. Os seguintes registros que não poderá "
+"efetuar essa ação são:"
+
+#: templates/admin/delete_selected_confirmation.html:33
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would require deleting the following "
+"protected related objects:"
+msgstr ""
+"Removendo %(objects_name)s selecionados, vai excluir os seguintes registros:"
+
+#: templates/admin/delete_selected_confirmation.html:51
+msgid "Confirm deletion"
+msgstr "Confirmar remoção"
+
+#: templates/admin/delete_selected_confirmation.html:54
+#, python-format
+msgid ""
+"Are you sure you want to delete the selected %(objects_name)s? All of the "
+"following objects and their related items will be deleted:"
+msgstr ""
+"Tem certeza que deseja remover %(objects_name)s selecionados? Todos os seguintes "
+"registros serão deletados:"
+
+#: templates/admin/index.html:19
+#, python-format
+msgid "Models available in the %(name)s application."
+msgstr "Modelos disponíveis na aplicação %(name)s."
+
+#: templates/admin/index.html:26
+#: templates/admin/filer/folder/change_form.html:24
+#: templates/admin/filer/folder/directory_listing.html:86
+#: templates/admin/filer/folder/directory_table.html:27
+#: templates/admin/filer/folder/directory_table.html:43
+msgid "Change"
+msgstr "Alterar"
+
+#: templates/admin/index.html:45
+msgid "You don't have permission to edit anything."
+msgstr "Não tem permissão para editar."
+
+#: templates/admin/index.html:54
+msgid "My Actions"
+msgstr "Minhas Ações"
+
+#: templates/admin/index.html:59
+msgid "None available"
+msgstr "Não contêm nada"
+
+#: templates/admin/index.html:68
+msgid "added"
+msgstr "adicionado"
+
+#: templates/admin/index.html:69
+msgid "changed"
+msgstr "alterado"
+
+#: templates/admin/index.html:70
+msgid "deleted"
+msgstr "removido"
+
+#: templates/admin/index.html:76
+msgid "Unknown content"
+msgstr "Conteúdo vazio"
+
+#: templates/admin/login.html:48
+#: templates/admin/auth/user/change_password.html:54
+msgid "Password"
+msgstr "Senha"
+
+#: templates/admin/login.html:56
+msgid "Forgotten your password or username?"
+msgstr "Perdeu sua senha ou login?"
+
+#: templates/admin/login.html:60
+msgid "Log in"
+msgstr "Login"
+
+#: templates/admin/object_history.html:27
+#: templates/reversion/object_history.html:15
+#: templates/reversion/recover_list.html:27
+msgid "Date/time"
+msgstr "Data/hora"
+
+#: templates/admin/object_history.html:28
+#: templates/reversion/object_history.html:16
+msgid "User"
+msgstr "Usuário"
+
+#: templates/admin/object_history.html:29
+msgid "Action"
+msgstr "Ação"
+
+#: templates/admin/object_history.html:43
+#: templates/reversion/object_history.html:36
+msgid ""
+"This object doesn't have a change history. It probably wasn't added via this "
+"admin site."
+msgstr ""
+"Esse registro não tem alteração no histórico. "
+"Provavelmente, não pode adicionar nesse site."
+
+#: templates/admin/page_submit_line.html:3 templates/admin/pagination.html:4
+#: templates/admin/submit_line.html:3
+#: templates/admin/cms/page/plugin_change_form.html:128
+#: templates/admin/filer/folder/new_folder_form.html:43
+msgid "Save"
+msgstr "Salvar"
+
+#: templates/admin/page_submit_line.html:4 templates/admin/submit_line.html:4
+msgid "Save and continue editing"
+msgstr "Salvar e continuar editando"
+
+#: templates/admin/page_submit_line.html:5 templates/admin/submit_line.html:5
+msgid "Save as new"
+msgstr "Salvar como novo"
+
+#: templates/admin/page_submit_line.html:6 templates/admin/submit_line.html:6
+msgid "Save and add another"
+msgstr "Salvar e inserir novamente"
+
+#: templates/admin/page_submit_line.html:14
+#, python-format
+msgid "Delete %(language)s translation"
+msgstr "Traducão %(language)s removida"
+
+#: templates/admin/pagination.html:26
+msgid "Show all"
+msgstr "Mostrar tudo"
+
+#: templates/admin/search_form.html:8
+msgid "keyword"
+msgstr "palavra-chave"
+
+#: templates/admin/search_form.html:26
+#: templates/admin/filer/tools/search_form.html:12
+msgid "Search"
+msgstr "Pesquisar"
+
+#: templates/admin/search_form.html:29
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] "%(counter)s resultado"
+msgstr[1] "%(counter)s resultados"
+
+#: templates/admin/search_form.html:31
+#, python-format
+msgid "%(full_result_count)s total"
+msgstr "total de %(full_result_count)s"
+
+#: templates/admin/auth/user/add_form.html:6
+msgid ""
+"First, enter a username and password. Then, you'll be able to edit more user "
+"options."
+msgstr ""
+"Primeiro, entre com seu login e senha. Então será capaz de editar mais usuários."
+
+#: templates/admin/auth/user/add_form.html:8
+msgid "Enter a username and password."
+msgstr "Entre com seu login e senha."
+
+#: templates/admin/auth/user/change_password.html:48
+#, python-format
+msgid "Enter a new password for the user <strong>%(username)s</strong>."
+msgstr "Entre com a nova senha para o usuário <strong>%(username)s</strong>."
+
+#: templates/admin/auth/user/change_password.html:64
+#: templates/registration/password_change_form.html:77
+msgid "Password (again)"
+msgstr "Re-digite a senha"
+
+#: templates/admin/auth/user/change_password.html:68
+msgid "Enter the same password as above, for verification."
+msgstr "Entre com a mesma senha acima, para verificação."
+
+#: templates/admin/cms/page/change_form.html:4
+msgid "Change a page"
+msgstr "Alterar página"
+
+#: templates/admin/cms/page/change_form.html:64
+msgid "Confirm delete"
+msgstr "Confirmar remoção"
+
+#: templates/admin/cms/page/change_form.html:65
+msgid "Remove delete request"
+msgstr "Remover solicitação de exclusão"
+
+#: templates/admin/cms/page/change_form.html:68
+msgid "Confirm page deletion"
+msgstr "Confirmar página de exclusão"
+
+#: templates/admin/cms/page/change_form.html:93
+msgid "actions"
+msgstr "ações"
+
+#: templates/admin/cms/page/change_form.html:97
+#: templates/admin/cms/page/change_list.html:78
+msgid "Publish"
+msgstr "Publicar"
+
+#: templates/admin/cms/page/change_form.html:97
+#: templates/admin/cms/page/change_form.html:98
+msgid "draft"
+msgstr "rascunho"
+
+#: templates/admin/cms/page/change_form.html:98
+#: templates/admin/import_export/import.html:51
+msgid "Preview"
+msgstr "Visualização"
+
+#: templates/admin/cms/page/change_form.html:100
+msgid "Revert to public"
+msgstr "Reverter para público"
+
+#: templates/admin/cms/page/change_form.html:157
+msgid "All permissions"
+msgstr "Todas as permissões"
+
+#: templates/admin/cms/page/change_form.html:158
+#: templates/admin/cms/page/change_form.html:169
+msgid "Loading..."
+msgstr "Carregando..."
+
+#: templates/admin/cms/page/change_form.html:168
+msgid "Page states"
+msgstr "Estado da página"
+
+#: templates/admin/cms/page/change_list.html:3
+msgid "List of pages"
+msgstr "Lista de páginas"
+
+#: templates/admin/cms/page/change_list.html:69
+msgid "Successfully moved"
+msgstr "Movido com sucesso"
+
+#: templates/admin/cms/page/change_list.html:87
+msgid "An error occured. Please reload the page"
+msgstr "Ocorreu um erro. Por favor, recarregue a página"
+
+#: templates/admin/cms/page/change_list.html:110
+#: templates/reversion/change_list.html:8
+#: templates/reversion/recover_form.html:14
+#: templates/reversion/recover_list.html:14
+#, python-format
+msgid "Recover deleted %(name)s"
+msgstr "Recuperar %(name)s removidos"
+
+#: templates/admin/cms/page/change_list.html:125
+msgid "Pages on:"
+msgstr "Páginas na:"
+
+#: templates/admin/cms/page/plugin_change_form.html:129
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/admin/edit_inline/stacked.html:67
+#: templates/admin/edit_inline/tabular.html:120
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr "Adicionar outro(a) %(verbose_name)s"
+
+#: templates/admin/edit_inline/stacked.html:70
+#: templates/admin/edit_inline/tabular.html:123
+msgid "Remove"
+msgstr "Remover"
+
+#: templates/admin/edit_inline/tabular.html:17
+msgid "Delete?"
+msgstr "Excluir?"
+
+#: templates/admin/filer/actions.html:14
+#, python-format
+msgid "Select all %(total_count)s files and/or folders"
+msgstr "Selecionar todos os %(total_count)s arquivos e/ou pastas"
+
+#: templates/admin/filer/breadcrumbs.html:5
+msgid "Go back to admin homepage"
+msgstr "Voltar para a página do Administrador"
+
+#: templates/admin/filer/breadcrumbs.html:8
+msgid "Go back to Filer app"
+msgstr "Voltar para pasta de arquivos"
+
+#: templates/admin/filer/breadcrumbs.html:8
+#: templates/admin/filer/folder/change_form.html:12
+msgid "Filer"
+msgstr "Arquivos"
+
+#: templates/admin/filer/breadcrumbs.html:12
+msgid "Go back to root folder"
+msgstr "Voltar para a página inicial"
+
+#: templates/admin/filer/breadcrumbs.html:12
+#: templates/admin/filer/folder/change_form.html:15
+#: templates/admin/filer/folder/directory_listing.html:80
+msgid "root"
+msgstr "raiz"
+
+#: templates/admin/filer/breadcrumbs.html:17
+#: templates/admin/filer/breadcrumbs.html:23
+#: templates/admin/filer/folder/change_form.html:19
+#, python-format
+msgid "Go back to '%(folder_name)s' folder"
+msgstr "Voltar para a pasta %(folder_name)s"
+
+#: templates/admin/filer/change_form.html:30
+msgid "duplicates"
+msgstr "duplicados"
+
+#: templates/admin/filer/delete_selected_files_confirmation.html:11
+msgid ""
+"Deleting the selected files and/or folders would result in deleting related "
+"objects, but your account doesn't have permission to delete the following "
+"types of objects:"
+msgstr ""
+"Removendo arquivos e/ou pastas selecionados pode resultar na exclusão de "
+"registros relacionados, mas a sua conta não tem permissão para excluir "
+"esses objetos:"
+
+#: templates/admin/filer/delete_selected_files_confirmation.html:20
+msgid ""
+"Deleting the selected files and/or folders would require deleting the "
+"following protected related objects:"
+msgstr ""
+"Excluindo os arquivos e/ou pastas selecionados necessita remover os "
+"seguintes registros protegidos:"
+
+#: templates/admin/filer/delete_selected_files_confirmation.html:30
+msgid ""
+"<p>Are you sure you want to delete the selected files and/or folders? All of "
+"the following objects and their related items will be deleted:</p>"
+msgstr ""
+"<p>Tem certeza que deseja excluir os arquivos e/ou pastas selecionados? "
+"Todos os registros se seus itens relacionados serão excluídos:</p>"
+
+#: templates/admin/filer/folder/change_form.html:8
+#: templates/admin/filer/folder/change_form.html:12
+#: templates/admin/filer/folder/change_form.html:15
+#: templates/admin/filer/folder/directory_listing.html:80
+msgid "Go back to"
+msgstr "Voltar para"
+
+#: templates/admin/filer/folder/change_form.html:8
+msgid "admin homepage"
+msgstr "painel administrativo"
+
+#: templates/admin/filer/folder/change_form.html:15
+#: templates/admin/filer/folder/directory_listing.html:80
+#: templates/admin/filer/folder/new_folder_form.html:4
+#: templates/admin/filer/tools/clipboard/clipboard.html:15
+msgid "folder"
+msgstr "pasta"
+
+#: templates/admin/filer/folder/change_form.html:50
+#: templates/admin/filer/folder/directory_listing.html:81
+#: templates/admin/filer/folder/directory_listing.html:91
+#: templates/admin/filer/folder/directory_table.html:23
+msgid "Folder Icon"
+msgstr "Pasta de ícones"
+
+#: templates/admin/filer/folder/choose_copy_destination.html:12
+msgid ""
+"Your account doesn't have permissions to copy all of the selected files and/"
+"or folders."
+msgstr "Sua conta não tem permissão para copiar todos os arquivos e/ou "
+"pastas selecionadas."
+
+#: templates/admin/filer/folder/choose_copy_destination.html:15
+#: templates/admin/filer/folder/choose_move_destination.html:15
+msgid "There are no destination folders available."
+msgstr "Não há pastas de destino disponíveis."
+
+#: templates/admin/filer/folder/choose_copy_destination.html:18
+msgid "There are no files and/or folders available to copy."
+msgstr "Não há arquivos e/ou pastas disponíveis para copiar."
+
+#: templates/admin/filer/folder/choose_copy_destination.html:21
+msgid ""
+"The following files and/or folders will be copied to a destination folder "
+"(retaining their tree structure):"
+msgstr "Os seguintes arquivos e/ou pastas devem ser copiados para uma "
+"pasta de destino (mantendo a estrutura de diretórios):"
+
+#: templates/admin/filer/folder/choose_copy_destination.html:31
+#: templates/admin/filer/folder/choose_move_destination.html:32
+msgid "Destination folder:"
+msgstr "Pasta de destino:"
+
+#: templates/admin/filer/folder/choose_copy_destination.html:38
+msgid "Copy"
+msgstr "Copiar"
+
+#: templates/admin/filer/folder/choose_images_resize_options.html:12
+msgid ""
+"Your account doesn't have permissions to resize all of the selected images."
+msgstr "Você não tem permissão para redimensionar todas as imagens selecionadas."
+
+#: templates/admin/filer/folder/choose_images_resize_options.html:15
+msgid "There are no images available to resize."
+msgstr "Não existem imagens disponíveis para redimensionar."
+
+#: templates/admin/filer/folder/choose_images_resize_options.html:18
+msgid "The following images will be resized:"
+msgstr "As seguintes imagens serão redimensionadas:"
+
+#: templates/admin/filer/folder/choose_images_resize_options.html:29
+msgid "Choose an existing thumbnail option or enter resize parameters:"
+msgstr "Escolha uma opção de miniatura existente ou entre com os "
+"parâmetros de redimensionamento:"
+
+#: templates/admin/filer/folder/choose_images_resize_options.html:32
+msgid "Choose resize parameters:"
+msgstr "Escolhe os parâmetros de redimensionamento:"
+
+#: templates/admin/filer/folder/choose_images_resize_options.html:35
+msgid ""
+"Warning: Images will be resized in-place and originals will be lost. Maybe "
+"first make a copy of them to retain the originals."
+msgstr "Aviso: As imagens serão redimensionadas no local e os originais "
+"serão perdidos. Recomenda-se primeiro fazer cópia deles para manter "
+"os originais."
+
+#: templates/admin/filer/folder/choose_images_resize_options.html:36
+msgid "Resize"
+msgstr "Redimensionar"
+
+#: templates/admin/filer/folder/choose_move_destination.html:12
+msgid ""
+"Your account doesn't have permissions to move all of the selected files and/"
+"or folders."
+msgstr "Sua conta não tem permissão para mover todos os arquivos e/ou "
+"pastas selecionadas."
+
+#: templates/admin/filer/folder/choose_move_destination.html:18
+msgid "There are no files and/or folders available to move."
+msgstr "Não existem arquivos e/ou pastas disponíveis para mover."
+
+#: templates/admin/filer/folder/choose_move_destination.html:21
+msgid ""
+"The following files and/or folders will be moved to a destination folder "
+"(retaining their tree structure):"
+msgstr "Os seguintes arquivos e/ou pastas devem ser movidos para uma "
+"pasta de destino (mantendo a estrutura de diretórios):"
+
+#: templates/admin/filer/folder/choose_move_destination.html:38
+msgid "Move"
+msgstr "Mover"
+
+#: templates/admin/filer/folder/choose_rename_format.html:12
+msgid ""
+"Your account doesn't have permissions to rename all of the selected files."
+msgstr "Sua conta não tem permissão para renomear todos os arquivos selecionados."
+
+#: templates/admin/filer/folder/choose_rename_format.html:15
+msgid "There are no files available to rename."
+msgstr "Não tem arquivos disponíveis para renomar."
+
+#: templates/admin/filer/folder/choose_rename_format.html:18
+msgid ""
+"The following files will be renamed (they will stay in their folders and "
+"keep original filename, only displayed filename will be changed):"
+msgstr "Os seguintes arquivos devem ser renomeados "
+"(eles vão ficar em suas pastas e manter o nome do arquivo original, apenas "
+"o nome exibido será alterado):"
+
+#: templates/admin/filer/folder/choose_rename_format.html:31
+msgid "Rename"
+msgstr "Renomear"
+
+#: templates/admin/filer/folder/directory_listing.html:71
+msgid "Adds a new Folder"
+msgstr "Adicionar nova pasta"
+
+#: templates/admin/filer/folder/directory_listing.html:71
+msgid "New Folder"
+msgstr "Nova Pasta"
+
+#: templates/admin/filer/folder/directory_listing.html:72
+msgid "upload files"
+msgstr "enviar arquivo"
+
+#: templates/admin/filer/folder/directory_listing.html:72
+msgid "Upload"
+msgstr "Enviar"
+
+#: templates/admin/filer/folder/directory_listing.html:80
+msgid "Go back to the parent folder"
+msgstr "Voltar para a pasta acima"
+
+#: templates/admin/filer/folder/directory_listing.html:82
+#: templates/admin/filer/folder/directory_table.html:30
+#: templates/admin/filer/tools/search_form.html:19
+#, python-format
+msgid "1 folder"
+msgid_plural "%(counter)s folders"
+msgstr[0] "%(counter)s pasta"
+msgstr[1] "%(counter)s pastas"
+
+#: templates/admin/filer/folder/directory_listing.html:82
+#: templates/admin/filer/folder/directory_table.html:30
+#: templates/admin/filer/tools/search_form.html:20
+#, python-format
+msgid "1 file"
+msgid_plural "%(counter)s files"
+msgstr[0] "%(counter)s arquivo"
+msgstr[1] "%(counter)s arquivos"
+
+#: templates/admin/filer/folder/directory_listing.html:86
+msgid "Change current folder details"
+msgstr "Alterar detalhes da pasta atual"
+
+#: templates/admin/filer/folder/directory_table.html:13
+msgid "Name"
+msgstr "Nome"
+
+#: templates/admin/filer/folder/directory_table.html:23
+#: templates/admin/filer/folder/directory_table.html:27
+#: templates/admin/filer/folder/directory_table.html:29
+#, python-format
+msgid "Change '%(item_label)s' folder details"
+msgstr "Alterar detalhes da pasta '%(item_label)s'"
+
+#: templates/admin/filer/folder/directory_table.html:30
+#: templates/admin/filer/folder/directory_table.html:45
+msgid "Owner"
+msgstr "Dono"
+
+#: templates/admin/filer/folder/directory_table.html:37
+msgid "Select this file"
+msgstr "Selecione este arquivo"
+
+#: templates/admin/filer/folder/directory_table.html:39
+#: templates/admin/filer/folder/directory_table.html:43
+#: templates/admin/filer/folder/directory_table.html:44
+#, python-format
+msgid "Change '%(item_label)s' details"
+msgstr "Alterar detalhes de '%(item_label)s'"
+
+#: templates/admin/filer/folder/directory_table.html:42
+#, python-format
+msgid "Delete '%(item_label)s'"
+msgstr "Excluir '%(item_label)s'"
+
+#: templates/admin/filer/folder/directory_table.html:45
+msgid "Permissions"
+msgstr "Permissões"
+
+#: templates/admin/filer/folder/directory_table.html:45
+msgid "disabled"
+msgstr "desabilitado"
+
+#: templates/admin/filer/folder/directory_table.html:45
+msgid "enabled"
+msgstr "habilitado"
+
+#: templates/admin/filer/folder/directory_table.html:49
+msgid "Move to clipboard"
+msgstr "Copiar"
+
+#: templates/admin/filer/folder/directory_table.html:57
+msgid "there are no files or subfolders"
+msgstr "não existem arquivos ou sub-pastas"
+
+#: templates/admin/filer/folder/directory_table.html:64
+msgid "previous"
+msgstr "anterior"
+
+#: templates/admin/filer/folder/directory_table.html:68
+#, python-format
+msgid ""
+"\n"
+"            Page %(number)s of %(num_pages)s\n"
+"            "
+msgstr ""
+"\n"
+"            Página %(number)s de %(num_pages)s\n"
+"            "
+
+#: templates/admin/filer/folder/directory_table.html:74
+msgid "next"
+msgstr "prócimo"
+
+#: templates/admin/filer/folder/new_folder_form.html:4
+msgid "Add new"
+msgstr "Adicionar novo"
+
+#: templates/admin/filer/image/change_form.html:31
+msgid "Full size preview"
+msgstr "Visualização em tela cheia"
+
+#: templates/admin/filer/tools/search_form.html:11
+msgid "Enter your search phrase here"
+msgstr "Entre com sua frase de pesquisa"
+
+#: templates/admin/filer/tools/search_form.html:12
+msgid "Click here to"
+msgstr "Clique aqui para"
+
+#: templates/admin/filer/tools/search_form.html:12
+msgid "run search for entered phrase"
+msgstr "buscar com frase inserida"
+
+#: templates/admin/filer/tools/search_form.html:15
+msgid "Check it to"
+msgstr "Verifique isso para"
+
+#: templates/admin/filer/tools/search_form.html:15
+msgid "limit the search to current folder"
+msgstr "limite de pesquisa para pasta atual"
+
+#: templates/admin/filer/tools/search_form.html:19
+msgid "found"
+msgstr "encontrado"
+
+#: templates/admin/filer/tools/search_form.html:19
+msgid "and"
+msgstr "e"
+
+#: templates/admin/filer/tools/search_form.html:20
+msgid "cancel search"
+msgstr "cancelar pesquisa"
+
+#: templates/admin/filer/tools/clipboard/clipboard.html:4
+msgid "Clipboard"
+msgstr "Área de Transferência"
+
+#: templates/admin/filer/tools/clipboard/clipboard.html:15
+msgid "discard"
+msgstr "descartar"
+
+#: templates/admin/filer/tools/clipboard/clipboard.html:15
+msgid "Move all clipboard files to"
+msgstr "Mover todos os arquivos copiados para"
+
+#: templates/admin/filer/tools/clipboard/clipboard.html:15
+msgid "unfiled files"
+msgstr "rascunho de arquivos"
+
+#: templates/admin/filer/tools/clipboard/clipboard.html:24
+msgid "Paste all items here"
+msgstr "Copiar todos os itens aqui"
+
+#: templates/admin/filer/tools/clipboard/clipboard.html:63
+msgid "the clipboard is empty"
+msgstr "a área de transferência está vazia"
+
+#: templates/admin/filer/tools/clipboard/clipboard_item_rows.html:10
+msgid "upload failed"
+msgstr "falha no envio"
+
+#: templates/admin/import_export/change_list_export.html:5
+#: templates/admin/import_export/change_list_import_export.html:6
+#: templates/admin/import_export/export.html:5
+#: templates/admin/import_export/export.html:12
+msgid "Export"
+msgstr "Exportar"
+
+#: templates/admin/import_export/change_list_import.html:5
+#: templates/admin/import_export/change_list_import_export.html:5
+#: templates/admin/import_export/import.html:6
+#: templates/admin/import_export/import.html:25
+msgid "Import"
+msgstr "Importar"
+
+#: templates/admin/import_export/import.html:17
+msgid "This importer will import the following fields: "
+msgstr "Essa importação deve inserir os seguintes campos: "
+
+#: templates/admin/import_export/import.html:34
+msgid "Errors"
+msgstr "Erros"
+
+#: templates/admin/import_export/import.html:42
+msgid "Line number"
+msgstr "Número da Linha"
+
+#: templates/admin/import_export/import.html:65
+msgid "New"
+msgstr "Novo"
+
+#: templates/admin/import_export/import.html:67
+msgid "Skipped"
+msgstr "Ignorado"
+
+#: templates/admin/import_export/import.html:71
+msgid "Update"
+msgstr "Atualizar"
+
+#: templates/admin/import_export/import.html:90
+msgid "Confirm import"
+msgstr "Confirmar importação"
+
+#: templates/registration/logged_out.html:9
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr "Obrigado por passar um tempo aqui."
+
+#: templates/registration/logged_out.html:12
+msgid "Log in again"
+msgstr "Logar novamente"
+
+#: templates/registration/password_change_form.html:28
+#: templates/registration/password_change_form.html:32
+msgid "Password change"
+msgstr "Alterar senha"
+
+#: templates/registration/password_change_form.html:40
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+"Por favor, digite sua senha antiga, e em seguida, digite a nova senha "
+"duas vezes, para que possamos verificar se você digitou corretamente."
+
+#: templates/registration/password_change_form.html:55
+msgid "Old password"
+msgstr "Antiga senha"
+
+#: templates/registration/password_change_form.html:66
+msgid "New password"
+msgstr "Nova senha"
+
+#: templates/registration/password_change_form.html:88
+msgid "Change my password"
+msgstr "Mudar minha senha"
+
+#: templates/reversion/object_history.html:8
+msgid ""
+"Choose a date from the list below to revert to a previous version of this "
+"object."
+msgstr ""
+"Escolha uma data a partir da lista abaixo para reverter a uma versão "
+"anterior desse registro"
+
+#: templates/reversion/object_history.html:17
+msgid "Comment"
+msgstr "Comentário"
+
+#: templates/reversion/recover_form.html:22
+msgid "Press the save button below to recover this version of the object."
+msgstr "Pressiona o botão 'Salvar' abaixo para recurerar este versão do registro."
+
+#: templates/reversion/recover_list.html:21
+msgid ""
+"Choose a date from the list below to recover a deleted version of an object."
+msgstr "Escolha uma data na lista abaixo para recuperar a versão "
+"removida do registro."
+
+#: templates/reversion/recover_list.html:41
+msgid "There are no deleted objects to recover."
+msgstr "Não existem registros removidos para recuperação."
+
+#: templates/reversion/revision_form.html:18
+#, python-format
+msgid "Revert %(verbose_name)s"
+msgstr "Reverter %(verbose_name)s"
+
+#: templates/reversion/revision_form.html:31
+msgid "Press the save button below to revert to this version of the object."
+msgstr "Presione o botão 'Salvar' abaixo para reverter para a versão desse registro."
+
+#: tests/templates/form_tabs.py:13
+msgid "Tab2"
+msgstr ""
