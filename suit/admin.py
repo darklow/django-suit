@@ -198,3 +198,43 @@ if 'cms' in settings.INSTALLED_APPS:
     except ImportError:
         pass
 
+if 'modeltranslation' in settings.INSTALLED_APPS:
+    try:
+        from modeltranslation.admin import TranslationAdmin
+
+        TranslationAdmin.suit_form_tabs = settings.LANGUAGES
+        TranslationAdmin.old_fieldsets = TranslationAdmin.get_fieldsets
+
+        def new_get_fieldsets(self, *args, **kwargs):
+            fieldsets = TranslationAdmin.old_fieldsets(self, *args, **kwargs)
+
+            fieldsets = copy.deepcopy(fieldsets)
+            translated_fields = self.trans_opts.get_field_names()
+
+            languages = [code for code, _ in settings.LANGUAGES]
+
+            def is_translated_field(field_name):
+                return field_name[-3] == '_' \
+                    and field_name[-2:] in languages \
+                    and field_name[:-3] in translated_fields
+
+            trans_fieldsets = dict(
+                (code, (language, [])) for code, language in settings.LANGUAGES
+            )
+            for name, fieldset in fieldsets:
+                for field_name in fieldset['fields'][:]:
+                    if is_translated_field(field_name):
+                        fieldset['fields'].remove(field_name)
+                        code = field_name[-2:]
+                        trans_fieldsets[code][1].append(field_name)
+
+            return fieldsets + [
+                (language, {
+                    'classes': ('suit-tab suit-tab-%s' % code, ),
+                    'fields': fields
+                }) for code, (language, fields) in trans_fieldsets.items()
+            ]
+
+        TranslationAdmin.get_fieldsets = new_get_fieldsets
+    except Exception as e:
+        pass
