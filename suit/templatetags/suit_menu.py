@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.http import HttpRequest
 from django.core.urlresolvers import reverse, resolve
+from django.utils.translation import ugettext as _
 
 try:
     from django.utils.six import string_types
@@ -175,6 +176,9 @@ class Menu(object):
 
         # Process absolute/named/model type urls
         app['url'] = self.process_url(app['url'], app)
+
+        # Attempt to translate app label with gettext
+        app['label'] = _(app['label'])
 
         return app
 
@@ -361,6 +365,9 @@ class Menu(object):
 
             # Detect if named url and convert it to absolute
             model['url'] = self.process_url(model['url'])
+
+            # Attempt to translate model label with gettext
+            model['label'] = _(model['label'])
 
             return model
 
