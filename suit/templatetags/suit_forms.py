@@ -72,7 +72,7 @@ def get_field_widget_class_name(field):
         widget_class_name = field.field.widget.__class__.__name__
         return widget_class_name
     except AttributeError:
-        pass
+        return "CustomAdminField"
 
 
 @register.filter
