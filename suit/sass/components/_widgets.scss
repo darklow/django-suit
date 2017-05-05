@@ -5,6 +5,7 @@ fieldset {
   input[type=number],
   input[type=password],
   input[type=date],
+  input[type=tel],
   .vTextField,
   .vURLField,
   .vLargeTextField,
@@ -426,6 +427,22 @@ fieldset {
       font-size: 12px;
       display: inline-block;
       padding-left: 2px;
+    }
+  }
+}
+
+// CheckboxSelectMultiple and AdminRadioSelect widget
+.related-widget-wrapper, .widget-AdminRadioSelect {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    > li {
+      label {
+        input[type='checkbox'], input[type='radio'] {
+          margin-right: 3px;
+        }
+      }
     }
   }
 }
