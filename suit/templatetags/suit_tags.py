@@ -13,7 +13,7 @@ def suit_conf(name, request):
 
 @register.filter(name='suit_body_class')
 def suit_body_class(value, request):
-    css_classes = []
+    css_classes = value.split()
     config_vars_to_add = ['toggle_changelist_top_actions', 'form_submit_on_right', 'layout']
     for each in config_vars_to_add:
         suit_conf_param = getattr(config.get_config(None, request), each, None)
