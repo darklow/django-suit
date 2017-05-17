@@ -44,7 +44,8 @@ class MenuManager(object):
         # Variable available_apps structure:
         # https://docs.djangoproject.com/en/1.9/ref/contrib/admin/#adminsite-methods
         self.available_apps = available_apps
-
+        if available_apps is None:
+            self.available_apps = [] # For cases where an app doesn't initialize this
         self.context = context
         self.request = request
         self.current_app = get_current_app(request)
