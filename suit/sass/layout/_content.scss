@@ -20,9 +20,9 @@ body.change-form {
     flex-basis: 100%;
     > h1 {
       flex-basis: 100%;
-      &:first-child {
-        display: none;
-      }
+    }
+    > h1:first-child, > .messagelist + h1 {
+      display: none;
     }
   }
 

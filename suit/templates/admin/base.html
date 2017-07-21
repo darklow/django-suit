@@ -22,6 +22,13 @@
 
 {% block pretitle %}
 <div class="content-wrap">
+    {% block messages %}
+        {% if messages %}
+            <ul class="messagelist">{% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+            {% endfor %}</ul>
+        {% endif %}
+    {% endblock messages %}
 {% endblock %}
 
 {% block sidebar %}
