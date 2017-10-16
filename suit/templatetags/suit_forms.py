@@ -102,7 +102,7 @@ def suit_form_field_widget_class(field):
     return ''
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def suit_form_conf(context, param_name, inline_admin_formset=None):
     """
     Get form config param
