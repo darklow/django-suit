@@ -68,7 +68,7 @@
                   {% trans 'Welcome,' %}
                   <strong>
                     {% filter force_escape %}
-                      {% firstof user.first_name user.username %}{% endfilter %}</strong>.
+                      {% firstof user.first_name user.get_username %}{% endfilter %}</strong>.
                 {% endblock %}
                 <span class="user-links">
                 {% block userlinks %}
