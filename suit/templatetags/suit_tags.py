@@ -1,6 +1,9 @@
 import itertools
+
+import django
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
+
 try:
     from django.urls import NoReverseMatch, reverse
 except:
@@ -20,6 +23,10 @@ except ImportError:
     from django.contrib.admin.util import lookup_field
 
 register = template.Library()
+if django.VERSION >= (2, 0, 0, 'final', 0):
+    simple_tag = register.simple_tag
+else:
+    simple_tag = register.assignment_tag
 
 
 @register.filter(name='suit_conf')
@@ -84,14 +91,12 @@ def suit_bc(*args):
     return utils.value_by_version(args)
 
 
-# @register.assignment_tag
-@register.simple_tag
+@simple_tag
 def suit_bc_value(*args):
     return utils.value_by_version(args)
 
 
-# @register.assignment_tag
-@register.simple_tag
+@simple_tag
 def admin_extra_filters(cl):
     """ Return the dict of used filters which is not included
     in list_filters form """
@@ -100,8 +105,7 @@ def admin_extra_filters(cl):
     return dict((k, v) for k, v in cl.params.items() if k not in used_parameters)
 
 
-# @register.assignment_tag
-@register.simple_tag
+@simple_tag
 def suit_django_version():
     return django_version
 

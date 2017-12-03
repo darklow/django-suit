@@ -69,7 +69,7 @@ class WidgetsTestCase(TestCase):
         self.assertEqual('p', sdw.attrs['placeholder'])
 
     def get_SuitDateWidget_output(self):
-        if float(django.get_version()) >= float('2.0'):
+        if django.VERSION >= (2, 0, 0, 'final', 0):
             return '<div class="input-append suit-date"><input class="vDateField ' \
                    'input-small " name="sdw" placeholder="Date" ' \
                    'size="10" type="text" value="" /><span class="add-on"><i ' \
@@ -103,7 +103,7 @@ class WidgetsTestCase(TestCase):
         self.assertEqual('p', sdw.attrs['placeholder'])
 
     def get_SuitTimeWidget_output(self):
-        if float(django.get_version()) >= float('2.0'):
+        if django.VERSION >= (2, 0, 0, 'final', 0):
             return '<div class="input-append suit-date suit-time"><input ' \
                    'class="vTimeField input-small " name="sdw" ' \
                    'placeholder="Time" size="8" type="text" value="" /><span ' \
@@ -134,7 +134,7 @@ class WidgetsTestCase(TestCase):
     def test_SuitSplitDateTimeWidget(self):
         ssdtw = SuitSplitDateTimeWidget()
         output = ssdtw.render('sdw', '')
-        if float(django.get_version()) >= float('2.0'):
+        if django.VERSION >= (2, 0, 0, 'final', 0):
             dwo = self.get_SuitDateWidget_output2().replace('sdw', 'sdw_0')
             two = self.get_SuitTimeWidget_output2().replace('sdw', 'sdw_1')
         else:

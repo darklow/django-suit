@@ -1,7 +1,9 @@
+import django
 from django import template
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.http import HttpRequest
+
 try:
     from django.urls import reverse, resolve
 except:
@@ -19,10 +21,12 @@ import warnings
 from suit.config import get_config
 
 register = template.Library()
+if django.VERSION >= (2, 0, 0, 'final', 0):
+    simple_tag = register.simple_tag
+else:
+    simple_tag = register.assignment_tag
 
-
-# @register.assignment_tag(takes_context=True)
-@register.simple_tag(takes_context=True)
+@simple_tag(takes_context=True)
 def get_menu(context, request):
     """
     :type request: HttpRequest
