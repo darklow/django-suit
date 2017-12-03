@@ -71,7 +71,7 @@ class WidgetsTestCase(TestCase):
     def get_SuitDateWidget_output(self):
         return '<div class="input-append suit-date"><input class="vDateField ' \
                'input-small " name="sdw" placeholder="Date" ' \
-               'size="10" type="text" /><span class="add-on"><i ' \
+               'size="10" type="text" value="" /><span class="add-on"><i ' \
                'class="icon-calendar"></i></span></div>'
 
     def test_SuitDateWidget_output(self):
@@ -99,7 +99,7 @@ class WidgetsTestCase(TestCase):
     def get_SuitTimeWidget_output(self):
         return '<div class="input-append suit-date suit-time"><input ' \
                'class="vTimeField input-small " name="sdw" ' \
-               'placeholder="Time" size="8" type="text" /><span ' \
+               'placeholder="Time" size="8" type="text" value="" /><span ' \
                'class="add-on"><i class="icon-time"></i></span></div>'
 
     def test_SuitTimeWidget_output(self):
@@ -109,11 +109,21 @@ class WidgetsTestCase(TestCase):
             self.get_SuitTimeWidget_output(),
             output)
 
+    def get_SuitDateWidget_output2(self):
+        return '<input class="vDateField ' \
+               'input-small " name="sdw" placeholder="Date" ' \
+               'size="10" type="text" />'
+
+    def get_SuitTimeWidget_output2(self):
+        return '<input ' \
+               'class="vTimeField input-small " name="sdw" ' \
+               'placeholder="Time" size="8" type="text" />'
+
     def test_SuitSplitDateTimeWidget(self):
         ssdtw = SuitSplitDateTimeWidget()
         output = ssdtw.render('sdw', '')
-        dwo = self.get_SuitDateWidget_output().replace('sdw', 'sdw_0')
-        two = self.get_SuitTimeWidget_output().replace('sdw', 'sdw_1')
+        dwo = self.get_SuitDateWidget_output2().replace('sdw', 'sdw_0')
+        two = self.get_SuitTimeWidget_output2().replace('sdw', 'sdw_1')
         self.assertHTMLEqual(output, '<div class="datetime">%s %s</div>' %
                                      (dwo, two))
 

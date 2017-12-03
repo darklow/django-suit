@@ -1,7 +1,10 @@
 import itertools
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.urlresolvers import NoReverseMatch, reverse
+try:
+    from django.urls import NoReverseMatch, reverse
+except:
+    from django.core.urlresolvers import NoReverseMatch, reverse
 from django.db.models import ForeignKey
 from django.template.defaulttags import NowNode
 from django.utils.safestring import mark_safe
@@ -81,12 +84,14 @@ def suit_bc(*args):
     return utils.value_by_version(args)
 
 
-@register.assignment_tag
+# @register.assignment_tag
+@register.simple_tag
 def suit_bc_value(*args):
     return utils.value_by_version(args)
 
 
-@register.assignment_tag
+# @register.assignment_tag
+@register.simple_tag
 def admin_extra_filters(cl):
     """ Return the dict of used filters which is not included
     in list_filters form """
@@ -95,7 +100,8 @@ def admin_extra_filters(cl):
     return dict((k, v) for k, v in cl.params.items() if k not in used_parameters)
 
 
-@register.assignment_tag
+# @register.assignment_tag
+@register.simple_tag
 def suit_django_version():
     return django_version
 

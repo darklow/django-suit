@@ -12,5 +12,5 @@ try:
     )
 except ImportError:  # Django 1.10+
     urlpatterns = [
-        url(r'^admin/', include(admin.site.urls)),
+        url(r'^admin/', admin.site.urls),
     ]

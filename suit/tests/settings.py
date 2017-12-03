@@ -27,13 +27,23 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
+# MIDDLEWARE_CLASSES = (
+#     'django.middleware.common.CommonMiddleware',
+#     'django.contrib.sessions.middleware.SessionMiddleware',
+#     'django.middleware.csrf.CsrfViewMiddleware',
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     'django.contrib.messages.middleware.MessageMiddleware',
+# )
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-)
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
 
 ROOT_URLCONF = 'suit.tests.urls'
 TEMPLATE_DIRS = ()
