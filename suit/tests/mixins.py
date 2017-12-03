@@ -2,7 +2,10 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.management import CommandError
 from django.core.management import call_command
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except:
+    from django.core.urlresolvers import reverse
 from django.test import TestCase
 from random import randint
 

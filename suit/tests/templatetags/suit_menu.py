@@ -1,6 +1,9 @@
 from django.conf import settings
 from django.contrib.auth.models import Permission
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except:
+    from django.core.urlresolvers import reverse
 from suit.templatetags.suit_menu import get_menu
 from suit.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
 from suit.tests.models import test_app_label
