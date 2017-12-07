@@ -1,5 +1,8 @@
 from django.contrib import admin
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except:
+    from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext
 from suit.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
 from suit.tests.models import Book, BookAdmin, test_app_label
