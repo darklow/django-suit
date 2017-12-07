@@ -136,9 +136,15 @@ class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
         widgets = [SuitDateWidget, SuitTimeWidget]
         forms.MultiWidget.__init__(self, widgets, attrs)
 
-    def format_output(self, rendered_widgets):
-        out_tpl = '<div class="datetime">%s %s</div>'
-        return mark_safe(out_tpl % (rendered_widgets[0], rendered_widgets[1]))
+    def render(self, name, value, attrs=None):
+        html = super(SuitSplitDateTimeWidget, self).render(name, value, attrs)
+        
+        out_tpl = '<div class="datetime">%s</div>'
+        return mark_safe(out_tpl % html)
+    
+    # def format_output(self, rendered_widgets):
+    #     out_tpl = '<div class="datetime">%s %s</div>'
+    #     return mark_safe(out_tpl % (rendered_widgets[0], rendered_widgets[1]))
 
 
 def _make_attrs(attrs, defaults=None, classes=None):
