@@ -220,7 +220,10 @@ class MenuManager(object):
             return menu_item
         if '/' in menu_item.url:
             return menu_item
-        from django.core.urlresolvers import reverse, NoReverseMatch
+        try:
+            from django.urls import reverse, NoReverseMatch
+        except:
+            from django.core.urlresolvers import reverse, NoReverseMatch
         try:
             menu_item.url = reverse(menu_item.url, current_app=self.current_app)
             menu_item._url_name = menu_item.url

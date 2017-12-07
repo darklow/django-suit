@@ -1,6 +1,8 @@
 from datetime import timedelta
-
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except:
+    from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 class RoutesTestCase(TestCase):
