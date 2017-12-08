@@ -1,4 +1,6 @@
 import logging
+
+import django
 from django import template
 from django.contrib.admin import AdminSite
 from django.http import HttpRequest
@@ -10,8 +12,13 @@ from suit.menu import MenuManager
 
 register = template.Library()
 
+if django.VERSION < (1, 9):
+    simple_tag = register.assignment_tag
+else:
+    simple_tag = register.simple_tag
 
-@register.simple_tag(takes_context=True)
+
+@simple_tag(takes_context=True)
 def get_menu(context, request):
     """
     :type request: WSGIRequest
