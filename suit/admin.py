@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 
 """
 Adapted by using following examples:
@@ -91,7 +91,7 @@ class RelatedFieldAdmin(admin.ModelAdmin):
                 field = model._meta.get_field(field_name)
             except models.FieldDoesNotExist:
                 continue
-            if isinstance(field.rel, models.ManyToOneRel):
+            if isinstance(field, models.ManyToManyField):
                 select_related.append(field_name)
 
         return qs.select_related(*select_related)
