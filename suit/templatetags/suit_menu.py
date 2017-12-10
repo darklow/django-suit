@@ -2,13 +2,13 @@ import logging
 from django import template
 from django.contrib.admin import AdminSite
 from django.http import HttpRequest
-from django.core.urlresolvers import reverse, resolve
+from django.urls import reverse, resolve
 from suit.menu import MenuManager
 
 register = template.Library()
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_menu(context, request):
     """
     :type request: WSGIRequest
