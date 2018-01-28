@@ -2,7 +2,7 @@ import logging
 from django import template
 from django.contrib.admin import AdminSite
 from django.http import HttpRequest
-from django.core.urlresolvers import reverse, resolve
+from django.urls import reverse, resolve
 from suit.menu import MenuManager
 
 register = template.Library()
