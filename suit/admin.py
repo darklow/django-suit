@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 
 """
 Adapted by using following examples:

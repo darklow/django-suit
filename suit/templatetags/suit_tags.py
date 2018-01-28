@@ -24,7 +24,7 @@ def suit_body_class(value, request):
     return ' '.join(css_classes)
 
 
-@register.assignment_tag
+@register.simple_tag
 def suit_conf_value(name, model_admin=None):
     if model_admin:
         value_by_ma = getattr(model_admin, 'suit_%s' % name.lower(), None)
