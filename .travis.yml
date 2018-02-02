@@ -3,6 +3,7 @@ python:
   - 2.7
   - 3.4
   - pypy
+  - pypy3
 env:
   - DJANGO=1.8.18
   - DJANGO=1.9.13
@@ -20,4 +21,6 @@ matrix:
   exclude:
     # Django doesn't support following combinations
     - python: 2.7
+      env: DJANGO=2.0.2
+    - python: pypy
       env: DJANGO=2.0.2
