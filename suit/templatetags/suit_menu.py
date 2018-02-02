@@ -1,8 +1,14 @@
+import django
 from django import template
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.http import HttpRequest
-from django.core.urlresolvers import reverse, resolve
+
+try:
+    from django.core.urlresolvers import reverse, resolve
+except ImportError:
+    # For Django >= 2.0
+    from django.urls import reverse, resolve
 
 try:
     from django.utils.six import string_types
@@ -11,14 +17,21 @@ except ImportError:
     string_types = basestring,
 
 import re
-
 import warnings
 from suit.config import get_config
+from suit import utils
 
 register = template.Library()
 
+django_version = utils.django_major_version()
 
-@register.assignment_tag(takes_context=True)
+if django_version < (1, 9):
+    simple_tag = register.assignment_tag
+else:
+    simple_tag = register.simple_tag
+
+
+@simple_tag(takes_context=True)
 def get_menu(context, request):
     """
     :type request: HttpRequest

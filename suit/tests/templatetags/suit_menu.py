@@ -1,9 +1,15 @@
 from django.conf import settings
 from django.contrib.auth.models import Permission
-from django.core.urlresolvers import reverse
 from suit.templatetags.suit_menu import get_menu
 from suit.tests.mixins import ModelsTestCaseMixin, UserTestCaseMixin
 from suit.tests.models import test_app_label
+
+try:
+    from django.core.urlresolvers import reverse
+except ImportError:
+    # For Django >= 2.0
+    from django.urls import reverse
+
 
 # conditional import, force_unicode was renamed in Django 1.5
 try:

@@ -1,12 +1,16 @@
 import itertools
 from django import template
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.urlresolvers import NoReverseMatch, reverse
 from django.db.models import ForeignKey
 from django.template.defaulttags import NowNode
 from django.utils.safestring import mark_safe
 from suit.config import get_config
 from suit import utils
+
+try:
+    from django.core.urlresolvers import NoReverseMatch, reverse
+except ImportError:
+    from django.urls import NoReverseMatch, reverse
 
 django_version = utils.django_major_version()
 
@@ -17,6 +21,11 @@ except ImportError:
     from django.contrib.admin.util import lookup_field
 
 register = template.Library()
+
+if django_version < (1, 9):
+    simple_tag = register.assignment_tag
+else:
+    simple_tag = register.simple_tag
 
 
 @register.filter(name='suit_conf')
@@ -81,12 +90,12 @@ def suit_bc(*args):
     return utils.value_by_version(args)
 
 
-@register.assignment_tag
+@simple_tag
 def suit_bc_value(*args):
     return utils.value_by_version(args)
 
 
-@register.assignment_tag
+@simple_tag
 def admin_extra_filters(cl):
     """ Return the dict of used filters which is not included
     in list_filters form """
@@ -95,7 +104,7 @@ def admin_extra_filters(cl):
     return dict((k, v) for k, v in cl.params.items() if k not in used_parameters)
 
 
-@register.assignment_tag
+@simple_tag
 def suit_django_version():
     return django_version
 

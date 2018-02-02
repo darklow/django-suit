@@ -1,11 +1,16 @@
 from django.contrib.admin import ModelAdmin
 from django.contrib.admin.templatetags.admin_list import result_list
-from django.core.urlresolvers import reverse
 from suit.templatetags.suit_list import paginator_number, paginator_info, \
     pagination, suit_list_filter_select, headers_handler, dict_to_attrs, \
     result_row_attrs, cells_handler
 from suit.tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
 from suit.tests.models import Album, Book, test_app_label
+
+try:
+    from django.core.urlresolvers import reverse
+except ImportError:
+    # For Django >= 2.0
+    from django.urls import reverse
 
 app_label = test_app_label()
 
