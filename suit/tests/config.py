@@ -77,7 +77,6 @@ class ConfigWithModelsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         response = self.client.get(admin_url(book))
         self.assertNotContains(response, content_if_true)
 
-
     def test_show_required_asterisk(self):
         self.login_superuser()
         settings.SUIT_CONFIG['SHOW_REQUIRED_ASTERISK'] = True

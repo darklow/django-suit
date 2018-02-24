@@ -5,6 +5,10 @@ from django import forms
 from django.utils.translation import ugettext as _
 from django.contrib.admin.templatetags.admin_static import static
 
+from suit import utils
+
+django_version = utils.django_major_version()
+
 
 class NumberInput(TextInput):
     """
@@ -59,8 +63,12 @@ class EnclosedInput(TextInput):
             value = '<i class="%s"></i>' % value
         return '<span class="add-on">%s</span>' % value
 
-    def render(self, name, value, attrs=None):
-        output = super(EnclosedInput, self).render(name, value, attrs)
+    def render(self, name, value, attrs=None, renderer=None):
+        if django_version < (2, 0):
+            output = super(EnclosedInput, self).render(name, value, attrs)
+        else:
+            output = super(EnclosedInput, self).render(name, value, attrs, renderer)
+
         div_classes = []
         if self.prepend:
             div_classes.append('input-prepend')
@@ -88,8 +96,12 @@ class AutosizedTextarea(Textarea):
     def media(self):
         return forms.Media(js=[static("suit/js/jquery.autosize-min.js")])
 
-    def render(self, name, value, attrs=None):
-        output = super(AutosizedTextarea, self).render(name, value, attrs)
+    def render(self, name, value, attrs=None, renderer=None):
+        if django_version < (2, 0):
+            output = super(AutosizedTextarea, self).render(name, value, attrs)
+        else:
+            output = super(AutosizedTextarea, self).render(name, value, attrs, renderer)
+
         output += mark_safe(
             "<script type=\"text/javascript\">Suit.$('#id_%s').autosize();</script>"
             % name)
@@ -105,8 +117,11 @@ class SuitDateWidget(AdminDateWidget):
         new_attrs = _make_attrs(attrs, defaults, "vDateField input-small")
         super(SuitDateWidget, self).__init__(attrs=new_attrs, format=format)
 
-    def render(self, name, value, attrs=None):
-        output = super(SuitDateWidget, self).render(name, value, attrs)
+    def render(self, name, value, attrs=None, renderer=None):
+        if django_version < (1, 11):
+            output = super(SuitDateWidget, self).render(name, value, attrs)
+        else:
+            output = super(SuitDateWidget, self).render(name, value, attrs, renderer)
         return mark_safe(
             '<div class="input-append suit-date">%s<span '
             'class="add-on"><i class="icon-calendar"></i></span></div>' %
@@ -119,8 +134,11 @@ class SuitTimeWidget(AdminTimeWidget):
         new_attrs = _make_attrs(attrs, defaults, "vTimeField input-small")
         super(SuitTimeWidget, self).__init__(attrs=new_attrs, format=format)
 
-    def render(self, name, value, attrs=None):
-        output = super(SuitTimeWidget, self).render(name, value, attrs)
+    def render(self, name, value, attrs=None, renderer=None):
+        if django_version < (2, 0):
+            output = super(SuitTimeWidget, self).render(name, value, attrs)
+        else:
+            output = super(SuitTimeWidget, self).render(name, value, attrs, renderer)
         return mark_safe(
             '<div class="input-append suit-date suit-time">%s<span '
             'class="add-on"><i class="icon-time"></i></span></div>' %
@@ -136,9 +154,14 @@ class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
         widgets = [SuitDateWidget, SuitTimeWidget]
         forms.MultiWidget.__init__(self, widgets, attrs)
 
-    def format_output(self, rendered_widgets):
-        out_tpl = '<div class="datetime">%s %s</div>'
-        return mark_safe(out_tpl % (rendered_widgets[0], rendered_widgets[1]))
+    if django_version < (1, 11):
+        def format_output(self, rendered_widgets):
+            out_tpl = '<div class="datetime">%s %s</div>'
+            return mark_safe(out_tpl % (rendered_widgets[0], rendered_widgets[1]))
+    else:
+        def render(self, name, value, attrs=None, renderer=None):
+            output = super(SuitSplitDateTimeWidget, self).render(name, value, attrs, renderer)
+            return mark_safe('<div class="datetime">%s</div>' % output)
 
 
 def _make_attrs(attrs, defaults=None, classes=None):
