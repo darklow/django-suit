@@ -7,7 +7,7 @@ Installation
 
 1. You can get stable version of Django Suit by using pip or easy_install::
 
-    pip install django-suit==0.2.25
+    pip install django-suit==0.2.26
 
 2. You will need to add the ``'suit'`` application to the ``INSTALLED_APPS`` setting of your Django project ``settings.py`` file.::
 
