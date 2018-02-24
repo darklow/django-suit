@@ -1,17 +1,15 @@
 language: python
 python:
-  - 2.6
   - 2.7
   - 3.4
   - pypy
+  - pypy3
 env:
-  - DJANGO=1.4.22
-  - DJANGO=1.5.12
-  - DJANGO=1.6.11
-  - DJANGO=1.7.11
-  - DJANGO=1.8.14
-  - DJANGO=1.9.9
-  - DJANGO=1.10
+  - DJANGO=1.8.18
+  - DJANGO=1.9.13
+  - DJANGO=1.10.8
+  - DJANGO=1.11.10
+  - DJANGO=2.0.2
 before_install:
   - export DJANGO_SETTINGS_MODULE=suit.tests.settings
 install:
@@ -22,21 +20,7 @@ script:
 matrix:
   exclude:
     # Django doesn't support following combinations
-    - python: 3.4
-      env: DJANGO=1.4.22
-    - python: 2.6
-      env: DJANGO=1.6.11
-    - python: 2.6
-      env: DJANGO=1.7.11
-    - python: 2.6
-      env: DJANGO=1.8.14
-    - python: 2.6
-      env: DJANGO=1.9.9
-    - python: 2.6
-      env: DJANGO=1.10
+    - python: 2.7
+      env: DJANGO=2.0.2
     - python: pypy
-      env: DJANGO=1.4.22
-    - python: pypy
-      env: DJANGO=1.5.12
-    - python: pypy
-      env: DJANGO=1.6.11
+      env: DJANGO=2.0.2

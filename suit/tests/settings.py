@@ -1,7 +1,8 @@
 # Django settings for testproject project.
 
+import django
+
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ADMINS = ()
@@ -22,21 +23,23 @@ MEDIA_ROOT = ''
 MEDIA_URL = ''
 SECRET_KEY = 'vaO4Y<g#YRWG8;Md8noiLp>.w(w~q_b=|1`?9<x>0KxA%UB!63'
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
-
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-)
+]
+
+if django.VERSION < (1, 10):
+    MIDDLEWARE_CLASSES = MIDDLEWARE + [
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+    ]
+else:
+    MIDDLEWARE += [
+        'django.middleware.security.SecurityMiddleware',
+    ]
 
 ROOT_URLCONF = 'suit.tests.urls'
-TEMPLATE_DIRS = ()
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -54,6 +57,15 @@ STATIC_URL = '/static/'
 
 try:
     from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+    TEMPLATE_DEBUG = DEBUG
+
+    TEMPLATE_LOADERS = (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )
+
+    TEMPLATE_DIRS = ()
 
     TEMPLATE_CONTEXT_PROCESSORS = list(TCP) + [
         'django.core.context_processors.request',
