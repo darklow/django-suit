@@ -1,8 +1,14 @@
+import django
 from django import template
 from django.utils.safestring import mark_safe
 from suit import config
 
 register = template.Library()
+
+if django.VERSION < (1, 9):
+    simple_tag = register.assignment_tag
+else:
+    simple_tag = register.simple_tag
 
 
 @register.filter(name='suit_conf')
@@ -24,7 +30,7 @@ def suit_body_class(value, request):
     return ' '.join(css_classes)
 
 
-@register.assignment_tag
+@simple_tag
 def suit_conf_value(name, model_admin=None):
     if model_admin:
         value_by_ma = getattr(model_admin, 'suit_%s' % name.lower(), None)
