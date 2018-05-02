@@ -15,6 +15,8 @@ var confirmExitIfModified = (function () {
         for (var i = 0; i < form.elements.length; i++) {
             var element = form.elements[i];
             var type = element.type;
+            var row = element.closest("tr");
+            var rowClass = row.getAttribute("class");
             if (type == "checkbox" || type == "radio") {
                 if (element.checked != element.defaultChecked) {
                     return true;
@@ -33,7 +35,7 @@ var confirmExitIfModified = (function () {
                     return true;
                 }
             }
-            else if (type == "select-one" || type == "select-multiple") {
+            else if (rowClass.indexOf("empty-form")== -1 && (type == "select-one" || type == "select-multiple")) {
                 for (var j = 0; j < element.options.length; j++) {
                     if (element.options[j].selected !=
                         element.options[j].defaultSelected) {
