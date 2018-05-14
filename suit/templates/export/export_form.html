@@ -1,0 +1,16 @@
+{% extends "object_tools/tool_base.html" %}
+
+{% load url from suit_compat %}
+{% load i18n admin_urls %}
+
+{% block tool_form %}
+  <form action="" method="POST" class="form-horizontal">{% csrf_token %}
+    {% for fieldset in adminform %}
+      {% include "admin/includes/fieldset.html" %}
+    {% endfor %}
+    <div class="submit-row submit-row-bottom">
+      <input type="submit" value="{% trans "Email" %}" class="btn btn-info" name="_{{ tool.name }}_mail" />
+      <input type="submit" value="{% trans "Download" %}" class="btn btn-info" name="_{{ tool.name }}" />
+    </div>
+  </form>
+{% endblock %}
