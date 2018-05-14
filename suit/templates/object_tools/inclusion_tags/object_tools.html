@@ -1,0 +1,3 @@
+{% for object_tool in object_tools %}
+  <a href="{{ object_tool.reverse }}{% if request %}?{{ request.GET.urlencode }}{% endif %}" title="{{ object_tool.help_text }}" class="btn btn-default historylink">{{ object_tool.label }}</a>
+{% endfor %}
