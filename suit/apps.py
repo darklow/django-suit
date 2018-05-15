@@ -3,6 +3,8 @@ from django.apps import AppConfig
 from django.contrib.admin.options import ModelAdmin
 from . import VERSION
 
+ALL_FIELDS = '__all__'
+
 # Form row sizing as Bootstrap CSS grid classes: (for label, for field column)
 SUIT_FORM_SIZE_LABEL = 'col-xs-12 col-sm-3 col-md-2'
 SUIT_FORM_SIZE_INLINE = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-9 col-md-10 form-inline')
