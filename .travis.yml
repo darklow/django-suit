@@ -13,3 +13,9 @@ install:
   - pip install -q Django==$DJANGO
 script:
   - DJANGO_SETTINGS_MODULE=suit.tests.settings django-admin test suit
+matrix:
+  exclude:
+    - python: 2.7
+      env: DJANGO=2.0
+    - python: pypy
+      env: DJANGO=2.0
