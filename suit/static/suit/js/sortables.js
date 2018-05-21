@@ -108,6 +108,8 @@
             if (input.type == 'checkbox') {
                 if (input.defaultChecked == input.checked) {
                     return false;
+                } else {
+                    return true;
                 }
             } else if (input.type == 'select-one' || input.type == 'select-multiple') {
                 var options = input.options, option;
@@ -115,6 +117,8 @@
                     option = options[j];
                     if (option.selected && option.selected == option.defaultSelected) {
                         return false;
+                    } else {
+                        return true;
                     }
                 }
             } else {
