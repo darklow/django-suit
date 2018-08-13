@@ -2691,9 +2691,9 @@ body.suit_layout_vertical #suit-nav > ul > li.active { background-color: #252830
 
 body.suit_layout_vertical #suit-nav > ul > li.active:after { font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; color: #5d6478; position: absolute; right: 1rem; top: .85rem; font-size: 9px; }
 
-body.suit_layout_vertical #suit-nav > ul > li.active.has-children:after { content: "\f107"; }
+body.suit_layout_vertical #suit-nav > ul > li.active.has-children:after { font-family: "Font Awesome 5 Free"; content: "\f107"; }
 
-body.suit_layout_vertical #suit-nav > ul > li.active:not(.has-children):after { content: "\f105"; }
+body.suit_layout_vertical #suit-nav > ul > li.active:not(.has-children):after { font-family: "Font Awesome 5 Free"; content: "\f105"; }
 
 body.suit_layout_vertical #suit-nav > ul > li.active > a, body.suit_layout_vertical #suit-nav > ul > li.active > a:hover { color: #fff; }
 
@@ -2755,7 +2755,7 @@ body.dashboard #content .content-wrap { display: -webkit-box; display: -ms-flexb
 
 #content-main > .object-tools > li > a:not([class*="btn-"]).addlink { display: inline-block; border-radius: 70px; }
 
-#content-main > .object-tools > li > a:not([class*="btn-"]).addlink:before { margin-right: 3px; display: inline-block; font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; content: "";}
+#content-main > .object-tools > li > a:not([class*="btn-"]).addlink:before { margin-right: 3px; display: inline-block; font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; content: "\f067";}
 
 /* Sticky footer styles  */
 @media (min-width: 576px) { html { position: relative; min-height: 100%; }
