@@ -2691,9 +2691,9 @@ body.suit_layout_vertical #suit-nav > ul > li.active { background-color: #252830
 
 body.suit_layout_vertical #suit-nav > ul > li.active:after { font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; color: #5d6478; position: absolute; right: 1rem; top: .85rem; font-size: 9px; }
 
-body.suit_layout_vertical #suit-nav > ul > li.active.has-children:after { content: "\f078"; }
+body.suit_layout_vertical #suit-nav > ul > li.active.has-children:after { content: "\f107"; }
 
-body.suit_layout_vertical #suit-nav > ul > li.active:not(.has-children):after { content: "\f054"; }
+body.suit_layout_vertical #suit-nav > ul > li.active:not(.has-children):after { content: "\f105"; }
 
 body.suit_layout_vertical #suit-nav > ul > li.active > a, body.suit_layout_vertical #suit-nav > ul > li.active > a:hover { color: #fff; }
 
