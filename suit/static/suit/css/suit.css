@@ -2209,7 +2209,7 @@ fieldset input[type=number], fieldset input[type=date], fieldset input.vIntegerF
 
 .timezonewarning { display: inline-block; margin-top: .5rem; }
 
-.related-lookup:before { display: inline-block; width: 20px; height: 20px; font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; content: ""; color: #373a3c; font-size: 1.143rem; margin-left: 5px; }
+.related-lookup:before { display: inline-block; width: 20px; height: 20px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto;  color: #373a3c; font-size: 1.143rem; margin-left: 5px; font-family: "Font Awesome 5 Free"; font-weight: 900; content: "";}
 
 .autosize { max-height: 12rem; }
 
@@ -2233,9 +2233,9 @@ fieldset input[type=number], fieldset input[type=date], fieldset input.vIntegerF
 
 .widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink'] .date-icon, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink'] .clock-icon, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink'] .date-icon, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink'] .clock-icon, .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink'] .date-icon, .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink'] .clock-icon, .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink'] .date-icon, .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink'] .clock-icon, .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink'] .date-icon, .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink'] .clock-icon, .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink'] .date-icon, .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink'] .clock-icon { font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; }
 
-.widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink'] .date-icon:before, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink'] .date-icon:before, .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink'] .date-icon:before, .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink'] .date-icon:before, .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink'] .date-icon:before, .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink'] .date-icon:before { content: ""; }
+.widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink'] .date-icon:before, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink'] .date-icon:before, .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink'] .date-icon:before, .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink'] .date-icon:before, .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink'] .date-icon:before, .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink'] .date-icon:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: ""; }
 
-.widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink'] .clock-icon:before, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink'] .clock-icon:before, .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink'] .clock-icon:before, .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink'] .clock-icon:before, .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink'] .clock-icon:before, .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink'] .clock-icon:before { content: ""; }
+.widget-AdminSplitDateTime .datetimeshortcuts a[id^='calendarlink'] .clock-icon:before, .widget-AdminSplitDateTime .datetimeshortcuts a[id^='clocklink'] .clock-icon:before, .widget-AdminDateWidget .datetimeshortcuts a[id^='calendarlink'] .clock-icon:before, .widget-AdminDateWidget .datetimeshortcuts a[id^='clocklink'] .clock-icon:before, .widget-AdminTimeWidget .datetimeshortcuts a[id^='calendarlink'] .clock-icon:before, .widget-AdminTimeWidget .datetimeshortcuts a[id^='clocklink'] .clock-icon:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: ""; }
 
 .widget-AdminSplitDateTime input, .widget-AdminDateWidget input, .widget-AdminTimeWidget input { white-space: nowrap; vertical-align: top; }
 
@@ -2271,11 +2271,11 @@ fieldset input[type=number], fieldset input[type=date], fieldset input.vIntegerF
 
 .calendarbox > div:first-child a.calendarnav-previous { float: left; text-align: center; }
 
-.calendarbox > div:first-child a.calendarnav-previous:before { content: "\f053"; color: #fff; }
+.calendarbox > div:first-child a.calendarnav-previous:before { color: #fff; font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f053"; }
 
 .calendarbox > div:first-child a.calendarnav-next { float: right; }
 
-.calendarbox > div:first-child a.calendarnav-next:before { content: "\f054"; color: #fff; }
+.calendarbox > div:first-child a.calendarnav-next:before { color: #fff; font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f054"; }
 
 .calendarbox table { width: 100%; }
 
@@ -2443,13 +2443,13 @@ body.suit_layout_horizontal #content .content-wrap .messagelist { display: none;
 
 #result_list thead > tr th .sortoptions .sortremove:hover:before, .tabular table thead > tr th .sortoptions .sortremove:hover:before, table#change-history thead > tr th .sortoptions .sortremove:hover:before, #result_list thead > tr th .sortoptions .toggle:hover:before, .tabular table thead > tr th .sortoptions .toggle:hover:before, table#change-history thead > tr th .sortoptions .toggle:hover:before { color: #279bee; }
 
-#result_list thead > tr th .sortoptions .sortremove:before, .tabular table thead > tr th .sortoptions .sortremove:before, table#change-history thead > tr th .sortoptions .sortremove:before, #result_list thead > tr th .sortoptions .toggle:before, .tabular table thead > tr th .sortoptions .toggle:before, table#change-history thead > tr th .sortoptions .toggle:before { font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; }
+#result_list thead > tr th .sortoptions .sortremove:before, .tabular table thead > tr th .sortoptions .sortremove:before, table#change-history thead > tr th .sortoptions .sortremove:before, #result_list thead > tr th .sortoptions .toggle:before, .tabular table thead > tr th .sortoptions .toggle:before, table#change-history thead > tr th .sortoptions .toggle:before { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; font-family: "Font Awesome 5 Free"; }
 
-#result_list thead > tr th .sortoptions .sortremove:before, .tabular table thead > tr th .sortoptions .sortremove:before, table#change-history thead > tr th .sortoptions .sortremove:before { content: ""; }
+#result_list thead > tr th .sortoptions .sortremove:before, .tabular table thead > tr th .sortoptions .sortremove:before, table#change-history thead > tr th .sortoptions .sortremove:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: ""; }
 
-#result_list thead > tr th .sortoptions .toggle.ascending:before, .tabular table thead > tr th .sortoptions .toggle.ascending:before, table#change-history thead > tr th .sortoptions .toggle.ascending:before { content: ""; }
+#result_list thead > tr th .sortoptions .toggle.ascending:before, .tabular table thead > tr th .sortoptions .toggle.ascending:before, table#change-history thead > tr th .sortoptions .toggle.ascending:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: ""; }
 
-#result_list thead > tr th .sortoptions .toggle.descending:before, .tabular table thead > tr th .sortoptions .toggle.descending:before, table#change-history thead > tr th .sortoptions .toggle.descending:before { content: ""; }
+#result_list thead > tr th .sortoptions .toggle.descending:before, .tabular table thead > tr th .sortoptions .toggle.descending:before, table#change-history thead > tr th .sortoptions .toggle.descending:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: ""; }
 
 #result_list thead > tr th div.text span, .tabular table thead > tr th div.text span, table#change-history thead > tr th div.text span, #result_list thead > tr th div.text a, .tabular table thead > tr th div.text a, table#change-history thead > tr th div.text a { display: block; padding: 0.7rem 0.8rem; }
 
@@ -2629,13 +2629,13 @@ body.suit_layout_vertical #header .suit-user-tools .icon-link:before { font-fami
 
 body.suit_layout_vertical #header .suit-user-tools .icon-link:after { font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif; display: block; position: absolute; content: attr(data-title); left: 0; top: 40px; font-size: 10px; white-space: nowrap; opacity: 0; -webkit-transition: opacity .2s; transition: opacity .2s; }
 
-body.suit_layout_vertical #header .suit-user-tools .icon-link.view-site-link:before { content: ""; }
+body.suit_layout_vertical #header .suit-user-tools .icon-link.view-site-link:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: ""; }
 
-body.suit_layout_vertical #header .suit-user-tools .icon-link.change-password-link:before { content: "\f084"; }
+body.suit_layout_vertical #header .suit-user-tools .icon-link.change-password-link:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f084"; }
 
-body.suit_layout_vertical #header .suit-user-tools .icon-link.documentation-link:before { content: "\f02d"; }
+body.suit_layout_vertical #header .suit-user-tools .icon-link.documentation-link:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f02d"; }
 
-body.suit_layout_vertical #header .suit-user-tools .icon-link.logout-link:before { content: "\f2f5"; }
+body.suit_layout_vertical #header .suit-user-tools .icon-link.logout-link:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f2f5"; }
 
 body.suit_layout_horizontal #suit-nav { -ms-flex-preferred-size: 100%; flex-basis: 100%; margin-top: 1.04167rem; background-color: #383d4b; }
 
@@ -2691,9 +2691,9 @@ body.suit_layout_vertical #suit-nav > ul > li.active { background-color: #252830
 
 body.suit_layout_vertical #suit-nav > ul > li.active:after { font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; color: #5d6478; position: absolute; right: 1rem; top: .85rem; font-size: 9px; }
 
-body.suit_layout_vertical #suit-nav > ul > li.active.has-children:after { font-family: "Font Awesome 5 Free"; content: "\f107"; }
+body.suit_layout_vertical #suit-nav > ul > li.active.has-children:after { font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f107"; }
 
-body.suit_layout_vertical #suit-nav > ul > li.active:not(.has-children):after { font-family: "Font Awesome 5 Free"; content: "\f105"; }
+body.suit_layout_vertical #suit-nav > ul > li.active:not(.has-children):after { font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f105"; }
 
 body.suit_layout_vertical #suit-nav > ul > li.active > a, body.suit_layout_vertical #suit-nav > ul > li.active > a:hover { color: #fff; }
 
@@ -2755,7 +2755,7 @@ body.dashboard #content .content-wrap { display: -webkit-box; display: -ms-flexb
 
 #content-main > .object-tools > li > a:not([class*="btn-"]).addlink { display: inline-block; border-radius: 70px; }
 
-#content-main > .object-tools > li > a:not([class*="btn-"]).addlink:before { margin-right: 3px; display: inline-block; font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; content: "\f067";}
+#content-main > .object-tools > li > a:not([class*="btn-"]).addlink:before { margin-right: 3px; display: inline-block; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f067";}
 
 /* Sticky footer styles  */
 @media (min-width: 576px) { html { position: relative; min-height: 100%; }
@@ -2838,15 +2838,15 @@ body.dashboard #recent-actions-module ul.actionlist > li br { display: none; }
 
 body.dashboard #recent-actions-module ul.actionlist > li:before { min-width: 2rem; text-align: center; background-color: #fff; border-right: 1px solid #f1f1f1; position: absolute; padding-top: .4rem; top: 0; left: 0; height: 100%; }
 
-body.dashboard .addlink:before, body.dashboard .donelink:before, body.dashboard .changelink:before, body.dashboard .deletelink:before { font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; display: block; float: left; min-width: 1.2rem; font-weight: 900;}
+body.dashboard .addlink:before, body.dashboard .donelink:before, body.dashboard .changelink:before, body.dashboard .deletelink:before {  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; display: block; float: left; min-width: 1.2rem; font-family: "Font Awesome 5 Free"; font-weight: 900;}
 
-body.dashboard .donelink:before { content: "\f00c"; color: #4ACB68; }
+body.dashboard .donelink:before { color: #4ACB68; font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f00c";  }
 
-body.dashboard .addlink:before { content: "\f067"; color: #4ACB68; }
+body.dashboard .addlink:before { color: #4ACB68; font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f067"; }
 
-body.dashboard .changelink:before { content: "\f304"; color: #F3C544; }
+body.dashboard .changelink:before { color: #F3C544; font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f304"; }
 
-body.dashboard .deletelink:before { content: "\f00d"; color: #E04F3C; }
+body.dashboard .deletelink:before { color: #E04F3C; font-family: "Font Awesome 5 Free"; font-weight: 900; content: "\f00d"; }
 
 #changelist { display: block; position: relative; }
 
@@ -2866,11 +2866,11 @@ body.dashboard .deletelink:before { content: "\f00d"; color: #E04F3C; }
 
 #changelist #toolbar #changelist-search input[type='submit'] { display: inline-block; margin-right: 1rem; }
 
-#changelist #toolbar #changelist-search input[type='submit']:before { margin-right: 3px; display: inline-block; font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; content: ""; }
+#changelist #toolbar #changelist-search input[type='submit']:before { margin-right: 3px; display: inline-block; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; font-family: "Font Awesome 5 Free"; font-weight: 900; content: ""; }
 
 #changelist #toolbar #changelist-search input[type='text'] { display: inline-block; width: auto; vertical-align: middle; }
 
-#changelist #toolbar #changelist-search input[type='text']:before { font-family: "Font Awesome 5 Free"; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; content: ""; }
+#changelist #toolbar #changelist-search input[type='text']:before { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: auto; font-family: "Font Awesome 5 Free"; font-weight: 900; content: ""; }
 
 #changelist #toolbar #changelist-search .small { font-size: 0.929rem; }
 
