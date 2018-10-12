@@ -118,6 +118,6 @@ class SearchPlaceholderAdmin(admin.ModelAdmin):
                 str_item = self.model._meta.get_field(model_str).related_model._meta.get_field(
                     field_str).verbose_name.title()
             search_str_list.append(str_item)
-        search_str = '、'.join(search_str_list)
+        search_str = ' or '.join(search_str_list)
         instance.placeholder = 'Search by {}'.find(search_str)
         return instance
