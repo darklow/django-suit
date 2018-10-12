@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.db import models
+from django.utils.safestring import mark_safe
 try:
     from django.urls import reverse_lazy
 except:
@@ -40,8 +41,8 @@ def get_related_field(name, short_description=None, admin_order_field=None, admi
                 continue
             obj = getattr(obj, related_name)
         if obj and as_link:
-            obj = u'<a href="%s" class="link-with-icon">%s<i class="fa fa-caret-right"></i></a>' % \
-                  (get_admin_url(obj, admin_prefix, current_app=self.admin_site.name), obj)
+            obj = mark_safe(u'<a href="%s" class="link-with-icon">%s<i class="fa fa-caret-right"></i></a>' % \
+                            (get_admin_url(obj, admin_prefix, current_app=self.admin_site.name), obj))
         return obj
 
     getter.admin_order_field = admin_order_field or name
