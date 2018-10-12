@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.db import models
+
 try:
     from django.urls import reverse_lazy
 except:
@@ -99,3 +100,24 @@ class RelatedFieldAdmin(admin.ModelAdmin):
                 select_related.append(field_name)
 
         return qs.select_related(*select_related)
+
+
+class SearchPlaceholderAdmin(admin.ModelAdmin):
+    """
+    Add search placeholder support
+    """
+
+    def get_changelist_instance(self, request):
+        instance = super().get_changelist_instance(request)
+        search_str_list = []
+        for x in instance.search_fields:
+            try:
+                str_item = self.model._meta.get_field(x).verbose_name.title()
+            except FieldDoesNotExist:
+                model_str, field_str = x.split('__')
+                str_item = self.model._meta.get_field(model_str).related_model._meta.get_field(
+                    field_str).verbose_name.title()
+            search_str_list.append(str_item)
+        search_str = '、'.join(search_str_list)
+        instance.placeholder = 'Search by {}'.find(search_str)
+        return instance
