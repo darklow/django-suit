@@ -3,10 +3,12 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class ChildItem(object):
-    def __init__(self, label=None, model=None, url=None, target_blank=False, permissions=None):
+    def __init__(self, label=None, model=None, url=None, target_blank=False, permissions=None, args=None, kwargs=None):
         self.label = label
         self.model = model
         self.url = url
+        self.args = args
+        self.kwargs = kwargs
         self.target_blank = target_blank
         self.permissions = permissions
         self.is_active = None
@@ -170,7 +172,7 @@ class MenuManager(object):
         """
         :type native_model: dict
         """
-        child_item = ChildItem(native_model['name'],  model=native_model.get('model'), url=native_model['admin_url'])
+        child_item = ChildItem(native_model['name'], model=native_model.get('model'), url=native_model['admin_url'])
         return child_item
 
     def handle_parent_menu(self, parent_item, native_app):
@@ -225,7 +227,8 @@ class MenuManager(object):
         except:
             from django.core.urlresolvers import reverse, NoReverseMatch
         try:
-            menu_item.url = reverse(menu_item.url, current_app=self.current_app)
+            menu_item.url = reverse(menu_item.url, current_app=self.current_app, args=menu_item.args,
+                                    kwargs=menu_item.kwargs)
             menu_item._url_name = menu_item.url
         except NoReverseMatch:
             pass
