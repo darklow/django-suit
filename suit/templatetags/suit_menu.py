@@ -28,7 +28,7 @@ def get_menu(context, request):
 
     # Django 1.9+
     available_apps = context.get('available_apps')
-    if not available_apps:
+    if available_apps is None:
 
         # Django 1.8 on app index only
         available_apps = context.get('app_list')
