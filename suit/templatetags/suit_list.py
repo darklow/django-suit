@@ -207,10 +207,11 @@ def suit_list_filter_horizontal(filters, cl):
 @register.filter
 def suit_list_filter_horizontal_params(params, cl):
     # This collects params of vertical filters so they can be rendered as part of horizontal form
+    excludes = ['_to_field', '_popup']
     vertical_keys = set()
     for vf in suit_list_filter_vertical(cl.filter_specs, cl):
         vertical_keys |= set(vf.expected_parameters())
-    return [p for p in params if p[0] in vertical_keys]
+    return [p for p in params if p[0] in vertical_keys or p[0] in excludes]
 
 
 def get_filter_id(spec):
