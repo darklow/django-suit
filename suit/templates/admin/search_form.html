@@ -27,8 +27,11 @@
         &nbsp;
         {% if show_result_count %}
           <span class="small quiet result-count">{% blocktrans count counter=cl.result_count %}{{ counter }} result{% plural %}{{ counter }} results{% endblocktrans %}
+          {% if cl.show_full_result_count %}
             &nbsp; <a href="?{% if cl.is_popup %}{{ POPUP_VAR }}=1{% endif %}">
-              {% blocktrans with full_result_count=cl.full_result_count %}{{ full_result_count }} total{% endblocktrans %}</a></span>
+              {% blocktrans with full_result_count=cl.full_result_count %}{{ full_result_count }} total{% endblocktrans %}</a>
+          {% endif %}
+          </span>
         {% endif %}
       </div>
 
