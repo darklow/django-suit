@@ -313,7 +313,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         menu = self.make_menu_from_response()
         add_book_url = reverse('admin:%s_book_add' % app_label)
         self.assertEqual(menu[0]['url'], add_book_url)
-        # self.assertEqual(menu[0]['models'][0]['url'], add_book_url)
+        self.assertEqual(menu[0]['models'][0]['url'], add_book_url)
 
     #
     # Tests for old menu config format
