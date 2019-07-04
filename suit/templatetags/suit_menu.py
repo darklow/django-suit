@@ -353,7 +353,12 @@ class Menu(object):
         }
 
     def get_native_model_url(self, model):
-        return model.get('admin_url', model.get('add_url', ''))
+        # admin_url is present in model with value None by default since django 2.2
+        # https://github.com/django/django/commit/a9f5652113f0721a7066e359ae28d14692ea3c47#diff-57866af2aff590165ffe4967107424fdR435
+        url = model.get('admin_url')
+        if url is None:
+            url = model.get('add_url', '')
+        return url
 
     def process_model(self, model, app_name):
         if 'model' in model:
