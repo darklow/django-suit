@@ -4,6 +4,14 @@ Changelog
 Only important changes are mentioned below. See `commit log <https://github.com/darklow/django-suit/commits/develop>`_, `closed issues <https://github.com/darklow/django-suit/issues?direction=desc&sort=updated&state=closed>`_ and `closed pull
 requests <https://github.com/darklow/django-suit/pulls?q=sort%3Aupdated-desc+is%3Apr+is%3Aclosed>`_ for full changes.
 
+v0.2.27 (2019-10-02)
+--------------------
+
+* [Fix] Django 2+ compatibility fixes.
+* [Fix] Fix menu not being seen for newest Chrome.
+* [Fix] Fixes by PR.
+
+
 v0.2.26 (2018-02-24)
 --------------------
 
