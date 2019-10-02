@@ -353,7 +353,7 @@ class Menu(object):
         }
 
     def get_native_model_url(self, model):
-        return model.get('admin_url', model.get('add_url', ''))
+        return model.get('admin_url') or model.get('add_url', '')
 
     def process_model(self, model, app_name):
         if 'model' in model:
