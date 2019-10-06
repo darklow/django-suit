@@ -49,10 +49,10 @@ var confirmExitIfModified = (function () {
     return function (form_id, message) {
         var form = document.forms[form_id]
         if (form) {
-            form.onsubmit = function (e) {
+            form.addEventListener('submit', function (e) {
                 e = e || window.event;
                 submit = true
-            };
+            });
         }
         window.onbeforeunload = function (e) {
             e = e || window.event;
