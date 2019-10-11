@@ -31,5 +31,6 @@ setup(
         'Environment :: Web Environment',
         'Topic :: Software Development',
         'Topic :: Software Development :: User Interfaces',
-    ]
+    ],
+    install_requires=['Django<=1.10.2'],
 )
