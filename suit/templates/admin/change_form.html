@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n admin_static admin_modify suit_tags admin_urls %}
+{% load i18n static admin_modify suit_tags admin_urls %}
 {% load url from suit_compat %}
 
 {% block extrahead %}{{ block.super }}
@@ -31,13 +31,13 @@
     }(Suit.$))
     </script>
   {% endif %}
-        
+
   <script>
     (function ($) {
       $(function () {
         $("#{% firstof opts.model_name opts.module_name %}_form").suit_form_debounce();
       });
-    }(Suit.$))    
+    }(Suit.$))
   </script>
 
 {% endblock %}

@@ -10,11 +10,7 @@ except ImportError:
     # For Django >= 2.0
     from django.urls import reverse, resolve
 
-try:
-    from django.utils.six import string_types
-except ImportError:
-    # For Django < 1.4.2
-    string_types = basestring,
+string_types = str,
 
 import re
 import warnings
@@ -46,7 +42,7 @@ def get_menu(context, request):
     else:
         try:
             template_response = get_admin_site(context.current_app).index(request)
-        # Django 1.10 removed the current_app parameter for some classes and functions. 
+        # Django 1.10 removed the current_app parameter for some classes and functions.
         # Check the release notes.
         except AttributeError:
             template_response = get_admin_site(context.request.resolver_match.namespace).index(request)
