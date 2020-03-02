@@ -32,7 +32,7 @@ Changelog
 
 **Note:** Django Suit v2.0 is in active development and not yet ready for production use.
 
-Read more here: Todo: Add issue refernce
+Read more here: Todo: Add issue reference
 
 
 Contributing
