@@ -1,0 +1,4 @@
+{% extends "admin/filer/folder/directory_listing.html" %}
+{% load i18n staticfiles filer_admin_tags suit_tags %}
+
+{% block bodyclass %}{{ block.super|suit_body_class:request }} change-list filebrowser{% endblock %} {# CHANGED #}
