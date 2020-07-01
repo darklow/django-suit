@@ -6,6 +6,7 @@
 {% block extrastyle %}
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
     <link href='{% static "suit/css/font-awesome.min.css" %}' rel='stylesheet' type='text/css'>
+    <link href='{% static "suit/css/font-awesome-v4-shims.min.css" %}' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block bodyclass %}{{ block.super|suit_body_class:request }}{% endblock %}
