@@ -73,6 +73,11 @@
     {% include 'suit/menu.html' %}
 {% endblock %}
 
+<!-- This is to temporarily remove the sidebar not compatible with django-suit. -->
+{% block nav-sidebar %}
+    {% include "suit/nav_sidebar.html" %}
+{% endblock %}
+
 {% block footer %}
 {#    </div> <!-- Put footer outside #container -->#}
     {% if not is_popup %}

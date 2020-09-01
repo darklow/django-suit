@@ -11,6 +11,9 @@ body.suit_layout_vertical:not(.login) {
     display: flex;
     position: relative;
     align-content: flex-start;
+    #main {
+      width: 100%;
+    }
     #header {
       display: flex;
       flex-direction: column;
