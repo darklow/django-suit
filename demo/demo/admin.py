@@ -66,7 +66,7 @@ class PopulationFilter(IsNullFieldListFilter):
 class CountryAdmin(RelatedFieldAdmin):
     form = CountryForm
     search_fields = ('name', 'code')
-    list_display = ('name', 'code', 'link_to_continent', 'independence_day')
+    list_display = ('name', 'code', 'independence_day')
     list_filter = ('continent', 'independence_day', 'code', ('population', PopulationFilter))
     suit_list_filter_horizontal = ('code', 'population')
     list_select_related = True
