@@ -52,7 +52,7 @@ function reloadBrowserSync(done) {
 }
 
 function watchFiles() {
-    gulp.watch(config.watchSassFiles, gulp.series(styles, reloadBrowserSync));
+    gulp.watch(config.watchSassFiles, gulp.series(generateStyles, reloadBrowserSync));
     gulp.watch(config.watchHtmlFiles, gulp.series(reloadBrowserSync));
 }
 
