@@ -17,7 +17,7 @@ class Continent(models.Model):
 
 
 class Country(models.Model):
-    continent = models.ForeignKey(Continent, null=True)
+    continent = models.ForeignKey(Continent, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=256)
     code = models.CharField(max_length=2,
                             help_text='ISO 3166-1 alpha-2 - two character country code')
@@ -38,7 +38,7 @@ class Country(models.Model):
 
 class City(models.Model):
     name = models.CharField(max_length=64)
-    country = models.ForeignKey(Country)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
     is_capital = models.BooleanField()
     area = models.BigIntegerField(blank=True, null=True)
     population = models.BigIntegerField(blank=True, null=True)
@@ -82,9 +82,9 @@ class Showcase(models.Model):
     choices = models.SmallIntegerField(
         choices=TYPE_CHOICES3, default=3, help_text="Help text")
 
-    country = models.ForeignKey(Country, null=True, blank=True)
-    country2 = models.ForeignKey(Country, null=True, blank=True, related_name='showcase_country2_set', verbose_name='Django Select 2')
-    raw_id_field = models.ForeignKey(Country, null=True, blank=True, related_name='showcase_raw_set')
+    country = models.ForeignKey(Country, null=True, blank=True, on_delete=models.SET_NULL)
+    country2 = models.ForeignKey(Country, null=True, blank=True, related_name='showcase_country2_set', verbose_name='Django Select 2', on_delete=models.SET_NULL)
+    raw_id_field = models.ForeignKey(Country, null=True, blank=True, related_name='showcase_raw_set', on_delete=models.SET_NULL)
     # linked_foreign_key = models.ForeignKey(Country, limit_choices_to={
     #     'continent__name': 'Europe'}, related_name='foreign_key_linked')
     html5_color = models.CharField(null=True, blank=True, max_length=7)
@@ -97,7 +97,7 @@ class Showcase(models.Model):
 
 # Tabular inline model for Showcase
 class Movie(models.Model):
-    showcase = models.ForeignKey(Showcase)
+    showcase = models.ForeignKey(Showcase, on_delete=models.CASCADE)
     title = models.CharField(max_length=64)
     rating = models.SmallIntegerField(choices=TYPE_CHOICES, default=2)
     description = models.TextField(blank=True)
@@ -113,7 +113,7 @@ class Movie(models.Model):
 
 # Stacked inline model for Showcase
 class Book(models.Model):
-    showcase = models.ForeignKey(Showcase)
+    showcase = models.ForeignKey(Showcase, on_delete=models.CASCADE)
     title = models.CharField(max_length=64)
     rating = models.SmallIntegerField(choices=TYPE_CHOICES, help_text='Choose wisely')
     is_released = models.BooleanField(default=False)
