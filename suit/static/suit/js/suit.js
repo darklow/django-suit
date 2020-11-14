@@ -170,8 +170,8 @@ window.Suit = Suit;
                 });
             $link.parent().parent().find('.active').removeClass('active');
             $link.addClass('active');
-            $('.' + tabPrefix).removeClass('show').addClass('hidden-xs-up');
-            tabContents($link).removeClass('hidden-xs-up').addClass('show');
+            $('.' + tabPrefix).removeClass('show').addClass('d-none');
+            tabContents($link).removeClass('d-none').addClass('show');
             $link.trigger(showEvent);
         });
 

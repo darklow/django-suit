@@ -169,7 +169,7 @@ fieldset {
         padding-top: 0;
       }
     }
-    p.form-control-static {
+    p.form-control-plaintext {
       margin: 0;
     }
     // More spacing for first and last rows
@@ -293,7 +293,7 @@ fieldset {
           &.original {
             p {
               margin: 0;
-              @extend .form-control-static;
+              @extend .form-control-plaintext;
               a {
                 float: right;
                 font-size: $font-size-xs;
@@ -388,4 +388,9 @@ fieldset {
 .custom-select-sm {
   $select-border-width: ($border-width * 2);
   height: calc(#{$input-height} - #{$select-border-width} - 5px);
+}
+
+// for compatibility with bootstrap-alpha6
+.tabular .form-row {
+  display: table-row;
 }
