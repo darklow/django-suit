@@ -14,6 +14,6 @@
     "tests"
   ],
   "devDependencies": {
-    "bootstrap": "v4.1.3"
+    "bootstrap": "v4.2.1"
   }
 }
