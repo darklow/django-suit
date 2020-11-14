@@ -3085,7 +3085,7 @@ body.suit_layout_vertical #header .suit-user-tools .welcome .fa, body.suit_layou
 
 body.suit_layout_vertical #header .suit-user-tools .user-links { display: inline-block; margin-right: .75rem; margin-bottom: .25rem; }
 
-body.suit_layout_vertical #header .suit-user-tools .icon-link { visibility: hidden !important; display: inline-block; padding: .4rem 0; width: 26px; text-align: center; border-radius: 0.2rem; position: relative; transition: background-color .2s, color .2s; color: #fff; }
+body.suit_layout_vertical #header .suit-user-tools .icon-link { font: 0/0 a; color: transparent; text-shadow: none; background-color: transparent; border: 0; display: inline-block; padding: .4rem 0; width: 26px; text-align: center; border-radius: 0.2rem; position: relative; transition: background-color .2s, color .2s; color: #fff; }
 
 body.suit_layout_vertical #header .suit-user-tools .icon-link:hover { background-color: #282c37; color: #279bee; }
 
