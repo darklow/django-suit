@@ -168,7 +168,7 @@ body.suit_layout_vertical {
         margin-bottom: .25rem;
       }
       .icon-link {
-        @include text-hide();
+        @include invisible(hidden);
         display: inline-block;
         padding: .4rem 0;
         width: 26px;
