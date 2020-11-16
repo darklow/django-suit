@@ -137,13 +137,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { margin-bottom: 0.5rem; fo
 
 h1, .h1 { font-size: 2.5rem; }
 
-h2, .h2 { font-size: 2rem; }
+h2, .h2 { font-size: 1.75rem; }
 
-h3, .h3 { font-size: 1.75rem; }
+h3, .h3 { font-size: 1.5rem; }
 
-h4, .h4 { font-size: 1.5rem; }
+h4, .h4 { font-size: 1.25rem; }
 
-h5, .h5 { font-size: 1.25rem; }
+h5, .h5 { font-size: 1.1rem; }
 
 h6, .h6 { font-size: 1rem; }
 
@@ -3362,7 +3362,7 @@ body.suit_layout_horizontal #content .content-wrap .messagelist { display: none;
 
 .card .card-header { color: #fff; }
 
-html { font-size: 14px; }
+html { font-size: 13px; }
 
 body { margin: 0; padding: 0; }
 
