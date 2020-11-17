@@ -132,15 +132,16 @@ def dict_to_attrs(attrs):
                                      for k, v in attrs.items()]))
 
 
-@register.inclusion_tag('suit/search_form.html')
-def suit_search_form(cl):
+@register.inclusion_tag('suit/search_form.html', takes_context=True)
+def suit_search_form(context, cl):
     """
     Displays a search form for searching the list.
     """
     return {
         'cl': cl,
         'show_result_count': cl.result_count != cl.full_result_count,
-        'search_var': SEARCH_VAR
+        'search_var': SEARCH_VAR,
+        'perms': context.get('perms', None)
     }
 
 

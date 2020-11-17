@@ -46,9 +46,9 @@ class CountryForm(ModelForm):
                                   attrs={'placeholder': 'Country area'}),
             'population': EnclosedInput(
                 prepend='fa-users',
-                append='<button class="btn btn-secondary" type="button" '
-                       'onclick="window.open(\'https://www.google.com/\')">Search</button>',
-                append_class='btn', attrs={'placeholder': 'Human population'}),
+                append='Search',
+                onclick_append="window.open(\'https://www.google.com/\')",
+                append_class='addon', attrs={'placeholder': 'Human population' }),
             'description': AutosizedTextarea,
             'architecture': AutosizedTextarea,
         }
@@ -327,3 +327,23 @@ def showcase_custom_view_example(request, pk):
     messages.success(request, 'Something legendary was done to "%s"' % instance)
 
     return redirect('admin:demo_showcase_change', pk)
+
+#
+# class LargeFilterHorizontalForm(ModelForm):
+#     class Meta:
+#         pass
+#
+#
+# @admin.register(LargeFilterHorizontal)
+# class LargeFilterHorizontalAdmin(RelatedFieldAdmin):
+#     form = LargeFilterHorizontalForm
+#     search_fields = ('title',)
+#     list_display = ('horizontal_choices1', 'horizontal_choices2', 'horizontal_choices3', 'horizontal_choices4',)
+#     list_filter = ('horizontal_choices1', 'horizontal_choices2', 'horizontal_choices3', 'horizontal_choices4',
+#                    'horizontal_choices5', 'horizontal_choices6', 'horizontal_choices7', 'horizontal_choices8')
+#     suit_list_filter_horizontal = list_filter
+#
+#     fieldsets = [
+#         ('Main', {'fields': ['horizontal_choices1', 'horizontal_choices2', 'horizontal_choices3', 'horizontal_choices4',
+#                              'horizontal_choices5', 'horizontal_choices6', 'horizontal_choices7', 'horizontal_choices8']}),
+#     ]

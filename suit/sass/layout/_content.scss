@@ -56,3 +56,27 @@ body.change-form {
     }
   }
 }
+
+#toolbar {
+  > .object-tools {
+    @include reset-list();
+    position: relative;
+    overflow: hidden;
+    z-index: 6;
+    > li {
+      display: inline;
+      &:not(:first-child) {
+        margin-left: .5rem;
+      }
+      > a {
+        &:not([class*="btn-"]) {
+          @extend .btn-round;
+          @include btn-mixin(info, none, sm, round=true);
+          &.addlink {
+            @include btn-mixin(success, $icon-plus-circle, sm, round=true);
+          }
+        }
+      }
+    }
+  }
+}
