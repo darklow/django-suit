@@ -6,6 +6,7 @@ python:
   - pypy3
 env:
   - DJANGO=2.2.17
+  - DJANGO=3.0.11
 install:
   - pip install -e .
   - pip install -q Django==$DJANGO
