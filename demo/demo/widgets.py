@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.forms import forms
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 
 
 class Bootstrap4Select(object):
