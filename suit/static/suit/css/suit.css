@@ -3564,6 +3564,19 @@ body.suit_layout_vertical #suit-nav > ul > li > ul > li a:hover { background-col
 
 body.change-form #container br.clear:last-child { display: none; }
 
+/* Begin Django3.1 */
+/* Hide the changelist-filter */
+#changelist-filter { display: none; }
+
+#changelist .changelist-form-container { -ms-flex: 1 1 auto; flex: 1 1 auto; min-width: 0; }
+
+body.change-list #container > div, body.change-form #container > div { -ms-flex-negative: 0; flex-shrink: 0; }
+
+body.change-list #container > .main, body.change-form #container > .main { display: -ms-flexbox; display: flex; -ms-flex: 1 1 auto; flex: 1 1 auto; }
+
+body.change-list .main > .content, body.change-form .main > .content { -ms-flex: 1 0; flex: 1 0; max-width: 100%; }
+
+/* End Django3.1 */
 #content { padding: 1.5rem 1.875rem; display: -ms-flexbox; display: flex; -ms-flex-direction: row; flex-direction: row; -ms-flex-wrap: wrap; flex-wrap: wrap; -ms-flex-pack: start; justify-content: flex-start; -ms-flex-line-pack: end; align-content: flex-end; -ms-flex-align: start; align-items: flex-start; }
 
 #content .content-wrap { -ms-flex-preferred-size: 100%; flex-basis: 100%; }
