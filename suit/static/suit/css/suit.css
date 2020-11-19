@@ -2899,6 +2899,16 @@ fieldset .form-row > ul, fieldset .form-row .errorlist, fieldset .suit-form .for
 
 @media (max-width: 575.98px) { fieldset .form-row > ul, fieldset .form-row .errorlist, fieldset .suit-form .form-group > ul, fieldset .suit-form .form-group .errorlist { margin-top: .5rem; padding-left: 1.5rem; } }
 
+ul.errorlist { margin: 0; padding-left: 1.5rem; font-size: 0.857rem; color: #E04F3C; }
+
+ul.errorlist li { font-size: 0.857rem; display: block; margin-bottom: 4px; }
+
+ul.errorlist li:first-child { margin-top: 0; }
+
+ul.errorlist li a { color: inherit; text-decoration: underline; }
+
+.errornote { background-position: 100% 12px; padding: 10px 12px; }
+
 .suit-form .form-group { margin: 0; background-color: #f6f6f6; }
 
 @media (max-width: 575.98px) { .suit-form .form-group { padding-bottom: 1rem; } }
