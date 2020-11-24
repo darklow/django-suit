@@ -147,6 +147,11 @@ fieldset {
   }
 }
 
+// Errors
+.errornote {
+    background-position: 100% 12px;
+    padding: 10px 12px;
+}
 ul.errorlist {
   margin: 0;
   padding-left: 1.5rem;
@@ -158,7 +163,6 @@ ul.errorlist li {
     display: block;
     margin-bottom: 4px;
 }
-
 ul.errorlist li:first-child {
     margin-top: 0;
 }
@@ -167,10 +171,12 @@ ul.errorlist li a {
     color: inherit;
     text-decoration: underline;
 }
-
-.errornote {
-    background-position: 100% 12px;
-    padding: 10px 12px;
+.suit-form {
+  .form-group.errors {
+    input, select {
+        border-color: $brand-danger;
+    }
+  }
 }
 
 // BS4 markup in .suit-form
