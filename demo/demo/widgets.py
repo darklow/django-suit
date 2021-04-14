@@ -1,11 +1,11 @@
 from django.conf import settings
 from django.forms import forms
-from django.contrib.staticfiles.templatetags.staticfiles import static
+from django.templatetags.static import static
 
 
 class Bootstrap4Select(object):
-    def build_attrs(self, extra_attrs=None, **kwargs):
-        attrs = super(Bootstrap4Select, self).build_attrs(extra_attrs, **kwargs)
+    def build_attrs(self, base_attrs, attrs=None, **kwargs):
+        attrs = super(Bootstrap4Select, self).build_attrs(base_attrs, attrs, **kwargs)
         attrs.setdefault('data-theme', 'bootstrap')
         return attrs
 

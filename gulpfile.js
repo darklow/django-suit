@@ -2,15 +2,15 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
+var browsersync = require('browser-sync').create();
+var reload = browsersync.reload;
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 
 var config = {
     djangoHost: 'localhost',
-    djangoPort: 8000,
-    jsPort: 8001,
+    djangoPort: 8004,
+    jsPort: 8005,
     watchSassFiles: 'suit/sass/**/*.scss',
     cssOutputDir: 'suit/static/suit/css/',
     watchHtmlFiles: [
@@ -19,7 +19,7 @@ var config = {
     ]
 };
 
-gulp.task('styles', function () {
+function styles() {
     return gulp.src(config.watchSassFiles)
         .pipe(plumber())
         .pipe(sass({outputStyle: 'compact'})).on('error', sass.logError)
@@ -27,10 +27,11 @@ gulp.task('styles', function () {
         .pipe(gulp.dest(config.cssOutputDir))
         .pipe(reload({stream: true}))
         ;
-});
+}
 
-gulp.task('watch', function () {
-    browserSync({
+// live browser loading
+function initBrowserSync(done) {
+    browsersync.init({
         port: config.jsPort,
         ui: false,
         notify: false,
@@ -41,9 +42,30 @@ gulp.task('watch', function () {
             target: config.djangoHost + ':' + config.djangoPort
         }
     });
+    done();
+}
 
-    gulp.watch(config.watchSassFiles, ['styles']);
-    gulp.watch(config.watchHtmlFiles).on('change', reload);
-});
+function reloadBrowserSync(done) {
+    browsersync.reload();
+    // browsersync.stream({once: true})
+    done();
+}
 
-gulp.task('default', ['styles', 'watch']);
+function watchFiles() {
+    gulp.watch(config.watchSassFiles, gulp.series(generateStyles, reloadBrowserSync));
+    gulp.watch(config.watchHtmlFiles, gulp.series(reloadBrowserSync));
+}
+
+var generateStyles = gulp.parallel(
+    gulp.series(styles),
+);
+
+var dev = gulp.parallel(
+    initBrowserSync,
+    watchFiles
+);
+
+exports.default = gulp.series(generateStyles, dev)
+exports["build"] = generateStyles
+exports["dev"] = dev
+

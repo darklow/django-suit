@@ -24,6 +24,29 @@ $top-nav-bg: saturate(lighten($inverse, 9%), 2%);
 $header-color: #fff;
 $header-muted-color: lighten($header-bg, 30%);
 
+// Discontinued colors from bootstrap4.0.0-alpha.5
+$gray: #6c757d;
+$gray-light: #818a91;
+$gray-lighter: #eceeef;
+$state-success-bg: #dff0d8;
+$state-success-border: darken($state-success-bg, 5%);
+$state-info-bg: #d9edf7;
+$state-info-border: darken($state-info-bg, 7%);
+$state-warning-bg: #fcf8e3;
+$state-warning-border: darken($state-warning-bg, 5%);
+$state-danger-bg: #f2dede;
+$state-danger-border: darken($state-danger-bg, 5%);
+$state-success-text: #3c763d;
+$state-info-text: #31708f;
+$state-warning-text: #8a6d3b;
+$state-danger-text: #a94442;
+$alert-success-text: $state-success-text;
+$alert-info-text: $state-info-text;
+$alert-warning-text: $state-warning-text;
+$alert-danger-text: $state-danger-text;
+
+// Import Bootstrap functions
+@import "../../bower_components/bootstrap/scss/functions";
 // Import all Bootstrap variables
 @import "../../bower_components/bootstrap/scss/variables";
 
@@ -39,7 +62,8 @@ $font-size-h6: 1rem;
 $font-size-sm: .929rem;
 $font-size-xs: .857rem;
 
-$font-size-root: 14px;
+$font-size-root: 13px;
+//$font-size-base: 14px;
 $font-family-sans-serif: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-family-base: $font-family-sans-serif;
 $headings-font-weight: 500;
@@ -79,10 +103,11 @@ $textarea-line-height: $line-height-base;
 $custom-select-sm-padding-y: $btn-padding-x-sm;
 $custom-select-sm-font-size: $font-size-xs;
 
-//$input-padding-y: $btn-padding-y;
+$input-padding-y: $input-btn-padding-y !default;
 
 // Tables
 // --------------------------------------------------
+$table-th-padding: .7rem .8rem;
 $table-th-padding: .7rem .8rem;
 $table-cell-padding: .4rem .8rem;
 $table-sm-cell-padding: .3rem;

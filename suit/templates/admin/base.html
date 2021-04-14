@@ -20,16 +20,20 @@
     </h1>
 {% endblock %}
 
-{% block pretitle %}
-<div class="content-wrap">
-    {% block messages %}
-        {% if messages %}
-            <ul class="messagelist">{% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
-            {% endfor %}</ul>
-        {% endif %}
-    {% endblock messages %}
-{% endblock %}
+{% block pretitle %}{% endblock %}
+{% block content_title %}{% endblock %}
+{% block messages %}
+    <div class="messagelist">
+        {% for message in messages %}
+            <div class="alert alert-{% firstof message.tags 'info' %} alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock messages %}
 
 {% block sidebar %}
     </div> <!-- Close content-wrap -->
@@ -93,7 +97,7 @@
                         <div class="col-xs-12 col-sm-6 text-sm-center footer-copyright">
                             {% block copyright %}
                                 Copyright &copy;
-                                <span class="hidden-md-down">2013-</span>{% now "Y" %} DjangoSuit.com
+                                <span class="d-none d-lg-block">2013-</span>{% now "Y" %} DjangoSuit.com
                                 <br>Developed by
                                 <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>
                             {% endblock %}
@@ -147,4 +151,9 @@
     {% endif %}
 
 {#    <div> <!-- Fix/close div previously closed by footer -->#}
+{% endblock %}
+
+<!-- This is a solution to remove the sidebar that is not compatible with django-suit. -->
+{% block nav-sidebar %}
+    {% include "suit/nav_sidebar.html" %}
 {% endblock %}

@@ -168,7 +168,11 @@ body.suit_layout_vertical {
         margin-bottom: .25rem;
       }
       .icon-link {
-        @include text-hide();
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        border: 0;
         display: inline-block;
         padding: .4rem 0;
         width: 26px;

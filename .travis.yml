@@ -1,13 +1,13 @@
 language: python
 python:
-  - 2.7
-  - 3.4
-  - 3.5
   - 3.6
-  - pypy
+  - 3.7
+  - 3.8
 env:
-  - DJANGO=1.11
-  - DJANGO=2.0
+  - DJANGO=2.2.20
+  - DJANGO=3.0.14
+  - DJANGO=3.1.8
+  - DJANGO=3.2
 install:
   - pip install -e .
   - pip install -q Django==$DJANGO
@@ -16,6 +16,4 @@ script:
 matrix:
   exclude:
     - python: 2.7
-      env: DJANGO=2.0
-    - python: pypy
-      env: DJANGO=2.0
+      env: DJANGO=2.2.20

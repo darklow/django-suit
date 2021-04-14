@@ -10,3 +10,4 @@ docs/_build/
 /bower_components/
 /node_modules/
 /env/
+/package-lock.json
