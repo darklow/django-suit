@@ -1,10 +1,7 @@
-from django.conf import settings
-from django.conf.urls import url
-from django.contrib import admin
 from django.forms import ModelForm, Select, TextInput, NumberInput
-from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.urls import re_path
 from django_select2.forms import ModelSelect2Widget
 from suit import apps
 
@@ -46,9 +43,9 @@ class CountryForm(ModelForm):
                                   attrs={'placeholder': 'Country area'}),
             'population': EnclosedInput(
                 prepend='fa-users',
-                append='<button class="btn btn-secondary" type="button" '
-                       'onclick="window.open(\'https://www.google.com/\')">Search</button>',
-                append_class='btn', attrs={'placeholder': 'Human population'}),
+                append='Search',
+                onclick_append="window.open(\'https://www.google.com/\')",
+                append_class='addon', attrs={'placeholder': 'Human population' }),
             'description': AutosizedTextarea,
             'architecture': AutosizedTextarea,
         }
@@ -66,7 +63,7 @@ class PopulationFilter(IsNullFieldListFilter):
 class CountryAdmin(RelatedFieldAdmin):
     form = CountryForm
     search_fields = ('name', 'code')
-    list_display = ('name', 'code', 'link_to_continent', 'independence_day')
+    list_display = ('name', 'code', 'independence_day')
     list_filter = ('continent', 'independence_day', 'code', ('population', PopulationFilter))
     suit_list_filter_horizontal = ('code', 'population')
     list_select_related = True
@@ -314,7 +311,7 @@ class ShowcaseAdmin(RelatedFieldAdmin):
         """
         urls = super(ShowcaseAdmin, self).get_urls()
         my_urls = [
-            url(r'^(\d+)/clickme/$', showcase_custom_view_example, name='demo_showcase_clickme')
+            re_path(r'^(\d+)/clickme/$', showcase_custom_view_example, name='demo_showcase_clickme')
         ]
         return my_urls + urls
 
@@ -327,3 +324,23 @@ def showcase_custom_view_example(request, pk):
     messages.success(request, 'Something legendary was done to "%s"' % instance)
 
     return redirect('admin:demo_showcase_change', pk)
+
+#
+# class LargeFilterHorizontalForm(ModelForm):
+#     class Meta:
+#         pass
+#
+#
+# @admin.register(LargeFilterHorizontal)
+# class LargeFilterHorizontalAdmin(RelatedFieldAdmin):
+#     form = LargeFilterHorizontalForm
+#     search_fields = ('title',)
+#     list_display = ('horizontal_choices1', 'horizontal_choices2', 'horizontal_choices3', 'horizontal_choices4',)
+#     list_filter = ('horizontal_choices1', 'horizontal_choices2', 'horizontal_choices3', 'horizontal_choices4',
+#                    'horizontal_choices5', 'horizontal_choices6', 'horizontal_choices7', 'horizontal_choices8')
+#     suit_list_filter_horizontal = list_filter
+#
+#     fieldsets = [
+#         ('Main', {'fields': ['horizontal_choices1', 'horizontal_choices2', 'horizontal_choices3', 'horizontal_choices4',
+#                              'horizontal_choices5', 'horizontal_choices6', 'horizontal_choices7', 'horizontal_choices8']}),
+#     ]

@@ -1,7 +1,7 @@
 .table {
   background-color: #fff;
 }
-.table-inverse {
+.table-dark {
   color: $gray-lighter;
   background-color: #fff;
   th,
@@ -24,7 +24,7 @@
     };
   }
 }
-.thead-inverse {
+.thead-dark {
   th {
     background-color: $inverse-lightest;
     color: $gray-lighter;

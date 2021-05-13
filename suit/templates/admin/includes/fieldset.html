@@ -12,7 +12,7 @@
                 {% for field in line %}
                     {% if is_single or forloop.first %}
                         <label for="{{ field.field.id_for_label }}" class="form-control-label {{ field.field|suit_form_label_class:fieldset }}">{{ field.label_tag }}</label>
-                        <div class="{% if is_single %} {{ field.field|suit_form_field_class:fieldset }} {% else %}col-xs-12 col-sm-9 col-md-10 col-multi-fields{% endif %}">
+                        <div class="px-2 {% if is_single %} {{ field.field|suit_form_field_class:fieldset }} {% else %}col-xs-12 col-sm-9 col-md-10 col-multi-fields{% endif %}">
                     {% endif %}
 
                 {# Open multi-field #}
@@ -25,7 +25,7 @@
                 {% endif %}
 
                 {% if field.is_readonly %}
-                    <p class="form-control-static">{{ field.contents }}</p>
+                    <p class="form-control-plaintext">{{ field.contents }}</p>
                 {% else %}
                     {{ field.field }}
                 {% endif %}

@@ -5,6 +5,34 @@ body.change-form {
     }
   }
 }
+
+/* Begin Django3.1 */
+/* Hide the changelist-filter */
+#changelist-filter{
+  display:none;
+}
+
+#changelist .changelist-form-container {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+body.change-list, body.change-form {
+  #container > div {
+    flex-shrink: 0; //Ici
+  }
+
+  #container > .main {
+    display: flex;
+    flex: 1 1 auto; //Ici
+  }
+
+  .main > .content {
+    flex: 1 0;
+    max-width: 100%;
+  }
+}
+/* End Django3.1 */
+
 #content {
   padding: 1.5rem $header-padding-horizontal;
   display: flex;
@@ -34,6 +62,30 @@ body.change-form {
   }
 }
 #content-main {
+  > .object-tools {
+    @include reset-list();
+    position: relative;
+    overflow: hidden;
+    z-index: 6;
+    > li {
+      display: inline;
+      &:not(:first-child) {
+        margin-left: .5rem;
+      }
+      > a {
+        &:not([class*="btn-"]) {
+          @extend .btn-round;
+          @include btn-mixin(info, none, sm, round=true);
+          &.addlink {
+            @include btn-mixin(success, $icon-plus-circle, sm, round=true);
+          }
+        }
+      }
+    }
+  }
+}
+
+#toolbar {
   > .object-tools {
     @include reset-list();
     position: relative;

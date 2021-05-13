@@ -16,7 +16,6 @@ SUIT_FORM_SIZE_XX_LARGE = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-9 col-md-10 c
 SUIT_FORM_SIZE_XXX_LARGE = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-9 col-md-10 col-lg-9')
 SUIT_FORM_SIZE_FULL = (SUIT_FORM_SIZE_LABEL, 'col-xs-12 col-sm-9 col-md-10')
 
-
 class DjangoSuitConfig(AppConfig):
     name = 'suit'
     verbose_name = 'Django Suit'

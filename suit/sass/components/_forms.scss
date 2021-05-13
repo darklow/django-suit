@@ -147,6 +147,38 @@ fieldset {
   }
 }
 
+// Errors
+.errornote {
+    background-position: 100% 12px;
+    padding: 10px 12px;
+}
+ul.errorlist {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-size: $font-size-xs;
+  color: $brand-danger;
+}
+ul.errorlist li {
+    font-size: $font-size-xs;
+    display: block;
+    margin-bottom: 4px;
+}
+ul.errorlist li:first-child {
+    margin-top: 0;
+}
+
+ul.errorlist li a {
+    color: inherit;
+    text-decoration: underline;
+}
+.suit-form {
+  .form-group.errors {
+    input, select {
+        border-color: $brand-danger;
+    }
+  }
+}
+
 // BS4 markup in .suit-form
 // -----------------------------------------
 .suit-form {
@@ -169,7 +201,7 @@ fieldset {
         padding-top: 0;
       }
     }
-    p.form-control-static {
+    p.form-control-plaintext {
       margin: 0;
     }
     // More spacing for first and last rows
@@ -293,7 +325,7 @@ fieldset {
           &.original {
             p {
               margin: 0;
-              @extend .form-control-static;
+              @extend .form-control-plaintext;
               a {
                 float: right;
                 font-size: $font-size-xs;
@@ -388,4 +420,9 @@ fieldset {
 .custom-select-sm {
   $select-border-width: ($border-width * 2);
   height: calc(#{$input-height} - #{$select-border-width} - 5px);
+}
+
+// for compatibility with bootstrap-alpha6
+.tabular .form-row {
+  display: table-row;
 }

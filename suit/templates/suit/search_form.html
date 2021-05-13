@@ -1,6 +1,22 @@
-{% load i18n static suit_list %}
+{% load i18n static suit_list admin_list admin_urls %}
+
+
 {% if cl.search_fields %}
     <div id="toolbar">
+        {% block object-tools %}
+            {% block object-tools-items %}
+                {% if perms.has_add_permission %}
+                  <ul class="object-tools">
+                      <li>
+                        {% url cl.opts|admin_urlname:'add' as add_url %}
+                        <a href="{% add_preserved_filters add_url is_popup to_field %}" class="addlink">
+                          {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
+                        </a>
+                      </li>
+                  </ul>
+                {% endif %}
+            {% endblock %}
+        {% endblock %}
         <form id="changelist-search" method="get" class="form-inline">
             <div><!-- DIV needed for valid HTML -->
                 <label for="searchbar"><img src="{% static "admin/img/search.svg" %}" alt="Search"/></label>
