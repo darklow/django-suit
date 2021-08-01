@@ -4,10 +4,10 @@
   "description": "Django Suit development tools",
   "author": "Kaspars Sprogis",
   "devDependencies": {
-    "browser-sync": "^2.26.13",
+    "browser-sync": "^2.27.5",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^3.1.0",
+    "gulp-autoprefixer": "^3.1.1",
     "gulp-plumber": "^1.0.2",
-    "gulp-sass": "^4.1.0"
+    "gulp-sass": "^4.1.1"
   }
 }

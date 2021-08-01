@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! Bootstrap v4.0.0-alpha.5 (https://getbootstrap.com) Copyright 2011-2016 The Bootstrap Authors Copyright 2011-2016 Twitter, Inc. Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */
+/*! Bootstrap v4.5.3 (https://getbootstrap.com) Copyright 2011-2016 The Bootstrap Authors Copyright 2011-2016 Twitter, Inc. Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */
 @media print { *, *::before, *::after { text-shadow: none !important; box-shadow: none !important; }
   a:not(.btn) { text-decoration: underline; }
   abbr[title]::after { content: " (" attr(title) ")"; }
@@ -137,13 +137,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { margin-bottom: 0.5rem; fo
 
 h1, .h1 { font-size: 2.5rem; }
 
-h2, .h2 { font-size: 1.75rem; }
+h2, .h2 { font-size: 2rem; }
 
-h3, .h3 { font-size: 1.5rem; }
+h3, .h3 { font-size: 1.75rem; }
 
-h4, .h4 { font-size: 1.25rem; }
+h4, .h4 { font-size: 1.5rem; }
 
-h5, .h5 { font-size: 1.1rem; }
+h5, .h5 { font-size: 1.25rem; }
 
 h6, .h6 { font-size: 1rem; }
 
@@ -1616,7 +1616,7 @@ a.close.disabled { pointer-events: none; }
 
 .modal-dialog-centered { display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; min-height: calc(100% - 1rem); }
 
-.modal-dialog-centered::before { display: block; height: calc(100vh - 1rem); height: -webkit-min-content; height: min-content; content: ""; }
+.modal-dialog-centered::before { display: block; height: calc(100vh - 1rem); height: min-content; content: ""; }
 
 .modal-dialog-centered.modal-dialog-scrollable { -ms-flex-direction: column; flex-direction: column; -ms-flex-pack: center; justify-content: center; height: 100%; }
 
@@ -1650,7 +1650,7 @@ a.close.disabled { pointer-events: none; }
   .modal-dialog-scrollable { max-height: calc(100% - 3.5rem); }
   .modal-dialog-scrollable .modal-content { max-height: calc(100vh - 3.5rem); }
   .modal-dialog-centered { min-height: calc(100% - 3.5rem); }
-  .modal-dialog-centered::before { height: calc(100vh - 3.5rem); height: -webkit-min-content; height: min-content; }
+  .modal-dialog-centered::before { height: calc(100vh - 3.5rem); height: min-content; }
   .modal-sm { max-width: 300px; } }
 
 @media (min-width: 992px) { .modal-lg, .modal-xl { max-width: 800px; } }
