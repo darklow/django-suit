@@ -51,6 +51,8 @@ $filter-col-width: 15rem;
     }
   }
   #changelist-filter {
+    margin-top: 0.35rem;
+    margin-left: 2rem;
     float: right;
     width: $filter-col-width;
     //position: absolute;

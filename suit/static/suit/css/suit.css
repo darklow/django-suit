@@ -2865,7 +2865,7 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist #toolbar #changelist-search .small { font-size: 0.929rem; }
 
-#changelist #changelist-filter { float: right; width: 15rem; top: 0; right: 0; font-size: 0.929rem; }
+#changelist #changelist-filter { margin-top: 0.35rem; margin-left: 2rem; float: right; width: 15rem; top: 0; right: 0; font-size: 0.929rem; }
 
 #changelist #changelist-filter h2 { margin-bottom: 0.9375rem; display: none; }
 
