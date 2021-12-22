@@ -2,7 +2,7 @@
  * List sortables
  */
 (function ($) {
-    $.fn.suit_list_sortable = function () {
+    $.fn.suit_list_sortable = function (selector) {
         var $inputs = $(this);
         if (!$inputs.length)
             return;
@@ -137,7 +137,6 @@
         // Update input count right before submit
         if ($inputs && $inputs.length) {
             var $last_input = $inputs.last();
-            var selector = $(this).selector;
             $($last_input[0].form).submit(function (e) {
                 var i = 0, value;
                 // e.preventDefault();
@@ -172,7 +171,7 @@
 
 
     $(function () {
-        $('.suit-sortable').suit_list_sortable();
+        $('.suit-sortable').suit_list_sortable('.suit-sortable');
     });
 
 }(django.jQuery));
