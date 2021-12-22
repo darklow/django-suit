@@ -42,7 +42,6 @@ SASS compiling is done in ``nodejs`` using ``gulp`` tasks and ``node-sass`` (use
 
     # Install dependencies
     npm install
-    bower install
 
     # Run Django Suit demo app
     python demo/manage.py runserver 0.0.0.0:8000

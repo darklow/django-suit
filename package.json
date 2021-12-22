@@ -4,6 +4,7 @@
   "description": "Django Suit development tools",
   "author": "Kaspars Sprogis",
   "devDependencies": {
+    "bootstrap": "^4.6.1",
     "browser-sync": "^2.27.5",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^3.1.1",
