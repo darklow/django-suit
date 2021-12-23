@@ -24,7 +24,7 @@ fieldset {
     font-size: $font-size-sm;
     padding-top: .35rem;
     display: inline-block;
-    @extend .text-muted;
+    @extend .text-muted !optional;
   }
   // Clear float
   h2 + .description + *, .inline-related {
@@ -79,7 +79,7 @@ fieldset {
 // -----------------------------------------
 fieldset {
   .text-help {
-    @extend .text-muted;
+    @extend .text-muted !optional;
     margin-top: .5rem;
     display: block;
   }

@@ -9,7 +9,7 @@ var plumber = require('gulp-plumber');
 
 var config = {
     djangoHost: 'localhost',
-    djangoPort: 8004,
+    djangoPort: 8003,
     jsPort: 8005,
     watchSassFiles: 'suit/sass/**/*.scss',
     cssOutputDir: 'suit/static/suit/css/',
@@ -22,7 +22,7 @@ var config = {
 function styles() {
     return gulp.src(config.watchSassFiles)
         .pipe(plumber())
-        .pipe(sass({outputStyle: 'compressed'})).on('error', sass.logError)
+        .pipe(sass({outputStyle: 'compressed'})).on('error', sass.logError) //expanded or compressed
         .pipe(autoprefixer({ overrideBrowserslist: ['last 2 versions', '>5%'] })) // Adds vendor prefixes
         .pipe(gulp.dest(config.cssOutputDir))
         .pipe(reload({stream: true}))

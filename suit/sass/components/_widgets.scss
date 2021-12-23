@@ -18,7 +18,7 @@ fieldset {
     }
   }
   select:not([multiple="multiple"]) {
-    @extend .custom-select;
+    @extend .custom-select !optional;
     border-radius: $input-border-radius;
   }
   input {
@@ -37,7 +37,7 @@ fieldset {
 .timezonewarning {
   display: inline-block;
   margin-top: .5rem;
-  @extend .text-muted;
+  @extend .text-muted !optional;
   @extend small;
 }
 .related-lookup {

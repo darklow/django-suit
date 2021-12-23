@@ -44,6 +44,7 @@ $filter-col-width: 15rem;
         width: auto;
         vertical-align: middle;
         margin-bottom: 0.375rem;
+        background-color: $body-bg-ds;
         &:before {
           @include fa-icon-font();
           content: $icon-plus;
@@ -123,6 +124,8 @@ $filter-col-width: 15rem;
         width: auto;
         height: 2.05rem;
         margin-right: .25rem;
+        background-color: $body-bg-ds;//Migration Bootstrap5
+        appearance: revert; //Migration Bootstrap5 select
       }
       span.all,
       span.action-counter,

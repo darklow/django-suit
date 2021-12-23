@@ -6,7 +6,7 @@ body.dashboard {
       border-spacing: 1px;
       border-collapse: separate;
       caption {
-        caption-side: inherit;
+        caption-side: top;
         font-weight: $headings-font-weight;
         font-size: $font-size-h4;
         padding: 0;
