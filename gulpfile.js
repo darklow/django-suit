@@ -1,7 +1,7 @@
 'use strict';
 
+var sass = require('gulp-sass')(require('sass'));
 var gulp = require('gulp');
-var sass = require('gulp-sass');
 var browsersync = require('browser-sync').create();
 var reload = browsersync.reload;
 var autoprefixer = require('gulp-autoprefixer');
@@ -22,8 +22,8 @@ var config = {
 function styles() {
     return gulp.src(config.watchSassFiles)
         .pipe(plumber())
-        .pipe(sass({outputStyle: 'compact'})).on('error', sass.logError)
-        .pipe(autoprefixer({browsers: ['last 2 version', '> 5%']}))
+        .pipe(sass({outputStyle: 'compressed'})).on('error', sass.logError)
+        .pipe(autoprefixer({ overrideBrowserslist: ['last 2 versions', '>5%'] })) // Adds vendor prefixes
         .pipe(gulp.dest(config.cssOutputDir))
         .pipe(reload({stream: true}))
         ;

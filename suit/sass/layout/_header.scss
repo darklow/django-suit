@@ -1,3 +1,5 @@
+@use "sass:math";
+
 body.suit_layout_horizontal {
   #header {
     display: flex;
@@ -12,10 +14,10 @@ body.suit_layout_horizontal {
       color: $header-color;
     }
     #branding, #user-tools {
-      flex-basis: map-get($grid-breakpoints, sm)/2;
+      flex-basis: map-get($grid-breakpoints, sm)*0.5;
     }
     .header-label {
-      font-size: $font-size-h1/2;
+      font-size: $font-size-h1*0.5;
       color: $header-muted-color;
       text-transform: uppercase;
       font-weight: normal;
@@ -86,7 +88,7 @@ body.suit_layout_vertical {
   #header {
     background-color: $header-bg;
     #branding {
-      padding: $header-padding-vertical $header-padding-horizontal/3 $header-padding-vertical;
+      padding: $header-padding-vertical math.div($header-padding-horizontal, 3) $header-padding-vertical;
       #site-name {
         margin: 0;
         font-weight: normal;
@@ -116,13 +118,13 @@ body.suit_layout_vertical {
       color: $header-color;
     }
     .header-label {
-      font-size: $font-size-h1/2;
+      font-size: $font-size-h1*0.5;
       color: $header-muted-color;
       text-transform: uppercase;
       font-weight: normal;
     }
     #user-tools:not(.suit-user-tools) {
-      padding: $header-padding-vertical/1.2 $header-padding-horizontal/3;
+      padding: math.div($header-padding-vertical, 1.2) math.div($header-padding-horizontal, 3);
       font-size: $font-size-xs;
       color: $header-muted-color;
       background-color: darken($top-nav-bg, 7%);
@@ -142,7 +144,7 @@ body.suit_layout_vertical {
     }
     .suit-user-tools {
       background-color: $top-nav-bg;
-      padding: $header-padding-vertical*1.1 $header-padding-horizontal/2;
+      padding: $header-padding-vertical*1.1 $header-padding-horizontal*0.5;
       text-align: center;
       font-size: 13px;
       .separator {

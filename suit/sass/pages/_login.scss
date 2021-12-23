@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .login #container {
   background: #fff;
   border-radius: 4px;
@@ -56,14 +58,14 @@ body.login {
   }
   .errorlist {
     @include reset-list();
-    margin: -.5rem $spacing/2 $spacing;
+    margin: -.5rem $spacing*0.5 $spacing;
     color: $alert-danger-text;
   }
   .form-row {
     input:not([type='hidden']) {
-      padding-left: $spacing/2;
-      padding-right: $spacing/2;
-      margin-bottom: $spacing/1.75;
+      padding-left: $spacing*0.5;
+      padding-right: $spacing*0.5;
+      margin-bottom: math.div($spacing, 1.75);
       &:not(:focus) {
         background-color: $body-bg;
         border-color: $body-bg;
@@ -90,7 +92,7 @@ body.login {
       @extend .btn-lg;
       @extend .btn-primary;
       //background-color: desaturate($link-color-brighter, 5%);
-      padding: $spacing/1.5 $spacing;
+      padding: math.div($spacing, 1.5) $spacing;
       //&:hover, &:focus {
       //  background-color: $link-color-bright;
       //  &:active {

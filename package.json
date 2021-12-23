@@ -4,11 +4,14 @@
   "description": "Django Suit development tools",
   "author": "Kaspars Sprogis",
   "devDependencies": {
-    "bootstrap": "^4.6.1",
-    "browser-sync": "^2.27.5",
+    "browser-sync": "^2.27.7",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-plumber": "^1.0.2",
-    "gulp-sass": "^4.1.1"
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.45.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.6.1"
   }
 }

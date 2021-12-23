@@ -1,5 +1,7 @@
 // Enable Flex | Welcome to the future :)
 // --------------------------------------------------
+@use "sass:math";
+
 $enable-flex: true;
 
 // Colors
@@ -61,6 +63,14 @@ $font-size-h5: 1.143rem;
 $font-size-h6: 1rem;
 $font-size-sm: .929rem;
 $font-size-xs: .857rem;
+// Bootstrap 4
+$h1-font-size: $font-size-h1;
+$h2-font-size: $font-size-h2;
+$h3-font-size: $font-size-h3;
+$h4-font-size: $font-size-h4;
+$h5-font-size: $font-size-h5;
+$h6-font-size: $font-size-h6;
+
 
 $font-size-root: 13px;
 //$font-size-base: 14px;
@@ -78,7 +88,7 @@ $text-muted: $gray-light;
 $sidebar-width: 200px;
 $grid-gutter-width-base: 1.875rem;
 $header-padding-horizontal: $grid-gutter-width-base;
-$header-padding-vertical: $grid-gutter-width-base/1.8;
+$header-padding-vertical: math.div($grid-gutter-width-base, 1.8);
 $nav-padding-horizontal: $grid-gutter-width-base + .75rem;
 $footer-height: 66px;
 $vertical-menu-width: 230px;

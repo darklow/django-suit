@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $filter-col-width: 15rem;
 #changelist {
   display: block;
@@ -63,7 +65,7 @@ $filter-col-width: 15rem;
     right: 0;
     font-size: $font-size-sm;
     h2 {
-      margin-bottom: $grid-gutter-width-base/2;
+      margin-bottom: $grid-gutter-width-base*0.5;
       display: none;
     }
     h3 {
@@ -71,14 +73,14 @@ $filter-col-width: 15rem;
       color: #fff;
       font-size: $font-size-sm;
       font-weight: normal;
-      padding: $grid-gutter-width-base/4 $grid-gutter-width-base/3;
+      padding: $grid-gutter-width-base*0.25 math.div($grid-gutter-width-base, 3);
       margin: 0;
     }
     ul {
       background-color: #fff;
       @include reset-list();
-      padding: $grid-gutter-width-base/3 0;
-      margin-bottom: $grid-gutter-width-base/1.5;
+      padding: math.div($grid-gutter-width-base, 3) 0;
+      margin-bottom: math.div($grid-gutter-width-base, 1.5);
       li {
         border-left: 3px solid transparent;
         margin-left: -3px;
@@ -93,7 +95,7 @@ $filter-col-width: 15rem;
         }
         a {
           padding: .1rem;
-          padding-left: $grid-gutter-width-base / 1.5;
+          padding-left: math.div($grid-gutter-width-base, 1.5);
           display: block;
         }
       }
