@@ -32,3 +32,8 @@ a:not([myclasstoignore]):hover {
 label {
   margin-bottom: 0.5rem;
 }
+
+.text-muted {
+  --bs-text-opacity: 1;
+  color: #6c757d !important;
+}

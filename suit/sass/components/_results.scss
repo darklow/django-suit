@@ -135,21 +135,25 @@ $tr-odd-hover-bg-color: darken($tr-odd-bg-color, 6%);
         }
       }
       &.table-danger {
+        background-color: $state-danger-bg;
         > td, > th {
           border-bottom: 1px solid $state-danger-border;
         }
       }
       &.table-warning {
+        background-color: $state-warning-bg;
         > td, > th {
           border-bottom: 1px solid $state-warning-border;
         }
       }
       &.table-info {
+        background-color: $state-info-bg;
         > td, > th {
           border-bottom: 1px solid $state-info-border;
         }
       }
       &.table-success {
+        background-color: $state-success-bg;
         > td, > th {
           border-bottom: 1px solid $state-success-border;
         }

@@ -55,7 +55,7 @@ function scripts() {
 }
 
 var generateAssets = gulp.parallel(
-    gulp.series(styles, styles_additional, scripts)
+    gulp.series(styles_additional, styles, scripts)
 );
 
 // live browser loading
