@@ -60,7 +60,7 @@ body.suit_form_submit_on_right .col-right {
     @include reset-list();
     margin-top: $grid-gutter-width-base;
     //padding: $grid-gutter-width/2;
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       display: none;
       li {
         display: inline-block;

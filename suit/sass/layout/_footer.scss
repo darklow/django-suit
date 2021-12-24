@@ -34,7 +34,7 @@
       align-items: center;
       > div {
         &:not(:first-child) {
-          @include media-breakpoint-down(xs) {
+          @include media-breakpoint-down(sm) {
             margin-top: .75rem;
           }
         }

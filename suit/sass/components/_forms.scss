@@ -41,7 +41,7 @@ fieldset {
     // Since content after label is not wrapped in container
     // we must fake padding for input
     padding: $suit-form-padding-vertical $suit-form-padding-horizontal;
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       flex-wrap: wrap;
     }
     > * {
@@ -54,11 +54,11 @@ fieldset {
       &.required {
         padding-right: 1.5rem;
       }
-      @include media-breakpoint-down(sm) {
+      @include media-breakpoint-down(md) {
         // Use as .col-sm-3
         flex: 0 0 25%;
       }
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         flex: 0 0 100%;
       }
     }
@@ -119,7 +119,7 @@ fieldset {
       padding-top: $suit-label-padding-top;
       padding-bottom: $suit-label-padding-bottom;
       border-bottom: 1px solid $form-border-color;
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         padding-top: $suit-label-padding-top*0.5;
         background-color: transparent;
         text-align: left;
@@ -139,7 +139,7 @@ fieldset {
       margin: 0;
       padding-left: 2rem;
       font-size: $font-size-xs;
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         margin-top: .5rem;
         padding-left: 1.5rem;
       }
@@ -185,7 +185,7 @@ ul.errorlist li a {
   .form-group {
     margin: 0;
     background-color: $form-bg;
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       padding-bottom: 1rem;
     }
     label {
@@ -197,7 +197,7 @@ ul.errorlist li a {
     .form-control-label + div[class*='col-'] {
       padding-top: $suit-form-padding-vertical;
       padding-bottom: $suit-form-padding-vertical;
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         padding-top: 0;
       }
     }
@@ -227,7 +227,7 @@ ul.errorlist li a {
   padding-bottom: 0 !important;
   display: flex;
   flex-wrap: wrap;
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     padding-top: 0 !important;
   }
   .multi-field {
@@ -235,7 +235,7 @@ ul.errorlist li a {
     white-space: nowrap;
     margin-bottom: $suit-form-padding-vertical;
     padding-right: 1rem;
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       flex-basis: 100%;
       padding-bottom: 0;
     }
@@ -248,7 +248,7 @@ ul.errorlist li a {
       @include media-breakpoint-up(sm) {
         padding-bottom: 0;
       }
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         font-weight: bold;
       }
     }
@@ -261,7 +261,7 @@ ul.errorlist li a {
         }
       }
     }
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       .form-control-label, .multi-field-content {
         display: block;
       }

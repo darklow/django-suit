@@ -13,7 +13,7 @@ fieldset {
   .vDateField {
     @extend .form-control;
     display: inline-block;
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       max-width: none;
     }
   }
@@ -144,7 +144,7 @@ fieldset {
 }
 .widget-AdminSplitDateTime {
   input.vDateField {
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       margin-bottom: .2rem;
     }
   }

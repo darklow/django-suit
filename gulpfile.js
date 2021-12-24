@@ -1,6 +1,7 @@
 'use strict';
 
 var sass = require('gulp-sass')(require('sass'));
+var sourcemaps = require('gulp-sourcemaps');
 var gulp = require('gulp');
 var browsersync = require('browser-sync').create();
 var reload = browsersync.reload;
@@ -22,7 +23,9 @@ var config = {
 function styles() {
     return gulp.src(config.watchSassFiles)
         .pipe(plumber())
-        .pipe(sass({outputStyle: 'compressed'})).on('error', sass.logError) //expanded or compressed
+        .pipe(sourcemaps.init())
+        .pipe(sass({outputStyle: 'expanded'})).on('error', sass.logError) //expanded or compressed
+        .pipe(sourcemaps.write())
         .pipe(autoprefixer({ overrideBrowserslist: ['last 2 versions', '>5%'] })) // Adds vendor prefixes
         .pipe(gulp.dest(config.cssOutputDir))
         .pipe(reload({stream: true}))

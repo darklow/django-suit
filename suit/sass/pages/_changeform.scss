@@ -64,7 +64,7 @@ body.change-form {
           @include media-breakpoint-only(lg) {
             width: 25%;
           }
-          @include media-breakpoint-down(md) {
+          @include media-breakpoint-down(lg) {
             width: auto;
             flex: 1;
             flex-basis: 100%;

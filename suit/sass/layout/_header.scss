@@ -37,7 +37,7 @@ body.suit_layout_horizontal {
             display: block;
             margin-top: 2px;
             text-align: right;
-            @include media-breakpoint-down(sm) {
+            @include media-breakpoint-down(md) {
               text-align: left;
             }
           }

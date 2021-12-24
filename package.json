@@ -9,7 +9,8 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^5.0.0",
-    "sass": "^1.45.1"
+    "sass": "^1.45.1",
+    "gulp-sourcemaps": "^3.0.0"
   },
   "dependencies": {
     "bootstrap": "^5.1.3"
