@@ -14,6 +14,8 @@ var config = {
     jsPort: 8005,
     watchSassFiles: 'suit/sass/**/*.scss',
     cssOutputDir: 'suit/static/suit/css/',
+    jsVendorOutputDir: 'suit/static/vendor/js/',
+    cssVendorOutputDir: 'suit/static/vendor/css/',
     watchHtmlFiles: [
         'suit/templates/**/*.html',
         'demo/demo/templates/**/*.html'
@@ -31,6 +33,30 @@ function styles() {
         .pipe(reload({stream: true}))
         ;
 }
+
+function styles_additional() {
+	return gulp.src(['node_modules/bootstrap/dist/css/bootstrap-utilities.css',
+                     'node_modules/bootstrap/dist/css/bootstrap-utilities.css.map',
+	                 'node_modules/bootstrap/dist/css/bootstrap-utilities.min.css',
+                     'node_modules/bootstrap/dist/css/bootstrap-utilities.min.css.map'])
+		.pipe(gulp.dest(config.cssVendorOutputDir));
+}
+
+function scripts() {
+	return gulp.src(['node_modules/bootstrap/dist/js/bootstrap.js',
+                     'node_modules/bootstrap/dist/js/bootstrap.js.map',
+	                 'node_modules/bootstrap/dist/js/bootstrap.min.js',
+                     'node_modules/bootstrap/dist/js/bootstrap.min.js.map',
+	                 'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
+                     'node_modules/bootstrap/dist/js/bootstrap.bundle.js.map',
+	                 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+                     'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js.map'])
+		.pipe(gulp.dest(config.jsVendorOutputDir));
+}
+
+var generateAssets = gulp.parallel(
+    gulp.series(styles, styles_additional, scripts)
+);
 
 // live browser loading
 function initBrowserSync(done) {
@@ -55,7 +81,7 @@ function reloadBrowserSync(done) {
 }
 
 function watchFiles() {
-    gulp.watch(config.watchSassFiles, gulp.series(generateStyles, reloadBrowserSync));
+    gulp.watch(config.watchSassFiles, gulp.series(generateAssets, reloadBrowserSync));
     gulp.watch(config.watchHtmlFiles, gulp.series(reloadBrowserSync));
 }
 
@@ -68,7 +94,7 @@ var dev = gulp.parallel(
     watchFiles
 );
 
-exports.default = gulp.series(generateStyles, dev)
-exports["build"] = generateStyles
+exports.default = gulp.series(generateAssets, dev)
+exports["build"] = generateAssets
 exports["dev"] = dev
 

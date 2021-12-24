@@ -6,6 +6,7 @@
 {% block extrastyle %}
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>
     <link href='{% static "suit/css/font-awesome.min.css" %}' rel='stylesheet' type='text/css'>
+    <link href='{% static "vendor/css/bootstrap-utilities.min.css" %}' rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block bodyclass %}{{ block.super|suit_body_class:request }}{% endblock %}
@@ -148,6 +149,7 @@
 {#            {% endif %}#}
         </script>
     {% endif %}
+    <script src="{% static "vendor/js/bootstrap.bundle.min.js" %}"></script>
 
 {#    <div> <!-- Fix/close div previously closed by footer -->#}
 {% endblock %}
