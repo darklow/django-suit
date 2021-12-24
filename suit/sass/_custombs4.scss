@@ -1,3 +1,5 @@
+//Migration Bootstrap5
+
 a:not([myclasstoignore]) {
     text-decoration: none;
 }
@@ -8,6 +10,10 @@ a:not([myclasstoignore]):hover {
 
 .form-group {
   margin-bottom: 1rem;
+}
+
+.form-control {
+  appearance: auto;
 }
 
 .form-inline .form-control {
