@@ -37,7 +37,7 @@ fieldset {
 .timezonewarning {
   display: inline-block;
   margin-top: .5rem;
-  @extend .text-muted !optional;
+  @extend .text-muted;
   @extend small;
 }
 .related-lookup {
