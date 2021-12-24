@@ -417,7 +417,7 @@ fieldset {
   }
 }
 
-.custom-select-sm {
+.form-select-sm {
   $select-border-width: ($border-width * 2);
   height: calc(#{$input-height} - #{$select-border-width} - 5px);
 }

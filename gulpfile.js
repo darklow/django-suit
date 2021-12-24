@@ -25,8 +25,8 @@ function styles() {
         .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'expanded'})).on('error', sass.logError) //expanded or compressed
-        .pipe(sourcemaps.write())
         .pipe(autoprefixer({ overrideBrowserslist: ['last 2 versions', '>5%'] })) // Adds vendor prefixes
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(config.cssOutputDir))
         .pipe(reload({stream: true}))
         ;
