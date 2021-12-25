@@ -46,7 +46,7 @@ Build Status
 
 Django Suit uses Travis CI to perform tests on different Django and Python versions.
 
-Tested using Python: 2.7-3.4 and PyPy. Django: 1.9+ and Django Suit v2.0 alpha:
+Tested using Python: 3.8 and PyPy. Django: 3.2+ and Django Suit v2.0 alpha:
 
 .. |v2| image:: https://travis-ci.org/darklow/django-suit.png?branch=v2
    :alt: Build Status - v2 branch
