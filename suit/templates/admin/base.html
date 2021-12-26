@@ -1,7 +1,7 @@
 {% extends 'admin/base.html' %}
 {% load i18n static suit_tags %}
 
-{% block stylesheet %}{% static "suit/css/suit.css" %}{% endblock %}
+{% block stylesheet %}{% if debug %}{% static "suit/css/suit.css" %}{% else %}{% static "suit/css/suit.min.css" %}{% endif %}{% endblock %}
 
 {% block extrastyle %}
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'>

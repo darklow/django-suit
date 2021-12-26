@@ -7,6 +7,7 @@ var browsersync = require('browser-sync').create();
 var reload = browsersync.reload;
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
+var rename = require('gulp-rename');
 
 var config = {
     djangoHost: 'localhost',
@@ -34,6 +35,17 @@ function styles() {
         ;
 }
 
+function stylesMin() {
+    return gulp.src(config.watchSassFiles)
+        .pipe(plumber())
+        .pipe(sass({outputStyle: 'compressed'})).on('error', sass.logError) //expanded or compressed
+        .pipe(autoprefixer({ overrideBrowserslist: ['last 2 versions', '>5%'] })) // Adds vendor prefixes
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest(config.cssOutputDir))
+        .pipe(reload({stream: true}))
+        ;
+}
+
 function styles_additional() {
 	return gulp.src(['node_modules/bootstrap/dist/css/bootstrap-utilities.css',
                      'node_modules/bootstrap/dist/css/bootstrap-utilities.css.map',
@@ -55,7 +67,7 @@ function scripts() {
 }
 
 var generateAssets = gulp.parallel(
-    gulp.series(styles_additional, styles, scripts)
+    gulp.series(styles_additional, styles, stylesMin, scripts)
 );
 
 // live browser loading

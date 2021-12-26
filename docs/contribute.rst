@@ -44,9 +44,9 @@ SASS compiling is done in ``nodejs`` using ``gulp`` tasks and ``node-sass`` (use
     npm install
 
     # Run Django Suit demo app
-    python demo/manage.py runserver 0.0.0.0:8000
+    python demo/manage.py runserver 0.0.0.0:8003
 
-    # Run gulp tasks and it should automatically open http://localhost:8001/.
+    # Run gulp tasks and it should automatically open http://localhost:8005/.
     # If it didn't, open it manually.
     gulp
 
