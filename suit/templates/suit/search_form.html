@@ -5,7 +5,7 @@
     <div id="toolbar">
         {% block object-tools %}
             {% block object-tools-items %}
-                {% if perms.has_add_permission %}
+                {% if has_add_permission %}
                   <ul class="object-tools">
                       <li>
                         {% url cl.opts|admin_urlname:'add' as add_url %}

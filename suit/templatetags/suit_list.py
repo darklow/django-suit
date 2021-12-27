@@ -141,7 +141,7 @@ def suit_search_form(context, cl):
         'cl': cl,
         'show_result_count': cl.result_count != cl.full_result_count,
         'search_var': SEARCH_VAR,
-        'perms': context.get('perms', None)
+        'has_add_permission': cl.model_admin.has_add_permission(context.request)
     }
 
 

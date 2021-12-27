@@ -1,3 +1,4 @@
+import logging
 from copy import deepcopy
 from django.utils.translation import ugettext_lazy as _
 
@@ -117,7 +118,12 @@ class MenuManager(object):
             app_key = native_app['app_url'].split('/')[-2]
             self._available_apps['apps'][app_key] = native_app
             for native_model in native_app['models']:
-                if 'admin_url' not in native_model:
+                if 'admin_url' not in native_model or native_model['admin_url'] is None:
+                    causeby = native_model['object_name'] if 'object_name' in native_model else "unknown"
+                    if 'admin_url' not in native_model:
+                        logging.warning('admin_url not in native_model for %s, Can happen with incomplete permissions, like Delete only, etc.' % causeby)
+                    else:
+                        logging.warning('ative_model[\'admin_url\'] is None for %s, Can happen with incomplete permissions, like Delete only, etc.' % causeby)
                     # Can happen with incomplete permissions, like Delete only, etc.
                     continue
                 model_key = '.'.join(native_model['admin_url'].split('/')[-3:-1])
