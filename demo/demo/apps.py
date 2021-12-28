@@ -5,7 +5,7 @@ from suit.menu import ParentItem, ChildItem
 class SuitConfig(DjangoSuitConfig):
     menu = (
         ParentItem('Content', children=[
-            ChildItem(model='demo.country'),
+            ChildItem(model='demo.country', params={'o': '1.2'}),
             ChildItem(model='demo.continent'),
             ChildItem(model='demo.showcase'),
             ChildItem('Custom view', url='/admin/custom/'),
