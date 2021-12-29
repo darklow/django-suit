@@ -64,5 +64,16 @@ Compile docs:
     # Clean & compile
     make -C docs clean html
 
+Heroku
+------
+* requirements.txt is loading demo/requirements-heroku.txt
+* runtime.txt is setting the python version
+* Procfile is defining how to run the app. Actually it runs collectstatic (because the default heroku task can not
+use the demo settings), then it creates static directory and finally run the app
+* demo/settings-heroku to run with DEBUG=False and static with whitenoise
 
+On Heroku I defined :
+* SECRET_KEY
+* DISABLE_COLLECTSTATIC = 1
+* DJANGO_SETTINGS_MODULE = demo.settings-heroku
 

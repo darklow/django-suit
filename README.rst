@@ -9,6 +9,7 @@ Django Suit is alternative theme/skin/extension for `Django <http://www.djangopr
 v2 version is working with Django 3.2 and is using Bootstrap 5.1
 
 * Project home: http://djangosuit.com/ (not maintained)
+* *NEW* Live demo v2 : http://django-suit-v2.herokuapp.com/
 
 
 License
