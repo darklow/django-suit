@@ -110,10 +110,10 @@ Generate the distribution archives on local machine:
 
 .. code-block:: bash
 
-    python -m twine upload --repository testpypi dist/*
+    twine upload --repository testpypi dist/*
 
 * Publish the package to the PyPi repository
 
 .. code-block:: bash
 
-    python -m twine upload dist/*
+    twine upload dist/*
