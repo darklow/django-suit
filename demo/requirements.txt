@@ -1,2 +1,2 @@
-Django==3.2.10
+Django==4.0.1
 Django-Select2==7.4.2

@@ -73,7 +73,47 @@ use the demo settings), then it creates static directory and finally run the app
 * demo/settings-heroku to run with DEBUG=False and static with whitenoise
 
 On Heroku I defined :
+
 * SECRET_KEY
 * DISABLE_COLLECTSTATIC = 1
 * DJANGO_SETTINGS_MODULE = demo.settings-heroku
 
+
+PyPi
+----
+Update setup.py
+
+Generate the distribution archives on local machine:
+
+* upgrade your setuptools library on your machine to use the latest version
+
+.. code-block:: bash
+
+    python -m pip install --user --upgrade setuptools wheel
+
+
+* you need to run the following command from the root directory of your package to generate the distribution files.
+
+.. code-block:: bash
+
+    python setup.py sdist bdist_wheel
+
+* Navigate to https://test.pypi.org/ and Register yourself as an user.
+
+* This will install a package called “twine” on your machine that will help ship the python package to the repositories.
+
+.. code-block:: bash
+
+    python -m pip install --user --upgrade twine
+
+* run the following command to ship the code to TestPyPi first. When you run the command, you will be asked to provide the same credentials using which you have registered your account in the previous step.
+
+.. code-block:: bash
+
+    python -m twine upload --repository testpypi dist/*
+
+* Publish the package to the PyPi repository
+
+.. code-block:: bash
+
+    python -m twine upload dist/*

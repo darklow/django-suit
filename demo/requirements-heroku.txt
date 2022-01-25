@@ -1,4 +1,4 @@
-Django==3.2.10
+Django==4.0.1
 Django-Select2==7.4.2
 gunicorn==20.1.0
 whitenoise

@@ -1,12 +1,11 @@
 from setuptools import setup
 
 setup(
-    name='django-suit',
+    name='django-suit-v2-pm',
     version=__import__('suit').VERSION,
     description='Modern theme for Django admin interface.',
-    author='Kaspars Sprogis (darklow)',
-    author_email='info@djangosuit.com',
-    url='http://djangosuit.com',
+    author='Kaspars Sprogis (darklow) forked by Pulse-Mind',
+    author_email='pulse.mind.com@gmail.com',
     packages=['suit', 'suit.templatetags'],
     zip_safe=False,
     include_package_data=True,
@@ -18,12 +17,12 @@ setup(
         'Intended Audience :: System Administrators',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10.0',
         'Environment :: Web Environment',
         'Topic :: Software Development',
         'Topic :: Software Development :: User Interfaces',
-    ]
+    ],
+    python_requires='>=3.8',                # Minimum version requirement of the package
 )

@@ -135,3 +135,5 @@ STATIC_URL = '/static/'
 # For demo app specific only:
 # Use file backend for sessions, to not mess DB
 SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
