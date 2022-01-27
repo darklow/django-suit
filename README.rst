@@ -32,6 +32,12 @@ Changelog
 
 Read more here: Todo: Add issue reference
 
+Install
+=========
+Install Django Suit v2 using ``pip`` or ``easy_install``::
+
+    pip install django-suit-v2-pm
+
 
 Contributing
 ============
