@@ -1,6 +1,6 @@
 {
   "name": "django-suit-dev",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "description": "Django Suit development tools",
   "author": "Kaspars Sprogis",
   "devDependencies": {
@@ -9,7 +9,7 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^5.1.0",
-    "sass": "^1.49.9",
+    "sass": "^1.50.1",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-rename": "^2.0.0"
   },

@@ -180,7 +180,7 @@ fieldset {
   }
 }
 .calendarbox {
-  z-index: 3;
+  z-index: 100;
   > div:first-child {
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
@@ -295,6 +295,7 @@ fieldset {
   }
 }
 .clockbox {
+  z-index: 100;
   h2 {
     padding: .75rem 1.5rem;
     font-weight: normal;
