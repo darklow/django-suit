@@ -1,53 +1,61 @@
 /*!
- * Bootstrap v4.0.0-alpha.5 (https://getbootstrap.com)
- * Copyright 2011-2016 The Bootstrap Authors
- * Copyright 2011-2016 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Bootstrap v5.0.2 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../../node_modules/bootstrap/scss/functions";
+
 // Core variables and mixins
-//@import "../../bower_components/bootstrap/scss/variables";
-@import "../../bower_components/bootstrap/scss/mixins";
+//@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
 
 // Reset and dependencies
-@import "../../bower_components/bootstrap/scss/normalize";
-@import "../../bower_components/bootstrap/scss/print";
+//@import "../../node_modules/bootstrap/scss/normalize";
+//@import "../../node_modules/bootstrap/scss/print";
 
 // Core CSS
-@import "../../bower_components/bootstrap/scss/reboot";
-@import "../../bower_components/bootstrap/scss/type";
-@import "../../bower_components/bootstrap/scss/images";
-@import "../../bower_components/bootstrap/scss/code";
-@import "../../bower_components/bootstrap/scss/grid";
-@import "../../bower_components/bootstrap/scss/tables";
-@import "../../bower_components/bootstrap/scss/forms";
-@import "../../bower_components/bootstrap/scss/buttons";
+@import "../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/reboot";
+@import "../../node_modules/bootstrap/scss/type";
+@import "../../node_modules/bootstrap/scss/images";
+@import "../../node_modules/bootstrap/scss/containers";
+//@import "../../node_modules/bootstrap/scss/code";
+@import "../../node_modules/bootstrap/scss/grid";
+@import "../../node_modules/bootstrap/scss/tables";
+@import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/buttons";
 
 // Components
-@import "../../bower_components/bootstrap/scss/animation";
-@import "../../bower_components/bootstrap/scss/dropdown";
-@import "../../bower_components/bootstrap/scss/button-group";
-@import "../../bower_components/bootstrap/scss/input-group";
-@import "../../bower_components/bootstrap/scss/custom-forms";
-@import "../../bower_components/bootstrap/scss/nav";
-//@import "../../bower_components/bootstrap/scss/navbar";
-@import "../../bower_components/bootstrap/scss/card";
-//@import "../../bower_components/bootstrap/scss/breadcrumb";
-//@import "../../bower_components/bootstrap/scss/pagination";
-@import "../../bower_components/bootstrap/scss/tags";
-//@import "../../bower_components/bootstrap/scss/jumbotron";
-@import "../../bower_components/bootstrap/scss/alert";
-@import "../../bower_components/bootstrap/scss/progress";
-//@import "../../bower_components/bootstrap/scss/media";
-//@import "../../bower_components/bootstrap/scss/list-group";
-@import "../../bower_components/bootstrap/scss/responsive-embed";
-@import "../../bower_components/bootstrap/scss/close";
+//@import "../../node_modules/bootstrap/scss/animation";
+@import "../../node_modules/bootstrap/scss/dropdown";
+@import "../../node_modules/bootstrap/scss/button-group";
+//@import "../../node_modules/bootstrap/scss/input-group";
+//@import "../../node_modules/bootstrap/scss/custom-forms";
+@import "../../node_modules/bootstrap/scss/nav";
+@import "../../node_modules/bootstrap/scss/navbar";
+@import "../../node_modules/bootstrap/scss/card";
+//@import "../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../node_modules/bootstrap/scss/pagination";
+//@import "../../node_modules/bootstrap/scss/tags";
+@import "../../node_modules/bootstrap/scss/badge";
+//@import "../../node_modules/bootstrap/scss/jumbotron";
+@import "../../node_modules/bootstrap/scss/alert";
+@import "../../node_modules/bootstrap/scss/progress";
+@import "../../node_modules/bootstrap/scss/transitions";
+//@import "../../node_modules/bootstrap/scss/media";
+//@import "../../node_modules/bootstrap/scss/list-group";
+//@import "../../node_modules/bootstrap/scss/responsive-embed";
+@import "../../node_modules/bootstrap/scss/close";
 
 // Components w/ JavaScript
-@import "../../bower_components/bootstrap/scss/modal";
-@import "../../bower_components/bootstrap/scss/tooltip";
-//@import "../../bower_components/bootstrap/scss/popover";
-//@import "../../bower_components/bootstrap/scss/carousel";
+@import "../../node_modules/bootstrap/scss/modal";
+@import "../../node_modules/bootstrap/scss/tooltip";
+//@import "../../node_modules/bootstrap/scss/popover";
+//@import "../../node_modules/bootstrap/scss/carousel";
 
 // Utility classes
-@import "../../bower_components/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/utilities";
+@import "../../node_modules/bootstrap/scss/helpers";

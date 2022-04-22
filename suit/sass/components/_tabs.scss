@@ -13,7 +13,8 @@
     padding: 0.65em 1.5em;
     background-color: #fff;
     border-color: $nav-tabs-border-color;
-    @include hover-focus {
+    &:hover,
+	&:focus {
       $border-hover: lighten(desaturate($link-color-brighter, 45%), 15%);
       //$border-hover: #fff;
       border-color: $border-hover $border-hover $nav-tabs-border-color;

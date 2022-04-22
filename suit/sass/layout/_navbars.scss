@@ -1,3 +1,5 @@
+@use "sass:math";
+
 body.suit_layout_horizontal {
   #suit-nav {
     flex-basis: 100%;
@@ -21,7 +23,7 @@ body.suit_layout_horizontal {
         }
         > a {
           position: relative;
-          padding: $header-padding-vertical/1.5 $header-padding-horizontal/1.4;
+          padding: math.div($header-padding-vertical, 1.5) math.div($header-padding-horizontal, 1.4);
           border-left: 1px solid $header-bg;
         }
         &:last-child {
@@ -61,7 +63,7 @@ body.suit_layout_horizontal {
           > li {
             > a {
               display: block;
-              padding: $header-padding-vertical/2 $header-padding-horizontal/1.4;
+              padding: $header-padding-vertical*0.5 math.div($header-padding-horizontal, 1.4);
               border-bottom: 1px solid darken($top-nav-bg, 5%);
               &:hover {
                 background-color: darken($top-nav-bg, 2%);
@@ -92,8 +94,8 @@ body.suit_layout_horizontal {
           display: block;
           float: left;
           font-size: $font-size-sm;
-          padding: $header-padding-vertical/1.3 4px;
-          margin: 2px $header-padding-horizontal/3.75 0;
+          padding: math.div($header-padding-vertical, 1.3) 4px;
+          margin: 2px math.div($header-padding-horizontal, 3.75) 0;
           margin-bottom: -3px;
         }
         &:first-child {
@@ -157,7 +159,7 @@ body.suit_layout_vertical {
         }
         > a {
           display: block;
-          padding: .6rem $header-padding-horizontal/1.5;
+          padding: .6rem math.div($header-padding-horizontal, 1.5);
           color: transparentize(#fff, .3);
           .fa {
             margin-right: .7rem;
@@ -212,7 +214,7 @@ body.suit_layout_vertical {
             a {
               color: $header-muted-color;
               display: block;
-              padding: .4rem $header-padding-horizontal/1.5;
+              padding: .4rem math.div($header-padding-horizontal, 1.5);
               &:hover {
                 background-color: lighten($body-bg, 2%);
                 color: darken($header-muted-color, 25%);

@@ -41,7 +41,7 @@ fieldset {
     // Since content after label is not wrapped in container
     // we must fake padding for input
     padding: $suit-form-padding-vertical $suit-form-padding-horizontal;
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       flex-wrap: wrap;
     }
     > * {
@@ -54,11 +54,11 @@ fieldset {
       &.required {
         padding-right: 1.5rem;
       }
-      @include media-breakpoint-down(sm) {
+      @include media-breakpoint-down(md) {
         // Use as .col-sm-3
         flex: 0 0 25%;
       }
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         flex: 0 0 100%;
       }
     }
@@ -119,8 +119,8 @@ fieldset {
       padding-top: $suit-label-padding-top;
       padding-bottom: $suit-label-padding-bottom;
       border-bottom: 1px solid $form-border-color;
-      @include media-breakpoint-down(xs) {
-        padding-top: $suit-label-padding-top/2;
+      @include media-breakpoint-down(sm) {
+        padding-top: $suit-label-padding-top*0.5;
         background-color: transparent;
         text-align: left;
         font-weight: bold;
@@ -139,10 +139,42 @@ fieldset {
       margin: 0;
       padding-left: 2rem;
       font-size: $font-size-xs;
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         margin-top: .5rem;
         padding-left: 1.5rem;
       }
+    }
+  }
+}
+
+// Errors
+.errornote {
+    background-position: 100% 12px;
+    padding: 10px 12px;
+}
+ul.errorlist {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-size: $font-size-xs;
+  color: $brand-danger;
+}
+ul.errorlist li {
+    font-size: $font-size-xs;
+    display: block;
+    margin-bottom: 4px;
+}
+ul.errorlist li:first-child {
+    margin-top: 0;
+}
+
+ul.errorlist li a {
+    color: inherit;
+    text-decoration: underline;
+}
+.suit-form {
+  .form-group.errors {
+    input, select {
+        border-color: $brand-danger;
     }
   }
 }
@@ -153,7 +185,7 @@ fieldset {
   .form-group {
     margin: 0;
     background-color: $form-bg;
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       padding-bottom: 1rem;
     }
     label {
@@ -165,11 +197,11 @@ fieldset {
     .form-control-label + div[class*='col-'] {
       padding-top: $suit-form-padding-vertical;
       padding-bottom: $suit-form-padding-vertical;
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         padding-top: 0;
       }
     }
-    p.form-control-static {
+    p.form-control-plaintext {
       margin: 0;
     }
     // More spacing for first and last rows
@@ -195,7 +227,7 @@ fieldset {
   padding-bottom: 0 !important;
   display: flex;
   flex-wrap: wrap;
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     padding-top: 0 !important;
   }
   .multi-field {
@@ -203,7 +235,7 @@ fieldset {
     white-space: nowrap;
     margin-bottom: $suit-form-padding-vertical;
     padding-right: 1rem;
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       flex-basis: 100%;
       padding-bottom: 0;
     }
@@ -212,11 +244,11 @@ fieldset {
       display: inline-block;
       padding-top: $suit-form-padding-vertical !important;
       padding-left: 0;
-      padding-right: $suit-form-padding-horizontal / 2;
+      padding-right: $suit-form-padding-horizontal * 0.5;
       @include media-breakpoint-up(sm) {
         padding-bottom: 0;
       }
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         font-weight: bold;
       }
     }
@@ -229,7 +261,7 @@ fieldset {
         }
       }
     }
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       .form-control-label, .multi-field-content {
         display: block;
       }
@@ -293,7 +325,7 @@ fieldset {
           &.original {
             p {
               margin: 0;
-              @extend .form-control-static;
+              @extend .form-control-plaintext;
               a {
                 float: right;
                 font-size: $font-size-xs;
@@ -385,7 +417,12 @@ fieldset {
   }
 }
 
-.custom-select-sm {
+.form-select-sm {
   $select-border-width: ($border-width * 2);
   height: calc(#{$input-height} - #{$select-border-width} - 5px);
+}
+
+// for compatibility with bootstrap-alpha6
+.tabular .form-row {
+  display: table-row;
 }

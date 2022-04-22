@@ -24,6 +24,7 @@ SECRET_KEY = '_b#(gd6_afuvrn!a$yq7_^7!u)m&-x4b80i@9ls!w@jnl$tzc3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+INTERNAL_IPS = ("127.0.0.1", )
 
 ALLOWED_HOSTS = []
 
@@ -50,13 +51,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -134,3 +135,5 @@ STATIC_URL = '/static/'
 # For demo app specific only:
 # Use file backend for sessions, to not mess DB
 SESSION_ENGINE = 'django.contrib.sessions.backends.file'
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'

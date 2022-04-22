@@ -13,12 +13,12 @@ fieldset {
   .vDateField {
     @extend .form-control;
     display: inline-block;
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       max-width: none;
     }
   }
   select:not([multiple="multiple"]) {
-    @extend .custom-select;
+    @extend .form-select !optional;
     border-radius: $input-border-radius;
   }
   input {
@@ -95,7 +95,7 @@ fieldset {
         //width: $icon-width;
         text-align: center;
         white-space: nowrap;
-        @extend .input-group-addon;
+        @extend .input-group-addon !optional;
         &:hover, &:focus {
           text-decoration: none;
           color: $link-color;
@@ -144,7 +144,7 @@ fieldset {
 }
 .widget-AdminSplitDateTime {
   input.vDateField {
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       margin-bottom: .2rem;
     }
   }
@@ -180,7 +180,7 @@ fieldset {
   }
 }
 .calendarbox {
-  z-index: 3;
+  z-index: 100;
   > div:first-child {
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
@@ -295,6 +295,7 @@ fieldset {
   }
 }
 .clockbox {
+  z-index: 100;
   h2 {
     padding: .75rem 1.5rem;
     font-weight: normal;

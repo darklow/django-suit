@@ -21,7 +21,7 @@ body.change-form {
     display: flex;
     flex-wrap: wrap;
     > div {
-      margin: 0 $grid-gutter-width-base/2;
+      margin: 0 $grid-gutter-width-base*0.5;
     }
   }
   &:not(.suit_form_submit_on_right){
@@ -55,7 +55,7 @@ body.change-form {
     .edit-row {
       display: flex;
       > div {
-        margin: 0 $grid-gutter-width-base/2;
+        margin: 0 $grid-gutter-width-base*0.5;
         &.col-left {
           flex: 1;
         }
@@ -64,7 +64,7 @@ body.change-form {
           @include media-breakpoint-only(lg) {
             width: 25%;
           }
-          @include media-breakpoint-down(md) {
+          @include media-breakpoint-down(lg) {
             width: auto;
             flex: 1;
             flex-basis: 100%;

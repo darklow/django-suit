@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'vendor';
 @import 'mixins';
+@import 'custombs4';
 
 @import 'components/icons';
 @import 'components/buttons';
@@ -16,6 +17,7 @@
 @import 'components/tables';
 @import 'components/cards';
 
+@import 'layout/global';
 @import 'layout/vertical';
 @import 'layout/header';
 @import 'layout/navbars';

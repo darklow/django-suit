@@ -1,12 +1,12 @@
 body.dashboard {
   .module {
-    margin: 0 $grid-gutter-width-base $grid-gutter-width-base/2 0;
+    margin: 0 $grid-gutter-width-base $grid-gutter-width-base*0.5 0;
     table {
       width: 100%;
       border-spacing: 1px;
       border-collapse: separate;
       caption {
-        caption-side: inherit;
+        caption-side: top;
         font-weight: $headings-font-weight;
         font-size: $font-size-h4;
         padding: 0;

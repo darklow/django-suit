@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $filter-col-width: 15rem;
 #changelist {
   display: block;
@@ -24,7 +26,7 @@ $filter-col-width: 15rem;
     margin-right: 2rem;
   }
   #toolbar {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     #changelist-search {
       label {
         display: none;
@@ -34,16 +36,21 @@ $filter-col-width: 15rem;
         @extend .btn-primary;
         @include btn-mixin(primary, $icon-plus-circle);
         margin-right: 1rem;
+        margin-bottom: 0.375rem;
       }
       input[type='text'] {
         @extend .form-control;
         display: inline-block;
         width: auto;
         vertical-align: middle;
+        margin-bottom: 0.375rem;
         &:before {
           @include fa-icon-font();
           content: $icon-plus;
         }
+      }
+      select {
+        margin-bottom: 0.375rem;
       }
       .small {
         font-size: $font-size-sm;
@@ -58,7 +65,7 @@ $filter-col-width: 15rem;
     right: 0;
     font-size: $font-size-sm;
     h2 {
-      margin-bottom: $grid-gutter-width-base/2;
+      margin-bottom: $grid-gutter-width-base*0.5;
       display: none;
     }
     h3 {
@@ -66,14 +73,14 @@ $filter-col-width: 15rem;
       color: #fff;
       font-size: $font-size-sm;
       font-weight: normal;
-      padding: $grid-gutter-width-base/4 $grid-gutter-width-base/3;
+      padding: $grid-gutter-width-base*0.25 math.div($grid-gutter-width-base, 3);
       margin: 0;
     }
     ul {
       background-color: #fff;
       @include reset-list();
-      padding: $grid-gutter-width-base/3 0;
-      margin-bottom: $grid-gutter-width-base/1.5;
+      padding: math.div($grid-gutter-width-base, 3) 0;
+      margin-bottom: math.div($grid-gutter-width-base, 1.5);
       li {
         border-left: 3px solid transparent;
         margin-left: -3px;
@@ -88,7 +95,7 @@ $filter-col-width: 15rem;
         }
         a {
           padding: .1rem;
-          padding-left: $grid-gutter-width-base / 1.5;
+          padding-left: math.div($grid-gutter-width-base, 1.5);
           display: block;
         }
       }
@@ -123,7 +130,6 @@ $filter-col-width: 15rem;
       span.question {
         font-size: 13px;
         margin: 0 0.5em;
-        display: none;
       }
     }
     // Hide actions, show only after results

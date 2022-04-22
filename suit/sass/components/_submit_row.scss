@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .submit-row {
   .deletelink-box {
     float: right;
@@ -35,7 +37,7 @@ body.suit_form_submit_on_right .col-right {
   .submit-row {
     @include media-breakpoint-up(lg) {
       position: relative;
-      padding: $grid-gutter-width-base/2;
+      padding: $grid-gutter-width-base*0.5;
       background-color: $form-bg;
       display: flex;
       flex-wrap: wrap;
@@ -49,7 +51,7 @@ body.suit_form_submit_on_right .col-right {
       }
       .deletelink-box {
         text-align: right;
-        margin-top: $grid-gutter-width-base/2;
+        margin-top: $grid-gutter-width-base*0.5;
         order: 10;
       }
     }
@@ -58,7 +60,7 @@ body.suit_form_submit_on_right .col-right {
     @include reset-list();
     margin-top: $grid-gutter-width-base;
     //padding: $grid-gutter-width/2;
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       display: none;
       li {
         display: inline-block;
@@ -75,7 +77,7 @@ body.suit_form_submit_on_right .col-right {
           display: block;
           margin-top: 1px;
           background-color: $form-bg;
-          padding: $grid-gutter-width-base/3 $grid-gutter-width-base/2;
+          padding: math.div($grid-gutter-width-base, 3) $grid-gutter-width-base*0.5;
           @include suit-box-shadow();
         }
         &:not(.list-item) a {
@@ -90,13 +92,13 @@ body.suit_form_submit_on_right .col-right {
         &.heading {
           @include text-semibold();
           font-size: $font-size-lg;
-          padding: 0 $grid-gutter-width-base/3 $grid-gutter-width-base/4;
+          padding: 0 math.div($grid-gutter-width-base, 3) $grid-gutter-width-base*0.25;
           &.heading-inverse {
             background-color: $inverse-lightest;
             color: #fff;
             font-weight: normal;
             font-size: $font-size-base;
-            padding: $grid-gutter-width-base/4 $grid-gutter-width-base/3;
+            padding: $grid-gutter-width-base*0.25 math.div($grid-gutter-width-base, 3);
           }
         }
       }
