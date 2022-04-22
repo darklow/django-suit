@@ -231,7 +231,7 @@ window.Suit = Suit;
             }
             // Handle additional values for date filters
             var additional = $option.data('additional');
-            console.log($field, additional)
+            //console.log($field, additional)
             if (additional) {
                 var hiddenId = $field.data('name') + '_add';
                 var $hidden = $('#' + hiddenId);
