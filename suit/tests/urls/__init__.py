@@ -1,5 +1,3 @@
-import django
-from django.conf.urls import include, url
 from django.contrib import admin
 
 admin.autodiscover()
@@ -12,6 +10,7 @@ try:
         re_path(r'^admin/', admin.site.urls),
     ]
 except ImportError:
+    from django.conf.urls import include, url
     try:
         from django.conf.urls import patterns
         urlpatterns = patterns(

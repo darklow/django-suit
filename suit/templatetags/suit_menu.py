@@ -13,8 +13,12 @@ except ImportError:
 try:
     from django.utils.six import string_types
 except ImportError:
-    # For Django < 1.4.2
-    string_types = basestring,
+    try:
+        # For Django < 1.4.2
+        string_types = basestring,
+    except NameError:
+        # For Django >= 4.0
+        string_types = str
 
 import re
 import warnings

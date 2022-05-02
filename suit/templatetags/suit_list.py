@@ -7,6 +7,7 @@ from django.contrib.admin.templatetags.admin_list import result_list
 from django.contrib.admin.views.main import ALL_VAR, PAGE_VAR
 from django.utils.html import escape
 from suit.compat import tpl_context_class
+from suit import utils
 
 try:
     # Python 3.
@@ -23,8 +24,14 @@ except ImportError:
         from cgi import parse_qs
 
 register = template.Library()
+django_version = utils.django_major_version()
 
 DOT = '.'
+START_INDEX = 1
+CORRECT = 0
+if django_version < (3, 2):
+    START_INDEX = 0
+    CORRECT = 1
 
 
 @register.simple_tag
@@ -37,13 +44,14 @@ def paginator_number(cl, i):
                 '<li class="disabled"><a href="#" onclick="return false;">..'
                 '.</a></li>')
     elif i == cl.page_num:
+        if django_version < (3, 2):
+            i += 1
         return mark_safe(
-            '<li class="active"><a href="">%d</a></li> ' % (i + 1))
+            '<li class="active"><a href="">%d</a></li> ' % i)
     else:
         return mark_safe('<li><a href="%s"%s>%d</a></li> ' % (
             escape(cl.get_query_string({PAGE_VAR: i})),
-            (i == cl.paginator.num_pages - 1 and ' class="end"' or ''),
-            i + 1))
+            (i == cl.paginator.num_pages and ' class="end"' or ''), i))
 
 
 @register.simple_tag
@@ -55,9 +63,19 @@ def paginator_info(cl):
         entries_from = 1 if paginator.count > 0 else 0
         entries_to = paginator.count
     else:
-        entries_from = (
-            (paginator.per_page * cl.page_num) + 1) if paginator.count > 0 else 0
-        entries_to = entries_from - 1 + paginator.per_page
+        if START_INDEX == 0:
+            entries_from = (
+                paginator.per_page * (cl.page_num - START_INDEX ) + CORRECT) \
+                if paginator.count > 0 else START_INDEX
+            entries_to = entries_from - CORRECT + paginator.per_page
+        else:
+            entries_from = (
+                paginator.per_page * (cl.page_num - START_INDEX)) \
+                if paginator.count > 0 and cl.page_num > START_INDEX \
+                    else START_INDEX
+            entries_to = entries_from + paginator.per_page
+            if cl.page_num == START_INDEX:
+                entries_to -= START_INDEX
         if paginator.count < entries_to:
             entries_to = paginator.count
 
@@ -82,26 +100,32 @@ def pagination(cl):
         # If there are 10 or fewer pages, display links to every page.
         # Otherwise, do some fancy
         if paginator.num_pages <= 8:
-            page_range = range(paginator.num_pages)
+            page_range = range(START_INDEX, paginator.num_pages + START_INDEX)
         else:
             # Insert "smart" pagination links, so that there are always ON_ENDS
             # links at either end of the list of pages, and there are always
             # ON_EACH_SIDE links at either end of the "current page" link.
             page_range = []
-            if page_num > (ON_EACH_SIDE + ON_ENDS):
-                page_range.extend(range(0, ON_EACH_SIDE - 1))
-                page_range.append(DOT)
-                page_range.extend(range(page_num - ON_EACH_SIDE, page_num + 1))
-            else:
-                page_range.extend(range(0, page_num + 1))
-            if page_num < (paginator.num_pages - ON_EACH_SIDE - ON_ENDS - 1):
-                page_range.extend(
-                    range(page_num + 1, page_num + ON_EACH_SIDE + 1))
+            if page_num > (ON_EACH_SIDE + ON_ENDS + START_INDEX):
+                page_range.extend(range(START_INDEX, ON_EACH_SIDE - CORRECT))
                 page_range.append(DOT)
                 page_range.extend(
-                    range(paginator.num_pages - ON_ENDS, paginator.num_pages))
+                    range(page_num - ON_EACH_SIDE, page_num + CORRECT))
             else:
-                page_range.extend(range(page_num + 1, paginator.num_pages))
+                page_range.extend(range(START_INDEX, page_num + CORRECT))
+            if page_num < (
+                    paginator.num_pages - ON_EACH_SIDE - ON_ENDS - CORRECT):
+                page_range.extend(
+                    range(page_num , page_num + ON_EACH_SIDE))
+                page_range.append(DOT)
+                page_range.extend(
+                    range(
+                        paginator.num_pages - ON_ENDS,
+                        paginator.num_pages + START_INDEX))
+            else:
+                page_range.extend(range(
+                    page_num + CORRECT,
+                    paginator.num_pages + START_INDEX))
 
     need_show_all_link = cl.can_show_all and not cl.show_all and cl.multi_page
     return {

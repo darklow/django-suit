@@ -2,8 +2,7 @@ from django.contrib.admin.widgets import AdminTimeWidget, AdminDateWidget
 from django.forms import TextInput, Select, Textarea
 from django.utils.safestring import mark_safe
 from django import forms
-from django.utils.translation import ugettext as _
-from django.contrib.admin.templatetags.admin_static import static
+from django.utils.translation import gettext as _
 
 from suit import utils
 
@@ -94,6 +93,11 @@ class AutosizedTextarea(Textarea):
 
     @property
     def media(self):
+        try:
+            from django.contrib.admin.templatetags.admin_static import static
+        except ModuleNotFoundError:
+            # Django 3.0+
+            from django.templatetags.static import static
         return forms.Media(js=[static("suit/js/jquery.autosize-min.js")])
 
     def render(self, name, value, attrs=None, renderer=None):

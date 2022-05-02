@@ -9,7 +9,7 @@ from suit import utils
 
 try:
     from django.core.urlresolvers import NoReverseMatch, reverse
-except ImportError:
+except (ImportError, ModuleNotFoundError):
     from django.urls import NoReverseMatch, reverse
 
 django_version = utils.django_major_version()
@@ -54,8 +54,8 @@ def field_contents_foreign_linked(admin_field):
     fieldset.html) with '{{ field|field_contents_foreign_linked }}'.
     """
     fieldname = admin_field.field['field']
-    displayed = admin_field.contents()
     obj = admin_field.form.instance
+    displayed = str(getattr(obj, fieldname)) if obj.id else ''
 
     if not hasattr(admin_field.model_admin,
                    'linked_readonly_fields') or fieldname not in admin_field \

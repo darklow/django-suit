@@ -2,8 +2,7 @@ from django.test import TestCase
 from suit.widgets import LinkedSelect, HTML5Input, EnclosedInput, \
     NumberInput, SuitDateWidget, SuitTimeWidget, SuitSplitDateTimeWidget, \
     AutosizedTextarea
-from django.utils.translation import ugettext as _
-from django.contrib.admin.templatetags.admin_static import static
+from django.utils.translation import gettext as _
 from suit import utils
 
 django_version = utils.django_major_version()
@@ -161,7 +160,13 @@ class WidgetsTestCase(TestCase):
 
     def test_AutosizedTextarea_media(self):
         txt = AutosizedTextarea()
+        try:
+            from django.contrib.admin.templatetags.admin_static import static
+        except ModuleNotFoundError:
+            # Django 3.0+
+            from django.templatetags.static import static
+            template = '<script src="%s"></script>'
+        else:
+            template = '<script type="text/javascript" src="%s"></script>'
         js_url = static('suit/js/jquery.autosize-min.js')
-        self.assertHTMLEqual(str(txt.media),
-                             '<script type="text/javascript" src="%s"></script>'
-                             % js_url)
+        self.assertHTMLEqual(str(txt.media), template % js_url)

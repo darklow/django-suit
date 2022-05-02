@@ -2,9 +2,10 @@ from django.contrib.admin import ModelAdmin
 from django.contrib.admin.templatetags.admin_list import result_list
 from suit.templatetags.suit_list import paginator_number, paginator_info, \
     pagination, suit_list_filter_select, headers_handler, dict_to_attrs, \
-    result_row_attrs, cells_handler
+    result_row_attrs, cells_handler, START_INDEX
 from suit.tests.mixins import UserTestCaseMixin, ModelsTestCaseMixin
 from suit.tests.models import Album, Book, test_app_label
+from suit import utils
 
 try:
     from django.core.urlresolvers import reverse
@@ -13,6 +14,7 @@ except ImportError:
     from django.urls import reverse
 
 app_label = test_app_label()
+django_version = utils.django_major_version()
 
 
 class ModelAdminMock(object):
@@ -49,8 +51,7 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
 
         output = paginator_number(self.changelist, '.')
         self.assertTrue('...' in output)
-
-        output = paginator_number(self.changelist, 0)
+        output = paginator_number(self.changelist, START_INDEX)
         self.assertTrue('active' in output)
 
     def test_paginator_info(self):

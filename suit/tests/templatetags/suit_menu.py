@@ -15,7 +15,11 @@ except ImportError:
 try:
     from django.utils.encoding import force_unicode
 except ImportError:
-    from django.utils.encoding import force_text as force_unicode
+    try:
+        from django.utils.encoding import force_text as force_unicode
+    except ImportError:
+        # For Django >= 3.0
+        from django.utils.encoding import force_str as force_unicode
 
 app_label = test_app_label()
 
