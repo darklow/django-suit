@@ -1,5 +1,9 @@
-from django.utils.translation import ugettext_lazy as _
 from django.contrib.admin import FieldListFilter
+import django
+if django.VERSION[0] < 4:
+    from django.utils.translation import ugettext_lazy as _
+else:
+    from django.utils.translation import gettext_lazy as _
 
 
 class IsNullFieldListFilter(FieldListFilter):
