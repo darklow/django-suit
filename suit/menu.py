@@ -1,5 +1,10 @@
 from copy import deepcopy
-from django.utils.translation import ugettext_lazy as _
+from django import VERSION as django_version
+
+if django_version >= (3, 0):
+    from django.utils.translation import gettext_lazy as _
+else:
+    from django.utils.translation import ugettext_lazy as _
 
 
 class ChildItem(object):
@@ -170,7 +175,7 @@ class MenuManager(object):
         """
         :type native_model: dict
         """
-        child_item = ChildItem(native_model['name'],  model=native_model.get('model'), url=native_model['admin_url'])
+        child_item = ChildItem(native_model['name'], model=native_model.get('model'), url=native_model['admin_url'])
         return child_item
 
     def handle_parent_menu(self, parent_item, native_app):
