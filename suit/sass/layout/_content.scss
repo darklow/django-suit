@@ -47,9 +47,9 @@ body.change-form {
       > a {
         &:not([class*="btn-"]) {
           @extend .btn-round;
-          @include btn-mixin(info, none, sm, round=true);
+          @include btn-mixin(info, $icon-plus-circle, sm, true);
           &.addlink {
-            @include btn-mixin(success, $icon-plus-circle, sm, round=true);
+            @include btn-mixin(success, $icon-plus-circle, sm, true);
           }
         }
       }
