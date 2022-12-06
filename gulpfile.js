@@ -1,13 +1,13 @@
 'use strict';
 
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
-var autoprefixer = require('gulp-autoprefixer');
-var plumber = require('gulp-plumber');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const browserSync = require('browser-sync');
+const autoprefixer = require('gulp-autoprefixer');
+const plumber = require('gulp-plumber');
+let reload = browserSync.reload;
 
-var config = {
+const config = {
     djangoHost: 'localhost',
     djangoPort: 8000,
     jsPort: 8001,
@@ -42,8 +42,8 @@ gulp.task('watch', function () {
         }
     });
 
-    gulp.watch(config.watchSassFiles, ['styles']);
+    gulp.watch(config.watchSassFiles, gulp.series('styles'));
     gulp.watch(config.watchHtmlFiles).on('change', reload);
 });
 
-gulp.task('default', ['styles', 'watch']);
+gulp.task('default', gulp.series('styles', 'watch'));
