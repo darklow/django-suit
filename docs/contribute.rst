@@ -89,7 +89,7 @@ Generate the distribution archives on local machine:
 
 .. code-block:: bash
 
-    python -m pip install --user --upgrade setuptools wheel
+    python -m pip install --upgrade setuptools wheel
 
 
 * you need to run the following command from the root directory of your package to generate the distribution files.
@@ -104,7 +104,7 @@ Generate the distribution archives on local machine:
 
 .. code-block:: bash
 
-    python -m pip install --user --upgrade twine
+    python -m pip install --upgrade twine
 
 * run the following command to ship the code to TestPyPi first. When you run the command, you will be asked to provide the same credentials using which you have registered your account in the previous step.
 
@@ -116,4 +116,4 @@ Generate the distribution archives on local machine:
 
 .. code-block:: bash
 
-    twine upload dist/*
+    twine upload --repository prodpypi dist/*

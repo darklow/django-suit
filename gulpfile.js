@@ -80,7 +80,7 @@ function initBrowserSync(done) {
         https: false,
         startPath: '/admin/',
         proxy: {
-            target: config.djangoHost + ':' + config.djangoPort
+            target: config.djangoHost + ':' + config.djangoPort,
         }
     });
     done();
@@ -89,6 +89,7 @@ function initBrowserSync(done) {
 function reloadBrowserSync(done) {
     browsersync.reload();
     // browsersync.stream({once: true})
+
     done();
 }
 

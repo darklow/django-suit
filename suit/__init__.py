@@ -1,2 +1,2 @@
-VERSION = '2.2b5'
+VERSION = '2.4'
 default_app_config = 'suit.apps.DjangoSuitConfig'

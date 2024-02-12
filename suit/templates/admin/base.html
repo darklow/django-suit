@@ -96,10 +96,8 @@
 
                         <div class="col-xs-12 col-sm-6 text-sm-center footer-copyright">
                             {% block copyright %}
-                                Copyright &copy;
-                                <span class="d-none d-lg-block">2013-</span>{% now "Y" %} DjangoSuit.com
-                                <br>Developed by
-                                <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>
+                                <span class="d-none d-lg-block">Copyright &copy; 2013-{% now "Y" %}</span>
+                                Developed by <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>, maintained by <a href="https://github.com/pulse-mind/django-suit" target="_blank">Pulse-Mind</a>
                             {% endblock %}
                         </div>
 
@@ -157,4 +155,13 @@
 <!-- This is a solution to remove the sidebar that is not compatible with django-suit. -->
 {% block nav-sidebar %}
     {% include "suit/nav_sidebar.html" %}
+{% endblock %}
+
+{% block nav-breadcrumbs %}
+    {% block breadcrumbs %}
+      <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% translate 'Home' %}</a>
+        {% if title %} &rsaquo; {{ title }}{% endif %}
+      </div>
+    {% endblock %}
 {% endblock %}

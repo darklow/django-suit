@@ -138,7 +138,13 @@ STATICFILES_DIRS = (
 )
 
 #  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+# Default STORAGES from Django documentation
+# See: https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-STORAGES
+STORAGES = {
+    "default": { "BACKEND": "django.core.files.storage.FileSystemStorage" },
+    "staticfiles": { "BACKEND": 'whitenoise.storage.CompressedStaticFilesStorage' }, #'django.contrib.staticfiles.storage.StaticFilesStorage'}
+}
 
 # For demo app specific only:
 # Use file backend for sessions, to not mess DB

@@ -1,14 +1,12 @@
 @use "sass:math";
 
 .submit-row {
-  .deletelink-box {
-    float: right;
-    margin: 0;
     .deletelink {
+      margin-left: auto;
+      width: fit-content !important;
       @extend .btn;
       @extend .btn-outline-danger;
     }
-  }
   input[type='submit'], input[type='button'], button, .btn {
     margin-bottom: .5rem;
   }
