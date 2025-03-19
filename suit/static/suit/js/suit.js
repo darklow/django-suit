@@ -35,7 +35,9 @@ window.Suit = Suit;
                 if (!$topActions.length)
                     return;
 
-                $("tr input.action-select, #action-toggle").on('click', checkIfSelected);
+                $('tr input.action-select, #action-toggle').on('click', function() {
+                    window.setTimeout(checkIfSelected, 5)
+                })
             });
         };
 
