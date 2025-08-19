@@ -20,11 +20,11 @@ $filter-col-width: 15rem;
       }
     }
   }
-  #changelist-filter:not(:empty) + #changelist-form {
+  #changelist-filter:not(:empty) + .changelist-form-container {
     margin-right: 2rem;
   }
   #toolbar {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.16rem;
     #changelist-search {
       label {
         display: none;
@@ -51,6 +51,8 @@ $filter-col-width: 15rem;
     }
   }
   #changelist-filter {
+    margin-top: 0.35rem;
+    margin-left: 2rem;
     float: right;
     width: $filter-col-width;
     //position: absolute;
@@ -94,7 +96,7 @@ $filter-col-width: 15rem;
       }
     }
   }
-  #changelist-form {
+  .changelist-form-container {
     flex: 1;
     .actions {
       margin: -.5rem 0 1rem 0;
