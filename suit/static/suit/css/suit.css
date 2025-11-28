@@ -2733,6 +2733,8 @@ body.change-form #container br.clear:last-child { display: none; }
 
 body.dashboard #content .content-wrap { display: -webkit-box; display: -ms-flexbox; display: flex; }
 
+body.skip-to-content-link { display: none; }
+
 #content .content-wrap > h1 { -ms-flex-preferred-size: 100%; flex-basis: 100%; }
 
 #content .content-wrap > h1:first-child, #content .content-wrap > .messagelist + h1 { display: none; }
