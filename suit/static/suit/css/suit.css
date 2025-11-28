@@ -2965,3 +2965,5 @@ body.change-form.suit_form_submit_on_right .edit-row > div.col-right { width: 22
 @media (max-width: 991px) { body.change-form.suit_form_submit_on_right .edit-row > div.col-right { width: auto; -webkit-box-flex: 1; -ms-flex: 1; flex: 1; -ms-flex-preferred-size: 100%; flex-basis: 100%; } }
 
 table#change-history thead > tr th { padding: 0.7rem 0.8rem !important; }
+
+.skip-to-content-link { display: none; }
