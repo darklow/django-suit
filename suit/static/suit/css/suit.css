@@ -2886,6 +2886,18 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist #changelist-filter ul li a { padding: .1rem; padding-left: 1.25rem; display: block; }
 
+#changelist #changelist-filter details summary { background-color: #5d6478; color: #fff; font-size: 0.929rem; font-weight: normal; padding: 0.46875rem 0.625rem; margin: 0; }
+
+#changelist #changelist-filter details ul { background-color: #fff; list-style: none; margin: 0; padding: 0; padding: 0.625rem 0; margin-bottom: 1.25rem; }
+
+#changelist #changelist-filter details ul li { border-left: 3px solid transparent; margin-left: -3px; }
+
+#changelist #changelist-filter details ul li.selected:not(:first-child) { border-left-color: #1081d2; }
+
+#changelist #changelist-filter details ul li.selected a { font-weight: bold; color: #373a3c; }
+
+#changelist #changelist-filter details ul li a { padding: .1rem; padding-left: 1.25rem; display: block; }
+
 #changelist #changelist-form { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; }
 
 #changelist #changelist-form .actions { margin: -.5rem 0 1rem 0; font-size: 0.929rem; -webkit-box-align: baseline; -ms-flex-align: baseline; align-items: baseline; }

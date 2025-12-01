@@ -93,6 +93,44 @@ $filter-col-width: 15rem;
         }
       }
     }
+    details {
+      summary {
+        background-color: $inverse-lightest;
+        color: #fff;
+        font-size: $font-size-sm;
+        font-weight: normal;
+        padding: $grid-gutter-width-base/4 $grid-gutter-width-base/3;
+        margin: 0;
+      }
+      ul {
+        background-color: #fff;
+        @include reset-list();
+        padding: $grid-gutter-width-base/3 0;
+        margin-bottom: $grid-gutter-width-base/1.5;
+
+        li {
+          border-left: 3px solid transparent;
+          margin-left: -3px;
+
+          &.selected {
+            &:not(:first-child) {
+              border-left-color: $link-color-bright;
+            }
+
+            a {
+              font-weight: bold;
+              color: $body-color;
+            }
+          }
+
+          a {
+            padding: .1rem;
+            padding-left: $grid-gutter-width-base / 1.5;
+            display: block;
+          }
+        }
+      }
+    }
   }
   #changelist-form {
     flex: 1;
