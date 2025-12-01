@@ -2846,6 +2846,8 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist { display: block; position: relative; }
 
+#changelist .changelist-form-container { -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; min-width: 0; margin-right: 2rem; }
+
 #changelist.filtered { clear: both; display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; }
 
 #changelist.filtered #toolbar { -webkit-box-flex: 10; -ms-flex: 10; flex: 10; -ms-flex-preferred-size: 100%; flex-basis: 100%; }
@@ -2942,6 +2944,10 @@ body.change-list #content-main .object-tools { float: right; margin-bottom: 1.5r
 
 body.change-list .hiddenfields { display: none; }
 
+body.change-list #container > div, body.change-form #container > div { -ms-flex-negative: 0; flex-shrink: 0; }
+
+body.change-list #container > .main, body.change-form #container > .main { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-flex: 1; -ms-flex: 1 1 auto; flex: 1 1 auto; }
+
 body.change-form #content-main > .object-tools { float: right; margin-top: -2.85rem; margin-bottom: 20px; overflow: hidden; }
 
 body.change-form #content-main > .object-tools li { display: inline-block; }
@@ -2957,6 +2963,8 @@ body.change-form .edit-row > div { margin: 0 0.9375rem; }
 body.change-form:not(.suit_form_submit_on_right) .edit-row > div.col-left, body.change-form:not(.suit_form_submit_on_right) .edit-row > div.col-right { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; -ms-flex-preferred-size: 100%; flex-basis: 100%; }
 
 body.change-form:not(.suit_form_submit_on_right) .edit-row > div.col-right .object-tools { display: none; }
+
+body.change-list .main > .content, body.change-form .main > .content { -webkit-box-flex: 1; -ms-flex: 1 0; flex: 1 0; max-width: 100%; }
 
 body.change-form.suit_form_submit_on_right #content-main > .object-tools { margin-top: 0; }
 
@@ -2979,3 +2987,5 @@ body.change-form.suit_form_submit_on_right .edit-row > div.col-right { width: 22
 table#change-history thead > tr th { padding: 0.7rem 0.8rem !important; }
 
 .skip-to-content-link { display: none; }
+
+.base-svgs { display: none; }
