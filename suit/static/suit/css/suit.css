@@ -2940,7 +2940,7 @@ body.dashboard .deletelink:before { content: ""; color: #E04F3C; }
 
 #changelist .toplinks li a { margin-right: .28rem; display: inline-block; }
 
-.object-tools + #changelist.filtered #toolbar { margin-top: -3.5rem; }
+.object-tools + #changelist.filtered #toolbar { margin-top: -3.9rem; }
 
 body.change-list #content-main .object-tools { float: right; margin-bottom: 1.5rem; min-height: 2rem; }
 
