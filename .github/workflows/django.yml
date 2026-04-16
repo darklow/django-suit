@@ -13,8 +13,8 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.10]
-        django-version: [4.2]
+        python-version: ['3.10']
+        django-version: ['4.2']
 
     steps:
     - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
